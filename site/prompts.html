@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Prompt Vault, 14 types - Learning Agentic AI Engineering</title>
-<link rel="stylesheet" href="assets/style.css"></head>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></head>
 <body>
 <header class="top"><div class="wordmark"><a href="index.html">Learning Agentic AI Engineering</a></div>
 <nav class="main"><a href="index.html">Home</a><a href="start.html">Start Here</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="foundations.html">Foundations</a><a href="cross-cutting.html">Cross-cutting</a><a href="business.html">Business</a><a href="research.html">Research</a><a href="profiles.html">Profiles</a><a href="prompts.html" aria-current="page">Prompt Vault</a><a href="labs.html">Labs</a><a href="paths.html">Learning Paths</a><a href="principles.html">Principles</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="audit.html">Audit</a><a href="search.html">Search</a></nav></header>
@@ -9,6 +10,8 @@
 <p class="meta"><a href="index.html">Home</a> / Prompt Vault, 14 types</p>
 <h1>Prompt Vault, 14 types</h1>
 <p class="lede">Each prompt type holds six fields, a copy ready template, and a sample form. Verbatim prompts from named users carry source rows. All other text forms a pattern, never a quote.</p>
+<figure class="visual"><img src="assets/img/prompts.svg" alt="Flow diagram: Goal line, Inputs and limits, Output form, Verify and stop rule"><figcaption>Figure 1. Prompt Vault, 14 types as a flow. Each box names one stage on this page. Arrows show work order.</figcaption></figure>
+
 <h2 id="repository-orientation">Repository orientation</h2>
 <table><tr><th>Field</th><th>Value</th></tr>
 <tr><td>Purpose</td><td>Map an unknown repo fast.</td></tr>
@@ -275,7 +278,32 @@ Report gaps as: Not in source.</pre>
 <h2>Verbatim prompts from named users</h2>
 <p>Four Cherny team lines, Codex review commands and one Muse Code workflow prompt sit in v1 form in git history for this file and in full on the Claude, Codex and Muse pages workflow steps. Verbatim text in this site carries a source row on the Sources page: rows 18, 34 and 41.</p>
 
+
+<figure class="visual"><img src="assets/img/prompts-groups.svg" alt="Concept groups diagram: 14 types, Verbatim set, Failure fix"><figcaption>Figure 2. Concept groups on this page. The markmap below expands each group into leaf points.</figcaption></figure>
+<h2>Visual map of this page</h2>
+<p>Three views of one page: a Mermaid flow for work order, a markmap for concept groups, and a read guide for the flow.</p>
+<div class="mermaid">
+flowchart LR
+ A[Purpose] --> B[Required inputs]
+ B --> C[Constraints]
+ C --> D[Output form]
+ D --> E[Verification]
+ E --> F[Stop rule]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[Purpose] --&gt; B[Required inputs]
+ B --&gt; C[Constraints]
+ C --&gt; D[Output form]
+ D --&gt; E[Verification]
+ E --&gt; F[Stop rule]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the left box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Prompt Vault, 14 types</span><ul><li><span class="branch">14 types</span><ul><li><span class="leaf">Orientation and spec</span></li><li><span class="leaf">Build and debug</span></li><li><span class="leaf">Review and audit</span></li><li><span class="leaf">Research and eval</span></li><li><span class="leaf">Business and handoff</span></li></ul></li><li><span class="branch">Verbatim set</span><ul><li><span class="leaf">Cherny lines, row 18</span></li><li><span class="leaf">Codex commands, row 34</span></li><li><span class="leaf">Muse Code sample, row 41</span></li></ul></li><li><span class="branch">Failure fix</span><ul><li><span class="leaf">No verify line hides defects</span></li><li><span class="leaf">Add an oracle and a cap</span></li></ul></li></ul></li></ul></div>
 </main>
-<footer class="site">AI Power-User Intelligence Hub, field guide build v2. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026, the earlier of execution day and 30 November 2026. Open site/index.html from disk. No server need. No track code sits in this site.</footer>
+<footer class="site">AI Power-User Intelligence Hub, field guide build v3. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026, the earlier of execution day and 30 November 2026. Open site/index.html from disk. No server need. No track code sits in this site.</footer>
 <script src="assets/site.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}});
+</script>
 </body></html>
