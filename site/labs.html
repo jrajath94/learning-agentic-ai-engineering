@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practical labs, executed in this build - Learning Agentic AI Engineering</title>
+<link rel="stylesheet" href="assets/style.css"></head>
+<body>
+<header class="top"><div class="wordmark"><a href="index.html">Learning Agentic AI Engineering</a></div>
+<nav class="main"><a href="index.html">Home</a><a href="start.html">Start Here</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="foundations.html">Foundations</a><a href="cross-cutting.html">Cross-cutting</a><a href="business.html">Business</a><a href="research.html">Research</a><a href="profiles.html">Profiles</a><a href="prompts.html">Prompt Vault</a><a href="labs.html" aria-current="page">Labs</a><a href="paths.html">Learning Paths</a><a href="principles.html">Principles</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="audit.html">Audit</a><a href="search.html">Search</a></nav></header>
+<main>
+<p class="meta"><a href="index.html">Home</a> / Practical labs, executed in this build</p>
+<h1>Practical labs, executed in this build</h1>
+<p class="lede">Three labs ran on this machine on 20 November 2026. Results below come from tool output. No lab ran a send, spend, post or deploy act.</p>
+<p>Environment: Python 3.12.3, pytest 9.1.1. Code sits in the repo under <code>labs/</code>. Full log: <code>labs/RESULTS.md</code>.</p>
+<h2>Lab 1. Python service: feature plus bug fix</h2>
+<p>Question: can a test first flow catch a page slice bug and prove a priority filter?</p>
+<p>Baseline bug: a page start of page times per_page skips page one items. Fix: start equals page minus one, times per_page.</p>
+<p>Feature: list tasks by priority, with page rules held.</p>
+<pre>cd labs/lab1
+python3 -m pytest -q
+# result: 5 passed in 0.02s</pre>
+<p>Tests: first page, second page, priority filter, filter plus page, complete act. Quality rule set before the run: all five tests pass, with exact id lists.</p>
+<p>Human steps in the lab run: code write and result read by the build agent. No user act took place. Cost: local run, zero model tokens for the test run.</p>
+<h2>Lab 2. Retrieval benchmark with a ceiling effect</h2>
+<p>Question: does TF-IDF cosine beat exact keyword count on precision at 5?</p>
+<p>Design: 200 synthetic docs, 4 topics, 20 queries, k of 5, 3 repeats, seed 42. One factor changes: score method.</p>
+<pre>cd labs/lab2
+python3 benchmark.py
+# keyword: precision@5 runs=[1.0, 1.0, 1.0] mean=1.0, 0.0407s per run
+# tfidf:   precision@5 runs=[1.0, 1.0, 1.0] mean=1.0, 0.0603s per run</pre>
+<p>Hard variant, seed 7, 6 of 15 words as cross topic noise: both methods score 1.0 on all repeats.</p>
+<div class="callout"><p>Finding: ceiling effect. Synthetic topics split too clean, so this test cannot rank both methods. A single pass run forms a demo, not a ranking. Next test: queries with words shared by two topics, plus human judged relevance on real docs. This fail case stays in the site by design: a benchmark that cannot split two methods proves no win for a method.</p></div>
+<h2>Lab 3. Business workflow: cited report artifact</h2>
+<p>Question: can a collect, count, draft flow turn a source ledger into a review ready report with no send act?</p>
+<pre>cd labs/lab3
+python3 make_report.py
+# rows=60
+# confidence split: High 16, Medium-High 9, Medium 13, Medium-Low 18, Low 2, Low-Medium 2</pre>
+<p>Artifact: <code>labs/lab3/report_artifact.md</code>. Gate: a human must check each Low row before use. No mail, post or spend act ran.</p>
+<h2>Lab rules for your own runs</h2>
+<ol><li>State the question and the pass rule before a run.</li><li>Record command, version, seed, run count and result.</li><li>Change one main factor per ablation.</li><li>Read errors by type before a fix.</li><li>Mark a run as demo, reproduced result or new result. Keep all three apart.</li></ol>
+
+</main>
+<footer class="site">AI Power-User Intelligence Hub, field guide build v2. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026, the earlier of execution day and 30 November 2026. Open site/index.html from disk. No server need. No track code sits in this site.</footer>
+<script src="assets/site.js"></script>
+</body></html>
