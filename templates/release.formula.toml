@@ -1,0 +1,27 @@
+# Release formula (Gas Town form, TOML)
+# Run: bd cook release --var version=1.2.0 (test)
+# Run live: bd mol pour release --var version=1.2.0
+
+[formula]
+name = "release"
+version = "1.2.0"
+
+[[steps]]
+id = "bump-version"
+needs = []
+
+[[steps]]
+id = "run-tests"
+needs = ["bump-version"]
+
+[[steps]]
+id = "build"
+needs = ["run-tests"]
+
+[[steps]]
+id = "create-tag"
+needs = ["build"]
+
+[[steps]]
+id = "publish"
+needs = ["create-tag"]
