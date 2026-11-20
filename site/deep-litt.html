@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deep Dive: Litt, Surgeon Model and Explain Diff | Learning Agentic AI Engineering</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></head>
+<body>
+<header class="top"><div class="wordmark"><a href="index.html">Learning Agentic AI Engineering</a></div>
+<nav class="main"><a href="index.html">Home</a><a href="start.html" aria-current="page">Start Here</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="foundations.html">Foundations</a><a href="cross-cutting.html">Cross-cutting</a><a href="business.html">Business</a><a href="research.html">Research</a><a href="profiles.html">Profiles</a><a href="prompts.html">Prompt Vault</a><a href="labs.html">Labs</a><a href="paths.html">Learning Paths</a><a href="principles.html">Principles</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="niche.html">Niche</a>
+<a href="deep.html">Deep Dives</a><a href="audit.html">Audit</a><a href="search.html">Search</a></nav></header>
+<main>
+<p class="meta">Home / Deep Dives / Deep Dive: Litt, Surgeon Model and Explain Diff</p>
+<h1>Deep Dive: Litt, Surgeon Model and Explain Diff</h1>
+<p class="lede">The delegation taxonomy from Code like a Surgeon, plus the full explain diff skill structure from his public gist, read in full. Sources: geoffreylitt.com, 24 October 2025, and gist.github.com/geoffreylitt. Confidence: High.</p>
+<figure class="visual"><img src="assets/img/deep-litt.svg" alt="Flow diagram: Primary work, human, Secondary work, agent, Explainer page, Quiz gate"><figcaption>Figure 1. Deep Dive: Litt, Surgeon Model and Explain Diff as a flow. Each box names one stage on this page. Arrows show work order.</figcaption></figure>
+
+<h2>The surgeon model</h2>
+<p>The name comes from the chief programmer team in old software practice: one surgeon holds the core work, a team takes the rest. Litt maps the split to agents. The human keeps primary work: design, core logic, fast feedback edits. The agent takes secondary work, in four named forms:</p>
+<ol><li>A guide to the code areas a big task will touch, written before the task starts.</li><li>A spike: a rough attempt at a big change, built to review and often to throw away.</li><li>Fixes with a clear spec: type errors, named bugs, bounded repairs.</li><li>Documentation of finished work.</li></ol>
+<p>Secondary work runs async, in the background, at times overnight. His example: an agent told to have a research report ready by 7 in the morning. Primary work stays tight loop, with tab complete level feedback. The autonomy slider is the whole model: loose for secondary, tight for primary.</p>
+<h2>The explain diff skill, full structure</h2>
+<p>The gist holds two variants, HTML and Notion, with one content spec. Opening line of the skill: Please make me a rich, interactive explanation of the specified code change. Four sections, in fixed order:</p>
+<pre>Section 1: Background
+  The system around the change. A deep background for a
+  beginner first, skippable. Then a narrow background on the
+  exact area the change touches. Explore wide before writing.
+
+Section 2: Intuition
+  The essence before the detail. Concrete examples with toy
+  data. Figures and diagrams in number.
+
+Section 3: Code
+  A walk through the change, grouped by idea, in an order a
+  reader can follow. Never in file order.
+
+Section 4: Quiz
+  Five questions, medium difficulty, real understanding,
+  no gotchas. HTML form: pick an answer, get right or wrong
+  feedback at once. Notion form: answers in toggle blocks,
+  each with a note on why it is right or wrong.</pre>
+<h2>Format rules from the gist</h2>
+<ol><li>One self contained HTML file, CSS and JS inside, one long page, section headers, a table of contents. No tabs for top level structure.</li><li>File lives in a global place outside the repo. Name starts with the date: YYYY-MM-DD-.</li><li>Prose model named in the skill: the clarity and flow of Martin Kleppmann.</li><li>Diagrams: reuse a few diagram families. Simplified UI diagrams and system flow diagrams with example data. No ASCII diagrams. HTML designs in place of text art.</li><li>Code blocks in pre tags. Any custom div that holds code gets white space pre-wrap, with a scan for that rule before save.</li><li>Callouts for key concepts, definitions, and edge cases.</li></ol>
+<h2>The usage rule</h2>
+<p>From his later talk, via a secondary account: read the explainer before the raw diff, and pass the five question quiz before the code ships. The quiz is the gate. A reviewer who fails the quiz has not reviewed, no matter how long the diff stayed open.</p>
+<h2>Apply this to your work</h2><div class="rule"><p>This skill fits your review load at once. Your agent lanes ship diffs and pages faster than you can read them, and your standing rule is that a worker claim never counts without a check. Run explain diff on each lane output: one explainer page per change set, five questions, and your pass is the ship gate. The form also matches your study law: background, intuition, code, quiz is your Russian doll order in one page, and the quiz gives you the retrieval practice your learning system demands.</p></div><h2>Replication checklist</h2><ol><li>Copy the skill structure into a command in your main coding tool this week.</li><li>Run it on the next agent diff you must review. Take the quiz before you open the raw diff.</li><li>Rule: quiz fail means the change waits, and the explainer gets a fix first.</li></ol>
+<p>Prompt file: <a href="../prompts/explain-diff.md">prompts/explain-diff.md</a>, a full template built on the gist structure.</p>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart LR
+ A[Change lands] --> B[Explain diff page]
+ B --> C[Background, intuition, code]
+ C --> D[Five question quiz]
+ D -->|pass| E[Ship]
+ D -->|fail| F[Fix explainer, retest]
+ F --> D
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[Change lands] --&gt; B[Explain diff page]
+ B --&gt; C[Background, intuition, code]
+ C --&gt; D[Five question quiz]
+ D --&gt;|pass| E[Ship]
+ D --&gt;|fail| F[Fix explainer, retest]
+ F --&gt; D</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Litt, Surgeon Model and Explain Diff</span><ul><li><span class="branch">Surgeon split</span><ul><li><span class="leaf">Guide and spike</span></li><li><span class="leaf">Spec fixes</span></li><li><span class="leaf">Docs</span></li></ul></li><li><span class="branch">Explainer</span><ul><li><span class="leaf">Background</span></li><li><span class="leaf">Intuition</span></li><li><span class="leaf">Code</span></li><li><span class="leaf">Quiz</span></li></ul></li><li><span class="branch">Gate</span><ul><li><span class="leaf">Read before diff</span></li><li><span class="leaf">Pass before ship</span></li></ul></li></ul></li></ul></div>
+</main>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart LR
+ A[Change lands] --> B[Explain diff page]
+ B --> C[Background, intuition, code]
+ C --> D[Five question quiz]
+ D -->|pass| E[Ship]
+ D -->|fail| F[Fix explainer, retest]
+ F --> D
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[Change lands] --&gt; B[Explain diff page]
+ B --&gt; C[Background, intuition, code]
+ C --&gt; D[Five question quiz]
+ D --&gt;|pass| E[Ship]
+ D --&gt;|fail| F[Fix explainer, retest]
+ F --&gt; D</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Litt, Surgeon Model and Explain Diff</span><ul><li><span class="branch">Surgeon split</span><ul><li><span class="leaf">Guide and spike</span></li><li><span class="leaf">Spec fixes</span></li><li><span class="leaf">Docs</span></li></ul></li><li><span class="branch">Explainer</span><ul><li><span class="leaf">Background</span></li><li><span class="leaf">Intuition</span></li><li><span class="leaf">Code</span></li><li><span class="leaf">Quiz</span></li></ul></li><li><span class="branch">Gate</span><ul><li><span class="leaf">Read before diff</span></li><li><span class="leaf">Pass before ship</span></li></ul></li></ul></li></ul></div>
+</main>
+
+<h2>Visual map of this page</h2>
+<p>Three views of one page: a Mermaid flow for work order, a markmap for concept groups, and a read guide for the flow.</p>
+<div class="mermaid">
+flowchart TD
+ A[Claim: 5k to 10k tokens per day] --> B[Search both firms at origin]
+ B --> C[No such figure found]
+ C --> D[Real figures: dollars per day]
+ D --> E[Workflows that burn tokens]
+ E --> F[Fleets, schedules, swarms, review bots]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart TD
+ A[Claim: 5k to 10k tokens per day] --&gt; B[Search both firms at origin]
+ B --&gt; C[No such figure found]
+ C --&gt; D[Real figures: dollars per day]
+ D --&gt; E[Workflows that burn tokens]
+ E --&gt; F[Fleets, schedules, swarms, review bots]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the left box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Niche Sources and Token Heavy Workflows</span><ul><li><span class="branch">Claim check</span><ul><li><span class="leaf">No tokens per day average</span></li><li><span class="leaf">Dollars, multiples, percentiles</span></li><li><span class="leaf">Scale: one task past 55k tokens</span></li></ul></li><li><span class="branch">Heavy workflows</span><ul><li><span class="leaf">Cherny fleet</span></li><li><span class="leaf">Gas Town 20 to 30</span></li><li><span class="leaf">OpenAI research saturation</span></li><li><span class="leaf">Review bot per change</span></li></ul></li><li><span class="branch">Niche lanes</span><ul><li><span class="leaf">Blogs and dotfiles</span></li><li><span class="leaf">Podcast transcripts</span></li><li><span class="leaf">Newsletters</span></li><li><span class="leaf">Community threads</span></li></ul></li></ul></li></ul></div>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart LR
+ A[Change lands] --> B[Explain diff page]
+ B --> C[Background, intuition, code]
+ C --> D[Five question quiz]
+ D -->|pass| E[Ship]
+ D -->|fail| F[Fix explainer, retest]
+ F --> D
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[Change lands] --&gt; B[Explain diff page]
+ B --&gt; C[Background, intuition, code]
+ C --&gt; D[Five question quiz]
+ D --&gt;|pass| E[Ship]
+ D --&gt;|fail| F[Fix explainer, retest]
+ F --&gt; D</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Litt, Surgeon Model and Explain Diff</span><ul><li><span class="branch">Surgeon split</span><ul><li><span class="leaf">Guide and spike</span></li><li><span class="leaf">Spec fixes</span></li><li><span class="leaf">Docs</span></li></ul></li><li><span class="branch">Explainer</span><ul><li><span class="leaf">Background</span></li><li><span class="leaf">Intuition</span></li><li><span class="leaf">Code</span></li><li><span class="leaf">Quiz</span></li></ul></li><li><span class="branch">Gate</span><ul><li><span class="leaf">Read before diff</span></li><li><span class="leaf">Pass before ship</span></li></ul></li></ul></li></ul></div>
+</main>
+<footer class="site">AI Power-User Intelligence Hub, field guide build v3. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026, the earlier of execution day and 30 November 2026. Open site/index.html from disk. No server need. No track code sits in this site.</footer>
+<script src="assets/site.js"></script>
+<script src="assets/js/mermaid.min.js"></script>
+<script>
+if (window.mermaid) { mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}}); }
+</script>
+<script src="assets/js/mermaid.min.js"></script>
+<script>
+if (window.mermaid) { mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}}); }
+</script>
+</body></html>
