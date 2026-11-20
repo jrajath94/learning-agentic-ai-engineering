@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Claude, Claude Code and Duet - Learning Agentic AI Engineering</title>
-<link rel="stylesheet" href="assets/style.css"></head>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></head>
 <body>
 <header class="top"><div class="wordmark"><a href="index.html">Learning Agentic AI Engineering</a></div>
 <nav class="main"><a href="index.html">Home</a><a href="start.html">Start Here</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="foundations.html">Foundations</a><a href="cross-cutting.html">Cross-cutting</a><a href="business.html">Business</a><a href="research.html">Research</a><a href="profiles.html">Profiles</a><a href="prompts.html">Prompt Vault</a><a href="labs.html">Labs</a><a href="paths.html">Learning Paths</a><a href="principles.html">Principles</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="audit.html">Audit</a><a href="search.html">Search</a></nav></header>
 <main>
 <h1>Claude, Claude Code and Duet</h1>
 <p class="lede">Claude power use rests on a steering stack. Each layer loads at a set time, costs a set amount of context, and holds a set level of force.</p>
+<figure class="visual"><img src="assets/img/claude.svg" alt="Flow diagram: Plan mode, Parallel worktrees, Verify subagent, CLAUDE.md lesson"><figcaption>Figure 1. Claude, Claude Code and Duet as a flow. Each box names one stage on this page. Arrows show work order.</figcaption></figure>
+
 <h2>Version facts</h2>
 <p>Anthropic homepage index lists Fable 5.2 and Mythos 5.2 on 9 November 2026, Opus 5.5 on 22 September, Sonnet 5.5 on 28 September and Haiku 5.5 on 7 October. Price summaries list Fable at 8 and 40 dollars, Opus at 4 and 20, Sonnet at 2 and 10 per 1M tokens. <span class="badge">Medium to High</span></p>
 <p>Claude Code official changelog has a 19 November 2026 entry. A tracker lists version 2.1.325 on 13 November 2026. Exact latest patch stays open. <span class="badge low">INSUFFICIENT_EVIDENCE for exact patch</span></p>
@@ -44,7 +47,34 @@
 <h3>6. Hypotheses</h3><p>Small teams may gain more from one verify subagent than from five writer sessions. Sources support both acts. No test in sources ranks both acts for a small repo.</p>
 <h3>7. Decision support</h3><p>Start with plan mode, one worktree per task, and a verify step. Add parallel sessions after the verify step holds for two weeks.</p>
 <h3>8. One bounded next action</h3><p>Add one verify subagent to your repo this week. Give the subagent test commands, a browser check and a rule: report fail with proof, or pass with proof.</p>
+
+<figure class="visual"><img src="assets/img/claude-groups.svg" alt="Concept groups diagram: Steering stack, Fleet, Duet"><figcaption>Figure 2. Concept groups on this page. The markmap below expands each group into leaf points.</figcaption></figure>
+<h2>Visual map of this page</h2>
+<p>Three views of one page: a Mermaid flow for work order, a markmap for concept groups, and a read guide for the flow.</p>
+<div class="mermaid">
+flowchart LR
+ A[Plan mode] --> B[Auto accept build]
+ B --> C[Verify subagent]
+ C -->|fail| A
+ C -->|pass| D[Ship PR]
+ D --> E[Lesson to CLAUDE.md]
+ E --> A
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[Plan mode] --&gt; B[Auto accept build]
+ B --&gt; C[Verify subagent]
+ C --&gt;|fail| A
+ C --&gt;|pass| D[Ship PR]
+ D --&gt; E[Lesson to CLAUDE.md]
+ E --&gt; A</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the left box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Claude, Claude Code and Duet</span><ul><li><span class="branch">Steering stack</span><ul><li><span class="leaf">CLAUDE.md under 200 lines</span></li><li><span class="leaf">Path rules</span></li><li><span class="leaf">Skills</span></li><li><span class="leaf">Hooks</span></li><li><span class="leaf">Subagents</span></li></ul></li><li><span class="branch">Fleet</span><ul><li><span class="leaf">5 terminal sessions</span></li><li><span class="leaf">5 to 10 web sessions</span></li><li><span class="leaf">Slash commands</span></li></ul></li><li><span class="branch">Duet</span><ul><li><span class="leaf">Own VM</span></li><li><span class="leaf">Morning brief</span></li><li><span class="leaf">Approval gates</span></li></ul></li></ul></li></ul></div>
 </main>
 <footer class="site">AI Power-User Intelligence Hub. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026. Every material claim links to a source on the Sources page. A claim with a Low badge rests on one self reported source. A gap marked INSUFFICIENT_EVIDENCE has no verified source in this build.</footer>
 <script src="assets/site.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}});
+</script>
 </body></html>
