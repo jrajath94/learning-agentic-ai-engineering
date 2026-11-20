@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Engineering foundations: harness and inference design - Learning Agentic AI Engineering</title>
+<link rel="stylesheet" href="assets/style.css"></head>
+<body>
+<header class="top"><div class="wordmark"><a href="index.html">Learning Agentic AI Engineering</a></div>
+<nav class="main"><a href="index.html">Home</a><a href="start.html">Start Here</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="foundations.html" aria-current="page">Foundations</a><a href="cross-cutting.html">Cross-cutting</a><a href="business.html">Business</a><a href="research.html">Research</a><a href="profiles.html">Profiles</a><a href="prompts.html">Prompt Vault</a><a href="labs.html">Labs</a><a href="paths.html">Learning Paths</a><a href="principles.html">Principles</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="audit.html">Audit</a><a href="search.html">Search</a></nav></header>
+<main>
+<p class="meta"><a href="index.html">Home</a> / Engineering foundations: harness and inference design</p>
+<h1>Engineering foundations: harness and inference design</h1>
+<p class="lede">An agent is a model plus a scaffold. This page names each scaffold part, its failure mode, and a test you can run.</p>
+<h2>Harness parts</h2>
+<table><tr><th>Part</th><th>Purpose</th><th>Failure mode</th><th>Observable sign</th></tr>
+<tr><td>Goal</td><td>Names the outcome and the pass rule</td><td>Vague goal, agent picks own target</td><td>Work drifts, pass claims with no test</td></tr>
+<tr><td>State</td><td>Holds task steps, decisions and open points</td><td>State lives in chat only</td><td>A reset loses the plan</td></tr>
+<tr><td>Context</td><td>Supplies facts at need time</td><td>Too much stale text, too little key fact</td><td>Agent cites old data or misses a rule</td></tr>
+<tr><td>Model</td><td>Reasons and writes</td><td>Weak model on a hard plan step</td><td>Plan errors repeat across samples</td></tr>
+<tr><td>Tools</td><td>Act on files, web, tests and apps</td><td>Tool errors pass in silence</td><td>Steps claim done with no artifact</td></tr>
+<tr><td>Policy</td><td>Limits acts, spend and rights</td><td>No gate on hard to reverse acts</td><td>Send or delete acts run with no tap</td></tr>
+<tr><td>Evaluator</td><td>Checks output vs a firm rule</td><td>Agent grades own work</td><td>Pass claims rise, defects stay</td></tr>
+<tr><td>Stop condition</td><td>Ends a loop</td><td>No cap on rounds or cost</td><td>Loops run long with no gain</td></tr>
+</table>
+<h2>Model, effort, context, cache and parallel work</h2>
+<p>A strong model cuts re prompt rounds on hard steps. High reason effort costs time and tokens, and pays on plan and debug steps. Large context holds more facts and adds noise and cost. Cache hits cut repeat cost where a product offers cache reads, as in the Grok 4.7 price split on the Grok page. Parallel work cuts wall time and adds merge and review load. Measure each trade on your own task set. No source in this build gives a universal gain number.</p>
+<h2>Why repeat samples repeat one error</h2>
+<p>One model with one context holds one set of false beliefs. A fresh sample from that same state tends to keep the belief. New evidence breaks the loop: a test result, a source, a screenshot or a fresh context reviewer. Add a sample for breadth. Add evidence for truth.</p>
+<h2>Single agent vs multi agent</h2>
+<table><tr><th>Form</th><th>Cost</th><th>Best use</th><th>Risk</th></tr>
+<tr><td>Single agent, one worktree</td><td>Low</td><td>Tight tasks, one file set, clear tests</td><td>Slow on breadth work</td></tr>
+<tr><td>Writer plus fresh reviewer</td><td>Medium</td><td>Code and research with a check step</td><td>Reviewer needs raw evidence, not a summary</td></tr>
+<tr><td>Parallel fleet</td><td>High, near 15 times chat tokens in the Anthropic research case</td><td>Breadth search, many file review, migrations</td><td>Merge clashes, attention load</td></tr>
+</table>
+<h2>Reference loop in Python</h2>
+<p>Copy the loop. Each run writes state, caps steps, stops on a pass from a test the agent cannot edit, and asks a human at hard gates.</p>
+<pre>from dataclasses import dataclass, field
+
+@dataclass
+class Task:
+    goal: str
+    state: str = "new"
+    steps: list = field(default_factory=list)
+    rounds: int = 0
+
+def run(task, agent, verify, max_rounds=5, needs_human=None):
+    while task.rounds &lt; max_rounds:
+        task.rounds += 1
+        task.state = "work"
+        result = agent(task)              # one bounded step
+        task.steps.append(result)
+        ok, proof = verify(result)       # test, lint, or eval set
+        if ok:
+            task.state = "pass"
+            return task, proof
+        if needs_human and needs_human(result):
+            task.state = "wait_human"    # send, pay, merge, delete
+            return task, proof
+    task.state = "fail_cap"              # stop, log, replan by hand
+    return task, "round cap hit"</pre>
+<p>Properties: typed input and output via the Task form, firm state, step cap, check points in the steps list, a human gate, and a clear pass test. Idempotent acts stay a design duty per step: a step that can run twice must check for prior work first.</p>
+<h2>Worked example</h2>
+<p>Goal: fix a page slice bug. State: one task, rounds 0. Round 1: agent writes a fail test. Verify: test fails as design. Round 2: agent fixes one line. Verify: full test set passes. Stop: pass at round 2. Lab 1 holds this case in full.</p>
+<h2>Partial exercise</h2>
+<p>Add a retry rule to the loop: retry a tool error once, then stop. Fill in the blank: a tool error must set state to ____ and write the error text to ____.</p>
+<h2>Retrieval question</h2>
+<p>Which harness part stops a loop with no gain? Answer in the Glossary under Stop condition.</p>
+
+</main>
+<footer class="site">AI Power-User Intelligence Hub, field guide build v2. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026, the earlier of execution day and 30 November 2026. Open site/index.html from disk. No server need. No track code sits in this site.</footer>
+<script src="assets/site.js"></script>
+</body></html>
