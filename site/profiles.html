@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Power user profiles - Learning Agentic AI Engineering</title>
-<link rel="stylesheet" href="assets/style.css"></head>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></head>
 <body>
 <header class="top"><div class="wordmark"><a href="index.html">Learning Agentic AI Engineering</a></div>
 <nav class="main"><a href="index.html">Home</a><a href="start.html">Start Here</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="foundations.html">Foundations</a><a href="cross-cutting.html">Cross-cutting</a><a href="business.html">Business</a><a href="research.html">Research</a><a href="profiles.html">Profiles</a><a href="prompts.html">Prompt Vault</a><a href="labs.html">Labs</a><a href="paths.html">Learning Paths</a><a href="principles.html">Principles</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="audit.html">Audit</a><a href="search.html">Search</a></nav></header>
 <main>
 <h1>Power user profiles</h1>
 <p class="lede">Each card states an identity check, a workflow with a source, and a flag on weak claims. Two cards carry a clear gap flag by design.</p>
+<figure class="visual"><img src="assets/img/profiles.svg" alt="Flow diagram: Identity check, Workflow with source, Flag weak claims, Card with status"><figcaption>Figure 1. Power user profiles as a flow. Each box names one stage on this page. Arrows show work order.</figcaption></figure>
+
 <h2>Boris Cherny</h2>
 <p>Creator and head of Claude Code at Anthropic. Workflow: five terminal sessions plus five to ten web sessions, plan mode, shared CLAUDE.md, slash commands, phase subagents and a verify app step. See the Claude page. <span class="badge">High for January 2026 workflow</span></p>
 <h2>Lauren Tan, Poteto</h2>
@@ -30,7 +33,32 @@
 <p>Company brain: build a folder that onboards an agent as a sharp new hire. Six files cover buyers, offer and promise limits, brand voice by loved and rejected samples, founder views, and past campaign fails. Rule: agents add guesses to an evidence folder. A human alone promotes a guess to the company folder.</p>
 <p>Agent spec: answer seven questions before a build. Wake trigger, context need, tool rights, solo act rights, approval acts, escalation rule, and success proof. Ship a minimum agent in draft and approve mode. Build a 50 sample eval set before scale work. <span class="badge low">Medium Low, summaries of his posts and podcast</span></p>
 
+
+<figure class="visual"><img src="assets/img/profiles-groups.svg" alt="Concept groups diagram: Resolved, Flagged, Rule"><figcaption>Figure 2. Concept groups on this page. The markmap below expands each group into leaf points.</figcaption></figure>
+<h2>Visual map of this page</h2>
+<p>Three views of one page: a Mermaid flow for work order, a markmap for concept groups, and a read guide for the flow.</p>
+<div class="mermaid">
+flowchart LR
+ A[Supplied name] --> B[Identity check]
+ B --> C{Resolved?}
+ C -->|yes| D[Workflow card]
+ C -->|no| E[Card with gap flag]
+ D --> F[Confidence badge]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[Supplied name] --&gt; B[Identity check]
+ B --&gt; C{Resolved?}
+ C --&gt;|yes| D[Workflow card]
+ C --&gt;|no| E[Card with gap flag]
+ D --&gt; F[Confidence badge]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the left box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Power user profiles</span><ul><li><span class="branch">Resolved</span><ul><li><span class="leaf">Cherny</span></li><li><span class="leaf">Tan as Poteto</span></li><li><span class="leaf">Tibo, split from Dinh</span></li><li><span class="leaf">Pocock</span></li><li><span class="leaf">Sanchez</span></li><li><span class="leaf">Isenberg</span></li></ul></li><li><span class="branch">Flagged</span><ul><li><span class="leaf">Dario: org claims only</span></li><li><span class="leaf">Mayank Shah: identity open</span></li></ul></li><li><span class="branch">Rule</span><ul><li><span class="leaf">Counts in conflict print as splits</span></li></ul></li></ul></li></ul></div>
 </main>
 <footer class="site">AI Power-User Intelligence Hub. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026. Every material claim links to a source on the Sources page. A claim with a Low badge rests on one self reported source. A gap marked INSUFFICIENT_EVIDENCE has no verified source in this build.</footer>
 <script src="assets/site.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}});
+</script>
 </body></html>
