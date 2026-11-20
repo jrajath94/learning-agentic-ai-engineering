@@ -1,39 +1,281 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Prompt Vault - Learning Agentic AI Engineering</title>
+<title>Prompt Vault, 14 types - Learning Agentic AI Engineering</title>
 <link rel="stylesheet" href="assets/style.css"></head>
 <body>
 <header class="top"><div class="wordmark"><a href="index.html">Learning Agentic AI Engineering</a></div>
-<nav class="main"><a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Cross-cutting</a><a href="profiles.html">Profiles</a><a href="prompts.html" aria-current="page">Prompt Vault</a><a href="principles.html">Principles</a><a href="sources.html">Sources</a></nav></header>
+<nav class="main"><a href="index.html">Home</a><a href="start.html">Start Here</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="foundations.html">Foundations</a><a href="cross-cutting.html">Cross-cutting</a><a href="business.html">Business</a><a href="research.html">Research</a><a href="profiles.html">Profiles</a><a href="prompts.html" aria-current="page">Prompt Vault</a><a href="labs.html">Labs</a><a href="paths.html">Learning Paths</a><a href="principles.html">Principles</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="audit.html">Audit</a><a href="search.html">Search</a></nav></header>
 <main>
-<h1>Prompt Vault</h1>
-<p class="lede">Verbatim prompts carry a Verbatim badge and a source. Pattern items carry a Pattern badge. A pattern is a summary, never a quote.</p>
-<h2>Verbatim, sourced</h2>
+<p class="meta"><a href="index.html">Home</a> / Prompt Vault, 14 types</p>
+<h1>Prompt Vault, 14 types</h1>
+<p class="lede">Each prompt type holds six fields, a copy ready template, and a sample form. Verbatim prompts from named users carry source rows. All other text forms a pattern, never a quote.</p>
+<h2 id="repository-orientation">Repository orientation</h2>
+<table><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Purpose</td><td>Map an unknown repo fast.</td></tr>
+<tr><td>Required inputs</td><td>Repo path, goal of the tour</td></tr>
+<tr><td>Constraints</td><td>No edit acts. Facts only, with file paths.</td></tr>
+<tr><td>Output format</td><td>Map: entry points, core modules, test commands, risk areas.</td></tr>
+<tr><td>Verification</td><td>Open three named files. Paths must exist.</td></tr>
+<tr><td>Stop conditions</td><td>Stop at a full map or at 20 files read.</td></tr></table>
+<h3>Template</h3>
+<pre>Goal: [one outcome]
+Inputs: [list files, sources, or data]
+Constraints: [limits, rights, areas to avoid]
+Output: [exact form]
+Verify: [test, check, or proof step]
+Stop: [pass rule, round cap, or block rule]
+Report gaps as: Not in source.</pre>
+<h3>Filled sample</h3>
+<p>Goal: map labs/lab1. Inputs: service.py and test_service.py. Output in the run: entry class TaskService, three methods, test command python3 -m pytest -q. Risk area named: page slice math.</p>
+<h2 id="specification-and-acceptance">Specification and acceptance</h2>
+<table><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Purpose</td><td>Turn a wish into a testable spec.</td></tr>
+<tr><td>Required inputs</td><td>Goal, user, limits, samples</td></tr>
+<tr><td>Constraints</td><td>One sense per term. No new features past the goal.</td></tr>
+<tr><td>Output format</td><td>Spec with numbered pass rules.</td></tr>
+<tr><td>Verification</td><td>Each rule maps to a test or a check a human can run.</td></tr>
+<tr><td>Stop conditions</td><td>Stop when each goal part has one pass rule.</td></tr></table>
+<h3>Template</h3>
+<pre>Goal: [one outcome]
+Inputs: [list files, sources, or data]
+Constraints: [limits, rights, areas to avoid]
+Output: [exact form]
+Verify: [test, check, or proof step]
+Stop: [pass rule, round cap, or block rule]
+Report gaps as: Not in source.</pre>
+<h3>Filled sample</h3>
+<p>Goal: priority filter for Lab 1. Pass rules: high filter returns ids 5, 10, 15, 20, 25 on the seed set; page rules hold under a filter. Both rules map to tests in Lab 1.</p>
+<h2 id="architecture-comparison">Architecture comparison</h2>
+<table><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Purpose</td><td>Pick a design with evidence.</td></tr>
+<tr><td>Required inputs</td><td>Spec, two or three options, limits</td></tr>
+<tr><td>Constraints</td><td>Score on set axes only. Name trade offs.</td></tr>
+<tr><td>Output format</td><td>Table of options, scores, one pick with a reason.</td></tr>
+<tr><td>Verification</td><td>Check each score cites a fact or a test.</td></tr>
+<tr><td>Stop conditions</td><td>Stop at one pick or at a named open question.</td></tr></table>
+<h3>Template</h3>
+<pre>Goal: [one outcome]
+Inputs: [list files, sources, or data]
+Constraints: [limits, rights, areas to avoid]
+Output: [exact form]
+Verify: [test, check, or proof step]
+Stop: [pass rule, round cap, or block rule]
+Report gaps as: Not in source.</pre>
+<h3>Filled sample</h3>
+<p>Options for Lab 2 score method: keyword count vs TF-IDF cosine. Axes: accuracy at k of 5, run time, code size. Pick rule set in advance: a win needs a split past 0.02 on precision. Result: no split, no pick.</p>
+<h2 id="implementation">Implementation</h2>
+<table><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Purpose</td><td>Build to a spec in small steps.</td></tr>
+<tr><td>Required inputs</td><td>Spec, plan, repo map</td></tr>
+<tr><td>Constraints</td><td>Edit named areas only. Run tests per step.</td></tr>
+<tr><td>Output format</td><td>Code plus a step log.</td></tr>
+<tr><td>Verification</td><td>Test output per step sits in the log.</td></tr>
+<tr><td>Stop conditions</td><td>Stop at spec pass or at a block with proof.</td></tr></table>
+<h3>Template</h3>
+<pre>Goal: [one outcome]
+Inputs: [list files, sources, or data]
+Constraints: [limits, rights, areas to avoid]
+Output: [exact form]
+Verify: [test, check, or proof step]
+Stop: [pass rule, round cap, or block rule]
+Report gaps as: Not in source.</pre>
+<h3>Filled sample</h3>
+<p>Goal: fix the page slice in Lab 1. Step log: write fail test, run and record fail, change start math to page minus one times per_page, run full set, record 5 passed.</p>
+<h2 id="debugging-from-evidence">Debugging from evidence</h2>
+<table><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Purpose</td><td>Fix a bug from proof, not a guess.</td></tr>
+<tr><td>Required inputs</td><td>Error text, logs, fail test, recent diff</td></tr>
+<tr><td>Constraints</td><td>No fix with no reproduce step first.</td></tr>
+<tr><td>Output format</td><td>Root cause, one fix, regression test.</td></tr>
+<tr><td>Verification</td><td>Fail test passes, full set passes.</td></tr>
+<tr><td>Stop conditions</td><td>Stop at pass or at two failed fix rounds, then replan.</td></tr></table>
+<h3>Template</h3>
+<pre>Goal: [one outcome]
+Inputs: [list files, sources, or data]
+Constraints: [limits, rights, areas to avoid]
+Output: [exact form]
+Verify: [test, check, or proof step]
+Stop: [pass rule, round cap, or block rule]
+Report gaps as: Not in source.</pre>
+<h3>Filled sample</h3>
+<p>Evidence: test_first_page_has_first_items fails, page one returns ids 11 to 20. Reproduce step: one test run. Root cause: start equals page times per_page. Fix: one line. Regression test: the same test, now green.</p>
+<h2 id="test-design">Test design</h2>
+<table><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Purpose</td><td>Write tests that can fail.</td></tr>
+<tr><td>Required inputs</td><td>Spec, code under test, edge list</td></tr>
+<tr><td>Constraints</td><td>Tests must name exact values. No tautology tests.</td></tr>
+<tr><td>Output format</td><td>Test file plus a case table.</td></tr>
+<tr><td>Verification</td><td>Each pass rule has one test at least.</td></tr>
+<tr><td>Stop conditions</td><td>Stop when each rule maps to a test.</td></tr></table>
+<h3>Template</h3>
+<pre>Goal: [one outcome]
+Inputs: [list files, sources, or data]
+Constraints: [limits, rights, areas to avoid]
+Output: [exact form]
+Verify: [test, check, or proof step]
+Stop: [pass rule, round cap, or block rule]
+Report gaps as: Not in source.</pre>
+<h3>Filled sample</h3>
+<p>Case table for Lab 1: page one exact ids, page two exact ids, filter exact ids, filter plus page count and type check, complete act on a real id and on id 999.</p>
+<h2 id="code-review">Code review</h2>
+<table><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Purpose</td><td>Find defects in a diff.</td></tr>
+<tr><td>Required inputs</td><td>Diff, spec, test output</td></tr>
+<tr><td>Constraints</td><td>Report defects only, with file and line. No style nits as defects.</td></tr>
+<tr><td>Output format</td><td>Defect list by severity, each with a proof step.</td></tr>
+<tr><td>Verification</td><td>Re run one proof step per top defect.</td></tr>
+<tr><td>Stop conditions</td><td>Stop at a full diff read.</td></tr></table>
+<h3>Template</h3>
+<pre>Goal: [one outcome]
+Inputs: [list files, sources, or data]
+Constraints: [limits, rights, areas to avoid]
+Output: [exact form]
+Verify: [test, check, or proof step]
+Stop: [pass rule, round cap, or block rule]
+Report gaps as: Not in source.</pre>
+<h3>Filled sample</h3>
+<p>Diff under review: one line in list_tasks. Defect check: filter runs before slice, so page math uses the filtered list. Proof step: test_filter_and_page passes with count 10 and all rows at normal priority.</p>
+<h2 id="research-synthesis">Research synthesis</h2>
+<table><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Purpose</td><td>Join sources into claims with types.</td></tr>
+<tr><td>Required inputs</td><td>Question, source set, ledger form</td></tr>
+<tr><td>Constraints</td><td>Split claim types. One origin per press cycle.</td></tr>
+<tr><td>Output format</td><td>Synthesis with claim rows and splits named.</td></tr>
+<tr><td>Verification</td><td>Each claim row links to a source row.</td></tr>
+<tr><td>Stop conditions</td><td>Stop at source set end or at two passes with no new claim.</td></tr></table>
+<h3>Template</h3>
+<pre>Goal: [one outcome]
+Inputs: [list files, sources, or data]
+Constraints: [limits, rights, areas to avoid]
+Output: [exact form]
+Verify: [test, check, or proof step]
+Stop: [pass rule, round cap, or block rule]
+Report gaps as: Not in source.</pre>
+<h3>Filled sample</h3>
+<p>Question: what do power users do that regular users do not? Claim rows: fleets, harness, oracles, fresh review, compounding corrections. Split named: Poteto counts conflict across rows 51 to 53, so no count enters the synthesis as a fact.</p>
+<h2 id="experiment-design">Experiment design</h2>
+<table><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Purpose</td><td>Design a test that can prove a view wrong.</td></tr>
+<tr><td>Required inputs</td><td>Claim, baseline, data access</td></tr>
+<tr><td>Constraints</td><td>One main factor per run. Pass rule set before a run.</td></tr>
+<tr><td>Output format</td><td>Design doc: inputs, runs, metrics, stop rule.</td></tr>
+<tr><td>Verification</td><td>A rival result must be possible in the design.</td></tr>
+<tr><td>Stop conditions</td><td>Stop when a disproof path exists in the plan.</td></tr></table>
+<h3>Template</h3>
+<pre>Goal: [one outcome]
+Inputs: [list files, sources, or data]
+Constraints: [limits, rights, areas to avoid]
+Output: [exact form]
+Verify: [test, check, or proof step]
+Stop: [pass rule, round cap, or block rule]
+Report gaps as: Not in source.</pre>
+<h3>Filled sample</h3>
+<p>Claim: TF-IDF beats keyword count. Baseline: keyword count. One factor: score method. Pass rule: precision split past 0.02 at k of 5 over 3 repeats. Disproof path: equal scores kill the claim. Result in Lab 2: claim killed.</p>
+<h2 id="evaluation-and-error-analysis">Evaluation and error analysis</h2>
+<table><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Purpose</td><td>Score runs and sort errors.</td></tr>
+<tr><td>Required inputs</td><td>Eval set, run outputs, score rule</td></tr>
+<tr><td>Constraints</td><td>Sort errors by type before a fix. Count, do not sample by feel.</td></tr>
+<tr><td>Output format</td><td>Score table plus error type counts.</td></tr>
+<tr><td>Verification</td><td>Re score five samples by hand. Counts must match.</td></tr>
+<tr><td>Stop conditions</td><td>Stop at a full set scored.</td></tr></table>
+<h3>Template</h3>
+<pre>Goal: [one outcome]
+Inputs: [list files, sources, or data]
+Constraints: [limits, rights, areas to avoid]
+Output: [exact form]
+Verify: [test, check, or proof step]
+Stop: [pass rule, round cap, or block rule]
+Report gaps as: Not in source.</pre>
+<h3>Filled sample</h3>
+<p>Eval set: Lab 2 queries, 20 in total. Score rule: precision at 5 per topic. Error sort: no errors to sort, both methods at 1.0. Error type found at design level: ceiling effect in corpus design.</p>
+<h2 id="business-research">Business research</h2>
+<table><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Purpose</td><td>Build a cited market or lead report.</td></tr>
+<tr><td>Required inputs</td><td>Scope, source list, claim rule</td></tr>
+<tr><td>Constraints</td><td>Each claim needs a link and a date. No send acts.</td></tr>
+<tr><td>Output format</td><td>Report draft with a review gate list.</td></tr>
+<tr><td>Verification</td><td>Open five links at random. Each must support its claim.</td></tr>
+<tr><td>Stop conditions</td><td>Stop at scope end.</td></tr></table>
+<h3>Template</h3>
+<pre>Goal: [one outcome]
+Inputs: [list files, sources, or data]
+Constraints: [limits, rights, areas to avoid]
+Output: [exact form]
+Verify: [test, check, or proof step]
+Stop: [pass rule, round cap, or block rule]
+Report gaps as: Not in source.</pre>
+<h3>Filled sample</h3>
+<p>Scope: Grok Bot business cases. Claim rule: each claim needs a link and a date. Draft rows: Sanchez finder and drafter pair, row 8, flagged Low. Gate list: all outcome numbers need a human check before use.</p>
+<h2 id="agent-delegation">Agent delegation</h2>
+<table><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Purpose</td><td>Split work for child agents with no clash.</td></tr>
+<tr><td>Required inputs</td><td>Goal graph, file ownership, pass rules</td></tr>
+<tr><td>Constraints</td><td>One owner per file set. Child output form fixed.</td></tr>
+<tr><td>Output format</td><td>Task cards with inputs, outputs and checks.</td></tr>
+<tr><td>Verification</td><td>Each card names a verify step and a stop rule.</td></tr>
+<tr><td>Stop conditions</td><td>Stop when each graph node has one card.</td></tr></table>
+<h3>Template</h3>
+<pre>Goal: [one outcome]
+Inputs: [list files, sources, or data]
+Constraints: [limits, rights, areas to avoid]
+Output: [exact form]
+Verify: [test, check, or proof step]
+Stop: [pass rule, round cap, or block rule]
+Report gaps as: Not in source.</pre>
+<h3>Filled sample</h3>
+<p>Goal graph for this site build: research branches in parallel, ledger join, build, verify, review. File ownership: one builder script per page set, reviewer edits no files. Stop rule per card: output file plus a check result.</p>
+<h2 id="independent-audit">Independent audit</h2>
+<table><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Purpose</td><td>Audit a draft vs raw evidence.</td></tr>
+<tr><td>Required inputs</td><td>Draft, raw sources, requirement list</td></tr>
+<tr><td>Constraints</td><td>Find unsupported claims first. No edit acts in audit round.</td></tr>
+<tr><td>Output format</td><td>Defect list with claim, source state and fix form.</td></tr>
+<tr><td>Verification</td><td>Each defect cites a page line and a source row.</td></tr>
+<tr><td>Stop conditions</td><td>Stop at a full draft read.</td></tr></table>
+<h3>Template</h3>
+<pre>Goal: [one outcome]
+Inputs: [list files, sources, or data]
+Constraints: [limits, rights, areas to avoid]
+Output: [exact form]
+Verify: [test, check, or proof step]
+Stop: [pass rule, round cap, or block rule]
+Report gaps as: Not in source.</pre>
+<h3>Filled sample</h3>
+<p>Draft: this site. Raw evidence: report ledger rows 1 to 60. Defect sample from pass 2: convergence span text said four products in seven weeks; dates show three in seven weeks plus one earlier variant. Fix form applied on the Home page.</p>
+<h2 id="session-handoff-and-recovery">Session handoff and recovery</h2>
+<table><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Purpose</td><td>End a session so a fresh agent can resume.</td></tr>
+<tr><td>Required inputs</td><td>State log, decisions, open points, next acts</td></tr>
+<tr><td>Constraints</td><td>Facts only. No new plans in a handoff.</td></tr>
+<tr><td>Output format</td><td>Handoff note with state, proof links and next act one.</td></tr>
+<tr><td>Verification</td><td>A fresh reader can name the next act in one pass.</td></tr>
+<tr><td>Stop conditions</td><td>Stop at one next act named first.</td></tr></table>
+<h3>Template</h3>
+<pre>Goal: [one outcome]
+Inputs: [list files, sources, or data]
+Constraints: [limits, rights, areas to avoid]
+Output: [exact form]
+Verify: [test, check, or proof step]
+Stop: [pass rule, round cap, or block rule]
+Report gaps as: Not in source.</pre>
+<h3>Filled sample</h3>
+<p>State: v2 site built, 20 pages, links clean. Decisions: Muse equals Meta, Lab 2 claims no win. Open point: exact Claude Code patch. Next act one: push v2 files to branch build/power-user-hub-v1 and verify the remote tree.</p>
+<h2>Verbatim prompts, sourced</h2>
 <ol>
-<li><span class="badge">Verbatim</span> Claude Code review challenge, Cherny team thread transcript: <code>Grill me on these changes and don't make a PR until I pass your test.</code></li>
-<li><span class="badge">Verbatim</span> Claude Code proof demand, same source: <code>Prove to me this works</code>. Pair the line with a diff of main vs the feature branch.</li>
-<li><span class="badge">Verbatim</span> Claude Code elegance reset, same source: <code>Knowing everything you know now, scrap this and implement the elegant solution.</code></li>
-<li><span class="badge">Verbatim</span> Claude Code memory close, same source: <code>Update your CLAUDE.md so you don't make that mistake again.</code></li>
-<li><span class="badge">Verbatim</span> Codex pull request command: <code>@codex review</code></li>
-<li><span class="badge">Verbatim</span> Codex focus review command: <code>@codex review for security regressions</code></li>
-<li><span class="badge">Verbatim</span> Codex fix command form: <code>@codex fix the CI failures</code></li>
-<li><span class="badge">Verbatim</span> Muse Code workflow prompt, Meta docs sample: <code>Use a workflow to review this service. Have separate agents inspect the API design, security boundaries, and test coverage. Verify the findings, then return one prioritized report.</code></li>
+<li><span class="badge">Verbatim</span> <code>Grill me on these changes and don't make a PR until I pass your test.</code> Cherny team thread transcript, sources row 18.</li>
+<li><span class="badge">Verbatim</span> <code>Prove to me this works</code> Same source.</li>
+<li><span class="badge">Verbatim</span> <code>Knowing everything you know now, scrap this and implement the elegant solution.</code> Same source.</li>
+<li><span class="badge">Verbatim</span> <code>Update your CLAUDE.md so you don't make that mistake again.</code> Same source.</li>
+<li><span class="badge">Verbatim</span> <code>@codex review for security regressions</code> Codex command form, row 34.</li>
+<li><span class="badge">Verbatim</span> <code>Use a workflow to review this service. Have separate agents inspect the API design, security boundaries, and test coverage. Verify the findings, then return one prioritized report.</code> Muse Code docs sample, row 41.</li>
 </ol>
-<h2>Commands that act as prompts</h2>
-<p><code>/commit-push-pr</code> from the Cherny team set. <code>/grill-me</code>, <code>/grill-with-docs</code>, <code>/tdd</code> and <code>/diagnosing-bugs</code> from Pocock skills. <code>/poteto-mode</code> from pstack. <code>/caveman</code> from caveman. <code>hallmark audit &lt;target&gt;</code> from hallmark.</p>
-<h2>Pattern summaries</h2>
-<ol>
-<li><span class="badge">Pattern</span> Grok DeepSearch brief. Role, task, context, limits, output form. Require a set count of independent recent sources. Require a link and a date per claim. Split firm facts from contested claims. Answer first, evidence next, open points last.</li>
-<li><span class="badge">Pattern</span> X pulse check. Ask for a topic scan in a set time window. Ask for top views, tone split, disputed claims, one source post per bullet, and a why it matters line.</li>
-<li><span class="badge">Pattern</span> Specialist bot brief. Name one job, one goal, style samples, tool and login rights, an approval boundary in plain words, and a report cadence.</li>
-<li><span class="badge">Pattern</span> Plan then execute brief. Goal, limits, and one rule: plan first, no edit till plan approval.</li>
-<li><span class="badge">Pattern</span> Antigravity goal brief. One goal sentence with a deliverable, limits, and a pass rule tied to test commands the agent cannot edit.</li>
-<li><span class="badge">Pattern</span> Codex exec plan. Goal, repo map link, layer limits, verify commands, and one rule: loop review till reviewers pass. Check the plan into the repo.</li>
-<li><span class="badge">Pattern</span> Isenberg agent spec. Seven questions from the Profiles page, in order, before any build work.</li>
-<li><span class="badge">Pattern</span> Shah brief rule. Specific beats long. Name the library, the attribute and the exact act, as a brief to a smart new team member.</li>
-<li><span class="badge">Pattern</span> Eval set build. Collect 50 real samples. Score each agent run. Count right, flagged and failed rows. Re run the set on each prompt or model change.</li>
-</ol>
+<h2>One prompt failure and a repair</h2>
+<p>Failure form: a prompt asks for a full build with no verify step. Output looks full and hides defects. Repair: add one verify line with a test the agent cannot edit, plus a stop rule. Lab 2 shows the same trap in benchmark form: a test with no split power proves no win.</p>
+<h2>Verbatim prompts from named users</h2>
+<p>Four Cherny team lines, Codex review commands and one Muse Code workflow prompt sit in v1 form in git history for this file and in full on the Claude, Codex and Muse pages workflow steps. Verbatim text in this site carries a source row on the Sources page: rows 18, 34 and 41.</p>
 
 </main>
-<footer class="site">AI Power-User Intelligence Hub. Build date: 20 November 2026. Every material claim links to a source on the Sources page. A claim with a Low badge rests on one self reported source. A gap marked INSUFFICIENT_EVIDENCE has no verified source in this build.</footer>
+<footer class="site">AI Power-User Intelligence Hub, field guide build v2. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026, the earlier of execution day and 30 November 2026. Open site/index.html from disk. No server need. No track code sits in this site.</footer>
+<script src="assets/site.js"></script>
 </body></html>
