@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Business workflows with AI - Learning Agentic AI Engineering</title>
-<link rel="stylesheet" href="assets/style.css"></head>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></head>
 <body>
 <header class="top"><div class="wordmark"><a href="index.html">Learning Agentic AI Engineering</a></div>
 <nav class="main"><a href="index.html">Home</a><a href="start.html">Start Here</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="foundations.html">Foundations</a><a href="cross-cutting.html">Cross-cutting</a><a href="business.html" aria-current="page">Business</a><a href="research.html">Research</a><a href="profiles.html">Profiles</a><a href="prompts.html">Prompt Vault</a><a href="labs.html">Labs</a><a href="paths.html">Learning Paths</a><a href="principles.html">Principles</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="audit.html">Audit</a><a href="search.html">Search</a></nav></header>
@@ -9,6 +10,8 @@
 <p class="meta"><a href="index.html">Home</a> / Business workflows with AI</p>
 <h1>Business workflows with AI</h1>
 <p class="lede">Business cases in sources automate parts of a firm, not a whole firm. Each case table names the real scope, the human work left, and the claim status.</p>
+<figure class="visual"><img src="assets/img/business.svg" alt="Flow diagram: Source list, Bot collect run, Cited draft, Human review gate"><figcaption>Figure 1. Business workflows with AI as a flow. Each box names one stage on this page. Arrows show work order.</figcaption></figure>
+
 <h2>Case B1. Sanchez lead system</h2>
 <table><tr><th>Part</th><th>Fact from source</th></tr>
 <tr><td>Models and face</td><td>Grok Bot bots on one shared cloud computer</td></tr>
@@ -33,7 +36,34 @@
 <ol><li>Pick one report: market scan, lead list or ops digest.</li><li>Write the source list and the claim rule: each claim needs a link and a date.</li><li>Run Lab 3 code on a ledger. Check the confidence split.</li><li>Draft the report from rows with High or Medium-High marks first.</li><li>Flag each Low row for a human check.</li><li>Save the draft and the ledger as one artifact pair. No send act runs till a human tap.</li></ol>
 <p>Cost note: model cost per run depends on your plan and token use. This build gives no per run price, since no paid run took place in Lab 3. Lab 3 used local code only, cost zero in model tokens.</p>
 
+
+<figure class="visual"><img src="assets/img/business-groups.svg" alt="Concept groups diagram: Cases, Scope rule, Gate"><figcaption>Figure 2. Concept groups on this page. The markmap below expands each group into leaf points.</figcaption></figure>
+<h2>Visual map of this page</h2>
+<p>Three views of one page: a Mermaid flow for work order, a markmap for concept groups, and a read guide for the flow.</p>
+<div class="mermaid">
+flowchart LR
+ A[Scope and source list] --> B[Finder or collect bot]
+ B --> C[Dedupe check]
+ C --> D[Cited draft]
+ D --> E{Human gate}
+ E -->|approve| F[Use or send]
+ E -->|fix| B
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[Scope and source list] --&gt; B[Finder or collect bot]
+ B --&gt; C[Dedupe check]
+ C --&gt; D[Cited draft]
+ D --&gt; E{Human gate}
+ E --&gt;|approve| F[Use or send]
+ E --&gt;|fix| B</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the left box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Business workflows with AI</span><ul><li><span class="branch">Cases</span><ul><li><span class="leaf">Sanchez lead system</span></li><li><span class="leaf">Isenberg brain folder</span></li><li><span class="leaf">Muse for Small Business</span></li><li><span class="leaf">Duet and dots, vendor form</span></li></ul></li><li><span class="branch">Scope rule</span><ul><li><span class="leaf">Name staff and manual work</span></li><li><span class="leaf">No scope, no full firm claim</span></li></ul></li><li><span class="branch">Gate</span><ul><li><span class="leaf">Drafts free</span></li><li><span class="leaf">Send and spend wait</span></li></ul></li></ul></li></ul></div>
 </main>
-<footer class="site">AI Power-User Intelligence Hub, field guide build v2. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026, the earlier of execution day and 30 November 2026. Open site/index.html from disk. No server need. No track code sits in this site.</footer>
+<footer class="site">AI Power-User Intelligence Hub, field guide build v3. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026, the earlier of execution day and 30 November 2026. Open site/index.html from disk. No server need. No track code sits in this site.</footer>
 <script src="assets/site.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}});
+</script>
 </body></html>
