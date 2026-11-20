@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude, Claude Code and Duet - Learning Agentic AI Engineering</title>
+<link rel="stylesheet" href="assets/style.css"></head>
+<body>
+<header class="top"><div class="wordmark"><a href="index.html">Learning Agentic AI Engineering</a></div>
+<nav class="main"><a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html" aria-current="page">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Cross-cutting</a><a href="profiles.html">Profiles</a><a href="prompts.html">Prompt Vault</a><a href="principles.html">Principles</a><a href="sources.html">Sources</a></nav></header>
+<main>
+<h1>Claude, Claude Code and Duet</h1>
+<p class="lede">Claude power use rests on a steering stack. Each layer loads at a set time, costs a set amount of context, and holds a set level of force.</p>
+<h2>Version facts</h2>
+<p>Anthropic homepage index lists Fable 5.2 and Mythos 5.2 on 9 November 2026, Opus 5.5 on 22 September, Sonnet 5.5 on 28 September and Haiku 5.5 on 7 October. Price summaries list Fable at 8 and 40 dollars, Opus at 4 and 20, Sonnet at 2 and 10 per 1M tokens. <span class="badge">Medium to High</span></p>
+<p>Claude Code official changelog has a 19 November 2026 entry. A tracker lists version 2.1.325 on 13 November 2026. Exact latest patch stays open. <span class="badge low">INSUFFICIENT_EVIDENCE for exact patch</span></p>
+<p>Claude Duet launch date: 21 October 2026. Duet runs on its own virtual machine, builds on Opus 5.5, sends a morning brief, checks apps each few hours, and asks before send, pay, sign or delete acts. Plan list sources disagree on Ultra. <span class="badge">High for product shape</span></p>
+<h2>The steering stack, from the official Anthropic guide</h2>
+<table><tr><th>Method</th><th>Load time</th><th>Use</th></tr>
+<tr><td>Root CLAUDE.md</td><td>Session start, always</td><td>Keep under 200 lines. Own the file. Review the file as code.</td></tr>
+<tr><td>Subfolder CLAUDE.md</td><td>On demand</td><td>Local rules for one area.</td></tr>
+<tr><td>Rules in .claude/rules</td><td>Path match</td><td>Rules with a paths frontmatter field apply to one path set only.</td></tr>
+<tr><td>Skills</td><td>Name and short text at start, body on call</td><td>Repeat procedures with low base context cost.</td></tr>
+<tr><td>Subagents</td><td>Own context</td><td>Only the final message returns. Nest depth can reach five levels per guide.</td></tr>
+<tr><td>Hooks</td><td>Life cycle events</td><td>Deterministic acts. A PreToolUse hook can deny a tool call. Hooks bypass compaction.</td></tr>
+<tr><td>Output styles</td><td>System level</td><td>Highest weight. Use with care.</td></tr>
+</table>
+<h2>Workflow C1. Boris Cherny parallel fleet</h2>
+<ol><li>Run five Claude sessions in parallel in a terminal. Number tabs 1 to 5. System alerts name the session that needs input.</li><li>Place each session in a separate git checkout or worktree.</li><li>Run five to ten more sessions on the web app. Move a local session to web with the ampersand key. Bring a session back with a teleport flag.</li><li>Start sessions from a phone app.</li><li>Use the strongest model with full thought for agentic work. Principle in source: steer less, gain speed in the end.</li><li>Turn any task done more than once a day into a slash command. Team example: a commit, push and pull request command in .claude/commands.</li><li>Add phase subagents. One subagent cleans code after main work. One verify app subagent tests end to end.</li></ol>
+<p>Throughput claim: 20 to 30 pull requests per day in podcast reports. <span class="badge low">Low to Medium</span></p>
+<h2>Workflow C2. Plan mode to auto accept</h2>
+<ol><li>Start a hard task in Plan mode.</li><li>Revise the plan with Claude till the plan earns trust.</li><li>Team variant: Claude A writes a plan. Claude B reviews the plan as a staff engineer.</li><li>Switch to auto accept edits. Let Claude build in one pass.</li><li>On failure, return to Plan mode. Do not push a bad path.</li></ol>
+<h2>Workflow C3. CLAUDE.md as team memory</h2>
+<ol><li>Keep one shared CLAUDE.md per repo in git.</li><li>Add a lesson after each correction.</li><li>Tag the Claude account in a pull request review to add a lesson in that same pull request.</li><li>Prune the file. Move long or local rules to path rules or skills.</li></ol>
+<h2>Workflow C4. Anthropic research pipeline</h2>
+<ol><li>A lead agent reads a query and saves a plan to memory. Memory survives context cut.</li><li>The lead spawns parallel subagents. Each subagent holds distinct tools and a distinct path.</li><li>Each subagent compresses finds for the lead.</li><li>The lead builds a synthesis. A citation agent maps claims to sources.</li></ol>
+<p>Anthropic internal eval in the official post: a multi agent form beat a single agent form by 90.2 percent. Cost: about 15 times the tokens of chat. Parallel work buys breadth at a token price. <span class="badge">High</span></p>
+<h2>Workflow C5. Duet chief of staff loop</h2>
+<ol><li>Connect apps such as mail, calendar, drive and customer tools.</li><li>Read a morning brief.</li><li>Approve or reject action items.</li><li>Duet acts in its own virtual machine.</li><li>Duet checks apps each few hours and alerts only on need.</li></ol>
+<p>No independent hands on workflow sits in sources. Product acts come from launch reports. <span class="badge">High for launch facts</span></p>
+<h2>Tutorial in eight parts</h2>
+<h3>1. Question</h3><p>How can one engineer ship at fleet speed with Claude Code and still trust the code?</p>
+<h3>2. Key facts</h3><p>Cherny fleet facts and the official steering stack sit in sources rows 13 to 18. Plan mode, worktrees, slash commands and verify subagents recur across sources.</p>
+<h3>3. Core concepts</h3><p>Worktree, plan, hook, skill, subagent, verify oracle. A worktree isolates one task. A hook enforces a rule with no model choice.</p>
+<h3>4. Patterns and feedback loops</h3><p>Plan, build, verify, correct, compound. Each correction adds a permanent file change. Review uses fresh context.</p>
+<h3>5. Conflicts and common errors</h3><p>A common error loads all rules at all times. Context cost rises and force drops. A second error asks the writer agent to grade own work.</p>
+<h3>6. Hypotheses</h3><p>Small teams may gain more from one verify subagent than from five writer sessions. Sources support both acts. No test in sources ranks both acts for a small repo.</p>
+<h3>7. Decision support</h3><p>Start with plan mode, one worktree per task, and a verify step. Add parallel sessions after the verify step holds for two weeks.</p>
+<h3>8. One bounded next action</h3><p>Add one verify subagent to your repo this week. Give the subagent test commands, a browser check and a rule: report fail with proof, or pass with proof.</p>
+</main>
+<footer class="site">AI Power-User Intelligence Hub. Build date: 20 November 2026. Every material claim links to a source on the Sources page. A claim with a Low badge rests on one self reported source. A gap marked INSUFFICIENT_EVIDENCE has no verified source in this build.</footer>
+</body></html>
