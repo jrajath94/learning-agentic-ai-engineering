@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source library: Power User Hub</title>  <link rel="stylesheet" href="assets/vendor/fonts.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="mark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#e0b15b" stroke-width="1.4"/><circle cx="16" cy="16" r="3.2" fill="#e0b15b"/></svg> Power User Hub</a>
+    <p class="asof">Checked 20 Nov 2026</p>
+    <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="social.html">Social</a><a href="shots.html">Shots</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+  </nav>
+</header>
+<main id="main">
+  <p class="kicker">Library</p>
+  <h1>The pages this hub actually used</h1>
+  <p class="lede">Organised by kind. Echoes are listed so you can see them, and they are not extra evidence. Paywalled shows, unfetched podcasts, and unread papers are in the <a href="gaps.html">gap report</a>, not here.</p>
+  <input id="pagefilter" type="search" placeholder="Filter links" style="border:1px solid var(--line);background:var(--bg-2);border-radius:999px;padding:.4rem .8rem;">
+
+<section class="section" id="page-map">
+  <h2>See the shape first</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>A link is in this library only if a page behind it was read, or it is a labeled echo.</figcaption>
+      <pre class="mermaid">flowchart LR
+  A[Fetch origin] --> B[Library: docs]
+  C[Practitioner post] --> D[Library: posts]
+  E[News recap of A] --> F[Library: echoes]
+  G[Unread URL] --> H[Not linked]</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>Shelves.</figcaption>
+      <svg class="markmap-svg" aria-label="Shelves."></svg>
+      <script type="text/markmap"># Library
+## Docs and changelogs
+## Repos
+## Practitioner posts
+## Echoes
+### InfoQ
+### TechCrunch
+### Reuters
+## Left out
+### Unread Substack
+### Paywalled podcasts
+### Unused benchmark blogs</script>
+    </figure>
+  </div>
+  
+</section>
+
+<section class="section" id="seq-state">
+  <h2>Sequence and state</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Who talks to whom. This is a map of the page, not a vendor diagram.</figcaption>
+      <pre class="mermaid">sequenceDiagram
+  participant Cluster
+  participant URL
+  participant Reader
+  Cluster->>URL: origin first
+  URL-->>Reader: echo is not a second measure</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>States worth naming before you run a tool.</figcaption>
+      <pre class="mermaid">stateDiagram-v2
+  [*] --> Official
+  Official --> Repo
+  Official --> Echo
+  Repo --> [*]</pre>
+    </figure>
+  </div>
+</section>
+
+
+  <section class="section">
+    <h2>Official docs and changelogs</h2>
+    <ul class="clean">
+      <li><a href="https://docs.x.ai/grok-bot/overview">Grok Bot overview</a> · xAI</li>
+      <li><a href="https://x.ai/changelog/bot">Grok Bot changelog</a> · v1.2.3 on 18 Nov 2026</li>
+      <li><a href="https://x.ai/news/grok-skills">Grok skills announcement</a> · undated</li>
+      <li><a href="https://claude.com/resources/articles/claude-duet">Introducing Claude Duet</a> · 23 Oct 2026</li>
+      <li><a href="https://claude.com/product/claude-duet">Claude Duet product page</a></li>
+      <li><a href="https://support.claude.com/en/articles/17631495-get-started-with-claude-duet">Get started with Claude Duet</a></li>
+      <li><a href="https://code.claude.com/docs/en/best-practices">Claude Code best practices</a></li>
+      <li><a href="https://code.claude.com/docs/en/skills">Claude Code skills</a></li>
+      <li><a href="https://code.claude.com/docs/en/sub-agents">Claude Code subagents</a></li>
+      <li><a href="https://code.claude.com/docs/en/hooks">Claude Code hooks</a></li>
+      <li><a href="https://antigravity.google/docs/changelog/">Antigravity changelog</a></li>
+      <li><a href="https://openai.com/index/introducing-dots/">Introducing dots</a> · 29 Sep 2026, Terra note 3 Nov 2026</li>
+      <li><a href="https://learn.chatgpt.com/docs/changelog">ChatGPT and Codex changelog</a></li>
+      <li><a href="https://github.com/openai/codex/releases/tag/rust-v0.171.0">Codex rust-v0.171.0</a></li>
+      <li><a href="https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2">Muse Code and Muse Spark 1.2</a> · 5 Aug 2026</li>
+      <li><a href="https://dev.meta.ai/docs/muse-code">Muse Code docs</a></li>
+      <li><a href="https://dev.meta.ai/docs/pricing-rate-limits">Meta pricing and rate limits</a></li>
+      <li><a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/">MCP 2026-07-28 announcement</a></li>
+      <li><a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization">MCP authorization spec</a></li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>Repos</h2>
+    <ul class="clean">
+      <li><a href="https://github.com/mattpocock/skills">mattpocock/skills</a></li>
+      <li><a href="https://github.com/obra/superpowers">obra/superpowers</a></li>
+      <li><a href="https://blog.fsck.com/2025/10/09/superpowers/">Superpowers announcement</a> · Jesse Vincent · 9 Oct 2025</li>
+      <li><a href="https://github.com/JuliusBrussee/caveman">JuliusBrussee/caveman</a></li>
+      <li><a href="https://github.com/Nutlope/hallmark">Nutlope/hallmark</a></li>
+      <li><a href="https://github.com/cursor/plugins/blob/main/pstack/README.md">pstack README</a></li>
+      <li><a href="https://github.com/openai/codex/pull/5353">openai/codex PR 5353</a> · Thibault Sottiaux</li>
+      <li><a href="https://github.com/tibo-openai">github.com/tibo-openai</a></li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>Posts by practitioners and reporters</h2>
+    <ul class="clean">
+      <li><a href="https://threadreaderapp.com/scrolly/2007179832300581177">Boris Cherny thread mirror</a> · 2 Jan 2026 · primary via mirror, not the X URL</li>
+      <li><a href="https://www.mertozen.com/en/blog/openai-codex-agents-md-config-toml-skills">Mert Özen on AGENTS.md</a> · secondary · 15 Nov 2026</li>
+      <li><a href="https://simonwillison.net/2025/Feb/6/andrej-karpathy/">Simon Willison quoting Karpathy</a> · 6 Feb 2025</li>
+      <li><a href="https://arstechnica.com/ai/2025/03/is-vibe-coding-with-ai-gnarly-or-reckless-maybe-some-of-both/">Ars Technica on vibe coding</a> · March 2025 · secondary</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>Echoes, one each, not extra origins</h2>
+    <ul class="clean">
+      <li><a href="https://www.infoq.com/news/2026/01/claude-code-creator-workflow/">InfoQ on Boris's setup</a> · echo of the January thread</li>
+      <li><a href="https://techcrunch.com/2026/10/22/claude-duet-app-is-anthropics-bet-on-agents/">TechCrunch on Duet</a> · echo of Anthropic's launch</li>
+      <li><a href="https://www.reuters.com/technology/meta-launches-new-ai-coding-tool-powered-by-muse-spark-12-2026-08-05/">Reuters on Muse Code</a> · echo of Meta's launch</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>Not in this library on purpose</h2>
+    <ul class="clean">
+      <li>Subreddits and Substack posts that were not opened. A link farm of unread URLs would violate the rule that every link resolves and every claim is sourced.</li>
+      <li>YouTube. Search returned episode pages that could not be tied to a verified speaker with a transcript this pass actually read. See <a href="gaps.html#g14">G14</a>.</li>
+      <li>Lenny's Newsletter and Pragmatic Engineer episodes with Boris. Titles appeared in search. The bodies are paywalled or were not fetched, so they are not cited.</li>
+      <li>The Neon benchmark blog. Linked from the changelog, not fetched in full, so its scores are not used.</li>
+    </ul>
+  </section>
+</main>
+<footer class="foot"><div class="foot-in"><p><a href="sources.html">Claim ledger</a> · <a href="data/sources.csv">CSV</a></p></div></footer>
+<script src="js/claims.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/site.js"></script>
+<script src="assets/vendor/diagrams.js"></script>
+</body>
+</html>

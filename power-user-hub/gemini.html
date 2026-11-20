@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gemini and Antigravity: Power User Hub</title>  <link rel="stylesheet" href="assets/vendor/fonts.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="mark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#e0b15b" stroke-width="1.4"/><circle cx="16" cy="16" r="3.2" fill="#e0b15b"/></svg> Power User Hub</a>
+    <p class="asof">Checked 20 Nov 2026</p>
+    <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="social.html">Social</a><a href="shots.html">Shots</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+  </nav>
+</header>
+<main id="main">
+
+  <p class="kicker">Gemini CLI and Antigravity</p>
+  <h1>Put the test command in GEMINI.md. Do not paste the CLI repo's build script.</h1>
+  <p class="lede">The upstream file is <code>GEMINI.md</code> in google-gemini/gemini-cli at <code>addc194f5bc414e7134c2bd6a414a40e1b4cbbed</code>. Lines 1-65 are in <a href="kit/gemini-antigravity/GEMINI.md.upstream-excerpt">the excerpt</a>, from commit <code>addc194f5bc414e7134c2bd6a414a40e1b4cbbed</code>. The opening says <code>npm install</code> and <code>npm run build</code>. The testing section says <code>npm run preflight</code>. Those commands belong to the CLI monorepo.</p>
+
+<section class="section" id="page-map">
+  <h2>See the shape first</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>One check command. Swarm only when files do not overlap.</figcaption>
+      <pre class="mermaid">flowchart TD
+  A[GEMINI.md with your test command] --> B[One task]
+  B --> C{Need a side question?}
+  C -->|yes| D["/btw read-only"]
+  C -->|no| E[Read the diff]
+  E --> F["/swarm only for separate slices"]</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>Files for this page.</figcaption>
+      <svg class="markmap-svg" aria-label="Files"></svg>
+      <script type="text/markmap"># Gemini kit
+## GEMINI.md
+## upstream excerpt
+## Antigravity
+### Orchestrator Neon
+### slash btw
+### slash swarm
+</script>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="seq-state">
+  <h2>Sequence and state</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Who talks to whom. This is a map of the page, not a vendor diagram.</figcaption>
+      <pre class="mermaid">sequenceDiagram
+  participant You
+  participant Neon
+  participant Hydrogen
+  You->>Neon: one task
+  Neon->>Hydrogen: implement the plan
+  You->>Hydrogen: slash btw is read only
+  Hydrogen-->>You: diff to read</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>States worth naming before you run a tool.</figcaption>
+      <pre class="mermaid">stateDiagram-v2
+  [*] --> OneCommand
+  OneCommand --> Swarm: slices do not share files
+  OneCommand --> SideQuestion: read only
+  Swarm --> Diff
+  SideQuestion --> Diff</pre>
+    </figure>
+  </div>
+</section>
+
+
+<section class="section" id="mechanism">
+  <h2>1. Mechanism</h2>
+  <p>Gemini CLI loads <code>GEMINI.md</code> as project context, the same job as CLAUDE.md. The upstream file lists Node 20, <code>npm run build</code>, and nightly memory tests that it tells contributors to skip unless they are changing those tests. The mechanism is: the file is resident context, so a command in it will be run. A command for the wrong repo wastes the turn and can delete the wrong tree.</p>
+  <p>Antigravity, changelog 18 Nov 2026: Orchestrator (Neon) plans with Gemini 4 Neon and implements with Gemini 4 Hydrogen. <code>/btw</code> as of 16 Nov 2026 is a side question with read-only tools. <code>/swarm</code> coordinates subagents on a message board. None of those read GEMINI.md from the CLI repo. There is no Antigravity settings file with a commit SHA in this kit.</p>
+  <p>The Antigravity Team's <a href="https://antigravity.google/blog/gemini-4-hydrogen-in-google-antigravity/">12 Nov 2026 post</a> says Orchestrator pairs Hydrogen with Carbon, and that on Terminal-Bench 4.1 it reached near-Carbon success while using 24 percent less quota and finishing 19 percent faster, on average. Hydrogen alone, the post says, scored 51 on the Artificial Analysis Intelligence Index, 54 at the highest setting, and 57 percent on Terminal-Bench 4.1 against 18.2 percent for 3.8 Flash. Four levels: low, medium, high as default, and xhigh. Those are the vendor's figures. <a href="sources.html#C285">Hacker News item 50472260</a> had 509 points and links the post. It is not a second run. <a href="sources.html#C283">C283</a> <a href="sources.html#C284">C284</a>.</p>
+</section>
+<section class="section" id="artifact">
+  <h2>2. Artifact</h2>
+  <p><a href="kit/gemini-antigravity/GEMINI.md">kit/gemini-antigravity/GEMINI.md</a> is a short file with placeholders. The turn that only prints the test command is <a href="kit/prompts/gemini-one-command.md">kit/prompts/gemini-one-command.md</a>. Copy the markdown file. Read the excerpt so you can see what not to copy: <code>npm install</code>, <code>npm run build</code>, <code>npm run preflight</code>, <code>npm run test:memory</code>, and the <code>@google/gemini-cli-core</code> workspace path.</p>
+</section>
+<section class="section" id="example">
+  <h2>3. Worked example</h2>
+  <pre><code>cp kit/gemini-antigravity/GEMINI.md GEMINI.md
+# set TEST_COMMAND to the command you already use
+# bad: npm run preflight
+# bad: npm run build
+# those two are in the gemini-cli GEMINI.md, not in yours
+# good: python3 -m unittest tests.test_auth</code></pre>
+  <p>This pass did not launch the Antigravity GUI. The sequence the changelog supports is: one prompt, Orchestrator if you want Neon to plan and Hydrogen to edit, then you read the diff. A read-only check goes to <code>/btw</code>, not a second editing agent.</p>
+</section>
+<section class="section" id="fail">
+  <h2>4. Failure modes</h2>
+  <ul class="clean">
+    <li>Pasting the upstream GEMINI.md into a Python repo. The agent runs <code>npm install</code>.</li>
+    <li><code>/swarm</code> on two tasks that edit the same module. The changelog does not serialize that for you.</li>
+    <li>Assuming Google AI Pro includes Carbon. The 18 Nov note lists Neon on Pro. Carbon's consumer row was not extracted. See the gap report.</li>
+  </ul>
+</section>
+<section class="section" id="exercise">
+  <h2>5. Exercise</h2>
+  <p>Write a three-line GEMINI.md whose only command is one you run by hand today. Ask the CLI to print that command and not to run it. Self-check: the reply matches the file, and the process list shows no <code>npm</code>.</p>
+</section>
+<section class="section" id="stack">
+  <h2>6. Your stack</h2>
+  <p>Google AI Pro is the seat for Antigravity and Gemini. Use it for the plan and implement split. Keep the test command identical to CLAUDE.md and AGENTS.md so a review on Claude or Codex checks the same thing. Do not put production customer paths in GEMINI.md.</p>
+  <p>The 12 Jun 2026 official video names four surfaces and shows the sign-in line the captions spell AGY login. The 19 May guide shows sandbox and network settings (<a href="podcast-antigravity-surfaces.html">walkthrough</a>, <a href="sources.html#C306">C306</a>, <a href="sources.html#C307">C307</a>). The prompt is <a href="kit/prompts/agy-login.md">kit/prompts/agy-login.md</a>.</p>
+</section>
+
+
+<section class="section" id="on-screen"><h2>On screen, 20 Nov 2026</h2><figure class="shot">
+  <img src="assets/shots/antigravity-orchestrator.png" width="1280" height="900" alt="Antigravity blog post Gemini 4 Hydrogen and Orchestrator." decoding="async" loading="lazy">
+  <figcaption>Viewport of <a href="https://antigravity.google/blog/gemini-4-hydrogen-in-google-antigravity/">the 12 Nov 2026 Antigravity post</a>, captured 20 Nov 2026. The Antigravity app was not launched.</figcaption>
+</figure>
+<figure class="shot">
+  <img src="assets/shots/github-gemini-md.png" width="1280" height="900" alt="GitHub file view of gemini-cli GEMINI.md at commit addc194." decoding="async" loading="lazy">
+  <figcaption>Viewport of <a href="https://github.com/google-gemini/gemini-cli/blob/addc194f5bc414e7134c2bd6a414a40e1b4cbbed/GEMINI.md">GEMINI.md at addc194f5bc414e7134c2bd6a414a40e1b4cbbed</a>, captured 20 Nov 2026.</figcaption>
+</figure>
+</section>
+<section class="section" id="ledger-rows">
+  <h2>Ledger rows this page uses</h2>
+  <ul class="clean">
+    <li><a href="sources.html#C23">C23</a> Google's Antigravity changelog for 18 Nov 2026 says Gemini 4 Neon is available on Google AI Ultra, Google AI Pro, and Gemini Enterprise, is the default if you have not chosen a model, has four thinking levels, and Orchestrator (Neon) plans with Gemini 4 Neon and implements wit...</li>
+    <li><a href="sources.html#C24">C24</a> Antigravity App v2.33.0 (17 Nov 2026) adds SSH connections to a remote 64-bit Linux machine, live GitHub pull-request status pills, and opens /swarm plus UI plugin panels to business and enterprise accounts when an admin allows them.</li>
+    <li><a href="sources.html#C25">C25</a> App v2.32.0 (13 Nov 2026) adds Dynamic Workflows: agents orchestrate parallel subagents and multi-step tasks in Python using the runtime bundled with the app. v2.32.2 (16 Nov 2026) adds multi-turn /btw side questions with read-only tools.</li>
+    <li><a href="sources.html#C26">C26</a> The 12 Nov 2026 changelog entry says Gemini 4 Hydrogen is for fast coding and agentic execution across four reasoning effort levels, alongside Orchestrator for dynamic multi-model planning and execution with Gemini 4 Carbon. The 11 Nov 2026 note adds Carbon to the model select...</li>
+    <li><a href="sources.html#C27">C27</a> App v2.31.0 (9 Nov 2026) says you can use /swarm to coordinate multiple subagents over a message board to complete long-horizon tasks. The changelog text around Carbon calls Carbon the strongest model for long-horizon software engineering, knowledge work, scientific discovery,...</li>
+    <li><a href="sources.html#C283">C283</a> Vendor Terminal-Bench 4.1 claim for Orchestrator: near-Carbon success, 24 percent less quota, 19 percent faster.</li>
+    <li><a href="sources.html#C284">C284</a> Vendor scores for Hydrogen alone, and four thinking levels.</li>
+    <li><a href="sources.html#C285">C285</a> Hacker News item 50472260, 509 points, links that post.</li>
+    <li><a href="sources.html#C290">C290</a> GEMINI.md at addc194f5bc414e7134c2bd6a414a40e1b4cbbed names npm install, npm run build, and npm run preflight for that repo.</li>
+    <li><a href="sources.html#C44">C44</a> Jesse Vincent's Superpowers README calls the skills mandatory workflows, not suggestions. The basic workflow is brainstorming, git worktrees, writing plans, subagent-driven development or executing plans, test-driven development, code review, and finishing the branch. Claude C...</li>
+  </ul>
+</section>
+</main>
+<footer class="foot"><div class="foot-in"><p><a href="codex.html">Codex and dots</a> · <a href="gaps.html#g04">Carbon plan gap</a></p></div></footer>
+<script src="js/claims.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/site.js"></script>
+<script src="assets/vendor/diagrams.js"></script>
+</body>
+</html>

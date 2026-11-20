@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Power user profiles: Power User Hub</title>  <link rel="stylesheet" href="assets/vendor/fonts.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="mark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#e0b15b" stroke-width="1.4"/><circle cx="16" cy="16" r="3.2" fill="#e0b15b"/></svg> Power User Hub</a>
+    <p class="asof">Checked 20 Nov 2026</p>
+    <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="social.html">Social</a><a href="shots.html">Shots</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+  </nav>
+</header>
+<main id="main">
+
+  <p class="kicker">Profiles</p>
+  <h1>A profile is a file you can copy, or it is a gap.</h1>
+  <p class="lede">Boris Cherny's published hook shape is in <a href="kit/claude/settings.json">settings.json</a>. Matt Pocock's TDD skill is at SHA <code>abeeaf95660ba9e8b7c753eb38f441ca707a8823</code>. Cat Wu's dollar figure is an interview line, not a config. People without a primary workflow file stay off this page.</p>
+
+<section class="section" id="page-map">
+  <h2>See the shape first</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>From a talk to a file, or to the gap list.</figcaption>
+      <pre class="mermaid">flowchart TD
+  A[Primary source] --> B{Verbatim file or command?}
+  B -->|yes| C[kit path and SHA]
+  B -->|no| D[Gap report]
+  C --> E[Do not add a biography]</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>Files for this page.</figcaption>
+      <svg class="markmap-svg" aria-label="Files"></svg>
+      <script type="text/markmap"># What we could copy
+## Boris hook shape
+## Pocock skill SHA
+## Cat Wu interview line
+## Thariq add a line after a failure
+## Karpathy switch when the quota ends
+</script>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="seq-state">
+  <h2>Sequence and state</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Who talks to whom. This is a map of the page, not a vendor diagram.</figcaption>
+      <pre class="mermaid">sequenceDiagram
+  participant Source
+  participant You
+  participant Kit
+  Source->>You: file or command
+  You->>Kit: copy with SHA
+  Source-->>You: no file
+  You->>You: gap report</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>States worth naming before you run a tool.</figcaption>
+      <pre class="mermaid">stateDiagram-v2
+  [*] --> Primary
+  Primary --> Kit: verbatim file
+  Primary --> Gap: no file
+  Kit --> [*]</pre>
+    </figure>
+  </div>
+</section>
+
+
+<section class="section" id="mechanism">
+  <h2>1. Mechanism</h2>
+  <p>A name in a changelog is not a workflow. The useful residue is a file, a flag, or a refusal. Boris, Jan 2026 thread and the March 2026 Pragmatic Engineer episode: separate checkouts, and he was moving overflow toward desktop worktrees he does not like to manage by hand. Thariq, 28 Sep 2026: start without CLAUDE.md. Karpathy: leave the loop only when a command scores the run, and switch products when the quota ends. Cat Wu: about $6 a day for external active users in the May 2025 interview, which is outside the Nov 2025 to Nov 2026 window and is labeled that way on the talks page.</p>
+</section>
+<section class="section" id="artifact">
+  <h2>2. Artifact</h2>
+  <ul class="clean">
+    <li>Hook: <a href="kit/claude/settings.json">kit/claude/settings.json</a>. The command string is a placeholder because his formatter is not yours.</li>
+    <li>Skill: <a href="kit/claude/skills/tdd/SKILL.md">SKILL.md</a> plus <a href="kit/claude/skills/tdd/PROVENANCE.md">PROVENANCE.md</a>.</li>
+    <li>Episode prompts: <a href="kit/podcasts/pragmatic-boris-plan-round.md">pragmatic-boris-plan-round.md</a>, <a href="kit/podcasts/thariq-effort-and-notes.md">thariq-effort-and-notes.md</a>, <a href="kit/podcasts/karpathy-eval-loop.md">karpathy-eval-loop.md</a>.</li>
+  </ul>
+</section>
+<section class="section" id="example">
+  <h2>3. Worked example</h2>
+  <p>Take Thariq's rule and apply it to the counter. Do not write a CLAUDE.md first. Run <code>sh kit/scripts/tdd-demo.sh</code>. The first failure is <code>AssertionError: inc(1) should be 2</code>. The repeated failure, if you kept a stub, is the line you add: the test command. One line, after the failure, not before.</p>
+</section>
+<section class="section" id="fail">
+  <h2>4. Failure modes</h2>
+  <ul class="clean">
+    <li>Profiling someone because a recap site quoted them. If the primary file was not opened, they are a gap.</li>
+    <li>Copying Boris's five-checkout habit onto one working tree.</li>
+    <li>Treating the May 2025 dollar figure as a 2026 quota.</li>
+  </ul>
+</section>
+<section class="section" id="exercise">
+  <h2>5. Exercise</h2>
+  <p>Open <a href="kit/podcasts/thariq-effort-and-notes.md">kit/podcasts/thariq-effort-and-notes.md</a>. Copy it into a scratch repo. Run only the step that does not call a model, which is your test command. Self-check: you can name the timestamp the step came from.</p>
+</section>
+<section class="section" id="stack">
+  <h2>6. Your stack</h2>
+  <p>You are not these people. You have two coding seats, a Google seat, a Muse seat, and a Grok seat. Steal the file. The hook shape is <a href="kit/claude/settings.json">kit/claude/settings.json</a>. A bank change still ends on your diff.</p>
+  <p>Posts in the 20 Nov 2026 harvest, handles checked in that folder's HANDLES_VERIFIED.md: Lauren Tan, pstack v0.15.46, Gemini 4 Neon as a panel reviewer, <code>/setup-pstack</code> (<a href="sources.html#C312">C312</a>). Cat Wu, 22 Sep 2026, Opus 5.5 default and effort medium; the same lookup says the account bio is now OpenAI (<a href="sources.html#C314">C314</a>). Simon Willison, 17 Nov 2026, an external sandbox with an allow-list proxy (<a href="sources.html#C313">C313</a>). Matt Pocock, 19 Nov 2026, five rules ending in prune the setup and skip a session-start skill (<a href="sources.html#C316">C316</a>). Boris, 22 Oct 2026, Skills donated beside MCP (<a href="sources.html#C315">C315</a>).</p>
+</section>
+
+
+<section class="section" id="ledger-rows">
+  <h2>Ledger rows this page uses</h2>
+  <ul class="clean">
+    <li><a href="sources.html#C22">C22</a> On 2 Jan 2026 Boris Cherny posted that he ran five Claudes in local terminal tabs and five to ten on claude.ai/code, started PR work in Plan mode, then switched to auto-accept edits, used Opus 4.5 with thinking, kept a shared CLAUDE.md he described as 2.5k tokens, used slash c...</li>
+    <li><a href="sources.html#C34">C34</a> GitHub user tibo-openai, whose profile name is Thibault Sottiaux, merged pull request 5353 in openai/codex on 19 Oct 2025, adding an AGENTS.md discovery guide.</li>
+    <li><a href="sources.html#C43">C43</a> Matt Pocock's README says his skills are small, adaptable, and composable, and that GSD, BMAD, and Spec-Kit take control away by owning the process. Claude Code install in that README is `claude plugin install mattpocock-skills@claude-plugins-official`. Other agents use `npx s...</li>
+    <li><a href="sources.html#C44">C44</a> Jesse Vincent's Superpowers README calls the skills mandatory workflows, not suggestions. The basic workflow is brainstorming, git worktrees, writing plans, subagent-driven development or executing plans, test-driven development, code review, and finishing the branch. Claude C...</li>
+  </ul>
+</section>
+</main>
+<footer class="foot"><div class="foot-in"><p><a href="prompts.html">Their prompts, where they published any</a> · <a href="gaps.html">Gaps</a></p></div></footer>
+<script src="js/claims.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/site.js"></script>
+<script src="assets/vendor/diagrams.js"></script>
+</body>
+</html>

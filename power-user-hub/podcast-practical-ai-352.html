@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practical AI 352, 9 Apr 2026</title>
+<meta name="description" content="What the Practical AI hosts said about agent memory after the Claude Code leak, and the one rule that is safe to copy.">  <link rel="stylesheet" href="assets/vendor/fonts.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="mark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#e0b15b" stroke-width="1.4"/><circle cx="16" cy="16" r="3.2" fill="#e0b15b"/></svg> Power User Hub</a>
+    <p class="asof">Checked 20 Nov 2026</p>
+    <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="social.html">Social</a><a href="shots.html">Shots</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+  </nav>
+</header>
+<main id="main">
+  <p class="kicker">Practical AI · episode 352 · 9 Apr 2026 · 44:36</p>
+  <h1>Do not write "I ran the test" unless the terminal agrees.</h1>
+  <p class="lede">Chris and Daniel, the day after they say the Claude Code source leaked. Transcript: <a href="https://practicalai.show/352/transcript">practicalai.show/352/transcript</a>. They are describing what they say they saw in that leak. This page does not copy the leaked source. The rule worth keeping is the one they state in their own words at about 23:09 onward.</p>
+<section class="section" id="page-map">
+  <h2>See the shape first</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>The write rule they describe. The leak itself is not the exercise.</figcaption>
+      <pre class="mermaid">flowchart TD
+  A[Run the command] --> B{Exit code 0?}
+  B -->|no| C[Do not touch memory]
+  B -->|yes| D[Append command and exit 0]
+  D --> E[Diff shows only that line]</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>What the hosts claimed was in the harness.</figcaption>
+      <svg class="markmap-svg" aria-label="Practical AI 352"></svg>
+      <script type="text/markmap"># Practical AI 352
+## Their frame
+### Harness is the IP
+### Not the weights
+## Memory they describe
+### memory.md index
+### Topic shards
+### Grep against logs
+## Write rule
+### Record only verified events
+### Not intentions
+## Also mentioned
+### Auto dream every 24 hours
+### They are not Anthropic
+</script>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="seq-state">
+  <h2>Sequence and state</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Who talks to whom. This is a map of the page, not a vendor diagram.</figcaption>
+      <pre class="mermaid">sequenceDiagram
+  participant Hosts
+  participant Command
+  participant Memory
+  Hosts->>Command: run it
+  Command-->>Memory: exit zero
+  Memory-->>Hosts: only then write the line</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>States worth naming before you run a tool.</figcaption>
+      <pre class="mermaid">stateDiagram-v2
+  [*] --> Ran
+  Ran --> Write: exit zero
+  Ran --> Skip: exit nonzero
+  Write --> [*]</pre>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="mechanism">
+  <h2>1. Mechanism, as they tell it</h2>
+  <p>At 23:09 Daniel says the valuable part of these systems is the harness: how memory is handled, how tools connect, how a session wakes up, and how context is pointed at. He says the leak mattered because that harness can sit in front of other models, not because weights shipped.</p>
+  <p>He then describes three memory layers he says were in the leaked code. First, a memory.md that is always in context but is not the whole memory. Second, topic shards: an index plus separate files, loaded when the topic matches, so the window does not fill with unrelated notes. Third, a search path that checks logs with something like grep instead of trusting the model's own summary. At about 23:40 he states a write rule: the agent may say it is running tests while the run failed. Memory should record the event only after the environment confirms it. He also mentions an "auto dream" pass about every 24 hours that consolidates observations into durable facts for long-running agents.</p>
+  <p>None of that is an Anthropic doc. It is two hosts, one day after a leak, telling you what they think the code did. Treat the layer names as their report. Treat the write rule as a practice you can apply without their report being true.</p>
+</section>
+<section class="section" id="artifact">
+  <h2>2. Artifact</h2>
+  <p>Do not reconstruct memory.md from this episode. The file you can use is <a href="kit/podcasts/practical-ai-verify-then-write.md">kit/podcasts/practical-ai-verify-then-write.md</a>. It appends one line, and only after exit code 0. That is narrower than the architecture they sketch, on purpose.</p>
+</section>
+<section class="section" id="example">
+  <h2>3. Sequence</h2>
+  <ol class="steps">
+    <li>Pick a check that already exists: <code>pytest tests/test_auth.py -q</code> or the equivalent in the repo.</li>
+    <li>Run the kit prompt. The first run should be a command you expect to fail, so you can see that the memory file does not change.</li>
+    <li>Fix the one failure, or point the command at a test that passes.</li>
+    <li>Run again. The memory file gains one line: date, command, exit 0.</li>
+    <li><code>git diff</code> should show that line and nothing the model "meant" to do.</li>
+  </ol>
+</section>
+<section class="section" id="fail">
+  <h2>4. Failure modes</h2>
+  <ul class="clean">
+    <li>The model writes the line and also a paragraph of intent. The prompt forbids that. If the diff has a paragraph, reject it.</li>
+    <li>Exit code 0 from the wrong command. <code>true</code> is exit 0. The command in the memory line must be the test, and you re-run it.</li>
+    <li>Using this episode's shard story as a schema for a bank memory store. They did not publish a schema. A secondhand layer diagram is not a design doc.</li>
+    <li>They also discuss anti-distillation decoys and a file they call uncover.ts. That is allegation about leaked code. It is not a feature to copy into your agent.</li>
+  </ul>
+</section>
+<section class="section" id="exercise">
+  <h2>5. Exercise</h2>
+  <p>In a throwaway clone, add a failing test that asserts <code>1 == 2</code>. Run the kit prompt. Self-check: memory file unchanged, diff empty. Delete the bad assert. Run again. Self-check: one new line, and <code>pytest</code> of that file prints passed when you run it in a terminal the model is not driving.</p>
+</section>
+<section class="section" id="stack">
+  <h2>6. Your stack</h2>
+  <p>The write rule is harness-agnostic. Claude Code, Codex, Muse, and a Grok Bot skill can all be told to append a line only after a command succeeds. The memory file path changes: CLAUDE.md, AGENTS.md, or a project note you name. Do not point it at a production log that contains customers. For a research experiment, the line is a lab notebook entry. For an open-source PR, the line does not belong in the PR. It belongs in a gitignored local note, unless the project already documents that file.</p>
+</section>
+<section class="section" id="disagree">
+  <h2>Where this disagrees with the engineers on the other pages</h2>
+  <ul class="clean">
+    <li>Boris and Thariq talk about CLAUDE.md as instructions to the model. These hosts talk about memory as a log of what happened in the world. Mixing those into one file makes the model reread old command output as if it were policy.</li>
+    <li>Karpathy's loop records before and after scores because the metric is the product. This episode's rule records that a command happened. A score without the command, or a command without the score, answers a different question.</li>
+    <li>If Anthropic's actual code does not match the hosts, the write rule still stands on its own. The layer diagram does not.</li>
+  </ul>
+</section>
+</main>
+<footer class="foot"><div class="foot-in"><p><a href="podcasts.html">All podcasts</a> · <a href="kit/podcasts/practical-ai-verify-then-write.md">Kit prompt</a></p></div></footer>
+<script src="js/claims.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/site.js"></script>
+<script src="assets/vendor/diagrams.js"></script>
+</body>
+</html>

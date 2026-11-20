@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Talks: Power User Hub</title>
+<meta name="description" content="Timestamped notes from Latent Space episodes with Boris Cherny, Cat Wu, and Thariq Shihipar.">  <link rel="stylesheet" href="assets/vendor/fonts.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="mark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#e0b15b" stroke-width="1.4"/><circle cx="16" cy="16" r="3.2" fill="#e0b15b"/></svg> Power User Hub</a>
+    <p class="asof">Checked 20 Nov 2026</p>
+    <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="social.html">Social</a><a href="shots.html">Shots</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+  </nav>
+</header>
+<main id="main">
+  <p class="kicker">Transcripts</p>
+  <h1>Two episodes with timestamps. The rest of the podcast list was not opened.</h1>
+  <p class="lede">Pass 2 did not pretend a caption file existed when YouTube blocked the download. These notes follow pages that were actually fetched.</p>
+
+<section class="section" id="page-map">
+  <h2>See the shape first</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Two Latent Space episodes that name workflows, not vibes.</figcaption>
+      <pre class="mermaid">flowchart LR
+  A[May 2025 Boris and Cat] --> B[Unix utility, free inside, 6 dollars outside]
+  C[Sep 2026 Thariq] --> D[Effort by task, 20 then 200 dollars]</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>Talks opened.</figcaption>
+      <svg class="markmap-svg" aria-label="Talks opened."></svg>
+      <script type="text/markmap"># Talks
+## 7 May 2025
+### Boris Cherny
+### Cat Wu
+### Swyx and Alessio
+## 28 Sep 2026
+### Thariq Shihipar
+## Not captioned
+### YouTube auto-subs blocked
+</script>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="seq-state">
+  <h2>Sequence and state</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Who talks to whom. This is a map of the page, not a vendor diagram.</figcaption>
+      <pre class="mermaid">sequenceDiagram
+  participant Episode
+  participant Mirror
+  participant Page
+  Episode->>Mirror: transcript or page text
+  Mirror->>Page: timestamp
+  Page-->>Episode: captions not downloaded</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>States worth naming before you run a tool.</figcaption>
+      <pre class="mermaid">stateDiagram-v2
+  [*] --> Listed
+  Listed --> Timestamped: text opened
+  Listed --> Gap: no captions
+  Timestamped --> [*]</pre>
+    </figure>
+  </div>
+</section>
+
+
+<section class="section" id="ls-may">
+  <h2>Latent Space, 7 May 2025: Boris Cherny and Cat Wu</h2>
+  <p>Source: a transcript mirror with timestamps, <a href="https://latentspace.podhood.com/953b54c2-6d60-4e9c-b1d7-f7c767a0a1b0">latentspace.podhood.com</a>. It is a mirror, not the YouTube caption track. yt-dlp could not download captions. Quotes below were checked against that file.</p>
+  <ul class="clean">
+    <li>0:17 area. Claude Code is Claude in the terminal: commands and files, agentically. Boris.</li>
+    <li>About 8:58. Compaction that worked: ask Claude to summarize previous messages. Earlier tries were truncation and rewriting old tool calls.</li>
+    <li>About 12:32. Raw access, no large UI. Example: 1,000 lint violations, 1,000 Claudes.</li>
+    <li>13:18. Some Anthropic people racking up thousands of dollars a day. Most people do not.</li>
+    <li>13:50. Free internally.</li>
+    <li>14:48. Cat Wu: about $6 per day per active external user.</li>
+    <li>About 47 to 48 minutes. Early RAG with Voyage underperformed agentic search with ordinary code search. Boris says the comparison was mostly internal vibes, plus some internal benchmarks.</li>
+    <li>About 55:53. Cat Wu: repeated compaction weakens the original user intent.</li>
+    <li>About 1:00. Default model then was Sonnet. Users could override, including Haiku.</li>
+    <li>About 1:05. Boris: about 2x for him, and he thinks about 10x for some Anthropic engineers. Cat's separate metrics, earlier in the episode, were cycle time and features that would not exist otherwise.</li>
+  </ul>
+  <p>Cat Wu's role on the Latent Space wiki, fetched the same day, is product, not the model. The wiki is a secondary synthesis dated as of 20 Sep 2026 and says human review of the wiki was still pending. Prefer the transcript for quotes.</p>
+</section>
+<section class="section" id="thariq">
+  <h2>Latent Space, 28 Sep 2026: Thariq Shihipar</h2>
+  <p>Page: <a href="https://latent.space/p/thariq/">latent.space/p/thariq</a>. Timestamps are in the fetched page text.</p>
+  <ul class="clean">
+    <li>00:21. High effort changes security evals a lot. For software engineering it mostly adds verification and edge cases.</li>
+    <li>00:25. His rough split: high or max for code review and security, low or medium for UI.</li>
+    <li>00:52. People were not used to more than $20 a month. Opus 4 was expensive. Opus 4.5 was both strong and cheaper, in his wording. The host mentions a $200 plan and 15 accounts. That is the host, not a staffing recommendation.</li>
+  </ul>
+</section>
+<section class="section" id="not">
+  <h2>Talks named and not opened</h2>
+  <p>Dwarkesh, Lenny's, Lex Fridman, No Priors, Changelog, Cognitive Revolution, and the AI Engineer stages were not transcribed here. Pragmatic Engineer pages that are paywalled were not used past what a public extract already supported in pass 1. The gap list says so.</p>
+</section>
+
+</main>
+<footer class="foot"><div class="foot-in"><p><a href="method.html">Method</a> · <a href="sources.html">Ledger</a> · <a href="gaps.html">Gaps</a></p></div></footer>
+<script src="js/claims.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/site.js"></script>
+<script src="assets/vendor/diagrams.js"></script>
+</body>
+</html>

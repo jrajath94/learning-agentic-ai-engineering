@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Power User Hub: what frontier users actually do</title>
+<meta name="description" content="Source-grounded field notes on Grok, Claude, Gemini, Codex, and Muse for engineers who want power-user workflows without invented secrets. Checked 20 Nov 2026.">  <link rel="stylesheet" href="assets/vendor/fonts.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="mark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#e0b15b" stroke-width="1.4"/><circle cx="16" cy="16" r="3.2" fill="#e0b15b"/></svg> Power User Hub</a>
+    <p class="asof">Checked 20 Nov 2026</p>
+    <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="social.html">Social</a><a href="shots.html">Shots</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+  </nav>
+</header>
+<main id="main">
+  <p class="kicker">For one engineer shipping with agents</p>
+  <h1>What power users do with frontier tools that a chat box does not.</h1>
+  <p class="lede">A static research desk for the products a working engineer actually pays for: Grok, Claude, Gemini, Codex, and Meta Muse. Every material claim has a ledger row. Where the public record stops, the <a href="gaps.html">gap report</a> says so.</p>
+  <p class="muted">Window: November 2025-20 November 2026, plus older origin posts when a name or a practice started earlier. Ten write-ups of one launch count as one origin. Vendor anecdotes stay labelled as vendor anecdotes.</p>
+
+<section class="section" id="page-map">
+  <h2>See the shape first</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>How a claim moves from a product page to this hub.</figcaption>
+      <pre class="mermaid">flowchart TD
+  A[Origin page] --> B[One claim row]
+  B --> C{Another source?}
+  C -->|Same announcement| D[Mark as echo]
+  C -->|New evidence| E[Primary or secondary]
+  D --> F[Page plus ledger]
+  E --> F</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>What the hub covers.</figcaption>
+      <svg class="markmap-svg" aria-label="What the hub covers."></svg>
+      <script type="text/markmap"># Power User Hub
+## Products
+### Grok Bot
+### Claude and Duet
+### Antigravity
+### Codex and dots
+### Muse Code
+## Practice
+### Skills and repos
+### MCP
+### Verification
+## Records
+### Ledger
+### Gap report</script>
+    </figure>
+  </div>
+  <figure class="diagram">
+  <figcaption>Five products, one ledger. Original diagram, not a vendor screenshot.</figcaption>
+  <svg class="arch" viewBox="0 0 760 220" role="img" aria-label="Five tool clusters feed one claim ledger and a gap report">
+    <rect width="760" height="220" fill="#000"/>
+    <g font-family="Plus Jakarta Sans, sans-serif" font-size="13" fill="#f4f1ea">
+      <rect x="16" y="24" width="120" height="36" rx="8" fill="#141414" stroke="#e0b15b"/>
+      <text x="76" y="47" text-anchor="middle">Grok Bot</text>
+      <rect x="16" y="72" width="120" height="36" rx="8" fill="#141414" stroke="#e0b15b"/>
+      <text x="76" y="95" text-anchor="middle">Claude</text>
+      <rect x="16" y="120" width="120" height="36" rx="8" fill="#141414" stroke="#e0b15b"/>
+      <text x="76" y="143" text-anchor="middle">Antigravity</text>
+      <rect x="16" y="168" width="120" height="36" rx="8" fill="#141414" stroke="#e0b15b"/>
+      <text x="76" y="191" text-anchor="middle">Codex / dots</text>
+      <rect x="168" y="24" width="120" height="36" rx="8" fill="#141414" stroke="#e0b15b"/>
+      <text x="228" y="47" text-anchor="middle">Muse Code</text>
+    </g>
+    <g stroke="#e0b15b" fill="none" stroke-width="1.2">
+      <path d="M136 42 H300 V110 H360"/>
+      <path d="M136 90 H300"/>
+      <path d="M136 138 H300 V110"/>
+      <path d="M136 186 H300 V110"/>
+      <path d="M288 42 H300"/>
+    </g>
+    <g font-family="Plus Jakarta Sans, sans-serif" font-size="14" fill="#f4f1ea">
+      <rect x="360" y="78" width="160" height="64" rx="10" fill="#141414" stroke="#9dceb4"/>
+      <text x="440" y="106" text-anchor="middle">Claim ledger</text>
+      <text x="440" y="126" text-anchor="middle" font-size="12" fill="#b7b1a6">url, date, confidence</text>
+      <rect x="580" y="78" width="150" height="64" rx="10" fill="#141414" stroke="#f0b4ae"/>
+      <text x="655" y="115" text-anchor="middle">Gap report</text>
+    </g>
+    <path d="M520 110 H580" stroke="#9dceb4" fill="none"/>
+  </svg>
+  <p class="note">Teaching drawing of how this site treats sources. Not an architecture diagram from xAI, Anthropic, Google, OpenAI, or Meta.</p>
+</figure><table>
+  <caption class="muted">Product shapes as of the pages fetched on 20 Nov 2026. Dates are the dates on those pages.</caption>
+  <thead><tr><th>Product</th><th>Newest string in this hub</th><th>Where the work happens</th><th>Human stop</th></tr></thead>
+  <tbody>
+    <tr><td>Grok Bot</td><td>App 1.2.3 on 18 Nov 2026</td><td>Cloud computer, connectors, routines</td><td>Per-tool approval</td></tr>
+    <tr><td>Claude</td><td>Duet on Opus 5.5, 23 Oct 2026</td><td>Code in Claude Code, desk work in Duet</td><td>Hooks, tests, merge</td></tr>
+    <tr><td>Antigravity</td><td>Neon default 18 Nov 2026, app v2.33.0</td><td>Orchestrator, swarm, SSH host</td><td>You read the diff</td></tr>
+    <tr><td>Codex</td><td>CLI 0.171.0 on 20 Nov 2026</td><td>Repo. A dot may delegate here</td><td>You, plus auto-review on the dot</td></tr>
+    <tr><td>Muse Code</td><td>Spark 1.2 default in docs, 1.3 on the price list</td><td>Terminal, event log, plan gate</td><td>Plan approval, and training opt-out</td></tr>
+  </tbody>
+</table>
+</section>
+
+<section class="section" id="seq-state">
+  <h2>Sequence and state</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Who talks to whom. This is a map of the page, not a vendor diagram.</figcaption>
+      <pre class="mermaid">sequenceDiagram
+  participant Reader
+  participant Page
+  participant Ledger
+  Reader->>Page: open a walkthrough
+  Page->>Ledger: claim id
+  Ledger-->>Reader: URL and date</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>States worth naming before you run a tool.</figcaption>
+      <pre class="mermaid">stateDiagram-v2
+  [*] --> Unchecked
+  Unchecked --> Kept: page opened
+  Unchecked --> Gap: page not opened
+  Kept --> [*]</pre>
+    </figure>
+  </div>
+</section>
+
+
+  <section class="section" id="pass2">
+  <h2>Pass 2 is the inner dolls</h2>
+  <p>Official docs were pass 1. Pass 2 opens transcripts, a lab study, GitHub files, and an r/ClaudeAI archive. Start at the <a href="podcasts.html">podcasts</a>, the <a href="method.html">method</a>, the <a href="tokens.html">token finding</a>, or the <a href="directory.html">directory</a>.</p>
+</section>
+<section class="section" id="dashboard">
+    <h2>Latest versions dashboard</h2>
+    <p>Versions below are the newest strings this pass could tie to a page, not a promise that a quieter build did not ship later the same day.</p>
+    <div class="dash">
+      <article class="card">
+        <p class="kicker">xAI</p>
+        <h3>Grok Bot 1.2.3</h3>
+        <p class="ver">18 Nov 2026 · skills page says Grok 4.3</p>
+        <p>Per-tool allow, auto-review, approval, or block. Routines, skills, a shared cloud computer.</p>
+        <a class="more" href="grok.html">Open the Grok notes</a>
+      </article>
+      <article class="card">
+        <p class="kicker">Anthropic</p>
+        <h3>Claude Duet · Opus 5.5</h3>
+        <p class="ver">Research preview · 23 Oct 2026</p>
+        <p>Proactive app on its own cloud machine. Claude Code remains the coding harness, with skills, hooks, and subagents.</p>
+        <a class="more" href="claude.html">Open the Claude notes</a>
+      </article>
+      <article class="card">
+        <p class="kicker">Google</p>
+        <h3>Antigravity · Gemini 4 Neon</h3>
+        <p class="ver">Default model 18 Nov 2026 · app v2.33.0 on 17 Nov</p>
+        <p>Orchestrator, /swarm, Dynamic Workflows, SSH hosts, side questions.</p>
+        <a class="more" href="gemini.html">Open the Gemini notes</a>
+      </article>
+      <article class="card">
+        <p class="kicker">OpenAI</p>
+        <h3>Codex CLI 0.171.0 · dots</h3>
+        <p class="ver">CLI 20 Nov 2026 · dots 29 Sep, Terra update 3 Nov</p>
+        <p>Catalog default GPT-6.2 Sol. Dots are the always-on agent that can hand coding to Codex.</p>
+        <a class="more" href="codex.html">Open the Codex notes</a>
+      </article>
+      <article class="card">
+        <p class="kicker">Meta</p>
+        <h3>Muse Code · Spark 1.2 / 1.3</h3>
+        <p class="ver">Beta launch 5 Aug 2026 · pricing lists 1.3</p>
+        <p>Terminal agent, event log, /plan /grill /goal. Contributor mode is a training opt-in and the subscription default.</p>
+        <a class="more" href="muse.html">Open the Muse notes</a>
+      </article>
+      <article class="card">
+        <p class="kicker">Protocol</p>
+        <h3>MCP 2026-07-28</h3>
+        <p class="ver">Stateless core · 28 Jul 2026</p>
+        <p>Header routing, client-metadata documents, tasks as an extension. The shared pipe under the five products.</p>
+        <a class="more" href="cross-cutting.html">Open the stack notes</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="how">
+    <h2>How to read this</h2>
+    <div class="grid-2">
+      <div>
+        <ol class="steps">
+          <li>Start with the cluster you already pay for. Each tool page is a walkthrough: mechanism, artifact, a worked check, failure modes, an exercise, and the ledger rows.</li>
+          <li>Treat a <span class="chip">primary</span> row as the origin document. A <span class="chip gold">secondary</span> row is someone else's careful write-up. An <span class="chip copper">echo</span> repeats an origin and is not new evidence.</li>
+          <li>Sentences marked <span class="chip rose">hypothesis</span> or <span class="chip rose">synthesis</span> are not observations of a named person's production system.</li>
+          <li>Copy prompts only from the <a href="prompts.html">vault</a>. Each one names who published it.</li>
+        </ol>
+      </div>
+      <aside class="callout">
+        <strong class="tag">Ledger</strong>
+        <p>319 claims in <a href="data/sources.json">sources.json</a> and <a href="data/sources.csv">sources.csv</a>. The <a href="sources.html">ledger page</a> is the same table. Confidence is high only when the sentence was read on the origin page.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="map">
+    <h2>Where the practice actually differs</h2>
+    <div class="stack">
+      <article class="wf">
+        <h3>They separate judgment from muscle</h3>
+        <p>Antigravity's Orchestrator pairs a planning model with an implementation model. Lauren Tan's pstack routes code, prose, and judgment to one model and a review panel to three. OpenAI's dots pick among models and can hand the coding to Codex. The chat habit is one model, one thread, one sitting.</p>
+        <p><a class="cite" href="sources.html#C23">C23</a> <a class="cite" href="sources.html#C47">C47</a> <a class="cite" href="sources.html#C29">C29</a></p>
+      </article>
+      <article class="wf">
+        <h3>They make "done" a check, not a sentence</h3>
+        <p>Anthropic's docs put branch protection and a human merge above the model's summary. Superpowers deletes code written before a failing test. pstack's interrogate skill keeps a finding only when a run proves it. Boris Cherny's January write-up had Claude drive the Chrome extension until the UI worked.</p>
+        <p><a class="cite" href="sources.html#C49">C49</a> <a class="cite" href="sources.html#C44">C44</a> <a class="cite" href="sources.html#C48">C48</a> <a class="cite" href="sources.html#C22">C22</a></p>
+      </article>
+      <article class="wf">
+        <h3>They leave a machine running, with a permission story</h3>
+        <p>Duet, dots, and Grok Bot all keep working on a cloud computer and message you when a decision is needed. The power-user move documented by the vendors is not "let it send." It is a schedule plus an approval stop on send, pay, sign, and delete.</p>
+        <p><a class="cite" href="sources.html#C12">C12</a> <a class="cite" href="sources.html#C29">C29</a> <a class="cite" href="sources.html#C06">C06</a></p>
+      </article>
+    </div>
+  </section>
+</main>
+<footer class="foot"><div class="foot-in"><p>Power User Hub. Open <a href="index.html">index.html</a> in a browser, or run <code>python3 -m http.server</code> inside this folder. Fonts and diagram code are stored in this folder, so the pages render with the network off.</p></div></footer>
+<script src="js/claims.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/site.js"></script>
+<script src="assets/vendor/diagrams.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tibo on Codex sandbox and slash goal: Power User Hub</title>  <link rel="stylesheet" href="assets/vendor/fonts.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="mark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#e0b15b" stroke-width="1.4"/><circle cx="16" cy="16" r="3.2" fill="#e0b15b"/></svg> Power User Hub</a>
+    <p class="asof">Checked 20 Nov 2026</p>
+    <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
+  </div>
+  <nav class="nav" aria-label="Sections"><a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="social.html">Social</a><a href="shots.html">Shots</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a></nav>
+</header>
+<main id="main">
+
+  <p class="kicker">Pragmatic Engineer, 9 Sep 2026</p>
+  <h1>Local tools stay in the sandbox. Extra permission asks you.</h1>
+  <p class="lede">Thibault Sottiaux, <a href="https://www.youtube.com/watch?v=sLSTM9znQNs">youtube.com/watch?v=sLSTM9znQNs</a>. Captions.</p>
+
+<section class="section" id="page-map">
+  <h2>See the shape first</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>The step this episode actually states.</figcaption>
+      <pre class="mermaid">flowchart TD
+  A[Tool call] --> B[Local sandbox]
+  B --> C{Needs more permission?}
+  C -->|yes| D[Ask the user]
+  C -->|no| E[Run]
+  F[Long task] --> G[slash goal]</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>Files for this page.</figcaption>
+      <svg class="markmap-svg" aria-label="Files"></svg>
+      <script type="text/markmap"># Codex
+## sandbox
+## slash goal
+## cloud kata VM
+</script>
+    </figure>
+  </div>
+</section>
+<section class="section" id="seq-state">
+  <h2>Sequence and state</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Who talks to whom.</figcaption>
+      <pre class="mermaid">sequenceDiagram
+  participant Tibo
+  participant Codex
+  Codex->>Codex: sandbox
+  Codex-->>Tibo: ask if the command leaves the sandbox
+  Tibo->>Codex: slash goal for a long run</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>States worth naming.</figcaption>
+      <pre class="mermaid">stateDiagram-v2
+  [*] --> Sandbox
+  Sandbox --> Asked
+  Asked --> Sandbox
+  Sandbox --> Goal</pre>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="mechanism">
+  <h2>1. What he said</h2>
+  <p>At 00:32:33: it runs sandboxed. A command that should run with additional permissions outside the sandbox asks the user. Every tool execution happens that way, in the captions' wording. At 00:33:19 he describes a cloud choice: a managed VM, the same VM you get through the chat product, in a kata container. At 01:01:41 he names slash goal for a run that keeps going, and says it was added a few months earlier. <a href="sources.html#C304">C304</a> <a href="sources.html#C305">C305</a>.</p>
+</section>
+<section class="section" id="artifact">
+  <h2>2. Artifact</h2>
+  <p>The sandbox key you can copy is still <code>sandbox_mode = "read-only"</code> in <a href="kit/codex/config.toml.sample">kit/codex/config.toml.sample</a>. Slash goal is a command, not a new config key. The newsletter quote about deletions under full access with no sandbox is <a href="sources.html#C295">C295</a>. His description here is the control that setup did not have.</p>
+</section>
+<section class="section" id="stack">
+  <h2>3. Your stack</h2>
+  <p>Keep the sample on read-only until a task names one directory. Do not turn on a mode that skips the ask, on a bank repo, because a course called the equivalent "yolo" on a different product.</p>
+</section>
+
+</main>
+<footer class="foot"><div class="foot-in"><p><a href="podcasts.html">All episodes</a> · <a href="gaps.html#g22">Harvest gaps</a></p></div></footer>
+<script src="js/claims.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/site.js"></script>
+<script src="assets/vendor/diagrams.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>No Priors, Andrej Karpathy, 20 Mar 2026</title>
+<meta name="description" content="Walkthrough of Karpathy on multiple coding agents and an overnight loop that only runs when a metric exists.">  <link rel="stylesheet" href="assets/vendor/fonts.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="mark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#e0b15b" stroke-width="1.4"/><circle cx="16" cy="16" r="3.2" fill="#e0b15b"/></svg> Power User Hub</a>
+    <p class="asof">Checked 20 Nov 2026</p>
+    <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="social.html">Social</a><a href="shots.html">Shots</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+  </nav>
+</header>
+<main id="main">
+  <p class="kicker">No Priors · 20 Mar 2026 · 1:06:31</p>
+  <h1>Leave the loop only when a command can score the run.</h1>
+  <p class="lede">Andrej Karpathy with Sarah Guo. The text is a gist transcript of <a href="https://www.youtube.com/watch?v=kwSVtQ7dziU">YouTube kwSVtQ7dziU</a>, saved at <a href="https://gist.github.com/idvorkin-ai-tools/0de1c2615dfb58182ac149cdbec53977">gist 0de1c2615dfb58182ac149cdbec53977</a>. The gist dates the episode 20 Mar 2026. The December and auto-research answers in that gist are not timestamped. Do not invent times for them. yt-dlp could not pull the caption file.</p>
+<section class="section" id="page-map">
+  <h2>See the shape first</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>The gate he states: no eval, no autonomous loop.</figcaption>
+      <pre class="mermaid">flowchart TD
+  A[Can a command score this?] -->|no| B[Stay in the chat]
+  A -->|yes| C[program.md: one change per trial]
+  C --> D[Run the metric]
+  D --> E{Better and tests pass?}
+  E -->|yes| F[Keep]
+  E -->|no| G[Revert]
+  F --> H[Stop at the budget]
+  G --> H</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>What he described.</figcaption>
+      <svg class="markmap-svg" aria-label="Karpathy No Priors"></svg>
+      <script type="text/markmap"># Karpathy 20 Mar 2026
+## Since December
+### Almost no typed code
+### More than one session
+### Claude Code or Codex
+## Quota
+### Switch harness when one cap hits
+### Leftover quota means idle tokens
+## Auto research
+### program.md
+### Overnight
+### Weight decay and Adam betas
+### Needs an objective
+## Not this
+### No metric
+### Push the loop too far
+</script>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="seq-state">
+  <h2>Sequence and state</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Who talks to whom. This is a map of the page, not a vendor diagram.</figcaption>
+      <pre class="mermaid">sequenceDiagram
+  participant Karpathy
+  participant Trial
+  participant Metric
+  Karpathy->>Metric: command that scores the run
+  Metric-->>Trial: stay overnight
+  Metric-->>Karpathy: no score means stay here</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>States worth naming before you run a tool.</figcaption>
+      <pre class="mermaid">stateDiagram-v2
+  [*] --> InLoop
+  InLoop --> Overnight: metric exists
+  InLoop --> Switch: quota ends
+  Overnight --> [*]</pre>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="mechanism">
+  <h2>1. Mechanism</h2>
+  <p>He says December is when his own ratio flipped from mostly typing to mostly delegating, and that he does not think he has typed a line of code since. The limit he names is no longer typing speed. It is how many agent sessions he can keep fed without their edits colliding. He describes a friend with many Codex sessions, about 20 minutes each on high effort, and about 10 repo checkouts, moving work between them in large chunks rather than line by line.</p>
+  <p>Auto research is the same idea with the human removed from the middle. He wrote a markdown file, program.md, that says what to try next. The loop ran overnight on a small GPT training playground he had already tuned by hand for years. It changed weight decay on the value embeddings and Adam betas. He had missed those. He says the loop found them because the score was objective. If you cannot evaluate, he says you cannot auto-research it. If you push the loop further than the agent can actually do, he says the result is net harmful. Agents are jagged: a request comes back wrong and then the next turns stay wrong.</p>
+</section>
+<section class="section" id="artifact">
+  <h2>2. Artifact</h2>
+  <p>program.md is his file. The gist does not include the file. Do not pretend a copy here is his. The prompt you can run is <a href="kit/podcasts/karpathy-eval-loop.md">kit/podcasts/karpathy-eval-loop.md</a>. It requires a metric command, a direction, a trial budget, and a forbidden path list. He also says that when Codex quota runs out he switches to Claude, and that unused subscription quota is idle throughput, the way idle GPUs bothered him in grad school. That is a routing habit, not a config file.</p>
+</section>
+<section class="section" id="example">
+  <h2>3. What he said happened</h2>
+  <ol class="steps">
+    <li>He already had a hand-tuned training setup. He did not start the loop on an unscored app.</li>
+    <li>program.md listed the kinds of changes to try: architecture, optimizer, and so on. He called it a rough markdown description.</li>
+    <li>The loop ran overnight without him in the chat.</li>
+    <li>It kept changes that improved the training objective. The ones he names are weight decay on the value embeddings and Adam betas that were off, and that interact so one change forces the other.</li>
+    <li>He treats that as one loop. He says frontier labs do the exploration on smaller models and then extrapolate. He does not claim the overnight run trained a frontier model.</li>
+  </ol>
+</section>
+<section class="section" id="fail">
+  <h2>4. Failure modes</h2>
+  <ul class="clean">
+    <li>No metric. He states this as the first caveat. A "make the UI nicer" loop has nothing to keep or revert.</li>
+    <li>The loop edits the scorer. Then every trial looks better. Pin the metric command outside the allowed paths.</li>
+    <li>Two trials that both edit the same file. His friend's setup uses separate checkouts so functionality does not collide. One working tree will race.</li>
+    <li>Going further because the first night worked. He says the system is still jagged and a too-long horizon is net harmful.</li>
+    <li>Calling leftover quota a moral duty. He is talking about his own research throughput. A bank change still needs a person on the diff. Unused quota is cheaper than a bad merge.</li>
+  </ul>
+</section>
+<section class="section" id="exercise">
+  <h2>5. Exercise</h2>
+  <p>Pick a number you already print, such as <code>pytest</code> duration or a benchmark script. Put that command in the kit prompt. Allow edits only under one directory. Set the budget to 3 trials. Self-check: RESULTS.md has three rows, each with two numbers you can reproduce by running the command on the kept and reverted diffs. If a row has a number you cannot re-run, delete the row and the change.</p>
+</section>
+<section class="section" id="stack">
+  <h2>6. Your subscriptions</h2>
+  <p>He names Claude Code and Codex as the harnesses he switches between when a quota ends. That matches a stack with both a Claude seat and a Codex seat. He does not describe Muse, Antigravity, or Grok Bot in the section that was read. Do not point an overnight loop at a ledger, a customer extract, or a prompt log. The forbidden-path line in the kit file is there because the loop will try anything inside the allowed list.</p>
+</section>
+<section class="section" id="disagree">
+  <h2>Where he disagrees with the other episodes</h2>
+  <ul class="clean">
+    <li>Boris, 4 Mar 2026, still reads the plan and still has a person approve the merge. Karpathy's stated goal is to not be there for the next prompt. Those are different jobs. Use Boris when the change is a product diff. Use Karpathy when the score is a command.</li>
+    <li>Thariq, 28 Sep 2026, spends high effort so the model verifies. Karpathy's overnight loop verifies with the metric command, not with more model thought. If the metric is wrong, extra effort will not catch it.</li>
+    <li>He says Codex the coding agent feels dry and does not seem to care what you are building, while Claude feels more like a teammate. That is his taste report, not a benchmark.</li>
+  </ul>
+</section>
+</main>
+<footer class="foot"><div class="foot-in"><p><a href="podcasts.html">All podcasts</a> · <a href="kit/podcasts/karpathy-eval-loop.md">Kit prompt</a></p></div></footer>
+<script src="js/claims.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/site.js"></script>
+<script src="assets/vendor/diagrams.js"></script>
+</body>
+</html>

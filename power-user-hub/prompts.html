@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prompt vault: Power User Hub</title>  <link rel="stylesheet" href="assets/vendor/fonts.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="mark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#e0b15b" stroke-width="1.4"/><circle cx="16" cy="16" r="3.2" fill="#e0b15b"/></svg> Power User Hub</a>
+    <p class="asof">Checked 20 Nov 2026</p>
+    <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="social.html">Social</a><a href="shots.html">Shots</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+  </nav>
+</header>
+<main id="main">
+
+  <p class="kicker">Prompt vault</p>
+  <h1>Open the file. Fill the braces. Do not treat a vendor demo as your prompt.</h1>
+  <p class="lede">The files under <a href="kit/prompts/tdd-loop.md">kit/prompts/</a> are instructions for this hub. They are not transcripts. The TDD skill next to them is the exception: it is copied from mattpocock/skills at <code>abeeaf95660ba9e8b7c753eb38f441ca707a8823</code>.</p>
+
+<section class="section" id="page-map">
+  <h2>See the shape first</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>A prompt file is a checklist with blanks.</figcaption>
+      <pre class="mermaid">flowchart TD
+  A[Pick one file] --> B[Fill TEST_COMMAND]
+  B --> C[Run the red command yourself]
+  C --> D[Paste the failure]
+  D --> E[Keep the reply that names a file]</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>Files for this page.</figcaption>
+      <svg class="markmap-svg" aria-label="Files"></svg>
+      <script type="text/markmap"># kit/prompts
+## tdd-loop.md
+## review.md
+## plan.md
+## spec.md
+## overnight.md
+## pr-prep.md
+## research.md
+## fan-out.md
+## adversarial.md
+## grok-draft-only.md
+</script>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="seq-state">
+  <h2>Sequence and state</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Who talks to whom. This is a map of the page, not a vendor diagram.</figcaption>
+      <pre class="mermaid">sequenceDiagram
+  participant You
+  participant Prompt
+  participant Test
+  You->>Prompt: fill TEST_COMMAND
+  You->>Test: run the red command
+  Test-->>Prompt: paste the failure
+  Prompt-->>You: first reply has no production diff</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>States worth naming before you run a tool.</figcaption>
+      <pre class="mermaid">stateDiagram-v2
+  [*] --> Blank
+  Blank --> Filled
+  Filled --> Red
+  Red --> Kept: reply names the command
+  Red --> Rejected: reply edits first</pre>
+    </figure>
+  </div>
+</section>
+
+
+<section class="section" id="mechanism">
+  <h2>1. Mechanism</h2>
+  <p>A pasted prompt is one turn. A skill loads when its description matches. A CLAUDE.md line is every turn. Use the prompt file for the turn, the skill for the loop, and the markdown file for the command you are tired of retyping. xAI's Gmail story and OpenAI's dot story are product copy. They show a shape. They are not logs you can replay.</p>
+</section>
+<section class="section" id="artifact">
+  <h2>2. Artifact</h2>
+  <ul class="clean">
+    <li><a href="kit/prompts/tdd-loop.md">tdd-loop.md</a> stops before a production diff.</li>
+    <li><a href="kit/prompts/review.md">review.md</a> asks for the file, the line, and the command that shows the finding.</li>
+    <li><a href="kit/prompts/plan.md">plan.md</a> and <a href="kit/prompts/spec.md">spec.md</a> name files and a check.</li>
+    <li><a href="kit/prompts/overnight.md">overnight.md</a> has a stop command.</li>
+    <li><a href="kit/prompts/pr-prep.md">pr-prep.md</a> is the command list before you open a pull request.</li>
+    <li><a href="kit/prompts/research.md">research.md</a> demands a URL on every material sentence.</li>
+    <li><a href="kit/prompts/fan-out.md">fan-out.md</a> is for separate checkouts only.</li>
+    <li><a href="kit/prompts/adversarial.md">adversarial.md</a> asks for a command that tries to falsify the claim, and for the output.</li>
+    <li><a href="kit/prompts/grok-draft-only.md">grok-draft-only.md</a> forbids send.</li>
+    <li><a href="kit/prompts/gemini-one-command.md">gemini-one-command.md</a> prints one test command and does not run npm.</li>
+    <li><a href="kit/prompts/muse-plan.md">muse-plan.md</a> stops at <code>/plan</code> until the plan quotes the test.</li>
+    <li><a href="kit/prompts/boris-ablation.md">boris-ablation.md</a> moves the instruction files aside and runs one test.</li>
+    <li><a href="kit/prompts/pocock-no-init.md">pocock-no-init.md</a> refuses an init file.</li>
+    <li><a href="kit/prompts/pocock-block-npm.md">pocock-block-npm.md</a> is the spoken PreToolUse contract.</li>
+    <li><a href="kit/prompts/cat-wu-verify.md">cat-wu-verify.md</a> writes one correction and a verify command.</li>
+    <li><a href="kit/prompts/thariq-html-plan.md">thariq-html-plan.md</a> plans in HTML, then clears context.</li>
+    <li><a href="kit/prompts/muse-init.md">muse-init.md</a> runs muse init and leaves yolo off.</li>
+    <li><a href="kit/prompts/grok-plain-routine.md">grok-plain-routine.md</a> is one sentence, drafts only.</li>
+    <li><a href="kit/prompts/agy-login.md">agy-login.md</a> is the spoken CLI sign-in.</li>
+  </ul>
+</section>
+<section class="section" id="example">
+  <h2>3. Worked example</h2>
+  <p>Fill tdd-loop.md with the counter. The red output on 20 Nov 2026 was <code>AssertionError: inc(1) should be 2</code>. The green output was <code>ok</code> and a two-line <code>inc</code>. If a model replies with a production diff before you have that red output, the prompt was not followed. Run <code>sh kit/scripts/tdd-demo.sh</code> if you want to see the two stages without a model.</p>
+</section>
+<section class="section" id="fail">
+  <h2>4. Failure modes</h2>
+  <ul class="clean">
+    <li>Pasting all ten files into one turn. Pick one.</li>
+    <li>Leaving <code>{{TEST_COMMAND}}</code> in the paste. The model will invent a command.</li>
+    <li>Saving a Grok skill from the draft prompt before you have a draft you would send.</li>
+  </ul>
+</section>
+<section class="section" id="exercise">
+  <h2>5. Exercise</h2>
+  <p>Run tdd-loop.md on a bug whose failing test you can paste. Self-check: the first reply has no production diff, and the command in the reply is the command you typed.</p>
+</section>
+<section class="section" id="stack">
+  <h2>6. Your stack</h2>
+  <p>The same markdown works on Claude Code, Codex, Gemini CLI, and Muse. Grok Bot gets only the draft file. Antigravity's Orchestrator can take plan.md. Do not give fan-out.md a shared working tree.</p>
+</section>
+
+
+<section class="section" id="ledger-rows">
+  <h2>Ledger rows this page uses</h2>
+  <ul class="clean">
+    <li><a href="sources.html#C10">C10</a> The skills page publishes four example prompts for decks, invoices, budgets, and PDF reports. They are xAI's examples, not a customer's prompts.</li>
+    <li><a href="sources.html#C19">C19</a> Anthropic's documented prompt rewrites replace 'fix the login bug' with a symptom, a path, and a failing test, and replace 'add a calendar widget' with a pattern file and a no-new-libraries constraint. It also shows a 'be ambitious' scope line for a settings page.</li>
+    <li><a href="sources.html#C41">C41</a> Simon Willison's 6 Feb 2025 page quotes Andrej Karpathy naming 'vibe coding': accept all suggestions, do not read the diffs, paste errors back with no comment, and treat it as amusing for throwaway weekend projects. The quoted example prompt is 'decrease the padding on the sid...</li>
+  </ul>
+</section>
+</main>
+<footer class="foot"><div class="foot-in"><p>14 published texts. <a href="sources.html">Ledger</a> · <a href="gaps.html#g11">Prompts we refused to invent</a></p></div></footer>
+<script src="js/claims.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/site.js"></script>
+<script src="assets/vendor/diagrams.js"></script>
+</body>
+</html>

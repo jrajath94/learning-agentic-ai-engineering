@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One-person stack: Power User Hub</title>  <link rel="stylesheet" href="assets/vendor/fonts.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="mark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#e0b15b" stroke-width="1.4"/><circle cx="16" cy="16" r="3.2" fill="#e0b15b"/></svg> Power User Hub</a>
+    <p class="asof">Checked 20 Nov 2026</p>
+    <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="social.html">Social</a><a href="shots.html">Shots</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+  </nav>
+</header>
+<main id="main">
+
+  <p class="kicker">Cross-cutting</p>
+  <h1>One test command, four instruction files, one person on the diff.</h1>
+  <p class="lede">The files that carry the command are <a href="kit/claude/CLAUDE.md">CLAUDE.md</a>, <a href="kit/codex/AGENTS.md">AGENTS.md</a>, and <a href="kit/gemini-antigravity/GEMINI.md">GEMINI.md</a>. Muse has no file, only the <code>/plan</code> line in <a href="kit/muse/README.md">kit/muse/README.md</a>.</p>
+
+<section class="section" id="page-map">
+  <h2>See the shape first</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Same command. Different loader.</figcaption>
+      <pre class="mermaid">flowchart TD
+  A[Test command you already run] --> B[CLAUDE.md]
+  A --> C[AGENTS.md under 32 KiB]
+  A --> D[GEMINI.md]
+  A --> E["Muse /plan"]
+  B --> F[You read git diff]
+  C --> F
+  D --> F
+  E --> F</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>Files for this page.</figcaption>
+      <svg class="markmap-svg" aria-label="Files"></svg>
+      <script type="text/markmap"># One command
+## Claude skill SHA abeeaf9
+## Codex sample keys
+## Gemini excerpt not copied
+## Muse no SHA
+## Grok draft only
+</script>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="seq-state">
+  <h2>Sequence and state</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Who talks to whom. This is a map of the page, not a vendor diagram.</figcaption>
+      <pre class="mermaid">sequenceDiagram
+  participant You
+  participant File
+  participant Tool
+  You->>File: same test command
+  File->>Tool: Claude or Codex or Gemini or Muse
+  Tool-->>You: one diff
+  You->>You: read git diff</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>States worth naming before you run a tool.</figcaption>
+      <pre class="mermaid">stateDiagram-v2
+  [*] --> OneCommand
+  OneCommand --> OneTool
+  OneTool --> Diff
+  Diff --> [*]</pre>
+    </figure>
+  </div>
+</section>
+
+
+<section class="section" id="mechanism">
+  <h2>1. Mechanism</h2>
+  <p>Each product loads a different file. <a href="sources.html#C280">C280</a>: Claude Code 2.1.277 loads AGENTS.md only when CLAUDE.md is absent. Codex stops adding project docs at <code>project_doc_max_bytes</code>, 32768 in the sample. Gemini CLI loads GEMINI.md as resident context. The gemini-cli copy at <code>addc194f5bc414e7134c2bd6a414a40e1b4cbbed</code> tells that repo to run <code>npm install</code>, <code>npm run build</code>, and later <code>npm run preflight</code>. Those commands are wrong in a repo that is not that monorepo. Muse waits at <code>/plan</code> if you use the command. Grok Bot does not load any of these. Its constraint is the send-tool permission.</p>
+</section>
+<section class="section" id="artifact">
+  <h2>2. Artifact</h2>
+  <p>Run <code>sh kit/setup.sh</code> once. It copies the Claude and Codex files. If a destination already exists, the script prints skip and continues with the next file. Then copy GEMINI.md yourself. Open <a href="kit/prompts/tdd-loop.md">tdd-loop.md</a> in whichever product you are in. The loop text does not name a vendor.</p>
+</section>
+<section class="section" id="example">
+  <h2>3. Worked example</h2>
+  <p><code>sh kit/scripts/verify.sh</code> checks that the kit files exist, then runs the counter demo. On 20 Nov 2026 it exited 0. The demo's first test failed with <code>AssertionError: inc(1) should be 2</code>. After the function returned <code>n + 1</code>, the same test printed <code>ok</code>. Use that pair of outputs as the bar for a model session: a failure, then a pass, then a small diff.</p>
+</section>
+<section class="section" id="fail">
+  <h2>4. Failure modes</h2>
+  <ul class="clean">
+    <li>Editing AGENTS.md while CLAUDE.md exists, then wondering why Claude ignored the edit.</li>
+    <li>Letting Superpowers and the TDD skill both own the sequence. Pick one. Superpowers is mandatory by its own README.</li>
+    <li>A second agent editing the same files the first agent is editing. Parallelism in the Boris thread is separate checkouts.</li>
+  </ul>
+</section>
+<section class="section" id="exercise">
+  <h2>5. Exercise</h2>
+  <p>Put the same test command in all three markdown files. Ask each tool, one at a time, to print the command and not to edit. Self-check: three replies, one string, <code>git status</code> clean.</p>
+</section>
+<section class="section" id="stack">
+  <h2>6. Your stack</h2>
+  <p>Claude about $20 for <a href="kit/claude/skills/tdd/SKILL.md">kit/claude/skills/tdd/SKILL.md</a>. Codex about $100 for <code>sandbox_mode</code> in <a href="kit/codex/config.toml.sample">kit/codex/config.toml.sample</a>. Google AI Pro for Antigravity's planner and implementer. Muse for an event log and a plan gate. Grok Bot for drafts that are not code. Production stays behind your diff, not behind a second model.</p>
+</section>
+
+
+<section class="section" id="ledger-rows">
+  <h2>Ledger rows this page uses</h2>
+  <ul class="clean">
+    <li><a href="sources.html#C22">C22</a> On 2 Jan 2026 Boris Cherny posted that he ran five Claudes in local terminal tabs and five to ten on claude.ai/code, started PR work in Plan mode, then switched to auto-accept edits, used Opus 4.5 with thinking, kept a shared CLAUDE.md he described as 2.5k tokens, used slash c...</li>
+    <li><a href="sources.html#C41">C41</a> Simon Willison's 6 Feb 2025 page quotes Andrej Karpathy naming 'vibe coding': accept all suggestions, do not read the diffs, paste errors back with no comment, and treat it as amusing for throwaway weekend projects. The quoted example prompt is 'decrease the padding on the sid...</li>
+    <li><a href="sources.html#C42">C42</a> Ars Technica quotes Simon Willison distinguishing vibe coding from using an LLM as a typing assistant: if you have reviewed, tested, and understood every line, he does not call it vibe coding. He calls vibe coding your way to a production codebase clearly risky.</li>
+    <li><a href="sources.html#C44">C44</a> Jesse Vincent's Superpowers README calls the skills mandatory workflows, not suggestions. The basic workflow is brainstorming, git worktrees, writing plans, subagent-driven development or executing plans, test-driven development, code review, and finishing the branch. Claude C...</li>
+    <li><a href="sources.html#C49">C49</a> Anthropic's best-practices table says the last word on a change is branch protection and a person who approves the merge, while Claude's summary of what it did is non-deterministic.</li>
+  </ul>
+</section>
+</main>
+<footer class="foot"><div class="foot-in"><p><a href="principles.html">Principles</a> · <a href="repos.html">Install the skills</a> · <a href="gaps.html">What this stack does not know</a></p></div></footer>
+<script src="js/claims.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/site.js"></script>
+<script src="assets/vendor/diagrams.js"></script>
+</body>
+</html>

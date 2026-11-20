@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Codex and dots: Power User Hub</title>  <link rel="stylesheet" href="assets/vendor/fonts.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="mark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#e0b15b" stroke-width="1.4"/><circle cx="16" cy="16" r="3.2" fill="#e0b15b"/></svg> Power User Hub</a>
+    <p class="asof">Checked 20 Nov 2026</p>
+    <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="social.html">Social</a><a href="shots.html">Shots</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+  </nav>
+</header>
+<main id="main">
+
+  <p class="kicker">Codex and dots</p>
+  <h1>A short AGENTS.md, a read-only sandbox, then a task.</h1>
+  <p class="lede">The keys in <a href="kit/codex/config.toml.sample">config.toml.sample</a> are copied from <a href="https://developers.openai.com/codex/config-sample">OpenAI's sample</a>, fetched 20 Nov 2026. The git pointer that links to that page is openai/codex <code>4e9ce8fa9e7649ec58601a3d61da7a086da75500</code>, file <code>docs/example-config.md</code>.</p>
+
+<section class="section" id="page-map">
+  <h2>See the shape first</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Read first. Writes wait for approval.</figcaption>
+      <pre class="mermaid">flowchart TD
+  A[config.toml sandbox read-only] --> B[AGENTS.md under 32 KiB]
+  B --> C[codex task with a test command]
+  C --> D[You read git diff]
+  D --> E[Only then widen the sandbox]</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>Files for this page.</figcaption>
+      <svg class="markmap-svg" aria-label="Files"></svg>
+      <script type="text/markmap"># Codex kit
+## config.toml.sample
+## AGENTS.md
+## prompts/tdd-loop.md
+## prompts/review.md
+## Dots delegate here
+</script>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="seq-state">
+  <h2>Sequence and state</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Who talks to whom. This is a map of the page, not a vendor diagram.</figcaption>
+      <pre class="mermaid">sequenceDiagram
+  participant You
+  participant Config
+  participant Codex
+  You->>Config: sandbox read only
+  Config->>Codex: AGENTS.md under 32 KiB
+  Codex-->>You: quotes the test command
+  You->>You: git status clean</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>States worth naming before you run a tool.</figcaption>
+      <pre class="mermaid">stateDiagram-v2
+  [*] --> ReadOnly
+  ReadOnly --> Approval: edit requested
+  Approval --> ReadOnly: you decline
+  Approval --> Diff: you allow one directory</pre>
+    </figure>
+  </div>
+</section>
+
+
+<section class="section" id="mechanism">
+  <h2>1. Mechanism</h2>
+  <p>Codex reads <code>config.toml</code> for the model and the sandbox, and AGENTS.md for project rules. The sample sets <code>project_doc_max_bytes = 32768</code>. Past that cap, later instruction files are not added. Mert Ozen's 15 Nov 2026 walkthrough of the 0.169 docs says a closer file overrides an earlier one. Put the test command in the nearest AGENTS.md, not only in your home directory.</p>
+  <p>The sample sets <code>sandbox_mode = "read-only"</code> and <code>approval_policy = "on-request"</code>. A task that must edit has to leave read-only on purpose. The sample model string is <code>gpt-6.1-sol</code>. The page says to replace it if your account does not have that model. CLI 0.171.0, released 20 Nov 2026, also lists Sol as the default catalog selection.</p>
+  <p><a href="sources.html#C280">C280</a>: Claude Code 2.1.277, 18 Sep 2026, reads AGENTS.md when the project has no CLAUDE.md. You change that under Project instructions in <code>/config</code>. One file can serve both tools if you keep it inside the byte cap. If CLAUDE.md exists, Claude may ignore AGENTS.md. Check <code>/config</code>.</p>
+</section>
+<section class="section" id="artifact">
+  <h2>2. Artifact</h2>
+  <pre><code>model = "gpt-6.1-sol"
+model_provider = "openai"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+project_doc_max_bytes = 32768</code></pre>
+  <p>Full sample keys, including the commented reasoning lines, are in the kit file. <a href="kit/codex/AGENTS.md">AGENTS.md</a> in the kit is a short synthesis, not an OpenAI template. Dots, from the 29 Sep 2026 launch, can start a Codex task. That task counts against Codex usage. The conversation with the dot does not.</p>
+</section>
+<section class="section" id="example">
+  <h2>3. Worked example</h2>
+  <p>This session did not run <code>codex</code> against a paid account, so there is no model transcript here. The local stand-in for the red step is the same script as the Claude page: <code>sh kit/scripts/tdd-demo.sh</code>. It fails, then passes, with no network. Use that output as the shape you want from Codex: a failure paste, then a pass paste, then a one-function diff.</p>
+  <pre><code>mkdir -p .codex
+cp kit/codex/config.toml.sample .codex/config.toml
+cp kit/codex/AGENTS.md AGENTS.md
+# edit the test command, then:
+codex</code></pre>
+  <p>Paste <a href="kit/prompts/tdd-loop.md">kit/prompts/tdd-loop.md</a>. If Sol is rejected, change <code>model</code> and start again. Do not keep a session that is on the wrong model.</p>
+</section>
+<section class="section" id="fail">
+  <h2>4. Failure modes</h2>
+  <ul class="clean">
+    <li><code>sandbox_mode = "read-only"</code> and a prompt that says "edit the file". The run stops or asks. That is the sample working. Switch mode only for the directory you mean to change.</li>
+    <li>AGENTS.md over 32 KiB. The sample's cap drops the rest. Split by directory.</li>
+    <li>A global AGENTS.md that says npm and a repo that uses pnpm. The closer file wins only if it exists and fits.</li>
+    <li>A dot that "improves the app" with no test command. The launch post's happy path is not a constraint. Put the test in the task.</li>
+    <li>Full access, no sandbox, no auto review. Firas D's 23 Jul 2026 newsletter quotes Thibault Sottiaux, dated there as 16 Jul 2026, on GPT-5.6 deletions that most commonly happened in that setup, including a HOME override that then deleted HOME. The quoted post was not opened. The sample's <code>sandbox_mode = "read-only"</code> is the control that setup did not have. <a href="sources.html#C295">C295</a>.</li>
+  </ul>
+</section>
+<section class="section" id="exercise">
+  <h2>5. Exercise</h2>
+  <p>Copy the sample into a scratch repo. Set <code>model</code> to one you can open. Ask Codex to print the test command from AGENTS.md and not to edit. Self-check: the reply quotes your command, and <code>git status</code> is clean.</p>
+</section>
+<section class="section" id="stack">
+  <h2>6. Your stack</h2>
+  <p>Codex is the about $100 seat. Claude Code is the about $20 seat. Give both the same AGENTS.md test line. Use Claude for the plan when you want the TDD skill file loaded. Use Codex when you want the sandbox key enforced in toml. Do not send a bank ledger through a dot's browser. Production changes stay on a read of <code>git diff</code> by you.</p>
+  <p>On 9 Sep 2026 Tibo said tool calls stay sandboxed and a command outside the sandbox asks you, and he named slash goal for a long run (<a href="podcast-tibo-codex.html">walkthrough</a>, <a href="sources.html#C304">C304</a>, <a href="sources.html#C305">C305</a>). A r/codex comment on 18 Nov 2026 says the author tells Codex not to run the build or the tests, then runs them by hand (<a href="sources.html#C318">C318</a>).</p>
+</section>
+
+
+<section class="section" id="on-screen"><h2>On screen, 20 Nov 2026</h2><figure class="shot">
+  <img src="assets/shots/codex-config.png" width="1280" height="900" alt="ChatGPT Learn sample configuration, scrolled to sandbox_mode read-only." decoding="async" loading="lazy">
+  <figcaption>Viewport of <a href="https://developers.openai.com/codex/config-sample">developers.openai.com/codex/config-sample</a>, which redirected to learn.chatgpt.com, captured 20 Nov 2026. The visible line is <code>sandbox_mode = "read-only"</code>. Codex CLI is not installed here.</figcaption>
+</figure>
+</section>
+<section class="section" id="ledger-rows">
+  <h2>Ledger rows this page uses</h2>
+  <ul class="clean">
+    <li><a href="sources.html#C28">C28</a> OpenAI introduced dots on 29 Sep 2026 and on 3 Nov 2026 added GPT-6.1 Terra to the models that power them. The launch post says dots were powered by GPT-6 Astra, have a cloud computer and browser, connect through plugins to over 4,000 apps, and can be reached in ChatGPT, Slack...</li>
+    <li><a href="sources.html#C29">C29</a> OpenAI says a dot can delegate tasks to Codex or ChatGPT Work. Conversations with the dot do not count toward ChatGPT usage limits; those delegated tasks count as usual. Proactive research uses read-only tools. Custom Rules and auto-review decide what can proceed. Some actions...</li>
+    <li><a href="sources.html#C32">C32</a> The ChatGPT and Codex changelog entry dated 2026-11-20, and the GitHub release rust-v0.171.0 published 2026-11-20, say Codex CLI 0.171.0 adds GPT-6.2 Sol and Astra to the model catalog with Sol as the default catalog selection, turns on the TUI workspace by default, adds codex...</li>
+    <li><a href="sources.html#C33">C33</a> Mert Özen's 15 Nov 2026 post, which he says was checked against OpenAI's docs for Codex CLI 0.169.0, describes an AGENTS.md chain: global file, then one file per directory from the repo root to the working directory, closer file later, default project_doc_max_bytes of 32 KiB....</li>
+    <li><a href="sources.html#C292">C292</a> OpenAI's config sample sets model to gpt-6.1-sol, approval on request, sandbox read-only, and project_doc_max_bytes to 32768.</li>
+    <li><a href="sources.html#C293">C293</a> openai/codex commit 4e9ce8fa9e7649ec58601a3d61da7a086da75500 only links to that sample. The toml is not in the file.</li>
+    <li><a href="sources.html#C295">C295</a> Newsletter quote of a deletion report under full access with no sandbox. The original post was not opened.</li>
+    <li><a href="sources.html#C34">C34</a> GitHub user tibo-openai, whose profile name is Thibault Sottiaux, merged pull request 5353 in openai/codex on 19 Oct 2025, adding an AGENTS.md discovery guide.</li>
+  </ul>
+</section>
+</main>
+<footer class="foot"><div class="foot-in"><p><a href="muse.html">Muse</a> · <a href="profiles.html">Profiles</a> · <a href="repos.html">Skill installs</a></p></div></footer>
+<script src="js/claims.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/site.js"></script>
+<script src="assets/vendor/diagrams.js"></script>
+</body>
+</html>

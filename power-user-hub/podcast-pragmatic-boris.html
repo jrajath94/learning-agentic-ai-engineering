@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pragmatic Engineer, Boris Cherny, 4 Mar 2026</title>
+<meta name="description" content="Walkthrough of Boris Cherny's March 2026 Claude Code workflow from the Pragmatic Engineer transcript.">  <link rel="stylesheet" href="assets/vendor/fonts.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="mark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#e0b15b" stroke-width="1.4"/><circle cx="16" cy="16" r="3.2" fill="#e0b15b"/></svg> Power User Hub</a>
+    <p class="asof">Checked 20 Nov 2026</p>
+    <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="social.html">Social</a><a href="shots.html">Shots</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+  </nav>
+</header>
+<main id="main">
+  <p class="kicker">Pragmatic Engineer · 4 Mar 2026 · 98 min</p>
+  <h1>Five tabs, plan mode, then a person still merges.</h1>
+  <p class="lede">Boris Cherny told Gergely Orosz how he was shipping that week. The transcript used here is <a href="https://sozai.app/transcript/building-claude-code-boris-cherny/">SozAI's mirror</a>. The same clock times appear on <a href="https://www.usetranscribe.io/yt/julbw1JuAz0/claude-code-ai-impact">usetranscribe</a>. The episode page is <a href="https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny">newsletter.pragmaticengineer.com</a>. He said copying his setup as the one correct way is the wrong conclusion.</p>
+<section class="section" id="page-map">
+  <h2>See the shape first</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Round-robin he described at 33:50 to 38:27.</figcaption>
+      <pre class="mermaid">flowchart TD
+  A[Shift+Tab twice: plan mode] --> B[Tab 1 plans]
+  B --> C[Tab 2 plans a different task]
+  C --> D[Tabs 3 and 4]
+  D --> E[Notification: read the plan]
+  E --> F[Go, then the test]
+  F --> G[CI agent review]
+  G --> H[Human approves]</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>Where the work sits.</figcaption>
+      <svg class="markmap-svg" aria-label="Boris March 2026 workflow"></svg>
+      <script type="text/markmap"># 4 Mar 2026
+## Terminal
+### Five checkouts
+### Plan mode
+### Round robin
+## Desktop app
+### Git worktrees
+### He is moving here
+## Phone
+### Cloud code tab
+### SessionStart hook
+## Review
+### Claude in CI
+### About 80 percent of bugs
+### Person still merges
+</script>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="seq-state">
+  <h2>Sequence and state</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Who talks to whom. This is a map of the page, not a vendor diagram.</figcaption>
+      <pre class="mermaid">sequenceDiagram
+  participant Boris
+  participant Plan
+  participant Checkout
+  Boris->>Plan: Shift Tab twice
+  Plan-->>Boris: plan he accepts
+  Boris->>Checkout: separate trees
+  Checkout-->>Boris: one diff to read</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>States worth naming before you run a tool.</figcaption>
+      <pre class="mermaid">stateDiagram-v2
+  [*] --> PlanMode
+  PlanMode --> Implement: plan accepted
+  Implement --> Review
+  Review --> [*]</pre>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="mechanism">
+  <h2>1. Why the harness can do this</h2>
+  <p>At 33:32 he says Claude Code is built to be hackable because no two engineers share a workflow. Plan mode is a harness state, not a magic word: Shift+Tab twice in the terminal, and the model is not supposed to edit yet. Parallel tabs only work if they do not share a working tree. A checkout per tab is one way to get that. The desktop app's worktrees are another: git stores the extra trees cheaply and the app creates them so he does not run <code>git worktree</code> himself (34:27 to 35:33).</p>
+  <p>At 42:19 he says Claude started launching itself in a bash subprocess to ask whether it still works. That was not a feature they coded as a special case. It showed up with Opus 4.5. The CI piece is separate: the Claude agent SDK, which he calls Claude-P, reviews every pull request. He estimates it catches about 80 percent of bugs. Some comments it fixes. Some it leaves because it is not sure. A person still approves (about 42:19 to 45:59 in the usetranscribe copy).</p>
+</section>
+<section class="section" id="artifact">
+  <h2>2. The artifact</h2>
+  <p>He did not paste a config file on this episode. The steps he named are the artifact. The prompt you can paste is <a href="kit/podcasts/pragmatic-boris-plan-round.md">kit/podcasts/pragmatic-boris-plan-round.md</a>. It is marked original synthesis. It is not his prompt.</p>
+  <p>Commands he named:</p>
+  <ul class="clean">
+    <li>Plan mode: Shift+Tab twice.</li>
+    <li>New codebase: <code>/config</code>, output style, <code>explanatory</code> rather than <code>learn</code>. He said explanatory tends to be better when you do not know the repo yet (37:28).</li>
+    <li>Known codebase: plan mode, then one-shot the implementation once the plan is right. He said Opus 4.5 got there and 4.6 does it more reliably (38:00).</li>
+    <li>Review fan-out: tell it to start three agents, then parallel dedupe agents for false positives. He said the internal review skill is open source in the Claude Code repo. This pass did not open that file, so the skill body is not copied here.</li>
+    <li>Cloud environment: a SessionStart hook. The hook body was not read out.</li>
+  </ul>
+</section>
+<section class="section" id="example">
+  <h2>3. Worked sequence</h2>
+  <p>This is the order he described. It is not a log from his machine.</p>
+  <ol class="steps">
+    <li>33:50. Five terminal tabs. Each tab is its own checkout of the repo.</li>
+    <li>34:04. Start Claude in plan mode in tab 1. Give it the task.</li>
+    <li>38:15. While tab 1 plans, start tab 2 in plan mode on a different task. Then tab 3 and tab 4.</li>
+    <li>38:27. When a notification says a plan is done, read it. Go back and forth until the plan is one he accepts. Then it usually one-shots the edit.</li>
+    <li>34:27. When he runs out of terminal tabs he uses the desktop app, which makes the worktrees.</li>
+    <li>35:42. In the morning he starts a few agents from the iOS app. They run in the cloud. He guessed, without pulling the data, that something like a third to a half of his code starts on the phone (36:15).</li>
+    <li>42:19. On a Claude Code change, the model launches itself in bash and checks that it still runs. CI then reviews the PR. A person merges.</li>
+  </ol>
+  <p>At 0:00 in the usetranscribe copy he says he was writing maybe 10 or 20 pull requests a day and that Opus 4.5 plus Claude Code wrote 100 percent of those, with no manual line edits. The SozAI show notes say 20 to 30. He also says Claude Code writes something like 80 percent of the code at Anthropic on average (30:37). Those are his estimates, not a dashboard screenshot.</p>
+</section>
+<section class="section" id="fail">
+  <h2>4. Failure modes</h2>
+  <ul class="clean">
+    <li>Two agents, one checkout. He spends the episode on isolation because the agents otherwise collide. If your second tab is the same directory, you are not doing his workflow.</li>
+    <li>Plan mode skipped. He says the one-shot happens after the plan is good. A vague first prompt burns the tab.</li>
+    <li>Learn mode on a repo you already know. He reserves <code>explanatory</code> for onboarding. On a familiar repo he wants shipping, not a tutorial.</li>
+    <li>CI review treated as the merge. He says about 80 percent, and a person still approves. The other 20 percent is the point of reading the diff.</li>
+    <li>Phone session with no environment hook. He says the cloud task needs the environment configured, and they use a SessionStart hook because their environment is simple. A bank repo with private indexes will not boot from an empty cloud VM.</li>
+  </ul>
+</section>
+<section class="section" id="exercise">
+  <h2>5. Exercise</h2>
+  <p>On one of your repos, pick two bugs that do not touch the same files. Open two clones, or two worktrees:</p>
+  <pre><code>git clone {{REPO}} /tmp/task-a
+git clone {{REPO}} /tmp/task-b
+cd /tmp/task-a</code></pre>
+  <p>Paste the kit prompt with a real test command. Stay in plan mode until the plan lists files. Only then say go. Repeat in <code>/tmp/task-b</code> while the first plan runs. Self-check: <code>git diff</code> in task-a does not contain task-b's files, and you ran the test yourself.</p>
+</section>
+<section class="section" id="stack">
+  <h2>6. His stack, and yours</h2>
+  <p>He is on Claude Code inside Anthropic, including the desktop app and the phone's cloud tab. Your Claude seat is the about $20 plan you reported, not their internal build. Five long Opus sessions will hit that cap faster than one. Codex at about $100 can take the second checkout if you want a different model family on the review, which this episode does not demonstrate. He does not describe Antigravity, Muse, or Grok Bot here.</p>
+  <p>For a bank repo: do not point the phone's cloud agent at customer data or production credentials. The SessionStart hook he mentions is for their simple environment. Yours should refuse secret files. The human merge he still requires is the control that matches a production change.</p>
+</section>
+<section class="section" id="disagree">
+  <h2>Where people disagree</h2>
+  <ul class="clean">
+    <li>Gergely, at 36:28, says he maybe runs two agents and likes to follow one tab, including learn mode. Boris says that mode is for a new codebase. After that he round-robins and does not stay inside one task.</li>
+    <li>Boris on 2 Jan 2026 told people he uses separate checkouts rather than worktrees. On 4 Mar 2026 he still describes five checkouts in the terminal, and says he is using the desktop app more because it creates the worktrees for him. Both can be true. The terminal habit and the app habit are different tools.</li>
+    <li>He tells you not to copy the setup as law (33:13). A page that turns his five tabs into a required number has already disagreed with him.</li>
+  </ul>
+</section>
+</main>
+<footer class="foot"><div class="foot-in"><p><a href="podcasts.html">All podcasts</a> · <a href="kit/podcasts/pragmatic-boris-plan-round.md">Kit prompt</a></p></div></footer>
+<script src="js/claims.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/site.js"></script>
+<script src="assets/vendor/diagrams.js"></script>
+</body>
+</html>

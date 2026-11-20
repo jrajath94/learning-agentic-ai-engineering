@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Podcasts: Power User Hub</title>
+<meta name="description" content="Timestamped coding-agent episodes from Nov 2025 to Nov 2026, with kit prompts.">  <link rel="stylesheet" href="assets/vendor/fonts.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="mark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#e0b15b" stroke-width="1.4"/><circle cx="16" cy="16" r="3.2" fill="#e0b15b"/></svg> Power User Hub</a>
+    <p class="asof">Checked 20 Nov 2026</p>
+    <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="social.html">Social</a><a href="shots.html">Shots</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+  </nav>
+</header>
+<main id="main">
+  <p class="kicker">Nov 2025 to 20 Nov 2026</p>
+  <h1>Podcasts with a workflow you can run.</h1>
+  <p class="lede">A page exists only where a transcript or show page was opened and a concrete step survived. The May 2025 Latent Space episode with Boris Cherny and Cat Wu is earlier than this window. It stays on the <a href="talks.html">talks</a> page.</p>
+<section class="section" id="page-map">
+  <h2>See the shape first</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Four episodes, four different stops.</figcaption>
+      <pre class="mermaid">flowchart LR
+  A[Boris: plan, then next tab] --> K1[kit prompt]
+  B[Thariq: effort, then notes] --> K1
+  C[Karpathy: metric, then leave] --> K1
+  D[Practical AI: write memory after exit 0] --> K1</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>What was opened.</figcaption>
+      <svg class="markmap-svg" aria-label="Opened podcasts"></svg>
+      <script type="text/markmap"># Podcasts in window
+## Opened
+### Pragmatic Engineer 4 Mar 2026
+### No Priors 20 Mar 2026
+### Practical AI 9 Apr 2026
+### Latent Space 28 Sep 2026
+## Named, not opened
+### Dwarkesh
+### Lenny
+### Changelog transcript
+### Lex
+### Cognitive Revolution
+### How I AI
+### Codie Sanchez
+### Startup Ideas
+### SED
+### Lab shows
+</script>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="seq-state">
+  <h2>Sequence and state</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Who talks to whom. This is a map of the page, not a vendor diagram.</figcaption>
+      <pre class="mermaid">sequenceDiagram
+  participant Show
+  participant Notes
+  participant Kit
+  Show->>Notes: official page
+  Notes->>Kit: one prompt file
+  Show-->>Notes: transcript not opened</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>States worth naming before you run a tool.</figcaption>
+      <pre class="mermaid">stateDiagram-v2
+  [*] --> Named
+  Named --> Walkthrough: text opened
+  Named --> NotOpened: no transcript
+  Walkthrough --> [*]</pre>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="opened">
+  <h2>Pages</h2>
+  <div class="dash">
+    <article class="card">
+      <p class="kicker">4 Mar 2026</p>
+      <h3>Pragmatic Engineer: Boris Cherny</h3>
+      <p>Five checkouts, plan mode, desktop worktrees, CI review plus a person. Kit: <a href="kit/podcasts/pragmatic-boris-plan-round.md">pragmatic-boris-plan-round.md</a></p>
+      <a class="more" href="podcast-pragmatic-boris.html">Open the walkthrough</a>
+    </article>
+    <article class="card">
+      <p class="kicker">20 Mar 2026</p>
+      <h3>No Priors: Andrej Karpathy</h3>
+      <p>More than one harness, and an overnight loop only when a command prints the score. Kit: <a href="kit/podcasts/karpathy-eval-loop.md">karpathy-eval-loop.md</a></p>
+      <a class="more" href="podcast-karpathy.html">Open the walkthrough</a>
+    </article>
+    <article class="card">
+      <p class="kicker">9 Apr 2026</p>
+      <h3>Practical AI 352</h3>
+      <p>Hosts describe a leak. The usable rule they state: do not record a test as run unless the terminal shows it. Kit: <a href="kit/podcasts/practical-ai-verify-then-write.md">practical-ai-verify-then-write.md</a></p>
+      <a class="more" href="podcast-practical-ai-352.html">Open the walkthrough</a>
+    </article>
+    <article class="card">
+      <p class="kicker">28 Sep 2026</p>
+      <h3>Latent Space: Thariq Shihipar</h3>
+      <p>High effort for review and security, low for UI, implementation notes, CLAUDE.md only after a repeated miss. Kit: <a href="kit/podcasts/thariq-effort-and-notes.md">thariq-effort-and-notes.md</a></p>
+      <a class="more" href="podcast-thariq.html">Open the walkthrough</a>
+    </article>
+  </div>
+</section>
+<section class="section" id="harvest">
+  <h2>From the harvest</h2>
+  <div class="dash">
+    <article class="card"><p class="kicker">27 Jul 2026</p><h3>Boris Cherny, YC</h3><p>Delete CLAUDE.md, skills, and hooks every six months. Kit: <a href="kit/prompts/boris-ablation.md">boris-ablation.md</a></p><a class="more" href="podcast-boris-ablation.html">Open the walkthrough</a></article>
+    <article class="card"><p class="kicker">24 Feb 2026</p><h3>Matt Pocock, no init</h3><p>Do not let the agent write the instruction file. Kit: <a href="kit/prompts/pocock-no-init.md">pocock-no-init.md</a></p><a class="more" href="podcast-pocock-no-init.html">Open the walkthrough</a></article>
+    <article class="card"><p class="kicker">25 Feb 2026</p><h3>Matt Pocock, npm hook</h3><p>PreToolUse, exit 2 when the command starts with npm. Kit: <a href="kit/prompts/pocock-block-npm.md">pocock-block-npm.md</a></p><a class="more" href="podcast-pocock-hooks.html">Open the walkthrough</a></article>
+    <article class="card"><p class="kicker">9 Sep 2026</p><h3>Tibo, Codex</h3><p>Sandbox by default. Slash goal for a long run.</p><a class="more" href="podcast-tibo-codex.html">Open the walkthrough</a></article>
+    <article class="card"><p class="kicker">12 Jun 2026</p><h3>Antigravity surfaces</h3><p>IDE, CLI, SDK. Captions show AGY login. Kit: <a href="kit/prompts/agy-login.md">agy-login.md</a></p><a class="more" href="podcast-antigravity-surfaces.html">Open the walkthrough</a></article>
+    <article class="card"><p class="kicker">26 Aug 2026</p><h3>Muse Code course</h3><p>muse init. Yolo is full permissions. Leave it off. Kit: <a href="kit/prompts/muse-init.md">muse-init.md</a></p><a class="more" href="podcast-muse-code-course.html">Open the walkthrough</a></article>
+    <article class="card"><p class="kicker">8 Sep 2026</p><h3>Roman Ugarte, Grok Bot</h3><p>A routine is a sentence. Kit: <a href="kit/prompts/grok-plain-routine.md">grok-plain-routine.md</a></p><a class="more" href="podcast-lenny-grok.html">Open the walkthrough</a></article>
+    <article class="card"><p class="kicker">18 May 2026</p><h3>Thariq, HTML plans</h3><p>Brainstorm in HTML, clear context, then implement. Kit: <a href="kit/prompts/thariq-html-plan.md">thariq-html-plan.md</a></p><a class="more" href="podcast-thariq-html.html">Open the walkthrough</a></article>
+    <article class="card"><p class="kicker">29 Apr 2026</p><h3>Cat Wu, O'Reilly</h3><p>Write the senior's correction down. Add a verify command. Kit: <a href="kit/prompts/cat-wu-verify.md">cat-wu-verify.md</a></p><a class="more" href="podcast-cat-wu-verify.html">Open the walkthrough</a></article>
+  </div>
+</section>
+<section class="section" id="not-opened">
+  <h2>Shows named, transcript not used</h2>
+  <table>
+    <thead><tr><th>Show</th><th>What happened this pass</th></tr></thead>
+    <tbody>
+      <tr><td>Changelog, Burke Holland, 27 Feb 2026</td><td>Episode page exists at changelog.com. The transcript file in thechangelog/transcripts was not found at the guessed path. A third-party dump mixed ads with the episode. No page.</td></tr>
+      <tr><td>Lenny's, Boris Cherny, Feb 2026</td><td>A VTT is in the harvest. The January setup and the July ablation talk already cover the same instructions. No second Boris page from that VTT.</td></tr>
+      <tr><td>How I AI, Grok Bot, Muse, dots, Duet</td><td>Local whisper files were read. The Grok sweep is on the Roman Ugarte page. The 16 Sep Muse review is a consumer agent, not Muse Code. The dots comparison did not yield a copyable command.</td></tr>
+      <tr><td>Codie Sanchez</td><td>Episodes in the harvest are mostly business, not a coding-agent procedure. No page.</td></tr>
+      <tr><td>Dwarkesh, Lex Fridman, Cognitive Revolution, Software Engineering Daily</td><td>Files exist for some shows. They were not turned into pages when the transcript had no command, file, or permission.</td></tr>
+    </tbody>
+  </table>
+  <p>The 20 Nov 2026 harvest supplied the transcripts for the new pages, including nine How I AI files transcribed locally. Captions that mishear a filename are quoted as captions. Episodes with no command, file, or permission stayed off the index. See <a href="gaps.html#g22">G22</a>.</p>
+</section>
+</main>
+<footer class="foot"><div class="foot-in"><p><a href="kit/podcasts/README.md">Kit prompts</a> · <a href="gaps.html#g19">What is still missing</a></p></div></footer>
+<script src="js/claims.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/site.js"></script>
+<script src="assets/vendor/diagrams.js"></script>
+</body>
+</html>

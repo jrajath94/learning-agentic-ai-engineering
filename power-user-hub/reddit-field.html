@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reddit field notes: Power User Hub</title>
+<meta name="description" content="Archive-backed Reddit claims about Claude Code workflows.">  <link rel="stylesheet" href="assets/vendor/fonts.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="mark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#e0b15b" stroke-width="1.4"/><circle cx="16" cy="16" r="3.2" fill="#e0b15b"/></svg> Power User Hub</a>
+    <p class="asof">Checked 20 Nov 2026</p>
+    <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="social.html">Social</a><a href="shots.html">Shots</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+  </nav>
+</header>
+<main id="main">
+  <p class="kicker">r/ClaudeAI archive</p>
+  <h1>The subreddit that returned posts, and the five moves it kept repeating.</h1>
+  <p class="lede">Direct Reddit JSON was blocked. An Arctic Shift search of r/ClaudeAI after 20 Nov 2025 supplied the selftexts. Other named subs did not return posts.</p>
+
+<section class="section" id="page-map">
+  <h2>See the shape first</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>What repeated in r/ClaudeAI after the archive search, and what was dropped.</figcaption>
+      <pre class="mermaid">flowchart TD
+  A[Arctic Shift search] --> B[382 selftexts]
+  B --> C[58 claims]
+  C --> D[Later posts repeated the same five moves]
+  E[reddit.com JSON] --> F[403 blocked]</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>Reddit coverage.</figcaption>
+      <svg class="markmap-svg" aria-label="Reddit coverage."></svg>
+      <script type="text/markmap"># Reddit
+## Opened
+### r/ClaudeAI via Arctic Shift
+## Repeated and then dropped
+### CLAUDE.md
+### Hooks
+### Small MCP lists
+### Compaction
+### Do not trust the report
+## Not opened
+### Other subs timed out or 403
+</script>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="seq-state">
+  <h2>Sequence and state</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Who talks to whom. This is a map of the page, not a vendor diagram.</figcaption>
+      <pre class="mermaid">sequenceDiagram
+  participant Archive
+  participant Post
+  participant Ledger
+  Archive->>Post: r/ClaudeAI selftext
+  Post->>Ledger: medium confidence
+  Archive-->>Ledger: other subs returned 422</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>States worth naming before you run a tool.</figcaption>
+      <pre class="mermaid">stateDiagram-v2
+  [*] --> Archived
+  Archived --> Claim: selftext matched
+  Archived --> Gap: 422
+  Claim --> [*]</pre>
+    </figure>
+  </div>
+</section>
+
+
+<section class="section" id="sample">
+  <h2>Twelve of the archive claims</h2>
+  <p>Every row in the ledger whose URL is reddit.com was matched to a post id in the saved archive. The link checker got 403 from reddit.com itself. Read these as archive-backed, not as a live scrape of the front page.</p>
+  <ul class="clean">
+    <li><a href="https://www.reddit.com/r/ClaudeAI/comments/1xnc7fs/if_your_repo_has_both_agentsmd_and_claudemd/">If your repo has both AGENTS.md and CLAUDE.md, Claude Code ignores AGENTS.md by default</a>: On Claude Code 2.1.312, a repo that contained both AGENTS.md and CLAUDE.md loaded only CLAUDE.md at session start. A rule that existed only in AGENTS.md was missing from the instructions the model reported.</li>
+<li><a href="https://www.reddit.com/r/ClaudeAI/comments/1xnc7fs/if_your_repo_has_both_agentsmd_and_claudemd/">If your repo has both AGENTS.md and CLAUDE.md, Claude Code ignores AGENTS.md by default</a>: Both files load if the first line of CLAUDE.md is the import @AGENTS.md, or if Project instructions are set to claude-md-and-agents-md in /config.</li>
+<li><a href="https://www.reddit.com/r/ClaudeAI/comments/1xnc7fs/if_your_repo_has_both_agentsmd_and_claudemd/">If your repo has both AGENTS.md and CLAUDE.md, Claude Code ignores AGENTS.md by default</a>: A CLAUDE.local.md or a .claude/CLAUDE.md in the project also hides AGENTS.md. ~/.claude/CLAUDE.md does not. AGENTS.local.md and AGENTS.override.md are not read. A sentence that says to read AGENTS.md is not an import.</li>
+<li><a href="https://www.reddit.com/r/ClaudeAI/comments/1xnc7fs/if_your_repo_has_both_agentsmd_and_claudemd/">If your repo has both AGENTS.md and CLAUDE.md, Claude Code ignores AGENTS.md by default</a>: Direct reads of AGENTS.md needed Claude Code v2.1.277 or later, and some sessions (Bedrock, or telemetry off) needed v2.1.281. An old SessionStart hook that prints AGENTS.md now loads that file twice.</li>
+<li><a href="https://www.reddit.com/r/ClaudeAI/comments/1xqscg6/developing_a_multiplayer_extraction_rts_using_ai/">Developing a multiplayer extraction RTS using AI only, with Opus 5.5 orchestrating sub-agents. Three lessons and the original prompt</a>: Claude Code with Opus 5.5 and Codex with GPT Astra run as VS Code extensions. The author talks to orchestrators. Sub-agents build on their own branches and worktrees. A separate sub-agent reviews before merge, and visual work is scored by reviewer sub-agents that have not seen earlier rounds.</li>
+<li><a href="https://www.reddit.com/r/ClaudeAI/comments/1xqscg6/developing_a_multiplayer_extraction_rts_using_ai/">Developing a multiplayer extraction RTS using AI only, with Opus 5.5 orchestrating sub-agents. Three lessons and the original prompt</a>: The orchestrator's merge rules were a jscpd gate against duplicated code, no ready-made assets, clippy pedantic treated as errors, coverage and mutation-testing floors, and a list of decisions only the human may make (money, accounts, publishing, the final name).</li>
+<li><a href="https://www.reddit.com/r/ClaudeAI/comments/1xqscg6/developing_a_multiplayer_extraction_rts_using_ai/">Developing a multiplayer extraction RTS using AI only, with Opus 5.5 orchestrating sub-agents. Three lessons and the original prompt</a>: Numeric telemetry changed the tutorial. About half of players stopped there. After Claude rebuilt it against measured targets, about 70 percent got through in the current playtest.</li>
+<li><a href="https://www.reddit.com/r/ClaudeAI/comments/1xqscg6/developing_a_multiplayer_extraction_rts_using_ai/">Developing a multiplayer extraction RTS using AI only, with Opus 5.5 orchestrating sub-agents. Three lessons and the original prompt</a>: The author uses Rust compiled to WASM so the same crates run natively and in the browser. Claude tests client logic natively in seconds, and the type system plus strict lints catch agent mistakes before a run.</li>
+<li><a href="https://www.reddit.com/r/ClaudeAI/comments/1xsr8h8/we_replaced_everyones_mcp_configs_and_tokens_with/">We replaced everyone's MCP configs and tokens with one gateway</a>: The team stopped storing MCP API tokens in local Claude, Claude Code, and Cursor configs. Each person runs: claude mcp add --transport http appwrite https://mcp1.com/mcp/appwrite, then signs in. Group policy decides which servers and tools they can call, and every call is audited.</li>
+<li><a href="https://www.reddit.com/r/ClaudeAI/comments/1xsr8h8/we_replaced_everyones_mcp_configs_and_tokens_with/">We replaced everyone's MCP configs and tokens with one gateway</a>: A scheduled Claude task picks up bug reports and feature requests, works in its own git worktree, and opens pull requests for review.</li>
+<li><a href="https://www.reddit.com/r/ClaudeAI/comments/1xfauxa/postman_desktop_automatically_installed_a_claude/">Postman desktop automatically installed a Claude Code plugin on my Mac. Logs, config and installer source evidence.</a>: Opening Postman desktop 12.33.4 on macOS auto-installed and enabled the user-scope Claude Code plugin postman@claude-plugins-official version 2.0.1 at 2026-10-24T09:34:02.610Z, and the same run installed a Codex plugin.</li>
+<li><a href="https://www.reddit.com/r/ClaudeAI/comments/1xfauxa/postman_desktop_automatically_installed_a_claude/">Postman desktop automatically installed a Claude Code plugin on my Mac. Logs, config and installer source evidence.</a>: The installer's removal route is: claude plugin uninstall postman@claude-plugins-official --scope user --json, then restart Claude Code. Deleting Postman.app alone leaves the agent integrations. Also check ~/.codex/config.toml and ~/.local/bin/postman.</li>
+  </ul>
+  <p><a href="sources.html">The ledger</a> has the rest. Filter the directory to kind reddit.</p>
+</section>
+
+</main>
+<footer class="foot"><div class="foot-in"><p><a href="method.html">Method</a> · <a href="sources.html">Ledger</a> · <a href="gaps.html">Gaps</a></p></div></footer>
+<script src="js/claims.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/site.js"></script>
+<script src="assets/vendor/diagrams.js"></script>
+</body>
+</html>

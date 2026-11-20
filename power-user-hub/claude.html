@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude, Claude Code, and Claude Duet: Power User Hub</title>  <link rel="stylesheet" href="assets/vendor/fonts.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="mark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#e0b15b" stroke-width="1.4"/><circle cx="16" cy="16" r="3.2" fill="#e0b15b"/></svg> Power User Hub</a>
+    <p class="asof">Checked 20 Nov 2026</p>
+    <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="social.html">Social</a><a href="shots.html">Shots</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+  </nav>
+</header>
+<main id="main">
+
+  <p class="kicker">Claude Code</p>
+  <h1>One failing test, then the smallest change that passes it.</h1>
+  <p class="lede">The loop is in <a href="kit/claude/skills/tdd/SKILL.md">kit/claude/skills/tdd/SKILL.md</a>, copied from mattpocock/skills at <code>abeeaf95660ba9e8b7c753eb38f441ca707a8823</code>. The hook file is the shape Boris Cherny published, with your formatter command left blank on purpose.</p>
+
+<section class="section" id="page-map">
+  <h2>See the shape first</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Red, then green, then a person.</figcaption>
+      <pre class="mermaid">flowchart TD
+  A[Write one failing test] --> B[Run it and read the failure]
+  B --> C[Smallest code that passes]
+  C --> D[Run the same command]
+  D --> E[Person reads the diff]</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>Files for this page.</figcaption>
+      <svg class="markmap-svg" aria-label="Files"></svg>
+      <script type="text/markmap"># Claude kit
+## CLAUDE.md
+## settings.json
+## skills/tdd/SKILL.md
+## prompts/tdd-loop.md
+## scripts/tdd-demo.sh
+</script>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="seq-state">
+  <h2>Sequence and state</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Who talks to whom. This is a map of the page, not a vendor diagram.</figcaption>
+      <pre class="mermaid">sequenceDiagram
+  participant You
+  participant Test
+  participant Skill
+  You->>Test: run the red command
+  Test-->>You: assertion failure
+  You->>Skill: paste the failure
+  Skill-->>You: no production diff yet</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>States worth naming before you run a tool.</figcaption>
+      <pre class="mermaid">stateDiagram-v2
+  [*] --> Red
+  Red --> Green: smallest change
+  Green --> Review: person reads diff
+  Review --> [*]</pre>
+    </figure>
+  </div>
+</section>
+
+
+<section class="section" id="mechanism">
+  <h2>1. Mechanism</h2>
+  <p>A skill body is not in the window until the task matches its description. The TDD skill's description names red-green-refactor, so a bug fix can load it without putting the whole file in CLAUDE.md. CLAUDE.md is resident. Anthropic's best-practices page says a line you keep repeating belongs in a hook, because a prompt is advice and a hook runs. <code>kit/claude/settings.json</code> is a PostToolUse hook on Write or Edit. The command is <code>{{FORMAT_COMMAND}}</code> until you set it.</p>
+  <p>Claude Code 2.1.277, 18 Sep 2026, added this line to the changelog: in a project with no CLAUDE.md, Claude Code reads AGENTS.md instead, and you change that under Project instructions in <code>/config</code>. Source: <a href="https://code.claude.com/docs/en/changelog">code.claude.com/docs/en/changelog</a>. <a href="sources.html#C281">2.1.281</a>, 23 Sep 2026, says that fallback also works on Bedrock, Vertex, Foundry, gateways, and when telemetry is disabled. <a href="sources.html#C282">Hacker News item 49760187</a> on 18 Sep 2026, 741 points when fetched, links the changelog and does not add a second measurement. If both files exist, do not assume both load. <a href="sources.html#C129">C129</a>, an r/ClaudeAI report, said 2.1.312 loaded only CLAUDE.md. That report is archive-backed, not an Anthropic guarantee. <a href="sources.html#C280">C280</a> is the changelog line for 2.1.277.</p>
+</section>
+<section class="section" id="artifact">
+  <h2>2. Artifact</h2>
+  <p>Install with <code>sh kit/setup.sh</code> from a repo you can change. It skips a destination that already exists and copies the rest. Then edit placeholders. The skill text is verbatim. The provenance file next to it has the SHA. Prompt: <a href="kit/prompts/tdd-loop.md">kit/prompts/tdd-loop.md</a>.</p>
+</section>
+<section class="section" id="example">
+  <h2>3. Worked example, no model</h2>
+  <p><code>sh kit/scripts/tdd-demo.sh</code> ran on this machine on 20 Nov 2026. First the test called <code>inc</code>, which returned its input unchanged. Then the function became <code>n + 1</code> and the same test printed ok.</p>
+  <pre><code>$ python3 test_counter.py
+Traceback (most recent call last):
+  File ".../test_counter.py", line 3, in <module>
+    assert inc(1) == 2, "inc(1) should be 2"
+AssertionError: inc(1) should be 2
+exit 1
+$ python3 test_counter.py
+ok
+exit 0
+--- counter.py after the green run ---
+def inc(n):
+    return n + 1</code></pre>
+  <p>That is the loop named in <a href="kit/claude/skills/tdd/SKILL.md">kit/claude/skills/tdd/SKILL.md</a>: red before green, one slice. It is not a Claude transcript.</p>
+</section>
+<section class="section" id="fail">
+  <h2>4. Failure modes</h2>
+  <ul class="clean">
+    <li>The test asserts <code>a + b</code> by recomputing <code>a + b</code>. The skill calls that tautological. Use a literal, <code>assert inc(1) == 2</code>.</li>
+    <li>You write every test, then all the code. The skill says that tests imagined behavior. One test, then the code for that test.</li>
+    <li>The hook's command is still the placeholder. It will fail on every write. Put a real formatter in, or delete the hook until you have one.</li>
+    <li>Both CLAUDE.md and AGENTS.md exist and you only edited AGENTS.md. Check <code>/config</code> to see which file this build loaded.</li>
+    <li>Asking which tools are missing. Stephane Derosiaux, 5 Mar 2026, got six subagents and a wishlist, then wrote that the list is training patterns plus tools the product knows how to call. Treat it as a hypothesis, then check the binary yourself. <a href="sources.html#C294">C294</a>.</li>
+  </ul>
+</section>
+<section class="section" id="exercise">
+  <h2>5. Exercise</h2>
+  <p>In a clone, add one assertion that fails for a bug you can already reproduce. Run the test. Paste the failure into <code>kit/prompts/tdd-loop.md</code> with the seam filled in. Self-check: the first model reply contains no production diff. After you reply <code>green</code>, <code>git diff</code> touches the test and the one function.</p>
+</section>
+<section class="section" id="stack">
+  <h2>6. Your stack</h2>
+  <p>Run this on the Claude Code seat you pay about $20 for. When that cap is gone, the same prompt works in Codex if AGENTS.md holds the test command. Do not point either tool at customer extracts. Five parallel checkouts, the March 2026 Boris pattern, belong on tasks that do not share files. See <a href="podcast-pragmatic-boris.html">that episode</a>.</p>
+  <p>The harvest adds four later statements. On 27 Jul 2026 he said to delete CLAUDE.md, skills, and hooks every six months (<a href="podcast-boris-ablation.html">that talk</a>, <a href="sources.html#C299">C299</a>). On 22 Oct 2026 he posted that Agent Skills were donated to the Agentic AI Foundation (<a href="sources.html#C315">C315</a>). Matt Pocock, 24 and 25 Feb 2026: do not run init (<a href="podcast-pocock-no-init.html">page</a>), and block npm with a PreToolUse hook that exits 2 (<a href="podcast-pocock-hooks.html">page</a>). Cat Wu, 29 Apr 2026: write the senior's correction into the instruction file and add a verify command (<a href="podcast-cat-wu-verify.html">page</a>). Thariq, 18 May 2026: plan in HTML, then clear context (<a href="podcast-thariq-html.html">page</a>).</p>
+</section>
+
+
+<section class="section" id="on-screen"><h2>On screen, 20 Nov 2026</h2><figure class="shot">
+  <img src="assets/shots/claude-plan.png" width="1280" height="900" alt="Claude Code docs open on Common workflows, with the heading Plan before editing and the command claude --permission-mode plan." decoding="async" loading="lazy">
+  <figcaption>Viewport of <a href="https://code.claude.com/docs/en/common-workflows">code.claude.com/docs/en/common-workflows</a>, captured 20 Nov 2026. The heading on screen is Plan before editing. This is the docs site. <code>claude</code> is not installed on the machine that took the shot.</figcaption>
+</figure>
+<figure class="shot">
+  <img src="assets/shots/claude-hooks.png" width="1280" height="900" alt="Claude Code docs open on the Hooks reference page." decoding="async" loading="lazy">
+  <figcaption>Viewport of <a href="https://code.claude.com/docs/en/hooks">code.claude.com/docs/en/hooks</a>, captured 20 Nov 2026. Title in the browser was Hooks reference. The kit hook file is still a placeholder command, not this page.</figcaption>
+</figure>
+<figure class="shot">
+  <img src="assets/shots/local-tdd-demo.png" width="1280" height="900" alt="Terminal transcript of the local red then green counter test." decoding="async" loading="lazy">
+  <figcaption>Output of <code>sh kit/scripts/tdd-demo.sh</code> on this machine, 20 Nov 2026, stderr merged into stdout so the failure is above the pass. Not a model transcript.</figcaption>
+</figure>
+<figure class="shot">
+  <img src="assets/shots/local-counter-diff.png" width="1280" height="900" alt="Unified diff that changes inc to return n plus 1." decoding="async" loading="lazy">
+  <figcaption>Output of <code>diff -u</code> between the red function <code>return n</code> and the green function <code>return n + 1</code>, 20 Nov 2026.</figcaption>
+</figure>
+</section>
+<section class="section" id="ledger-rows">
+  <h2>Ledger rows this page uses</h2>
+  <ul class="clean">
+    <li><a href="sources.html#C11">C11</a> On 23 Oct 2026 Anthropic opened a research preview of Claude Duet, a separate app on iOS, Android, and claude.ai, for US Pro, Max, and Ultra subscribers via a waitlist, sharing the plan's usage limits.</li>
+    <li><a href="sources.html#C12">C12</a> Anthropic says Claude Duet is designed around Claude Opus 5.5, sends a morning brief, runs on a virtual machine with its own browser, checks connected accounts every few hours, and asks before it sends a message, pays, signs, or deletes. Trading securities and moving money bet...</li>
+    <li><a href="sources.html#C16">C16</a> Anthropic's help center says that during the preview you cannot choose a model (Duet runs on Claude Opus 5.5), it is not on Team or Enterprise yet, finished work appears in the Make tab, it cannot see all projects or the files on your computer, and Personal Finance is unavaila...</li>
+    <li><a href="sources.html#C17">C17</a> Claude Code's best-practices page separates non-deterministic instructions (prompt, CLAUDE.md, skills) from deterministic ones (hooks, deny rules, sandbox, managed settings). It says a line you keep emphasizing in CLAUDE.md belongs in a hook.</li>
+    <li><a href="sources.html#C18">C18</a> The same page says skill bodies load only when the task calls for them, while CLAUDE.md weighs on every session. Subagents help for parallel work, for keeping noisy output out of the main context, and for a reviewer that has not seen how the code was written. Their requests co...</li>
+    <li><a href="sources.html#C19">C19</a> Anthropic's documented prompt rewrites replace 'fix the login bug' with a symptom, a path, and a failing test, and replace 'add a calendar widget' with a pattern file and a no-new-libraries constraint. It also shows a 'be ambitious' scope line for a settings page.</li>
+    <li><a href="sources.html#C22">C22</a> On 2 Jan 2026 Boris Cherny posted that he ran five Claudes in local terminal tabs and five to ten on claude.ai/code, started PR work in Plan mode, then switched to auto-accept edits, used Opus 4.5 with thinking, kept a shared CLAUDE.md he described as 2.5k tokens, used slash c...</li>
+    <li><a href="sources.html#C49">C49</a> Anthropic's best-practices table says the last word on a change is branch protection and a person who approves the merge, while Claude's summary of what it did is non-deterministic.</li>
+    <li><a href="sources.html#C280">C280</a> Claude Code 2.1.277, dated 18 September 2026, added AGENTS.md support: in a project with no CLAUDE.md, Claude Code reads AGENTS.md instead, and you change it under Project instructions in /config.</li>
+    <li><a href="sources.html#C281">C281</a> Claude Code 2.1.281, dated 23 September 2026, changed AGENTS.md support so it also works on Amazon Bedrock, Google Vertex AI, Microsoft Foundry, LLM gateways, and sessions with telemetry disabled.</li>
+    <li><a href="sources.html#C282">C282</a> Hacker News item 49760187, 18 September 2026, 741 points when fetched, links the changelog.</li>
+    <li><a href="sources.html#C291">C291</a> mattpocock/skills commit abeeaf95660ba9e8b7c753eb38f441ca707a8823. The skill says tests verify behavior through public interfaces.</li>
+    <li><a href="sources.html#C294">C294</a> Stephane Derosiaux, 5 March 2026: a tool-gap question returned a wishlist he does not treat as a preference.</li>
+    <li><a href="sources.html#C132">C132</a> Direct reads of AGENTS.md needed Claude Code v2.1.277 or later, and some sessions (Bedrock, or telemetry off) needed v2.1.281. An old SessionStart hook that prints AGENTS.md now loads that file twice.</li>
+  </ul>
+</section>
+</main>
+<footer class="foot"><div class="foot-in"><p><a href="gemini.html">Gemini</a> · <a href="profiles.html">Profiles</a> · <a href="prompts.html">Prompts</a></p></div></footer>
+<script src="js/claims.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/site.js"></script>
+<script src="assets/vendor/diagrams.js"></script>
+</body>
+</html>
