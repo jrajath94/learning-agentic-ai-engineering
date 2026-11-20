@@ -1,5 +1,6 @@
 #!/bin/sh
-# Copy Claude and Codex starter files into the current repo. Refuses to overwrite.
+# Copy Claude and Codex starter files into the current repo.
+# An existing destination is skipped. The script continues with the next file.
 set -eu
 KIT=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
 DEST=${1:-.}

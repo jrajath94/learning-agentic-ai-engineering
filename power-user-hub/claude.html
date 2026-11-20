@@ -78,11 +78,11 @@
 <section class="section" id="mechanism">
   <h2>1. Mechanism</h2>
   <p>A skill body is not in the window until the task matches its description. The TDD skill's description names red-green-refactor, so a bug fix can load it without putting the whole file in CLAUDE.md. CLAUDE.md is resident. Anthropic's best-practices page says a line you keep repeating belongs in a hook, because a prompt is advice and a hook runs. <code>kit/claude/settings.json</code> is a PostToolUse hook on Write or Edit. The command is <code>{{FORMAT_COMMAND}}</code> until you set it.</p>
-  <p>Claude Code 2.1.277, 18 Sep 2026, added this line to the changelog: in a project with no CLAUDE.md, Claude Code reads AGENTS.md instead, and you change that under Project instructions in <code>/config</code>. Source: <a href="https://code.claude.com/docs/en/changelog">code.claude.com/docs/en/changelog</a>. <a href="sources.html#C281">2.1.281</a>, 23 Sep 2026, says that fallback also works on Bedrock, Vertex, Foundry, gateways, and when telemetry is disabled. <a href="sources.html#C282">Hacker News item 49760187</a> on 18 Sep 2026, 741 points when fetched, links the changelog and does not add a second measurement. If both files exist, do not assume both load. A r/ClaudeAI report said 2.1.312 loaded only CLAUDE.md. That report is archive-backed, not an Anthropic guarantee.</p>
+  <p>Claude Code 2.1.277, 18 Sep 2026, added this line to the changelog: in a project with no CLAUDE.md, Claude Code reads AGENTS.md instead, and you change that under Project instructions in <code>/config</code>. Source: <a href="https://code.claude.com/docs/en/changelog">code.claude.com/docs/en/changelog</a>. <a href="sources.html#C281">2.1.281</a>, 23 Sep 2026, says that fallback also works on Bedrock, Vertex, Foundry, gateways, and when telemetry is disabled. <a href="sources.html#C282">Hacker News item 49760187</a> on 18 Sep 2026, 741 points when fetched, links the changelog and does not add a second measurement. If both files exist, do not assume both load. <a href="sources.html#C129">C129</a>, an r/ClaudeAI report, said 2.1.312 loaded only CLAUDE.md. That report is archive-backed, not an Anthropic guarantee. <a href="sources.html#C280">C280</a> is the changelog line for 2.1.277.</p>
 </section>
 <section class="section" id="artifact">
   <h2>2. Artifact</h2>
-  <p>Install with <code>sh kit/setup.sh</code> from a repo you can change. It refuses to overwrite. Then edit placeholders. The skill text is verbatim. The provenance file next to it has the SHA. Prompt: <a href="kit/prompts/tdd-loop.md">kit/prompts/tdd-loop.md</a>.</p>
+  <p>Install with <code>sh kit/setup.sh</code> from a repo you can change. It skips a destination that already exists and copies the rest. Then edit placeholders. The skill text is verbatim. The provenance file next to it has the SHA. Prompt: <a href="kit/prompts/tdd-loop.md">kit/prompts/tdd-loop.md</a>.</p>
 </section>
 <section class="section" id="example">
   <h2>3. Worked example, no model</h2>
@@ -99,7 +99,7 @@ exit 0
 --- counter.py after the green run ---
 def inc(n):
     return n + 1</code></pre>
-  <p>That is the loop the skill names: red before green, one slice. It is not a Claude transcript.</p>
+  <p>That is the loop named in <a href="kit/claude/skills/tdd/SKILL.md">kit/claude/skills/tdd/SKILL.md</a>: red before green, one slice. It is not a Claude transcript.</p>
 </section>
 <section class="section" id="fail">
   <h2>4. Failure modes</h2>

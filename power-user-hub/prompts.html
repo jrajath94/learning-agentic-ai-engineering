@@ -89,13 +89,13 @@
   <h2>2. Artifact</h2>
   <ul class="clean">
     <li><a href="kit/prompts/tdd-loop.md">tdd-loop.md</a> stops before a production diff.</li>
-    <li><a href="kit/prompts/review.md">review.md</a> asks for a finding with a file, or an explicit none.</li>
+    <li><a href="kit/prompts/review.md">review.md</a> asks for the file, the line, and the command that shows the finding.</li>
     <li><a href="kit/prompts/plan.md">plan.md</a> and <a href="kit/prompts/spec.md">spec.md</a> name files and a check.</li>
     <li><a href="kit/prompts/overnight.md">overnight.md</a> has a stop command.</li>
     <li><a href="kit/prompts/pr-prep.md">pr-prep.md</a> is the command list before you open a pull request.</li>
     <li><a href="kit/prompts/research.md">research.md</a> demands a URL on every material sentence.</li>
     <li><a href="kit/prompts/fan-out.md">fan-out.md</a> is for separate checkouts only.</li>
-    <li><a href="kit/prompts/adversarial.md">adversarial.md</a> looks for a missing test.</li>
+    <li><a href="kit/prompts/adversarial.md">adversarial.md</a> asks for a command that tries to falsify the claim, and for the output.</li>
     <li><a href="kit/prompts/grok-draft-only.md">grok-draft-only.md</a> forbids send.</li>
     <li><a href="kit/prompts/gemini-one-command.md">gemini-one-command.md</a> prints one test command and does not run npm.</li>
     <li><a href="kit/prompts/muse-plan.md">muse-plan.md</a> stops at <code>/plan</code> until the plan quotes the test.</li>
@@ -103,7 +103,7 @@
 </section>
 <section class="section" id="example">
   <h2>3. Worked example</h2>
-  <p>Fill tdd-loop.md with the counter. The red output on 20 Nov 2026 was <code>AssertionError: inc(1) should be 2</code>. The green output was <code>ok</code> and a three-line function. If a model replies with a production diff before you have that red output, the prompt was not followed. Run <code>sh kit/scripts/tdd-demo.sh</code> if you want to see the two stages without a model.</p>
+  <p>Fill tdd-loop.md with the counter. The red output on 20 Nov 2026 was <code>AssertionError: inc(1) should be 2</code>. The green output was <code>ok</code> and a two-line <code>inc</code>. If a model replies with a production diff before you have that red output, the prompt was not followed. Run <code>sh kit/scripts/tdd-demo.sh</code> if you want to see the two stages without a model.</p>
 </section>
 <section class="section" id="fail">
   <h2>4. Failure modes</h2>

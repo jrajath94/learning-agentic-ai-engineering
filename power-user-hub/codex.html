@@ -79,7 +79,7 @@
   <h2>1. Mechanism</h2>
   <p>Codex reads <code>config.toml</code> for the model and the sandbox, and AGENTS.md for project rules. The sample sets <code>project_doc_max_bytes = 32768</code>. Past that cap, later instruction files are not added. Mert Ozen's 15 Nov 2026 walkthrough of the 0.169 docs says a closer file overrides an earlier one. Put the test command in the nearest AGENTS.md, not only in your home directory.</p>
   <p>The sample sets <code>sandbox_mode = "read-only"</code> and <code>approval_policy = "on-request"</code>. A task that must edit has to leave read-only on purpose. The sample model string is <code>gpt-6.1-sol</code>. The page says to replace it if your account does not have that model. CLI 0.171.0, released 20 Nov 2026, also lists Sol as the default catalog selection.</p>
-  <p>Claude Code 2.1.277, 18 Sep 2026, reads AGENTS.md when the project has no CLAUDE.md. One file can serve both tools if you keep it inside the byte cap. If CLAUDE.md exists, Claude may ignore AGENTS.md. Check <code>/config</code>.</p>
+  <p><a href="sources.html#C280">C280</a>: Claude Code 2.1.277, 18 Sep 2026, reads AGENTS.md when the project has no CLAUDE.md. You change that under Project instructions in <code>/config</code>. One file can serve both tools if you keep it inside the byte cap. If CLAUDE.md exists, Claude may ignore AGENTS.md. Check <code>/config</code>.</p>
 </section>
 <section class="section" id="artifact">
   <h2>2. Artifact</h2>

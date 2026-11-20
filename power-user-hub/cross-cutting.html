@@ -81,11 +81,11 @@
 
 <section class="section" id="mechanism">
   <h2>1. Mechanism</h2>
-  <p>Each product loads a different file. Claude Code 2.1.277 loads AGENTS.md only when CLAUDE.md is absent. Codex stops adding project docs at <code>project_doc_max_bytes</code>, 32768 in the sample. Gemini CLI loads GEMINI.md as resident context. The gemini-cli copy at <code>addc194f5bc414e7134c2bd6a414a40e1b4cbbed</code> tells that repo to run <code>npm install</code>, <code>npm run build</code>, and later <code>npm run preflight</code>. Those commands are wrong in a repo that is not that monorepo. Muse waits at <code>/plan</code> if you use the command. Grok Bot does not load any of these. Its constraint is the send-tool permission.</p>
+  <p>Each product loads a different file. <a href="sources.html#C280">C280</a>: Claude Code 2.1.277 loads AGENTS.md only when CLAUDE.md is absent. Codex stops adding project docs at <code>project_doc_max_bytes</code>, 32768 in the sample. Gemini CLI loads GEMINI.md as resident context. The gemini-cli copy at <code>addc194f5bc414e7134c2bd6a414a40e1b4cbbed</code> tells that repo to run <code>npm install</code>, <code>npm run build</code>, and later <code>npm run preflight</code>. Those commands are wrong in a repo that is not that monorepo. Muse waits at <code>/plan</code> if you use the command. Grok Bot does not load any of these. Its constraint is the send-tool permission.</p>
 </section>
 <section class="section" id="artifact">
   <h2>2. Artifact</h2>
-  <p>Run <code>sh kit/setup.sh</code> once. It copies the Claude and Codex files and stops if a destination exists. Then copy GEMINI.md yourself. Open <a href="kit/prompts/tdd-loop.md">tdd-loop.md</a> in whichever product you are in. The loop text does not name a vendor.</p>
+  <p>Run <code>sh kit/setup.sh</code> once. It copies the Claude and Codex files. If a destination already exists, the script prints skip and continues with the next file. Then copy GEMINI.md yourself. Open <a href="kit/prompts/tdd-loop.md">tdd-loop.md</a> in whichever product you are in. The loop text does not name a vendor.</p>
 </section>
 <section class="section" id="example">
   <h2>3. Worked example</h2>
@@ -105,7 +105,7 @@
 </section>
 <section class="section" id="stack">
   <h2>6. Your stack</h2>
-  <p>Claude about $20 for the skill file. Codex about $100 for the sandbox key. Google AI Pro for Antigravity's planner and implementer. Muse for an event log and a plan gate. Grok Bot for drafts that are not code. Production stays behind your diff, not behind a second model.</p>
+  <p>Claude about $20 for <a href="kit/claude/skills/tdd/SKILL.md">kit/claude/skills/tdd/SKILL.md</a>. Codex about $100 for <code>sandbox_mode</code> in <a href="kit/codex/config.toml.sample">kit/codex/config.toml.sample</a>. Google AI Pro for Antigravity's planner and implementer. Muse for an event log and a plan gate. Grok Bot for drafts that are not code. Production stays behind your diff, not behind a second model.</p>
 </section>
 
 

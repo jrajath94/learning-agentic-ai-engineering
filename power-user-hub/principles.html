@@ -82,7 +82,7 @@
 </section>
 <section class="section" id="artifact">
   <h2>2. Artifact</h2>
-  <p>Do not add a principle page to the kit. Add one line to the file the product loads, or one command to the hook. <a href="kit/prompts/adversarial.md">kit/prompts/adversarial.md</a> is the review pass when you want a second model to look for a missing test.</p>
+  <p>Do not add a principle page to the kit. Add one line to the file the product loads, or one command to the hook in <a href="kit/claude/settings.json">kit/claude/settings.json</a>. <a href="kit/prompts/adversarial.md">kit/prompts/adversarial.md</a> asks the second model to run a command that tries to falsify the claim, and to paste the output.</p>
 </section>
 <section class="section" id="example">
   <h2>3. Worked example</h2>
@@ -91,18 +91,18 @@
 <section class="section" id="fail">
   <h2>4. Failure modes</h2>
   <ul class="clean">
-    <li>A 200-line CLAUDE.md of principles nobody re-reads. The skill file says to prefer deletion when a line stops earning its place.</li>
+    <li>A 200-line CLAUDE.md of principles nobody re-reads. Thariq's rule, on the talks page, is to add a line only after the same failure repeats.</li>
     <li>The same paragraph pasted into CLAUDE.md, AGENTS.md, and GEMINI.md, then edited in only one.</li>
     <li>A hook whose command is still <code>{{FORMAT_COMMAND}}</code>. It fails every write and you disable hooks.</li>
   </ul>
 </section>
 <section class="section" id="exercise">
   <h2>5. Exercise</h2>
-  <p>Find one correction you typed twice this week. If a shell command can check it, put that command in the hook and delete the sentence. If not, add one line to the loaded file and delete it from the prompt you were pasting.</p>
+  <p>Find one correction you typed twice this week. If a shell command can check it, put that command in <a href="kit/claude/settings.json">kit/claude/settings.json</a> in place of <code>{{FORMAT_COMMAND}}</code> and delete the sentence. If not, add one line to the loaded file and delete it from the prompt you were pasting.</p>
 </section>
 <section class="section" id="stack">
   <h2>6. Your stack</h2>
-  <p>Bank code gets the hook and the test, not a longer prompt. Research notes can live in the prompt. A principle that only one model obeys is a model habit. Put it in the file that model loads, and do not expect the other seat to inherit it.</p>
+  <p>Bank code gets the hook in <a href="kit/claude/settings.json">kit/claude/settings.json</a> and the test, not a longer prompt. Research notes can live in the prompt. A principle that only one model obeys is a model habit. Put it in the file that model loads, and do not expect the other seat to inherit it.</p>
 </section>
 
 

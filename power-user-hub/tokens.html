@@ -75,8 +75,8 @@
 
 <section class="section" id="mechanism">
   <h2>1. Mechanism</h2>
-  <p>A subscription hides the meter until you hit a cap. The cap is not a token budget you can quote. Anthropic's Aug 2025 study, 132 people surveyed, 53 interviews, 200,000 transcripts, said Claude was in 59 percent of work, self-reported productivity was about 50 percent higher, and merged pull requests per engineer per day were 67 percent higher. Most people fully delegated only 0 to 20 percent of tasks. That study does not publish a daily token allowance.</p>
-  <p>Muse publishes prices. Standard Spark is $1.25 per million input and $4.25 per million output. Contributor mode is $0.10 and $0.20 because training is allowed. The cheaper number is a data term, not a discount to chase on bank code.</p>
+  <p>A subscription hides the meter until you hit a cap. The cap is not a token budget you can quote. <a href="sources.html#C97">C97</a>: Anthropic surveyed 132 engineers and researchers in August 2025, interviewed 53, and analyzed 200,000 Claude Code transcripts. The write-up, dated 2 Dec 2025, said Claude was in 59 percent of work and self-reported productivity was 50 percent higher (<a href="sources.html#C98">C98</a>), merged pull requests per engineer per day were 67 percent higher (<a href="sources.html#C99">C99</a>), and more than half could fully delegate only 0 to 20 percent of their work (<a href="sources.html#C102">C102</a>). That study does not publish a daily token allowance.</p>
+  <p><a href="sources.html#C38">C38</a>, Meta's pricing page: standard Spark is $1.25 per million input and $4.25 per million output. Contributor mode is $0.10 and $0.20 because training is allowed. The cheaper number is a data term, not a discount to chase on bank code.</p>
 </section>
 <section class="section" id="artifact">
   <h2>2. Artifact</h2>
@@ -84,7 +84,7 @@
 </section>
 <section class="section" id="example">
   <h2>3. Worked example</h2>
-  <p>The local demo makes one assertion, fails, then passes. It does not open a model. That is the cheapest loop you can rehearse. A model session should look like those two runs plus a diff, not like a restatement of the repository.</p>
+  <p><code>sh kit/scripts/tdd-demo.sh</code> makes one assertion, fails, then passes. It does not open a model. That is the cheapest loop you can rehearse. A model session should look like those two runs plus a diff, not like a restatement of the repository.</p>
 </section>
 <section class="section" id="fail">
   <h2>4. Failure modes</h2>
@@ -96,11 +96,11 @@
 </section>
 <section class="section" id="exercise">
   <h2>5. Exercise</h2>
-  <p>For one day, write down each model call as: tool, task, whether a test ran, whether you kept the diff. Do not invent a token count. Self-check: every kept diff has a command next to it.</p>
+  <p>For one day, write down each model call next to <a href="kit/prompts/tdd-loop.md">kit/prompts/tdd-loop.md</a>: tool, task, whether a test ran, whether you kept the diff. Do not invent a token count. Self-check: every kept diff has a command next to it.</p>
 </section>
 <section class="section" id="stack">
   <h2>6. Your stack</h2>
-  <p>The about $100 Codex seat and the about $20 Claude seat are the two meters you can feel. When one caps, Karpathy's note is to switch, not to keep a session that can no longer call tools. Do not put a production corpus in the cheaper Muse tier.</p>
+  <p>The about $100 Codex seat and the about $20 Claude seat are the two meters you can feel. When one caps, the note in <a href="kit/podcasts/karpathy-eval-loop.md">kit/podcasts/karpathy-eval-loop.md</a> is to switch, not to keep a session that can no longer call tools. Do not put a production corpus in the cheaper Muse tier.</p>
 </section>
 
 
