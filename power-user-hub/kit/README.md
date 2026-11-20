@@ -9,8 +9,8 @@ Drop-in files for the walkthroughs. Placeholders are `{{LIKE_THIS}}`. Fill them 
 | `gemini-antigravity/` | A project GEMINI.md and the upstream excerpt with its SHA |
 | `muse/` | Install and `/plan` steps from Meta's docs. No copied settings repo |
 | `grok-bot/` | Permission setup from the 18 Nov 2026 changelog. No copied settings repo |
-| `prompts/` | Prompts for the TDD loop, review, and Grok drafts |
-| `podcasts/` | Prompts tied to four episodes |
+| `prompts/` | TDD, review, Grok drafts, and harvest prompts for ablation, init, hooks, Muse init, routines, and AGY login |
+| `podcasts/` | Prompts tied to episodes |
 | `scripts/tdd-demo.sh` | Red then green, local Python, no model |
 | `scripts/verify.sh` | Checks these files exist, then runs the demo |
 | `setup.sh` | Copies the Claude and Codex files into the current repo |
