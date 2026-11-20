@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Latent Space, Thariq Shihipar, 28 Sep 2026</title>
+<meta name="description" content="Walkthrough of Thariq Shihipar on effort, implementation notes, and CLAUDE.md.">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,450;6..72,560&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@450;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="mark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#e0b15b" stroke-width="1.4"/><circle cx="16" cy="16" r="3.2" fill="#e0b15b"/></svg> Power User Hub</a>
+    <p class="asof">Checked 20 Nov 2026</p>
+    <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+  </nav>
+</header>
+<main id="main">
+  <p class="kicker">Latent Space · 28 Sep 2026 · about 92 min</p>
+  <h1>Spend the effort on the first pass, and write down the fix he skipped.</h1>
+  <p class="lede">Thariq Shihipar, Anthropic, on <a href="https://latent.space/p/thariq/">latent.space/p/thariq</a>. Timestamps below are the speaker labels in that page's transcript. The show notes above the transcript are Latent Space's summary. Where those notes and his lines differ, his lines win.</p>
+<section class="section" id="page-map">
+  <h2>See the shape first</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>His effort split at 00:25:24, then the notes at 00:26:01.</figcaption>
+      <pre class="mermaid">flowchart TD
+  A[Name the task type] --> B{review or security?}
+  B -->|yes| C[High or max effort]
+  B -->|UI| D[Low or medium]
+  B -->|API edges| E[Medium]
+  C --> F[Implementation notes before edits]
+  D --> F
+  E --> F
+  F --> G[You point at the skipped fix]</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>What he actually specified.</figcaption>
+      <svg class="markmap-svg" aria-label="Thariq episode"></svg>
+      <script type="text/markmap"># Thariq 28 Sep 2026
+## 00:15
+### Prompting is the skill
+### Mental model of one-shots
+## 00:21
+### Redo loops burn the cap
+## 00:25
+### Review and security: high
+### UI: low or medium
+## 00:26
+### Implementation notes
+### Model knew and skipped
+## 00:28
+### CLAUDE.md may go away
+### Add a line after a repeat
+### AGENTS.md support coming
+</script>
+    </figure>
+  </div>
+</section>
+<section class="section" id="mechanism">
+  <h2>1. Mechanism</h2>
+  <p>At 00:15:37 he says short prompts work when the person already has a model of what Claude can one-shot. The skill is that model, not a longer spell. At 00:21:52 he says a lot of cap burn is "undo this and redo it" after a design the model could have gotten with more context on the first turn.</p>
+  <p>Effort is a harness knob that buys more verification. At 00:23:49 he says higher effort spends more tokens checking, and that a stronger model can sometimes finish a simple task in fewer tokens because it does not need to re-verify. At 00:25:24 he gives the split he used in a blog post: code review and security at high or max, UI at low or medium, and more care when you are building an API and need edge cases. At 00:26:01 he says he looked at about 70 Terminal Bench problems. The common high-effort failure is not ignorance. The model thinks of the right move and then does not take it. Implementation notes are how you see that fork.</p>
+</section>
+<section class="section" id="artifact">
+  <h2>2. Artifact</h2>
+  <p>He does not read a JSON config on this episode. The replicable piece is the prompt in <a href="kit/podcasts/thariq-effort-and-notes.md">kit/podcasts/thariq-effort-and-notes.md</a>. At 00:28:10 he says Anthropic is going to support AGENTS.md, that keeping different files per model is painful, and that in the limit CLAUDE.md goes away. He thinks it can be better to start a project with no CLAUDE.md, and to add a line only when a failure repeats. Those lines change when the model changes. Swyx, at 00:27:38, says Thariq has a documented dislike of AGENTS.md and asks if it is going away anyway. Thariq's answer is yes, they will support it.</p>
+</section>
+<section class="section" id="example">
+  <h2>3. Sequence from the episode</h2>
+  <ol class="steps">
+    <li>00:15. Write the prompt for Claude as the audience. Know what it one-shots in this repo before you ask for a redesign.</li>
+    <li>00:21. If you are about to say "undo that", stop. The usage went into the redo. Put the constraint in the first prompt instead.</li>
+    <li>00:25. Pick effort from the task. Do not leave a security review on the UI setting.</li>
+    <li>00:26. Ask for implementation notes before you accept the patch. Read the option it considered and dropped.</li>
+    <li>00:28. If that dropped option is correct, tell it to do that one. If the same miss happens again on this model, add one line to CLAUDE.md. If you switch models, re-check that line. He says the failure list does not transfer cleanly.</li>
+  </ol>
+</section>
+<section class="section" id="fail">
+  <h2>4. Failure modes</h2>
+  <ul class="clean">
+    <li>Max effort on a CSS tweak. He says that spends tokens on verification you can see is unnecessary ("you don't need to spin up Chromium").</li>
+    <li>Low effort on a review. His split puts review at high or max. A low-effort "LGTM" is the failure the split is for.</li>
+    <li>A long CLAUDE.md full of one-off scolds. He says start without one, and add a line for a repeated failure. A file of stale model-specific bans will fight the next model.</li>
+    <li>Notes that only say the model "thought hard". The useful note names the fix it rejected. If that sentence is missing, ask again before it edits.</li>
+  </ul>
+</section>
+<section class="section" id="exercise">
+  <h2>5. Exercise</h2>
+  <p>Take an open PR in your repo. Run the kit prompt with task type <code>review</code> and no edits. Self-check: the notes name one change the diff does not contain, and you can decide whether that change should exist. Only then say go. If you cannot find a skipped option, the notes are too vague. Run it once more with the test command in the prompt.</p>
+</section>
+<section class="section" id="stack">
+  <h2>6. Your stack</h2>
+  <p>This episode is Claude Code effort levels and CLAUDE.md. Codex reads AGENTS.md. He says they will support that file because models differ and maintaining two files hurts. On a bank repo, put the repeated failure in the file the harness actually loads, and do not put customer rows in either file. Muse and Grok Bot are not given an effort table here. Do not copy "high or max" onto a product that has no such switch. Use the same idea: a review gets more checking than a label change, and you pay for the checking.</p>
+</section>
+<section class="section" id="disagree">
+  <h2>Where this disagrees with Boris</h2>
+  <p>Boris, on 2 Jan 2026 and again in the team practice he described, keeps a shared CLAUDE.md and adds a line when Claude does something wrong. Thariq, at 00:28:10, says a new project may be better with no CLAUDE.md, and that the file should shrink toward zero as models stop repeating the old misses. Both are adding lines from failures. They disagree on the default: Boris starts with the file. Thariq starts without it.</p>
+  <p>Boris round-robins plans across tabs. Thariq's 00:21 warning is that a bad first prompt turns into a redo loop that eats the cap. Use Thariq's notes when you have one hard task. Use Boris's tabs when the tasks do not share files and each prompt already has a test command.</p>
+</section>
+</main>
+<footer class="foot"><div class="foot-in"><p><a href="podcasts.html">All podcasts</a> · <a href="kit/podcasts/thariq-effort-and-notes.md">Kit prompt</a></p></div></footer>
+<script src="js/claims.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/site.js"></script>
+<script type="module" src="js/visuals.js"></script>
+</body>
+</html>
