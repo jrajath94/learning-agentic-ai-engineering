@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deep Dive: Ronacher Setup Rules | Learning Agentic AI Engineering</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></head>
+<body>
+<header class="top"><div class="wordmark"><a href="index.html">Learning Agentic AI Engineering</a></div>
+<nav class="main"><a href="index.html">Home</a><a href="start.html" aria-current="page">Start Here</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="foundations.html">Foundations</a><a href="cross-cutting.html">Cross-cutting</a><a href="business.html">Business</a><a href="research.html">Research</a><a href="profiles.html">Profiles</a><a href="prompts.html">Prompt Vault</a><a href="labs.html">Labs</a><a href="paths.html">Learning Paths</a><a href="principles.html">Principles</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="niche.html">Niche</a>
+<a href="deep.html">Deep Dives</a><a href="audit.html">Audit</a><a href="search.html">Search</a></nav></header>
+<main>
+<p class="meta">Home / Deep Dives / Deep Dive: Ronacher Setup Rules</p>
+<h1>Deep Dive: Ronacher Setup Rules</h1>
+<p class="lede">Every recommendation from Agentic Coding Recommendations with its reason, the yolo alias, the Makefile log pattern, and the tool design rules. Source: Armin Ronacher, lucumr.pocoo.org, 12 June 2025, read in full. Confidence: High.</p>
+<figure class="visual"><img src="assets/img/deep-ronacher.svg" alt="Flow diagram: Fast friendly tools, One log file, Segmented state, Parallel agents"><figcaption>Figure 1. Deep Dive: Ronacher Setup Rules as a flow. Each box names one stage on this page. Arrows show work order.</figcaption></figure>
+
+<h2>Base setup</h2>
+<ol><li>Claude Code on the 100 dollar Max plan, Sonnet as his model pick at post time, for speed and cost balance.</li><li>Alias, verbatim in effect: claude-yolo runs claude --dangerously-skip-permissions. Risk control sits in the environment: dev work lives in Docker, so a wild agent hits a container, not the host.</li><li>Token discipline: no screenshots and no browser runs for routine work. Both burn context for little signal in his setup.</li><li>MCP: near zero. Use it only when a plain tool proves too unreliable. His one standing exception: Playwright MCP. Database work goes through psql. Custom tools are plain scripts.</li></ol>
+<h2>Stack picks with reasons</h2>
+<ol><li>Go for new backends: a context system agents handle well, test caching for speed, structural interfaces, low ecosystem churn, and code that tolerates sloppy generation.</li><li>Python with care: pytest fixture magic confuses agents, async event loop errors cost turns, and slow interpreter start taxes each loop step.</li><li>Frontend: Tailwind, React with TanStack Query and Router, Vite. One trap named: the TanStack file router dollar param file names break under shell interpolation and confuse agents.</li><li>Dependencies: upgrade slower than feels right. Prefer code generation over a new dependency. Prefer stable ecosystems: Go, Flask.</li></ol>
+<h2>Tool design rules</h2>
+<p>Anything can be a tool. A good tool for an agent meets four tests from the post: fast, since crashes pass but hangs kill a loop; friendly, with error text that teaches the fix; chaos proof, built for an LLM chaos monkey, with no user error and no undefined behavior as a design stance; and observable, so a failure shows its cause.</p>
+<h2>The Makefile log pattern, step by step</h2>
+<ol><li>Critical tools live in a Makefile. One target starts the dev stack: make dev.</li><li>A process manager starts services and writes a pidfile. A second start attempt fails loud with a services already running note, in place of a silent double start.</li><li>All service output prints to the terminal and lands in one log file the agent can read: make tail-log shows it.</li><li>Debug sign in mail lands in the log. A CLAUDE.md line tells the agent: read the log for the confirmation link. Result: the agent can complete a full sign in flow alone in the browser.</li><li>Speed rule for agent built tools: milliseconds, not minutes. For one slow app he built a watcher daemon: drop a Python module in a watched folder, the daemon runs it and writes output to the log.</li></ol>
+<h2>Code style for agent readers</h2>
+<p>The dumbest code that works wins. Functions with clear, long names beat classes. No inheritance tricks. Plain SQL. Permission checks local and visible in the function that acts. Refactor when a pattern repeats at scale, such as utility classes across 50 files, and not before.</p>
+<h2>Parallel sessions</h2>
+<p>One agent is slow. Parallel agents are the win, and shared state is the cost. Segment the state: a second checkout per agent, separate databases, separate Redis. Name the segments before the agents start.</p>
+<h2>Apply this to your work</h2><div class="rule"><p>Your VM work hits his traps by name: slow Python starts in agent loops, fixture magic in test suites, and log output that agents cannot read. Copy the Makefile pattern into your active repos: one start target, one tail log target, one log file, and a rule line that points the agent at the log for sign in links and error text. His state segment rule also fixes a pain in your parallel lanes: one checkout, one data store, one log per lane, named in the task card before work starts.</p></div><h2>Replication checklist</h2><ol><li>Add make dev and make tail-log to one active repo. One log file, agent readable.</li><li>Add the log pointer line to that repo rule file.</li><li>Write your segment map before your next parallel run: checkout, data, log per agent.</li><li>Audit one tool against the four tests: fast, friendly, chaos proof, observable.</li></ol>
+<p>Prompt file: <a href="../prompts/harness-loop.md">prompts/harness-loop.md</a> holds the loop form that pairs with this setup.</p>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart LR
+ A[make dev] --> B[Services plus pidfile]
+ B --> C[One log file]
+ C --> D[Agent reads log]
+ D --> E[Sign in link, errors, proof]
+ E --> F[Fix in loop]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[make dev] --&gt; B[Services plus pidfile]
+ B --&gt; C[One log file]
+ C --&gt; D[Agent reads log]
+ D --&gt; E[Sign in link, errors, proof]
+ E --&gt; F[Fix in loop]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Ronacher Setup Rules</span><ul><li><span class="branch">Setup</span><ul><li><span class="leaf">Yolo alias in Docker</span></li><li><span class="leaf">Near zero MCP</span></li><li><span class="leaf">psql for data</span></li></ul></li><li><span class="branch">Stack</span><ul><li><span class="leaf">Go backends</span></li><li><span class="leaf">Python with care</span></li><li><span class="leaf">Tailwind and Vite</span></li></ul></li><li><span class="branch">Style</span><ul><li><span class="leaf">Dumb code wins</span></li><li><span class="leaf">Long clear names</span></li><li><span class="leaf">Plain SQL</span></li></ul></li></ul></li></ul></div>
+</main>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart LR
+ A[make dev] --> B[Services plus pidfile]
+ B --> C[One log file]
+ C --> D[Agent reads log]
+ D --> E[Sign in link, errors, proof]
+ E --> F[Fix in loop]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[make dev] --&gt; B[Services plus pidfile]
+ B --&gt; C[One log file]
+ C --&gt; D[Agent reads log]
+ D --&gt; E[Sign in link, errors, proof]
+ E --&gt; F[Fix in loop]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Ronacher Setup Rules</span><ul><li><span class="branch">Setup</span><ul><li><span class="leaf">Yolo alias in Docker</span></li><li><span class="leaf">Near zero MCP</span></li><li><span class="leaf">psql for data</span></li></ul></li><li><span class="branch">Stack</span><ul><li><span class="leaf">Go backends</span></li><li><span class="leaf">Python with care</span></li><li><span class="leaf">Tailwind and Vite</span></li></ul></li><li><span class="branch">Style</span><ul><li><span class="leaf">Dumb code wins</span></li><li><span class="leaf">Long clear names</span></li><li><span class="leaf">Plain SQL</span></li></ul></li></ul></li></ul></div>
+</main>
+
+<h2>Visual map of this page</h2>
+<p>Three views of one page: a Mermaid flow for work order, a markmap for concept groups, and a read guide for the flow.</p>
+<div class="mermaid">
+flowchart TD
+ A[Claim: 5k to 10k tokens per day] --> B[Search both firms at origin]
+ B --> C[No such figure found]
+ C --> D[Real figures: dollars per day]
+ D --> E[Workflows that burn tokens]
+ E --> F[Fleets, schedules, swarms, review bots]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart TD
+ A[Claim: 5k to 10k tokens per day] --&gt; B[Search both firms at origin]
+ B --&gt; C[No such figure found]
+ C --&gt; D[Real figures: dollars per day]
+ D --&gt; E[Workflows that burn tokens]
+ E --&gt; F[Fleets, schedules, swarms, review bots]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the left box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Niche Sources and Token Heavy Workflows</span><ul><li><span class="branch">Claim check</span><ul><li><span class="leaf">No tokens per day average</span></li><li><span class="leaf">Dollars, multiples, percentiles</span></li><li><span class="leaf">Scale: one task past 55k tokens</span></li></ul></li><li><span class="branch">Heavy workflows</span><ul><li><span class="leaf">Cherny fleet</span></li><li><span class="leaf">Gas Town 20 to 30</span></li><li><span class="leaf">OpenAI research saturation</span></li><li><span class="leaf">Review bot per change</span></li></ul></li><li><span class="branch">Niche lanes</span><ul><li><span class="leaf">Blogs and dotfiles</span></li><li><span class="leaf">Podcast transcripts</span></li><li><span class="leaf">Newsletters</span></li><li><span class="leaf">Community threads</span></li></ul></li></ul></li></ul></div>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart LR
+ A[make dev] --> B[Services plus pidfile]
+ B --> C[One log file]
+ C --> D[Agent reads log]
+ D --> E[Sign in link, errors, proof]
+ E --> F[Fix in loop]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[make dev] --&gt; B[Services plus pidfile]
+ B --&gt; C[One log file]
+ C --&gt; D[Agent reads log]
+ D --&gt; E[Sign in link, errors, proof]
+ E --&gt; F[Fix in loop]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Ronacher Setup Rules</span><ul><li><span class="branch">Setup</span><ul><li><span class="leaf">Yolo alias in Docker</span></li><li><span class="leaf">Near zero MCP</span></li><li><span class="leaf">psql for data</span></li></ul></li><li><span class="branch">Stack</span><ul><li><span class="leaf">Go backends</span></li><li><span class="leaf">Python with care</span></li><li><span class="leaf">Tailwind and Vite</span></li></ul></li><li><span class="branch">Style</span><ul><li><span class="leaf">Dumb code wins</span></li><li><span class="leaf">Long clear names</span></li><li><span class="leaf">Plain SQL</span></li></ul></li></ul></li></ul></div>
+</main>
+<footer class="site">AI Power-User Intelligence Hub, field guide build v3. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026, the earlier of execution day and 30 November 2026. Open site/index.html from disk. No server need. No track code sits in this site.</footer>
+<script src="assets/site.js"></script>
+<script src="assets/js/mermaid.min.js"></script>
+<script>
+if (window.mermaid) { mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}}); }
+</script>
+<script src="assets/js/mermaid.min.js"></script>
+<script>
+if (window.mermaid) { mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}}); }
+</script>
+</body></html>
