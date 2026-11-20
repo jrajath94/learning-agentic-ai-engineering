@@ -500,6 +500,22 @@ window.SEARCH_DATA = [
   ]
  },
  {
+  "page": "social.html",
+  "title": "Social Sweep: the Viral Layer, Checked vs Primary Sources | Learning Agentic AI Engineering",
+  "heads": [
+   "What the viral layer repeats",
+   "Pattern table: viral claim vs primary record",
+   "Three social only finds worth a test",
+   "Top posts pulled, with links",
+   "The TikTok gap, stated plain",
+   "How to use the viral layer",
+   "Visual map of this page",
+   "Visual map of this page",
+   "Visual map of this page",
+   "Visual map of this page"
+  ]
+ },
+ {
   "page": "sources.html",
   "title": "Sources and gap report - Learning Agentic AI Engineering",
   "heads": [
