@@ -1,0 +1,16 @@
+# Excerpt from OpenAI's sample config, fetched 2026-11-20.
+# Source page: https://developers.openai.com/codex/config-sample
+# The docs page is not a git file, so there is no commit SHA.
+# The openai/codex tree pointer that links here is commit
+# 4e9ce8fa9e7649ec58601a3d61da7a086da75500, file docs/example-config.md.
+# Lines below are the keys as shown on that page. Commented lines stay commented.
+
+model = "gpt-6.1-sol"
+model_provider = "openai"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+project_doc_max_bytes = 32768
+project_doc_fallback_filenames = []
+
+# model_reasoning_effort = "medium"
+# plan_mode_reasoning_effort = "high"
