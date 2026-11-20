@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cross-cutting: MCP, skills, solo stacks - Learning Agentic AI Engineering</title>
+<link rel="stylesheet" href="assets/style.css"></head>
+<body>
+<header class="top"><div class="wordmark"><a href="index.html">Learning Agentic AI Engineering</a></div>
+<nav class="main"><a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="cross-cutting.html" aria-current="page">Cross-cutting</a><a href="profiles.html">Profiles</a><a href="prompts.html">Prompt Vault</a><a href="principles.html">Principles</a><a href="sources.html">Sources</a></nav></header>
+<main>
+<h1>Cross-cutting: MCP, skills, solo stacks</h1>
+<p class="lede">Tools differ. Patterns converge. This page holds the shared stack: MCP servers, skills, plugins, guardrails and the solo operator build.</p>
+<h2>MCP shortlist with consensus in November 2026 round ups</h2>
+<table><tr><th>Server</th><th>Job</th><th>Note</th></tr>
+<tr><td>GitHub MCP</td><td>Repos, issues, pull requests, Actions, security alerts</td><td>Remote OAuth or local Docker forms</td></tr>
+<tr><td>Playwright MCP</td><td>Browser acts via access snapshots</td><td>Microsoft server. Snapshot form beats screenshot form for agent reads</td></tr>
+<tr><td>Chrome DevTools MCP</td><td>Traces, network, console</td><td>Pairs with UI verify work</td></tr>
+<tr><td>Context7</td><td>Current library docs per version</td><td>Fixes stale train data on APIs</td></tr>
+<tr><td>Filesystem</td><td>File access in allow list folders only</td><td>Reference server, still kept</td></tr>
+<tr><td>Vendor servers</td><td>Sentry, Supabase, Figma, Linear, Stripe, Vercel, Notion, Atlassian</td><td>Pick per stack, not per hype</td></tr>
+</table>
+<div class="callout"><p>Stale tutorial trap. Old reference servers for GitHub, GitLab, Postgres, Puppeteer, Redis, Slack and SQLite sit in archive state. Kept reference core: Filesystem, Git, Fetch, Memory and Sequential Thinking. Year 2026 shift: remote HTTP transport with OAuth beats pasted API keys. Old SSE transport sits in deprecated state.</p></div>
+<h2>Config pattern, with placeholder secrets only</h2>
+<pre>claude mcp add &lt;name&gt; -- &lt;start command&gt;
+claude mcp add --transport http &lt;name&gt; &lt;url&gt;</pre>
+<p>Team form: check a .mcp.json file into a repo. All members gain the same tool set. Scope each token to least rights. Read only rights win where a task needs no write act. Never place a real secret in a site, a repo file or a prompt.</p>
+<h2>Skills and plugins</h2>
+<p>A plugin packs skills, commands, agents, hooks and MCP config for one command install via a marketplace. A skill folder holds one SKILL.md file with a name, a short text and a body. That folder form loads in Claude Code, Codex, Cursor, Gemini CLI, Copilot, Antigravity and Muse Code per sources in this build.</p>
+<p>Pocock design rule: user called skills run flow. Model called skills hold discipline. A user called skill can call model called skills. A user called skill must never call a second user called skill. Predictability beats clever chains.</p>
+<h2>Repo guide</h2>
+<table><tr><th>Repo</th><th>What the repo does</th><th>Install pattern in README</th></tr>
+<tr><td><a href="https://github.com/obra/superpowers">obra/superpowers</a></td><td>A full software method for coding agents. Brainstorm, worktree, plan in 2 to 5 minute tasks, subagent build with two stage review, test driven work, review, branch finish.</td><td>Claude Code plugin install from the official marketplace, or from the superpowers marketplace. Install per tool for other tools.</td></tr>
+<tr><td><a href="https://github.com/mattpocock/skills">mattpocock/skills</a></td><td>27 skills for real engineers. Grill, spec, tickets, test driven work, bug diagnosis and architecture deep work. Fixes four failure modes: wrong build, word waste, broken code, mud design.</td><td>Plugin install, then one setup command per repo. Setup asks tracker, labels and docs place.</td></tr>
+<tr><td><a href="https://github.com/JuliusBrussee/caveman">JuliusBrussee/caveman</a></td><td>Token compression skill, proxy and middleware. Agents say less and read less. Log and test output shrinks before a model read, with full text kept for recall.</td><td>Skills add command, then a caveman command per session. Full install forms sit in README.</td></tr>
+<tr><td><a href="https://github.com/Nutlope/hallmark">Nutlope/hallmark</a></td><td>Anti slop design skill. Four verbs: build, audit, redesign, study. Audit scores a target and edits no file. Study pulls design DNA to a portable design file.</td><td>Skills add command per a July 2026 article.</td></tr>
+<tr><td><a href="https://github.com/cursor/plugins">cursor/plugins, pstack folder</a></td><td>Lauren Tan playbook set. A poteto-mode front door picks one of 23 playbooks, copies steps to a task list, and fires skills as steps trigger. 34 skills and 24 principles per one README read.</td><td>Cursor plugin add, then a setup command. Claude Code form uses a marketplace add and a plugin install.</td></tr>
+<tr><td><a href="https://github.com/modelcontextprotocol/servers">modelcontextprotocol/servers</a></td><td>Official MCP reference servers. Kept core listed in the MCP note on this page.</td><td>Per server start commands in each server README.</td></tr>
+</table>
+<p>Savings claims for caveman come from repo own tests. Treat all such numbers as vendor claims. <span class="badge low">Low for savings</span></p>
+<p>Hallmark theme and gate counts conflict across sources. This site prints the verb model only, no counts.</p>
+<h2>Vibe coding to agentic engineering</h2>
+<p>Karpathy coined vibe coding in February 2025: describe, accept, watch acts. The 2026 fix in practitioner sources adds a spectrum. Vibe form fits prototypes with optional checks. Agentic engineering adds firm specs, rule files and auto verification.</p>
+<p>Google New SDLC frame via a summary: Agent equals Model plus Scaffold. Most teams spend too much on model choice and too little on scaffold.</p>
+<p>Guardrail pipeline: spec first, test driven work or oracle tests, linters and type checks and security scans, coverage gates, pre commit hooks and CI, human review of acts and key diffs.</p>
+<p>Security note: a guardrail article sums studies with about 40 to 45 percent of AI code in security tests with flaws. Present that range as studies cited by practitioners, not as a count from this site.</p>
+<h2>The canonical loop</h2>
+<pre>Grill and spec
+-&gt; Plan, with a second agent review on hard tasks
+-&gt; Execute in a worktree or sandbox
+-&gt; Test vs an oracle
+-&gt; Review by a fresh context agent
+-&gt; Fix loop
+-&gt; Ship via pull request and an approval gate
+-&gt; Capture the lesson in a rule file, a lint, a skill or an eval</pre>
+<h2>Solo one person army stack</h2>
+<p>Consensus in four solo founder guides from October and November 2026: one 20 dollar agent plan, GitHub Free, Vercel Hobby and Supabase Free. Total near 20 dollars per month to ship real products. Add paid tiers one layer at a time as limits bite.</p>
+<p>Full stack adds that recur: Cursor for edit work, Linear for plans, Stripe for pay, Resend for mail, PostHog for product data, and a research model as a thought partner.</p>
+<p>One operator frame: split RAM, disk and GPU roles. RAM: a fast thought partner model. Disk: a file system as the record. GPU: a coding agent run time with custom skills. A file out of the file system does not exist for the system.</p>
+<h2>Research pipeline pattern</h2>
+<ol><li>Subagents search in parallel and compress finds.</li><li>A lead agent builds a synthesis.</li><li>A separate citation or verify step maps each claim to a source.</li><li>A gap list names claims with no source.</li></ol>
+<p>This site used that same pipeline. The Sources page forms the audit trail.</p>
+
+</main>
+<footer class="site">AI Power-User Intelligence Hub. Build date: 20 November 2026. Every material claim links to a source on the Sources page. A claim with a Low badge rests on one self reported source. A gap marked INSUFFICIENT_EVIDENCE has no verified source in this build.</footer>
+</body></html>
