@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Codex and dots - Learning Agentic AI Engineering</title>
-<link rel="stylesheet" href="assets/style.css"></head>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></head>
 <body>
 <header class="top"><div class="wordmark"><a href="index.html">Learning Agentic AI Engineering</a></div>
 <nav class="main"><a href="index.html">Home</a><a href="start.html">Start Here</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="foundations.html">Foundations</a><a href="cross-cutting.html">Cross-cutting</a><a href="business.html">Business</a><a href="research.html">Research</a><a href="profiles.html">Profiles</a><a href="prompts.html">Prompt Vault</a><a href="labs.html">Labs</a><a href="paths.html">Learning Paths</a><a href="principles.html">Principles</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="audit.html">Audit</a><a href="search.html">Search</a></nav></header>
 <main>
 <h1>Codex and dots</h1>
 <p class="lede">Codex power use rests on one OpenAI post: harness engineering. Humans steer. Agents execute. The repo forms the system of record.</p>
+<figure class="visual"><img src="assets/img/codex.svg" alt="Flow diagram: AGENTS.md map, Agent executes, Self review loop, Merge with telemetry"><figcaption>Figure 1. Codex and dots as a flow. Each box names one stage on this page. Arrows show work order.</figcaption></figure>
+
 <div class="callout"><p>Dots clarification. Dots is not a Codex file feature. OpenAI dots is an always on personal agent. Launch date: 29 September 2026 at DevDay. Launch reports name GPT-6 Astra as the model. A user can launch dots from Codex or from ChatGPT. <span class="badge">High</span></p></div>
 <h2>Version facts</h2>
 <p>Codex CLI 0.167.0 came on 6 November 2026 with an agent command centre. Versions 0.168.0 and 0.169.0 came on 13 November 2026. Version 0.169 adds a trust rule: codex exec turns off project config and MCP servers in a folder with no trust, till a trust flag passes. <span class="badge">Medium to High</span></p>
@@ -30,7 +33,34 @@
 <h3>6. Hypotheses</h3><p>A doc care agent may pay off at 50 docs and waste tokens at 5 docs. Scale the act to repo size.</p>
 <h3>7. Decision support</h3><p>Copy the map, the layer rules and the self review loop first. Add doc care and cloud review after pull request volume grows.</p>
 <h3>8. One bounded next action</h3><p>Cut your AGENTS.md file to a map this week. Add one docs page per area, one exec plan form, and one lint rule with fix text in the error line.</p>
+
+<figure class="visual"><img src="assets/img/codex-groups.svg" alt="Concept groups diagram: Harness case, Surfaces, dots"><figcaption>Figure 2. Concept groups on this page. The markmap below expands each group into leaf points.</figcaption></figure>
+<h2>Visual map of this page</h2>
+<p>Three views of one page: a Mermaid flow for work order, a markmap for concept groups, and a read guide for the flow.</p>
+<div class="mermaid">
+flowchart LR
+ A[Human steers] --> B[Codex executes]
+ B --> C[Self review]
+ C --> D[Agent reviewers]
+ D -->|notes| B
+ D -->|pass| E[PR merge]
+ E --> F[Doc care agent]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[Human steers] --&gt; B[Codex executes]
+ B --&gt; C[Self review]
+ C --&gt; D[Agent reviewers]
+ D --&gt;|notes| B
+ D --&gt;|pass| E[PR merge]
+ E --&gt; F[Doc care agent]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the left box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Codex and dots</span><ul><li><span class="branch">Harness case</span><ul><li><span class="leaf">Near 1M lines, company report</span></li><li><span class="leaf">Zero hand code claim</span></li><li><span class="leaf">AGENTS.md near 100 lines</span></li></ul></li><li><span class="branch">Surfaces</span><ul><li><span class="leaf">CLI 0.169.0</span></li><li><span class="leaf">Cloud tasks</span></li><li><span class="leaf">PR review commands</span></li></ul></li><li><span class="branch">dots</span><ul><li><span class="leaf">Personal agent, not a Codex feature</span></li><li><span class="leaf">29 Sep 2026 launch</span></li></ul></li></ul></li></ul></div>
 </main>
 <footer class="site">AI Power-User Intelligence Hub. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026. Every material claim links to a source on the Sources page. A claim with a Low badge rests on one self reported source. A gap marked INSUFFICIENT_EVIDENCE has no verified source in this build.</footer>
 <script src="assets/site.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}});
+</script>
 </body></html>
