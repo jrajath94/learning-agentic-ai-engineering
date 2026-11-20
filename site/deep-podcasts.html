@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deep Dive: Podcast Systems, Compound Engineering and Voice to Issue | Learning Agentic AI Engineering</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></head>
+<body>
+<header class="top"><div class="wordmark"><a href="index.html">Learning Agentic AI Engineering</a></div>
+<nav class="main"><a href="index.html">Home</a><a href="start.html" aria-current="page">Start Here</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="foundations.html">Foundations</a><a href="cross-cutting.html">Cross-cutting</a><a href="business.html">Business</a><a href="research.html">Research</a><a href="profiles.html">Profiles</a><a href="prompts.html">Prompt Vault</a><a href="labs.html">Labs</a><a href="paths.html">Learning Paths</a><a href="principles.html">Principles</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="niche.html">Niche</a>
+<a href="deep.html">Deep Dives</a><a href="audit.html">Audit</a><a href="search.html">Search</a></nav></header>
+<main>
+<p class="meta">Home / Deep Dives / Deep Dive: Podcast Systems, Compound Engineering and Voice to Issue</p>
+<h1>Deep Dive: Podcast Systems, Compound Engineering and Voice to Issue</h1>
+<p class="lede">Four transcript grade systems from How I AI and AI and I: Klaassen compound engineering in full, the Cora voice to issue pipeline, the Reddit feature capsule, and the Notion spec system. Confidence: High for the first two, Medium for the last two.</p>
+<figure class="visual"><img src="assets/img/deep-podcasts.svg" alt="Flow diagram: Plan with research, Work from plan, Assess by personas, Compound learnings"><figcaption>Figure 1. Deep Dive: Podcast Systems, Compound Engineering and Voice to Issue as a flow. Each box names one stage on this page. Arrows show work order.</figcaption></figure>
+
+<h2>Compound Engineering: the four stage loop</h2>
+<p>Kieran Klaassen, How I AI, full transcript. The loop: Plan, Work, Assess, Compound. Each stage feeds the next, and the compound stage writes learnings that the next plan reads. The claim under the system: the tool gets better at your codebase each cycle, since the learnings live in files the planner searches.</p>
+<h2>Plan stage, in detail</h2>
+<ol><li>Three research sub agents run in parallel, each in a fresh context: codebase patterns, web best practice, and frameworks with the versions in use. On screen counts in the episode: 35k to 77k tokens per sub agent.</li><li>A spec flow analyzer walks the plan as named user personas and hunts for missing pages and flows.</li><li>Plan exits: open in an editor and read, deepen the plan with all skills loaded, send the plan to an agent review, or start work.</li><li>Plan edits happen in talk. His case: a plan with many small tools became one update settings tool after one challenge round. Cheap here, costly after build.</li></ol>
+<h2>Work stage</h2>
+<p>Clear the session first: the plan holds the state. Start the work command with the plan pasted or pulled from the tracker. The flow asks clarifying questions where the plan runs thin, builds its own execution plan, then builds and writes tests.</p>
+<h2>QA with video proof</h2>
+<p>The agent drives Chrome through the flow, records video of the whole run, and pins the video to the PR. The human can order an hour of break attempts: the agent tries to break the flow, fixes finds in place, and revalidates. For flows with no system test, he signs in by hand once and tells the agent to test inside the live session.</p>
+<h2>Assess stage: personas and to dos</h2>
+<ol><li>Reviewer personas run in parallel: his own view, security, architecture, code simplicity, agent native fit, and one named style persona.</li><li>Findings merge into one story with three grades: P1 never merge, P2 fix soon, P3 nice to have.</li><li>Findings land as files in a to dos folder. A status line shows the open count.</li><li>No auto fix. A triage talk walks the human through each finding for an approve or reject call.</li><li>Approved finds go to a resolve command: a dependency graph, parallel sub agents, one PR out.</li></ol>
+<h2>The LFG command and the taxonomy</h2>
+<p>One command runs the full flow end to end for near an hour: plan, work, test, review, a product video, a changelog, and the PR. His taxonomy, worth a copy: slash commands hold business logic that a human triggers on purpose, and commands can call commands. Sub agents hold work where only the result matters, and a human never calls one direct, always through a command. Skills hold just in time knowledge, and a skill description must state capabilities, since trigger text alone fires unreliably. His skill rule: agents write skills through a create skill command, humans read and review them, nobody hand writes skills.</p>
+<h2>Cora: voice to issue</h2>
+<p>From the AI and I full transcript: a dictated rough idea enters a fixed command pipeline. Stage 1 grounds the idea in the codebase. Stage 2 researches best practice on the web. Stage 3 presents a plan for human review. Stage 4 files a GitHub issue with five parts: problem statement, solution vision, requirements, technical requirements, implementation steps. Six or seven pipelines ran at once during the recorded call. The command itself came from a meta pipeline: a seed prompt in a chat model, run through a prompt improver, saved as the reusable command. Two rules carry the system: fix problems at the lowest value stage, since an error caught in the plan costs least; and prompt evals are tests for prompts, run a prompt ten times, and where it fails, rewrite the prompt until the pass holds.</p>
+<h2>Reddit Proto and the Feature Capsule</h2>
+<p>Blair Metcalf, How I AI, full timestamped transcript. Proto hides git: name a project, the app clones the repo and loads the design system scaffold. Real production data renders inside prototypes. Annotations on a prototype go to the coding tool as a file with code location, component, and request per note. The Feature Capsule path runs Figma to production: copy a frame location, the MCP walks the design token and component map, checks the map against CI and engineer feedback, and writes a PRD with goal, acceptance criteria, and frame links. Approval saves the capsule, the coding tool builds in a sibling repo, and a draft PR returns. Near 700 prototypes sit in their internal board, with full adoption across design and product.</p>
+<h2>Notion: specs as source of truth</h2>
+<p>Ryan Nystrom episode, from show notes and a structured write up, Medium confidence. Three systems: a standup agent that fills a fixed pre read from the last 24 hours of chat, tasks, PRs, and telemetry; a mention agent that takes a task note plus a screenshot and returns a PR with verification screenshots and a preview link in near 20 minutes; and repo spec files in plain English with code pointers and verification steps, where an edit to the spec plus a pointer to the agent ships the change. His named limit: CI speed caps agent speed, in math terms.</p>
+<h2>Apply this to your work</h2><div class="rule"><p>Compound engineering is your build system with names on. Your lanes plan, build, audit, and at times lose the lesson. Add the compound stage as a hard step: each lane ends by writing learnings into a solutions folder with front matter, and each plan stage starts by searching that folder. The Cora pipeline fits your idea flow: dictate a build idea, ground it in the repo, research, review the plan, and file a task card with the five parts. Your study and paper queues become issue shaped, and any agent can pick one up cold.</p></div><h2>Replication checklist</h2><ol><li>Add a solutions folder with front matter to your main build repo. End each lane with one learning file.</li><li>Build your voice to issue command: ground, research, plan, file. Five parts per issue.</li><li>Add reviewer personas to your audit step: security, architecture, simplicity, plus your STE and visual rules as two more.</li><li>Write one prompt eval: run your most used prompt ten times, log the fails, rewrite until clean.</li></ol>
+<p>Prompt files: <a href="../prompts/compound-plan.md">prompts/compound-plan.md</a> and <a href="../prompts/voice-to-issue.md">prompts/voice-to-issue.md</a>.</p>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart LR
+ A[Plan: 3 research passes] --> B[Spec flow walk]
+ B --> C[Work: clear session, plan in]
+ C --> D[Assess: personas, P1 to P3]
+ D --> E[Triage by human]
+ E --> F[Compound: learnings files]
+ F --> A
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[Plan: 3 research passes] --&gt; B[Spec flow walk]
+ B --&gt; C[Work: clear session, plan in]
+ C --&gt; D[Assess: personas, P1 to P3]
+ D --&gt; E[Triage by human]
+ E --&gt; F[Compound: learnings files]
+ F --&gt; A</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Podcast Systems, Compound Engineering and Voice to Issue</span><ul><li><span class="branch">Compound</span><ul><li><span class="leaf">Plan, work, assess, compound</span></li><li><span class="leaf">Learnings with front matter</span></li></ul></li><li><span class="branch">Cora</span><ul><li><span class="leaf">Voice to issue</span></li><li><span class="leaf">Five part issue</span></li><li><span class="leaf">Prompt evals</span></li></ul></li><li><span class="branch">Capsule</span><ul><li><span class="leaf">Figma map to PRD</span></li><li><span class="leaf">Sibling repo build</span></li></ul></li></ul></li></ul></div>
+</main>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart LR
+ A[Plan: 3 research passes] --> B[Spec flow walk]
+ B --> C[Work: clear session, plan in]
+ C --> D[Assess: personas, P1 to P3]
+ D --> E[Triage by human]
+ E --> F[Compound: learnings files]
+ F --> A
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[Plan: 3 research passes] --&gt; B[Spec flow walk]
+ B --&gt; C[Work: clear session, plan in]
+ C --&gt; D[Assess: personas, P1 to P3]
+ D --&gt; E[Triage by human]
+ E --&gt; F[Compound: learnings files]
+ F --&gt; A</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Podcast Systems, Compound Engineering and Voice to Issue</span><ul><li><span class="branch">Compound</span><ul><li><span class="leaf">Plan, work, assess, compound</span></li><li><span class="leaf">Learnings with front matter</span></li></ul></li><li><span class="branch">Cora</span><ul><li><span class="leaf">Voice to issue</span></li><li><span class="leaf">Five part issue</span></li><li><span class="leaf">Prompt evals</span></li></ul></li><li><span class="branch">Capsule</span><ul><li><span class="leaf">Figma map to PRD</span></li><li><span class="leaf">Sibling repo build</span></li></ul></li></ul></li></ul></div>
+</main>
+
+<h2>Visual map of this page</h2>
+<p>Three views of one page: a Mermaid flow for work order, a markmap for concept groups, and a read guide for the flow.</p>
+<div class="mermaid">
+flowchart TD
+ A[Claim: 5k to 10k tokens per day] --> B[Search both firms at origin]
+ B --> C[No such figure found]
+ C --> D[Real figures: dollars per day]
+ D --> E[Workflows that burn tokens]
+ E --> F[Fleets, schedules, swarms, review bots]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart TD
+ A[Claim: 5k to 10k tokens per day] --&gt; B[Search both firms at origin]
+ B --&gt; C[No such figure found]
+ C --&gt; D[Real figures: dollars per day]
+ D --&gt; E[Workflows that burn tokens]
+ E --&gt; F[Fleets, schedules, swarms, review bots]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the left box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Niche Sources and Token Heavy Workflows</span><ul><li><span class="branch">Claim check</span><ul><li><span class="leaf">No tokens per day average</span></li><li><span class="leaf">Dollars, multiples, percentiles</span></li><li><span class="leaf">Scale: one task past 55k tokens</span></li></ul></li><li><span class="branch">Heavy workflows</span><ul><li><span class="leaf">Cherny fleet</span></li><li><span class="leaf">Gas Town 20 to 30</span></li><li><span class="leaf">OpenAI research saturation</span></li><li><span class="leaf">Review bot per change</span></li></ul></li><li><span class="branch">Niche lanes</span><ul><li><span class="leaf">Blogs and dotfiles</span></li><li><span class="leaf">Podcast transcripts</span></li><li><span class="leaf">Newsletters</span></li><li><span class="leaf">Community threads</span></li></ul></li></ul></li></ul></div>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart LR
+ A[Plan: 3 research passes] --> B[Spec flow walk]
+ B --> C[Work: clear session, plan in]
+ C --> D[Assess: personas, P1 to P3]
+ D --> E[Triage by human]
+ E --> F[Compound: learnings files]
+ F --> A
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[Plan: 3 research passes] --&gt; B[Spec flow walk]
+ B --&gt; C[Work: clear session, plan in]
+ C --&gt; D[Assess: personas, P1 to P3]
+ D --&gt; E[Triage by human]
+ E --&gt; F[Compound: learnings files]
+ F --&gt; A</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Podcast Systems, Compound Engineering and Voice to Issue</span><ul><li><span class="branch">Compound</span><ul><li><span class="leaf">Plan, work, assess, compound</span></li><li><span class="leaf">Learnings with front matter</span></li></ul></li><li><span class="branch">Cora</span><ul><li><span class="leaf">Voice to issue</span></li><li><span class="leaf">Five part issue</span></li><li><span class="leaf">Prompt evals</span></li></ul></li><li><span class="branch">Capsule</span><ul><li><span class="leaf">Figma map to PRD</span></li><li><span class="leaf">Sibling repo build</span></li></ul></li></ul></li></ul></div>
+</main>
+<footer class="site">AI Power-User Intelligence Hub, field guide build v3. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026, the earlier of execution day and 30 November 2026. Open site/index.html from disk. No server need. No track code sits in this site.</footer>
+<script src="assets/site.js"></script>
+<script src="assets/js/mermaid.min.js"></script>
+<script>
+if (window.mermaid) { mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}}); }
+</script>
+<script src="assets/js/mermaid.min.js"></script>
+<script>
+if (window.mermaid) { mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}}); }
+</script>
+</body></html>
