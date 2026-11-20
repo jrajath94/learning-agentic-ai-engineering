@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deep Dive: Lauren Tan Fleet and the Bot Method | Learning Agentic AI Engineering</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></head>
+<body>
+<header class="top"><div class="wordmark"><a href="index.html">Learning Agentic AI Engineering</a></div>
+<nav class="main"><a href="index.html">Home</a><a href="start.html" aria-current="page">Start Here</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="foundations.html">Foundations</a><a href="cross-cutting.html">Cross-cutting</a><a href="business.html">Business</a><a href="research.html">Research</a><a href="profiles.html">Profiles</a><a href="prompts.html">Prompt Vault</a><a href="labs.html">Labs</a><a href="paths.html">Learning Paths</a><a href="principles.html">Principles</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="niche.html">Niche</a>
+<a href="deep.html">Deep Dives</a><a href="audit.html">Audit</a><a href="search.html">Search</a></nav></header>
+<main>
+<p class="meta">Home / Deep Dives / Deep Dive: Lauren Tan Fleet and the Bot Method</p>
+<h1>Deep Dive: Lauren Tan Fleet and the Bot Method</h1>
+<p class="lede">The richest X source in the sweep: a 15 bot roster, runtime verification with blind evals, and a four step bot design method from her own article. Sources: workshop analysis with artifact checks, her X article via transcription, and podcast reports. Confidence: Medium. Output numbers are her self reports.</p>
+<figure class="visual"><img src="assets/img/deep-tan.svg" alt="Flow diagram: Goal named, Process dump by voice, Bot restates, Routine trigger"><figcaption>Figure 1. Deep Dive: Lauren Tan Fleet and the Bot Method as a flow. Each box names one stage on this page. Arrows show work order.</figcaption></figure>
+
+<h2>The roster</h2>
+<pre>1 Chief of Staff
+3 Managers
+11 Execution Assistants
+Total: 15 named AI assistants
+
+Her output claims, self reported:
+near 1,000 PRs merged in one month
+near 800 PRs in the first 12 days of one month
+20 PRs auto merged overnight, clean on post merge check
+600 plus PRs on one migration to an agent friendly
+architecture with a 5 layer enforcement list</pre>
+<h2>The core technical claim</h2>
+<p>An AI that writes code is not a loop until it can run the code. Runtime verification makes autonomy safe. Her open source plugin set holds verification skills that create and maintain a check per surface, and the checks run under blind evals: workspace paths in disguise and cross model judges, so the agent under test cannot game the eval it can see. Two commands compose in her system: one builds a feature, one updates the feature map, and a maintenance command catches map drift.</p>
+<h2>Benny: the bug bot pattern</h2>
+<p>A named bot watches the bug channel. On a report, the bot boots a cloud desktop, reproduces the issue, and compares behavior against main. The same loop runs on alerts: a metric threshold fires, a bot reproduces on its own machine, finds the fault, and writes a fix. A second worked case ran inside one Slack thread of near 200 messages: a cloud agent with its own machine prototyped a feature and posted videos and screenshots back, the human never opened the editor, and the team reviewed artifacts in place of a diff.</p>
+<h2>The bot design method, from her article</h2>
+<ol><li>Name the goal: what the work is for. Her warning: most people name the process, a form or a mail, in place of the goal.</li><li>Brain dump the process by voice: the steps, the tools, where facts come from, and how the work gets checked.</li><li>Make the bot restate the goal and the process before it starts. A wrong restate costs one message. A wrong run costs a day.</li><li>Set the routine: a trigger on a mail, a message, or a schedule. With no routine, a bot works only when asked, and the fleet decays to a chat toy.</li><li>Her designer bot builds new bots after a short preference talk. Design bar from the listing: coding bots get one job, clean output, verified. Other bots get one job, one voice, explicit anti jobs, and no leftover tools.</li></ol>
+<h2>The Sanchez rules, with the accounting flag</h2>
+<p>Codie Sanchez runs a public bot experiment with three rules: no work by her after setup, a hard spend cap, and cash or real savings only as the score. The reusable systems from the walkthroughs: a finder bot that dedupes leads into a sheet, a drafter bot that writes outreach and holds each draft for her approval, and a flipping chain with a cost check before any money moves. The flag, stated plain: the headline return counts booked calls at estimated pipeline value, not cash, which breaks her own third rule. Take the structures. Leave the score.</p>
+<h2>Apply this to your work</h2><div class="rule"><p>Your agent fleet holds the Tan shape in part: named lanes with one job each. Two adds pay at once. One: runtime verification as a skill per surface, with blind evals on your audit lanes, since your auditors and builders can share context in ways that let a weak build pass. Two: the restate step as law for every lane start: the lane restates goal, process, and check in its first message, and you correct the restate in place of correcting the output a day later. Her anti jobs line also sharpens your lane cards: name what a lane must never do, in the card, next to the job.</p></div><h2>Replication checklist</h2><ol><li>Add a restate block to your lane card template: goal, process, check, anti jobs.</li><li>Build one verification skill for your most shipped surface. Add a blind variant.</li><li>Give each standing bot a routine trigger. A bot with no trigger gets a schedule or a cut.</li></ol>
+<p>Prompt file: <a href="../prompts/chief-of-staff-bot.md">prompts/chief-of-staff-bot.md</a>.</p>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart LR
+ A[Name the goal] --> B[Brain dump the process]
+ B --> C[Bot restates both]
+ C -->|wrong| B
+ C -->|right| D[Routine runs]
+ D --> E[Runtime verification]
+ E --> F[Blind eval check]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[Name the goal] --&gt; B[Brain dump the process]
+ B --&gt; C[Bot restates both]
+ C --&gt;|wrong| B
+ C --&gt;|right| D[Routine runs]
+ D --&gt; E[Runtime verification]
+ E --&gt; F[Blind eval check]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Lauren Tan Fleet and the Bot Method</span><ul><li><span class="branch">Roster</span><ul><li><span class="leaf">1 chief of staff</span></li><li><span class="leaf">3 managers</span></li><li><span class="leaf">11 execution</span></li></ul></li><li><span class="branch">Safety</span><ul><li><span class="leaf">Runtime verification</span></li><li><span class="leaf">Blind evals</span></li><li><span class="leaf">Anti jobs named</span></li></ul></li><li><span class="branch">Flags</span><ul><li><span class="leaf">Self reported counts</span></li><li><span class="leaf">Sanchez score at pipeline value</span></li></ul></li></ul></li></ul></div>
+</main>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart LR
+ A[Name the goal] --> B[Brain dump the process]
+ B --> C[Bot restates both]
+ C -->|wrong| B
+ C -->|right| D[Routine runs]
+ D --> E[Runtime verification]
+ E --> F[Blind eval check]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[Name the goal] --&gt; B[Brain dump the process]
+ B --&gt; C[Bot restates both]
+ C --&gt;|wrong| B
+ C --&gt;|right| D[Routine runs]
+ D --&gt; E[Runtime verification]
+ E --&gt; F[Blind eval check]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Lauren Tan Fleet and the Bot Method</span><ul><li><span class="branch">Roster</span><ul><li><span class="leaf">1 chief of staff</span></li><li><span class="leaf">3 managers</span></li><li><span class="leaf">11 execution</span></li></ul></li><li><span class="branch">Safety</span><ul><li><span class="leaf">Runtime verification</span></li><li><span class="leaf">Blind evals</span></li><li><span class="leaf">Anti jobs named</span></li></ul></li><li><span class="branch">Flags</span><ul><li><span class="leaf">Self reported counts</span></li><li><span class="leaf">Sanchez score at pipeline value</span></li></ul></li></ul></li></ul></div>
+</main>
+
+<h2>Visual map of this page</h2>
+<p>Three views of one page: a Mermaid flow for work order, a markmap for concept groups, and a read guide for the flow.</p>
+<div class="mermaid">
+flowchart TD
+ A[Claim: 5k to 10k tokens per day] --> B[Search both firms at origin]
+ B --> C[No such figure found]
+ C --> D[Real figures: dollars per day]
+ D --> E[Workflows that burn tokens]
+ E --> F[Fleets, schedules, swarms, review bots]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart TD
+ A[Claim: 5k to 10k tokens per day] --&gt; B[Search both firms at origin]
+ B --&gt; C[No such figure found]
+ C --&gt; D[Real figures: dollars per day]
+ D --&gt; E[Workflows that burn tokens]
+ E --&gt; F[Fleets, schedules, swarms, review bots]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the left box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Niche Sources and Token Heavy Workflows</span><ul><li><span class="branch">Claim check</span><ul><li><span class="leaf">No tokens per day average</span></li><li><span class="leaf">Dollars, multiples, percentiles</span></li><li><span class="leaf">Scale: one task past 55k tokens</span></li></ul></li><li><span class="branch">Heavy workflows</span><ul><li><span class="leaf">Cherny fleet</span></li><li><span class="leaf">Gas Town 20 to 30</span></li><li><span class="leaf">OpenAI research saturation</span></li><li><span class="leaf">Review bot per change</span></li></ul></li><li><span class="branch">Niche lanes</span><ul><li><span class="leaf">Blogs and dotfiles</span></li><li><span class="leaf">Podcast transcripts</span></li><li><span class="leaf">Newsletters</span></li><li><span class="leaf">Community threads</span></li></ul></li></ul></li></ul></div>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart LR
+ A[Name the goal] --> B[Brain dump the process]
+ B --> C[Bot restates both]
+ C -->|wrong| B
+ C -->|right| D[Routine runs]
+ D --> E[Runtime verification]
+ E --> F[Blind eval check]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[Name the goal] --&gt; B[Brain dump the process]
+ B --&gt; C[Bot restates both]
+ C --&gt;|wrong| B
+ C --&gt;|right| D[Routine runs]
+ D --&gt; E[Runtime verification]
+ E --&gt; F[Blind eval check]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Lauren Tan Fleet and the Bot Method</span><ul><li><span class="branch">Roster</span><ul><li><span class="leaf">1 chief of staff</span></li><li><span class="leaf">3 managers</span></li><li><span class="leaf">11 execution</span></li></ul></li><li><span class="branch">Safety</span><ul><li><span class="leaf">Runtime verification</span></li><li><span class="leaf">Blind evals</span></li><li><span class="leaf">Anti jobs named</span></li></ul></li><li><span class="branch">Flags</span><ul><li><span class="leaf">Self reported counts</span></li><li><span class="leaf">Sanchez score at pipeline value</span></li></ul></li></ul></li></ul></div>
+</main>
+<footer class="site">AI Power-User Intelligence Hub, field guide build v3. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026, the earlier of execution day and 30 November 2026. Open site/index.html from disk. No server need. No track code sits in this site.</footer>
+<script src="assets/site.js"></script>
+<script src="assets/js/mermaid.min.js"></script>
+<script>
+if (window.mermaid) { mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}}); }
+</script>
+<script src="assets/js/mermaid.min.js"></script>
+<script>
+if (window.mermaid) { mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}}); }
+</script>
+</body></html>
