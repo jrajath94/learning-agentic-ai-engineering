@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deep Dive: Cherny, Threads, Lenny, and the YC Talk | Learning Agentic AI Engineering</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></head>
+<body>
+<header class="top"><div class="wordmark"><a href="index.html">Learning Agentic AI Engineering</a></div>
+<nav class="main"><a href="index.html">Home</a><a href="start.html" aria-current="page">Start Here</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="foundations.html">Foundations</a><a href="cross-cutting.html">Cross-cutting</a><a href="business.html">Business</a><a href="research.html">Research</a><a href="profiles.html">Profiles</a><a href="prompts.html">Prompt Vault</a><a href="labs.html">Labs</a><a href="paths.html">Learning Paths</a><a href="principles.html">Principles</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="niche.html">Niche</a>
+<a href="deep.html">Deep Dives</a><a href="audit.html">Audit</a><a href="search.html">Search</a></nav></header>
+<main>
+<p class="meta">Home / Deep Dives / Deep Dive: Cherny, Threads, Lenny, and the YC Talk</p>
+<h1>Deep Dive: Cherny, Threads, Lenny, and the YC Talk</h1>
+<p class="lede">Three primary records joined: his January 2026 workflow thread in full, the Lenny episode transcript, and the YC Startup School talk transcript. Sources: X thread transcription on GitHub, podscripts Lenny transcript, TortoiseWolfe YC transcript. Confidence: High for thread 1 and both transcripts, Medium for thread 2 compilations.</p>
+<figure class="visual"><img src="assets/img/deep-cherny.svg" alt="Flow diagram: Plan mode, Fleet in worktrees, Verify subagent, Rule file update"><figcaption>Figure 1. Deep Dive: Cherny, Threads, Lenny, and the YC Talk as a flow. Each box names one stage on this page. Arrows show work order.</figcaption></figure>
+
+<h2>Thread 1: the 13 practices, in order</h2>
+<ol><li>Run 5 Claudes in parallel in the terminal. Tabs numbered 1 to 5. System notifications on tab events.</li><li>Run 5 to 10 more on the web app. Hand a session from local to web and back. Start sessions from the phone app in the morning.</li><li>Use the top model with thinking for all work. Steering a strong model less beats a cheap model with heavy steering, in total time.</li><li>Keep one shared team CLAUDE.md in git. The whole team edits it many times per week. Each error Claude makes earns a line.</li><li>In review, tag the Claude account on a team mate PR to add the lesson to CLAUDE.md inside that PR, via the GitHub Action. His name for the pattern: compounding engineering.</li><li>Start most sessions in plan mode. Shape the plan until it reads right. Switch to auto accept edits. A good plan one shots the build.</li><li>Slash commands for each daily inner loop job, in git, in .claude/commands/. His commit push PR command runs dozens of times per day. Commands pre compute state with inline shell, such as git status.</li><li>Two named subagents: code-simplifier, which cleans code after a build, and verify-app, which holds long instructions for end to end tests of the product itself.</li><li>A PostToolUse hook formats code after each edit. The hook takes the last 10 percent, so CI format errors near vanish.</li><li>No skip permissions mode. Use a permissions file with safe commands pre allowed, shared with the team in .claude/settings.json.</li><li>Tools by config file: Slack MCP in .mcp.json, shared. BigQuery via the bq CLI. Sentry for logs.</li><li>Long runs, three forms: ask Claude to verify its work with a background agent at the end, or set an agent Stop hook, or use a loop plugin. Sandbox flags stop permission stalls.</li><li>Verification is the top practice, in his own stress. Give Claude a way to verify and quality rises two to three times. His team tests each web change in a real browser via the Chrome extension: open, test the UI, fix, repeat. The check varies by domain: a shell command, a test suite, a browser, a phone simulator.</li></ol>
+<h2>Thread 2: team tips, from compilations</h2>
+<ol><li>Run 3 to 5 git worktrees in parallel. His own form: multiple checkouts with short aliases, plus one analysis worktree for logs and data queries.</li><li>Plan mode with a twist: a second Claude reviews the plan as a staff engineer. On a bad run, return to plan mode and replan, never push through.</li><li>End each correction with the line: Update your CLAUDE.md so you don't make that mistake again. Edit the file with no mercy. One engineer keeps a notes folder per project, updated after each PR, with CLAUDE.md as the pointer.</li><li>A job done more than once a day becomes a skill or a command. One named command runs at session end to find and kill duplicate code. One command pulls seven days of Slack, Drive, tasks, and GitHub into one context dump.</li><li>Bugs: paste the Slack bug thread into Claude with the word fix. Let Claude run the whole repair.</li><li>Setup notes: a fast terminal, colored named tabs, voice dictation at three times typing speed.</li></ol>
+<h2>Lenny episode: principles and numbers</h2>
+<p>From the full transcript: 100 percent of his code from Claude since November 2025, 10 to 40 PRs per day across the episode, near 5 agents live as he spoke, and Claude reviews 100 percent of Anthropic PRs with a human after. Team principles in order: better than doing a thing is having Claude do it; underfund projects on purpose, since constraint forces agent first work; speed as a norm, today beats tomorrow; tokens free at the start, cost cuts only after a win scales. His three user tips close the episode: use the most capable model at max effort, since a weak model burns more tokens to the same end; plan mode is one injected sentence that bars code until the plan holds, and near 80 percent of his tasks start there; and try all surfaces, his own split is one third terminal, one third desktop, one third phone.</p>
+<h2>YC talk: the ablation method and hard tasks</h2>
+<ol><li>On each new model, delete first. His team cut 80 percent of the system prompt for Opus 5, since the prompt existed to fix acts the new model no longer shows.</li><li>Method: delete the whole prompt, use the product, add a line back only when the model repeats one error. Each line is re-read each turn, so each line must earn its place.</li><li>User form of the rule: each six months, delete your CLAUDE.md, your skills, and your hooks. Watch the bare model. Add back only what earns a return.</li><li>Give tasks a grade too hard, with guardrails and exit criteria in the prompt, then leave the model to work. His words at 20:15: verification is the single most important thing people get wrong.</li><li>Proof runs: a Bun rewrite from Zig to Rust ran as one prompt plus a dynamic workflow for 11 days. An Electron to Swift rewrite ran 14 to 15 days with a pixel compare check: run both apps, screenshot, compare, repeat until match.</li><li>Dynamic workflows: say use a workflow. Agents fan out, a verify set checks, agents fan out again. His name: an algebra for agents.</li><li>Loops run local on a cron. Routines run in the cloud with the laptop shut. His own product teams run 20 to 30 maintenance routines per day on Anthropic apps: dead code, test gaps, duplicate abstractions, each a one sentence prompt.</li></ol>
+<h2>Two items that do not exist</h2>
+<p>The round 3 sweep searched both thread transcriptions for a weekly tips ritual and for capacity planning. Neither item appears. Any guide that lists them under his name cites a source that does not hold them.</p>
+<h2>Apply this to your work</h2><div class="rule"><p>Your fleet shape is close to his: parallel lanes, shared rule files, review gates. Three upgrades stand out for your work. One: the verify subagent as a named role in each lane, with browser or test proof per change, in place of a text claim. Two: the six month ablation on your own rule files, since your SOUL and AGENTS files grow by accretion and each line taxes each turn. Three: routines for your maintenance load: dead code in study repos, test gaps in labs, duplicate abstractions across your build scripts, each a one sentence cloud routine with a PR as output.</p></div><h2>Replication checklist</h2><ol><li>Name your verify agent in each active lane. Write its instructions in a file, not in chat.</li><li>Set a date for your first rule file ablation. Back up first. Delete half. Run a week. Add back only earned lines.</li><li>Convert one repeat maintenance job into a routine with a PR output and a gate.</li><li>End each correction you give an agent with the CLAUDE.md line, verbatim habit.</li></ol>
+<p>Prompt files: <a href="../prompts/fleet-day.md">prompts/fleet-day.md</a> and <a href="../prompts/fleet-review.md">prompts/fleet-review.md</a>.</p>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart TD
+ A[Plan mode] --> B[Plan holds]
+ B --> C[Auto accept build]
+ C --> D[Verify: tests, browser]
+ D -->|fail| A
+ D -->|pass| E[Simplify pass]
+ E --> F[Lesson to CLAUDE.md]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart TD
+ A[Plan mode] --&gt; B[Plan holds]
+ B --&gt; C[Auto accept build]
+ C --&gt; D[Verify: tests, browser]
+ D --&gt;|fail| A
+ D --&gt;|pass| E[Simplify pass]
+ E --&gt; F[Lesson to CLAUDE.md]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Cherny, Threads, Lenny, and the YC Talk</span><ul><li><span class="branch">Fleet</span><ul><li><span class="leaf">5 terminal plus 5 to 10 web</span></li><li><span class="leaf">Worktrees za zb zc</span></li><li><span class="leaf">Phone starts</span></li></ul></li><li><span class="branch">Files</span><ul><li><span class="leaf">Shared CLAUDE.md</span></li><li><span class="leaf">Commands in git</span></li><li><span class="leaf">Permissions shared</span></li></ul></li><li><span class="branch">Doctrines</span><ul><li><span class="leaf">Verification first</span></li><li><span class="leaf">Ablation each 6 months</span></li><li><span class="leaf">Hard tasks, exit rules</span></li></ul></li></ul></li></ul></div>
+</main>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart TD
+ A[Plan mode] --> B[Plan holds]
+ B --> C[Auto accept build]
+ C --> D[Verify: tests, browser]
+ D -->|fail| A
+ D -->|pass| E[Simplify pass]
+ E --> F[Lesson to CLAUDE.md]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart TD
+ A[Plan mode] --&gt; B[Plan holds]
+ B --&gt; C[Auto accept build]
+ C --&gt; D[Verify: tests, browser]
+ D --&gt;|fail| A
+ D --&gt;|pass| E[Simplify pass]
+ E --&gt; F[Lesson to CLAUDE.md]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Cherny, Threads, Lenny, and the YC Talk</span><ul><li><span class="branch">Fleet</span><ul><li><span class="leaf">5 terminal plus 5 to 10 web</span></li><li><span class="leaf">Worktrees za zb zc</span></li><li><span class="leaf">Phone starts</span></li></ul></li><li><span class="branch">Files</span><ul><li><span class="leaf">Shared CLAUDE.md</span></li><li><span class="leaf">Commands in git</span></li><li><span class="leaf">Permissions shared</span></li></ul></li><li><span class="branch">Doctrines</span><ul><li><span class="leaf">Verification first</span></li><li><span class="leaf">Ablation each 6 months</span></li><li><span class="leaf">Hard tasks, exit rules</span></li></ul></li></ul></li></ul></div>
+</main>
+
+<h2>Visual map of this page</h2>
+<p>Three views of one page: a Mermaid flow for work order, a markmap for concept groups, and a read guide for the flow.</p>
+<div class="mermaid">
+flowchart TD
+ A[Claim: 5k to 10k tokens per day] --> B[Search both firms at origin]
+ B --> C[No such figure found]
+ C --> D[Real figures: dollars per day]
+ D --> E[Workflows that burn tokens]
+ E --> F[Fleets, schedules, swarms, review bots]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart TD
+ A[Claim: 5k to 10k tokens per day] --&gt; B[Search both firms at origin]
+ B --&gt; C[No such figure found]
+ C --&gt; D[Real figures: dollars per day]
+ D --&gt; E[Workflows that burn tokens]
+ E --&gt; F[Fleets, schedules, swarms, review bots]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the left box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Niche Sources and Token Heavy Workflows</span><ul><li><span class="branch">Claim check</span><ul><li><span class="leaf">No tokens per day average</span></li><li><span class="leaf">Dollars, multiples, percentiles</span></li><li><span class="leaf">Scale: one task past 55k tokens</span></li></ul></li><li><span class="branch">Heavy workflows</span><ul><li><span class="leaf">Cherny fleet</span></li><li><span class="leaf">Gas Town 20 to 30</span></li><li><span class="leaf">OpenAI research saturation</span></li><li><span class="leaf">Review bot per change</span></li></ul></li><li><span class="branch">Niche lanes</span><ul><li><span class="leaf">Blogs and dotfiles</span></li><li><span class="leaf">Podcast transcripts</span></li><li><span class="leaf">Newsletters</span></li><li><span class="leaf">Community threads</span></li></ul></li></ul></li></ul></div>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart TD
+ A[Plan mode] --> B[Plan holds]
+ B --> C[Auto accept build]
+ C --> D[Verify: tests, browser]
+ D -->|fail| A
+ D -->|pass| E[Simplify pass]
+ E --> F[Lesson to CLAUDE.md]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart TD
+ A[Plan mode] --&gt; B[Plan holds]
+ B --&gt; C[Auto accept build]
+ C --&gt; D[Verify: tests, browser]
+ D --&gt;|fail| A
+ D --&gt;|pass| E[Simplify pass]
+ E --&gt; F[Lesson to CLAUDE.md]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Cherny, Threads, Lenny, and the YC Talk</span><ul><li><span class="branch">Fleet</span><ul><li><span class="leaf">5 terminal plus 5 to 10 web</span></li><li><span class="leaf">Worktrees za zb zc</span></li><li><span class="leaf">Phone starts</span></li></ul></li><li><span class="branch">Files</span><ul><li><span class="leaf">Shared CLAUDE.md</span></li><li><span class="leaf">Commands in git</span></li><li><span class="leaf">Permissions shared</span></li></ul></li><li><span class="branch">Doctrines</span><ul><li><span class="leaf">Verification first</span></li><li><span class="leaf">Ablation each 6 months</span></li><li><span class="leaf">Hard tasks, exit rules</span></li></ul></li></ul></li></ul></div>
+</main>
+<footer class="site">AI Power-User Intelligence Hub, field guide build v3. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026, the earlier of execution day and 30 November 2026. Open site/index.html from disk. No server need. No track code sits in this site.</footer>
+<script src="assets/site.js"></script>
+<script src="assets/js/mermaid.min.js"></script>
+<script>
+if (window.mermaid) { mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}}); }
+</script>
+<script src="assets/js/mermaid.min.js"></script>
+<script>
+if (window.mermaid) { mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}}); }
+</script>
+</body></html>
