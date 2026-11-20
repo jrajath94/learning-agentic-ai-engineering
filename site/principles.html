@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Engineering principles - Learning Agentic AI Engineering</title>
-<link rel="stylesheet" href="assets/style.css"></head>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></head>
 <body>
 <header class="top"><div class="wordmark"><a href="index.html">Learning Agentic AI Engineering</a></div>
 <nav class="main"><a href="index.html">Home</a><a href="start.html">Start Here</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="foundations.html">Foundations</a><a href="cross-cutting.html">Cross-cutting</a><a href="business.html">Business</a><a href="research.html">Research</a><a href="profiles.html">Profiles</a><a href="prompts.html">Prompt Vault</a><a href="labs.html">Labs</a><a href="paths.html">Learning Paths</a><a href="principles.html">Principles</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="audit.html">Audit</a><a href="search.html">Search</a></nav></header>
 <main>
 <h1>Engineering principles</h1>
 <p class="lede">Ten rules recur across all labs. Each rule names a source cluster on the tool pages.</p>
+<figure class="visual"><img src="assets/img/principles.svg" alt="Flow diagram: Harness beats model, Map not manual, Loop with oracle, Approval by reversal cost"><figcaption>Figure 1. Engineering principles as a flow. Each box names one stage on this page. Arrows show work order.</figcaption></figure>
+
 <ol>
 <li><h3>Harness beats model</h3><p>Agent equals Model plus Scaffold. On a weak result, fix tools, form and feedback first. Ask: what skill lacks, and how can a rule make that skill clear and firm? Source: OpenAI harness post.</p></li>
 <li><h3>Map, not manual</h3><p>Instruction files act as tables of contents near 100 to 200 lines. Deep docs sit one link away, with an owner and a freshness check. Anthropic and OpenAI reach this rule on own paths.</p></li>
@@ -31,7 +34,32 @@
 <pre>Trigger -&gt; Execute -&gt; Verify vs oracle -&gt; State log -&gt; Stop at pass or at a set round cap</pre>
 <p>State log fields per round: cluster, draft version, claim count, gap list. A loop with no state log repeats work and hides drift.</p>
 
+
+<figure class="visual"><img src="assets/img/principles-groups.svg" alt="Concept groups diagram: Ten rules, Harness table"><figcaption>Figure 2. Concept groups on this page. The markmap below expands each group into leaf points.</figcaption></figure>
+<h2>Visual map of this page</h2>
+<p>Three views of one page: a Mermaid flow for work order, a markmap for concept groups, and a read guide for the flow.</p>
+<div class="mermaid">
+flowchart TD
+ A[Harness] --> B[Graph of work]
+ B --> C[Loop vs oracle]
+ C --> D[Fresh eyes review]
+ D --> E[Lesson to firm layer]
+ E --> A
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart TD
+ A[Harness] --&gt; B[Graph of work]
+ B --&gt; C[Loop vs oracle]
+ C --&gt; D[Fresh eyes review]
+ D --&gt; E[Lesson to firm layer]
+ E --&gt; A</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the left box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Engineering principles</span><ul><li><span class="branch">Ten rules</span><ul><li><span class="leaf">Harness, map, graph</span></li><li><span class="leaf">Loop, fresh eyes, firm lessons</span></li><li><span class="leaf">Approval, context, speed, moat</span></li></ul></li><li><span class="branch">Harness table</span><ul><li><span class="leaf">Context as RAM</span></li><li><span class="leaf">Tools as calls</span></li><li><span class="leaf">Skills as programs</span></li><li><span class="leaf">Evals as verifiers</span></li></ul></li></ul></li></ul></div>
 </main>
 <footer class="site">AI Power-User Intelligence Hub. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026. Every material claim links to a source on the Sources page. A claim with a Low badge rests on one self reported source. A gap marked INSUFFICIENT_EVIDENCE has no verified source in this build.</footer>
 <script src="assets/site.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}});
+</script>
 </body></html>
