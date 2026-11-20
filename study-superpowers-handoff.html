@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Superpowers handoff | AI engineering field guide</title><link rel="stylesheet" href="assets/guide.css"><link rel="stylesheet" href="assets/workshop.css">
+<script defer src="assets/search-index.js"></script><script defer src="assets/guide.js"></script><script defer src="assets/visuals.js"></script><script defer src="assets/study.js"></script><script defer src="assets/workshop.js"></script></head>
+<body class="page-study-superpowers-handoff"><a class="skip" href="#main">Skip to content</a>
+<header class="mast"><div class="mast-inner"><a class="wordmark" href="index.html">Engineering field guide</a>
+<nav class="mast-links" aria-label="Shortcuts"><a href="labs.html">Labs</a><a href="sources.html">Sources</a><a href="#find">Search ↓</a></nav></div></header>
+<div class="layout"><aside class="rail"><nav aria-label="Chapters"><div class="nav-group"><p>Study</p><a href="index.html">Start here</a><a href="paths.html">Learning paths</a><a href="foundations.html">Foundations</a><a href="cases.html">Practitioner cases</a><a href="fieldnotes.html">Practitioner field notes</a></div><div class="nav-group"><p>Workshops</p><a href="workflow-kit.html">Adapt a workflow</a><a href="workshop-engineering.html">Repository to reviewed patch</a><a href="workshop-research.html">Retrieval and evaluation</a><a href="workshop-automation.html">Durable tool workflows</a><a href="run-viewer.html">Inspect recorded runs</a><a href="social-practice.html">From posts to practice</a><a href="community.html">Community practice</a><a href="resource-study.html">Read the implementations</a></div><div class="nav-group"><p>Evidence</p><a href="usage.html">How labs use tokens</a><a href="graphs.html">Project graphs</a><a href="sources.html">Source library</a><a href="audit.html">Audit and open questions</a></div><div class="nav-group"><p>Practice</p><a href="engineering.html">Production engineering</a><a href="business.html">Business workflows</a><a href="research.html">Research workflows</a><a href="labs.html">Practical labs</a></div><div class="nav-group"><p>Reference</p><a href="products.html">Products and versions</a><a href="tools.html">Tool tutorials</a><a href="resources.html">Resource catalog</a><a href="prompts.html">Prompt library</a><a href="glossary.html">Glossary</a></div><div class="nav-group"><p>Source studies</p><a href="study-cache-ledger.html">Cache ledger</a><a href="study-codex-instructions.html">Codex instructions</a><a href="study-dspy-bootstrap.html">Dspy bootstrap</a><a href="study-eval-outcomes.html">Eval outcomes</a><a href="study-mcp-tool-schema.html">Mcp tool schema</a><a href="study-operator-workflows.html">Operator workflows</a><a href="study-orchestrator-workers.html">Orchestrator workers</a><a href="study-restart-compaction.html">Restart compaction</a><a href="study-superpowers-handoff.html" aria-current="page">Superpowers handoff</a><a href="study-tool-contracts.html">Tool contracts</a></div></nav></aside>
+<div class="reading"><details id="navigation"><summary>Browse chapters</summary><nav aria-label="Mobile chapters"><div class="nav-group"><p>Study</p><a href="index.html">Start here</a><a href="paths.html">Learning paths</a><a href="foundations.html">Foundations</a><a href="cases.html">Practitioner cases</a><a href="fieldnotes.html">Practitioner field notes</a></div><div class="nav-group"><p>Workshops</p><a href="workflow-kit.html">Adapt a workflow</a><a href="workshop-engineering.html">Repository to reviewed patch</a><a href="workshop-research.html">Retrieval and evaluation</a><a href="workshop-automation.html">Durable tool workflows</a><a href="run-viewer.html">Inspect recorded runs</a><a href="social-practice.html">From posts to practice</a><a href="community.html">Community practice</a><a href="resource-study.html">Read the implementations</a></div><div class="nav-group"><p>Evidence</p><a href="usage.html">How labs use tokens</a><a href="graphs.html">Project graphs</a><a href="sources.html">Source library</a><a href="audit.html">Audit and open questions</a></div><div class="nav-group"><p>Practice</p><a href="engineering.html">Production engineering</a><a href="business.html">Business workflows</a><a href="research.html">Research workflows</a><a href="labs.html">Practical labs</a></div><div class="nav-group"><p>Reference</p><a href="products.html">Products and versions</a><a href="tools.html">Tool tutorials</a><a href="resources.html">Resource catalog</a><a href="prompts.html">Prompt library</a><a href="glossary.html">Glossary</a></div><div class="nav-group"><p>Source studies</p><a href="study-cache-ledger.html">Cache ledger</a><a href="study-codex-instructions.html">Codex instructions</a><a href="study-dspy-bootstrap.html">Dspy bootstrap</a><a href="study-eval-outcomes.html">Eval outcomes</a><a href="study-mcp-tool-schema.html">Mcp tool schema</a><a href="study-operator-workflows.html">Operator workflows</a><a href="study-orchestrator-workers.html">Orchestrator workers</a><a href="study-restart-compaction.html">Restart compaction</a><a href="study-superpowers-handoff.html" aria-current="page">Superpowers handoff</a><a href="study-tool-contracts.html">Tool contracts</a></div></nav></details>
+<main id="main" tabindex="-1" data-workshop-progress><nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Guide</a><span>/</span>Source studies<span>/</span>Superpowers handoff</nav>
+<div class="title"><h1>Carry a design through plan and review</h1></div><details class="contents"><summary>On this page</summary><div><a href="#start-offline">Start offline</a><a href="#work-one-handoff">Work one handoff</a><a href="#work-through-a-failure">Work through a failure</a><a href="#adapt-the-procedure">Adapt the procedure</a><a href="#check-your-solution">Check your solution</a><a href="#retrieve-from-memory">Retrieve from memory</a><a href="#optional-source-inspection">Optional source inspection</a></div></details>
+<p><a href="resource-study.html">Back to implementation studies</a> · <a href="studies/superpowers-handoff.md" download>Download the editable study</a></p><figure class="learning-figure"><img src="studies/diagrams/superpowers-handoff.svg" alt="A repair changes the revision under review. Verify that revision before you record the task as complete." loading="lazy"><figcaption>A repair changes the revision under review. Verify that revision before you record the task as complete. <span class="figure-links"><a href="studies/diagrams/superpowers-handoff.mmd" download>Mermaid source</a> · <a href="studies/diagrams/superpowers-handoff.svg">Full-size figure</a></span></figcaption></figure><p>Trace a requirement across three procedure files. Build a paper
+handoff that a second person can verify from a task brief and the
+complete change.</p>
+<h2 id="start-offline">Start offline</h2>
+<p>Work the case below before you inspect the original source. The
+trace, exercise and worked answers are complete offline. The <a
+href="workshops/engineering/lab/CONTRACT.md">local Trace Rollup
+contract</a> gives you another handoff. Match one requirement to an
+observable test. The optional upstream links at the end need an internet
+connection.</p>
+<h2 id="work-one-handoff">Work one handoff</h2>
+<p>A local archive report must include a count of items by status. The
+stakeholder specifies exact output columns <code>status,count</code>, a
+row for each supported status and lexical order. The stakeholder
+delegates the name of the internal helper. A fixture contains records
+with statuses <code>open</code>, <code>closed</code>,
+<code>open</code>.</p>
+<p>Assign the requirement ID R1. In the plan, place R1 under Task 1. Use
+command <code>python -m unittest tests.test_report</code> and name the
+expected three output lines: header <code>status,count</code>, row
+<code>closed,1</code> and row <code>open,2</code>. Add an empty fixture.
+Decide in the design if empty input must produce zero counts for known
+statuses. That output changes the interface. Name the requirement before
+the implementer starts.</p>
+<p>Assume Task 1 starts at commit A. The implementer adds tests in
+commit B, then code in commit C. The review package must cover A to C. A
+package from B to C omits the test addition. The full change matters
+because a test can accidentally encode the same error as the
+implementation.</p>
+<p>Write the review inputs on one card. Include the brief, implementer
+report, range A to C and the exact output obligations. Ask for the spec
+verdict and code quality verdict. A reviewer can then point to the
+origin of <code>closed,0</code> on empty input instead of arguing from
+memory.</p>
+<h2 id="work-through-a-failure">Work through a failure</h2>
+<p>The reviewer sees correct counts in the report. The test fixture only
+expects statuses present in its records. On empty input, all count rows
+disappear. The exact-open-and-closed requirement is absent from both the
+tests and the handoff card.</p>
+<p>Trace the dropped information. The design said all supported
+statuses. The plan's only assertion used both status values, so the
+fixture could not distinguish two interpretations. Add the empty fixture
+with an exact expected output. Update the review package for the entire
+task and verify the fix on that range.</p>
+<p>Another failure happens when a task brief duplicates a helper
+signature from an earlier task and one copy drifts. The later
+implementer may write a second adapter to bridge them. Bind the later
+task to the first interface definition and check both tasks against that
+one record.</p>
+<h2 id="adapt-the-procedure">Adapt the procedure</h2>
+<p>Write a brief for a different feature with one exact output field and
+one boundary case. Draw the transition from design decision to task and
+test. Simulate two work commits and one repair commit. Give a reviewer
+the range and outputs. Ask them to state which requirement each finding
+affects.</p>
+<p>Use local written role cards if separate reviewers are unavailable.
+Mark the role that performed each check and whether the person saw the
+original implementation. This makes the evidence easy to interpret.</p>
+<h2 id="check-your-solution">Check your solution</h2>
+<p>Every fixed behavior maps to a named test. The review range includes
+work and tests. The boundary case distinguishes the two plausible
+interpretations. The reviewer records separate verdicts and identifies
+the relevant requirement. A final task state points to the evidence for
+its verdict.</p>
+<h2 id="retrieve-from-memory">Retrieve from memory</h2>
+<ol type="1">
+<li>Which decisions belong in the design before the plan?</li>
+<li>Why can a last-commit diff fail to represent a task?</li>
+<li>How do you prove a boundary case tests the written requirement?</li>
+</ol>
+<details><summary>Show worked answers</summary>
+<ol type="1">
+<li>The stakeholder settles exact output and scope. Delegate choices
+that do not change the contract.</li>
+<li>The last commit can omit earlier work in the same task. Use the
+start commit and the task head.</li>
+<li>Use a fixture with different expected outputs under the two
+interpretations. State the required output before review.</li>
+</ol>
+<h2 id="optional-source-inspection">Optional source inspection</h2>
+<p>Open Superpowers <a
+href="https://github.com/obra/superpowers/blob/main/skills/brainstorming/SKILL.md#L209-L283">brainstorming/SKILL.md</a>
+at “Size the Work” and “The Written Design.” Read <a
+href="https://github.com/obra/superpowers/blob/main/skills/writing-plans/SKILL.md#L140-L205">writing-plans/SKILL.md</a>
+at “What a Step Contains,” “Self-Review” and “Execution Handoff.” Read
+<a
+href="https://github.com/obra/superpowers/blob/main/skills/subagent-driven-development/SKILL.md#L239-L324">subagent-driven-development/SKILL.md</a>
+at “Handle the report,” “Review the task,” “The fix loop” and “Complete
+the task.” The three links use mutable main, read on 2026-11-20.</p>
+<p>Treat these files as procedure specifications. Mark each expected
+input and output. The design lists decisions and constraints. The plan
+translates them into interfaces, steps and checks. The task procedure
+links the brief and report to a change range. It asks for task
+compliance and code quality verdicts. The exercise below uses roles two
+people can perform without an agent host.</p>
+</details></main>
+<nav class="page-turn" aria-label="Adjacent chapters"><a href="study-restart-compaction.html">← Restart compaction</a><a href="study-tool-contracts.html">Tool contracts →</a></nav>
+<section id="find" class="find"><h2>Search the guide</h2><div class="search-fields"><label>Words or source ID<input id="guide-search" type="search" placeholder="Try checkpoint or Grok Bot" autocomplete="off"></label>
+<label>Section<select id="search-group"><option value="">All sections</option><option value="Study">Study</option><option value="Workshops">Workshops</option><option value="Evidence">Evidence</option><option value="Practice">Practice</option><option value="Reference">Reference</option><option value="Source studies">Source studies</option></select></label></div>
+<p id="search-status" role="status"></p><div id="search-results"></div><noscript>Use the chapter menu or your browser's Find command.</noscript></section>
+<footer><a href="audit.html">Methods and verification</a><a href="#main">Back to top ↑</a></footer></div></div></body></html>

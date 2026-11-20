@@ -1,0 +1,5 @@
+case,input,expected,reason
+current-rollback,How do I roll back the canary?,Current rollback document ranks first,Query asks for current rollback evidence
+archive-conflict,Current and archived paragraphs share key terms,Archived paragraph cannot outrank valid current evidence,Version constraint
+unrelated-current,Question about the unrelated current service,That service document remains retrievable,Neighbor behavior
+no-evidence,Question with no matching current evidence,Explicit empty evidence result,An unsupported answer must remain detectable

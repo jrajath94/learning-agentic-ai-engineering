@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "repo-orientation",
+    "title": "Orient a repository"
+  },
+  {
+    "slug": "spec",
+    "title": "Write acceptance criteria"
+  },
+  {
+    "slug": "architecture",
+    "title": "Choose a small design"
+  },
+  {
+    "slug": "implementation",
+    "title": "Implement a bounded change"
+  },
+  {
+    "slug": "debugging",
+    "title": "Debug from evidence"
+  },
+  {
+    "slug": "test-design",
+    "title": "Design tests from rules"
+  },
+  {
+    "slug": "review",
+    "title": "Review a change for defects"
+  },
+  {
+    "slug": "research",
+    "title": "Synthesize research evidence"
+  },
+  {
+    "slug": "experiment",
+    "title": "Design a controlled experiment"
+  },
+  {
+    "slug": "eval",
+    "title": "Analyze evaluation errors"
+  },
+  {
+    "slug": "business-research",
+    "title": "Research a business process"
+  },
+  {
+    "slug": "delegation",
+    "title": "Delegate bounded subtasks"
+  },
+  {
+    "slug": "independent-audit",
+    "title": "Run an independent audit"
+  },
+  {
+    "slug": "handoff",
+    "title": "Hand off work for recovery"
+  }
+]

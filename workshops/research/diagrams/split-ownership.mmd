@@ -1,0 +1,9 @@
+flowchart TD
+    families[Source families] --> dev[Development questions]
+    families --> hold[Held-out questions]
+    dev --> tune[Select configuration]
+    hold --> judge[Paired comparison]
+    tune --> freeze[Freeze candidate]
+    freeze --> judge
+    index[Shared document index] --> tune
+    index --> judge

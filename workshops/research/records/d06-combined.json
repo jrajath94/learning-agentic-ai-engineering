@@ -1,0 +1,34 @@
+{
+  "id": "D06",
+  "group": "moss",
+  "slice": "no-evidence",
+  "query": "moss warranty transfer",
+  "critical": false,
+  "expected": [],
+  "ranked": [
+    {
+      "id": "M11",
+      "score": 2,
+      "body_hits": [],
+      "title_hits": [
+        "moss"
+      ]
+    },
+    {
+      "id": "M01",
+      "score": 1,
+      "body_hits": [
+        "moss"
+      ],
+      "title_hits": []
+    }
+  ],
+  "hits": [],
+  "missed": [],
+  "extra": [
+    "M11",
+    "M01"
+  ],
+  "recall": null,
+  "precision": "0"
+}

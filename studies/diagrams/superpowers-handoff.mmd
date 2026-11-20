@@ -1,0 +1,9 @@
+flowchart TD
+    T[Task and acceptance cases] --> I[Implementation attempt]
+    I --> S{Specification checks pass?}
+    S -->|No| R[Repair named failure]
+    S -->|Yes| Q{Quality review passes?}
+    Q -->|No| R
+    Q -->|Yes| V[Verify final revision]
+    R --> I
+    V --> D[Record result]

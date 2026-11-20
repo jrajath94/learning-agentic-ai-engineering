@@ -1,0 +1,4 @@
+role,owned_artifact,reads,acceptance,depends_on
+discovery,task-map.md,existing entry point and tests,Names actual function and reproducer,
+implementation,allowed implementation paths,task-map.md and acceptance cases,Original failing case passes,discovery
+review,review.md,final diff and original fixtures,Findings include trigger and reproduction,implementation

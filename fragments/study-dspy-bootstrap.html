@@ -1,0 +1,126 @@
+<p><a href="resource-study.html">Back to implementation studies</a> · <a href="studies/dspy-bootstrap.md" download>Download the editable study</a></p><p>Trace which teacher outputs become demonstrations for each predictor.
+Keep training inputs, accepted traces and held-out results in separate
+files. Inspect the metric before you trust a selected example.</p>
+<h2 id="start-offline">Start offline</h2>
+<p>Work the case below before you inspect the original source. The
+trace, exercise and worked answers are complete offline. The <a
+href="workshops/research/evaluate.py">local research evaluator</a>
+gives you a second metric to inspect. Follow <code>score_query</code>
+and <code>assert_disjoint</code> to see what the score rewards and which
+data can overlap. The optional upstream links at the end need an
+internet connection.</p>
+<h2 id="work-three-examples">Work three examples</h2>
+<p>Use a synthetic two-predictor program. <code>extract</code> maps a
+message to an item ID and intent. <code>queue</code> maps those fields
+to a queue. Use one teacher attempt per example and a budget of two
+bootstrapped demos. Use zero raw labeled demos so you can inspect
+accepted trace steps by themselves.</p>
+<table>
+<thead>
+<tr>
+<th>Training ID</th>
+<th>Input</th>
+<th>Teacher result</th>
+<th>Expected result</th>
+<th>Accept</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T1</td>
+<td>“P7 tray arrived split”</td>
+<td>P7, repair</td>
+<td>P7, repair</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>“P9 tray arrived split”</td>
+<td>P7, repair</td>
+<td>P9, repair</td>
+<td>no</td>
+</tr>
+<tr>
+<td>T3</td>
+<td>“P2 needs a return label”</td>
+<td>P2, returns</td>
+<td>P2, returns</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+<p>For T1, write an <code>extract</code> demo with the original message
+and extracted fields. Write a <code>queue</code> demo whose input is
+those fields and whose output is <code>repair</code>. Do the same for
+T3. No T2 trace enters either list under this metric. Count teacher
+attempts and accepted demos separately. Three attempted teacher calls
+can add two examples to each predictor if each accepted trace runs each
+predictor once.</p>
+<p>Now assume <code>extract</code> runs twice during an accepted
+example. In the example implementation, the selection step keeps one
+demo per predictor for each accepted trace. Predict the maximum count
+that one accepted example adds to each predictor. Record that your paper
+exercise uses one attempt per example.</p>
+<h2 id="show-what-a-weak-metric-admits">Show what a weak metric
+admits</h2>
+<p>Change the metric so it compares queue only. T2 now passes because
+the teacher sends it to repair. The resulting <code>extract</code> demo
+can teach P7 for P9. With a two-trace budget, T1 and T2 fill the
+accepted slots and T3 never enters this bootstrapping run.</p>
+<p>Inspect both the accepted traces and the failures under the strong
+metric. The final outcome can look correct even when intermediate fields
+are wrong. Add the required item ID to the prediction or use the trace
+in the metric, depending on your program's contract. Make any such
+change before you compare held-out results.</p>
+<h2 id="adapt-the-comparison">Adapt the comparison</h2>
+<p>Split eight invented messages into four training, two development and
+two test records. Write a baseline with no demos. Write a second version
+with fixed labeled demos. Compare both with bootstrapped demos from the
+training records. Stub the teacher and its trace first. Record exact
+matches on both fields.</p>
+<p>Separate duplicate templates across the split if they disclose a test
+label. Hold the test records aside until you choose a metric and demo
+limit on development records. Keep a row for each attempted example.
+Include teacher revision, metric revision, accepted status and reason.
+Keep item IDs and exact prompt strings synthetic in this exercise.</p>
+<h2 id="check-your-solution">Check your solution</h2>
+<p>The strong metric rejects T2. The queue-only metric accepts it. Each
+predictor receives only steps from its own known name. The selected
+demonstrations trace back to training IDs. Development and test data
+stay out of compilation. Your report names which measured difference the
+fixture supports and which comparisons need more data.</p>
+<h2 id="retrieve-from-memory">Retrieve from memory</h2>
+<ol type="1">
+<li>Does the metric accept a final prediction or one demonstration at a
+time?</li>
+<li>What enters <code>validation</code> in this implementation?</li>
+<li>How can a passing final queue hide a bad demo?</li>
+</ol>
+<details><summary>Show worked answers</summary>
+<ol type="1">
+<li>The metric evaluates the example prediction and can inspect the
+trace. A pass permits the relevant trace steps to become demos.</li>
+<li>It contains training examples with no accepted bootstrap. External
+test records belong in a separate set.</li>
+<li>A correct queue can conceal an incorrect extracted item ID. The bad
+trace can then become an extraction demo.</li>
+</ol>
+<h2 id="optional-source-inspection">Optional source inspection</h2>
+<p>Read <a
+href="https://dspy.ai/current/api/optimizers/BootstrapFewShot/">BootstrapFewShot</a>
+at its constructor and <code>compile</code> method. Open DSPy's <a
+href="https://github.com/stanfordnlp/dspy/blob/main/dspy/teleprompt/bootstrap.py#L87-L274">dspy/teleprompt/bootstrap.py</a>.
+Read <code>compile</code>, <code>_prepare_predictor_mappings</code>,
+<code>_bootstrap</code>, <code>_bootstrap_one_example</code> and
+<code>_train</code> in that order. The documentation and main links were
+read on 2026-11-20.</p>
+<p>Draw the student and teacher as two instances of one program shape.
+Follow how predictor names and signatures match. During one teacher run,
+track <code>example.inputs()</code>, the final prediction, the captured
+trace and the metric result. A passing teacher run contributes trace
+steps by predictor name. The student receives accepted steps as
+augmented demos. It can also receive raw labeled examples from the
+training set. The internal variable <code>validation</code> in
+<code>_bootstrap</code> denotes unbootstrapped training examples in this
+code path. Keep an external test set.</p>
+</details>

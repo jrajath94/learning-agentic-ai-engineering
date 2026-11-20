@@ -1,0 +1,4 @@
+{"source_id":"SRC-201","date":"2026-11-05","title":"First export","body":"Result: 4 of 10 tasks passed."}
+{"source_id":"SRC-201","date":"2026-11-05","title":"Second export","body":"Result: 8 of 10 tasks passed."}
+{"source_id":"SRC-202","date":"2026-11-05","title":"Independent check","body":"Result: 6 of 10 tasks reached manual review."}
+{"source_id":"SRC-203","date":"2026-11-05","title":"Invalid duplicate member","title":"This must never replace the preceding title","body":"Result: 10 of 10 tasks passed."}

@@ -1,0 +1,8 @@
+flowchart TD
+    A[Commit run and sources] --> B[Propose evidence spans]
+    B --> C[Begin draft transaction]
+    C --> D{Process stops when?}
+    D -->|Before commit| E[Keep source snapshot]
+    D -->|After commit| F[Keep one draft]
+    E --> G[Retry stages draft]
+    F --> H[Retry reuses draft]

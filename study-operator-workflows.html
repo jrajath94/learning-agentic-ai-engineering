@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Operator workflows | AI engineering field guide</title><link rel="stylesheet" href="assets/guide.css"><link rel="stylesheet" href="assets/workshop.css">
+<script defer src="assets/search-index.js"></script><script defer src="assets/guide.js"></script><script defer src="assets/visuals.js"></script><script defer src="assets/study.js"></script><script defer src="assets/workshop.js"></script></head>
+<body class="page-study-operator-workflows"><a class="skip" href="#main">Skip to content</a>
+<header class="mast"><div class="mast-inner"><a class="wordmark" href="index.html">Engineering field guide</a>
+<nav class="mast-links" aria-label="Shortcuts"><a href="labs.html">Labs</a><a href="sources.html">Sources</a><a href="#find">Search ↓</a></nav></div></header>
+<div class="layout"><aside class="rail"><nav aria-label="Chapters"><div class="nav-group"><p>Study</p><a href="index.html">Start here</a><a href="paths.html">Learning paths</a><a href="foundations.html">Foundations</a><a href="cases.html">Practitioner cases</a><a href="fieldnotes.html">Practitioner field notes</a></div><div class="nav-group"><p>Workshops</p><a href="workflow-kit.html">Adapt a workflow</a><a href="workshop-engineering.html">Repository to reviewed patch</a><a href="workshop-research.html">Retrieval and evaluation</a><a href="workshop-automation.html">Durable tool workflows</a><a href="run-viewer.html">Inspect recorded runs</a><a href="social-practice.html">From posts to practice</a><a href="community.html">Community practice</a><a href="resource-study.html">Read the implementations</a></div><div class="nav-group"><p>Evidence</p><a href="usage.html">How labs use tokens</a><a href="graphs.html">Project graphs</a><a href="sources.html">Source library</a><a href="audit.html">Audit and open questions</a></div><div class="nav-group"><p>Practice</p><a href="engineering.html">Production engineering</a><a href="business.html">Business workflows</a><a href="research.html">Research workflows</a><a href="labs.html">Practical labs</a></div><div class="nav-group"><p>Reference</p><a href="products.html">Products and versions</a><a href="tools.html">Tool tutorials</a><a href="resources.html">Resource catalog</a><a href="prompts.html">Prompt library</a><a href="glossary.html">Glossary</a></div><div class="nav-group"><p>Source studies</p><a href="study-cache-ledger.html">Cache ledger</a><a href="study-codex-instructions.html">Codex instructions</a><a href="study-dspy-bootstrap.html">Dspy bootstrap</a><a href="study-eval-outcomes.html">Eval outcomes</a><a href="study-mcp-tool-schema.html">Mcp tool schema</a><a href="study-operator-workflows.html" aria-current="page">Operator workflows</a><a href="study-orchestrator-workers.html">Orchestrator workers</a><a href="study-restart-compaction.html">Restart compaction</a><a href="study-superpowers-handoff.html">Superpowers handoff</a><a href="study-tool-contracts.html">Tool contracts</a></div></nav></aside>
+<div class="reading"><details id="navigation"><summary>Browse chapters</summary><nav aria-label="Mobile chapters"><div class="nav-group"><p>Study</p><a href="index.html">Start here</a><a href="paths.html">Learning paths</a><a href="foundations.html">Foundations</a><a href="cases.html">Practitioner cases</a><a href="fieldnotes.html">Practitioner field notes</a></div><div class="nav-group"><p>Workshops</p><a href="workflow-kit.html">Adapt a workflow</a><a href="workshop-engineering.html">Repository to reviewed patch</a><a href="workshop-research.html">Retrieval and evaluation</a><a href="workshop-automation.html">Durable tool workflows</a><a href="run-viewer.html">Inspect recorded runs</a><a href="social-practice.html">From posts to practice</a><a href="community.html">Community practice</a><a href="resource-study.html">Read the implementations</a></div><div class="nav-group"><p>Evidence</p><a href="usage.html">How labs use tokens</a><a href="graphs.html">Project graphs</a><a href="sources.html">Source library</a><a href="audit.html">Audit and open questions</a></div><div class="nav-group"><p>Practice</p><a href="engineering.html">Production engineering</a><a href="business.html">Business workflows</a><a href="research.html">Research workflows</a><a href="labs.html">Practical labs</a></div><div class="nav-group"><p>Reference</p><a href="products.html">Products and versions</a><a href="tools.html">Tool tutorials</a><a href="resources.html">Resource catalog</a><a href="prompts.html">Prompt library</a><a href="glossary.html">Glossary</a></div><div class="nav-group"><p>Source studies</p><a href="study-cache-ledger.html">Cache ledger</a><a href="study-codex-instructions.html">Codex instructions</a><a href="study-dspy-bootstrap.html">Dspy bootstrap</a><a href="study-eval-outcomes.html">Eval outcomes</a><a href="study-mcp-tool-schema.html">Mcp tool schema</a><a href="study-operator-workflows.html" aria-current="page">Operator workflows</a><a href="study-orchestrator-workers.html">Orchestrator workers</a><a href="study-restart-compaction.html">Restart compaction</a><a href="study-superpowers-handoff.html">Superpowers handoff</a><a href="study-tool-contracts.html">Tool contracts</a></div></nav></details>
+<main id="main" tabindex="-1" data-workshop-progress><nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Guide</a><span>/</span>Source studies<span>/</span>Operator workflows</nav>
+<div class="title"><h1>Turn a briefing into a verifiable routine</h1></div><details class="contents"><summary>On this page</summary><div><a href="#read-the-operator-workflow">Read the operator workflow</a><a href="#set-the-source-rules-before-you-draft">Set the source rules
+before you draft</a><a href="#test-a-retry-and-a-source-failure">Test a retry and a source
+failure</a><a href="#adapt-this-to-your-next-briefing">Adapt this to your next
+briefing</a><a href="#retrieve-from-memory">Retrieve from memory</a></div></details>
+<p><a href="resource-study.html">Back to implementation studies</a> · <a href="studies/operator-workflows.md" download>Download the editable study</a></p><p>Prepare one local briefing before you set a schedule. Give every
+claim a source record. Test an interrupted write and a missing source
+before you let the routine repeat.</p>
+<h2 id="read-the-operator-workflow">Read the operator workflow</h2>
+<p>Lauren Tan's November 18 article separates a desired result from the
+steps it takes to get there. It asks the bot to restate the goal, the
+process and the operator's decisions before it acts. The appointment
+example asks which source wins when a message and the booking system
+disagree. Tan also describes stable identifiers for data across apps and
+schedules after a process works on demand. <a
+href="https://www.teapawt.org/poteto/article/2123159537016533493">Full
+article capture</a> · <a href="sources.html#DO04">DO04</a></p>
+<p>Tan's October 31 guide and follow-up separate scheduled work from
+event-triggered work. She says to filter events first and warns about
+triggers that fire too often. Her Tibot post describes a daily or hourly
+digest, relevance screening, translation and optional account actions.
+These are reported capabilities. The captures provide neither a coverage
+test nor an itemized usage record. <a
+href="sources.html#DO01">DO01</a> · <a
+href="sources.html#DO02">DO02</a></p>
+<p>In the release post, Tan describes one bot that requests objections,
+watches the build and assigns test work. A second bot receives
+high-priority findings. Tan says she decides whether to include a fix in
+the current release or defer it. The linked pstack skill makes the test
+handoff concrete. It asks for the real launch command, a usable state
+check, a repeatable action and evidence of side effects. <a
+href="sources.html#DO03">DO03</a> · <a
+href="sources.html#DO07">DO07</a></p>
+<p>In the conference transcript, Tan uses the boundary between
+Electron's main and renderer processes to illustrate an import rule. At
+1:11:00 she moves to runtime evidence and feature maps. A report
+workflow can apply both ideas. Give one component the draft path. Give
+the checker rules for which fields each source can prove. The timestamp
+uses the conference livestream clock. <a
+href="https://ai.engineer/code/2026/talks/lauren-tan">Conference
+transcript</a> · <a href="sources.html#DO05">DO05</a></p>
+<p>Greg Isenberg's November 11 thread reports a separate bot for each
+serious project and a twice-daily content pass. A secondary guide points
+to 31:26 for the content example. The video and its captions did not
+load. Use the example to choose a testable schedule, and leave the
+subscription and spending claims open. <a
+href="sources.html#DO06">DO06</a> · <a
+href="sources.html#DO08">DO08</a></p>
+<h2 id="set-the-source-rules-before-you-draft">Set the source rules
+before you draft</h2>
+<p>The goal is a release supervisor's one-screen brief before a 16:00
+UTC decision. Assume a synthetic workday. The ticket tracker establishes
+the issue state. The calendar establishes the review time. Chat can flag
+a conflict for the reviewer. A chat summary has no authority to change
+either field.</p>
+<div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Source record</th>
+<th>Input</th>
+<th>Expected treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tracker:T-17:2</code></td>
+<td>Ticket T-17 is blocked</td>
+<td>Include the blocker and this revision.</td>
+</tr>
+<tr>
+<td><code>chat:91</code></td>
+<td>A message calls T-17 ready</td>
+<td>Keep as a conflict note.</td>
+</tr>
+<tr>
+<td><code>calendar:CL-04:1</code></td>
+<td>Review is at 16:00 UTC</td>
+<td>Include the time and this event revision.</td>
+</tr>
+<tr>
+<td><code>chat:92</code></td>
+<td>A message says 15:00 UTC</td>
+<td>Keep as a conflict note.</td>
+</tr>
+<tr>
+<td><code>chat:93</code></td>
+<td>A greeting</td>
+<td>Drop before any model call.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Ask the assistant to restate the source rules before it drafts. Check
+that it assigns each field to the right source. Then run one local dry
+run with all five rows. The expected brief has two factual claims with
+two supporting IDs. It can list both conflicts as separate review items.
+Give the checker the normalized records directly so it can compare each
+fact with its source.</p>
+<h2 id="test-a-retry-and-a-source-failure">Test a retry and a source
+failure</h2>
+<p>Set one draft key for the routine and UTC date. Store the source
+snapshot digest next to the draft. Write to a temporary file and then
+replace the final file in the same directory. If an earlier attempt
+committed the same snapshot, return that draft. If the key is already
+present with changed inputs, return a revision request to the
+reviewer.</p>
+<p>Interrupt the first attempt before the final write. Replay the same
+snapshot twice. Expect one complete draft. Run again without the
+calendar and expect a missing-source state with the blocker only. A
+stale chat timestamp cannot satisfy the calendar check.</p>
+<p>A local Python fixture reproduced those results. It accepted two of
+five input rows, wrote no final draft before the simulated interruption
+and saved one draft after retry. A changed snapshot went to review. A
+separate run flagged the missing calendar. The fixture checked local
+state and claim selection. It did not use a model, live connector or
+scheduler. <a href="data/operator-search-log.json">Test
+record</a></p>
+<p>From the guide folder, run
+<code>python3 studies/operator-fixture.py</code>. The script includes
+the five synthetic rows. File replacement assumes one writer. For
+concurrent calls, use the <a href="workshop-automation.html">SQLite
+procedure</a>.
+<a href="studies/operator-fixture.py" download>Download the Python
+fixture</a></p>
+<h2 id="adapt-this-to-your-next-briefing">Adapt this to your next
+briefing</h2>
+<p>Choose one recurring decision. Write the two facts the reviewer needs
+and the source for each. Add one conflict, one irrelevant event and one
+missing source to your trial. Start with a manual run. Compare its
+result to your expected claims and record how many items reached the
+model. Use a scheduled draft only after you can repeat the check. Give
+the operator one pause control and a short review queue.
+<a href="prompt-pack/operator-routine.md" download>Download the schedule
+prompt</a></p>
+<h2 id="retrieve-from-memory">Retrieve from memory</h2>
+<ol type="1">
+<li>Which source can establish the review time?</li>
+<li>When can a retry reuse a draft?</li>
+<li>What must the checker see beyond the visible brief?</li>
+</ol>
+<details><summary>Show worked answers</summary>
+<ol type="1">
+<li>The calendar event at the recorded revision establishes the review
+time.</li>
+<li>Reuse a committed draft when its run key and source digest both
+match.</li>
+<li>Check source references, the separate conflict list and the
+committed file after retry.</li>
+</ol>
+</details></main>
+<nav class="page-turn" aria-label="Adjacent chapters"><a href="study-mcp-tool-schema.html">← Mcp tool schema</a><a href="study-orchestrator-workers.html">Orchestrator workers →</a></nav>
+<section id="find" class="find"><h2>Search the guide</h2><div class="search-fields"><label>Words or source ID<input id="guide-search" type="search" placeholder="Try checkpoint or Grok Bot" autocomplete="off"></label>
+<label>Section<select id="search-group"><option value="">All sections</option><option value="Study">Study</option><option value="Workshops">Workshops</option><option value="Evidence">Evidence</option><option value="Practice">Practice</option><option value="Reference">Reference</option><option value="Source studies">Source studies</option></select></label></div>
+<p id="search-status" role="status"></p><div id="search-results"></div><noscript>Use the chapter menu or your browser's Find command.</noscript></section>
+<footer><a href="audit.html">Methods and verification</a><a href="#main">Back to top ↑</a></footer></div></div></body></html>

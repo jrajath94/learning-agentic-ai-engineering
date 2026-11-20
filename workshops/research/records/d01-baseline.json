@@ -1,0 +1,42 @@
+{
+  "id": "D01",
+  "group": "kite",
+  "slice": "alias",
+  "query": "Kite feed blockage",
+  "critical": false,
+  "expected": [
+    "K11",
+    "K12"
+  ],
+  "ranked": [
+    {
+      "id": "K01",
+      "score": 2,
+      "body_hits": [
+        "feed",
+        "kite"
+      ],
+      "title_hits": []
+    },
+    {
+      "id": "K02",
+      "score": 2,
+      "body_hits": [
+        "feed",
+        "kite"
+      ],
+      "title_hits": []
+    }
+  ],
+  "hits": [],
+  "missed": [
+    "K11",
+    "K12"
+  ],
+  "extra": [
+    "K01",
+    "K02"
+  ],
+  "recall": "0",
+  "precision": "0"
+}

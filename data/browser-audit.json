@@ -183,6 +183,65 @@
         "copyComplete": true
       }
     ],
+    "community.html": [
+      {
+        "width": 360,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 0,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": true,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 768,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 0,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 0,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      }
+    ],
     "engineering.html": [
       {
         "width": 360,
@@ -832,6 +891,65 @@
         "copyComplete": true
       }
     ],
+    "resource-study.html": [
+      {
+        "width": 360,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 0,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": true,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 768,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 0,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 0,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      }
+    ],
     "resources.html": [
       {
         "width": 360,
@@ -891,7 +1009,715 @@
         "copyComplete": true
       }
     ],
+    "run-viewer.html": [
+      {
+        "width": 360,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 0,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": true,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 768,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 0,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 0,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      }
+    ],
+    "social-practice.html": [
+      {
+        "width": 360,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": true,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 768,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      }
+    ],
     "sources.html": [
+      {
+        "width": 360,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": true,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 768,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      }
+    ],
+    "study-cache-ledger.html": [
+      {
+        "width": 360,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 0,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": true,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 768,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 0,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 0,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      }
+    ],
+    "study-codex-instructions.html": [
+      {
+        "width": 360,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": true,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 768,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      }
+    ],
+    "study-dspy-bootstrap.html": [
+      {
+        "width": 360,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": true,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 768,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      }
+    ],
+    "study-eval-outcomes.html": [
+      {
+        "width": 360,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": true,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 768,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      }
+    ],
+    "study-mcp-tool-schema.html": [
+      {
+        "width": 360,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": true,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 768,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      }
+    ],
+    "study-operator-workflows.html": [
+      {
+        "width": 360,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 0,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": true,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 768,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 0,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 0,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      }
+    ],
+    "study-orchestrator-workers.html": [
+      {
+        "width": 360,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": true,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 768,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      }
+    ],
+    "study-restart-compaction.html": [
+      {
+        "width": 360,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": true,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 768,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      }
+    ],
+    "study-superpowers-handoff.html": [
+      {
+        "width": 360,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": true,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 768,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      }
+    ],
+    "study-tool-contracts.html": [
       {
         "width": 360,
         "overflow": false,
@@ -1053,6 +1879,242 @@
         "overflow": false,
         "brokenImages": 0,
         "figures": 1,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      }
+    ],
+    "workflow-kit.html": [
+      {
+        "width": 360,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 0,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": true,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 768,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 0,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 0,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      }
+    ],
+    "workshop-automation.html": [
+      {
+        "width": 360,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 4,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": true,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 768,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 4,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 4,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      }
+    ],
+    "workshop-engineering.html": [
+      {
+        "width": 360,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 4,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": true,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 768,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 4,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 4,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      }
+    ],
+    "workshop-research.html": [
+      {
+        "width": 360,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 4,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": true,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 768,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 4,
+        "registeredMaps": 0,
+        "h1": 1,
+        "main": 1,
+        "black": true,
+        "fonts": [
+          "Jakarta",
+          "JetBrains"
+        ],
+        "justified": true,
+        "imagesHaveAlt": true,
+        "mobileNav": false,
+        "emDash": false,
+        "copyComplete": true
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "brokenImages": 0,
+        "figures": 4,
         "registeredMaps": 0,
         "h1": 1,
         "main": 1,

@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant M as Model adapter
+    participant X as Tool executor
+    participant S as Source snapshot
+    M->>X: Request source ID and range
+    X->>X: Validate name and fields
+    alt Valid read
+        X->>S: Read exact slice
+        S-->>M: Text and next offset
+    else Invalid call
+        X-->>M: Error code and repair detail
+    end
+    M->>X: Propose quote and offsets
+    X->>S: Verify exact span and scope

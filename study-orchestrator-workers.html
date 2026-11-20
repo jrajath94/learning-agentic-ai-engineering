@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Orchestrator workers | AI engineering field guide</title><link rel="stylesheet" href="assets/guide.css"><link rel="stylesheet" href="assets/workshop.css">
+<script defer src="assets/search-index.js"></script><script defer src="assets/guide.js"></script><script defer src="assets/visuals.js"></script><script defer src="assets/study.js"></script><script defer src="assets/workshop.js"></script></head>
+<body class="page-study-orchestrator-workers"><a class="skip" href="#main">Skip to content</a>
+<header class="mast"><div class="mast-inner"><a class="wordmark" href="index.html">Engineering field guide</a>
+<nav class="mast-links" aria-label="Shortcuts"><a href="labs.html">Labs</a><a href="sources.html">Sources</a><a href="#find">Search ↓</a></nav></div></header>
+<div class="layout"><aside class="rail"><nav aria-label="Chapters"><div class="nav-group"><p>Study</p><a href="index.html">Start here</a><a href="paths.html">Learning paths</a><a href="foundations.html">Foundations</a><a href="cases.html">Practitioner cases</a><a href="fieldnotes.html">Practitioner field notes</a></div><div class="nav-group"><p>Workshops</p><a href="workflow-kit.html">Adapt a workflow</a><a href="workshop-engineering.html">Repository to reviewed patch</a><a href="workshop-research.html">Retrieval and evaluation</a><a href="workshop-automation.html">Durable tool workflows</a><a href="run-viewer.html">Inspect recorded runs</a><a href="social-practice.html">From posts to practice</a><a href="community.html">Community practice</a><a href="resource-study.html">Read the implementations</a></div><div class="nav-group"><p>Evidence</p><a href="usage.html">How labs use tokens</a><a href="graphs.html">Project graphs</a><a href="sources.html">Source library</a><a href="audit.html">Audit and open questions</a></div><div class="nav-group"><p>Practice</p><a href="engineering.html">Production engineering</a><a href="business.html">Business workflows</a><a href="research.html">Research workflows</a><a href="labs.html">Practical labs</a></div><div class="nav-group"><p>Reference</p><a href="products.html">Products and versions</a><a href="tools.html">Tool tutorials</a><a href="resources.html">Resource catalog</a><a href="prompts.html">Prompt library</a><a href="glossary.html">Glossary</a></div><div class="nav-group"><p>Source studies</p><a href="study-cache-ledger.html">Cache ledger</a><a href="study-codex-instructions.html">Codex instructions</a><a href="study-dspy-bootstrap.html">Dspy bootstrap</a><a href="study-eval-outcomes.html">Eval outcomes</a><a href="study-mcp-tool-schema.html">Mcp tool schema</a><a href="study-operator-workflows.html">Operator workflows</a><a href="study-orchestrator-workers.html" aria-current="page">Orchestrator workers</a><a href="study-restart-compaction.html">Restart compaction</a><a href="study-superpowers-handoff.html">Superpowers handoff</a><a href="study-tool-contracts.html">Tool contracts</a></div></nav></aside>
+<div class="reading"><details id="navigation"><summary>Browse chapters</summary><nav aria-label="Mobile chapters"><div class="nav-group"><p>Study</p><a href="index.html">Start here</a><a href="paths.html">Learning paths</a><a href="foundations.html">Foundations</a><a href="cases.html">Practitioner cases</a><a href="fieldnotes.html">Practitioner field notes</a></div><div class="nav-group"><p>Workshops</p><a href="workflow-kit.html">Adapt a workflow</a><a href="workshop-engineering.html">Repository to reviewed patch</a><a href="workshop-research.html">Retrieval and evaluation</a><a href="workshop-automation.html">Durable tool workflows</a><a href="run-viewer.html">Inspect recorded runs</a><a href="social-practice.html">From posts to practice</a><a href="community.html">Community practice</a><a href="resource-study.html">Read the implementations</a></div><div class="nav-group"><p>Evidence</p><a href="usage.html">How labs use tokens</a><a href="graphs.html">Project graphs</a><a href="sources.html">Source library</a><a href="audit.html">Audit and open questions</a></div><div class="nav-group"><p>Practice</p><a href="engineering.html">Production engineering</a><a href="business.html">Business workflows</a><a href="research.html">Research workflows</a><a href="labs.html">Practical labs</a></div><div class="nav-group"><p>Reference</p><a href="products.html">Products and versions</a><a href="tools.html">Tool tutorials</a><a href="resources.html">Resource catalog</a><a href="prompts.html">Prompt library</a><a href="glossary.html">Glossary</a></div><div class="nav-group"><p>Source studies</p><a href="study-cache-ledger.html">Cache ledger</a><a href="study-codex-instructions.html">Codex instructions</a><a href="study-dspy-bootstrap.html">Dspy bootstrap</a><a href="study-eval-outcomes.html">Eval outcomes</a><a href="study-mcp-tool-schema.html">Mcp tool schema</a><a href="study-operator-workflows.html">Operator workflows</a><a href="study-orchestrator-workers.html" aria-current="page">Orchestrator workers</a><a href="study-restart-compaction.html">Restart compaction</a><a href="study-superpowers-handoff.html">Superpowers handoff</a><a href="study-tool-contracts.html">Tool contracts</a></div></nav></details>
+<main id="main" tabindex="-1" data-workshop-progress><nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Guide</a><span>/</span>Source studies<span>/</span>Orchestrator workers</nav>
+<div class="title"><h1>Trace a plan into worker calls</h1></div><details class="contents"><summary>On this page</summary><div><a href="#start-offline">Start offline</a><a href="#trace-a-short-archive">Trace a short archive</a><a href="#find-the-failure-before-you-change-code">Find the failure before
+you change code</a><a href="#adapt-the-workflow">Adapt the workflow</a><a href="#check-your-solution">Check your solution</a><a href="#retrieve-from-memory">Retrieve from memory</a><a href="#optional-source-inspection">Optional source inspection</a></div></details>
+<p><a href="resource-study.html">Back to implementation studies</a> · <a href="studies/orchestrator-workers.md" download>Download the editable study</a></p><figure class="learning-figure"><img src="studies/diagrams/orchestrator-workers.svg" alt="Split only independent outputs. Validate the revision and evidence before combination." loading="lazy"><figcaption>Split only independent outputs. Validate the revision and evidence before combination. <span class="figure-links"><a href="studies/diagrams/orchestrator-workers.mmd" download>Mermaid source</a> · <a href="studies/diagrams/orchestrator-workers.svg">Full-size figure</a></span></figcaption></figure><p>Predict how many model calls the workflow makes and what comes back
+from each. Use a synthetic archive with three documents. Track the gap
+between a planned work item and evidence that a worker completed it.</p>
+<h2 id="start-offline">Start offline</h2>
+<p>Work the case below before you inspect the original source. The
+trace, exercise and worked answers are complete offline. The <a
+href="workshops/automation/briefing_tools.py">local briefing tool</a>
+gives you a related trace. Follow <code>fake_model</code> as it reads
+source windows and <code>verify_evidence</code> as it checks the
+returned claims. The optional upstream links at the end need an internet
+connection.</p>
+<h2 id="trace-a-short-archive">Trace a short archive</h2>
+<p>The request is “Find what changed in the May bill.” The fixture
+contains a May draft, a May signed bill and an April signed bill. A
+one-call baseline can receive all three filenames and their short
+contents. Try the baseline first and keep its answer for comparison.</p>
+<p>Give a stub planner two tasks: check the May draft against the signed
+May bill, and confirm which month the signed bill covers. Let the first
+stub worker return “freight changed from 8 to 10, page 2.” Let the
+second return “billing period May, page 1.” The plan takes call 1. The
+first worker takes call 2. The second takes call 3. Write down where the
+page references enter the process. They appear in the worker outputs,
+after planning.</p>
+<p>Give each request an ID. In the trace, keep <code>request_id</code>,
+<code>worker_id</code>, <code>document_id</code>, <code>revision</code>,
+<code>claim</code>, <code>page</code>, and <code>status</code>. Here
+both workers can finish before combination, since neither needs the
+other's output. The notebook stores the worker task type, description
+and result. The additional fields belong to this exercise.</p>
+<p>Now let the planner omit the signed May bill. Both workers may return
+smooth prose and valid tags. The workflow can still miss the central
+comparison. Add a check that the final answer cites the signed revision
+on every amount claim. Preserve each conflicting claim until that check
+can resolve it.</p>
+<h2 id="find-the-failure-before-you-change-code">Find the failure before
+you change code</h2>
+<p>This parser expects separate lines for its tags. Predict what happens
+when those lines give a task a description and no type. It assigns a
+default type. Predict the result when the planner puts the entire task
+on one line. The line parser can fail to build a record. An empty task
+list then gives zero worker calls. That count can look efficient on a
+dashboard. Compare it with the actual outcome: the archive question
+remains open.</p>
+<p>An empty worker response takes a different branch. The notebook adds
+an error marker to the returned worker result. A consumer that treats
+every returned string as content could cite the marker or discard the
+gap. Give the caller an explicit task status, and block any final claim
+that depends on failed evidence.</p>
+<h2 id="adapt-the-workflow">Adapt the workflow</h2>
+<p>Use stub calls to build a check for two synthetic maintenance
+reports. Ask which defects remain open in the newer report. Give each
+planned worker a unique ID, a specific document revision and a result
+shape. Allow one or two workers. Add a deterministic combiner for defect
+IDs and status.</p>
+<p>Record these cases: one valid task, two valid tasks, an empty plan, a
+repeated worker ID, an empty result and a disagreement. Include the
+model call count per case. Handle a valid empty result as a separate
+case. A worker could inspect a section and find no defects.</p>
+<h2 id="check-your-solution">Check your solution</h2>
+<p>The one-task and two-task paths consume two and three stub calls.
+Reject a malformed or repeated plan before dispatch. Distinguish a
+report with zero defects from an absent worker response. Attach evidence
+to each defect. Leave the output incomplete when an unresolved worker
+result could change the answer.</p>
+<h2 id="retrieve-from-memory">Retrieve from memory</h2>
+<ol type="1">
+<li>What becomes dynamic when the planner selects the work items?</li>
+<li>Which line in the notebook determines whether worker calls
+overlap?</li>
+<li>What evidence can a caller require before it combines claims?</li>
+</ol>
+<details><summary>Show worked answers</summary>
+<ol type="1">
+<li>The planning call chooses the subtasks. The host still chooses how
+it parses, runs and returns them.</li>
+<li>The synchronous call occurs inside the worker loop. The next
+iteration starts after that call returns.</li>
+<li>Require document identity, revision, page and status for each claim.
+Block claims that depend on failed workers.</li>
+</ol>
+<h2 id="optional-source-inspection">Optional source inspection</h2>
+<p>Read <a
+href="https://www.anthropic.com/research/building-effective-agents">Building
+effective agents</a> at “Workflow: Orchestrator-workers” and “Workflow:
+Parallelization.” Then open Anthropic's <a
+href="https://github.com/anthropics/claude-cookbooks/blob/main/patterns/agents/orchestrator_workers.ipynb">orchestrator_workers.ipynb</a>.
+Search the notebook for <code>parse_tasks</code>,
+<code>FlexibleOrchestrator.process</code> and
+<code>worker_results</code>. Open <a
+href="https://github.com/anthropics/claude-cookbooks/blob/main/patterns/agents/util.py#L9-L42">util.py</a>
+for <code>llm_call</code> and <code>extract_xml</code>. The notebook and
+helper use mutable main links read on 2026-11-20. The helper and
+notebook describe an example implementation.</p>
+<ol type="1">
+<li>Circle the first <code>llm_call</code> in <code>process</code>.</li>
+<li>Mark the inputs to <code>extract_xml</code> and
+<code>parse_tasks</code>.</li>
+<li>Follow one parsed record through <code>task_type</code> and
+<code>task_description</code>.</li>
+<li>Mark the line that appends the worker result.</li>
+<li>Draw a box around the return value of <code>process</code>.</li>
+</ol>
+<p>The notebook uses a plain loop with a synchronous model call in its
+body. The returned data holds the initial analysis and worker outputs.
+The method has no later model call for synthesis.</p>
+</details></main>
+<nav class="page-turn" aria-label="Adjacent chapters"><a href="study-operator-workflows.html">← Operator workflows</a><a href="study-restart-compaction.html">Restart compaction →</a></nav>
+<section id="find" class="find"><h2>Search the guide</h2><div class="search-fields"><label>Words or source ID<input id="guide-search" type="search" placeholder="Try checkpoint or Grok Bot" autocomplete="off"></label>
+<label>Section<select id="search-group"><option value="">All sections</option><option value="Study">Study</option><option value="Workshops">Workshops</option><option value="Evidence">Evidence</option><option value="Practice">Practice</option><option value="Reference">Reference</option><option value="Source studies">Source studies</option></select></label></div>
+<p id="search-status" role="status"></p><div id="search-results"></div><noscript>Use the chapter menu or your browser's Find command.</noscript></section>
+<footer><a href="audit.html">Methods and verification</a><a href="#main">Back to top ↑</a></footer></div></div></body></html>

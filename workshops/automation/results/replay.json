@@ -1,0 +1,101 @@
+{
+  "broken": {
+    "drafts": [
+      [
+        1,
+        "2026-W45"
+      ],
+      [
+        2,
+        "2026-W45"
+      ]
+    ],
+    "exit": 73
+  },
+  "clean": {
+    "outcome": "staged",
+    "run_key": "run_be87950c12e7a0c7215e701f14ce8222a34f6c3e3210ed14b627628a8803426a"
+  },
+  "clean_retry": {
+    "outcome": "reused",
+    "run_key": "run_be87950c12e7a0c7215e701f14ce8222a34f6c3e3210ed14b627628a8803426a"
+  },
+  "crashes": [
+    {
+      "exit": 72,
+      "identical_to_clean_draft_and_state": true,
+      "injection": "before-draft-commit",
+      "retry": {
+        "outcome": "staged",
+        "run_key": "run_be87950c12e7a0c7215e701f14ce8222a34f6c3e3210ed14b627628a8803426a"
+      },
+      "state_after_exit": {
+        "draft": null,
+        "events": [
+          "snapshot_committed"
+        ],
+        "evidence": [],
+        "state": "snapshot_ready"
+      },
+      "state_after_retry": "draft_staged",
+      "stdout_after_exit": ""
+    },
+    {
+      "exit": 73,
+      "identical_to_clean_draft_and_state": true,
+      "injection": "after-draft-commit",
+      "retry": {
+        "outcome": "reused",
+        "run_key": "run_be87950c12e7a0c7215e701f14ce8222a34f6c3e3210ed14b627628a8803426a"
+      },
+      "state_after_exit": {
+        "draft": {
+          "body_sha256": "796c4160c2ef8bf30949415ab41472357e50364895d73d0c16c6b37fc087fb84",
+          "idempotency_key": "draft_64cdf62d97594a5a7b8a88b03dd7dcbdf75ea837b077e421e00f543d2c94c46a"
+        },
+        "events": [
+          "snapshot_committed",
+          "draft_committed"
+        ],
+        "evidence": [
+          {
+            "end": 133,
+            "quote": "Cache reuse cut median tool latency from 800 ms to 510 ms across 40 runs.",
+            "scope": {
+              "end": 192,
+              "quote": "One workload and one runner. No production traffic.",
+              "start": 141
+            },
+            "source_id": "SRC-101",
+            "start": 60
+          },
+          {
+            "end": 118,
+            "quote": "Four of 30 queries had no relevant source among the first three results.",
+            "scope": {
+              "end": 174,
+              "quote": "The fixture set has 30 queries. No live queries.",
+              "start": 126
+            },
+            "source_id": "SRC-103",
+            "start": 46
+          },
+          {
+            "end": 76,
+            "quote": "Review took 12 minutes for the three draft items.",
+            "scope": {
+              "end": 113,
+              "quote": "One reviewer timed one draft.",
+              "start": 84
+            },
+            "source_id": "SRC-105",
+            "start": 27
+          }
+        ],
+        "state": "draft_staged"
+      },
+      "state_after_retry": "draft_staged",
+      "stdout_after_exit": ""
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+flowchart TD
+    Command["Public CLI"] --> Parser["Validate each JSONL row"]
+    Parser --> Rollup["Count terminal results"]
+    Rollup --> Report["Print one report"]
+    Contract["Producer contract"] --> Parser
+    Contract --> Rollup
+    Checks["CLI tests"] --> Command
+    Checks --> Report

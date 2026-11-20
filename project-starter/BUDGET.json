@@ -1,0 +1,13 @@
+{
+  "kind": "illustrative_limits",
+  "max_model_calls": 6,
+  "max_same_failure_attempts": 2,
+  "max_parallel_workers": 2,
+  "escalation_requires": "A concrete failed case and a reason the stronger model can address it",
+  "stop_when": [
+    "acceptance passes",
+    "call budget is exhausted",
+    "same failure repeats without a new hypothesis"
+  ],
+  "reported_usage": null
+}

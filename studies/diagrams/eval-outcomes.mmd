@@ -1,0 +1,12 @@
+flowchart TD
+    T[Fixed task and fixture] --> A[Agent attempt]
+    A --> O{Required artifact exists?}
+    O -->|No| F[Record failed attempt]
+    O -->|Yes| V{Behavior checks pass?}
+    V -->|No| F
+    V -->|Yes| P[Record accepted result]
+    F --> B{Budget remains?}
+    B -->|Yes| H[New failure hypothesis]
+    H --> A
+    B -->|No| S[Stop with evidence]
+    P --> S

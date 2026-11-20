@@ -1,0 +1,20 @@
+AI research brief for 2026-W45
+Status: DRAFT FOR REVIEW
+Input: Local export. Source claims require review.
+Run: run_be87950c12e7a0c7215e701f14ce8222a34f6c3e3210ed14b627628a8803426a
+
+1. "Cache evaluation" [SRC-101, 2026-11-02]
+   Source claim [60:133]: Cache reuse cut median tool latency from 800 ms to 510 ms across 40 runs.
+   Scope [141:192]: One workload and one runner. No production traffic.
+
+2. "Retrieval check" [SRC-103, 2026-11-04]
+   Source claim [46:118]: Four of 30 queries had no relevant source among the first three results.
+   Scope [126:174]: The fixture set has 30 queries. No live queries.
+
+3. "Review queue check" [SRC-105, 2026-11-06]
+   Source claim [27:76]: Review took 12 minutes for the three draft items.
+   Scope [84:113]: One reviewer timed one draft.
+
+No draft item: SRC-104
+
+Review: Check source authenticity, scope and what decision the result supports.

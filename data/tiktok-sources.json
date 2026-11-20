@@ -1,0 +1,86 @@
+[
+  {
+    "id": "DT01",
+    "url": "https://www.tiktok.com/@simonerizzo98/video/7604922963254693142",
+    "title": "Claude Code Agent Teams",
+    "author": "Simone Rizzo, @simonerizzo98",
+    "type": "TikTok post, public transcript mirror",
+    "date": "2026-02-09",
+    "version": "Claude Code Agent Teams as described in the post",
+    "claims": "The creator describes a team lead, parallel agents, separate tasks, communication among team members, and shared files or task state.",
+    "limits": "I read a public transcript and caption through TTAnon. I did not watch the video. The transcript has speech recognition errors. Views and engagement shown on the mirror are a snapshot, not a ranking or quality measure.",
+    "evidence_pointer": "TTAnon page for the TikTok video, transcript lines 67-74, caption lines 32-35. The transcript says the team feature was experimental at the time of recording."
+  },
+  {
+    "id": "DT02",
+    "url": "https://www.tiktok.com/@ai.native.founder/video/7660757524685147423",
+    "title": "Agent Teams in Claude Code, explained",
+    "author": "Christian Acuna, @ai.native.founder",
+    "type": "TikTok post, public transcript mirror",
+    "date": "2026-07-10",
+    "version": "Claude Code Agent Teams as described in the post",
+    "claims": "The creator contrasts subagents that return results to a main agent with a team lead, shared backlog, agent-to-agent communication, and separate agent context.",
+    "limits": "I read a public transcript and caption through TTAnon. I did not watch the video. This is an explanation, not a measured comparison of quality or speed.",
+    "evidence_pointer": "TTAnon page for the TikTok video, caption at lines 11-35 and transcript at lines 67-71. The mirror shows 572 views, 27 likes, 3 comments, 3 shares, and 15 saves when retrieved."
+  },
+  {
+    "id": "DT03",
+    "url": "https://www.tiktok.com/@vibewithkevin/video/7709750400009702686",
+    "title": "One Claude with skills often beats a team of subagents",
+    "author": "Vibe with Kevin, @vibewithkevin",
+    "type": "TikTok post, public transcript mirror",
+    "date": "2026-11-19",
+    "version": "Claude Code workflow and Anthropic guidance cited in the post",
+    "claims": "The creator recommends a test before removing a specialist subagent. The proposed test uses ten requests with known answers and two runs per request. The creator reports a support example where a folded specialist instruction failed to preserve a shipping constraint.",
+    "limits": "I read the public transcript and post details through TTAnon. I did not watch the video. The reported support example is the creator's anecdote, not a reproduced test. The post does not report results from the proposed ten-request test.",
+    "evidence_pointer": "TTAnon page for the TikTok video, lines 11-34 and transcript at lines 77-78. The mirror showed 1.3K views, 65 likes, 2 comments, 8 shares, and 47 saves when retrieved."
+  },
+  {
+    "id": "DT04",
+    "url": "https://git-scm.com/docs/git-worktree",
+    "title": "git-worktree manual",
+    "author": "Git project",
+    "type": "Official technical documentation",
+    "date": "Not in source.",
+    "version": "Live manual retrieved 2026-11-20",
+    "claims": "A repository can have linked working trees. Each working tree has its own working directory and checkout state. The manual documents add, list, lock, move, prune, remove, and repair operations.",
+    "limits": "Git documents repository behavior. It does not promise that parallel coding agents will avoid semantic conflicts or merge errors.",
+    "evidence_pointer": "DESCRIPTION and COMMANDS sections of the official git-worktree manual."
+  },
+  {
+    "id": "DT05",
+    "url": "https://code.claude.com/docs/en/sub-agents",
+    "title": "Create custom subagents",
+    "author": "Anthropic",
+    "type": "Official product documentation",
+    "date": "Not in source.",
+    "version": "Live Claude Code documentation retrieved 2026-11-20",
+    "claims": "Claude Code subagents can use separate context, focused prompts, and limited tools. The documentation describes when to use subagents, parallel work, result handoff, and context management.",
+    "limits": "This documents Claude Code. It does not establish equivalent behavior in Codex or other products. Product behavior can change.",
+    "evidence_pointer": "Read Work with subagents, Choose between subagents and main conversation, Run subagents in foreground or background, and Manage subagent context."
+  },
+  {
+    "id": "DT06",
+    "url": "https://www.anthropic.com/research/multi-agent-research-system",
+    "title": "How we built our multi-agent research system",
+    "author": "Anthropic Engineering",
+    "type": "Firsthand system report",
+    "date": "2025-06-13",
+    "version": "June 2025 system report",
+    "claims": "Anthropic reports that parallel agents helped with open-ended research tasks and describes added coordination, evaluation, and reliability challenges.",
+    "limits": "The report concerns Anthropic's research system. It does not show that parallel code agents improve routine repository tasks.",
+    "evidence_pointer": "Benefits of a multi-agent system and Architecture overview for Research. The article states that the system uses parallel agents to search simultaneously and that multi-agent systems add coordination, evaluation, and reliability challenges."
+  },
+  {
+    "id": "DT07",
+    "url": "https://effecthouse.us.tiktok.com/learn/guides/effect-house-ai/effect-house-ai-overview",
+    "title": "Effect House AI Overview",
+    "author": "TikTok Effect House",
+    "type": "Official product documentation",
+    "date": "Not in source.",
+    "version": "Live documentation retrieved 2026-11-20",
+    "claims": "The agent can inspect Preview screenshots and script logs, take one refinement request at a time, and use a new temporary session for short experiments.",
+    "limits": "This documents the Effect House integration. It does not establish the same loop or outcomes in general coding-agent tasks.",
+    "evidence_pointer": "Read How Effect House AI Works, Refine Your Effect, Tips for Better Results, and Use Temporary Session."
+  }
+]

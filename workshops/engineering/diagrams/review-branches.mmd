@@ -1,0 +1,11 @@
+flowchart TD
+    Base["Pin one base"] --> Impl["Implementation branch"]
+    Base --> Check["Independent review branch"]
+    Impl --> Candidate["Candidate patch and retry tests"]
+    Check --> Review["Contract and counterexamples"]
+    Candidate --> Compare["Run review tests on candidate"]
+    Review --> Compare
+    Compare -->|Mismatch| Fix["Repair implementation"]
+    Fix --> Join["Integrate both branches"]
+    Compare -->|Pass| Join
+    Join --> Verify["Verify one combined revision"]

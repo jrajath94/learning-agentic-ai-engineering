@@ -1,0 +1,86 @@
+[
+  {
+    "id": "DR01",
+    "url": "https://github.com/karpathy/autoresearch/blob/master/program.md",
+    "title": "Autoresearch program and experiment protocol",
+    "author": "Andrej Karpathy",
+    "type": "Primary repository instructions",
+    "date": "Not in source.",
+    "version": "master branch, public text inspected November 20, 2026",
+    "claims": ["The usage rules reserve train.py for changes and keep prepare.py and the evaluation fixed.", "The loop redirects train output, then logs keep, discard or crash with the commit, score and memory.", "A lower val_bpb advances the branch. An equal or higher value causes a revert."],
+    "limits": "This is the stated protocol, with an open-ended loop. The local workshop uses a fixed candidate count. This source does not show that each proposed experiment improves performance.",
+    "evidence": ["The experiment loop, steps 2 to 9", "Logging results, TSV column list", "Each experiment runs on a single GPU, constraints before Output format"]
+  },
+  {
+    "id": "DR02",
+    "url": "https://github.com/karpathy/autoresearch/blob/master/train.py#L496-L583",
+    "title": "Autoresearch training loop",
+    "author": "Andrej Karpathy",
+    "type": "Primary implementation",
+    "date": "Not in source.",
+    "version": "master branch, public source inspected November 20, 2026",
+    "claims": ["The main loop measures synchronized steps, accumulates time after initial steps and breaks at TIME_BUDGET.", "It calls evaluate_bpb after training and prints val_bpb, measured training time, total time and peak memory."],
+    "limits": "Training time and total process time are separate. This workshop inspected the code and did not execute GPU training.",
+    "evidence": ["train.py main loop near lines 496 to 560", "train.py final evaluation and printed summary near lines 565 to 583"]
+  },
+  {
+    "id": "DR03",
+    "url": "https://github.com/karpathy/autoresearch/blob/master/prepare.py#L310-L333",
+    "title": "Autoresearch fixed evaluation and budget",
+    "author": "Andrej Karpathy",
+    "type": "Primary implementation",
+    "date": "Not in source.",
+    "version": "master branch, public source inspected November 20, 2026",
+    "claims": ["TIME_BUDGET is 300 seconds. evaluate_bpb reads validation batches, excludes zero-byte targets from the loss sum and divides accumulated nats by the byte count times log(2)."],
+    "limits": "This is a language-model loss metric calculated against validation data. It does not measure retrieval evidence or external validity.",
+    "evidence": ["prepare.py constants near lines 27 to 30", "evaluate_bpb near lines 310 to 333"]
+  },
+  {
+    "id": "DR04",
+    "url": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
+    "title": "Demystifying evals for AI agents",
+    "author": "Anthropic Engineering",
+    "type": "Primary engineering account",
+    "date": "2026-01-09",
+    "version": "Public article inspected November 20, 2026",
+    "claims": ["The article distinguishes a task, trial, grader, transcript and outcome.", "It recommends clean trial state and deterministic graders when they fit.", "It describes eval cases for both search and no-search behavior in a deployment example."],
+    "limits": "The recommendations and field examples describe agent evaluation practice. This workshop implements deterministic retrieval over synthetic cards.",
+    "evidence": ["The structure of an evaluation, definitions list", "Going from zero to one, steps 3 to 5"]
+  },
+  {
+    "id": "DR05",
+    "url": "https://openai.com/index/browsecomp/",
+    "title": "BrowseComp, a benchmark for browsing agents",
+    "author": "OpenAI",
+    "type": "Primary benchmark release",
+    "date": "2025-04-10",
+    "version": "Public release article inspected November 20, 2026",
+    "claims": ["BrowseComp contains 1,266 problems for finding difficult information with browsing agents.", "The authors prefer questions with short, verifiable answers and describe their task selection."],
+    "limits": "The benchmark concerns public web research. The local card exercise measures evidence retrieval on a fixed index and can be checked without a web connection.",
+    "evidence": ["Opening paragraphs", "About the BrowseComp benchmark, paragraphs on question criteria"]
+  },
+  {
+    "id": "DR06",
+    "url": "https://github.com/openai/simple-evals/blob/main/browsecomp_eval.py#L69-L108",
+    "title": "BrowseComp sampler and grader code",
+    "author": "OpenAI simple-evals contributors",
+    "type": "Primary implementation",
+    "date": "Not in source.",
+    "version": "main branch, public source inspected November 20, 2026",
+    "claims": ["BrowseCompEval.__call__ supplies the problem to the sampler and passes the reference to grade_sample after the response.", "The inspected grade_sample path returns the whole regular expression match such as correct: yes, while its caller tests equality with bare yes."],
+    "limits": "The parser inconsistency is a static observation about the inspected branch. The workshop did not run this implementation or establish which grader code generated the published benchmark scores.",
+    "evidence": ["browsecomp_eval.py grade_sample near lines 70 to 83", "BrowseCompEval.__call__ response and grading near lines 84 to 109"]
+  },
+  {
+    "id": "DR07",
+    "url": "https://developers.openai.com/api/docs/guides/evaluation-best-practices#example-qa-over-docs",
+    "title": "Evaluation best practices, Q&A over docs",
+    "author": "OpenAI",
+    "type": "Official evaluation guidance",
+    "date": "Not in source.",
+    "version": "Public guide inspected November 20, 2026",
+    "claims": ["The example separates context recall, context precision and answer judgments.", "It calls for a defined objective, labeled examples, comparisons and continuous evaluation."],
+    "limits": "The thresholds are illustrative. The local workshop defines its own document ID metrics and has no dependency on a hosted evaluation platform.",
+    "evidence": ["Example: Q&A over docs, steps 1 to 5"]
+  }
+]

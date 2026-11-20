@@ -1,0 +1,30 @@
+[
+  {"id":"K01","group":"kite","title":"Input guide","body":"Kite feed guides set the width. Adjust both sides before use."},
+  {"id":"K02","group":"kite","title":"Supply inspection","body":"Kite feed inspection checks stock. Record the width."},
+  {"id":"K11","group":"kite","title":"Kite paper jam","body":"For a paper jam at tray one, unplug the unit and lift the tray."},
+  {"id":"K12","group":"kite","title":"Kite exit jam","body":"For a jam in the exit path, open the rear latch after power is off."},
+
+  {"id":"M01","group":"moss","title":"Cover fit check","body":"Moss cover clips keep dust outside. Check for loose clips."},
+  {"id":"M02","group":"moss","title":"Cover storage","body":"Moss cover storage requires a dry shelf."},
+  {"id":"M11","group":"moss","title":"Moss cover cleaning","body":"Wipe the shell with a dry cloth. Leave the power off."},
+
+  {"id":"R01","group":"reed","title":"Status lamp","body":"The Reed status lamp stays amber while jobs wait."},
+  {"id":"R11","group":"reed","title":"Reed queue pause","body":"A Reed queue pause lets the current job finish. Press the square button once."},
+  {"id":"R12","group":"reed","title":"Reed queue resume","body":"Press the arrow button after the queue is clear."},
+
+  {"id":"F01","group":"frost","title":"Latch check","body":"Frost fit checks apply to the latch only."},
+  {"id":"F02","group":"frost","title":"Shelf test","body":"Use Frost fit marks to verify shelf alignment."},
+  {"id":"F11","group":"frost","title":"Frost cover gasket","body":"Seat the gasket under the cover lip. Check all four corners."},
+
+  {"id":"B01","group":"birch","title":"Supply alignment","body":"Birch feed guides hold the supply. Set the width first."},
+  {"id":"B02","group":"birch","title":"Feed log","body":"The Birch feed log tracks the start of each shift."},
+  {"id":"B11","group":"birch","title":"Birch cartridge jam","body":"For a jam at the cartridge, open the top flap after power is off."},
+  {"id":"B12","group":"birch","title":"Birch roller jam","body":"For a roller jam, use the roller release after power is off."},
+
+  {"id":"L01","group":"lark","title":"Lark queue view","body":"Lark queue status shows all jobs. The console lists the queue as a table."},
+  {"id":"L11","group":"lark","title":"Lark queue export","body":"Lark queue export saves the current queue as a CSV file."},
+
+  {"id":"V01","group":"finch","title":"Finch gasket audit","body":"The gasket audit examines tears and dry spots on the door."},
+  {"id":"V02","group":"finch","title":"Finch door gasket audit","body":"File the gasket audit in the maintenance folder."},
+  {"id":"V11","group":"finch","title":"Inspection card 7","body":"The Finch seal audit checks the serial mark on the anti-tamper label."}
+]

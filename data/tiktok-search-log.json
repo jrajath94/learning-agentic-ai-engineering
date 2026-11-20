@@ -1,0 +1,43 @@
+{
+  "retrieval_date": "2026-11-20",
+  "purpose": "Discover short posts about coding-agent workflows, then verify technical claims in primary documentation or source code.",
+  "method": {
+    "queries_run": 12,
+    "query_limit": "Twelve targeted web queries across three calls. Each call had four queries or fewer.",
+    "access": "Public search results and public transcript mirrors only. Direct TikTok access was blocked by robots rules. No logins, cookies, paid providers, or browser tools were used.",
+    "video_access": "No video was watched. Three distinct TikTok video URLs had identifiable titles, authors, dates, and public transcript or caption text through third-party mirrors. The mirrors are not TikTok. Their counts are not treated as verified viral rankings.",
+    "verification": "Technical claims in the chapter use the official Git manual, current Claude Code docs, Anthropic's first-hand system report, and TikTok Effect House docs. TikTok posts supplied discovery leads and creator reports only.",
+    "selection": "Selected posts that describe concrete team or subagent mechanisms and include a testable limit. A creator's anecdote is labeled as such. The chapter does not infer broad quality or speed from views or likes."
+  },
+  "queries": [
+    {"channel":"Web search","query":"site:tiktok.com/@ Claude Code workflow coding agent","result":"TikTok blocked by robots. TikTok Effect House official documentation and Notes results appeared."},
+    {"channel":"Web search","query":"site:tiktok.com/@ Codex coding agent workflow","result":"TikTok blocked by robots. Search results included one TikTok Notes post and official Effect House pages."},
+    {"channel":"Web search","query":"site:tiktok.com/@ Claude Code subagents hooks worktree","result":"TikTok blocked by robots. No direct video page opened."},
+    {"channel":"Web search","query":"site:tiktok.com/@ AI coding agent MCP developer","result":"TikTok blocked by robots. Non-video TikTok Notes results were excluded from the video set."},
+    {"channel":"Web search","query":"TikTok Claude Code subagents tiktok.com/video","result":"Search found a transcript mirror for @ai.native.founder, a related post for @simonerizzo98, and a transcript mirror for @vibewithkevin."},
+    {"channel":"Web search","query":"TikTok Codex worktrees agent workflow video","result":"Search returned YouTube results and no direct TikTok video page."},
+    {"channel":"Web search","query":"TikTok coding agent context reset workflow Claude Code","result":"Search returned @vibewithkevin's caption and transcript mirror, plus other non-TikTok discussions."},
+    {"channel":"Web search","query":"TikTok MCP server Claude Code developer tutorial","result":"Search returned tool setup pages and GitHub projects, not a verifiable TikTok video URL."},
+    {"channel":"Web search","query":"site:tiktok.com/@/video claude code coding workflow TikTok","result":"TikTok domain blocked by robots. No new direct video URL."},
+    {"channel":"Web search","query":"site:notes.tiktok.com/@ Claude Code workflow coding","result":"Search found two TikTok Notes results. These were not counted as videos."},
+    {"channel":"Web search","query":"site:tiktok.com Claude Code workflow coding subagents TikTok","result":"TikTok blocked by robots. Results repeated prior sources and official Effect House material."},
+    {"channel":"Web search","query":"TikTok coding agent workflow author GitHub Claude Code short video","result":"Search returned videos on other platforms and source repositories. No new direct TikTok URL."}
+  ],
+  "selected_video_urls": [
+    {"url":"https://www.tiktok.com/@simonerizzo98/video/7604922963254693142","id":"DT01","mirror":"https://ttanon.com/@simonerizzo98/video/7604922963254693142","access":"Transcript and caption read from mirror. Video not watched."},
+    {"url":"https://www.tiktok.com/@ai.native.founder/video/7660757524685147423","id":"DT02","mirror":"https://ttanon.com/@ai.native.founder/video/7660757524685147423","access":"Transcript and caption read from mirror. Video not watched."},
+    {"url":"https://www.tiktok.com/@vibewithkevin/video/7709750400009702686","id":"DT03","mirror":"https://ttanon.com/@vibewithkevin/video/7709750400009702686","access":"Transcript and post details read from mirror. Video not watched."}
+  ],
+  "candidate_count": 3,
+  "candidate_limit": "Fifteen distinct candidate TikTok video URLs were not available in this public retrieval. TikTok blocked direct search access, and results repeated the same three attributable posts. No URLs were fabricated from profile pages.",
+  "related_non_video_results": [
+    {"url":"https://notes.tiktok.com/%40nux_design/7662280560450093569?region=th","access":"Search result caption read. Open redirected to Lemon8 and failed. Not counted as a video."},
+    {"url":"https://notes.tiktok.com/%40fig3lvls/7610735714879259150?region=us","access":"Search result excerpt read. Not counted as a video."}
+  ],
+  "engagement": "The public mirrors displayed post-level counts for DT02 and DT03 at retrieval. Those values are recorded as dated snapshots in the source records. No popularity claim or platform-wide rank was inferred.",
+  "limits": [
+    "Captions and machine transcripts can omit on-screen context or contain recognition errors.",
+    "The creators' statements do not verify product behavior. Primary docs support the technical explanations.",
+    "Search engine coverage is incomplete. The three-video set is not representative of TikTok content."
+  ]
+}

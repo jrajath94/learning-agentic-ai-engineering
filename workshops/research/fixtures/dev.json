@@ -1,0 +1,8 @@
+[
+  {"id":"D01","group":"kite","slice":"alias","query":"Kite feed blockage","relevant":["K11","K12"],"critical":false,"reason":"The question asks where to find the jam procedure. Both jam procedures apply."},
+  {"id":"D02","group":"moss","slice":"title","query":"Moss cover cleaning","relevant":["M11"],"critical":false,"reason":"Only this card describes a dry cloth on the shell."},
+  {"id":"D03","group":"reed","slice":"literal","query":"Reed queue pause","relevant":["R11"],"critical":true,"reason":"The resume card concerns a different operation."},
+  {"id":"D04","group":"frost","slice":"alias","query":"Frost seal fit","relevant":["F11"],"critical":false,"reason":"In this product, seal means the cover gasket."},
+  {"id":"D05","group":"kite","slice":"alias","query":"Kite blockage at exit","relevant":["K12"],"critical":false,"reason":"Here the location limits the task to the exit path."},
+  {"id":"D06","group":"moss","slice":"no-evidence","query":"moss warranty transfer","relevant":[],"critical":false,"reason":"The corpus contains no Moss warranty transfer rule."}
+]

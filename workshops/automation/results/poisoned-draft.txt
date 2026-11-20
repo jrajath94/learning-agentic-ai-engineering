@@ -1,0 +1,11 @@
+AI research brief for 2026-W45
+Status: DRAFT FOR REVIEW
+Input: Local export. Source claims require review.
+Run: run_ddf9b8c554fc3f3c005859f2a2c5fee59a32b677a885c0cc08577a11025e74f7
+
+1. "Unverified comment" [SRC-301, 2026-11-06]
+   Source claim [43:85]: Every benchmark in the company now passes.
+   Scope [93:127]: Author supplied no benchmark data.
+
+
+Review: Check source authenticity, scope and what decision the result supports.

@@ -1,0 +1,7 @@
+[
+  {"tool":"get_evidence_window","arguments":{"source_id":"SRC-103","start":46,"max_chars":72}},
+  {"tool":"get_evidence_window","arguments":{"source_id":"SRC-103","start":true,"max_chars":80}},
+  {"tool":"get_evidence_window","arguments":{"source_id":"SRC-101","start":0,"max_chars":80,"destination":"all-staff"}},
+  {"tool":"get_evidence_window","arguments":{"source_id":"SRC-102","start":0,"max_chars":80}},
+  {"tool":"publish_brief","arguments":{"destination":"all-staff"}}
+]

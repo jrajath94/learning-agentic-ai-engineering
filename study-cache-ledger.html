@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cache ledger | AI engineering field guide</title><link rel="stylesheet" href="assets/guide.css"><link rel="stylesheet" href="assets/workshop.css">
+<script defer src="assets/search-index.js"></script><script defer src="assets/guide.js"></script><script defer src="assets/visuals.js"></script><script defer src="assets/study.js"></script><script defer src="assets/workshop.js"></script></head>
+<body class="page-study-cache-ledger"><a class="skip" href="#main">Skip to content</a>
+<header class="mast"><div class="mast-inner"><a class="wordmark" href="index.html">Engineering field guide</a>
+<nav class="mast-links" aria-label="Shortcuts"><a href="labs.html">Labs</a><a href="sources.html">Sources</a><a href="#find">Search ↓</a></nav></div></header>
+<div class="layout"><aside class="rail"><nav aria-label="Chapters"><div class="nav-group"><p>Study</p><a href="index.html">Start here</a><a href="paths.html">Learning paths</a><a href="foundations.html">Foundations</a><a href="cases.html">Practitioner cases</a><a href="fieldnotes.html">Practitioner field notes</a></div><div class="nav-group"><p>Workshops</p><a href="workflow-kit.html">Adapt a workflow</a><a href="workshop-engineering.html">Repository to reviewed patch</a><a href="workshop-research.html">Retrieval and evaluation</a><a href="workshop-automation.html">Durable tool workflows</a><a href="run-viewer.html">Inspect recorded runs</a><a href="social-practice.html">From posts to practice</a><a href="community.html">Community practice</a><a href="resource-study.html">Read the implementations</a></div><div class="nav-group"><p>Evidence</p><a href="usage.html">How labs use tokens</a><a href="graphs.html">Project graphs</a><a href="sources.html">Source library</a><a href="audit.html">Audit and open questions</a></div><div class="nav-group"><p>Practice</p><a href="engineering.html">Production engineering</a><a href="business.html">Business workflows</a><a href="research.html">Research workflows</a><a href="labs.html">Practical labs</a></div><div class="nav-group"><p>Reference</p><a href="products.html">Products and versions</a><a href="tools.html">Tool tutorials</a><a href="resources.html">Resource catalog</a><a href="prompts.html">Prompt library</a><a href="glossary.html">Glossary</a></div><div class="nav-group"><p>Source studies</p><a href="study-cache-ledger.html" aria-current="page">Cache ledger</a><a href="study-codex-instructions.html">Codex instructions</a><a href="study-dspy-bootstrap.html">Dspy bootstrap</a><a href="study-eval-outcomes.html">Eval outcomes</a><a href="study-mcp-tool-schema.html">Mcp tool schema</a><a href="study-operator-workflows.html">Operator workflows</a><a href="study-orchestrator-workers.html">Orchestrator workers</a><a href="study-restart-compaction.html">Restart compaction</a><a href="study-superpowers-handoff.html">Superpowers handoff</a><a href="study-tool-contracts.html">Tool contracts</a></div></nav></aside>
+<div class="reading"><details id="navigation"><summary>Browse chapters</summary><nav aria-label="Mobile chapters"><div class="nav-group"><p>Study</p><a href="index.html">Start here</a><a href="paths.html">Learning paths</a><a href="foundations.html">Foundations</a><a href="cases.html">Practitioner cases</a><a href="fieldnotes.html">Practitioner field notes</a></div><div class="nav-group"><p>Workshops</p><a href="workflow-kit.html">Adapt a workflow</a><a href="workshop-engineering.html">Repository to reviewed patch</a><a href="workshop-research.html">Retrieval and evaluation</a><a href="workshop-automation.html">Durable tool workflows</a><a href="run-viewer.html">Inspect recorded runs</a><a href="social-practice.html">From posts to practice</a><a href="community.html">Community practice</a><a href="resource-study.html">Read the implementations</a></div><div class="nav-group"><p>Evidence</p><a href="usage.html">How labs use tokens</a><a href="graphs.html">Project graphs</a><a href="sources.html">Source library</a><a href="audit.html">Audit and open questions</a></div><div class="nav-group"><p>Practice</p><a href="engineering.html">Production engineering</a><a href="business.html">Business workflows</a><a href="research.html">Research workflows</a><a href="labs.html">Practical labs</a></div><div class="nav-group"><p>Reference</p><a href="products.html">Products and versions</a><a href="tools.html">Tool tutorials</a><a href="resources.html">Resource catalog</a><a href="prompts.html">Prompt library</a><a href="glossary.html">Glossary</a></div><div class="nav-group"><p>Source studies</p><a href="study-cache-ledger.html" aria-current="page">Cache ledger</a><a href="study-codex-instructions.html">Codex instructions</a><a href="study-dspy-bootstrap.html">Dspy bootstrap</a><a href="study-eval-outcomes.html">Eval outcomes</a><a href="study-mcp-tool-schema.html">Mcp tool schema</a><a href="study-operator-workflows.html">Operator workflows</a><a href="study-orchestrator-workers.html">Orchestrator workers</a><a href="study-restart-compaction.html">Restart compaction</a><a href="study-superpowers-handoff.html">Superpowers handoff</a><a href="study-tool-contracts.html">Tool contracts</a></div></nav></details>
+<main id="main" tabindex="-1" data-workshop-progress><nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Guide</a><span>/</span>Source studies<span>/</span>Cache ledger</nav>
+<div class="title"><h1>Find why a prompt cache changed the bill</h1></div><details class="contents"><summary>On this page</summary><div><a href="#start-offline">Start offline</a><a href="#calculate-three-requests">Calculate three requests</a><a href="#find-the-accounting-mistake">Find the accounting mistake</a><a href="#adapt-the-ledger">Adapt the ledger</a><a href="#check-your-solution">Check your solution</a><a href="#retrieve-from-memory">Retrieve from memory</a><a href="#optional-source-inspection">Optional source inspection</a></div></details>
+<p><a href="resource-study.html">Back to implementation studies</a> · <a href="studies/cache-ledger.md" download>Download the editable study</a></p><p>Record the prefix and usage for each request. Calculate cost from
+token categories. Use fixed rates in the exercise so a price change
+cannot explain your result.</p>
+<h2 id="start-offline">Start offline</h2>
+<p>Work the case below before you inspect the original source. The
+trace, exercise and worked answers are complete offline. The <a
+href="workshops/engineering/lab/trace_rollup/aggregate.py">local
+token rollup</a> gives you a related counting exercise. Follow input and
+output totals separately before you introduce cache categories. The
+optional upstream links at the end need an internet connection.</p>
+<h2 id="calculate-three-requests">Calculate three requests</h2>
+<p>Use a synthetic stable prefix of 2,000 tokens. Add 400 tokens of
+task-specific input. Assume an eligible cache breakpoint at the end of
+the stable prefix. Assume the second request can find the first entry.
+The counts below are fixtures, separate from API measurements.</p>
+<div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Request</th>
+<th style="text-align: right;">Total input</th>
+<th style="text-align: right;">Cache read</th>
+<th style="text-align: right;">Cache write</th>
+<th style="text-align: right;">Ordinary input</th>
+<th style="text-align: right;">Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A. Write the stable prefix</td>
+<td style="text-align: right;">2,400</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2,000</td>
+<td style="text-align: right;">400</td>
+<td style="text-align: right;">200</td>
+</tr>
+<tr>
+<td>B. Reuse the prefix</td>
+<td style="text-align: right;">2,400</td>
+<td style="text-align: right;">2,000</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">400</td>
+<td style="text-align: right;">200</td>
+</tr>
+<tr>
+<td>C. Change the first instruction</td>
+<td style="text-align: right;">2,400</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2,000</td>
+<td style="text-align: right;">400</td>
+<td style="text-align: right;">200</td>
+</tr>
+</tbody>
+</table></div>
+<p>Use toy rates per 1,000 tokens: 1 credit for ordinary input, 0.1 for
+cache reads, 1.25 for cache writes and 4 for output. A costs
+<code>0.4 + 2.5 + 0.8 = 3.7</code> credits. B costs
+<code>0.4 + 0.2 + 0.8 = 1.4</code>. C costs 3.7. The total is 8.8. Three
+requests at the toy ordinary rate with the same output would cost 9.6.
+Record the cost of the whole run. A cold write can raise the first
+request's cost before later reads repay it.</p>
+<p>Now put a unique job label before the developer instructions in each
+request. Predict that the old breakpoint after the stable prefix will
+fail to match. Move the label to the part after the breakpoint. Predict
+which eligible prefix can match. The service result can still depend on
+model, settings, timing and availability. Use usage counters to check
+the prediction.</p>
+<h2 id="find-the-accounting-mistake">Find the accounting mistake</h2>
+<p>Suppose a reporter multiplies all 2,400 input tokens in B by the
+ordinary rate and adds the 2,000 cache reads again. It reports
+<code>2.4 + 0.2 + 0.8 = 3.4</code> credits. The same 2,000 tokens appear
+in two categories. Require the ledger to reconcile input counts before
+it records cost.</p>
+<p>Suppose a second reporter sees the same output token count in A and B
+and calls the cache a miss. It measures the wrong quantity. The
+experiment asks whether the input prefix was reused. Compare the read
+count and cost. Keep latency separate, since a single slow response is
+insufficient evidence about cache state.</p>
+<h2 id="adapt-the-ledger">Adapt the ledger</h2>
+<p>Build a local ledger with request ID, API surface, model, cache mode,
+ordered tool set version, prefix version, measured counters and a rate
+card identifier. Feed it A, B and C. Add a row where cache reads plus
+cache writes exceed total input. Reject that row. Add a row whose cache
+write field is missing. Require a named billing mode before you
+interpret that absence as zero.</p>
+<p>Compare two synthetic traces. In one, a compaction operation changes
+the retained context before the breakpoint. In the other, a new question
+appends to the same prefix. Predict the cache effect and label the
+assumptions behind each prediction.</p>
+<h2 id="check-your-solution">Check your solution</h2>
+<p>The ledger reports 8.8 credits for the fixture. Each input token
+belongs to one category in that calculation. The row with invalid counts
+fails. The reader can identify the first changed input or setting and
+distinguish a prediction from reported usage.</p>
+<h2 id="retrieve-from-memory">Retrieve from memory</h2>
+<ol type="1">
+<li>What does the second cookbook request preserve?</li>
+<li>Why does a cached input token stay in total input?</li>
+<li>Which records let you explain a cache miss without the complete
+prompt text?</li>
+</ol>
+<details><summary>Show worked answers</summary>
+<ol type="1">
+<li>It preserves the prior message prefix and tool definitions, then
+appends a user message.</li>
+<li>Total input counts all input categories. Cached input has a distinct
+rate.</li>
+<li>Use the API surface, model, cache mode, prefix version, tool set
+version and usage counters.</li>
+</ol>
+<h2 id="optional-source-inspection">Optional source inspection</h2>
+<p>Read OpenAI's <a
+href="https://developers.openai.com/api/docs/guides/prompt-caching#how-caching-works">prompt
+caching guide</a> at “How caching works,” “How prefix matching works,”
+and “Request 1 · Response usage.” Open <a
+href="https://github.com/openai/openai-cookbook/blob/main/examples/Prompt_Caching101.ipynb">examples/Prompt_Caching101.ipynb</a>
+and search for <code>completion_run</code> and <code>main</code> under
+the first example. The docs and notebook use mutable links read on
+2026-11-20.</p>
+<p>The cookbook sends two Chat Completions requests with unchanged tool
+definitions. It appends a second user message and prints usage. Inspect
+the cells to see why a second user message in a demo differs from a
+transcript with an assistant reply and tool results. The example reads
+<code>usage.prompt_tokens_details.cached_tokens</code>. For a Responses
+API ledger, use <code>usage.input_tokens_details</code> and identify
+whether the selected model and cache mode report a separate write count.
+Use the API shape and rate rules for the chosen run.</p>
+</details></main>
+<nav class="page-turn" aria-label="Adjacent chapters"><a href="audit.html">← Audit and open questions</a><a href="study-codex-instructions.html">Codex instructions →</a></nav>
+<section id="find" class="find"><h2>Search the guide</h2><div class="search-fields"><label>Words or source ID<input id="guide-search" type="search" placeholder="Try checkpoint or Grok Bot" autocomplete="off"></label>
+<label>Section<select id="search-group"><option value="">All sections</option><option value="Study">Study</option><option value="Workshops">Workshops</option><option value="Evidence">Evidence</option><option value="Practice">Practice</option><option value="Reference">Reference</option><option value="Source studies">Source studies</option></select></label></div>
+<p id="search-status" role="status"></p><div id="search-results"></div><noscript>Use the chapter menu or your browser's Find command.</noscript></section>
+<footer><a href="audit.html">Methods and verification</a><a href="#main">Back to top ↑</a></footer></div></div></body></html>

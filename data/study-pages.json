@@ -1,0 +1,72 @@
+[
+  [
+    "study-cache-ledger",
+    "Cache ledger",
+    "Find why a prompt cache changed the bill",
+    "Source studies",
+    ""
+  ],
+  [
+    "study-codex-instructions",
+    "Codex instructions",
+    "Predict which Codex instructions enter context",
+    "Source studies",
+    ""
+  ],
+  [
+    "study-dspy-bootstrap",
+    "Dspy bootstrap",
+    "Follow a successful trace into prompt examples",
+    "Source studies",
+    ""
+  ],
+  [
+    "study-eval-outcomes",
+    "Eval outcomes",
+    "Grade what the agent changed",
+    "Source studies",
+    ""
+  ],
+  [
+    "study-mcp-tool-schema",
+    "Mcp tool schema",
+    "Trace an MCP result from schema to decision",
+    "Source studies",
+    ""
+  ],
+  [
+    "study-operator-workflows",
+    "Operator workflows",
+    "Turn a briefing into a verifiable routine",
+    "Source studies",
+    ""
+  ],
+  [
+    "study-orchestrator-workers",
+    "Orchestrator workers",
+    "Trace a plan into worker calls",
+    "Source studies",
+    ""
+  ],
+  [
+    "study-restart-compaction",
+    "Restart compaction",
+    "Restart from evidence",
+    "Source studies",
+    ""
+  ],
+  [
+    "study-superpowers-handoff",
+    "Superpowers handoff",
+    "Carry a design through plan and review",
+    "Source studies",
+    ""
+  ],
+  [
+    "study-tool-contracts",
+    "Tool contracts",
+    "Test a tool the model must choose",
+    "Source studies",
+    ""
+  ]
+]

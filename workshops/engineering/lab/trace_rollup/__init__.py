@@ -1,0 +1,1 @@
+"""Summarize terminal evaluation results."""

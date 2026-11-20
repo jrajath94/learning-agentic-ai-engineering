@@ -1,0 +1,10 @@
+flowchart TD
+    baseline[Score baseline] --> candidate[Score next candidate]
+    candidate --> guards{Guards pass and recall rises?}
+    guards -->|Yes| keep[Promote candidate]
+    guards -->|No| discard[Retain incumbent]
+    keep --> ledger[Commit checkpoint]
+    discard --> ledger
+    ledger --> budget{Budget exhausted?}
+    budget -->|No| candidate
+    budget -->|Yes| freeze[Freeze configuration]

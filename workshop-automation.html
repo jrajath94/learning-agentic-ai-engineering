@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Durable tool workflows | AI engineering field guide</title><link rel="stylesheet" href="assets/guide.css"><link rel="stylesheet" href="assets/workshop.css">
+<script defer src="assets/search-index.js"></script><script defer src="assets/guide.js"></script><script defer src="assets/visuals.js"></script><script defer src="assets/study.js"></script><script defer src="assets/workshop.js"></script></head>
+<body class="page-workshop-automation"><a class="skip" href="#main">Skip to content</a>
+<header class="mast"><div class="mast-inner"><a class="wordmark" href="index.html">Engineering field guide</a>
+<nav class="mast-links" aria-label="Shortcuts"><a href="labs.html">Labs</a><a href="sources.html">Sources</a><a href="#find">Search ↓</a></nav></div></header>
+<div class="layout"><aside class="rail"><nav aria-label="Chapters"><div class="nav-group"><p>Study</p><a href="index.html">Start here</a><a href="paths.html">Learning paths</a><a href="foundations.html">Foundations</a><a href="cases.html">Practitioner cases</a><a href="fieldnotes.html">Practitioner field notes</a></div><div class="nav-group"><p>Workshops</p><a href="workflow-kit.html">Adapt a workflow</a><a href="workshop-engineering.html">Repository to reviewed patch</a><a href="workshop-research.html">Retrieval and evaluation</a><a href="workshop-automation.html" aria-current="page">Durable tool workflows</a><a href="run-viewer.html">Inspect recorded runs</a><a href="social-practice.html">From posts to practice</a><a href="community.html">Community practice</a><a href="resource-study.html">Read the implementations</a></div><div class="nav-group"><p>Evidence</p><a href="usage.html">How labs use tokens</a><a href="graphs.html">Project graphs</a><a href="sources.html">Source library</a><a href="audit.html">Audit and open questions</a></div><div class="nav-group"><p>Practice</p><a href="engineering.html">Production engineering</a><a href="business.html">Business workflows</a><a href="research.html">Research workflows</a><a href="labs.html">Practical labs</a></div><div class="nav-group"><p>Reference</p><a href="products.html">Products and versions</a><a href="tools.html">Tool tutorials</a><a href="resources.html">Resource catalog</a><a href="prompts.html">Prompt library</a><a href="glossary.html">Glossary</a></div><div class="nav-group"><p>Source studies</p><a href="study-cache-ledger.html">Cache ledger</a><a href="study-codex-instructions.html">Codex instructions</a><a href="study-dspy-bootstrap.html">Dspy bootstrap</a><a href="study-eval-outcomes.html">Eval outcomes</a><a href="study-mcp-tool-schema.html">Mcp tool schema</a><a href="study-operator-workflows.html">Operator workflows</a><a href="study-orchestrator-workers.html">Orchestrator workers</a><a href="study-restart-compaction.html">Restart compaction</a><a href="study-superpowers-handoff.html">Superpowers handoff</a><a href="study-tool-contracts.html">Tool contracts</a></div></nav></aside>
+<div class="reading"><details id="navigation"><summary>Browse chapters</summary><nav aria-label="Mobile chapters"><div class="nav-group"><p>Study</p><a href="index.html">Start here</a><a href="paths.html">Learning paths</a><a href="foundations.html">Foundations</a><a href="cases.html">Practitioner cases</a><a href="fieldnotes.html">Practitioner field notes</a></div><div class="nav-group"><p>Workshops</p><a href="workflow-kit.html">Adapt a workflow</a><a href="workshop-engineering.html">Repository to reviewed patch</a><a href="workshop-research.html">Retrieval and evaluation</a><a href="workshop-automation.html" aria-current="page">Durable tool workflows</a><a href="run-viewer.html">Inspect recorded runs</a><a href="social-practice.html">From posts to practice</a><a href="community.html">Community practice</a><a href="resource-study.html">Read the implementations</a></div><div class="nav-group"><p>Evidence</p><a href="usage.html">How labs use tokens</a><a href="graphs.html">Project graphs</a><a href="sources.html">Source library</a><a href="audit.html">Audit and open questions</a></div><div class="nav-group"><p>Practice</p><a href="engineering.html">Production engineering</a><a href="business.html">Business workflows</a><a href="research.html">Research workflows</a><a href="labs.html">Practical labs</a></div><div class="nav-group"><p>Reference</p><a href="products.html">Products and versions</a><a href="tools.html">Tool tutorials</a><a href="resources.html">Resource catalog</a><a href="prompts.html">Prompt library</a><a href="glossary.html">Glossary</a></div><div class="nav-group"><p>Source studies</p><a href="study-cache-ledger.html">Cache ledger</a><a href="study-codex-instructions.html">Codex instructions</a><a href="study-dspy-bootstrap.html">Dspy bootstrap</a><a href="study-eval-outcomes.html">Eval outcomes</a><a href="study-mcp-tool-schema.html">Mcp tool schema</a><a href="study-operator-workflows.html">Operator workflows</a><a href="study-orchestrator-workers.html">Orchestrator workers</a><a href="study-restart-compaction.html">Restart compaction</a><a href="study-superpowers-handoff.html">Superpowers handoff</a><a href="study-tool-contracts.html">Tool contracts</a></div></nav></details>
+<main id="main" tabindex="-1" data-workshop-progress><nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Guide</a><span>/</span>Workshops<span>/</span>Durable tool workflows</nav>
+<div class="title"><h1>Build a briefing that survives a crash</h1><p class="deck">Validate a tool call, ground every claim and recover from an interrupted write.</p></div><details class="contents"><summary>On this page</summary><div><a href="#topic-stage-a-weekly-research-brief">Stage a weekly research brief</a><a href="#topic-make-the-export-safe-to-parse">Make the export safe to parse</a><a href="#topic-specify-the-tool-and-verify-evidence">Specify the tool and verify evidence</a><a href="#topic-persist-progress-before-a-process-can-stop">Persist progress before a process can stop</a><a href="#topic-practice-with-a-known-result">Practice with a known result</a><a href="#topic-reuse-the-process-for-a-real-decision">Reuse the process for a real decision</a><a href="#topic-prompts-for-workflow-design-and-review">Prompts for workflow design and review</a><a href="#topic-record-your-practice">Record your practice</a></div></details>
+<section id="weekly-flow">
+<h2 id="topic-stage-a-weekly-research-brief">Stage a weekly research brief</h2>
+<p>Run the local workflow to turn seven synthetic posts into a draft with three evidence items. Then stop the process at two different commit boundaries. The same retry command must stage one draft in the first case and reuse one draft in the second.</p><figure class="learning-figure"><img src="workshops/automation/workflow.svg" alt="The validated source snapshot produces evidence spans and a draft for human review." loading="lazy"><figcaption>The validated source snapshot produces evidence spans and a draft for human review. <span class="figure-links"><a href="workshops/automation/workflow.mmd" download>Mermaid source</a> · <a href="workshops/automation/workflow.svg">Full-size figure</a></span></figcaption></figure>
+<p>The input represents a local export from an AI research feed. Every source claim is synthetic. The brief records what each post says and where the quote appears. The reviewer decides what the evidence supports and whether the draft can inform a decision.</p>
+<p>Use Python 3.10 or later and a POSIX shell. Use macOS Terminal, Linux or WSL. Open the directory that contains <code>index.html</code> in that shell. Keep the same terminal for the commands so the shell variables remain available.</p>
+<pre><code>lab=workshops/automation
+brief_lab=$(mktemp -d)
+python3 -B "$lab/briefing.py" run --db "$brief_lab/main.sqlite3" \
+  --feed "$lab/fixtures/posts.jsonl" --week 2026-W45
+python3 -B "$lab/briefing.py" draft --db "$brief_lab/main.sqlite3"</code></pre>
+<p>The first command prints the run key and <code>"outcome": "staged"</code>. The next command reads the stored draft. Results from a fresh database are available beside the code.</p>
+<pre><code>AI research brief for 2026-W45
+Status: DRAFT FOR REVIEW
+Input: Local export. Source claims require review.
+
+1. "Cache evaluation" [SRC-101, 2026-11-02]
+   Source claim [60:133]: Cache reuse cut median tool latency from 800 ms to 510 ms across 40 runs.
+   Scope [141:192]: One workload and one runner. No production traffic.</code></pre>
+<p>The excerpt omits the run line. The <a href="workshops/automation/results/draft.txt">full recorded draft</a> includes the retrieval and review queue items, the run key and the source without a draft item.</p>
+<p>Follow the program from the terminal to the tool contract. Start with <code>run()</code> in <a href="workshops/automation/briefing.py">briefing.py</a>. Read <code>fake_model()</code> and <code>execute_tool()</code> in <a href="workshops/automation/briefing_tools.py">briefing_tools.py</a>. The <a href="workshops/automation/workflow.mmd">workflow diagram source</a> maps the code to the review step.</p>
+<div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table>
+<thead><tr><th>Step</th><th>Action</th><th>Artifact</th><th>Authority</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Select week and one export</td><td>UTF-8 JSONL and week</td><td>Operator</td></tr>
+<tr><td>2</td><td>Validate, deduplicate and commit</td><td>Source snapshot and issues</td><td>Workflow code</td></tr>
+<tr><td>3</td><td>Read source windows and propose quotes</td><td>Source ID, offsets and quote</td><td>Deterministic model adapter</td></tr>
+<tr><td>4</td><td>Verify claims and stage a draft</td><td>One draft and receipt</td><td>Workflow code</td></tr>
+<tr><td>5</td><td>Decide whether a claim informs a decision</td><td>Review decision</td><td>Human reviewer</td></tr>
+</tbody>
+</table></div>
+<p>The code selects every transition. An adapter can propose evidence inside the third step. This matches the distinction between a prescribed workflow and a model-directed agent in the Anthropic design guide. <a href="sources.html#DA01">DA01</a>.</p>
+<p>The same pattern applies if you decide to omit the model. Keep the source, effect and review contracts stable. Evaluate a model only when it can add value at a defined step. In this fixture, a simple text rule can do the entire selection step.</p>
+</section>
+<section id="validate-export">
+<h2 id="topic-make-the-export-safe-to-parse">Make the export safe to parse</h2>
+<p>Open the <a href="workshops/automation/fixtures/posts.jsonl">main fixture</a>. Each nonblank line represents one data record. The operator supplies the file and the week. A source cannot choose the database path, define tool names or select recipients.</p>
+<p><code>prepare_feed()</code> enforces a 256,000-byte file limit and a limit of 40 nonblank records. It decodes UTF-8, rejects duplicate JSON keys and checks the four required fields. Each ID uses <code>SRC-</code> and three to eight digits. A title has at most 160 code points. A body has at most 2,000.</p>
+<p>The code rejects format controls, including bidi overrides. It accepts a line feed in the body because that character defines evidence lines. The accepted body retains its original code points. This makes an offset recoverable after the source moves through parser, database and reader.</p>
+<p>Select the interval from Monday, November 2 through Sunday, November 8, 2026. The code expresses the interval as <code>2026-11-02 &lt;= date &lt; 2026-11-09</code>. A timestamp export would need an explicit rule for the timezone before it chooses the day.</p>
+<div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table>
+<thead><tr><th>Line</th><th>ID</th><th>Intake result</th><th>Draft result</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>SRC-101</td><td>Retained</td><td>Exact cache claim and scope</td></tr>
+<tr><td>2</td><td>SRC-102</td><td><code>duplicate_body</code></td><td>Reference to retained SRC-101 in intake issues</td></tr>
+<tr><td>3</td><td>SRC-103</td><td>Retained</td><td>Exact retrieval claim and scope</td></tr>
+<tr><td>4</td><td>SRC-104</td><td>Retained</td><td>No eligible result line</td></tr>
+<tr><td>5</td><td>SRC-105</td><td>Retained</td><td>Exact review claim and scope</td></tr>
+<tr><td>6</td><td>SRC-106</td><td><code>outside_week</code></td><td>Excluded from source catalog</td></tr>
+<tr><td>7</td><td>SRC-107</td><td><code>invalid_fields</code></td><td>Input issue has line number</td></tr>
+</tbody>
+</table></div>
+<pre><code>python3 -B "$lab/briefing.py" inspect --db "$brief_lab/main.sqlite3"</code></pre>
+<p>Look for <code>input_records: 7</code> and <code>state: draft_staged</code> in the JSON. The output includes checksums, four retained sources, three issues and three verified spans. Compare against the <a href="workshops/automation/results/inspect.json">recorded inspection</a>.</p>
+<p>Intake applies two distinct identity rules. Repeated IDs whose complete records match keep one copy. Two different in-week records with one ID produce a conflict and neither record becomes a source. Different IDs with byte-equivalent UTF-8 bodies keep the first ID in sorted order. The issue records both IDs.</p>
+<p>These rules serve different decisions. An ID conflict can indicate an export defect or an edit that needs a new version. A repeated body can indicate a mirror. Retain a record of exclusions so a reviewer can find the input and decide how to resolve a changed source.</p>
+<p>The code cannot decide that two paraphrased posts refer to one experiment. A real process can attach a manual grouping label or use a reviewed canonical reference. Keep report counts explicit. In this brief, forty runs come from one report and a mirror provides zero additional evidence.</p>
+<pre><code>python3 -B "$lab/briefing.py" run --db "$brief_lab/conflict.sqlite3" \
+  --feed "$lab/fixtures/conflict.jsonl" --week 2026-W45
+python3 -B "$lab/briefing.py" inspect --db "$brief_lab/conflict.sqlite3"</code></pre>
+<p>The <a href="workshops/automation/fixtures/conflict.jsonl">conflict fixture</a> has two different values for SRC-201. The recorded run excluded both and preserved SRC-202. It rejected the extra title in line four before duplicate values could change the record. The <a href="workshops/automation/results/conflict-inspect.json">inspection</a> records both issues.</p>
+</section>
+<section id="exact-evidence">
+<h2 id="topic-specify-the-tool-and-verify-evidence">Specify the tool and verify evidence</h2>
+<p>The adapter receives a catalog of retained source IDs and one read function. It can ask for a bounded window from that catalog. The executor owns field validation, scope, reads and error responses. The workflow verifies proposals before it writes a draft.</p><figure class="learning-figure"><img src="workshops/automation/tool-boundary.svg" alt="The execution layer validates each call and checks exact source offsets before it accepts evidence." loading="lazy"><figcaption>The execution layer validates each call and checks exact source offsets before it accepts evidence. <span class="figure-links"><a href="workshops/automation/tool-boundary.mmd" download>Mermaid source</a> · <a href="workshops/automation/tool-boundary.svg">Full-size figure</a></span></figcaption></figure>
+<pre><code>python3 -B "$lab/briefing.py" schema
+python3 -B "$lab/briefing.py" tool-calls --db "$brief_lab/main.sqlite3" \
+  --calls "$lab/fixtures/tool-calls.json"</code></pre>
+<p>The <a href="workshops/automation/results/schema.json">printed schema</a> lists the tool name, parameters, description and limits. The <a href="workshops/automation/fixtures/tool-calls.json">request fixture</a> covers one valid call and four rejection paths. The <a href="workshops/automation/results/tool-calls.json">recorded tool responses</a> contain the exact error details.</p>
+<pre><code>{"tool":"get_evidence_window","arguments":{"source_id":"SRC-103","start":46,"max_chars":72}}</code></pre>
+<div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table>
+<thead><tr><th>Input</th><th>Gate</th><th>Response</th><th>Caller action</th></tr></thead>
+<tbody>
+<tr><td>SRC-103, start 46, length 72</td><td>ID belongs to snapshot and range fits</td><td><code>ok: true</code>, <code>end: 118</code>, <code>next_start: 118</code></td><td>Use returned text as data</td></tr>
+<tr><td><code>start: true</code></td><td>Exact integer type</td><td><code>invalid_start</code></td><td>Send a code point offset</td></tr>
+<tr><td>Extra field <code>destination</code></td><td>Exact field set</td><td><code>invalid_arguments</code></td><td>Use the three documented fields</td></tr>
+<tr><td>SRC-102</td><td>ID exists in active snapshot</td><td><code>unknown_source</code></td><td>Choose SRC-101 from the retained catalog</td></tr>
+<tr><td><code>publish_brief</code></td><td>Tool name matches allowlist</td><td><code>unknown_tool</code></td><td>End this path</td></tr>
+</tbody>
+</table></div>
+<p>In Python, a Boolean can pass an <code>isinstance(value, int)</code> check. The executor uses <code>type(value) is int</code> for both offsets and limits. A valid ID pattern is also insufficient. The executor checks membership in the active snapshot before it returns any text.</p>
+<p>A successful reply has bounds and a next offset that make the next read clear. An error returns a stable code and correction. The tool returns no database path, credential or extra metadata. Anthropic's tool article links these choices to validation, task-specific tools and context use. <a href="sources.html#DA02">DA02</a>.</p>
+<p>The tool result names the source field <code>untrusted_text</code>. The author of a post can put instructions inside that field. The model can propose a read by source ID. Only the workflow can choose which snapshot supplies the source or access the database.</p>
+<p>The catalog is small by design. Reading a selected window keeps routing metadata separate from source text. The fake adapter fetches every window of each source it examines. At scale, add a retrieval filter or use metadata to decide which source windows are relevant. Measure missed items before adopting a filter. Anthropic describes the trade in its context guidance. <a href="sources.html#DA03">DA03</a>.</p>
+<p><code>fake_model()</code> uses the first eligible result line from each retained source in ID order. Its selection and output shape are deterministic. It reunites windows before it selects a line. A line that crosses a tool window therefore yields the same offsets as a line in one window.</p>
+<p>The verifier accepts an array of at most eight spans with unique source IDs. Each span uses four exact fields. It checks range, type, the preserved source slice and the whole <code>Result:</code> line. It derives the adjacent <code>Scope:</code> line itself.</p>
+<p>In SRC-103 the first line has a Greek beta. The quote begins at code point 46 and UTF-8 byte 47. Python string slicing uses code points. Copy the offsets from the correct unit before you pass them across a tool boundary.</p>
+<pre><code>python3 -B - "$lab/fixtures/posts.jsonl" &lt;&lt;'PY'
+import json
+from pathlib import Path
+import sys
+
+row = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8").splitlines()[2])
+body = row["body"]
+print(body[46:118])
+print(len(body[:46].encode("utf-8")))
+PY</code></pre>
+<pre><code>Four of 30 queries had no relevant source among the first three results.
+47</code></pre>
+<p>Matching a source slice establishes that the quoted text exists in the saved export. An exact match alone cannot establish that the post describes a real result. Review the result, the method and the scope before you use it.</p>
+<p>Read SRC-104 in the main fixture. Its instructions attempt to publish a draft and invent a 100 ms result. The program's only tool can read from a snapshot. The tool rejects the publish request and the selected evidence omits the record.</p>
+<p>Read the <a href="workshops/automation/results/poisoned-draft.txt">draft from SRC-301</a>. This case puts a broad, unsupported claim after the correct marker. The claim passes exact evidence checks. Its scope reports that the author supplied no benchmark data. A reviewer can reject it without a model deciding which source is true.</p>
+<p>Use output that preserves this authority boundary. The draft is plain text. An adapter does not get a delivery tool or a free-text field for its own claims. If you add an HTML review interface, escape source text at the render boundary and keep tool scope in trusted code.</p>
+<p>The executor runs as trusted host code. The tool schema helps a model form a request. If you adapt this lab to a live model, keep model replies as data and dispatch only through the executor. A Python extension that can import modules has the process permissions. Choose that extension as you would choose any dependency.</p>
+<p>The <a href="workshops/automation/tool-boundary.mmd">tool boundary diagram source</a> shows where the check happens. To evaluate a live model separately, use the <a href="workshops/automation/prompts/08-agent-handoff.md">optional handoff prompt</a> and synthetic fixtures. This workshop runs the fake model only.</p>
+</section>
+<section id="durable-state">
+<h2 id="topic-persist-progress-before-a-process-can-stop">Persist progress before a process can stop</h2>
+<p>The run key hashes three values encoded as one JSON array. These values are the policy version, ISO week and SHA-256 of the exact export bytes. Changing any one of them creates a new run. Even a blank line changes the exact export digest.</p><figure class="learning-figure"><img src="assets/screenshots/automation-run.png" alt="Screenshot of the local run viewer. The stored transaction state explains whether the retry stages or reuses the draft." loading="lazy"><figcaption>Screenshot of the local run viewer. The stored transaction state explains whether the retry stages or reuses the draft. <span class="figure-links"><a href="run-viewer.html">Explore recorded runs</a> · <a href="assets/screenshots/automation-run.png">Full-size figure</a></span></figcaption></figure><figure class="learning-figure"><img src="workshops/automation/transactions.svg" alt="A crash before commit leaves no committed draft. A crash after commit leaves one draft for the retry to reuse." loading="lazy"><figcaption>A crash before commit leaves no committed draft. A crash after commit leaves one draft for the retry to reuse. <span class="figure-links"><a href="workshops/automation/transactions.mmd" download>Mermaid source</a> · <a href="workshops/automation/transactions.svg">Full-size figure</a></span></figcaption></figure>
+<p>The draft key hashes a stage version and the run key. A retry uses the same key for the same operation. A second corrected export for the same week remains a distinct review candidate. Decide which export to keep during review.</p>
+<div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table>
+<thead><tr><th>Write boundary</th><th>Rows in the transaction</th><th>Repeat behavior</th></tr></thead>
+<tbody>
+<tr><td>Snapshot commit</td><td><code>runs</code>, <code>sources</code>, <code>issues</code> and first event</td><td>Use the existing snapshot for the run key</td></tr>
+<tr><td>Draft commit</td><td><code>drafts</code>, <code>evidence</code>, run state and second event</td><td>Return the existing draft if the row already exists</td></tr>
+</tbody>
+</table></div>
+<p>Both transactions use <code>BEGIN IMMEDIATE</code>. The draft transaction checks for an existing row after SQLite has granted it the write slot. Two workers can compute the same evidence. Only one can insert the draft and its evidence rows. Record proposal work as a separate cost if you later add a paid inference call.</p>
+<p><code>drafts.run_key</code> and <code>drafts.idempotency_key</code> enforce uniqueness in the database. If the process stops before the draft commit, draft data, state change and second event roll back together. If it stops after the commit, all remain available despite the absent receipt. SQLite describes these transaction and write lock rules. <a href="sources.html#DA06">DA06</a>.</p>
+<pre><code>python3 -B "$lab/briefing.py" run --db "$brief_lab/pre.sqlite3" \
+  --feed "$lab/fixtures/posts.jsonl" --week 2026-W45 --crash before-draft-commit || printf 'Exit %s\n' "$?"
+python3 -B "$lab/briefing.py" inspect --db "$brief_lab/pre.sqlite3"
+python3 -B "$lab/briefing.py" run --db "$brief_lab/pre.sqlite3" \
+  --feed "$lab/fixtures/posts.jsonl" --week 2026-W45</code></pre>
+<pre><code>python3 -B "$lab/briefing.py" run --db "$brief_lab/post.sqlite3" \
+  --feed "$lab/fixtures/posts.jsonl" --week 2026-W45 --crash after-draft-commit || printf 'Exit %s\n' "$?"
+python3 -B "$lab/briefing.py" inspect --db "$brief_lab/post.sqlite3"
+python3 -B "$lab/briefing.py" run --db "$brief_lab/post.sqlite3" \
+  --feed "$lab/fixtures/posts.jsonl" --week 2026-W45</code></pre>
+<div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table>
+<thead><tr><th>Case</th><th>First exit</th><th>State after exit</th><th>Draft rows</th><th>Spans</th><th>Retry outcome</th></tr></thead>
+<tbody>
+<tr><td>Baseline</td><td>0</td><td><code>draft_staged</code></td><td>1</td><td>3</td><td><code>reused</code></td></tr>
+<tr><td>Stop before commit</td><td>72</td><td><code>snapshot_ready</code></td><td>0</td><td>0</td><td><code>staged</code></td></tr>
+<tr><td>Stop after commit</td><td>73</td><td><code>draft_staged</code></td><td>1</td><td>3</td><td><code>reused</code></td></tr>
+</tbody>
+</table></div>
+<p><code>os._exit()</code> ends the Python process at the selected point. Regular exception cleanup cannot run. The first and second stop each produce empty stdout. The <a href="workshops/automation/results/replay.json">saved replay</a> shows equal final state and draft text across the two retries and the baseline.</p>
+<p>The <a href="workshops/automation/transactions.mmd">transaction diagram source</a> shows the two histories. Temporal stores events so a worker can resume a workflow. It also recommends idempotent Activity functions because an Activity can get another attempt. This example applies a related retry principle to a single local database. <a href="sources.html#DA04">DA04</a> and <a href="sources.html#DA05">DA05</a>.</p>
+<h3 id="topic-compare-a-broken-retry">Compare a broken retry</h3>
+<p>Run the faulty example against its own database. It uses a fresh row number for every attempt. The slot has no uniqueness constraint and the operation has no stable key.</p>
+<pre><code>python3 -B "$lab/broken_stage.py" "$brief_lab/broken.sqlite3" --crash || printf 'Exit %s\n' "$?"
+python3 -B "$lab/broken_stage.py" "$brief_lab/broken.sqlite3"</code></pre>
+<pre><code>Exit 73
+{"drafts": [[1, "2026-W45"], [2, "2026-W45"]]}</code></pre>
+<p>Both attempts can finish their database work and still produce an incorrect outcome. The unit of success is the intended effect. Here it is one draft for one immutable export. Check the database receipt and row count after retry.</p>
+<p>A timeout, return code or transport failure gives evidence about the caller's view. It can leave the effect uncertain. If you later add an external delivery system, a local draft key cannot prove that the delivery happened. You need the remote system's stable receipt, reconciliation or duplicate prevention before any delivery retry.</p>
+</section>
+<section id="automation-exercises">
+<h2 id="topic-practice-with-a-known-result">Practice with a known result</h2>
+<p>Run the standard library tests before you edit. A fresh test database is created for each case. The two crash tests start child processes. The concurrency test starts two workers against one new database.</p>
+<pre><code>python3 -B -m unittest discover -s "$lab" -v
+python3 -B "$lab/record_demo.py" "$brief_lab/replay"</code></pre>
+<p>The <a href="workshops/automation/results/tests.txt">recorded test run</a> reports 16 passes. The recorder saves the stage receipt, state, draft, tool output and failure histories. The expected outputs compare state and draft text across retries. Runtime version and elapsed time may vary.</p>
+<h3 id="topic-exercise-1-explain-a-byte-offset-error">Exercise 1. Explain a byte offset error</h3>
+<ol><li>Open <code>fixtures/posts.jsonl</code>.</li><li>Extract the body of SRC-103 as a Python string.</li><li>Compare <code>body[46:118]</code> with <code>body[47:119]</code>.</li><li>Explain which span the verifier accepts.</li></ol>
+<details><summary>Hint</summary><p>Compare the starts of the two slices. Find which character the byte count changes before the quote.</p></details>
+<details><summary>Worked solution</summary><p>The correct slice starts with <code>Four</code>. The shifted slice starts with <code>our</code> and ends with a line feed. Beta occupies two bytes in UTF-8 and one code point. The proposal requires the code point positions 46 and 118.</p></details>
+<h3 id="topic-exercise-2-add-a-repeated-source-and-an-edited-export">Exercise 2. Add a repeated source and an edited export</h3>
+<ol><li>Append the first fixture record to a copy of the export.</li><li>Run the copy against the original example database.</li><li>List the runs and choose the new key.</li><li>Verify the retained source count and duplicate issue.</li></ol>
+<pre><code>cp "$lab/fixtures/posts.jsonl" "$brief_lab/revised.jsonl"
+head -n 1 "$lab/fixtures/posts.jsonl" &gt;&gt; "$brief_lab/revised.jsonl"
+python3 -B "$lab/briefing.py" run --db "$brief_lab/main.sqlite3" \
+  --feed "$brief_lab/revised.jsonl" --week 2026-W45
+python3 -B "$lab/briefing.py" list-runs --db "$brief_lab/main.sqlite3"</code></pre>
+<details><summary>Hint</summary><p>Compare a key based on export bytes with the checks inside one snapshot. These two checks operate on different objects.</p></details>
+<details><summary>Worked solution</summary><p>The revised copy has eight records and a different run key. It still retains four IDs. The extra copy of SRC-101 adds a <code>duplicate_source_id</code> issue. Copy the <code>run_key</code> value from the last <code>run</code> response. Replace <code>RUN_KEY</code> with that value.</p>
+<pre><code>python3 -B "$lab/briefing.py" inspect --db "$brief_lab/main.sqlite3" --key RUN_KEY</code></pre></details>
+<h3 id="topic-exercise-3-decide-whether-to-keep-an-exact-claim">Exercise 3. Decide whether to keep an exact claim</h3>
+<ol><li>Read the draft from the poisoned result fixture.</li><li>Write what the evidence check proves.</li><li>State what the reviewer would need before accepting the claim.</li><li>Choose to keep, narrow or reject the claim.</li></ol>
+<details><summary>Hint</summary><p>Read the scope next to the quote. Which benchmark results can you check from this source?</p></details>
+<details><summary>Worked solution</summary><p>Reject the broad benchmark claim as a decision input. The exact quote and offsets identify what the comment says. The scope states that it supplies no benchmark data. Request the run record, benchmark set and pass criterion before making a benchmark claim.</p></details>
+<h3 id="topic-exercise-4-decide-when-a-retry-is-safe">Exercise 4. Decide when a retry is safe</h3>
+<ol><li>Read both crash histories from <code>results/replay.json</code>.</li><li>Identify the first durable record in each history.</li><li>Choose whether the adapter must run again.</li><li>Name one durable check before you close the incident.</li></ol>
+<details><summary>Hint</summary><p>Use <code>draft</code> and <code>events</code> as the evidence of progress.</p></details>
+<details><summary>Worked solution</summary><p>Both histories contain <code>snapshot_committed</code>. Only the second contains <code>draft_committed</code> after the first attempt. The first retry may compute evidence again. The second must reuse the draft. A replay can close when each case has one draft with the same hash and three evidence rows.</p></details>
+</section>
+<section id="automation-transfer">
+<h2 id="topic-reuse-the-process-for-a-real-decision">Reuse the process for a real decision</h2>
+<p>For a business brief, start with the decision owner. A support lead may need to decide whether a Friday escalation deserves a wider review. Use aggregate cases with measured time ranges. A usable claim keeps the numerator, denominator, period and exclusions together.</p>
+<p>For example, a synthetic support export might report nine late refunds among 50 cases in one region. The review question is whether other regions show the same pattern. Preserve the exclusion of escalations. Keep customer contact and refund changes outside the evidence tool.</p>
+<p>For an AI engineering brief, make each result traceable to a test artifact. Capture the run ID, revision, dataset label, model version, numerator, denominator and unit before an export reaches review. If a post reports a latency change but gives no evaluator version, mark that value <code>Not in source.</code></p>
+<p>In this example, a useful next experiment would compare cache use on identical inputs and record retrieval quality in both groups. The brief supplies a sandbox latency signal and the retrieval miss count. The engineer must choose the threshold before the comparison runs.</p>
+<div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table>
+<thead><tr><th>Design choice</th><th>Business brief</th><th>AI engineering brief</th></tr></thead>
+<tbody>
+<tr><td>Decision owner</td><td>Support lead</td><td>Evaluation owner</td></tr>
+<tr><td>Stable input</td><td>Aggregate weekly export</td><td>Evaluation result with job and revision</td></tr>
+<tr><td>Minimum evidence</td><td>Case count, denominator, region and interval</td><td>Baseline, variant, sample count, metric and scope</td></tr>
+<tr><td>Review action</td><td>Escalate a pattern for another region check</td><td>Accept a next experiment or request a reproducibility check</td></tr>
+<tr><td>Retry acceptance</td><td>One review candidate per export revision</td><td>One review candidate per evidence set and policy</td></tr>
+</tbody>
+</table></div>
+<p>Keep scheduling separate from interpretation. A local scheduler could supply the target ISO week and chosen path. The program should still handle a replay, a malformed export and an empty week in a predictable way. Treat an unavailable file as an intake problem. Repeated retries cannot correct its contents.</p>
+<p>A model evaluation needs a separate dataset from these development fixtures. Count valid tool calls, exact evidence and claims that reviewers can use. A schema failure and a weak source need different fixes. Include poison cases in the evaluation so a success metric cannot reward blind reproduction of a claim.</p>
+</section>
+<section id="automation-prompts">
+<h2 id="topic-prompts-for-workflow-design-and-review">Prompts for workflow design and review</h2>
+<p>Each file gives a filled prompt, a reference response and a template. The prompts connect to artifacts that you can inspect on disk. Compare the reference to the local result before you replace the variables.</p>
+<ul>
+<li><a href="workshops/automation/prompts/01-workflow-contract.md">Define the workflow contract</a> to choose effects, state and review checks.</li>
+<li><a href="workshops/automation/prompts/02-export-schema.md">Specify an export validator</a> with duplicate and conflict examples.</li>
+<li><a href="workshops/automation/prompts/03-tool-interface.md">Design a narrow source tool</a> with a valid call and error paths.</li>
+<li><a href="workshops/automation/prompts/04-evidence-review.md">Review an exact claim</a> and test what its scope supports.</li>
+<li><a href="workshops/automation/prompts/05-crash-trace.md">Diagnose an ambiguous retry</a> with a read-only state check.</li>
+<li><a href="workshops/automation/prompts/06-attack-fixture.md">Evaluate untrusted source text</a> and a plausible unsupported claim.</li>
+<li><a href="workshops/automation/prompts/07-business-transfer.md">Adapt the brief to a business decision</a> with aggregate inputs.</li>
+<li><a href="workshops/automation/prompts/08-agent-handoff.md">Prepare an optional model handoff</a> for proposals only.</li>
+<li><a href="workshops/automation/prompts/09-evaluate-model.md">Plan a model evaluation</a> with held-out tests and metrics.</li>
+<li><a href="workshops/automation/prompts/10-engineering-update.md">Write an engineering decision note</a> with a declared test threshold.</li>
+</ul>
+</section>
+<section id="mastery-record"><h2 id="topic-record-your-practice">Record your practice</h2><p>Check a step only after your attempt. These marks record your own assessment.</p><p><label><input type="checkbox" data-progress-key="predict"> I predicted the first failure before I ran the command.</label></p><p><label><input type="checkbox" data-progress-key="trace"> I can explain each state change in the worked example.</label></p><p><label><input type="checkbox" data-progress-key="rebuild"> I reconstructed the core rule and checked a changed input.</label></p><p><label><input type="checkbox" data-progress-key="transfer"> I wrote acceptance cases for one task in my own project.</label></p></section></main>
+<nav class="page-turn" aria-label="Adjacent chapters"><a href="workshop-research.html">← Retrieval and evaluation</a><a href="run-viewer.html">Inspect recorded runs →</a></nav>
+<section id="find" class="find"><h2>Search the guide</h2><div class="search-fields"><label>Words or source ID<input id="guide-search" type="search" placeholder="Try checkpoint or Grok Bot" autocomplete="off"></label>
+<label>Section<select id="search-group"><option value="">All sections</option><option value="Study">Study</option><option value="Workshops">Workshops</option><option value="Evidence">Evidence</option><option value="Practice">Practice</option><option value="Reference">Reference</option><option value="Source studies">Source studies</option></select></label></div>
+<p id="search-status" role="status"></p><div id="search-results"></div><noscript>Use the chapter menu or your browser's Find command.</noscript></section>
+<footer><a href="audit.html">Methods and verification</a><a href="#main">Back to top ↑</a></footer></div></div></body></html>

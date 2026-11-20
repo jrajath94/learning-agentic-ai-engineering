@@ -1,0 +1,68 @@
+[
+  {
+    "id": "DA01",
+    "url": "https://www.anthropic.com/research/building-effective-agents",
+    "title": "Building effective agents",
+    "author": "Erik S. and Barry Zhang, Anthropic",
+    "type": "Firsthand engineering guidance",
+    "date": "2024-12-19",
+    "version": "December 2024 article",
+    "claims": "See What are agents? for the difference between a code-directed workflow and a model-directed agent. See Appendix 2 for tool format, examples, input requirements and tests.",
+    "limits": "The page carries a later note about changes to the tooling. The workflow distinction applies to this workshop. The article supplies no evidence for this workshop's tests."
+  },
+  {
+    "id": "DA02",
+    "url": "https://www.anthropic.com/research/writing-tools-for-agents",
+    "title": "Writing effective tools for agents with agents",
+    "author": "Ken Aizawa, Anthropic",
+    "type": "Firsthand engineering guidance",
+    "date": "2025-09-11",
+    "version": "September 2025 article",
+    "claims": "See Principles for writing effective tools, especially Choosing the right tools, Returning meaningful context and Prompt-engineering your tool descriptions. The authors recommend task-specific tools, relevant responses and direct error guidance. See Collaborating with agents for held-out evaluations.",
+    "limits": "Tool effects depend on the model and evaluation. This workshop tests the executor with synthetic calls. It makes no comparative model claim."
+  },
+  {
+    "id": "DA03",
+    "url": "https://www.anthropic.com/research/effective-context-engineering-for-ai-agents",
+    "title": "Effective context engineering for AI agents",
+    "author": "Prithvi Rajasekaran, Ethan Dixon, Carly Ryan and Jeremy Hadfield, Anthropic",
+    "type": "Firsthand engineering guidance",
+    "date": "2025-09-29",
+    "version": "September 2025 article",
+    "claims": "See Context retrieval and agentic search for lightweight references and retrieval on demand. The section describes the trade between retrieval latency and a smaller context load.",
+    "limits": "The workshop fake model reads each selected source in bounded windows. This is an interface demonstration with synthetic data. It does not establish retrieval quality or latency."
+  },
+  {
+    "id": "DA04",
+    "url": "https://docs.temporal.io/durable-execution",
+    "title": "What is Durable Execution?",
+    "author": "Temporal Technologies",
+    "type": "Official documentation",
+    "date": "Not in source.",
+    "version": "Live documentation retrieved November 20, 2026",
+    "claims": "See How Durable Execution preserves progress for the persisted Event History and replay. See Transient failures and Permanent failures for examples of errors with different recovery paths.",
+    "limits": "This describes Temporal. The workshop uses two SQLite commits and a manual retry. It has no replay engine, distributed workflow or service timer."
+  },
+  {
+    "id": "DA05",
+    "url": "https://docs.temporal.io/activities",
+    "title": "What is a Temporal Activity?",
+    "author": "Temporal Technologies",
+    "type": "Official documentation",
+    "date": "Not in source.",
+    "version": "Live documentation retrieved November 20, 2026",
+    "claims": "In What is a Temporal Activity?, Temporal recommends idempotent Activity functions because attempts can retry. It describes heartbeat details as a way to resume application progress within a retried Activity.",
+    "limits": "The local example verifies one database write boundary. It does not test Temporal or any external side effect."
+  },
+  {
+    "id": "DA06",
+    "url": "https://www.sqlite.org/lang_transaction.html",
+    "title": "SQLite transaction control",
+    "author": "SQLite project",
+    "type": "Official documentation",
+    "date": "2026-02-18 (page update)",
+    "version": "Live documentation retrieved November 20, 2026",
+    "claims": "See Transactions for rollback when a connection closes. See Read transactions versus write transactions and DEFERRED, IMMEDIATE, and EXCLUSIVE transactions for one simultaneous write transaction and BEGIN IMMEDIATE behavior.",
+    "limits": "The workshop checks early process termination, not hardware failure. A stable transaction boundary requires a supported SQLite filesystem and a usable local database."
+  }
+]

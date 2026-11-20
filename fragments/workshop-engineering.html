@@ -1,0 +1,248 @@
+<section>
+<p>Repair an evaluation report that counts a delivery twice. Take the change from a local reproduction to a reviewed Git revision. The first candidate will pass its own tests and still return an incorrect success.</p>
+<p>Use Python 3.8 or later and Git 2.28 or later. All fixtures are synthetic. The lab runs offline. An agent is optional. Use the prompts as checklists if you work alone.</p>
+<p>From the guide folder, run the complete replay below. Work through the manual steps to see why each result changes the next decision.</p>
+<pre><code>python3 -B workshops/engineering/verify.py</code></pre>
+<p>Expected output is one line. <a href="workshops/engineering/evidence/run.txt">Inspect the recorded commands and results.</a></p>
+<pre><code>Verified base, red tests, candidate, review counterexamples, and combined revision.</code></pre>
+</section>
+
+<section id="lesson-orient"><h2>Lesson 1. Map the repository and write the contract</h2>
+<p>A nightly evaluation reports case counts and token totals for each model run. A delivery retry carries a result the exporter already sent. Its second copy corrupts the totals for one run. Start at the report command and follow the data to the decision that changes the totals.</p>
+<ol>
+<li><strong>Make a disposable copy.</strong> Run these commands from the guide folder. Keep the shell open for Lesson 2. The variables identify the original files and a new local repository.
+<pre><code>workshop="$PWD/workshops/engineering"
+session="$(mktemp -d)"
+cp -R "$workshop/lab" "$session/repo"
+cd "$session/repo"
+git init -q -b main
+git config user.name Lab
+git config user.email lab@example.invalid
+git add .
+git commit -qm "Record original rollup"
+base="$(git rev-parse HEAD)"
+git status --short</code></pre>
+<p>Expect an empty status. The name and address are synthetic Git configuration for this copy. No remote is required. Keep the base ID in your task note so another reader can compare the same files.</p></li>
+<li><strong>Find the declared behavior.</strong> Read the repository's <a href="workshops/engineering/lab/AGENTS.md">AGENTS.md</a> and <a href="workshops/engineering/lab/CONTRACT.md">CONTRACT.md</a>. The first file gives the working directory, checks, and paths. The second gives the behavior. Confirm that the source you use can answer whether a repeat represents a delivery or a new attempt. Here, the producer supplies one terminal result per run and case. That rule makes a repeat eligible for a comparison with a prior result.</li>
+<li><strong>Follow the public call.</strong> Read the files in the table in order. In the CLI, find the file open, the call to <code>rollup</code>, the error handler, and the final print. In the parser, find where token values reach the <code>Result</code> object. Then find the three counter updates in the reducer. Mark which statements prove the distinction between validation, counting, and output.</li>
+</ol>
+
+<table><thead><tr><th>Path or symbol</th><th>Responsibility</th><th>Evidence to retain</th></tr></thead><tbody>
+<tr><td><a href="workshops/engineering/lab/trace_rollup/__main__.py">trace_rollup/__main__.py</a> · <code>main</code></td><td>Read path and call parser with reducer</td><td>Print JSON after <code>rollup</code> returns. Map input or I/O errors to exit 2.</td></tr>
+<tr><td><a href="workshops/engineering/lab/trace_rollup/records.py">trace_rollup/records.py</a> · <code>read_records</code></td><td>Validate rows and retain physical line numbers</td><td>Each nonblank row yields a <code>Result</code>. Extra fields never enter it.</td></tr>
+<tr><td><a href="workshops/engineering/lab/trace_rollup/aggregate.py">trace_rollup/aggregate.py</a> · <code>rollup</code></td><td>Count results and sum tokens by run</td><td>The original adds one count and two token values for each row.</td></tr>
+<tr><td><a href="workshops/engineering/lab/tests/test_baseline.py">tests/test_baseline.py</a> · <code>run_cli</code></td><td>Call the public CLI from tests</td><td>The helper captures exit code, stdout, and stderr from a new process.</td></tr>
+<tr><td><a href="workshops/engineering/lab/fixtures/nightly.jsonl">fixtures/nightly.jsonl</a></td><td>Exercise an ordinary export with retries</td><td>Line 2 reuses the case ID from line 1 in a distinct run.</td></tr>
+</tbody></table>
+
+<ol start="4">
+<li><strong>Run the checks that already exist.</strong> Run the smoke suite. Then run the public command with the nightly fixture.
+<pre><code>python3 -B -m unittest discover -s tests -v
+python3 -B -m trace_rollup fixtures/nightly.jsonl</code></pre>
+<p>The four smoke tests pass. They cover a legacy export, an invalid token value, a blank export, and truncated JSON. The CLI exits 0 with empty stderr. It prints this line.</p>
+<pre><code>{"runs": {"nightly-a": {"failed": 2, "input_tokens": 422, "output_tokens": 64, "passed": 2}, "nightly-b": {"failed": 1, "input_tokens": 245, "output_tokens": 42, "passed": 1}}}</code></pre>
+<p>The reported success can enter a dashboard or cost estimate. An exception monitor sees no failure. Also check the numbers the consumer uses. A known sample gives you an independent check on a plausible report.</p>
+</li>
+<li><strong>Trace the state with a pencil.</strong> Read each row in source order. Use the pair of run ID and case ID to decide whether it is new. Keep the first result tuple for each pair. Change the totals only for a new pair. Compare your trace with the table in the next section.</li>
+</ol>
+<p>Mitchell Hashimoto describes two responses to recurring agent errors. One gives the agent a rule at the path it visits. The other gives it a program that can detect a mistake. The Ghostty inspector instructions show both ideas in compact form. They point to the generated C header and the macOS build flag. They also state that the subsystem has no unit tests. Here the repository map tells you where to look. The CLI suite tests what the operator can observe. <a href="sources.html#DE01">[DE01]</a> <a href="sources.html#DE02">[DE02]</a></p>
+</section>
+
+<section id="trace-contract"><h2>Calculate the expected state before edits</h2>
+<p>The identity is <code>(run_id, case_id)</code>. The comparison tuple is <code>(status, input_tokens, output_tokens)</code>. A different delivery ID can carry an equal result. A case ID can also appear under a different run.</p>
+<table><thead><tr><th>Line</th><th>Run and case</th><th>Result tuple</th><th>Decision</th><th>Run totals after row</th></tr></thead><tbody>
+<tr><td>1</td><td>nightly-a / extract-17</td><td>pass, 120, 24</td><td>First for pair</td><td>1 pass, 0 fail, 120 input, 24 output</td></tr>
+<tr><td>2</td><td>nightly-b / extract-17</td><td>fail, 105, 12</td><td>First for pair in nightly-b</td><td>0 pass, 1 fail, 105 input, 12 output</td></tr>
+<tr><td>3</td><td>nightly-a / cite-03</td><td>fail, 91, 8</td><td>First for pair, no delivery ID</td><td>1 pass, 1 fail, 211 input, 32 output</td></tr>
+<tr><td>4</td><td>nightly-a / extract-17</td><td>pass, 120, 24</td><td>Equal repeat of line 1</td><td>1 pass, 1 fail, 211 input, 32 output</td></tr>
+<tr><td>5</td><td>nightly-a / cite-03</td><td>fail, 91, 8</td><td>Equal repeat of line 3</td><td>1 pass, 1 fail, 211 input, 32 output</td></tr>
+<tr><td>6</td><td>nightly-b / table-08</td><td>pass, 140, 30</td><td>First for pair</td><td>1 pass, 1 fail, 245 input, 42 output</td></tr>
+</tbody></table>
+<p>The difference is concentrated in <code>nightly-a</code>. It has 422 input tokens because the original adds 120 + 91 twice. It has 64 output tokens for the same reason. One unique result per pair yields 211 input and 32 output. These values come from the fixture and contract. They remain the expected values when you replace the implementation.</p>
+<table><thead><tr><th>Context item</th><th>Filled task note</th><th>How to prove it</th></tr></thead><tbody>
+<tr><td>Base and symptom</td><td>The base is the saved commit. The nightly file reports 422 input tokens for nightly-a.</td><td>Run the public command at the base.</td></tr>
+<tr><td>New behavior</td><td>Count once per equal tuple and pair. Reject an unequal tuple for the same pair.</td><td>Use an equal retry and a contradiction. Check stdout, stderr, and exit code.</td></tr>
+<tr><td>Preserved behavior</td><td>Keep the command and output keys. Accept old rows with no metadata. Keep parser validation.</td><td>Run the smoke tests and legacy fixture.</td></tr>
+<tr><td>Edit scope</td><td>The implementer owns the reducer and retry tests. The reviewer owns separate counterexample tests.</td><td>Inspect each branch diff from the base.</td></tr>
+<tr><td>Stop condition</td><td>Stop when an owner rule conflicts with evidence or the patch needs a new producer field.</td><td>Record the open decision in the task note.</td></tr>
+</tbody></table>
+<ol start="6">
+<li><strong>Write the note before you delegate.</strong> Include the table's decisions, the commands, and expected results. Give the agent a first path and a stop condition. Keep producer assumptions separate from observed behavior. Source code can show what the program does now. The product owner or contract governs what the program should do after the change.</li>
+<li><strong>Decide which unknowns can block a patch.</strong> An empty legacy metadata field is harmless in this lab. If a real exporter can send multiple completed attempts for one pair, an attempt ID or finalization rule may be necessary. Ask the producer owner to choose that rule. A report that compares status and tokens cannot infer which of two distinct attempts should count.</li>
+<li><strong>Check your handoff.</strong> Give a reader the map, base and note without an implementation plan. Ask the reader to name the edit site and predict the result for a conflict. If they name the parser as the sole edit site, show how it lacks prior rows. If they predict a successful report, point to the invalid-file clause before the reader patches anything.</li>
+</ol>
+<p>A repository instruction file can direct a worker to a known command. A test can confirm the worker used a behavior that meets the contract. Use the observed error and hand trace as separate evidence. They answer different questions about the same output. <a href="workshops/engineering/prompts/01-orient.md">Use the orientation prompt.</a> <a href="workshops/engineering/prompts/02-contract.md">Use the contract prompt.</a></p>
+</section>
+
+<section id="lesson-patch"><h2>Lesson 2. Take the defect to a reviewed patch</h2>
+<p>Start from the commit selected in Lesson 1. Use one branch for implementation and one for counterexamples. The branches can proceed at the same time. One person can do both roles in separate passes. In either case, derive review cases from the contract before you inspect the first patch.</p>
+<ol>
+<li><strong>Create both branches from the base.</strong> A worktree has its own checkout and index. Its repository refs are shared. Use distinct paths for files and temporary results. The lab runs each CLI invocation as a new process.
+<pre><code>git -C "$session/repo" worktree add -b implement/retries "$session/implementation" "$base"
+git -C "$session/repo" worktree add -b review/cases "$session/review" "$base"
+git -C "$session/repo" worktree list</code></pre>
+<p>Expect three worktrees with the same initial commit. If a branch or path already exists, inspect it before you reuse it. Check which directory your agent can edit. A Git worktree alone cannot restrict a process to that directory. <a href="sources.html#DE06">[DE06]</a></p></li>
+<li><strong>Write a test that fails on the defect.</strong> Draft the implementation tests or copy the provided version. Assert both runs so a repair cannot drop the second occurrence of a case across runs. Reverse the input to check that the report sorts keys and keeps the same totals for valid rows.
+<pre><code>cd "$session/implementation"
+cp "$workshop/variants/test_retries.py" tests/
+python3 -B -m unittest discover -s tests -v</code></pre>
+<p>Expect exit 1 and <code>FAILED (failures=2)</code>. Both retry tests must fail on totals. The four smoke tests must pass. For nightly-a, the failing comparison has 422 where it expects 211 input tokens. An import failure answers nothing about the defect. Fix setup errors and repeat this stage before you change the reducer.</p>
+<p>Simon Willison's red/green TDD chapter explains why the red phase matters. A test that already passes can skip the behavior you want to change. In this lab, expect the same comparison to fail once and pass after the patch. Save both outcomes with their code state. <a href="sources.html#DE03">[DE03]</a></p></li>
+<li><strong>Apply the first candidate.</strong> The supplied candidate is a deliberate partial repair. It uses a set of run and case pairs. See whether the implementation tests notice what it omits.
+<pre><code>cp "$workshop/variants/candidate.py" trace_rollup/aggregate.py
+python3 -B -m unittest discover -s tests -v
+git add trace_rollup/aggregate.py tests/test_retries.py
+git commit -qm "Count a delivery retry once"
+candidate="$(git rev-parse HEAD)"
+git diff --stat "$base" "$candidate"</code></pre>
+<p>Expect six tests to pass. The candidate diff has two files. One adds the retry checks. The other skips any repeat of a key. Keep the commit ID in the handoff so the reviewer can reproduce the candidate state after the implementation branch advances.</p></li>
+</ol>
+<p>The candidate fixes the observed overcount because the nightly fixture contains only equal retries. It also skips an unequal result if its key repeats. A reader can catch this in the code, but an executable case shows the actual consequence. The next part uses one.</p>
+</section>
+
+<section id="trace-review"><h2>Challenge the patch with an independent case</h2>
+<p>Give the reviewer the producer contract, the base revision, and a synthetic sample. Omit the implementation transcript. Request a public reproduction and an expected response before any verdict. Provide the candidate revision after the reviewer derives the cases.</p>
+<ol start="4">
+<li><strong>Record the independent cases on their own branch.</strong> Write the counterexamples or copy the supplied <a href="workshops/engineering/variants/test_review.py">review tests</a>. A review branch with failing contract tests can be a valid handoff. Its responsibility is to preserve the checks, while another branch supplies the fix.
+<pre><code>cd "$session/review"
+cp "$workshop/variants/test_review.py" tests/
+git add tests/test_review.py
+git commit -qm "Add review counterexamples"
+review="$(git rev-parse HEAD)"
+git diff --name-only "$base" "$review"</code></pre>
+<p>Expect only <code>tests/test_review.py</code> in the last output. The tests force status, input tokens, and output tokens to disagree separately. One test retains the original line after an equal repeat. Another gives an invalid value on a repeated key. Both can catch a repair that appears to handle the simple conflict fixture.</p></li>
+<li><strong>Probe the exact candidate.</strong> Use a detached worktree to test the candidate without an edit to either branch. Copy the review test into that probe for the test run.
+<pre><code>git -C "$session/repo" worktree add --detach "$session/candidate-probe" "$candidate"
+cp "$session/review/tests/test_review.py" "$session/candidate-probe/tests/"
+cd "$session/candidate-probe"
+git rev-parse HEAD
+python3 -B -m trace_rollup fixtures/conflict.jsonl
+python3 -B -m unittest discover -s tests -v</code></pre>
+<p>The candidate CLI exits 0 with empty stderr and prints the line below. The test suite exits 1. It reports 10 tests and three failures. One failure checks status. Two subtest failures check the token fields.</p>
+<pre><code>{"runs": {"daily": {"failed": 0, "input_tokens": 120, "output_tokens": 24, "passed": 1}}}</code></pre>
+</li>
+</ol>
+
+<table><thead><tr><th>Physical line</th><th>Input in <a href="workshops/engineering/lab/fixtures/conflict.jsonl">conflict.jsonl</a></th><th>Candidate action</th><th>Required action</th></tr></thead><tbody>
+<tr><td>1</td><td>daily / extract-17, pass, 120, 24</td><td>Add pair to set. Increment totals.</td><td>Store tuple and line 1. Increment totals.</td></tr>
+<tr><td>2</td><td>Blank line</td><td>Parser skips it.</td><td>Keep physical line count.</td></tr>
+<tr><td>3</td><td>daily / extract-17, fail, 120, 24</td><td>Pair exists. Skip row.</td><td>Compare with line 1. Reject file.</td></tr>
+<tr><td>End</td><td>Report boundary</td><td>Print pass result and exit 0.</td><td>Print error to stderr. Leave stdout empty and exit 2.</td></tr>
+</tbody></table>
+
+<p>Write the finding against the candidate ID and the <code>if key in seen</code> branch in <code>trace_rollup/aggregate.py</code>. Use the three-line fixture as the reproduction. State the expected exit 2 and empty stdout. State the observed exit 0 and successful pass report. Explain that a downstream evaluator could treat this output as evidence of a pass. The report owner can assess the effect without access to the reviewer's session.</p>
+<p>Armin Ronacher describes a fresh review context in Pi's session tree. In the public extension, <code>buildReviewPrompt</code> selects instructions via the review target type. Its branch case calls <code>getMergeBase</code> and has a separate flag for local edits. This lab applies both ideas with a fresh review task and an explicit base-to-candidate diff. Git state and session history remain distinct. <a href="sources.html#DE04">[DE04]</a> <a href="sources.html#DE05">[DE05]</a></p>
+<p>When a reviewer can name only a likely problem, request an exact case or label the finding unverified. In this lab the fixture already demonstrates the consequence. No second opinion can change its observed exit code. The use of a fresh session reduces exposure to the first patch's assumptions. It cannot guarantee independent judgment.</p>
+</section>
+
+<section id="trace-integration"><h2>Repair and verify the combined revision</h2>
+<p>Use a map from pair to result tuple and first physical line. A tuple comparison decides whether a valid repeat can affect the report. Retain the first line for error messages. Delay stdout until the input completes.</p>
+<ol start="6">
+<li><strong>Apply the repair to the implementation branch.</strong> Compare the provided <a href="workshops/engineering/variants/repaired.py">repair</a> with your own. Check that every row still passes through the parser before you compare results. The CLI already catches <code>TraceError</code> and returns exit 2.
+<pre><code>cd "$session/implementation"
+cp "$workshop/variants/repaired.py" trace_rollup/aggregate.py
+git diff -- trace_rollup/aggregate.py
+python3 -B -m trace_rollup fixtures/conflict.jsonl
+git add trace_rollup/aggregate.py
+git commit -qm "Reject conflicting terminal results"</code></pre>
+<p>Expect the CLI to exit 2 with empty stdout. A shell with <code>set -e</code> can stop at this command. Run it as a separate check before you proceed. The exact stderr is below.</p>
+<pre><code>error: line 3: terminal result conflicts with line 1</code></pre>
+<p>The reducer's counters exist only in the process. The CLI publishes them only after the reducer returns. An error on line 3 therefore exposes no partial counts, even though line 1 reached the reducer. Each valid input row costs one map lookup. The map keeps one entry per distinct pair until the report finishes. Consider that memory cost before you adopt the design for large files.</p></li>
+<li><strong>Compare branch scopes and integrate locally.</strong> Review file paths from the same base first. Then join the branches in the primary worktree.
+<pre><code>cd "$session/repo"
+git diff --name-only "$base" implement/retries
+git diff --name-only "$base" review/cases
+git merge --ff-only implement/retries
+git merge --no-ff -m "Integrate review cases" review/cases
+git log -1 --format='%H %P'
+git status --short</code></pre>
+<p>The implementation owns <code>tests/test_retries.py</code> and <code>trace_rollup/aggregate.py</code>. The review branch owns <code>tests/test_review.py</code>. The merge log gives the integrated commit and its two parents. Expect the parents to equal the repaired implementation and review commits in that order. Expect a clean worktree. If your path list includes another file, inspect the reason before you merge.</p></li>
+<li><strong>Run the gate on the combined commit.</strong> Check the diff and the entire suite. Run the public CLI again to check the interface directly.
+<pre><code>git diff --check "$base" HEAD
+python3 -B -m unittest discover -s tests -v
+python3 -B -m trace_rollup fixtures/nightly.jsonl
+python3 -B -m trace_rollup fixtures/legacy.jsonl</code></pre>
+<p>The diff check exits 0 and prints nothing. The suite reports 10 tests and <code>OK</code>. Both CLI commands exit 0 with empty stderr. They print these lines respectively.</p>
+<pre><code>{"runs": {"nightly-a": {"failed": 1, "input_tokens": 211, "output_tokens": 32, "passed": 1}, "nightly-b": {"failed": 1, "input_tokens": 245, "output_tokens": 42, "passed": 1}}}
+{"runs": {"legacy": {"failed": 1, "input_tokens": 7, "output_tokens": 2, "passed": 1}}}</code></pre>
+<p>Run the conflict and invalid probes with error capture from a shell that can handle expected failure. Store both streams separately. This checks the caller contract that no report leaves the program after an error.</p>
+<pre><code>for fixture in conflict invalid
+do
+  code=0
+  python3 -B -m trace_rollup "fixtures/$fixture.jsonl" &gt;"$session/$fixture.out" 2&gt;"$session/$fixture.err" || code=$?
+  printf '%s exit %s\n' "$fixture" "$code"
+  wc -c &lt;"$session/$fixture.out"
+  cat "$session/$fixture.err"
+done</code></pre>
+<p>Expect exit 2 and 0 stdout bytes in both cases. The error for the second fixture is <code>error: line 2: invalid input_tokens</code>. A boolean passes an <code>isinstance(value, int)</code> check in Python. The parser requires the exact integer type so a boolean cannot enter the report.</p>
+</li>
+<li><strong>Save the review decision.</strong> Name the exact combined revision and both parent revisions. Record the tests, fixture paths, exit codes, missing cases, and the closed finding. The lab finishes at a local reviewed revision. If a consumer later changes the export contract, review that change against a fresh base and new cases.</li>
+</ol>
+<p>Checks on two branches leave an integration gap. The revision you accept must contain the patch and the independent tests. Re-run the gate if a later merge changes the revision, even when the reducer file stays the same. A caller or fixture can change assumptions the reducer relies on. <a href="workshops/engineering/evidence/run.txt">Read the local replay record.</a></p>
+</section>
+
+<section id="engineering-exercises"><h2>Failure injection and exercises</h2>
+<p>Use the lab's disposable copy. Predict the visible effect before you run each experiment. Then compare it with the answer. A negative control should cause the promised check to fail for a specific reason.</p>
+<p>Use the same shell as Lesson 2. Make two detached worktrees at the accepted revision. The changes in one worktree cannot affect the other's files.</p>
+<pre><code>integrated="$(git -C "$session/repo" rev-parse HEAD)"
+git -C "$session/repo" worktree add --detach "$session/global-case-id" "$integrated"
+git -C "$session/repo" worktree add --detach "$session/overwrite-first-line" "$integrated"</code></pre>
+<details><summary>Use only the case ID as the key</summary>
+<p>Run <code>cd "$session/global-case-id"</code>. Edit <code>trace_rollup/aggregate.py</code>. In <code>rollup</code>, replace <code>key = (record.run_id, record.case_id)</code> with <code>key = record.case_id</code>. Predict which valid row first fails. Then run both commands.</p>
+<pre><code>python3 -B -m trace_rollup fixtures/nightly.jsonl
+python3 -B -m unittest discover -s tests -v</code></pre>
+<p><strong>Hint.</strong> Find the earliest case name that occurs under two runs. Compare status and both token counts.</p>
+<p><strong>Answer.</strong> Line 2 has the same case ID as line 1 and a distinct tuple. The mutant exits 2 with <code>error: line 2: terminal result conflicts with line 1</code> and empty stdout. Both retry tests fail. The producer contract makes run ID part of the identity.</p>
+</details>
+<details><summary>Allow a repeated row to reset the source line</summary>
+<p>Run <code>cd "$session/overwrite-first-line"</code>. Edit <code>trace_rollup/aggregate.py</code>. In <code>rollup</code>, add <code>seen[key] = (signature, record.line)</code> above <code>continue</code>. Match the indentation of <code>continue</code>. Predict whether the suite can detect a change to error text when the success totals agree. Run the same two commands as in the first exercise.</p>
+<p><strong>Hint.</strong> Two review inputs have an equal retry followed by an unequal tuple.</p>
+<p><strong>Answer.</strong> The test for each token field fails its stderr assertion. The mutated code reports line 2 as the prior line. The contract says to keep line 1. The nightly output stays correct, so the ordinary retry tests still pass.</p>
+</details>
+<details><summary>Choose the latest row when two rows disagree</summary>
+<p>Design a test for a reducer that uses the last valid tuple for a pair. Use the three physical lines in the existing conflict fixture. What would you assert if the producer wanted the latest result instead?</p>
+<p><strong>Answer.</strong> Today the only accepted response is exit 2 with empty stdout. A latest-result policy requires a new source order rule. If arrival order governed, the expected report would have daily fail 1, pass 0, input 120, and output 24. The reversed file would report a pass. If a producer sequence governed, reversing lines should leave the selected result unchanged. Decide the rule and add a sequence field before you ask for edits.</p>
+</details>
+<details><summary>Detect a bad review report</summary>
+<p>A reviewer says the first candidate corrupts the legacy file because it has no delivery IDs. Which probe can confirm the claim? Which source explains the result?</p>
+<p><strong>Answer.</strong> Run <code>python3 -B -m trace_rollup fixtures/legacy.jsonl</code> in the candidate worktree. Check exit 0 and the totals for legacy. The parser retains the fields in <code>Result</code> regardless of delivery ID. The candidate key uses the run and case. Reject the claim after you record the reproduction. Keep the verified conflict finding.</p>
+</details>
+<p>Inspect the two exercise diffs before cleanup. The next commands discard the two known exercise edits and remove their temporary worktrees. Keep any independent work before you run them.</p>
+<pre><code>cd "$session/repo"
+git -C "$session/global-case-id" diff
+git -C "$session/overwrite-first-line" diff
+git -C "$session/global-case-id" restore -- trace_rollup/aggregate.py
+git -C "$session/overwrite-first-line" restore -- trace_rollup/aggregate.py
+git worktree remove "$session/global-case-id"
+git worktree remove "$session/overwrite-first-line"</code></pre>
+</section>
+
+<section id="engineering-transfer"><h2>Apply the method to your repository</h2>
+<p>Start with a command your report job, CLI user, or API consumer actually uses. Use a sanitized fixture with enough structure to exercise the defect. Keep any real trace contents and credentials out of the fixture and review prompt. Choose one consumer-visible effect and write an expected value before opening a patch session.</p>
+<table><thead><tr><th>Workshop decision</th><th>Question in your repository</th><th>Artifact to save</th></tr></thead><tbody>
+<tr><td>One result per run and case</td><td>Which producer key defines the record? Can a retry contain a new attempt?</td><td>Schema, owner decision, and a sample for each event type.</td></tr>
+<tr><td>Tuple comparison</td><td>Which fields affect a report, a bill, or an evaluation decision?</td><td>Field list and examples that change one field at a time.</td></tr>
+<tr><td>Whole-file rejection</td><td>Can a partial result escape to consumers? Can a retry repeat a prior side effect?</td><td>Error contract and an interruption check at the publish boundary.</td></tr>
+<tr><td>Four smoke checks</td><td>Which old caller, file version, and error code must survive?</td><td>Existing commands and one legacy fixture with an expected result.</td></tr>
+<tr><td>Independent cases</td><td>Which assumption could remain wrong with green unit tests?</td><td>Another person's counterexample or a test from a fresh session.</td></tr>
+<tr><td>Combined local gate</td><td>Which revision, dependencies, and inputs does the release test?</td><td>Exact revision and observed results from a clean checkout.</td></tr>
+</tbody></table>
+<p>If the real reducer writes to a database, an empty stdout check is insufficient. Inspect the transaction boundary. A test can force an invalid row after an earlier valid write. Use a disposable database and assert that any write or checkpoint follows the chosen rollback or resume rule. If several workers share one store, run a two-worker test and observe records they both can see. A pure in-memory map in this project cannot establish either property for that design.</p>
+<p>Schedule parallel work only when the tasks have a stable common contract and different outputs. An implementer can own the service and a reviewer can own one test file. If the missing rule affects both roles, resolve that rule first. For one small patch, a single writer followed by a fresh review can reduce the time you spend reconciling files.</p>
+</section>
+
+<section id="engineering-prompts"><h2>Prompt files and invocation</h2>
+<p>Open one file and paste its filled example into the corresponding agent session. Give the session the worktree path and the base or candidate commit. Use the reusable form and replace every brace field when you transfer the workflow. The prompts can also guide a manual pass.</p>
+<table><thead><tr><th>Prompt</th><th>When to use it</th><th>Acceptance check</th></tr></thead><tbody>
+<tr><td><a href="workshops/engineering/prompts/01-orient.md">Map the public entry point</a></td><td>Before edits</td><td>One current path from command to output.</td></tr>
+<tr><td><a href="workshops/engineering/prompts/02-contract.md">Write a behavior contract</a></td><td>After the map</td><td>Independent expected totals and one error outcome.</td></tr>
+<tr><td><a href="workshops/engineering/prompts/03-red-tests.md">Record the regression</a></td><td>On the implementation base</td><td>Failing assertion about the intended behavior.</td></tr>
+<tr><td><a href="workshops/engineering/prompts/04-implement.md">Repair the owning code path</a></td><td>After reproduction</td><td>Small diff with preserved interface checks.</td></tr>
+<tr><td><a href="workshops/engineering/prompts/05-review-cases.md">Derive independent checks</a></td><td>On a separate branch</td><td>Expected effects from the producer contract.</td></tr>
+<tr><td><a href="workshops/engineering/prompts/06-review-diff.md">Review a pinned patch</a></td><td>After the candidate commit</td><td>One exact repro per accepted finding.</td></tr>
+<tr><td><a href="workshops/engineering/prompts/07-integrate.md">Verify the combined revision</a></td><td>After the review fix</td><td>Both parents, clean status, checks and exact outputs.</td></tr>
+<tr><td><a href="workshops/engineering/prompts/08-verify-evidence.md">Audit a patch claim</a></td><td>Before you accept the revision</td><td>Claims linked to observations and gaps.</td></tr>
+<tr><td><a href="workshops/engineering/prompts/09-transfer.md">Transfer the method</a></td><td>Before a task in your own repository</td><td>Owned decisions, edit scope, and independent checks.</td></tr>
+</tbody></table>
+<p><a href="workshops/engineering/README.md">Open the workshop file map.</a> Read the <a href="workshops/engineering/diagrams/scope-map.mmd">repository map</a>, <a href="workshops/engineering/diagrams/delivery-state.mmd">delivery state</a>, or <a href="workshops/engineering/diagrams/review-branches.mmd">review branches</a> as Mermaid source.</p>
+</section>

@@ -78,5 +78,149 @@
     "alt": "Prerequisites lead to topic practice, retrieval, transfer, and an inspectable outcome.",
     "caption": "Learning path map",
     "source": "assets/figures/learning-map.mmd"
+  },
+  {
+    "page": "study-orchestrator-workers",
+    "anchor": null,
+    "src": "studies/diagrams/orchestrator-workers.svg",
+    "source": "studies/diagrams/orchestrator-workers.mmd",
+    "caption": "Split only independent outputs. Validate the revision and evidence before combination.",
+    "alt": "Split only independent outputs. Validate the revision and evidence before combination."
+  },
+  {
+    "page": "study-tool-contracts",
+    "anchor": null,
+    "src": "studies/diagrams/tool-contracts.svg",
+    "source": "studies/diagrams/tool-contracts.mmd",
+    "caption": "Validate input first. A continuation token preserves the distinction between one page and the complete answer.",
+    "alt": "Validate input first. A continuation token preserves the distinction between one page and the complete answer."
+  },
+  {
+    "page": "study-restart-compaction",
+    "anchor": null,
+    "src": "studies/diagrams/restart-compaction.svg",
+    "source": "studies/diagrams/restart-compaction.mmd",
+    "caption": "Recover from input identity and committed state. Recompute a check when its inputs change.",
+    "alt": "Recover from input identity and committed state. Recompute a check when its inputs change."
+  },
+  {
+    "page": "study-mcp-tool-schema",
+    "anchor": null,
+    "src": "studies/diagrams/mcp-tool-schema.svg",
+    "source": "studies/diagrams/mcp-tool-schema.mmd",
+    "caption": "Shape validation and identity validation answer different questions. The application still checks that the result belongs to its request.",
+    "alt": "Shape validation and identity validation answer different questions. The application still checks that the result belongs to its request."
+  },
+  {
+    "page": "study-codex-instructions",
+    "anchor": null,
+    "src": "studies/diagrams/codex-instructions.svg",
+    "source": "studies/diagrams/codex-instructions.mmd",
+    "caption": "This simplified fixture traces candidate selection and the byte budget. The study names the release and the exact code paths.",
+    "alt": "This simplified fixture traces candidate selection and the byte budget. The study names the release and the exact code paths."
+  },
+  {
+    "page": "study-superpowers-handoff",
+    "anchor": null,
+    "src": "studies/diagrams/superpowers-handoff.svg",
+    "source": "studies/diagrams/superpowers-handoff.mmd",
+    "caption": "A repair changes the revision under review. Verify that revision before you record the task as complete.",
+    "alt": "A repair changes the revision under review. Verify that revision before you record the task as complete."
+  },
+  {
+    "page": "study-dspy-bootstrap",
+    "anchor": null,
+    "src": "studies/diagrams/dspy-bootstrap.svg",
+    "source": "studies/diagrams/dspy-bootstrap.mmd",
+    "caption": "The metric selects a teacher run. Accepted trace steps become demonstrations for their matching predictors.",
+    "alt": "The metric selects a teacher run. Accepted trace steps become demonstrations for their matching predictors."
+  },
+  {
+    "page": "study-eval-outcomes",
+    "anchor": null,
+    "src": "studies/diagrams/eval-outcomes.svg",
+    "source": "studies/diagrams/eval-outcomes.mmd",
+    "caption": "A verifier inspects the artifact. Another attempt requires remaining budget and a reason to expect new evidence.",
+    "alt": "A verifier inspects the artifact. Another attempt requires remaining budget and a reason to expect new evidence."
+  },
+  {
+    "page": "workshop-engineering",
+    "anchor": "lesson-orient",
+    "src": "workshops/engineering/diagrams/scope-map.svg",
+    "source": "workshops/engineering/diagrams/scope-map.mmd",
+    "caption": "Follow the public command through parsing and aggregation before you edit the code.",
+    "alt": "Follow the public command through parsing and aggregation before you edit the code."
+  },
+  {
+    "page": "workshop-engineering",
+    "anchor": "trace-contract",
+    "src": "workshops/engineering/diagrams/delivery-state.svg",
+    "source": "workshops/engineering/diagrams/delivery-state.mmd",
+    "caption": "The trace contract distinguishes logical identity, identical replay and conflicting terminal values.",
+    "alt": "The trace contract distinguishes logical identity, identical replay and conflicting terminal values."
+  },
+  {
+    "page": "workshop-engineering",
+    "anchor": "trace-integration",
+    "src": "workshops/engineering/diagrams/review-branches.svg",
+    "source": "workshops/engineering/diagrams/review-branches.mmd",
+    "caption": "Independent branches contribute different artifacts. Their combined revision requires a fresh test.",
+    "alt": "Independent branches contribute different artifacts. Their combined revision requires a fresh test."
+  },
+  {
+    "page": "workshop-automation",
+    "anchor": "weekly-flow",
+    "src": "workshops/automation/workflow.svg",
+    "source": "workshops/automation/workflow.mmd",
+    "caption": "The validated source snapshot produces evidence spans and a draft for human review.",
+    "alt": "The validated source snapshot produces evidence spans and a draft for human review."
+  },
+  {
+    "page": "workshop-automation",
+    "anchor": "exact-evidence",
+    "src": "workshops/automation/tool-boundary.svg",
+    "source": "workshops/automation/tool-boundary.mmd",
+    "caption": "The execution layer validates each call and checks exact source offsets before it accepts evidence.",
+    "alt": "The execution layer validates each call and checks exact source offsets before it accepts evidence."
+  },
+  {
+    "page": "workshop-automation",
+    "anchor": "durable-state",
+    "src": "workshops/automation/transactions.svg",
+    "source": "workshops/automation/transactions.mmd",
+    "caption": "A crash before commit leaves no committed draft. A crash after commit leaves one draft for the retry to reuse.",
+    "alt": "A crash before commit leaves no committed draft. A crash after commit leaves one draft for the retry to reuse."
+  },
+  {
+    "page": "workshop-engineering",
+    "anchor": "trace-review",
+    "src": "assets/screenshots/engineering-run.png",
+    "caption": "Screenshot of the local run viewer. The first patch passes six checks and fails three assertions in the independent review suite.",
+    "alt": "Screenshot of the local run viewer. The first patch passes six checks and fails three assertions in the independent review suite.",
+    "detail": "run-viewer.html"
+  },
+  {
+    "page": "workshop-research",
+    "anchor": "research-holdout",
+    "src": "assets/screenshots/research-run.png",
+    "caption": "Screenshot of the local run viewer. Query H03 loses its required card even though mean precision rises.",
+    "alt": "Screenshot of the local run viewer. Query H03 loses its required card even though mean precision rises.",
+    "detail": "run-viewer.html"
+  },
+  {
+    "page": "workshop-automation",
+    "anchor": "durable-state",
+    "src": "assets/screenshots/automation-run.png",
+    "caption": "Screenshot of the local run viewer. The stored transaction state explains whether the retry stages or reuses the draft.",
+    "alt": "Screenshot of the local run viewer. The stored transaction state explains whether the retry stages or reuses the draft.",
+    "detail": "run-viewer.html"
+  },
+  {
+    "page": "social-practice",
+    "anchor": "social-changing-tools",
+    "src": "studies/diagrams/tool-list-refresh.svg",
+    "source": "studies/diagrams/tool-list-refresh.mmd",
+    "caption": "A fresh tool list helps the client choose. The server still checks the project revision at execution time.",
+    "alt": "A project state change triggers a fresh tool listing. A tool call validates its revision and rejects stale requests."
   }
 ]

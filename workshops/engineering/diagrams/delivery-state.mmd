@@ -1,0 +1,12 @@
+flowchart TD
+    Read["Validate a row"] --> Known{"Run and case seen?"}
+    Read -->|Invalid row| Error["Exit 2, empty stdout"]
+    Known -->|No| Accept["Store tuple and first line"]
+    Accept --> Count["Add counters once"]
+    Known -->|Yes| Same{"Same result tuple?"}
+    Same -->|Yes| Skip["Keep counters and first line"]
+    Same -->|No| Error
+    Count --> End{"End of input?"}
+    Skip --> End
+    End -->|No| Read
+    End -->|Yes| Print["Print report and exit 0"]

@@ -1,0 +1,10 @@
+flowchart TD
+    C[Checkpoint and artifact] --> H{Current inputs match?}
+    H -->|No| I[Inspect changed input]
+    H -->|Yes| S{Operation completed?}
+    I --> T[Recompute affected check]
+    S -->|Yes| V[Verify stored result]
+    S -->|No| R[Resume next operation]
+    T --> V
+    R --> V
+    V --> N[Save next checkpoint]

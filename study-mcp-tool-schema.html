@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mcp tool schema | AI engineering field guide</title><link rel="stylesheet" href="assets/guide.css"><link rel="stylesheet" href="assets/workshop.css">
+<script defer src="assets/search-index.js"></script><script defer src="assets/guide.js"></script><script defer src="assets/visuals.js"></script><script defer src="assets/study.js"></script><script defer src="assets/workshop.js"></script></head>
+<body class="page-study-mcp-tool-schema"><a class="skip" href="#main">Skip to content</a>
+<header class="mast"><div class="mast-inner"><a class="wordmark" href="index.html">Engineering field guide</a>
+<nav class="mast-links" aria-label="Shortcuts"><a href="labs.html">Labs</a><a href="sources.html">Sources</a><a href="#find">Search ↓</a></nav></div></header>
+<div class="layout"><aside class="rail"><nav aria-label="Chapters"><div class="nav-group"><p>Study</p><a href="index.html">Start here</a><a href="paths.html">Learning paths</a><a href="foundations.html">Foundations</a><a href="cases.html">Practitioner cases</a><a href="fieldnotes.html">Practitioner field notes</a></div><div class="nav-group"><p>Workshops</p><a href="workflow-kit.html">Adapt a workflow</a><a href="workshop-engineering.html">Repository to reviewed patch</a><a href="workshop-research.html">Retrieval and evaluation</a><a href="workshop-automation.html">Durable tool workflows</a><a href="run-viewer.html">Inspect recorded runs</a><a href="social-practice.html">From posts to practice</a><a href="community.html">Community practice</a><a href="resource-study.html">Read the implementations</a></div><div class="nav-group"><p>Evidence</p><a href="usage.html">How labs use tokens</a><a href="graphs.html">Project graphs</a><a href="sources.html">Source library</a><a href="audit.html">Audit and open questions</a></div><div class="nav-group"><p>Practice</p><a href="engineering.html">Production engineering</a><a href="business.html">Business workflows</a><a href="research.html">Research workflows</a><a href="labs.html">Practical labs</a></div><div class="nav-group"><p>Reference</p><a href="products.html">Products and versions</a><a href="tools.html">Tool tutorials</a><a href="resources.html">Resource catalog</a><a href="prompts.html">Prompt library</a><a href="glossary.html">Glossary</a></div><div class="nav-group"><p>Source studies</p><a href="study-cache-ledger.html">Cache ledger</a><a href="study-codex-instructions.html">Codex instructions</a><a href="study-dspy-bootstrap.html">Dspy bootstrap</a><a href="study-eval-outcomes.html">Eval outcomes</a><a href="study-mcp-tool-schema.html" aria-current="page">Mcp tool schema</a><a href="study-operator-workflows.html">Operator workflows</a><a href="study-orchestrator-workers.html">Orchestrator workers</a><a href="study-restart-compaction.html">Restart compaction</a><a href="study-superpowers-handoff.html">Superpowers handoff</a><a href="study-tool-contracts.html">Tool contracts</a></div></nav></aside>
+<div class="reading"><details id="navigation"><summary>Browse chapters</summary><nav aria-label="Mobile chapters"><div class="nav-group"><p>Study</p><a href="index.html">Start here</a><a href="paths.html">Learning paths</a><a href="foundations.html">Foundations</a><a href="cases.html">Practitioner cases</a><a href="fieldnotes.html">Practitioner field notes</a></div><div class="nav-group"><p>Workshops</p><a href="workflow-kit.html">Adapt a workflow</a><a href="workshop-engineering.html">Repository to reviewed patch</a><a href="workshop-research.html">Retrieval and evaluation</a><a href="workshop-automation.html">Durable tool workflows</a><a href="run-viewer.html">Inspect recorded runs</a><a href="social-practice.html">From posts to practice</a><a href="community.html">Community practice</a><a href="resource-study.html">Read the implementations</a></div><div class="nav-group"><p>Evidence</p><a href="usage.html">How labs use tokens</a><a href="graphs.html">Project graphs</a><a href="sources.html">Source library</a><a href="audit.html">Audit and open questions</a></div><div class="nav-group"><p>Practice</p><a href="engineering.html">Production engineering</a><a href="business.html">Business workflows</a><a href="research.html">Research workflows</a><a href="labs.html">Practical labs</a></div><div class="nav-group"><p>Reference</p><a href="products.html">Products and versions</a><a href="tools.html">Tool tutorials</a><a href="resources.html">Resource catalog</a><a href="prompts.html">Prompt library</a><a href="glossary.html">Glossary</a></div><div class="nav-group"><p>Source studies</p><a href="study-cache-ledger.html">Cache ledger</a><a href="study-codex-instructions.html">Codex instructions</a><a href="study-dspy-bootstrap.html">Dspy bootstrap</a><a href="study-eval-outcomes.html">Eval outcomes</a><a href="study-mcp-tool-schema.html" aria-current="page">Mcp tool schema</a><a href="study-operator-workflows.html">Operator workflows</a><a href="study-orchestrator-workers.html">Orchestrator workers</a><a href="study-restart-compaction.html">Restart compaction</a><a href="study-superpowers-handoff.html">Superpowers handoff</a><a href="study-tool-contracts.html">Tool contracts</a></div></nav></details>
+<main id="main" tabindex="-1" data-workshop-progress><nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Guide</a><span>/</span>Source studies<span>/</span>Mcp tool schema</nav>
+<div class="title"><h1>Trace an MCP result from schema to decision</h1></div><details class="contents"><summary>On this page</summary><div><a href="#start-offline">Start offline</a><a href="#work-four-results-by-hand">Work four results by hand</a><a href="#inspect-a-change-in-the-listing">Inspect a change in the
+listing</a><a href="#adapt-the-client">Adapt the client</a><a href="#check-your-solution">Check your solution</a><a href="#retrieve-from-memory">Retrieve from memory</a><a href="#optional-source-inspection">Optional source inspection</a></div></details>
+<p><a href="resource-study.html">Back to implementation studies</a> · <a href="studies/mcp-tool-schema.md" download>Download the editable study</a></p><figure class="learning-figure"><img src="studies/diagrams/mcp-tool-schema.svg" alt="Shape validation and identity validation answer different questions. The application still checks that the result belongs to its request." loading="lazy"><figcaption>Shape validation and identity validation answer different questions. The application still checks that the result belongs to its request. <span class="figure-links"><a href="studies/diagrams/mcp-tool-schema.mmd" download>Mermaid source</a> · <a href="studies/diagrams/mcp-tool-schema.svg">Full-size figure</a></span></figcaption></figure><p>Use a read-only fixture to distinguish three checks: argument shape,
+result shape and application meaning. Test each check with a different
+counterexample.</p>
+<h2 id="start-offline">Start offline</h2>
+<p>Work the case below before you inspect the original source. The
+trace, exercise and worked answers are complete offline. The <a
+href="workshops/automation/briefing_tools.py">local briefing tool</a>
+gives you a related validation trace. Compare <code>execute_tool</code>
+with the later checks in <code>verify_evidence</code>. The optional
+upstream links at the end need an internet connection.</p>
+<h2 id="work-four-results-by-hand">Work four results by hand</h2>
+<p>The fixture store contains part P7 with stock 4 and shelf B. Another
+part has stock 7. The application needs stock for P7. Define a read-only
+tool <code>inventory_get</code> with one required string argument,
+<code>part</code>. Define an output object with required fields
+<code>part</code> and <code>units</code>. Set <code>units</code> to an
+integer with minimum zero.</p>
+<p>Call the tool with <code>part=P7</code>. Evaluate these independent
+results. In each case, record the schema seen by the client and whether
+the tool marked an error.</p>
+<div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Shape check</th>
+<th>Application decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Structured part P7, units 4</td>
+<td>Pass</td>
+<td>Use 4</td>
+</tr>
+<tr>
+<td>Structured part P7, units <code>"4"</code></td>
+<td>Fail</td>
+<td>Reject the result</td>
+</tr>
+<tr>
+<td>Structured part P8, units 7</td>
+<td>Pass</td>
+<td>Reject the mismatched identity</td>
+</tr>
+<tr>
+<td>Error result with diagnostic text</td>
+<td>Error path</td>
+<td>Show controlled failure</td>
+</tr>
+</tbody>
+</table></div>
+<p>A reply that omits structured content is another failure for this
+declared output schema. A text block can help a human follow a
+transcript. It cannot satisfy this structured check by itself. In the
+Python SDK example, the error result skips normal output-schema
+validation. Keep that path visible until your application makes its own
+decision.</p>
+<p>For a separate exercise, call the server with a missing
+<code>part</code>. The server must apply input validation. If your app
+validates inputs before dispatch, show which layer rejected the request.
+Avoid a test that infers server behavior from an error the local
+validator produced.</p>
+<h2 id="inspect-a-change-in-the-listing">Inspect a change in the
+listing</h2>
+<p>Give the same tool a second schema that adds required field
+<code>shelf</code>. Record when the client next lists tools. Compare a
+validator built for the first shape with one built for the second shape.
+A stored validator must correspond to the schema in use. The SDK evicts
+the compiled validator when the refreshed listing changes the
+schema.</p>
+<p>The Python SDK example also shows recovery for a specific modern
+protocol error. <code>Client.call_tool</code> can re-list and resend
+once after <code>HEADER_MISMATCH</code>. Add that re-list and resend to
+your trace. Treat a generic timeout as a separate case. A protocol error
+with a defined recovery path does not imply that every failed call is
+safe to repeat. This fixture tool reads data, so you can test retry
+behavior without a write.</p>
+<h2 id="adapt-the-client">Adapt the client</h2>
+<p>Build a local validator exercise with a fake tool list and fake call
+results. Record the tool name, schema revision, call request ID,
+protocol error or tool error, and validation result. Add the four
+outcomes above, a missing structured result and a schema revision
+change.</p>
+<p>Keep the result identity check after schema validation. Introduce a
+second tool with the same display title and a different tool name.
+Confirm that the client selects the schema by tool name for this
+fixture.</p>
+<h2 id="check-your-solution">Check your solution</h2>
+<p>The app accepts only the requested part with valid units. It reports
+a tool error independently from a bad success result. The schema change
+invalidates the old validator. The second listing and any resend appear
+as distinct events. No call needs a live service.</p>
+<h2 id="retrieve-from-memory">Retrieve from memory</h2>
+<ol type="1">
+<li>When does the SDK call <code>validate_tool_result</code>?</li>
+<li>How can a result pass its schema and still be wrong?</li>
+<li>Which observation says the client used the new schema?</li>
+</ol>
+<details><summary>Show worked answers</summary>
+<ol type="1">
+<li>ClientSession calls it after a successful ordinary tool result. An
+error result goes through a separate path.</li>
+<li>The schema checks field shape. A valid string can name the wrong
+part.</li>
+<li>A new list response identifies the revised schema. A result that
+lacks the new shelf field must fail.</li>
+</ol>
+<h2 id="optional-source-inspection">Optional source inspection</h2>
+<p>Read the <a
+href="https://modelcontextprotocol.io/specification/2026-07-28/server/tools">MCP
+2026-07-28 tools specification</a> at “Listing Tools,” “Output Schema”
+and “Error Handling.” Open the Python SDK <a
+href="https://github.com/modelcontextprotocol/python-sdk/blob/main/src/mcp/client/session.py#L1054-L1183">client/session.py</a>.
+Search for <code>call_tool</code>, <code>validate_tool_result</code>,
+<code>_output_schema_validator</code> and
+<code>_absorb_tool_listing</code>. Read higher-level <a
+href="https://github.com/modelcontextprotocol/python-sdk/blob/main/src/mcp/client/client.py#L772-L867">client/client.py</a>
+at <code>Client.call_tool</code>. The code uses mutable main links read
+on 2026-11-20. The specification URL identifies a protocol revision.</p>
+<p>Start from the list response. Draw the tool name, input schema,
+output schema and result as distinct items. Follow what happens when
+<code>call_tool</code> receives a successful ordinary result. It calls
+<code>validate_tool_result</code>. That function can list tools if it
+lacks the schema. A declared schema requires structured content. The SDK
+checks the value against the schema and reuses a compiled validator for
+that schema. Follow the path that replaces the cache entry on a changed
+listing.</p>
+</details></main>
+<nav class="page-turn" aria-label="Adjacent chapters"><a href="study-eval-outcomes.html">← Eval outcomes</a><a href="study-operator-workflows.html">Operator workflows →</a></nav>
+<section id="find" class="find"><h2>Search the guide</h2><div class="search-fields"><label>Words or source ID<input id="guide-search" type="search" placeholder="Try checkpoint or Grok Bot" autocomplete="off"></label>
+<label>Section<select id="search-group"><option value="">All sections</option><option value="Study">Study</option><option value="Workshops">Workshops</option><option value="Evidence">Evidence</option><option value="Practice">Practice</option><option value="Reference">Reference</option><option value="Source studies">Source studies</option></select></label></div>
+<p id="search-status" role="status"></p><div id="search-results"></div><noscript>Use the chapter menu or your browser's Find command.</noscript></section>
+<footer><a href="audit.html">Methods and verification</a><a href="#main">Back to top ↑</a></footer></div></div></body></html>

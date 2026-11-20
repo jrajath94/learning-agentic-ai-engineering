@@ -1,0 +1,8 @@
+flowchart TD
+    A[Select weekly export] --> B[Validate and deduplicate]
+    B --> C[Commit source snapshot]
+    C --> D[Read bounded evidence]
+    D --> E{Exact source slice?}
+    E -->|Yes| F[Commit draft for review]
+    E -->|No| G[Keep snapshot ready]
+    F --> H[Review claim and scope]

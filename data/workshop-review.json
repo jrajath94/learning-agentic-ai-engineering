@@ -1,0 +1,48 @@
+{
+  "scope": "Independent beginner review of workshop fragments",
+  "reviews": [
+    {
+      "chapter": "engineering",
+      "status": "verified in revised fragment",
+      "findings": [
+        {
+          "issue": "Mutation exercises omitted fresh worktree setup, edit location, and cleanup.",
+          "action": "Add concrete commands and mutation location.",
+          "resolution": "Verified the revised instructions in the fragment."
+        }
+      ]
+    },
+    {
+      "chapter": "research",
+      "status": "verified in revised fragment",
+      "findings": [
+        {
+          "issue": "The first run.py commands lack an explicit change-directory command.",
+          "action": "Add cd workshops/research from the guide folder.",
+          "resolution": "Verified the revised instructions in the fragment."
+        },
+        {
+          "issue": "Threshold exercise lacks scratch-copy setup, ranker edit location, and a concrete positive case.",
+          "action": "Provide these details so a beginner can reproduce the side effect.",
+          "resolution": "Verified the revised instructions in the fragment."
+        }
+      ]
+    },
+    {
+      "chapter": "automation",
+      "status": "verified in revised fragment",
+      "findings": [
+        {
+          "issue": "Commands assume a POSIX shell but do not name this requirement.",
+          "action": "Name macOS Terminal, Linux, or WSL.",
+          "resolution": "Verified the revised instructions in the fragment."
+        },
+        {
+          "issue": "Exercise 2 shows an incomplete inspect invocation.",
+          "action": "Give the full Python command and explain how to select the run key.",
+          "resolution": "Verified the revised instructions in the fragment."
+        }
+      ]
+    }
+  ]
+}

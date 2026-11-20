@@ -1,0 +1,11 @@
+flowchart TD
+    C[Call a named tool] --> E{Tool reports error?}
+    E -->|Yes| F[Controlled failure]
+    E -->|No| S{Declared output schema?}
+    S -->|Yes| V{Structured result validates?}
+    S -->|No| A[Application validation]
+    V -->|Pass| A
+    V -->|Fail| F
+    A --> I{Requested identity matches?}
+    I -->|Yes| U[Use the result]
+    I -->|No| F

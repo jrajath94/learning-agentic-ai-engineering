@@ -1,0 +1,128 @@
+<p><a href="resource-study.html">Back to implementation studies</a> · <a href="studies/codex-instructions.md" download>Download the editable study</a></p><p>Make a directory fixture and predict the exact instruction sources
+and order. Check discovery, selection and truncation as distinct
+behaviors.</p>
+<h2 id="start-offline">Start offline</h2>
+<p>Work the case below before you inspect the original source. The
+trace, exercise and worked answers are complete offline. The <a
+href="workshops/engineering/lab/AGENTS.md">local Trace Rollup
+instructions</a> give you a second project file. Identify the checks a
+reader should extract after discovery. The optional upstream links at
+the end need an internet connection.</p>
+<h2 id="work-a-directory-by-hand">Work a directory by hand</h2>
+<p>Use one trusted project and an ASCII fixture. Put a project marker in
+<code>/demo</code>. Start the process in <code>/demo/lib/queue</code>.
+The root has <code>AGENTS.md</code> with contents <code>ROOT</code>. The
+<code>lib</code> directory has <code>AGENTS.md</code> with
+<code>GEN</code> and <code>AGENTS.override.md</code> with
+<code>LIB!</code>. The leaf has <code>TEAM.md</code> with
+<code>LEAF</code>. Set <code>project_doc_fallback_filenames</code> to
+include <code>TEAM.md</code>. Treat every listed file as regular and
+omit trailing newlines. Walk from the marker directory to the working
+directory. In each directory, choose the first regular file in this
+order: override, default, fallback.</p>
+<table>
+<thead>
+<tr>
+<th>Directory</th>
+<th>Selected file</th>
+<th>Bytes before read</th>
+<th>Bytes after read</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/demo</code></td>
+<td><code>AGENTS.md</code></td>
+<td>9</td>
+<td>5</td>
+</tr>
+<tr>
+<td><code>/demo/lib</code></td>
+<td><code>AGENTS.override.md</code></td>
+<td>5</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>/demo/lib/queue</code></td>
+<td><code>TEAM.md</code></td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>With a nine-byte budget, the project text that reaches the assembler
+comes from <code>ROOT</code>, <code>LIB!</code> and the first byte
+<code>L</code>. The read loop emits a truncation warning for the leaf.
+Global user instructions are a distinct input. This table traces the
+repository files only.</p>
+<p>Swap the process directory to <code>/demo/lib</code>. The leaf file
+falls outside the discovery path. The fixture illustrates why a task
+launched from the repository root can get different instructions from a
+task launched below it. You can diagnose the source list without asking
+a model what it remembers.</p>
+<h2 id="change-one-condition">Change one condition</h2>
+<p>Replace <code>AGENTS.override.md</code> with a directory of the same
+name. Predict the new source order before you check the worked answer.
+The default file in <code>lib</code> now qualifies. Keep the result of
+this case and the original case side by side.</p>
+<p>At a budget of eight bytes, the root and <code>lib</code> files use
+all bytes. The leaf probe may discover the candidate, but the read loop
+stops before it reads the leaf. This failure can look like a priority
+rule when someone reads only the final context. Report separate columns
+for discovery, bytes read and model-visible text.</p>
+<p>A version can change the behavior. Use the tag in the code link when
+you explain this trace. A test that issues a natural-language request to
+a model checks model behavior too. Test file selection directly when you
+need to prove selection.</p>
+<h2 id="adapt-the-trace">Adapt the trace</h2>
+<p>Build a temporary directory with a root, a nested directory and a
+sibling. Predict sources for each start directory. Add a third candidate
+file in one directory. Add an ASCII file that exceeds the remaining
+budget by one byte. If you have the Codex source available, locate the
+repository's existing named tests. Otherwise, implement only a local
+fixture simulator and label its outputs as predictions.</p>
+<h2 id="check-your-solution">Check your solution</h2>
+<p>Your trace names the selected path at each level and the skipped
+candidates. It shows where the budget first blocks or cuts a read. The
+sibling has no effect. The observed or simulated result states the tag
+and working directory.</p>
+<h2 id="retrieve-from-memory">Retrieve from memory</h2>
+<ol type="1">
+<li>Which filename wins when the override and default are regular
+files?</li>
+<li>How can a file be discovered and still contribute no bytes?</li>
+<li>Why does a model answer alone give weak evidence about
+discovery?</li>
+</ol>
+<details><summary>Show worked answers</summary>
+<ol type="1">
+<li>AGENTS.override.md comes first in the per-directory candidate
+order.</li>
+<li>The byte counter can reach zero before the read loop reaches that
+discovered path.</li>
+<li>The answer depends on model behavior as well as loaded context.
+Inspect the selected paths and budget directly.</li>
+</ol>
+<h2 id="optional-source-inspection">Optional source inspection</h2>
+<p>Read <a
+href="https://learn.chatgpt.com/docs/agent-configuration/agents-md">Custom
+instructions with AGENTS.md</a> at “How Codex discovers guidance.” Then
+open <a
+href="https://github.com/openai/codex/blob/rust-v0.171.0/codex-rs/core/src/agents_md.rs#L59-L302">codex-rs/core/src/agents_md.rs</a>
+at release tag <code>rust-v0.171.0</code>. Read
+<code>load_project_instructions</code>, <code>read_agents_md</code>,
+<code>agents_md_paths</code> and <code>candidate_filenames</code> in
+that order. Look at <a
+href="https://github.com/openai/codex/blob/rust-v0.171.0/codex-rs/core/src/agents_md_tests.rs">agents_md_tests.rs</a>
+for <code>total_byte_limit_truncates_later_project_docs</code>,
+<code>agents_local_md_preferred</code> and
+<code>override_directory_falls_back_to_agents_md_file</code>. The public
+docs are mutable and were read on 2026-11-20.</p>
+<p>Write down the trusted-project check and byte budget first. In
+<code>agents_md_paths</code>, find the nearest project marker, then
+trace how the directory list reverses from leaf-first to root-first. In
+<code>candidate_filenames</code>, check the override, default and
+configured fallback order. The probe for each directory selects the
+first candidate that is a file. Then follow the read loop and its
+warning branches.</p>
+</details>

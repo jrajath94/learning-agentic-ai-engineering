@@ -1,0 +1,5 @@
+session,task,pass_evidence,next_action_if_failed
+first,Trace one example without the reference,State before and after match the actual output,Revisit the first wrong transition
+next-day,Reconstruct the core function from its contract,Original and unseen boundary tests pass,Repeat only the failed boundary
+three-days,Change one assumption and predict the result,Prediction explains the changed invariant,Write a counterexample before a repair
+one-week,Apply the method to one task in your repository,New acceptance cases and evidence support the change,Reduce the task to one observable output

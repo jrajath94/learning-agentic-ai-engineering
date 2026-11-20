@@ -1,0 +1,10 @@
+flowchart TD
+    X[Training example] --> T[Teacher program run]
+    T --> M{Metric accepts prediction?}
+    M -->|No| R[Discard this trace]
+    M -->|Yes| P[Match steps to predictors]
+    P --> A[Accepted extraction demo]
+    P --> B[Accepted queue demo]
+    A --> S[Student program]
+    B --> S
+    S --> E[Separate evaluation set]

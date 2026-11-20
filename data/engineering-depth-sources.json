@@ -1,0 +1,74 @@
+[
+  {
+    "id": "DE01",
+    "url": "https://mitchellh.com/writing/my-ai-adoption-journey#step-5-engineer-the-harness",
+    "title": "My AI Adoption Journey",
+    "author": "Mitchell Hashimoto",
+    "type": "Primary practitioner account",
+    "date": "2026-02-05",
+    "version": "Public article",
+    "claims": "Hashimoto reports that he adds repository instruction entries for recurring command or API mistakes and adds executable checks for mistakes that a tool can detect.",
+    "limits": "Self-report. No controlled benchmark or requirement to use several simultaneous agents. The trace rollup contract and gate are proposed adaptations.",
+    "evidence": "Step 5: Engineer the Harness, the two items under This comes in two forms. Step 2, the numbered list after his repeated-commit exercise. Step 6, the paragraph about preferring one agent."
+  },
+  {
+    "id": "DE02",
+    "url": "https://github.com/ghostty-org/ghostty/blob/ca07f8c3f775fe437d46722db80a755c2b6e6399/src/inspector/AGENTS.md",
+    "title": "Ghostty inspector repository instructions",
+    "author": "Ghostty contributors",
+    "type": "Primary repository file",
+    "date": "Not in source",
+    "version": "ca07f8c3f775fe437d46722db80a755c2b6e6399",
+    "claims": "The inspector instructions identify a generated C header, an upstream widget demonstration, a macOS build flag, and the lack of package unit tests.",
+    "limits": "One subsystem at one revision. The trace rollup package uses a different language, entry point, and tests.",
+    "evidence": "src/inspector/AGENTS.md, all four bullets below Inspector Subsystem."
+  },
+  {
+    "id": "DE03",
+    "url": "https://simonwillison.net/guides/agentic-engineering-patterns/red-green-tdd/",
+    "title": "Red/green TDD",
+    "author": "Simon Willison",
+    "type": "Primary practitioner guide",
+    "date": "Not in source",
+    "version": "Public guide chapter",
+    "claims": "Willison advises a test-first cycle. Observe the test fail before a code change so that green can demonstrate a behavior change.",
+    "limits": "The chapter describes a method. It supplies no effect size for this workshop. Trace fixture choices and the expected output here are original.",
+    "evidence": "Red/green TDD, the paragraph that begins with the most disciplined form of TDD and the paragraph on what can happen if the red phase is skipped."
+  },
+  {
+    "id": "DE04",
+    "url": "https://lucumr.pocoo.org/2026/1/31/pi/#review",
+    "title": "Pi: The Minimal Agent Within OpenClaw",
+    "author": "Armin Ronacher",
+    "type": "Primary practitioner account",
+    "date": "2026-01-31",
+    "version": "Public article",
+    "claims": "Ronacher describes a fresh review context inside Pi's session tree and carries review results back to the main session.",
+    "limits": "A session branch and a Git worktree solve different problems. The workshop's separate test branch and local merge gate are proposed adaptations. The Pi command was not run here.",
+    "evidence": "The /review subsection, the paragraph on a fresh context and the paragraph that lists review targets."
+  },
+  {
+    "id": "DE05",
+    "url": "https://github.com/mitsuhiko/agent-stuff/blob/main/extensions/review.ts",
+    "title": "Pi code review extension",
+    "author": "Armin Ronacher and contributors",
+    "type": "Primary implementation",
+    "date": "Not in source",
+    "version": "main, unpinned snapshot inspected for this edition",
+    "claims": "The TypeScript extension builds different review prompts by Git target. A branch prompt uses a resolved merge base when one is available. A separate explicit option controls inclusion of local changes.",
+    "limits": "The source can change on main. Review heuristics in the extension do not demonstrate correctness on a given patch. The workshop uses a local pinned diff and executable cases without this extension.",
+    "evidence": "extensions/review.ts, ReviewTarget, getMergeBase, and buildReviewPrompt. Inspect the baseBranch switch arm and includeLocalChanges."
+  },
+  {
+    "id": "DE06",
+    "url": "https://git-scm.com/docs/git-worktree",
+    "title": "git-worktree",
+    "author": "Git contributors",
+    "type": "Official manual",
+    "date": "Not in source",
+    "version": "Manual revision 2.56.0",
+    "claims": "Git can attach multiple working trees to one repository. Linked trees have independent working files, indexes and HEADs. Most refs are shared.",
+    "limits": "A worktree grants no process isolation. The workshop uses separate temporary paths and no shared output resource.",
+    "evidence": "DESCRIPTION, COMMANDS add, and DETAILS. In DETAILS inspect the GIT_DIR and GIT_COMMON_DIR examples."
+  }
+]

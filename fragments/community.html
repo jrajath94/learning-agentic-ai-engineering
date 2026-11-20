@@ -1,0 +1,121 @@
+<section id="community-evidence">
+<h2>Choose a method you can test</h2>
+<p>Start with a small defect that has a clear result. Fix it once with your usual process. Then try one change from this chapter and compare the evidence. Use the same task, base revision and acceptance rules for both attempts.</p>
+<p>Reddit scores below come from indexed snapshots found on November 20, 2026. The linked public pages supplied the post text. The index supplied the score and date. Scores can change. A high score shows attention. It cannot establish that a method works.</p>
+<table><thead><tr><th scope="col">Record</th><th scope="col">Published</th><th scope="col">Visible engagement</th><th scope="col">What you can inspect</th></tr></thead><tbody>
+<tr><td><a href="sources.html#DC05">r/codex</a></td><td>2026-11-02</td><td>1,295 votes</td><td>Appeared in the retrieved Top, This Month list. The post compares two personal subscription experiences.</td></tr>
+<tr><td><a href="sources.html#DC04">r/ExperiencedDevs</a></td><td>2025-05-20</td><td>1,157 votes</td><td>A reviewer describes broad diffs and the extra work they create.</td></tr>
+<tr><td><a href="sources.html#DC01">r/ClaudeAI</a></td><td>2026-04-16</td><td>1,023 votes</td><td>A developer describes one step per request and a short review after each step.</td></tr>
+<tr><td><a href="sources.html#DC17">r/ChatGPTCoding</a></td><td>2025-02-26</td><td>589 votes</td><td>A developer uses a task list and memory file across fresh sessions.</td></tr>
+<tr><td><a href="sources.html#DC02">r/ClaudeCode</a></td><td>2026-11-14</td><td>486 votes</td><td>The post links the author's plan review and final audit prompts.</td></tr>
+<tr><td><a href="sources.html#DC14">r/LocalLLaMA</a></td><td>2026-09-05</td><td>267 votes</td><td>The thread links a benchmark from the harness vendor.</td></tr>
+<tr><td><a href="sources.html#DC06">r/codex</a></td><td>2026-11-16</td><td>14 votes</td><td>The author describes a sample of context files and links a size estimator.</td></tr>
+<tr><td><a href="sources.html#DC18">David on X</a></td><td>2026-06-08</td><td>94.9K views</td><td>The indexed post proposes explicit workflow states.</td></tr>
+</tbody></table>
+<p>The one-month Reddit ranking was accessible for five communities. The r/ChatGPTCoding ranking did not load for the month or year. Rows without a stated rank window came from targeted discovery. X blocked direct fetches of the selected posts. The indexed David post and a Boris Cherny thread mirror supplied their text. <a href="data/community-search-log.json">Search and access record</a></p>
+</section>
+
+<section id="inspection-example">
+<h2>Set the export contract before you ask for code</h2>
+<p>Use a local inspection queue with no real records. A Python export must select inspections due strictly before 09:00 UTC. It must sort the selected records by their UTC times. A timestamp without an offset must cause the export to fail before it writes a file.</p>
+<table><thead><tr><th scope="col">Record</th><th scope="col">Input timestamp</th><th scope="col">Expected result</th></tr></thead><tbody>
+<tr><td>A</td><td><code>2026-11-20T08:00:00Z</code></td><td>First selected record.</td></tr>
+<tr><td>B</td><td><code>2026-11-20T09:00:00Z</code></td><td>Excluded at the cutoff.</td></tr>
+<tr><td>C</td><td><code>2026-11-20T04:30:00-04:00</code></td><td>Second selected record, due at 08:30 UTC.</td></tr>
+<tr><td>D</td><td><code>2026-11-20T08:45:00</code></td><td>Reject this input in a separate run.</td></tr>
+</tbody></table>
+<p>Assume the command already accepts CSV and writes an output file. Keep the command interface. Decide how the public command reports an invalid row. For this example it prints the row ID to standard error, exits with a nonzero status and leaves no output file.</p>
+<p>Write the exact output order as <code>A,C</code>. Ask the agent to locate the timestamp parser, filter and write boundary. Keep the acceptance table outside the agent's edit scope. Use the public command to test the file boundary and a unit test to isolate timestamp comparisons. <a href="prompts.html#spec">Acceptance criteria prompt</a></p>
+</section>
+
+<section id="community-reset">
+<h2>Resume from a revision and a failed check</h2>
+<p>Two Reddit authors describe separate steps or fresh chats. Timur Yessenov's handoff article adds a short report of scope, proof and uncertainty. Anthropic's long-running harness article puts the progress log beside Git history. Its examples show new sessions read the log and inspect the current state. <a href="sources.html#DC01">[DC01]</a> <a href="sources.html#DC17">[DC17]</a> <a href="sources.html#DC09">[DC09]</a></p>
+<p>In the first session, reproduce the export fault. Record the base commit and the test revision, plus any uncommitted paths. Save one failure line, then end the session. This limits the next session's starting material to the contract and evidence it needs.</p>
+<pre><code>Task: Export inspections due strictly before the cutoff.
+Base: [exact Git commit]
+State: One new test file. No implementation edits yet.
+Read: inspection/export.py, tests/test_export.py
+Check: python3 -m unittest discover -s tests -p test_export.py
+Observed: Case A plus B returned both rows. Expected A only.
+Open check: Invalid rows must leave no output file.
+Next: Reproduce the result, then repair the timestamp comparison.</code></pre>
+<p>Start the next session in the same checkout or give it both the base and the test diff. Ask it to verify <code>git rev-parse HEAD</code>, check dirty paths and run the exact command. An import error means the check has yet to reproduce the fault. Stop if the new session cannot recover the same revision and test.</p>
+<p>For your next task, use a fresh session at a change in purpose, such as after discovery or before review. Keep the original thread when its reasoning still helps the next step. Compare both modes with one repeated task if session resets cost you extra setup or tool calls. <a href="prompts.html#handoff">Handoff prompt</a> · <a href="workflow-kit.html">Workflow kit</a></p>
+</section>
+
+<section id="community-red-green">
+<h2>Watch the right test fail first</h2>
+<p>Simon Willison's red and green method requires an actual failure and rerun. Superpowers adds explicit checks for the source of the failure. Its skill rejects errors from broken test setup and requires the existing suite to pass after the code repair. <a href="https://github.com/obra/superpowers/blob/main/skills/test-driven-development/SKILL.md">Superpowers test skill</a> · <a href="sources.html#DC10">[DC10]</a> <a href="sources.html#DC11">[DC11]</a></p>
+<p>Run a check with only A and B. Require A alone. Then run A, B and C and require A followed by C. Run D separately through the real command. Check its return code, the row ID in standard error and the absence of an output file.</p>
+<p>A lexical sort places C before A. An inclusive cutoff admits B. These faults need separate assertions. Require the test-only diff to keep expected IDs literal. An assertion that calls the production timestamp parser to compute its expected order can repeat the same fault.</p>
+<table><thead><tr><th scope="col">Candidate</th><th scope="col">Output for A, B, C</th><th scope="col">Rejects D</th></tr></thead><tbody>
+<tr><td>Lexical sort and inclusive filter</td><td>C, A, B</td><td>No</td></tr>
+<tr><td>UTC sort and inclusive filter</td><td>A, C, B</td><td>Yes</td></tr>
+<tr><td>UTC sort and strict filter</td><td>A, C</td><td>Yes</td></tr>
+</tbody></table>
+<p>A local Python check produced these results with three deterministic variants. A separate synthetic CSV command returned A and C, then rejected A plus D with status 2 and no output file. Both checks used fake rows. Run the same check on a preexisting valid CSV in your project to confirm compatibility. <a href="data/community-search-log.json">Local check record</a></p>
+<p>Use the same method for a report generator when it drops a valid row. Commit one safe input and a hand-calculated expected result. Record the old output, new output and exit code before you accept the fix. <a href="prompts.html#test-design">Test design prompt</a> · <a href="workshop-engineering.html">Repository workshop</a></p>
+</section>
+
+<section id="community-worktrees">
+<h2>Split work by file ownership and dependency</h2>
+<p>Boris Cherny's January 31 thread says some teammates run sessions in separate worktrees. The Superpowers worktree skill checks for an existing isolated checkout, then tries the platform tool, then falls back to Git. It runs a baseline after setup. <a href="https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/SKILL.md">Superpowers worktree skill</a> · <a href="sources.html#DC08">[DC08]</a> <a href="sources.html#DC11">[DC11]</a></p>
+<p>For the example, assign the filter and order rule to one worktree. Assign a short command help change to another. The help change can start from the same revision once the public rule is fixed. Leave the command test with the code branch because it checks behavior that the base revision lacks.</p>
+<table><thead><tr><th scope="col">Worktree</th><th scope="col">Owned paths</th><th scope="col">Before integration</th></tr></thead><tbody>
+<tr><td>Export rule</td><td><code>inspection/export.py</code>, <code>tests/test_export.py</code></td><td>Record the old failure and the new suite result.</td></tr>
+<tr><td>Help text</td><td><code>docs/export.md</code></td><td>Match the fixed command contract and example output.</td></tr>
+<tr><td>Integration</td><td>Reviewed commits from both branches</td><td>Run the command with the documented example.</td></tr>
+</tbody></table>
+<p>Record each checkout's absolute path in your private task notes. Confirm the worktree, branch and base before the first edit. A shared default output location can still cause collisions. Use a separate temporary output path per run. If both changes need the same parser or fixture, assign one owner and do the changes in sequence.</p>
+<p>In your repository, split only tasks that can pass separate checks. Use one branch for tightly coupled work. A second session can still review the patch without another edit workspace. <a href="workflow-kit.html">Workflow kit</a></p>
+</section>
+
+<section id="community-instructions">
+<h2>Save a repeated mistake as one local rule</h2>
+<p>Cherny attributes instruction updates after corrections to his team. A Codex thread reports approximate file sizes from 30 root context files and links the author's linter. Its size estimate cannot establish what a live session loaded. The Codex guide sets a default combined discovery limit of 32 KiB. <a href="sources.html#DC08">[DC08]</a> <a href="sources.html#DC06">[DC06]</a></p>
+<p>The revised AGENTS.md study found higher inference costs on its two benchmarks with generated context files. Developer-written files did better than generated files in the study. Their average difference from the no-file condition did not reach statistical significance. <a href="sources.html#DC07">[DC07]</a></p>
+<p>If two independent sessions compare timestamp strings, place one rule near the exporter. State that its comparisons require offset-aware values and name the test command. Keep a separate file with examples if the rule needs more explanation. Remove an old rule about a parser after its callers disappear.</p>
+<p>Run one relative-path test from the scope that owns the rule. Then start a fresh session there and ask it to return the invariant and prove it with A and C. If it can recite the rule but applies the wrong comparison, add a regression test. If it cannot see the rule, check the current directory, discovery order and combined byte count.</p>
+<p>Apply this to one real recurring error before you rewrite the entire instruction file. Compare the same cases with and without the new line. Track the number of tool calls and any extra work the rule causes. <a href="workflow-kit.html">Workflow kit</a></p>
+</section>
+
+<section id="community-review">
+<h2>Give the reviewer a fixed candidate and a known defect</h2>
+<p>Vaibhav's repository includes separate review prompts for the plan and the patch. The final prompt asks for staged, unstaged and untracked changes because a normal diff omits untracked files. The author describes the reported usage hours as an estimate. <a href="https://github.com/vaibhav-space/my-ai-coding-workflow/blob/main/prompts/production-readiness-review.md">Readiness prompt source</a> · <a href="sources.html#DC02">[DC02]</a> <a href="sources.html#DC03">[DC03]</a></p>
+<p>Give a read-only reviewer the acceptance table, base commit and exact candidate commit. For a dirty tree, include staged and unstaged diff output and the allowed untracked files. Ask it to inspect the caller that opens the export file. Ask for a reproducing input and line location for each finding.</p>
+<p>Put an inclusive comparison into a disposable candidate. The reviewer should identify B as a counterexample. In a second candidate, keep the filter correct but open the output before validation. The reviewer should use D to expose the partial-file error. Give the reviewer a third correct candidate to measure false alarms.</p>
+<p>A reviewer in r/ExperiencedDevs reports wide diffs and unnecessary indirection. To account for that cost, keep the reviewer read-only and require an explanation before you accept a rewrite. Route findings by defect, impact and proof. The author decides how to fix a confirmed finding and reruns the targeted test. <a href="sources.html#DC04">[DC04]</a></p>
+<p>Start with one known fault in your own short patch and one correct version. Record confirmed findings, missed faults and false alarms. A second model can produce the same mistake as the first. A checked case provides the tie breaker. <a href="prompt-pack/calibrate-review.md" download>Download the review calibration prompt</a></p>
+</section>
+
+<section id="community-hooks">
+<h2>Make a stop check run a local command</h2>
+<p>Superpowers uses a <code>SessionStart</code> hook to inject skill context. Its registration matches startup, clear and compact events. The script reads the skill text and emits the host's context JSON. Claude Code's reference documents a separate <code>Stop</code> event that can block the end of a turn. <a href="https://github.com/obra/superpowers/blob/main/hooks/hooks.json">Hook registration</a> · <a href="https://github.com/obra/superpowers/blob/main/hooks/session-start">Hook script</a> · <a href="sources.html#DC11">[DC11]</a> <a href="sources.html#DC12">[DC12]</a></p>
+<p>For this fixture, use a manual check first. Run the focused export suite. Record the candidate commit and the check result together. If the project repeats this exact job, wrap the same command in a stop hook. Set a short timeout and keep the hook limited to the local test.</p>
+<p>Use the hook payload's <code>stop_hook_active</code> flag to detect a follow-up stop. Emit one actionable error on failure. Exit with the documented code for the event. Leave a failed attempt in the task report if a follow-up still fails. Require the independent final check before accepting the patch.</p>
+<p>Verify three paths in the host before you depend on the hook. A passing fixture allows a stop. A known failing fixture produces one useful block. A bad script path raises a visible error. The docs explain that certain hook errors can be nonblocking, so the broken path exercise matters. This chapter inspects host behavior from documentation. It does not claim a live hook run. <a href="sources.html#DC12">[DC12]</a></p>
+<p>Use project permissions for file access. Keep the test command useful in the terminal or CI with or without the agent. Use a one-line error plus an evidence path so the next session can read the failure without replaying an entire log. <a href="workshop-automation.html">Durable workflow workshop</a></p>
+</section>
+
+<section id="community-evals">
+<h2>Measure repeat success and cost to acceptance</h2>
+<p>Paolo Perrone describes hidden checks, repeated trials and uncertainty across tasks. David's X post proposes state machines for agent workflows. Use both ideas by recording each attempt's state and having the verifier decide when the task passes. <a href="sources.html#DC13">[DC13]</a> <a href="sources.html#DC18">[DC18]</a></p>
+<p>Start with a clean copy of the fixture for each attempt. Give both workflows the same visible acceptance table. Keep a second input outside the working copy until evaluation. Use two offset spellings for the same instant and a malformed row after a valid one. Fix the expected order for ties in the visible contract first.</p>
+<p>Record one row per attempt. Include revision, case, outcome, elapsed time, tool calls and token categories the tool exposes. Record a timeout as its own outcome. Stop after the fixed attempt limit. Skip automatic retries when a result lacks the required file or when the checker itself changes.</p>
+<table><thead><tr><th scope="col">Synthetic case</th><th scope="col">Baseline passes</th><th scope="col">New workflow passes</th></tr></thead><tbody>
+<tr><td>Strict cutoff</td><td>5 of 5</td><td>5 of 5</td></tr>
+<tr><td>Offset order</td><td>2 of 5</td><td>5 of 5</td></tr>
+<tr><td>No partial file</td><td>4 of 5</td><td>1 of 5</td></tr>
+</tbody></table>
+<p>Each workflow passes 11 of 15 attempts in this illustrative ledger. The new workflow improves ordering and regresses the file boundary. The identical total conceals the regression. For your own test, examine each important case first. Use more tasks and repeated runs before you infer a general improvement.</p>
+<p>A highly engaged r/codex post compares perceived quota use across two subscriptions. Its models, effort and workloads were uncontrolled. The r/LocalLLaMA comparison points to TrueForge's vendor benchmark. Both same-model rows average 10.7 of 14 solved. TrueForge raised <code>eng-l1-c</code> from one to three passes and reduced <code>sales-l2-a</code> from three to one. The reported 10.0M versus 3.7M tokens apply to those runs. <a href="sources.html#DC05">[DC05]</a> <a href="sources.html#DC14">[DC14]</a> <a href="sources.html#DC15">[DC15]</a></p>
+<p>For your own cost check, sum all attempts and divide by the number of accepted results. If zero results pass, report the spend and zero passes. Keep uncached input, cache reads, cache writes and output separate when the meter exposes them. Subscription quota percent measures a different quantity. <a href="usage.html">Token and quota units</a> · <a href="workshop-research.html">Evaluation workshop</a></p>
+</section>
+
+<section id="community-agent-reach">
+<h2>Use public search before you add Agent Reach</h2>
+<p>Agent Reach wraps site tools and an anonymous web fallback. Its English skill tells the agent to prefer its existing public tools. Its Reddit adapter calls OpenCLI for site access and declares Node and Chrome as prerequisites. The README lists Reddit as optional and X as experimental. Both site backends require a login. <a href="sources.html#DC16">[DC16]</a></p>
+<p>Its release notes describe a dedicated browser profile, reusable login state and downloaded dependencies. Those permissions expand the research environment. The author notes that upstream access can fail. The public tools supplied the core discussion bodies and source artifacts for this chapter.</p>
+<p>This study did not install Agent Reach or copy any browser session. Record the gap when a post body or metric is absent. For a task that needs one exact public post, try its original URL, a search index and an accessible author mirror. Keep the retrieved text separate from the original engagement field. <a href="prompt-pack/investigate-a-post.md" download>Download the source investigation prompt</a></p>
+</section>

@@ -1,0 +1,2 @@
+{"run_id":"daily","case_id":"extract-17","status":"pass","input_tokens":120,"output_tokens":24}
+{"run_id":"daily","case_id":"cite-03","status":"fail","input_tokens":true,"output_tokens":8}

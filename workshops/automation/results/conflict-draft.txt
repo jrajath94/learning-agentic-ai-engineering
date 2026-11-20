@@ -1,0 +1,11 @@
+AI research brief for 2026-W45
+Status: DRAFT FOR REVIEW
+Input: Local export. Source claims require review.
+Run: run_1e726da5dda4a5f375ccac8006a575487847ccd00392ad7e7cb30014d3027bcb
+
+1. "Independent check" [SRC-202, 2026-11-05]
+   Source claim [8:44]: 6 of 10 tasks reached manual review.
+   Scope: Not in source.
+
+
+Review: Check source authenticity, scope and what decision the result supports.

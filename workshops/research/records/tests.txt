@@ -1,0 +1,20 @@
+test_checkpoint_rejects_dev_mutation (test_workshop.WorkshopTests.test_checkpoint_rejects_dev_mutation) ... ok
+test_checkpoint_resumes_to_same_state (test_workshop.WorkshopTests.test_checkpoint_resumes_to_same_state) ... ok
+test_compare_rejects_a_changed_label (test_workshop.WorkshopTests.test_compare_rejects_a_changed_label) ... ok
+test_d01_matches_hand_calculation (test_workshop.WorkshopTests.test_d01_matches_hand_calculation) ... ok
+test_fixed_slot_precision_and_no_reference (test_workshop.WorkshopTests.test_fixed_slot_precision_and_no_reference) ... ok
+test_holdout_is_frozen_and_critical_case_blocks_acceptance (test_workshop.WorkshopTests.test_holdout_is_frozen_and_critical_case_blocks_acceptance) ... ok
+test_model_does_not_need_row_labels_to_rank (test_workshop.WorkshopTests.test_model_does_not_need_row_labels_to_rank) ... ok
+test_rank_ties_and_ignores_nonmatches (test_workshop.WorkshopTests.test_rank_ties_and_ignores_nonmatches) ... ok
+test_validate_groups_and_reject_leak (test_workshop.WorkshopTests.test_validate_groups_and_reject_leak) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.038s
+
+OK
+development: 1/4 candidates, paused, incumbent=baseline
+development: 2/4 candidates, paused, incumbent=titles
+development: 4/4 candidates, budget exhausted, incumbent=combined
+development: 4/4 candidates, budget exhausted, incumbent=combined
+development: 4/4 candidates, budget exhausted, incumbent=combined
+holdout: retain baseline, recall gain=0, precision gain=1/6

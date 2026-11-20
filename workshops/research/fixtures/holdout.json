@@ -1,0 +1,5 @@
+[
+  {"id":"H01","group":"birch","slice":"alias","query":"Birch feed blockage","relevant":["B11","B12"],"critical":false,"reason":"Both jam locations apply to a feed blockage."},
+  {"id":"H02","group":"lark","slice":"literal","query":"Lark queue export","relevant":["L11"],"critical":false,"reason":"The view card shows the queue but cannot export it."},
+  {"id":"H03","group":"finch","slice":"ambiguous-alias","query":"Finch seal audit","relevant":["V11"],"critical":true,"reason":"Here seal means an anti-tamper label. Door gaskets cannot answer this question."}
+]

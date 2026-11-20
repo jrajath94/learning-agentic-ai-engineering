@@ -1,0 +1,98 @@
+[
+  {
+    "id": "DO01",
+    "url": "https://x.noodl3.net/poteto/status/2116576229319233596",
+    "title": "Grok Bot guide and follow-up on routines",
+    "author": "Lauren Tan (@poteto)",
+    "type": "Dated full author post capture and follow-up capture",
+    "date": "2026-10-31",
+    "version": "Pre-1.0 workflow described in the post",
+    "claims": "Tan distinguishes recurring schedules from event subscriptions, recommends filtering events before triggering a routine, and proposes scripts for repeatable parts.",
+    "limits": "The capture supports guidance and a qualitative cost warning. It does not establish a current rate or measured savings.",
+    "evidence_pointer": "Read the main post at 17:01 UTC and the same-day more-tips follow-up at https://x.noodl3.net/poteto/status/2116580481236115933. Read the first three bullets of the follow-up."
+  },
+  {
+    "id": "DO02",
+    "url": "https://xitter.gq/poteto/status/2115205951649423585",
+    "title": "Tibot's scheduled mention digest",
+    "author": "Lauren Tan (@poteto)",
+    "type": "Dated full author post capture",
+    "date": "2026-10-27",
+    "version": "Announcement, 22:16 UTC",
+    "claims": "Tan describes a sorted digest, daily or hourly operation, keyword monitoring, translation, relevance screening and optional blocking. She says she writes her posts herself.",
+    "limits": "Reported behavior. No filter configuration, coverage test, action permissions or usage data. The template was not installed.",
+    "evidence_pointer": "Author's announcement bullet list. Original X post ID 2115205951649423585. This specific post supersedes a profile cursor as the pointer."
+  },
+  {
+    "id": "DO03",
+    "url": "https://xitter.gq/poteto/status/2107527180263829827",
+    "title": "Release and QA handoff with two Team Bots",
+    "author": "Lauren Tan (@poteto)",
+    "type": "Dated full author post capture",
+    "date": "2026-10-06",
+    "version": "October 6 post, 17:43 UTC",
+    "claims": "Tan reports contributor notifications, build monitoring, directed and exploratory QA, and a handoff to a Cursor Project. She describes her decision on whether to patch or defer.",
+    "limits": "The author reports the procedure. No internal build trace, change record or shipped release was inspected.",
+    "evidence_pointer": "Three paragraphs of the original post plus the same-day author reply linking pstack's create-verification-skill at DO07. Original X post ID 2107527180263829827."
+  },
+  {
+    "id": "DO04",
+    "url": "https://www.teapawt.org/poteto/article/2123159537016533493",
+    "title": "Automate Anything with Grok Bot",
+    "author": "Lauren Tan (@poteto)",
+    "type": "Full authored article capture",
+    "date": "2026-11-18",
+    "version": "Dated wrapper at 21:00 UTC and linked article body",
+    "claims": "Tan separates the goal from the procedure, asks for a restatement before execution, explains source precedence and stable IDs, and ends with routine setup.",
+    "limits": "The original X request failed. The wrapper and linked full article capture are one origin. The article's advice is not a product test.",
+    "evidence_pointer": "Read Start with the goal, The process, Teach your bot how you think, Let your bots improve themselves, and Making bots do work automatically. The appointment example explains precedence and pending state."
+  },
+  {
+    "id": "DO05",
+    "url": "https://ai.engineer/code/2026/talks/lauren-tan",
+    "title": "All Code Is Slop (Except Mine)",
+    "author": "Lauren Tan and AI Engineer CODE 2026",
+    "type": "Organizer's talk page and timestamped transcript",
+    "date": "2026-11-11 talk",
+    "version": "Day 1 livestream transcript, 1:01:02 to 1:18:38",
+    "claims": "Tan describes enforcing process boundaries in code, verifying runtime behavior with real app paths and using artifacts to review changes.",
+    "limits": "Organizer labels the transcript machine-generated. The supplied clip and livestream use different clocks. Reported operating results have no independent audit here.",
+    "evidence_pointer": "Read 1:06:17 for Dune and Electron boundaries, 1:11:00 for runtime evidence and feature maps, and 1:17:45 for the release routine. Full organizer download at https://ai.engineer/api/code/reading-download/transcripts/lauren-tan.md."
+  },
+  {
+    "id": "DO06",
+    "url": "https://nitter.cf/gregisenberg/status/2120594796184227848",
+    "title": "Greg Isenberg's public observations from the Grok Bot course",
+    "author": "Greg Isenberg (@gregisenberg)",
+    "type": "Dated full host-post capture",
+    "date": "2026-11-11",
+    "version": "Post at 19:09 UTC linked to the Grok Bot 1.0 course",
+    "claims": "The host lists distinct project bots and a scheduled pass that proposes content ideas. The parent post links the guest demonstration.",
+    "limits": "The capture verifies the host's description. The video audio, captions, implementation details and plan-to-API-equivalent figures were not verified.",
+    "evidence_pointer": "Read the November 11 follow-up and the paragraph on the content routine. The parent post names the course URL and describes the coding and design tools."
+  },
+  {
+    "id": "DO07",
+    "url": "https://github.com/cursor/plugins/blob/main/pstack/skills/create-verification-skill/SKILL.md",
+    "title": "Create a verification skill",
+    "author": "pstack maintainers, Cursor plugins repository",
+    "type": "First-party GitHub implementation guidance",
+    "date": "Not in source",
+    "version": "Main branch read 2026-11-20",
+    "claims": "The generator describes how to identify the real product surface, launch an isolated instance, drive it with stable selectors or commands, and capture visible and persistent effects.",
+    "limits": "Public generator instructions. No internal skill output or release run was available.",
+    "evidence_pointer": "Read Interview the repo, not the user, then Generate the skill. Check the Doctor, Drive, Evidence and Cleanup requirements."
+  },
+  {
+    "id": "DO08",
+    "url": "https://www.podsum.fm/shows/greg-isenberg/use-grok-bot-better-than-99-of-people-full-course",
+    "title": "Use Grok Bot Better Than 99% of People, secondary guide",
+    "author": "Podsum, summarizing Greg Isenberg's course",
+    "type": "Third-party timed summary",
+    "date": "2026-11-11 episode",
+    "version": "Public summary read 2026-11-20",
+    "claims": "Provides an approximate playback pointer for a twice-daily content-idea routine.",
+    "limits": "Secondary summary and the same recording origin as C26. The time and wording were not checked against playback or captions.",
+    "evidence_pointer": "Key learnings item 14 links 31:26 for the content routine. The summary is a locator if the original recording becomes accessible."
+  }
+]

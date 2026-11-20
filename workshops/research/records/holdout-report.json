@@ -1,0 +1,393 @@
+{
+  "baseline": {
+    "config": {
+      "aliases": "none",
+      "name": "baseline",
+      "title_weight": 0
+    },
+    "k": 2,
+    "metrics": {
+      "cases": 3,
+      "critical_incomplete": [],
+      "macro_precision": "1/3",
+      "macro_recall": "2/3",
+      "no_evidence_cases": 0,
+      "no_evidence_false_returns": 0,
+      "positive_cases": 3
+    },
+    "rows": [
+      {
+        "critical": false,
+        "expected": [
+          "B11",
+          "B12"
+        ],
+        "extra": [
+          "B01",
+          "B02"
+        ],
+        "group": "birch",
+        "hits": [],
+        "id": "H01",
+        "missed": [
+          "B11",
+          "B12"
+        ],
+        "precision": "0",
+        "query": "Birch feed blockage",
+        "ranked": [
+          {
+            "body_hits": [
+              "birch",
+              "feed"
+            ],
+            "id": "B01",
+            "score": 2,
+            "title_hits": []
+          },
+          {
+            "body_hits": [
+              "birch",
+              "feed"
+            ],
+            "id": "B02",
+            "score": 2,
+            "title_hits": [
+              "feed"
+            ]
+          }
+        ],
+        "recall": "0",
+        "slice": "alias"
+      },
+      {
+        "critical": false,
+        "expected": [
+          "L11"
+        ],
+        "extra": [
+          "L01"
+        ],
+        "group": "lark",
+        "hits": [
+          "L11"
+        ],
+        "id": "H02",
+        "missed": [],
+        "precision": "1/2",
+        "query": "Lark queue export",
+        "ranked": [
+          {
+            "body_hits": [
+              "export",
+              "lark",
+              "queue"
+            ],
+            "id": "L11",
+            "score": 3,
+            "title_hits": [
+              "export",
+              "lark",
+              "queue"
+            ]
+          },
+          {
+            "body_hits": [
+              "lark",
+              "queue"
+            ],
+            "id": "L01",
+            "score": 2,
+            "title_hits": [
+              "lark",
+              "queue"
+            ]
+          }
+        ],
+        "recall": "1",
+        "slice": "literal"
+      },
+      {
+        "critical": true,
+        "expected": [
+          "V11"
+        ],
+        "extra": [
+          "V01"
+        ],
+        "group": "finch",
+        "hits": [
+          "V11"
+        ],
+        "id": "H03",
+        "missed": [],
+        "precision": "1/2",
+        "query": "Finch seal audit",
+        "ranked": [
+          {
+            "body_hits": [
+              "audit",
+              "finch",
+              "seal"
+            ],
+            "id": "V11",
+            "score": 3,
+            "title_hits": []
+          },
+          {
+            "body_hits": [
+              "audit"
+            ],
+            "id": "V01",
+            "score": 1,
+            "title_hits": [
+              "audit",
+              "finch"
+            ]
+          }
+        ],
+        "recall": "1",
+        "slice": "ambiguous-alias"
+      }
+    ],
+    "slices": {
+      "alias": {
+        "cases": 1,
+        "critical_incomplete": [],
+        "macro_precision": "0",
+        "macro_recall": "0",
+        "no_evidence_cases": 0,
+        "no_evidence_false_returns": 0,
+        "positive_cases": 1
+      },
+      "ambiguous-alias": {
+        "cases": 1,
+        "critical_incomplete": [],
+        "macro_precision": "1/2",
+        "macro_recall": "1",
+        "no_evidence_cases": 0,
+        "no_evidence_false_returns": 0,
+        "positive_cases": 1
+      },
+      "literal": {
+        "cases": 1,
+        "critical_incomplete": [],
+        "macro_precision": "1/2",
+        "macro_recall": "1",
+        "no_evidence_cases": 0,
+        "no_evidence_false_returns": 0,
+        "positive_cases": 1
+      }
+    }
+  },
+  "candidate": {
+    "config": {
+      "aliases": "tight",
+      "hypothesis": "Title terms and added terms address separate misses at the same evidence budget.",
+      "name": "combined",
+      "title_weight": 2
+    },
+    "k": 2,
+    "metrics": {
+      "cases": 3,
+      "critical_incomplete": [
+        "H03"
+      ],
+      "macro_precision": "1/2",
+      "macro_recall": "2/3",
+      "no_evidence_cases": 0,
+      "no_evidence_false_returns": 0,
+      "positive_cases": 3
+    },
+    "rows": [
+      {
+        "critical": false,
+        "expected": [
+          "B11",
+          "B12"
+        ],
+        "extra": [],
+        "group": "birch",
+        "hits": [
+          "B11",
+          "B12"
+        ],
+        "id": "H01",
+        "missed": [],
+        "precision": "1",
+        "query": "Birch feed blockage",
+        "ranked": [
+          {
+            "body_hits": [
+              "jam"
+            ],
+            "id": "B11",
+            "score": 5,
+            "title_hits": [
+              "birch",
+              "jam"
+            ]
+          },
+          {
+            "body_hits": [
+              "jam"
+            ],
+            "id": "B12",
+            "score": 5,
+            "title_hits": [
+              "birch",
+              "jam"
+            ]
+          }
+        ],
+        "recall": "1",
+        "slice": "alias"
+      },
+      {
+        "critical": false,
+        "expected": [
+          "L11"
+        ],
+        "extra": [
+          "L01"
+        ],
+        "group": "lark",
+        "hits": [
+          "L11"
+        ],
+        "id": "H02",
+        "missed": [],
+        "precision": "1/2",
+        "query": "Lark queue export",
+        "ranked": [
+          {
+            "body_hits": [
+              "export",
+              "lark",
+              "queue"
+            ],
+            "id": "L11",
+            "score": 9,
+            "title_hits": [
+              "export",
+              "lark",
+              "queue"
+            ]
+          },
+          {
+            "body_hits": [
+              "lark",
+              "queue"
+            ],
+            "id": "L01",
+            "score": 6,
+            "title_hits": [
+              "lark",
+              "queue"
+            ]
+          }
+        ],
+        "recall": "1",
+        "slice": "literal"
+      },
+      {
+        "critical": true,
+        "expected": [
+          "V11"
+        ],
+        "extra": [
+          "V01",
+          "V02"
+        ],
+        "group": "finch",
+        "hits": [],
+        "id": "H03",
+        "missed": [
+          "V11"
+        ],
+        "precision": "0",
+        "query": "Finch seal audit",
+        "ranked": [
+          {
+            "body_hits": [
+              "audit",
+              "gasket"
+            ],
+            "id": "V01",
+            "score": 8,
+            "title_hits": [
+              "audit",
+              "finch",
+              "gasket"
+            ]
+          },
+          {
+            "body_hits": [
+              "audit",
+              "gasket"
+            ],
+            "id": "V02",
+            "score": 8,
+            "title_hits": [
+              "audit",
+              "finch",
+              "gasket"
+            ]
+          }
+        ],
+        "recall": "0",
+        "slice": "ambiguous-alias"
+      }
+    ],
+    "slices": {
+      "alias": {
+        "cases": 1,
+        "critical_incomplete": [],
+        "macro_precision": "1",
+        "macro_recall": "1",
+        "no_evidence_cases": 0,
+        "no_evidence_false_returns": 0,
+        "positive_cases": 1
+      },
+      "ambiguous-alias": {
+        "cases": 1,
+        "critical_incomplete": [
+          "H03"
+        ],
+        "macro_precision": "0",
+        "macro_recall": "0",
+        "no_evidence_cases": 0,
+        "no_evidence_false_returns": 0,
+        "positive_cases": 1
+      },
+      "literal": {
+        "cases": 1,
+        "critical_incomplete": [],
+        "macro_precision": "1/2",
+        "macro_recall": "1",
+        "no_evidence_cases": 0,
+        "no_evidence_false_returns": 0,
+        "positive_cases": 1
+      }
+    }
+  },
+  "comparison": {
+    "accepted": false,
+    "guards": {
+      "minimum_recall_gain": false,
+      "no_increase_in_false_returns": true,
+      "no_new_critical_miss": false,
+      "no_precision_loss": true
+    },
+    "new_critical_misses": {
+      "H03": [
+        "V11"
+      ]
+    },
+    "precision_gain": "1/6",
+    "recall_gain": "0"
+  },
+  "decision": "retain baseline",
+  "holdout_digest": "1bd88dea17b15cecd252eef202a5287ebb5a187493d964a25191f7cefecbcd67",
+  "input_digest": "6d9c8b27e1d5751cec39c22be71987088b54cd9d30036503f6fbc297337e62f7"
+}

@@ -1,0 +1,11 @@
+flowchart TD
+    Q[User task] --> C[Tool call and call ID]
+    C --> A{Valid arguments?}
+    A -->|No| E[Controlled error]
+    A -->|Yes| F[Filter source records]
+    F --> P{More matching rows?}
+    P -->|Yes| N[Page plus continuation]
+    P -->|No| L[Final page]
+    N --> V[Grade complete task result]
+    L --> V
+    E --> V

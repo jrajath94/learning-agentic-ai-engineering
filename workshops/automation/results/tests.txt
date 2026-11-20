@@ -1,0 +1,24 @@
+Python 3.14.7
+SQLite 3.53.4
+
+test_changed_feed_is_a_new_revision_for_the_same_week (test_briefing.BriefingTests.test_changed_feed_is_a_new_revision_for_the_same_week) ... ok
+test_concurrent_workers_stage_once (test_briefing.BriefingTests.test_concurrent_workers_stage_once) ... ok
+test_crash_after_commit_preserves_a_single_draft (test_briefing.BriefingTests.test_crash_after_commit_preserves_a_single_draft) ... ok
+test_crash_before_commit_rolls_back_all_draft_rows (test_briefing.BriefingTests.test_crash_before_commit_rolls_back_all_draft_rows) ... ok
+test_exact_quote_does_not_verify_source_truth (test_briefing.BriefingTests.test_exact_quote_does_not_verify_source_truth) ... ok
+test_instruction_source_cannot_publish_or_supply_fake_result (test_briefing.BriefingTests.test_instruction_source_cannot_publish_or_supply_fake_result) ... ok
+test_invalid_batch_leaves_no_database (test_briefing.BriefingTests.test_invalid_batch_leaves_no_database) ... ok
+test_modified_quote_leaves_snapshot_and_retries (test_briefing.BriefingTests.test_modified_quote_leaves_snapshot_and_retries) ... ok
+test_partial_quote_fails_even_with_matching_slice (test_briefing.BriefingTests.test_partial_quote_fails_even_with_matching_slice) ... ok
+test_repeated_identical_source_id_and_conflicting_versions (test_briefing.BriefingTests.test_repeated_identical_source_id_and_conflicting_versions) ... ok
+test_retry_reuses_draft_without_calling_the_model (test_briefing.BriefingTests.test_retry_reuses_draft_without_calling_the_model) ... ok
+test_snapshot_records_duplicate_and_invalid_inputs (test_briefing.BriefingTests.test_snapshot_records_duplicate_and_invalid_inputs) ... ok
+test_tool_contract_rejects_invalid_calls (test_briefing.BriefingTests.test_tool_contract_rejects_invalid_calls) ... ok
+test_tool_window_has_a_cursor_and_eof (test_briefing.BriefingTests.test_tool_window_has_a_cursor_and_eof) ... ok
+test_unicode_exact_span_and_scope (test_briefing.BriefingTests.test_unicode_exact_span_and_scope) ... ok
+test_valid_json_rejects_control_characters (test_briefing.BriefingTests.test_valid_json_rejects_control_characters) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.225s
+
+OK

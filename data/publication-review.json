@@ -1,0 +1,622 @@
+{
+  "scope": "Known Unicode carriers and supported file metadata",
+  "files_checked": 87,
+  "originals_preserved": true,
+  "content_changed": false,
+  "unverified": [
+    "Pixel watermarks",
+    "Proprietary statistical watermarks",
+    "Universal watermark clearance"
+  ],
+  "files": [
+    {
+      "path": "assets/figures/business-lineage.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/figures/service-rounding.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/figures/learning-map.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/figures/prompt-contract.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/figures/case-release-handoff.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/figures/research-split.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/figures/evidence-graph.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/figures/reference-loop.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/figures/benchmark-per-seed.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/figures/screen-model-tool.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/plates/antigravity-form.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/plates/business-branches.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/plates/glossary-comparison.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/plates/audit-branch.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/plates/prompt-annotation.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/plates/duet-inbox.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/plates/study-routes.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/plates/product-records.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/plates/tool-access.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/plates/grok-fixture.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/plates/gemini-excerpts.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/plates/review-context.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/plates/practitioner-handoff.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/plates/tibot-boundary.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/plates/resource-layers.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/plates/revision-check.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/plates/codex-total.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/plates/source-gaps.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/plates/dots-baseline.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/plates/restart-history.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "studies/diagrams/superpowers-handoff.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "studies/diagrams/codex-instructions.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "studies/diagrams/tool-contracts.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "studies/diagrams/dspy-bootstrap.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "studies/diagrams/tool-list-refresh.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "studies/diagrams/eval-outcomes.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "studies/diagrams/orchestrator-workers.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "studies/diagrams/restart-compaction.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "studies/diagrams/mcp-tool-schema.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "workshops/automation/transactions.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "workshops/automation/tool-boundary.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "workshops/automation/workflow.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "workshops/engineering/diagrams/review-branches.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "workshops/engineering/diagrams/scope-map.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "workshops/engineering/diagrams/delivery-state.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "workshops/research/diagrams/evidence-flow.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "workshops/research/diagrams/budget-loop.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "workshops/research/diagrams/split-ownership.svg",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/screenshots/engineering-run.png",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/screenshots/automation-run.png",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "assets/screenshots/research-run.png",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "audit.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "business.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "cases.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "community.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "engineering.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "fieldnotes.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "foundations.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "glossary.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "graphs.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "index.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "labs.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "paths.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "products.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "prompts.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "research.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "resource-study.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "resources.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "run-viewer.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "social-practice.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "sources.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "study-cache-ledger.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "study-codex-instructions.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "study-dspy-bootstrap.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "study-eval-outcomes.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "study-mcp-tool-schema.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "study-operator-workflows.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "study-orchestrator-workers.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "study-restart-compaction.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "study-superpowers-handoff.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "study-tool-contracts.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "tools.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "usage.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "workflow-kit.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "workshop-automation.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "workshop-engineering.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    },
+    {
+      "path": "workshop-research.html",
+      "known_carriers_check_passed": true,
+      "unchanged": true,
+      "scope": "known Unicode carriers and supported file metadata",
+      "findings": []
+    }
+  ]
+}

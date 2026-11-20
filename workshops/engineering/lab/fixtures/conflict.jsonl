@@ -1,0 +1,3 @@
+{"run_id":"daily","case_id":"extract-17","status":"pass","input_tokens":120,"output_tokens":24,"delivery_id":"ack-01"}
+
+{"run_id":"daily","case_id":"extract-17","status":"fail","input_tokens":120,"output_tokens":24,"delivery_id":"ack-09"}

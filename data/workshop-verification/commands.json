@@ -1,0 +1,169 @@
+[
+  {
+    "step": "Original three labs",
+    "cwd": ".",
+    "command": [
+      "python3",
+      "-B",
+      "labs/replay.py",
+      "<OUTPUT>/original"
+    ],
+    "expected_exit": 0,
+    "observed_exit": 0,
+    "stdout": "14 commands verified. 5 artifact hashes match.\n",
+    "stderr": ""
+  },
+  {
+    "step": "Engineering branch and review sequence",
+    "cwd": "workshops/engineering",
+    "command": [
+      "python3",
+      "-B",
+      "verify.py",
+      "--record",
+      "<OUTPUT>/engineering.txt"
+    ],
+    "expected_exit": 0,
+    "observed_exit": 0,
+    "stdout": "Verified base, red tests, candidate, review counterexamples, and combined revision.\n",
+    "stderr": ""
+  },
+  {
+    "step": "Research regression tests",
+    "cwd": "workshops/research",
+    "command": [
+      "python3",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      ".",
+      "-v"
+    ],
+    "expected_exit": 0,
+    "observed_exit": 0,
+    "stdout": "development: 1/4 candidates, paused, incumbent=baseline\ndevelopment: 2/4 candidates, paused, incumbent=titles\ndevelopment: 4/4 candidates, budget exhausted, incumbent=combined\ndevelopment: 4/4 candidates, budget exhausted, incumbent=combined\ndevelopment: 4/4 candidates, budget exhausted, incumbent=combined\nholdout: retain baseline, recall gain=0, precision gain=1/6\n",
+    "stderr": "test_checkpoint_rejects_dev_mutation (test_workshop.WorkshopTests.test_checkpoint_rejects_dev_mutation) ... ok\ntest_checkpoint_resumes_to_same_state (test_workshop.WorkshopTests.test_checkpoint_resumes_to_same_state) ... ok\ntest_compare_rejects_a_changed_label (test_workshop.WorkshopTests.test_compare_rejects_a_changed_label) ... ok\ntest_d01_matches_hand_calculation (test_workshop.WorkshopTests.test_d01_matches_hand_calculation) ... ok\ntest_fixed_slot_precision_and_no_reference (test_workshop.WorkshopTests.test_fixed_slot_precision_and_no_reference) ... ok\ntest_holdout_is_frozen_and_critical_case_blocks_acceptance (test_workshop.WorkshopTests.test_holdout_is_frozen_and_critical_case_blocks_acceptance) ... ok\ntest_model_does_not_need_row_labels_to_rank (test_workshop.WorkshopTests.test_model_does_not_need_row_labels_to_rank) ... ok\ntest_rank_ties_and_ignores_nonmatches (test_workshop.WorkshopTests.test_rank_ties_and_ignores_nonmatches) ... ok\ntest_validate_groups_and_reject_leak (test_workshop.WorkshopTests.test_validate_groups_and_reject_leak) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.039s\n\nOK\n"
+  },
+  {
+    "step": "Disjoint evaluation split",
+    "cwd": "workshops/research",
+    "command": [
+      "python3",
+      "-B",
+      "run.py",
+      "audit"
+    ],
+    "expected_exit": 0,
+    "observed_exit": 0,
+    "stdout": "split audit: PASS (6 development queries, 3 held-out queries)\n",
+    "stderr": ""
+  },
+  {
+    "step": "Leakage counterexample",
+    "cwd": "workshops/research",
+    "command": [
+      "python3",
+      "-B",
+      "run.py",
+      "audit",
+      "--holdout-file",
+      "leaky-holdout.json"
+    ],
+    "expected_exit": 1,
+    "observed_exit": 1,
+    "stdout": "",
+    "stderr": "error: Split overlap: groups=['kite'], queries=[], relevant_docs=['K12']\n"
+  },
+  {
+    "step": "Development interruption",
+    "cwd": "workshops/research",
+    "command": [
+      "python3",
+      "-B",
+      "run.py",
+      "dev",
+      "--out",
+      "<OUTPUT>/research",
+      "--stop-after",
+      "2"
+    ],
+    "expected_exit": 0,
+    "observed_exit": 0,
+    "stdout": "development: 2/4 candidates, paused, incumbent=titles\n",
+    "stderr": ""
+  },
+  {
+    "step": "Development resume",
+    "cwd": "workshops/research",
+    "command": [
+      "python3",
+      "-B",
+      "run.py",
+      "dev",
+      "--out",
+      "<OUTPUT>/research"
+    ],
+    "expected_exit": 0,
+    "observed_exit": 0,
+    "stdout": "development: 4/4 candidates, budget exhausted, incumbent=combined\n",
+    "stderr": ""
+  },
+  {
+    "step": "Held-out decision",
+    "cwd": "workshops/research",
+    "command": [
+      "python3",
+      "-B",
+      "run.py",
+      "holdout",
+      "--out",
+      "<OUTPUT>/research"
+    ],
+    "expected_exit": 0,
+    "observed_exit": 0,
+    "stdout": "holdout: retain baseline, recall gain=0, precision gain=1/6\n",
+    "stderr": ""
+  },
+  {
+    "step": "Automation crash and retry sequence",
+    "cwd": "workshops/automation",
+    "command": [
+      "python3",
+      "-B",
+      "record_demo.py",
+      "<OUTPUT>/automation"
+    ],
+    "expected_exit": 0,
+    "observed_exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "step": "Operator briefing fixture",
+    "cwd": ".",
+    "command": [
+      "python3",
+      "-B",
+      "studies/operator-fixture.py"
+    ],
+    "expected_exit": 0,
+    "observed_exit": 0,
+    "stdout": "Five inputs. Two facts. Two conflicts. One discarded event.\nNo draft after interruption. One draft after retry.\nChanged snapshot went to review. Missing calendar was reported.\n",
+    "stderr": ""
+  },
+  {
+    "step": "Tool list and preview fixture",
+    "cwd": ".",
+    "command": [
+      "python3",
+      "-B",
+      "studies/social-tool-fixture.py"
+    ],
+    "expected_exit": 0,
+    "observed_exit": 0,
+    "stdout": "Only the candidate check counts. Separate worktrees can request the same port.\nReplay reuses the prefix and repeats the completed step after a failure.\nRefresh exposes preview. Name-only comparison misses the schema change.\nSchema digest detects the change. Stale and closed preview calls are rejected.\nBounds: fits, clips. Rates: 2%, 12%, unknown when exposures are absent.\n",
+    "stderr": ""
+  }
+]

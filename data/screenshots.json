@@ -1,0 +1,20 @@
+[
+  {
+    "id": "engineering",
+    "file": "assets/screenshots/engineering-run.png",
+    "caption": "Local run viewer. Recorded engineering output.",
+    "source": "workshops/engineering/evidence/run.txt"
+  },
+  {
+    "id": "research",
+    "file": "assets/screenshots/research-run.png",
+    "caption": "Local run viewer. Recorded research output.",
+    "source": "workshops/research/records/holdout-report.json"
+  },
+  {
+    "id": "automation",
+    "file": "assets/screenshots/automation-run.png",
+    "caption": "Local run viewer. Recorded automation output.",
+    "source": "workshops/automation/results/replay.json"
+  }
+]

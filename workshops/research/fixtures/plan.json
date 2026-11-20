@@ -1,0 +1,58 @@
+{
+  "k": 2,
+  "candidate_budget": 4,
+  "minimum_recall_gain": "1/10",
+  "aliases": {
+    "blockage": [
+      "jam"
+    ],
+    "seal": [
+      "gasket"
+    ]
+  },
+  "wide_aliases": {
+    "cleaning": [
+      "storage"
+    ],
+    "pause": [
+      "resume"
+    ],
+    "exit": [
+      "paper"
+    ],
+    "warranty": [
+      "cover"
+    ],
+    "blockage": [
+      "feed",
+      "inspection"
+    ]
+  },
+  "candidates": [
+    {
+      "name": "aliases",
+      "hypothesis": "The terms blockage and seal can miss the words used in the body.",
+      "title_weight": 0,
+      "aliases": "tight"
+    },
+    {
+      "name": "titles",
+      "hypothesis": "A title can name a procedure that its body assumes.",
+      "title_weight": 2,
+      "aliases": "none"
+    },
+    {
+      "name": "combined",
+      "hypothesis": "Title terms and added terms address separate misses at the same evidence budget.",
+      "title_weight": 2,
+      "aliases": "tight"
+    },
+    {
+      "name": "wide",
+      "hypothesis": "Broad term expansion may improve recall, with a risk to evidence precision.",
+      "title_weight": 2,
+      "aliases": "wide"
+    }
+  ],
+  "holdout_digest": "1bd88dea17b15cecd252eef202a5287ebb5a187493d964a25191f7cefecbcd67"
+}

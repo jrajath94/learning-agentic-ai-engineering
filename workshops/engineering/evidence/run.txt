@@ -1,0 +1,199 @@
+# Trace rollup verification
+
+## Environment
+
+git version 2.56.0
+3.14.7
+Python and Git use a disposable repository. Times omitted.
+Git commits use a fixed synthetic date and lab identity.
+
+## repo / nightly
+
+repo $ python3 -B -m trace_rollup fixtures/nightly.jsonl
+exit 0
+stdout: {"runs": {"nightly-a": {"failed": 2, "input_tokens": 422, "output_tokens": 64, "passed": 2}, "nightly-b": {"failed": 1, "input_tokens": 245, "output_tokens": 42, "passed": 1}}}
+stderr: (empty)
+
+## Base smoke tests
+
+repo $ python3 -B -m unittest discover -s tests -v
+exit 0
+test_blank_export (test_baseline.BaselineTests.test_blank_export) ... ok
+test_invalid_row_does_not_emit_partial_report (test_baseline.BaselineTests.test_invalid_row_does_not_emit_partial_report) ... ok
+test_legacy_export_without_delivery_metadata (test_baseline.BaselineTests.test_legacy_export_without_delivery_metadata) ... ok
+test_truncated_record_reports_physical_line (test_baseline.BaselineTests.test_truncated_record_reports_physical_line) ... ok
+Ran 4 tests
+OK
+
+## Local branch start
+
+main, implement/retries, review/cases start at af01d277570eb514440f03c7f58e28ff72b37334
+
+## Implementation tests on the base
+
+implementation $ python3 -B -m unittest discover -s tests -v
+exit 1
+test_blank_export (test_baseline.BaselineTests.test_blank_export) ... ok
+test_invalid_row_does_not_emit_partial_report (test_baseline.BaselineTests.test_invalid_row_does_not_emit_partial_report) ... ok
+test_legacy_export_without_delivery_metadata (test_baseline.BaselineTests.test_legacy_export_without_delivery_metadata) ... ok
+test_truncated_record_reports_physical_line (test_baseline.BaselineTests.test_truncated_record_reports_physical_line) ... ok
+test_delivery_retry_counts_once_per_run_and_case (test_retries.RetryTests.test_delivery_retry_counts_once_per_run_and_case) ... FAIL
+test_report_is_stable_when_lines_reverse (test_retries.RetryTests.test_report_is_stable_when_lines_reverse) ... FAIL
+Ran 6 tests
+FAILED (failures=2)
+
+## Candidate with implementation tests
+
+implementation $ python3 -B -m unittest discover -s tests -v
+exit 0
+test_blank_export (test_baseline.BaselineTests.test_blank_export) ... ok
+test_invalid_row_does_not_emit_partial_report (test_baseline.BaselineTests.test_invalid_row_does_not_emit_partial_report) ... ok
+test_legacy_export_without_delivery_metadata (test_baseline.BaselineTests.test_legacy_export_without_delivery_metadata) ... ok
+test_truncated_record_reports_physical_line (test_baseline.BaselineTests.test_truncated_record_reports_physical_line) ... ok
+test_delivery_retry_counts_once_per_run_and_case (test_retries.RetryTests.test_delivery_retry_counts_once_per_run_and_case) ... ok
+test_report_is_stable_when_lines_reverse (test_retries.RetryTests.test_report_is_stable_when_lines_reverse) ... ok
+Ran 6 tests
+OK
+
+## Candidate and review scope
+
+base af01d277570eb514440f03c7f58e28ff72b37334
+candidate 008a46700c210688b155a515c4288567c98c1988
+tests/test_retries.py
+trace_rollup/aggregate.py
+review 7c2b2fdb039d66b3e03030bf2ddd292d55a0517c
+tests/test_review.py
+
+## candidate-probe / conflict
+
+candidate-probe $ python3 -B -m trace_rollup fixtures/conflict.jsonl
+exit 0
+stdout: {"runs": {"daily": {"failed": 0, "input_tokens": 120, "output_tokens": 24, "passed": 1}}}
+stderr: (empty)
+
+## Candidate with independent review tests
+
+candidate-probe $ python3 -B -m unittest discover -s tests -v
+exit 1
+test_blank_export (test_baseline.BaselineTests.test_blank_export) ... ok
+test_invalid_row_does_not_emit_partial_report (test_baseline.BaselineTests.test_invalid_row_does_not_emit_partial_report) ... ok
+test_legacy_export_without_delivery_metadata (test_baseline.BaselineTests.test_legacy_export_without_delivery_metadata) ... ok
+test_truncated_record_reports_physical_line (test_baseline.BaselineTests.test_truncated_record_reports_physical_line) ... ok
+test_delivery_retry_counts_once_per_run_and_case (test_retries.RetryTests.test_delivery_retry_counts_once_per_run_and_case) ... ok
+test_report_is_stable_when_lines_reverse (test_retries.RetryTests.test_report_is_stable_when_lines_reverse) ... ok
+test_conflicting_status_rejects_report_at_physical_line (test_review.ReviewTests.test_conflicting_status_rejects_report_at_physical_line) ... FAIL
+test_each_token_field_can_conflict_even_if_status_is_equal (test_review.ReviewTests.test_each_token_field_can_conflict_even_if_status_is_equal) ...
+  test_each_token_field_can_conflict_even_if_status_is_equal (test_review.ReviewTests.test_each_token_field_can_conflict_even_if_status_is_equal) (field='input_tokens') ... FAIL
+  test_each_token_field_can_conflict_even_if_status_is_equal (test_review.ReviewTests.test_each_token_field_can_conflict_even_if_status_is_equal) (field='output_tokens') ... FAIL
+test_ids_remain_distinct_after_validation (test_review.ReviewTests.test_ids_remain_distinct_after_validation) ... ok
+test_invalid_repeated_delivery_is_still_invalid (test_review.ReviewTests.test_invalid_repeated_delivery_is_still_invalid) ... ok
+Ran 10 tests
+FAILED (failures=3)
+
+## Combined revision
+
+implementation 7071ac690bcc4f514053b4a9ee05607b2f158187
+review 7c2b2fdb039d66b3e03030bf2ddd292d55a0517c
+integrated 43f0f4cc7391bf4992393d01fe61047724fa6039
+Both expected parent revisions are present. Working tree is clean.
+
+## Diff check
+
+repo $ git diff --check BASE HEAD
+exit 0
+stdout: (empty)
+
+## Combined revision tests
+
+repo $ python3 -B -m unittest discover -s tests -v
+exit 0
+test_blank_export (test_baseline.BaselineTests.test_blank_export) ... ok
+test_invalid_row_does_not_emit_partial_report (test_baseline.BaselineTests.test_invalid_row_does_not_emit_partial_report) ... ok
+test_legacy_export_without_delivery_metadata (test_baseline.BaselineTests.test_legacy_export_without_delivery_metadata) ... ok
+test_truncated_record_reports_physical_line (test_baseline.BaselineTests.test_truncated_record_reports_physical_line) ... ok
+test_delivery_retry_counts_once_per_run_and_case (test_retries.RetryTests.test_delivery_retry_counts_once_per_run_and_case) ... ok
+test_report_is_stable_when_lines_reverse (test_retries.RetryTests.test_report_is_stable_when_lines_reverse) ... ok
+test_conflicting_status_rejects_report_at_physical_line (test_review.ReviewTests.test_conflicting_status_rejects_report_at_physical_line) ... ok
+test_each_token_field_can_conflict_even_if_status_is_equal (test_review.ReviewTests.test_each_token_field_can_conflict_even_if_status_is_equal) ... ok
+test_ids_remain_distinct_after_validation (test_review.ReviewTests.test_ids_remain_distinct_after_validation) ... ok
+test_invalid_repeated_delivery_is_still_invalid (test_review.ReviewTests.test_invalid_repeated_delivery_is_still_invalid) ... ok
+Ran 10 tests
+OK
+
+## repo / nightly
+
+repo $ python3 -B -m trace_rollup fixtures/nightly.jsonl
+exit 0
+stdout: {"runs": {"nightly-a": {"failed": 1, "input_tokens": 211, "output_tokens": 32, "passed": 1}, "nightly-b": {"failed": 1, "input_tokens": 245, "output_tokens": 42, "passed": 1}}}
+stderr: (empty)
+
+## repo / conflict
+
+repo $ python3 -B -m trace_rollup fixtures/conflict.jsonl
+exit 2
+stdout: (empty)
+stderr: error: line 3: terminal result conflicts with line 1
+
+## repo / invalid
+
+repo $ python3 -B -m trace_rollup fixtures/invalid.jsonl
+exit 2
+stdout: (empty)
+stderr: error: line 2: invalid input_tokens
+
+## repo / legacy
+
+repo $ python3 -B -m trace_rollup fixtures/legacy.jsonl
+exit 0
+stdout: {"runs": {"legacy": {"failed": 1, "input_tokens": 7, "output_tokens": 2, "passed": 1}}}
+stderr: (empty)
+
+## global-case-id / nightly
+
+global-case-id $ python3 -B -m trace_rollup fixtures/nightly.jsonl
+exit 2
+stdout: (empty)
+stderr: error: line 2: terminal result conflicts with line 1
+
+## Negative control: use case ID across runs
+
+global-case-id $ python3 -B -m unittest discover -s tests -v
+exit 1
+test_blank_export (test_baseline.BaselineTests.test_blank_export) ... ok
+test_invalid_row_does_not_emit_partial_report (test_baseline.BaselineTests.test_invalid_row_does_not_emit_partial_report) ... ok
+test_legacy_export_without_delivery_metadata (test_baseline.BaselineTests.test_legacy_export_without_delivery_metadata) ... ok
+test_truncated_record_reports_physical_line (test_baseline.BaselineTests.test_truncated_record_reports_physical_line) ... ok
+test_delivery_retry_counts_once_per_run_and_case (test_retries.RetryTests.test_delivery_retry_counts_once_per_run_and_case) ... FAIL
+test_report_is_stable_when_lines_reverse (test_retries.RetryTests.test_report_is_stable_when_lines_reverse) ... FAIL
+test_conflicting_status_rejects_report_at_physical_line (test_review.ReviewTests.test_conflicting_status_rejects_report_at_physical_line) ... ok
+test_each_token_field_can_conflict_even_if_status_is_equal (test_review.ReviewTests.test_each_token_field_can_conflict_even_if_status_is_equal) ... ok
+test_ids_remain_distinct_after_validation (test_review.ReviewTests.test_ids_remain_distinct_after_validation) ... ok
+test_invalid_repeated_delivery_is_still_invalid (test_review.ReviewTests.test_invalid_repeated_delivery_is_still_invalid) ... ok
+Ran 10 tests
+FAILED (failures=2)
+
+## overwrite-first-line / nightly
+
+overwrite-first-line $ python3 -B -m trace_rollup fixtures/nightly.jsonl
+exit 0
+stdout: {"runs": {"nightly-a": {"failed": 1, "input_tokens": 211, "output_tokens": 32, "passed": 1}, "nightly-b": {"failed": 1, "input_tokens": 245, "output_tokens": 42, "passed": 1}}}
+stderr: (empty)
+
+## Negative control: replace the first diagnostic line
+
+overwrite-first-line $ python3 -B -m unittest discover -s tests -v
+exit 1
+test_blank_export (test_baseline.BaselineTests.test_blank_export) ... ok
+test_invalid_row_does_not_emit_partial_report (test_baseline.BaselineTests.test_invalid_row_does_not_emit_partial_report) ... ok
+test_legacy_export_without_delivery_metadata (test_baseline.BaselineTests.test_legacy_export_without_delivery_metadata) ... ok
+test_truncated_record_reports_physical_line (test_baseline.BaselineTests.test_truncated_record_reports_physical_line) ... ok
+test_delivery_retry_counts_once_per_run_and_case (test_retries.RetryTests.test_delivery_retry_counts_once_per_run_and_case) ... ok
+test_report_is_stable_when_lines_reverse (test_retries.RetryTests.test_report_is_stable_when_lines_reverse) ... ok
+test_conflicting_status_rejects_report_at_physical_line (test_review.ReviewTests.test_conflicting_status_rejects_report_at_physical_line) ... ok
+test_each_token_field_can_conflict_even_if_status_is_equal (test_review.ReviewTests.test_each_token_field_can_conflict_even_if_status_is_equal) ...
+  test_each_token_field_can_conflict_even_if_status_is_equal (test_review.ReviewTests.test_each_token_field_can_conflict_even_if_status_is_equal) (field='input_tokens') ... FAIL
+  test_each_token_field_can_conflict_even_if_status_is_equal (test_review.ReviewTests.test_each_token_field_can_conflict_even_if_status_is_equal) (field='output_tokens') ... FAIL
+test_ids_remain_distinct_after_validation (test_review.ReviewTests.test_ids_remain_distinct_after_validation) ... ok
+test_invalid_repeated_delivery_is_still_invalid (test_review.ReviewTests.test_invalid_repeated_delivery_is_still_invalid) ... ok
+Ran 10 tests
+FAILED (failures=2)

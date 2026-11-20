@@ -1,33 +1,51 @@
-# Learning Agentic AI Engineering
+# Agentic AI engineering craft edition
 
-Open **[index.html](index.html)** after you extract the complete branch archive. The guide runs directly from disk. Navigation, search, diagrams, folding maps, fonts, and the local labs work offline.
+Extract the complete archive and open [index.html](index.html). The guide includes worked projects, source-code studies, prompt files, fixtures, exercises and recorded failures. The rendered pages, diagrams, search, fonts and practice controls work offline.
 
-## Start with one result
+## Complete one project
 
-Use Python 3.10 or later. From the directory that contains `index.html`, run:
+- [Repository to reviewed patch](workshop-engineering.html) follows an overcounted trace through a contract, failing tests, a first patch, independent review and final integration.
+- [Retrieval and evaluation](workshop-research.html) traces exact retrieval scores, a fixed candidate budget, leakage and a held-out rejection.
+- [Durable tool workflows](workshop-automation.html) validates evidence, commits a briefing and tests retries around real process crashes.
+- [Adapt a workflow](workflow-kit.html) provides editable task contracts, prompts, checkpoints, review records and a transfer routine.
+
+Use Python 3.10 or later and Git 2.28 or later. The local programs use the Python standard library. The manual shell examples use macOS Terminal, Linux or WSL. From the directory that contains `index.html`, run:
 
 ```sh
-python3 -B labs/replay.py lab-output
+python3 -B scripts/replay-workshops.py workshop-output
 ```
 
-Use a fresh output path. The original service must fail its regression check. The repaired service, benchmark, and report workflow must pass. Read the [worked labs](labs.html) beside the [recorded observations](labs/evidence/runs.json).
+Use a new output directory. The runner checks intentional failures and expected successful results. It records commands, exit statuses and output artifacts. The local fixtures are synthetic. Optional live-agent handoffs require your chosen agent and its access.
 
-## Read or maintain the edition
+## Read the implementations
 
-- [Learning paths](paths.html) connect short sessions to a concrete artifact.
-- [Researcher usage](usage.html) explains the published figures and includes an interactive token budget.
-- [Field notes](fieldnotes.html) connect practitioner posts and podcasts to code, experiments, and review decisions.
-- [Product index](products.html) records versions, interfaces, and access limits.
-- [Source library](sources.html) distinguishes public claims and evidence limits.
-- [Audit](audit.html) records the scope, repairs, and verification.
-- The files in `fragments/` contain editable chapters. `data/` holds source records and figure placement. `assets/` contains the local fonts, diagrams, Mermaid files, and Markdown for the maps.
+[Source studies](resource-study.html) include ten guided reads with function pointers, paper traces, counterexamples, exercises and worked answers. [Community practice](community.html) connects selected Reddit, X, Substack and GitHub examples to testable methods. [The search record](data/community-search-log.json) states observed engagement, ranking windows and access gaps.
 
-Rebuild the HTML and local search index after you edit a chapter:
+[Recorded runs](run-viewer.html) shows the actual workshop outputs. Three browser screenshots appear beside the relevant lesson steps. [From posts to practice](social-practice.html) records the Instagram, Threads and TikTok search and turns available evidence into bounded experiments.
+
+The [source coverage map](studies/coverage.json) maps the original 131 records to study exercises or reference use. The [source library](sources.html) adds source locations for the deeper reads. The evidence cutoff is November 20, 2026.
+
+## Use the files
+
+| Directory | Contents |
+| --- | --- |
+| `workshops/` | Programs, fixtures, prompts, Mermaid sources and recorded results |
+| `prompt-pack/` | Reusable contracts, filled examples and adaptation prompts |
+| `project-starter/` | Task, acceptance, review, budget and checkpoint templates |
+| `studies/` | Editable study guides, diagrams and source coverage |
+| `fragments/` | Editable chapter HTML |
+| `data/` | Source records, diagram placement and verification |
+| `assets/` | Local fonts, diagrams, search index and scripts |
+
+## Rebuild the edition
+
+The generated HTML uses local assets. Rebuild chapter HTML with Python:
 
 ```sh
 python3 -B scripts/build.py
 python3 -B scripts/verify.py
 ```
 
-The font licenses are in `assets/fonts/`. External source material remains subject to its original terms. The published-source cutoff and local experiment date are November 20, 2026. Live accounts, deployment, customer contact, and paid API calls are outside the lab runs.
+If you edit the study Markdown, run `python3 -B scripts/build-studies.py` first. That authoring step needs Pandoc. If you edit Mermaid sources, use `scripts/render-diagrams.py` with an installed Mermaid CLI. These authoring dependencies are optional for reading and running the supplied edition.
 
+The [audit](audit.html) records verification and its scope. Font licenses remain in `assets/fonts/`. Original external source material retains its own terms.

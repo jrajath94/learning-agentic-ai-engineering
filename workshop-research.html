@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Retrieval and evaluation | AI engineering field guide</title><link rel="stylesheet" href="assets/guide.css"><link rel="stylesheet" href="assets/workshop.css">
+<script defer src="assets/search-index.js"></script><script defer src="assets/guide.js"></script><script defer src="assets/visuals.js"></script><script defer src="assets/study.js"></script><script defer src="assets/workshop.js"></script></head>
+<body class="page-workshop-research"><a class="skip" href="#main">Skip to content</a>
+<header class="mast"><div class="mast-inner"><a class="wordmark" href="index.html">Engineering field guide</a>
+<nav class="mast-links" aria-label="Shortcuts"><a href="labs.html">Labs</a><a href="sources.html">Sources</a><a href="#find">Search ↓</a></nav></div></header>
+<div class="layout"><aside class="rail"><nav aria-label="Chapters"><div class="nav-group"><p>Study</p><a href="index.html">Start here</a><a href="paths.html">Learning paths</a><a href="foundations.html">Foundations</a><a href="cases.html">Practitioner cases</a><a href="fieldnotes.html">Practitioner field notes</a></div><div class="nav-group"><p>Workshops</p><a href="workflow-kit.html">Adapt a workflow</a><a href="workshop-engineering.html">Repository to reviewed patch</a><a href="workshop-research.html" aria-current="page">Retrieval and evaluation</a><a href="workshop-automation.html">Durable tool workflows</a><a href="run-viewer.html">Inspect recorded runs</a><a href="social-practice.html">From posts to practice</a><a href="community.html">Community practice</a><a href="resource-study.html">Read the implementations</a></div><div class="nav-group"><p>Evidence</p><a href="usage.html">How labs use tokens</a><a href="graphs.html">Project graphs</a><a href="sources.html">Source library</a><a href="audit.html">Audit and open questions</a></div><div class="nav-group"><p>Practice</p><a href="engineering.html">Production engineering</a><a href="business.html">Business workflows</a><a href="research.html">Research workflows</a><a href="labs.html">Practical labs</a></div><div class="nav-group"><p>Reference</p><a href="products.html">Products and versions</a><a href="tools.html">Tool tutorials</a><a href="resources.html">Resource catalog</a><a href="prompts.html">Prompt library</a><a href="glossary.html">Glossary</a></div><div class="nav-group"><p>Source studies</p><a href="study-cache-ledger.html">Cache ledger</a><a href="study-codex-instructions.html">Codex instructions</a><a href="study-dspy-bootstrap.html">Dspy bootstrap</a><a href="study-eval-outcomes.html">Eval outcomes</a><a href="study-mcp-tool-schema.html">Mcp tool schema</a><a href="study-operator-workflows.html">Operator workflows</a><a href="study-orchestrator-workers.html">Orchestrator workers</a><a href="study-restart-compaction.html">Restart compaction</a><a href="study-superpowers-handoff.html">Superpowers handoff</a><a href="study-tool-contracts.html">Tool contracts</a></div></nav></aside>
+<div class="reading"><details id="navigation"><summary>Browse chapters</summary><nav aria-label="Mobile chapters"><div class="nav-group"><p>Study</p><a href="index.html">Start here</a><a href="paths.html">Learning paths</a><a href="foundations.html">Foundations</a><a href="cases.html">Practitioner cases</a><a href="fieldnotes.html">Practitioner field notes</a></div><div class="nav-group"><p>Workshops</p><a href="workflow-kit.html">Adapt a workflow</a><a href="workshop-engineering.html">Repository to reviewed patch</a><a href="workshop-research.html" aria-current="page">Retrieval and evaluation</a><a href="workshop-automation.html">Durable tool workflows</a><a href="run-viewer.html">Inspect recorded runs</a><a href="social-practice.html">From posts to practice</a><a href="community.html">Community practice</a><a href="resource-study.html">Read the implementations</a></div><div class="nav-group"><p>Evidence</p><a href="usage.html">How labs use tokens</a><a href="graphs.html">Project graphs</a><a href="sources.html">Source library</a><a href="audit.html">Audit and open questions</a></div><div class="nav-group"><p>Practice</p><a href="engineering.html">Production engineering</a><a href="business.html">Business workflows</a><a href="research.html">Research workflows</a><a href="labs.html">Practical labs</a></div><div class="nav-group"><p>Reference</p><a href="products.html">Products and versions</a><a href="tools.html">Tool tutorials</a><a href="resources.html">Resource catalog</a><a href="prompts.html">Prompt library</a><a href="glossary.html">Glossary</a></div><div class="nav-group"><p>Source studies</p><a href="study-cache-ledger.html">Cache ledger</a><a href="study-codex-instructions.html">Codex instructions</a><a href="study-dspy-bootstrap.html">Dspy bootstrap</a><a href="study-eval-outcomes.html">Eval outcomes</a><a href="study-mcp-tool-schema.html">Mcp tool schema</a><a href="study-operator-workflows.html">Operator workflows</a><a href="study-orchestrator-workers.html">Orchestrator workers</a><a href="study-restart-compaction.html">Restart compaction</a><a href="study-superpowers-handoff.html">Superpowers handoff</a><a href="study-tool-contracts.html">Tool contracts</a></div></nav></details>
+<main id="main" tabindex="-1" data-workshop-progress><nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Guide</a><span>/</span>Workshops<span>/</span>Retrieval and evaluation</nav>
+<div class="title"><h1>Build an experiment you can trust</h1><p class="deck">Trace a retrieval failure through a baseline, an ablation and an error analysis.</p></div><details class="contents"><summary>On this page</summary><div><a href="#topic-research-workshop-decide-whether-to-replace-a-retriever">Research workshop: decide whether to replace a retriever</a><a href="#topic-1-write-the-comparison-contract">1. Write the comparison contract</a><a href="#topic-2-score-two-rankings-by-hand">2. Score two rankings by hand</a><a href="#topic-3-make-the-split-and-detect-leakage">3. Make the split and detect leakage</a><a href="#topic-4-pause-resume-and-compare-the-ablations">4. Pause, resume, and compare the ablations</a><a href="#topic-5-decide-with-the-held-out-counterexample">5. Decide with the held-out counterexample</a><a href="#topic-6-read-the-implementation-behind-a-research-claim">6. Read the implementation behind a research claim</a><a href="#topic-7-adapt-the-experiment-to-your-documents-and-agent">7. Adapt the experiment to your documents and agent</a><a href="#topic-exercises">Exercises</a><a href="#topic-offline-prompt-files">Offline prompt files</a><a href="#topic-record-your-practice">Record your practice</a></div></details>
+<section id="research-workshop">
+<h2 id="topic-research-workshop-decide-whether-to-replace-a-retriever">Research workshop: decide whether to replace a retriever</h2>
+<p>Keep the baseline. The revised retriever finds more evidence on development queries. It drops a required inspection card on a held-out query. You will reproduce both results and decide which evidence supports each decision.</p>
+<p>Build the retrieval stage of a retrieval-augmented generation system, or RAG system. A RAG system selects source material for a model to use in its answer. Here, the code stops after source selection. It uses no language model, web search, embeddings, credentials, or network access. It tests a question that you can answer independently of generation. Did the right evidence reach the next stage within the available space?</p>
+<p>Work in <code>workshops/research/</code> inside the extracted guide. Use Python 3.8 or later. The commands in this section use <code>python3</code>. Use <code>py -3</code> on Windows if that is your Python command. The <a href="workshops/research/README.md">local run sheet</a> lists all files. Read the first three steps before you open the held-out result if you want to practice the decision yourself.</p>
+<p>From the extracted guide folder, enter the workshop directory.</p>
+<pre><code>cd workshops/research</code></pre>
+</section>
+
+<section id="research-contract">
+<h2 id="topic-1-write-the-comparison-contract">1. Write the comparison contract</h2>
+<p>Imagine a manual index for seven fictional product families. An operator enters a short phrase such as <q>Kite feed blockage</q>. The retriever can return two document cards. Each card has a unique ID, a title, a body, and a source family. The family identifies documents that describe the same product. The source family serves the split audit. The ranker cannot filter on it because the user enters only query text.</p>
+<p>A label names a card that contains evidence for the query. Label every relevant card in the fixed corpus before you score a query. For D01, the query gives no jam location. Both the tray and exit instructions apply. For D05, the query names the exit. Only the exit procedure applies. The labels specify which evidence the operator needs. They do not grade the prose of a possible answer.</p>
+<div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table>
+<thead><tr><th scope="col">Item</th><th scope="col">Rule in this workshop</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+<tr><td>Unit under test</td><td>One query against the same document index</td><td>Each candidate receives the same evidence choices.</td></tr>
+<tr><td>Evidence budget</td><td>Two unique cards at most, <code>k = 2</code></td><td>More slots can raise recall without a better ranker.</td></tr>
+<tr><td>Primary metric</td><td>Mean recall across queries with reference cards</td><td>Give each question one vote, even when it has multiple cards.</td></tr>
+<tr><td>Precision guard</td><td>No decrease in mean precision at two slots</td><td>Irrelevant cards can occupy scarce answer context.</td></tr>
+<tr><td>Critical guard</td><td>No new missed reference card on a critical query</td><td>An average can conceal a loss on an important operation.</td></tr>
+<tr><td>No-evidence guard</td><td>No increase in cases that return a card without a reference</td><td>Track false evidence when the corpus has no answer.</td></tr>
+<tr><td>Minimum gain</td><td>Recall must rise by at least 1/10 against the baseline</td><td>Choose a minimum change before the run.</td></tr>
+</tbody>
+</table></div>
+<p>The math applies to the given labels and to the given corpus. A correctly retrieved card can still be stale, ambiguous, or hard to use. Include version-specific labels where correct guidance depends on a date or product revision. Decide which operations count as critical with the person who owns the task. A grader cannot infer that policy from the title of a manual.</p>
+<figure class="learning-figure"><img src="workshops/research/diagrams/evidence-flow.svg" alt="Query, corpus cards and settings feed the ranker. Reference IDs first enter at the ID grader." loading="lazy"><figcaption>The ranker receives query text and cards. The grader receives the references after ranking. <a href="workshops/research/diagrams/evidence-flow.mmd">Mermaid source</a></figcaption></figure>
+<p>Open <a href="workshops/research/fixtures/corpus.json">the corpus</a>, <a href="workshops/research/fixtures/dev.json">the development labels</a>, and <a href="workshops/research/fixtures/plan.json">the plan</a>. Notice that <code>reason</code> records why each card qualifies. If two reviewers disagree, ask each to name the exact phrase that can support the answer. Revise the task or the label rule before you compare systems. A change to labels during tuning creates a new experiment.</p>
+</section>
+
+<section id="research-hand-score">
+<h2 id="topic-2-score-two-rankings-by-hand">2. Score two rankings by hand</h2>
+<p>For D01, underline <code>kite</code>, <code>feed</code>, and <code>blockage</code>. Those are the three baseline query tokens. The tokenizer splits on characters outside ASCII letters and digits and converts text to lowercase. It returns a set, so repeated words count once. Score one point per distinct query token in the body. Ignore zero scores. Sort by descending score, then ascending ID. Read the first two IDs.</p>
+<p>The baseline returns K01 and K02, both with two points for <code>kite</code> and <code>feed</code>. The reference set is K11 and K12. The intersection of the returned IDs and reference IDs is empty. Recall is the number of hits divided by the number of reference IDs. Precision at two slots is the number of hits divided by two. Both values for this baseline query are 0/2.</p>
+<p>For the combined candidate, add <code>jam</code> because the glossary maps <code>blockage</code> to <code>jam</code>. Give two points to each matching title token. Keep one point per matching body token. The title of K11 contains <code>kite</code> and <code>jam</code>. Its body contains <code>jam</code>. Its total score is 1 + 2 × 2 = 5. K12 receives the same score. The tie rule puts K11 first. Check the trace table before you inspect the code.</p>
+<div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table>
+<thead><tr><th scope="col">Card</th><th scope="col">Baseline body hits</th><th scope="col">Baseline score</th><th scope="col">Combined body and title hits</th><th scope="col">Combined score</th></tr></thead>
+<tbody>
+<tr><td>K01</td><td>feed, kite</td><td>2</td><td>Body feed, kite</td><td>2</td></tr>
+<tr><td>K02</td><td>feed, kite</td><td>2</td><td>Body feed, kite</td><td>2</td></tr>
+<tr><td>K11</td><td>None</td><td>0</td><td>Body jam. Title jam, kite</td><td>5</td></tr>
+<tr><td>K12</td><td>None</td><td>0</td><td>Body jam. Title jam, kite</td><td>5</td></tr>
+</tbody>
+</table></div>
+<p>The table shows four cards from one family. Other families compete for the same slots. A cross-family card, B02, earns three combined points for <code>feed</code> in both fields. It still ranks below K11 and K12. With titles alone it rises above K01 and K02. A query need not mention the full product name, so the experiment leaves family routing out of the ranker.</p>
+<p>Both reference IDs occur in the combined top two. Recall is 2/2, and precision is 2/2. D03 shows why these metrics can differ. It has one relevant card and two slots. Either the baseline or the combined candidate finds that card in slot one. Recall equals 1/1. Precision equals 1/2. Under this workshop definition a vacant slot also earns zero. If a system returns one item, you can separately compute precision per returned item. Name that measure explicitly because it uses a different denominator.</p>
+<pre><code>python3 -B run.py explain D01 --config baseline
+python3 -B run.py explain D01 --config combined
+python3 -B run.py explain D06 --config combined</code></pre>
+<p>Compare the printed body and title terms to your calculation. The output also lists <code>expected</code>, <code>hits</code>, <code>missed</code>, and <code>extra</code>. For D06 the corpus has no reference card. Recall has no denominator and appears as <code>null</code>. Both configurations return cards for that query. The no-evidence guard reports one false return case for each configuration. The guard blocks an increase, so neither configuration resolves this existing error.</p>
+<p>Average metrics across the five positive development queries. Baseline recall is (0 + 0 + 1 + 0 + 0) ÷ 5 = 1/5. Baseline precision is (0 + 0 + 1/2 + 0 + 0) ÷ 5 = 1/10. If you pool hits first, baseline recall is 1/6 because D01 contributes two reference cards. Keep those two calculations distinct. This plan gives each positive query equal weight. It leaves the empty-reference query in the separate false-return measure.</p>
+</section>
+
+<section id="research-split">
+<h2 id="topic-3-make-the-split-and-detect-leakage">3. Make the split and detect leakage</h2>
+<p>Separate questions by the family that owns the reference. Development uses Kite, Moss, Reed, and Frost. Holdout uses Birch, Lark, and Finch. The development and held-out labels cannot share a relevant document ID. The same index remains searchable in all runs because the experiment asks whether new queries can find evidence in an existing index. In one development trace, the baseline returns a Birch card for a Kite question. That cross-family error is valid evidence about a shared index.</p>
+<figure class="learning-figure"><img src="workshops/research/diagrams/split-ownership.svg" alt="Separate development and held-out questions by source family. Keep the same document index for both stages." loading="lazy"><figcaption>Development queries select settings. Held-out queries measure the locked choice. <a href="workshops/research/diagrams/split-ownership.mmd">Mermaid source</a></figcaption></figure>
+<p>A different question requires a different split. To measure retrieval for products absent during development, keep those source families out of the development index as well. Make a development index from the development families. Add the held-out documents only when the frozen system indexes the assessment corpus. Record whether the system may build IDF statistics, embeddings, or dictionaries from that new index. Each permission changes the question the test answers.</p>
+<p>Run the normal audit and the deliberate leak. The deliberate leak exits with code 1. A paraphrase of D05 keeps the Kite family and K12 reference under a new query ID. A random row split or duplicate-ID check alone can miss that leak. The workshop audit catches shared query IDs, family IDs, and reference IDs. It cannot identify a manual copy that has a new family ID. Group copies, translations, and revisions by provenance before you split real data.</p>
+<pre><code>python3 -B run.py audit
+python3 -B run.py audit --holdout-file leaky-holdout.json</code></pre>
+<p>The standard audit checks six development cases and three held-out cases. A trusted operator can run that validation before tuning. In a real evaluation, the developer receives only the development rows. The operator records a digest of the held-out labels in the plan before the first trial. The local files remain readable for study. Access control in a production experiment must keep the test labels and results outside the candidate's workspace.</p>
+</section>
+
+<section id="research-loop">
+<h2 id="topic-4-pause-resume-and-compare-the-ablations">4. Pause, resume, and compare the ablations</h2>
+<p>Run the baseline and the first two candidates. Use a fresh output directory so your run leaves the supplied records intact. The first candidate adds two narrow aliases. The second changes the weight of title hits from zero to two. Neither can see saved held-out scores. Pause at candidate two. Inspect <code>checkpoint.json</code>, then resume in the same directory.</p>
+<pre><code>python3 -B run.py dev --out session-01 --stop-after 2
+python3 -B run.py dev --out session-01
+python3 -B -m unittest -v</code></pre>
+<p>The first command reports <code>2/4</code> candidates and the <code>titles</code> incumbent. The second reports <code>4/4</code> and the <code>combined</code> incumbent. The baseline establishes the guards. A candidate must pass every guard against that baseline and strictly exceed the incumbent's recall to replace it. This two-part rule allows a partial improvement to stay in the ledger without advancing the selection.</p>
+<figure class="learning-figure"><img src="workshops/research/diagrams/budget-loop.svg" alt="Score a candidate, decide whether to promote it, commit the checkpoint, and stop when the budget is exhausted." loading="lazy"><figcaption>Both keep and discard decisions consume a candidate slot. <a href="workshops/research/diagrams/budget-loop.mmd">Mermaid source</a></figcaption></figure>
+<div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table>
+<thead><tr><th scope="col">Attempt</th><th scope="col">Title weight</th><th scope="col">Aliases</th><th scope="col">Recall</th><th scope="col">Precision</th><th scope="col">Decision</th></tr></thead>
+<tbody>
+<tr><td>Baseline</td><td>0</td><td>None</td><td>1/5</td><td>1/10</td><td>Establish reference</td></tr>
+<tr><td>1. Aliases</td><td>0</td><td>Tight</td><td>1/5</td><td>1/10</td><td>Discard. No recall gain.</td></tr>
+<tr><td>2. Titles</td><td>2</td><td>None</td><td>3/5</td><td>3/10</td><td>Keep. Guards pass.</td></tr>
+<tr><td>3. Combined</td><td>2</td><td>Tight</td><td>1</td><td>3/5</td><td>Keep. Recall exceeds 3/5.</td></tr>
+<tr><td>4. Wide</td><td>2</td><td>Wide</td><td>9/10</td><td>1/2</td><td>Discard. Recall trails incumbent.</td></tr>
+</tbody>
+</table></div>
+<p>Use the ablations to test which setting contributed to the combined result. Compare combined against aliases to remove title weight while preserving tight aliases. Recall falls from 1 to 1/5. Compare combined against titles to remove tight aliases while preserving title weight. Recall falls from 1 to 3/5. In D01, a body hit for <code>jam</code> alone cannot overtake the two baseline points for <code>kite</code> and <code>feed</code>. A weighted title hit helps both jam cards clear that rank boundary. The result depends on the interaction of the two settings in these cases.</p>
+<p>Check the failed wide hypothesis. Broad expansion adds <code>inspection</code> for <code>blockage</code>. On D01, K02 reaches five points because the added word occurs in its title and body. K11 and K12 also score five. K02 sorts ahead of both. The last reference card drops out of the top two. Wide still beats the baseline. The ledger keeps the stronger candidate and shows where the broader hypothesis failed.</p>
+<p>The checkpoint stores the full baseline trace, each hypothesis, each candidate result, the guards, and the incumbent after the decision. It writes a temporary file beside the target and then replaces the checkpoint with the completed file. Resume uses the count of saved ledger rows. An interruption before a commit can repeat the current pure computation. A successful commit prevents a duplicate ledger row on resume. The digest binds the corpus, development labels, plan, and three code files. Change an input and the runner requires a fresh output directory. Use one process per output directory. The workshop does not test concurrent writers or machine power loss.</p>
+<p>Open the supplied <a href="workshops/research/records/checkpoint-at-2.json">paused checkpoint</a> and <a href="workshops/research/records/checkpoint.json">completed checkpoint</a>. Confirm that the first two attempts match. The fixed run compares one baseline and four candidates on development data. There is no wall-clock cap in this local harness. For a remote experiment, set a per-attempt cost or timeout in addition to the candidate limit. Preserve error states separately from scores so a failed process cannot turn into a successful numeric result.</p>
+</section>
+
+<section id="research-holdout">
+<h2 id="topic-5-decide-with-the-held-out-counterexample">5. Decide with the held-out counterexample</h2>
+<p>Run the locked comparison after the development budget is exhausted. The command verifies the frozen digest and checks the split. It compares the baseline and the selected candidate with the same three held-out queries. Each output directory permits one saved held-out report. Repeated inspection in a new directory does not turn a known test case into fresh evidence.</p><figure class="learning-figure"><img src="assets/screenshots/research-run.png" alt="Screenshot of the local run viewer. Query H03 loses its required card even though mean precision rises." loading="lazy"><figcaption>Screenshot of the local run viewer. Query H03 loses its required card even though mean precision rises. <span class="figure-links"><a href="run-viewer.html">Explore recorded runs</a> · <a href="assets/screenshots/research-run.png">Full-size figure</a></span></figcaption></figure>
+<pre><code>python3 -B run.py holdout --out session-01</code></pre>
+<div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table>
+<thead><tr><th scope="col">Query and slice</th><th scope="col">Reference IDs</th><th scope="col">Baseline output</th><th scope="col">Combined output</th><th scope="col">Recall change</th></tr></thead>
+<tbody>
+<tr><td>H01, alias</td><td>B11, B12</td><td>B01, B02</td><td>B11, B12</td><td>0 to 1</td></tr>
+<tr><td>H02, literal</td><td>L11</td><td>L11, L01</td><td>L11, L01</td><td>1 to 1</td></tr>
+<tr><td>H03, ambiguous alias and critical</td><td>V11</td><td>V11, V01</td><td>V01, V02</td><td>1 to 0</td></tr>
+</tbody>
+</table></div>
+<p>H03 asks for a Finch seal audit. The relevant card concerns a serial mark on an anti-tamper label. The added word <code>gasket</code> matches two unrelated titles. Each of V01 and V02 earns six title points and two body points. V11 keeps three body points and has no title hits. There is no third slot. The candidate removes the only reference card for that question.</p>
+<p>The gain of one unit of recall on H01 cancels the loss of one unit on H03. Both systems have mean recall of 2/3. Mean precision rises from 1/3 to 1/2 because H01 contributes two relevant cards. The minimum recall guard fails, and the critical guard fails. Read the <a href="workshops/research/records/holdout-report.json">held-out report</a> to confirm the specific new miss. Retain the baseline.</p>
+<p>The thin slices explain behavior in the fixtures. Development alias recall rises from zero to one across D01, D04, and D05. The literal slice stays at one for D03. The held-out ambiguous alias slice falls to zero for H03. Each of the held-out slices has one case. These results support a concrete ranking explanation and a decision under the workshop rule. They cannot establish an effect size for field use. No held-out case has an empty reference, so the zero false-return count cannot support a claim about held-out abstention.</p>
+<p>Treat H03 as a regression example in the next development round. It can now guide a new hypothesis because the team knows its result. A hypothesis might restrict alias expansion to a product vocabulary. Collect a new held-out family with an ambiguous term before you test that hypothesis. Keep the earlier report as a record of the original decision. A new output file does not restore test independence.</p>
+</section>
+
+<section id="research-practitioner">
+<h2 id="topic-6-read-the-implementation-behind-a-research-claim">6. Read the implementation behind a research claim</h2>
+<p>Start with Autoresearch's <code>program.md</code>. Its protocol keeps the measurement code fixed, changes <code>train.py</code>, captures process output, and records decisions separately from raw logs. The instructions describe a repeated loop and preserve an improved commit. Read what an operator delegates and which file stays fixed. <a href="sources.html#DR01">DR01</a></p>
+<p>Then inspect <code>train.py</code>. The training loop times synchronized GPU steps and adds to the measured budget after initial steps. After the break, it calls <code>evaluate_bpb</code> and prints both training time and total elapsed time. The initial work and final evaluation therefore need separate accounting. This workshop borrows the fixed comparison idea. It measures four candidate attempts on a CPU and does not run those GPU experiments. <a href="sources.html#DR02">DR02</a></p>
+<p>Read the metric implementation in <code>prepare.py</code>. Its evaluation function obtains validation batches, masks zero-byte targets out of the summed token loss, and divides by the byte total and <code>log(2)</code>. The resulting bits per byte is a different quantity from document recall. A reproducible experiment names the evaluated population, numerator, denominator, and measure of cost. <a href="sources.html#DR03">DR03</a></p>
+<p>Anthropic Engineering separates the trial transcript from the outcome of a task. It recommends a clean start for a trial and deterministic graders when they fit. Apply that distinction here. The token hit trace explains rank order. The reference ID intersection decides the score. For a tool-using assistant, the trace can show a claimed update while a state read determines whether the update occurred. <a href="sources.html#DR04">DR04</a></p>
+<p>OpenAI's BrowseComp release uses brief reference answers for questions that require search. In the public implementation, <code>BrowseCompEval.__call__</code> supplies the question to the sampler and keeps the reference for a later grader. This is a useful boundary to inspect in any eval. The inspected branch also has a parser inconsistency. <code>grade_sample</code> returns the full match <code>correct: yes</code>, while its caller checks for <code>yes</code>. A fixture that feeds a known correct verdict through both paths can expose that mismatch. This static observation does not establish which code produced the paper's results. <a href="sources.html#DR05">DR05</a> <a href="sources.html#DR06">DR06</a></p>
+<p>OpenAI's document Q&amp;A example separates context metrics from answer judgments. Follow that separation if you add generation. A correct answer can come from prior model knowledge after retrieval fails. A wrong answer can follow good retrieval. Capture the retrieved source IDs and the answer verdict independently. The workshop's thresholds come from the local task contract. <a href="sources.html#DR07">DR07</a></p>
+</section>
+
+<section id="research-adapt">
+<h2 id="topic-7-adapt-the-experiment-to-your-documents-and-agent">7. Adapt the experiment to your documents and agent</h2>
+<p>Pick a workflow with a verifiable evidence requirement. For an internal methods library, ask <q>Which document specifies the exclusion rule for protocol A?</q> Define evidence as the current section that states the rule. Treat superseded versions and protocols for other instruments as test negatives. Use a synthetic copy while you develop the harness. Keep private source files outside any external adapter.</p>
+<ol>
+<li>Assign stable IDs to source sections. Keep the document family and revision in separate fields.</li>
+<li>Label common, ambiguous, unsupported, and critical questions. Include the reason and reference for each positive label.</li>
+<li>Split by document family or the unit that produced the question. Keep revisions and paraphrases together.</li>
+<li>Freeze the baseline configuration, labels, metric, guardrails, and budget. Record a hash for each file.</li>
+<li>Score a few fixed cases by hand. Include an empty list and a multi-reference case.</li>
+<li>Change one setting per candidate where possible. Run an ablation when two changes interact.</li>
+<li>Inspect paired traces. Preserve missed IDs, extra IDs, and the score denominators.</li>
+<li>Freeze the chosen candidate. Give the held-out comparison to the test owner.</li>
+</ol>
+<p>If your system uses chunks, decide whether the grader credits the entire document or a specific span. A document ID can look correct while the selected chunk omits the rule. Store a stable chunk ID and a parent document ID. Deduplicate parent IDs if the metric measures documents. Count multiple required spans when a query needs evidence drawn from distinct parts. Make those choices before you inspect candidate outputs.</p>
+<p>If you add a model, freeze its exact version, tool schema, prompt, timeout, and available sources. Give it the question and a search tool. Require an ordered list of evidence IDs. Keep reference labels on the evaluator side. Validate returned IDs and represent tool errors separately from empty results. Then add a distinct answer check for evidence support, issue type, and refusal when evidence is missing. Use independent trials for a model whose outputs vary. Record both the number of trials and the fraction of successes. Keep the same retrieval budget so a larger context cannot masquerade as a better ranker.</p>
+<p>The <a href="workshops/research/prompts/09-model-adapter.md">model adapter protocol</a> gives a request, a response schema, and a filled example. It is an optional design exercise. No model adapter or online evaluation ran for this workshop. To repeat the supplied result, run only the local Python files.</p>
+</section>
+
+<section id="research-exercises">
+<h2 id="topic-exercises">Exercises</h2>
+<details><summary>Predict the wide candidate's exact D01 rank order</summary>
+<p><strong>Task.</strong> Add the wide query terms. Recalculate K02, K11, and K12. Name the missed card.</p>
+<p><strong>Hint.</strong> Count <code>inspection</code> once in each matching field. Use the tie rule after you add the scores.</p>
+<p><strong>Solution.</strong> All three score five. K02 has three body hits and one title hit. The other two have one body hit and two title hits. K02 and K11 consume the two slots. K12 is missed. Run <code>python3 -B run.py explain D01 --config wide</code> to check the result.</p></details>
+<details><summary>Improve the empty-reference case and test the side effect</summary>
+<p><strong>Task.</strong> Make a scratch copy from the workshop directory. Choose an unused copy name.</p>
+<pre><code>cd ..
+cp -R research research-threshold
+cd research-threshold</code></pre>
+<p>Open <code>retriever.py</code>. In <code>rank</code>, change <code>if score:</code> to <code>if score &gt;= 3:</code>. Predict the effect on D06, D01, and a new query, <q>serial mark</q>.</p>
+<p><strong>Hint.</strong> The combined D06 top score is two. The only card about the serial mark is V11. Count its body and title hits.</p>
+<p><strong>Solution.</strong> D06 returns no cards. Combined D01 still returns both cards because each scores five. V11 scores two for <code>serial</code> and <code>mark</code> in its body. The threshold drops it. The new query is now development material. Add a novel query to the next held-out set before you evaluate a cutoff.</p>
+<pre><code>python3 -B run.py explain D06 --config combined
+python3 -B run.py explain D01 --config combined
+python3 -B - &lt;&lt;'PY'
+from evaluate import read_json
+from retriever import rank
+
+corpus = read_json("fixtures/corpus.json")
+print(rank(corpus, "serial mark", 2, title_weight=2))
+PY</code></pre>
+<p>The final command prints an empty list in the copy. Run it once in the original workshop to see V11 and its two matching body terms.</p></details>
+<details><summary>Find the pair that exposes the mean</summary>
+<p><strong>Task.</strong> Explain how held-out precision rises while recall stays fixed. Name the case that blocks acceptance.</p>
+<p><strong>Hint.</strong> H01 has two references. H03 has one.</p>
+<p><strong>Solution.</strong> H01 adds two hits and raises per-query recall by one. H03 loses one hit and lowers per-query recall by one. The net recall change is zero. Precision gains one hit across six slots, for a gain of 1/6. H03 blocks acceptance even if the aggregate threshold changes.</p></details>
+<details><summary>Design a split for new source documents</summary>
+<p><strong>Task.</strong> Decide what the developer may index when the test asks about unseen document families. Describe the ownership boundary.</p>
+<p><strong>Hint.</strong> A document can leak to the candidate through a vocabulary file even when a label is absent.</p>
+<p><strong>Solution.</strong> Keep the whole family, its labels, its snippets, and its query paraphrases with the test owner during development. Freeze code and rules before the test owner adds those documents to the index. Decide up front whether index-time corpus statistics may use the new documents. Record that choice and evaluate the resulting method.</p></details>
+</section>
+
+<section id="research-prompt-files">
+<h2 id="topic-offline-prompt-files">Offline prompt files</h2>
+<p>Each file includes inputs, constraints, an output contract, a filled example, and a way to check the result. Open the files locally. Replace the example fields with your own values before you give a prompt to an agent.</p>
+<ul>
+<li><a href="workshops/research/prompts/01-eval-contract.md">Define the evaluation contract</a></li>
+<li><a href="workshops/research/prompts/02-label-cases.md">Label evidence cards</a></li>
+<li><a href="workshops/research/prompts/03-audit-split.md">Audit a split</a></li>
+<li><a href="workshops/research/prompts/04-trace-ranking.md">Calculate a rank trace</a></li>
+<li><a href="workshops/research/prompts/05-candidate-hypothesis.md">Propose a candidate and ablation</a></li>
+<li><a href="workshops/research/prompts/06-run-budget.md">Execute a fixed budget and checkpoint</a></li>
+<li><a href="workshops/research/prompts/07-review-slices.md">Review score slices and counterexamples</a></li>
+<li><a href="workshops/research/prompts/08-held-out-decision.md">Make the held-out decision</a></li>
+<li><a href="workshops/research/prompts/09-model-adapter.md">Design a model adapter protocol</a></li>
+</ul>
+</section>
+<section id="mastery-record"><h2 id="topic-record-your-practice">Record your practice</h2><p>Check a step only after your attempt. These marks record your own assessment.</p><p><label><input type="checkbox" data-progress-key="predict"> I predicted the first failure before I ran the command.</label></p><p><label><input type="checkbox" data-progress-key="trace"> I can explain each state change in the worked example.</label></p><p><label><input type="checkbox" data-progress-key="rebuild"> I reconstructed the core rule and checked a changed input.</label></p><p><label><input type="checkbox" data-progress-key="transfer"> I wrote acceptance cases for one task in my own project.</label></p></section></main>
+<nav class="page-turn" aria-label="Adjacent chapters"><a href="workshop-engineering.html">← Repository to reviewed patch</a><a href="workshop-automation.html">Durable tool workflows →</a></nav>
+<section id="find" class="find"><h2>Search the guide</h2><div class="search-fields"><label>Words or source ID<input id="guide-search" type="search" placeholder="Try checkpoint or Grok Bot" autocomplete="off"></label>
+<label>Section<select id="search-group"><option value="">All sections</option><option value="Study">Study</option><option value="Workshops">Workshops</option><option value="Evidence">Evidence</option><option value="Practice">Practice</option><option value="Reference">Reference</option><option value="Source studies">Source studies</option></select></label></div>
+<p id="search-status" role="status"></p><div id="search-results"></div><noscript>Use the chapter menu or your browser's Find command.</noscript></section>
+<footer><a href="audit.html">Methods and verification</a><a href="#main">Back to top ↑</a></footer></div></div></body></html>

@@ -1,0 +1,47 @@
+{
+  "draft": {
+    "body_sha256": "a04946593017ae9710b9ddb058bcedefead97877ef2f90065fb8c41b491609db",
+    "idempotency_key": "draft_c7c7f09ca4113495ad5bea49f58ca9523156989efb33665b39d3f5c4184a6a72"
+  },
+  "events": [
+    "snapshot_committed",
+    "draft_committed"
+  ],
+  "evidence": [
+    {
+      "end": 44,
+      "quote": "6 of 10 tasks reached manual review.",
+      "scope": null,
+      "source_id": "SRC-202",
+      "start": 8
+    }
+  ],
+  "feed_sha256": "b80391f3697b9094c783ba50137d1888c96c00dae3f303a24bfff3ef5decb1ea",
+  "input_records": 4,
+  "issues": [
+    {
+      "code": "duplicate_json_member",
+      "line": 4
+    },
+    {
+      "code": "conflicting_source_id",
+      "lines": [
+        1,
+        2
+      ],
+      "source_id": "SRC-201"
+    }
+  ],
+  "policy": "weekly-research-v1",
+  "run_key": "run_1e726da5dda4a5f375ccac8006a575487847ccd00392ad7e7cb30014d3027bcb",
+  "sources": [
+    {
+      "body_sha256": "1ff9bcee170774d2a2bd186ddd09d6a066cc1d801073900a14efabc2b1290c0c",
+      "date": "2026-11-05",
+      "source_id": "SRC-202",
+      "title": "Independent check"
+    }
+  ],
+  "state": "draft_staged",
+  "week": "2026-W45"
+}

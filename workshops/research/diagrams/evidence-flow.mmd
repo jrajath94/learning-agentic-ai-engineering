@@ -1,0 +1,7 @@
+flowchart TD
+    query[Query text] --> rank[Rank cards]
+    cards[Corpus cards] --> rank
+    config[Candidate settings] --> rank
+    rank --> grader[Compare IDs]
+    reference[Reference IDs] --> grader
+    grader --> rows[Scores and misses]

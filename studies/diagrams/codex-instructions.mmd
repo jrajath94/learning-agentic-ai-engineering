@@ -1,0 +1,12 @@
+flowchart TD
+    D[Next directory on project path] --> O{Override is a file?}
+    O -->|Yes| B{Bytes remain?}
+    O -->|No| A{Default is a file?}
+    A -->|Yes| B
+    A -->|No| F{Fallback file exists?}
+    F -->|Yes| B
+    F -->|No| N[Next directory]
+    B -->|Yes| R[Read within remaining budget]
+    B -->|No| S[Stop repository reads]
+    R --> N
+    N --> D

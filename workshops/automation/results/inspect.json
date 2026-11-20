@@ -1,0 +1,94 @@
+{
+  "draft": {
+    "body_sha256": "796c4160c2ef8bf30949415ab41472357e50364895d73d0c16c6b37fc087fb84",
+    "idempotency_key": "draft_64cdf62d97594a5a7b8a88b03dd7dcbdf75ea837b077e421e00f543d2c94c46a"
+  },
+  "events": [
+    "snapshot_committed",
+    "draft_committed"
+  ],
+  "evidence": [
+    {
+      "end": 133,
+      "quote": "Cache reuse cut median tool latency from 800 ms to 510 ms across 40 runs.",
+      "scope": {
+        "end": 192,
+        "quote": "One workload and one runner. No production traffic.",
+        "start": 141
+      },
+      "source_id": "SRC-101",
+      "start": 60
+    },
+    {
+      "end": 118,
+      "quote": "Four of 30 queries had no relevant source among the first three results.",
+      "scope": {
+        "end": 174,
+        "quote": "The fixture set has 30 queries. No live queries.",
+        "start": 126
+      },
+      "source_id": "SRC-103",
+      "start": 46
+    },
+    {
+      "end": 76,
+      "quote": "Review took 12 minutes for the three draft items.",
+      "scope": {
+        "end": 113,
+        "quote": "One reviewer timed one draft.",
+        "start": 84
+      },
+      "source_id": "SRC-105",
+      "start": 27
+    }
+  ],
+  "feed_sha256": "4327f9d0c282df40e70fc66c56ffbb0cc43edc5c36ba4219518059ff2543b665",
+  "input_records": 7,
+  "issues": [
+    {
+      "code": "outside_week",
+      "line": 6,
+      "source_id": "SRC-106"
+    },
+    {
+      "code": "invalid_fields",
+      "line": 7
+    },
+    {
+      "code": "duplicate_body",
+      "line": 2,
+      "retained_source_id": "SRC-101",
+      "source_id": "SRC-102"
+    }
+  ],
+  "policy": "weekly-research-v1",
+  "run_key": "run_be87950c12e7a0c7215e701f14ce8222a34f6c3e3210ed14b627628a8803426a",
+  "sources": [
+    {
+      "body_sha256": "2dd1693b584e3581247c28b320e4cfbba3c197f0391e6ae1161762616706a9f4",
+      "date": "2026-11-02",
+      "source_id": "SRC-101",
+      "title": "Cache evaluation"
+    },
+    {
+      "body_sha256": "126d659d191d29da0d121e77c98608440206b69e1279435accd611f8fb38eb24",
+      "date": "2026-11-04",
+      "source_id": "SRC-103",
+      "title": "Retrieval check"
+    },
+    {
+      "body_sha256": "baa0ad3dc0aeb27d7b7ebf832fa8c0a3c622860ef9704a60d85df2b940868148",
+      "date": "2026-11-05",
+      "source_id": "SRC-104",
+      "title": "Copied comment with an instruction"
+    },
+    {
+      "body_sha256": "31284bea51205e9f0155f2a67da2eee97d01124b4b385e2d22655d111155e853",
+      "date": "2026-11-06",
+      "source_id": "SRC-105",
+      "title": "Review queue check"
+    }
+  ],
+  "state": "draft_staged",
+  "week": "2026-W45"
+}

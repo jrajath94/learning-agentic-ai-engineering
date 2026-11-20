@@ -1,0 +1,17 @@
+/* Chapter aids use the guide's type, color, and focus styles. */
+.workshop-contents{margin:1.5rem 0;border-block:1px solid var(--rule);padding:.8rem 0}
+main .workshop-contents .workshop-label{font-weight:700;color:var(--ink);margin:0 0 .35rem;text-align:left}
+.workshop-contents ol{columns:2;column-gap:2rem;margin:0;padding-left:1.4rem}
+.workshop-contents li{break-inside:avoid;font-size:.9rem}
+.workshop-resume{display:inline-block;margin:.5rem 0 0;font-size:.9rem}
+.workshop-resume[hidden]{display:none}
+.workshop-bookmark{font-size:.78rem;margin:0 0 .8rem;padding:.25rem .6rem}
+.workshop-status{font-size:.8rem;margin-left:.6rem;color:var(--muted)}
+.workshop-progress{margin:1rem 0}
+.workshop-progress button{font-size:.85rem}
+[data-workshop-progress] input[type="checkbox"]{width:1.1rem;height:1.1rem;accent-color:var(--accent);vertical-align:middle;margin-right:.45rem}
+[data-workshop-progress] label{cursor:pointer}
+.workshop-steps>li{padding-left:.3rem;margin-bottom:1rem}
+.table-scroll:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(max-width:700px){.workshop-contents ol{columns:1}.workshop-status{display:inline-block}}
+@media print{.workshop-contents,.workshop-bookmark,.workshop-progress,.workshop-status{display:none}}

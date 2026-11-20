@@ -1,0 +1,66 @@
+{
+  "retrieval_date": "2026-11-20",
+  "purpose": "Find community workflows with inspectable mechanisms and counterexamples. Record public engagement only when the retrieved source displays it.",
+  "method": {
+    "discovery": "Read public Reddit Top lists and run targeted web queries across Reddit, X, GitHub, Substack and technical references.",
+    "verification": "Open the primary post and inspect the named claim. Check linked source code, prompt files, public article sections or the methodology table wherever available.",
+    "selection": "Prefer a clearly described method with a named failure mode and a way to test it. Use high engagement to decide which posts to inspect first. Keep relevant lower engagement material when it supplies implementation detail or documents a limit.",
+    "engagement": "Copy vote counts and dates from the indexed Reddit snapshots. Copy stars from the retrieved repository pages and X views from the indexed page. The numbers are snapshots. Rank applies only to DC05 in the captured monthly Top feed. No global viral threshold or rank was inferred.",
+    "access": "Public read-only retrieval. No site account, cookie copy, proxy purchase, paywall bypass, installation or external post. Some index and direct page captures have different cache ages. Rank and vote counts can change between captures."
+  },
+  "reddit_rank_windows": [
+    {"community": "ClaudeAI", "windows": ["month", "year"], "access": "Public Top pages rendered. Selected workflow post supplied by targeted search. No feed rank assigned."},
+    {"community": "ClaudeCode", "windows": ["month", "year"], "access": "Public Top pages rendered. Selected workflow post supplied by targeted search. No feed rank assigned."},
+    {"community": "codex", "windows": ["month"], "access": "Public Top page rendered. Opened DC05 from the list. Its votes came from a separate indexed snapshot."},
+    {"community": "LocalLLaMA", "windows": ["month"], "access": "Public Top page rendered. Opened a Harness2 listing candidate. Selected TrueForge comparison supplied by targeted search. No feed rank assigned."},
+    {"community": "ExperiencedDevs", "windows": ["month", "year"], "access": "Public Top pages rendered. Selected reviewer report supplied by targeted search. No feed rank assigned."},
+    {"community": "ChatGPTCoding", "windows": ["month", "year"], "access": "Both Top endpoints failed. Public discussion bodies could be opened from targeted search. No feed rank assigned."}
+  ],
+  "queries": [
+    {"channel": "Reddit", "query": "site:reddit.com/r/ClaudeAI/comments my top 10 claude code tips 11 months votes 1qcan9z", "records": ["DC01"], "access": "Indexed dates and votes plus direct post bodies."},
+    {"channel": "Reddit", "query": "Claude Code 4500 hours global rules plan critique readiness claude code GitHub November 2026", "records": ["DC02", "DC03"], "access": "Indexed votes, direct post, repository and both review prompt files."},
+    {"channel": "Reddit", "query": "reddit.com/r/ExperiencedDevs software engineers AI coding agent \"votes\" pull requests review tests ai slop", "records": ["DC04"], "access": "Indexed votes and full public discussion. Also read 1xzguyq on peer review."},
+    {"channel": "Reddit", "query": "site:reddit.com/r/codex/comments/1xlwzs3 \"Switched from Codex to Claude Code\"", "records": ["DC05"], "access": "Direct body via Top feed entry and indexed votes. Cross-post detected."},
+    {"channel": "Reddit", "query": "site:reddit.com/r/codex/comments AGENTS.md context new session worktree test workflow 'votes' codex", "records": ["DC06"], "access": "Indexed votes, direct body, ctxcap README and Codex documentation. Linked dataset page failed."},
+    {"channel": "arXiv", "query": "AGENTS.md study evaluating AGENTS.md coding agents context files 20% arxiv ETH", "records": ["DC07"], "access": "Checked publication history, then read v3 section 4.2 after locating v1."},
+    {"channel": "X", "query": "Boris Cherny X 10 tips Claude Code worktrees CLAUDE.md January 31 2026 x.com/bcherny/status", "records": ["DC08"], "access": "X returned HTTP 403. Thread Reader unroll supplied original author text. The mirror does not show verified X metrics."},
+    {"channel": "Substack", "query": "site:substack.com engineering agent context handoff coding tests agent eval worktrees Claude Codex", "records": ["DC09", "DC13"], "access": "Public article sections. Perrone's paid code was not accessed."},
+    {"channel": "Anthropic", "query": "Claude Code harness context effective context engineering long running agents progress file Anthropic", "records": ["DC09"], "access": "Read the initializer, coding agent, progress file and Git history sections as supporting material."},
+    {"channel": "Web and GitHub", "query": "Simon Willison test driven development red green coding agents 2025", "records": ["DC10"], "access": "Author's guide chapter and newsletter index."},
+    {"channel": "GitHub", "query": "site:github.com claude code test driven development hooks verification worktree superpowers context handoff", "records": ["DC11", "DC12"], "access": "Read Superpowers raw skill and hook files. Checked the Claude Code Stop contract, exit status and failure behavior in the product reference."},
+    {"channel": "Reddit and GitHub", "query": "site:reddit.com/r/LocalLLaMA/comments board harness same model tokens eval cost trueforge", "records": ["DC14", "DC15"], "access": "Read the thread and vendor per-task table. The linked benchmark directory and README did not load. No independent rerun located."},
+    {"channel": "GitHub", "query": "Agent Reach GitHub agent-reach README SKILL.md Panni", "records": ["DC16"], "access": "Read English README, English skill, Reddit adapter and releases through GitHub. Raw adapter URLs did not load. No runtime setup."},
+    {"channel": "Reddit", "query": "site:reddit.com/r/ChatGPTCoding/comments best tools AI coding workflow upvotes 2025 agents tests review", "records": ["DC17"], "access": "Indexed date and votes plus direct discussion. The linked longer article did not load."},
+    {"channel": "X", "query": "site:x.com/dexhorthy/status context engineering coding agents research plan implement", "records": ["DC18"], "access": "Indexed first-party @dzhng page supplied body, quotation, date and view count. Direct open returned HTTP 403."}
+  ],
+  "duplicate_origins": [
+    {"records": ["DC02", "DC03"], "note": "One practitioner. The linked prompt files verify what the workflow asks agents to do."},
+    {"records": ["DC05"], "excluded": "r/ClaudeAI cross-post 1xlwv40", "note": "Same opening and Figma report. Do not add engagement across the two threads."},
+    {"records": ["DC08"], "excluded": "r/ClaudeAI summary 1qspcip and X trending story 2025964423219704319", "note": "Repackages Cherny's thread. Use the named author mirror for the claim."},
+    {"records": ["DC14", "DC15"], "excluded": "Vendor announcement 1w65ise and parallel discussions 1w8f1ej, 1vtbdle, 1vtsru1", "note": "Same tasks, model comparison and reported figures. No independent corroboration count."},
+    {"excluded": "u/yksugi posts 1qcan9z and 1qgccgs", "note": "Same author says the later 25-tip post expands the earlier 10-tip post. Do not count both as independent evidence."},
+    {"excluded": "Pragma posts 1wooidt, 1wqtm26 and 1wodtuj", "note": "Same project announcement across communities. Its repository was inspected. The chapter uses Git worktrees directly."}
+  ],
+  "other_access_limits": [
+    "The HumanLayer advanced context engineering article and main repository command file endpoints did not load in this retrieval. They do not support claims in this chapter.",
+    "GitHub main branch file snapshots may change. Locate the exact file and section in each source record before applying it to a different version.",
+    "The Reddit Top pages and targeted queries cover the returned result set only. No platform-wide or historical leaderboard was reproduced."
+  ],
+  "original_fixture_check": {
+    "scope": "Deterministic Python comparison and synthetic CSV command on local fixture rows. No coding agent, host hook, or web service ran.",
+    "cutoff": "2026-11-20T09:00:00Z",
+    "input": {"A": "2026-11-20T08:00:00Z", "B": "2026-11-20T09:00:00Z", "C": "2026-11-20T04:30:00-04:00"},
+    "invalid_input": {"D": "2026-11-20T08:45:00"},
+    "expectation": {"cutoff_case_AB": ["A"], "order_case_ABC": ["A", "C"], "missing_offset": "ValueError"},
+    "observed": [
+      {"variant": "lexical inclusive", "selected": ["C", "A", "B"], "strict_boundary": false, "offset_order": false, "explicit_offset": false},
+      {"variant": "UTC inclusive", "selected": ["A", "C", "B"], "strict_boundary": false, "offset_order": false, "explicit_offset": true},
+      {"variant": "UTC strict", "selected": ["A", "C"], "strict_boundary": true, "offset_order": true, "explicit_offset": true}
+    ],
+    "command_checks": {
+      "strict_boundary": {"input_ids": ["A", "B"], "exit": 0, "stderr": "", "output_exists": true, "output": "id\nA\n"},
+      "utc_order": {"input_ids": ["A", "B", "C"], "exit": 0, "stderr": "", "output_exists": true, "output": "id\nA\nC\n"},
+      "no_partial_output": {"input_ids": ["A", "D"], "exit": 2, "stderr": "D UTC offset required", "output_exists": false, "output": null}
+    }
+  }
+}

@@ -1,0 +1,2 @@
+development: 2/4 candidates, paused, incumbent=titles
+development: 4/4 candidates, budget exhausted, incumbent=combined

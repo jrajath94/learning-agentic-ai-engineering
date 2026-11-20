@@ -1,0 +1,133 @@
+<p><a href="resource-study.html">Back to implementation studies</a> · <a href="studies/eval-outcomes.md" download>Download the editable study</a></p><p>Grade a fresh fixture after each trial. Preserve the transcript so
+you can investigate mistakes. Use an outcome check that a confident
+final message cannot satisfy on its own.</p>
+<h2 id="start-offline">Start offline</h2>
+<p>Work the case below before you inspect the original source. The
+trace, exercise and worked answers are complete offline. The <a
+href="workshops/automation/test_briefing.py">local briefing tests</a>
+give you a second grader. Inspect the assertions on the records that
+remain after a retry. The optional upstream links at the end need an
+internet connection.</p>
+<h2 id="grade-four-trials-by-hand">Grade four trials by hand</h2>
+<p>The fixture has item B7 marked open and B9 marked open. The task asks
+the agent to close B7. Expected state is B7 closed and B9 open. Treat
+that comparison as the result check. Record a separate communication
+check if the task asks for a confirmation.</p>
+<table>
+<thead>
+<tr>
+<th>Trial</th>
+<th>Report</th>
+<th>B7</th>
+<th>B9</th>
+<th style="text-align: right;">Result score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>“B7 closed”</td>
+<td>closed</td>
+<td>open</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>“B7 closed”</td>
+<td>open</td>
+<td>open</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>“B7 closed”</td>
+<td>closed</td>
+<td>closed</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>“I could not close B7”</td>
+<td>closed</td>
+<td>open</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+<p>Trial 2 shows why a correct-looking transcript is insufficient. Trial
+3 shows why the target row alone is insufficient. Trial 4 can pass the
+result check and fail communication. Preserve both judgments. Use a
+product requirement to decide whether the overall trial must pass
+both.</p>
+<p>If you run Trial 2 on the state left by Trial 1, B7 already appears
+closed and the outcome can pass falsely. Apply the same starting state
+to every trial. Record a fixture revision or digest and trial ID. On
+replay, keep the starting state and tool definitions that apply to that
+trajectory.</p>
+<h2 id="choose-the-rate-before-you-compare">Choose the rate before you
+compare</h2>
+<p>From two observed outcome passes in four trials, the observed pass
+fraction for this task is 0.5. Under a toy assumption of identical,
+independent trials with success probability 0.5, the probability of at
+least one success in two attempts is 0.75. The probability of both
+succeeding is 0.25. Those last values follow from the assumption. Four
+observations do not establish the assumption or the exact underlying
+rate.</p>
+<p>For a service that users run once, record first-attempt success. For
+two actions that both must succeed, record all-pass behavior for the
+pair. A report that only says “75 percent at two trials” leaves the
+success criterion ambiguous.</p>
+<h2 id="adapt-the-grader">Adapt the grader</h2>
+<p>Create a fixture with four records and an operation restricted to one
+of them. Include a reference sequence, a claimed success with no update,
+a correct update with an extra change and a valid alternate path to the
+same final state. Reset fixture state per trial. Add an outcome check
+and a separate communication check. Define the overall result rule in
+advance.</p>
+<p>Write one check per required invariant. Preserve the transaction
+trace, expected state, actual state and grader revision. Change one
+requirement and verify that the reference solution still represents the
+new task. Then test whether a benchmark report would show the task as
+unevaluated if you disable a required grader.</p>
+<h2 id="check-your-solution">Check your solution</h2>
+<p>The fixture yields outcome scores <code>1, 0, 0, 1</code>. A false
+report cannot pass the outcome check. An extra change fails that check
+even if the target row matches. The alternate path receives the outcome
+it earns. The report names how it handles communication and states its
+trial assumptions.</p>
+<h2 id="retrieve-from-memory">Retrieve from memory</h2>
+<ol type="1">
+<li>Which record tells you what the agent actually changed?</li>
+<li>What goes wrong if a trial inherits state from the prior trial?</li>
+<li>When do at-least-one-pass and all-pass answer different
+questions?</li>
+</ol>
+<details><summary>Show worked answers</summary>
+<ol type="1">
+<li>Inspect the resulting environment against a known starting state and
+expected result. Use the transcript to diagnose differences.</li>
+<li>An earlier success can leave the desired state in place. A failed
+next trial can then pass the state comparison falsely.</li>
+<li>At least one pass measures a search with retries. All-pass measures
+whether every action in the group succeeds.</li>
+</ol>
+<h2 id="optional-source-inspection">Optional source inspection</h2>
+<p>Read <a
+href="https://www.anthropic.com/research/demystifying-evals-for-ai-agents">Demystifying
+evals for AI agents</a> at “The structure of an evaluation,” “How to
+think about non-determinism in evaluations for agents,” and “Collect
+tasks for the initial eval dataset.” Open τ²-Bench <a
+href="https://github.com/sierra-research/tau2-bench/blob/main/src/tau2/evaluator/evaluator.py#L89-L250">evaluator.py</a>
+at <code>evaluate_simulation</code>. Follow <a
+href="https://github.com/sierra-research/tau2-bench/blob/main/src/tau2/evaluator/evaluator_env.py#L17-L165">evaluator_env.py</a>
+to <code>EnvironmentEvaluator.calculate_reward</code>. The main links
+were read on 2026-11-20.</p>
+<p>Trace one trial in <code>calculate_reward</code>. Identify where the
+code creates the predicted environment from the trajectory. Find where
+it creates the gold environment and applies reference actions. Then find
+the database comparison, environment assertions and the selected reward
+bases. In <code>evaluate_simulation</code>, inspect the check for a
+required reward basis that the selected mode could not evaluate. These
+code paths implement grading for the benchmark. The exercise below uses
+a smaller simulated state.</p>
+</details>

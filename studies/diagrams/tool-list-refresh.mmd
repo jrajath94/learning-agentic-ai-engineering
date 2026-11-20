@@ -1,0 +1,11 @@
+flowchart TD
+    A[Client caches tool list] --> B[Application opens a project]
+    B --> N[Tool list change notice]
+    N --> L[Client fetches fresh schemas]
+    L --> C[Call with project revision]
+    C --> R{Revision still current?}
+    R -->|Yes| V[Validate arguments and execute]
+    R -->|No| E[Return stale revision error]
+    E --> L
+    B --> M[Another project edit]
+    M --> R

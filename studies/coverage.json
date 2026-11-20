@@ -1,0 +1,1016 @@
+{
+  "scope": "All 131 original source records in the guide at the start of the implementation study revision. The 22 added primary records and the new workshop source records appear in the main source register.",
+  "status_meanings": {
+    "Direct read in this study pass": "The named original page or file was opened and examined during this study revision.",
+    "Related guide exercise": "The original catalog record points to a concrete exercise. This entry does not claim a new file-level read of that source.",
+    "Reference only": "This record supplies version, access, identity or other catalog evidence.",
+    "Direct evidence gap": "The existing evidence does not support the stated next detail. The record identifies the needed source or check.",
+    "Full author capture read": "The dated capture contains the original author's post or article body. Direct access to the original X endpoint was unavailable."
+  },
+  "counts": {
+    "Reference only": 46,
+    "Direct evidence gap": 5,
+    "Related guide exercise": 67,
+    "Direct read in this study pass": 8,
+    "Full author capture read": 5
+  },
+  "sources": [
+    {
+      "id": "C01",
+      "url": "https://github.com/cursor/plugins/blob/main/pstack/.cursor-plugin/plugin.json",
+      "title": "pstack plugin metadata",
+      "status": "Reference only",
+      "lesson_or_next_check": "Compare plugin publisher metadata with a claimed profile identity."
+    },
+    {
+      "id": "C02",
+      "url": "https://gist.github.com/poteto",
+      "title": "poteto gists",
+      "status": "Reference only",
+      "lesson_or_next_check": "Check the profile display name and preserve the gap to the supplied spelling."
+    },
+    {
+      "id": "C03",
+      "url": "https://resources.anthropic.com/webinar/claude-code-live",
+      "title": "Claude Code Live",
+      "status": "Direct evidence gap",
+      "lesson_or_next_check": "Use the event listing for participants. Results or recorded workflow need a transcript or time reference."
+    },
+    {
+      "id": "C04",
+      "url": "https://github.com/mattpocock/skills",
+      "title": "skills",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Select one skill and locate the exact project inputs its procedure assumes.",
+      "guide_path": "tools.html#matt-pocock"
+    },
+    {
+      "id": "C05",
+      "url": "https://www.contrarianthinking.co/newsletter-articles/we-built-an-ai-codie",
+      "title": "We Built an AI Codie",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Map the advice product from source material to its user interface. Label unreported implementation steps.",
+      "guide_path": "business.html#business"
+    },
+    {
+      "id": "C06",
+      "url": "https://www.anthropic.com/research/claude-code-best-practices",
+      "title": "Claude Code Best Practices",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Record what the exploration step learns before the agent changes a file.",
+      "guide_path": "engineering.html#orientation"
+    },
+    {
+      "id": "C07",
+      "url": "https://www.anthropic.com/customers/ramp",
+      "title": "How Ramp engineering operates at hyperspeed with Claude Code",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Convert one reported test loop into an observable pass condition.",
+      "guide_path": "engineering.html#verification"
+    },
+    {
+      "id": "C08",
+      "url": "https://www.anthropic.com/customers/apollo",
+      "title": "Apollo accelerates outbound sales at scale with Claude",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Map the outbound draft and check the step that would require human review in a local exercise.",
+      "guide_path": "business.html#business"
+    },
+    {
+      "id": "C09",
+      "url": "https://www.anthropic.com/customers/assembled",
+      "title": "Assembled transforms support operations with Claude",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Write a fixture where the support route changes when the request exceeds the agent scope.",
+      "guide_path": "business.html#business"
+    },
+    {
+      "id": "C10",
+      "url": "https://openai.com/business/customer-stories/ada/",
+      "title": "Using GPT-4 to deliver a new customer service standard",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Trace a support turn from knowledge lookup to a handoff and identify the evidence for each step.",
+      "guide_path": "business.html#business"
+    },
+    {
+      "id": "C11",
+      "url": "https://www.anthropic.com/research/multi-agent-research-system",
+      "title": "How we built our multi-agent research system",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Compare the notebook's call sequence with the lead-worker pattern described by the vendor. Count discovery and synthesis separately.",
+      "guide_path": "study-orchestrator-workers.html"
+    },
+    {
+      "id": "C12",
+      "url": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
+      "title": "Demystifying evals for AI agents",
+      "status": "Direct read in this study pass",
+      "lesson_or_next_check": "Compare the task, trial and grader with the observed final environment.",
+      "guide_path": "study-eval-outcomes.html"
+    },
+    {
+      "id": "C13",
+      "url": "https://arxiv.org/abs/2207.07048",
+      "title": "Leakage and the Reproducibility Crisis in ML-based Science",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Map a duplicate example or source from training to holdout and flag the leak.",
+      "guide_path": "workshop-research.html#research-split"
+    },
+    {
+      "id": "C14",
+      "url": "https://www.anthropic.com/research/claude-code-expertise",
+      "title": "How Claude Code is used in practice",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Separate observed decision allocation in sampled sessions from measured work quality.",
+      "guide_path": "engineering.html#speed"
+    },
+    {
+      "id": "C15",
+      "url": "https://www.linkedin.com/posts/gisenberg_how-to-build-a-vertical-ai-agent-cash-flowing-activity-7464689439529750528-V_4Y",
+      "title": "How to build a vertical AI agent startup",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Draw the business process and attach one failure signal to each state change.",
+      "guide_path": "business.html#business"
+    },
+    {
+      "id": "C16",
+      "url": "https://www.linkedin.com/posts/mapocock_ways-im-using-ai-for-coding-building-activity-7390827305926828032-egSU",
+      "title": "Ways I use AI for coding",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Translate a planning step into a requirement and a test the reviewer can inspect.",
+      "guide_path": "study-superpowers-handoff.html"
+    },
+    {
+      "id": "C17",
+      "url": "https://www.contrarianthinking.co/press",
+      "title": "Press",
+      "status": "Reference only",
+      "lesson_or_next_check": "Verify the founder identity and role as stated by the publisher."
+    },
+    {
+      "id": "C18",
+      "url": "https://www.anthropic.com/research/building-effective-agents",
+      "title": "Building effective agents",
+      "status": "Direct read in this study pass",
+      "lesson_or_next_check": "Choose one workflow and count the model calls that its implementation makes.",
+      "guide_path": "study-orchestrator-workers.html"
+    },
+    {
+      "id": "C19",
+      "url": "https://www.anthropic.com/research/claude-code-best-practices",
+      "title": "Claude Code Best Practices",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Record the repository entry point and check command before implementation.",
+      "guide_path": "engineering.html#orientation"
+    },
+    {
+      "id": "C20",
+      "url": "https://x.noodl3.net/poteto/status/2116576229319233596",
+      "title": "Grok Bot guide",
+      "status": "Full author capture read",
+      "lesson_or_next_check": "The full guide and follow-up distinguish schedules and event subscriptions. DO01 identifies the event filter. No numeric rate or measured savings verified.",
+      "guide_path": "study-operator-workflows.html"
+    },
+    {
+      "id": "C21",
+      "url": "https://xitter.gq/poteto?cursor=DAAHCgABHWOjmh___9gLAAIAAAATMjExNTcxNDE3NDAyNjQzNjgzMggAAwAAAAIAAA",
+      "title": "Tibot and account monitoring",
+      "status": "Full author capture read",
+      "lesson_or_next_check": "DO02 points to the exact dated post. The digest options are firsthand claims. The configuration, accuracy, permissions and cost still need a run record.",
+      "guide_path": "study-operator-workflows.html"
+    },
+    {
+      "id": "C22",
+      "url": "https://vanlett.com/poteto",
+      "title": "Release manager bots",
+      "status": "Full author capture read",
+      "lesson_or_next_check": "DO03 supplies the October 6 handoff and links the public verification skill at DO07. A production release trace remains unavailable.",
+      "guide_path": "study-operator-workflows.html"
+    },
+    {
+      "id": "C23",
+      "url": "https://www.youtube.com/channel/UC0nBOlmW2APdRYQ34wcB-DQ",
+      "title": "Tibo LOUIS-LUCAS",
+      "status": "Reference only",
+      "lesson_or_next_check": "Use the channel name and linked handle as identity evidence. Confirm the supplied person separately."
+    },
+    {
+      "id": "C24",
+      "url": "https://nitter.cf/gregisenberg/status/2120594796184227848",
+      "title": "Grok Bot setup notes",
+      "status": "Full author capture read",
+      "lesson_or_next_check": "Read the full host summary and parent post at DO06. Keep the guest demonstration and subscription claim open pending the original video or captions.",
+      "guide_path": "study-operator-workflows.html"
+    },
+    {
+      "id": "C25",
+      "url": "https://www.youtube.com/watch?v=yO5O_ngyA_8",
+      "title": "I Tried The Easiest Ways To Make Money With AI",
+      "status": "Direct evidence gap",
+      "lesson_or_next_check": "The listing identifies the video. Find a transcript or time reference before extracting a method or outcome."
+    },
+    {
+      "id": "C26",
+      "url": "https://www.youtube.com/watch?v=1cWZ7Ekff6E",
+      "title": "Use Grok Bot Better Than 99% of People",
+      "status": "Direct evidence gap",
+      "lesson_or_next_check": "Original video and captions did not load. DO08 points to 31:26 in a secondary summary. Verify the method and cost claims from the original before attributing them to the guest."
+    },
+    {
+      "id": "C27",
+      "url": "https://youtu.be/O_zcc6Xl12g",
+      "title": "All Code Is Slop Except Mine",
+      "status": "Direct read in this study pass",
+      "lesson_or_next_check": "DO05 supplies the organizer's full transcript with livestream times. Read 1:06:17 on process boundaries and 1:11:00 on runtime evidence. The reported outcomes remain unaudited.",
+      "guide_path": "study-operator-workflows.html"
+    },
+    {
+      "id": "E01",
+      "url": "https://openai.com/index/harness-engineering/",
+      "title": "Harness engineering: leveraging Codex in an agent-first world",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Place a short repository map next to the commands that independently verify behavior.",
+      "guide_path": "engineering.html#orientation"
+    },
+    {
+      "id": "E02",
+      "url": "https://www.anthropic.com/research/effective-harnesses-for-long-running-agents",
+      "title": "Effective harnesses for long-running agents",
+      "status": "Direct read in this study pass",
+      "lesson_or_next_check": "Walk the initial and continuation sessions. Locate the external record that supports a restart decision.",
+      "guide_path": "study-restart-compaction.html"
+    },
+    {
+      "id": "E03",
+      "url": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
+      "title": "Demystifying evals for AI agents",
+      "status": "Direct read in this study pass",
+      "lesson_or_next_check": "Score four outcomes and keep the communication check separate.",
+      "guide_path": "study-eval-outcomes.html"
+    },
+    {
+      "id": "E04",
+      "url": "https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/",
+      "title": "Measuring the impact of early-2025 AI on experienced open-source developer productivity",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Write population, task and measured time before comparing agent productivity.",
+      "guide_path": "engineering.html#speed"
+    },
+    {
+      "id": "E05",
+      "url": "https://metr.org/blog/2026-02-24-uplift-update/",
+      "title": "We are changing our developer productivity experiment design",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Find where selection and concurrent tasks affect the measurement design.",
+      "guide_path": "engineering.html#speed"
+    },
+    {
+      "id": "E06",
+      "url": "https://git-scm.com/docs/git-worktree",
+      "title": "git-worktree",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Draw checkouts, indexes, HEADs and the shared service each worktree can still affect.",
+      "guide_path": "engineering.html#worktrees"
+    },
+    {
+      "id": "E07",
+      "url": "https://sre.google/workbook/canarying-releases/",
+      "title": "Canarying releases",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Define a canary group, comparison signal and stop condition with synthetic counts.",
+      "guide_path": "engineering.html#release"
+    },
+    {
+      "id": "E08",
+      "url": "https://openai.com/index/api-prompt-caching/",
+      "title": "Prompt caching in the API",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Reconcile cached and ordinary input for a fixed request. Treat the launch pricing as historical.",
+      "guide_path": "study-cache-ledger.html"
+    },
+    {
+      "id": "E09",
+      "url": "https://www.anthropic.com/research/multi-agent-research-system",
+      "title": "How we built our multi-agent research system",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Separate parallel source work, the combined evidence and whole-task token cost.",
+      "guide_path": "study-orchestrator-workers.html"
+    },
+    {
+      "id": "E10",
+      "url": "https://www.anthropic.com/research/harness-design-long-running-apps",
+      "title": "Harness design for long-running application development",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Design one browser check that reveals a failure missed by a self-report.",
+      "guide_path": "engineering.html#verification"
+    },
+    {
+      "id": "E11",
+      "url": "https://www.anthropic.com/research/building-effective-agents",
+      "title": "Building effective agents",
+      "status": "Direct read in this study pass",
+      "lesson_or_next_check": "Compare dynamic task selection with the cookbook's synchronous worker loop.",
+      "guide_path": "study-orchestrator-workers.html"
+    },
+    {
+      "id": "E12",
+      "url": "https://www.anthropic.com/research/building-c-compiler",
+      "title": "Building a C compiler with a team of parallel Claudes",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Name the compiler or external check that decides whether a candidate succeeds.",
+      "guide_path": "engineering.html#verification"
+    },
+    {
+      "id": "N01",
+      "url": "https://simonwillison.net/2026/Oct/9/built-using-my-voice/",
+      "title": "A new feature for my blog, built using my voice",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Trace the original task and the author's observed changes in the public work record.",
+      "guide_path": "fieldnotes.html#voice-to-review"
+    },
+    {
+      "id": "N02",
+      "url": "https://github.com/simonw/simonwillisonblog/pull/719",
+      "title": "Add newsletters with archives, search, and Substack import buttons",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Find which commits introduced behavior and which commits supplied verification.",
+      "guide_path": "fieldnotes.html#voice-to-review"
+    },
+    {
+      "id": "N03",
+      "url": "https://simonwillison.net/2026/nov/9/details-summary/",
+      "title": "Hide your slop PR descriptions behind details and summary",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Draft the reviewer-facing purpose and evidence in two short paragraphs.",
+      "guide_path": "fieldnotes.html#review-front-page"
+    },
+    {
+      "id": "N04",
+      "url": "https://github.com/simonw/datasette/pull/3052",
+      "title": "Redesign row page as a vertical list of fields",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Identify the field layout change and inspect a screenshot for the wide-record failure.",
+      "guide_path": "fieldnotes.html#review-front-page"
+    },
+    {
+      "id": "N05",
+      "url": "https://lucumr.pocoo.org/2026/1/31/pi/",
+      "title": "Pi: The Minimal Agent Within OpenClaw",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Compare a fresh review context with the implementation context and list the evidence to transfer.",
+      "guide_path": "workshop-engineering.html#trace-review"
+    },
+    {
+      "id": "N06",
+      "url": "https://github.com/mitsuhiko/agent-stuff/blob/main/extensions/review.ts",
+      "title": "Pi review extension source",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Follow the extension's review target through the changed files and handoff.",
+      "guide_path": "workshop-engineering.html#trace-review"
+    },
+    {
+      "id": "N07",
+      "url": "https://github.com/earendil-works/pi",
+      "title": "Pi agent toolkit and CLI",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Locate the toolkit and client layers before you inspect a session branch.",
+      "guide_path": "fieldnotes.html#branched-review"
+    },
+    {
+      "id": "N08",
+      "url": "https://mitchellh.com/writing/my-ai-adoption-journey",
+      "title": "My AI Adoption Journey",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Separate a repository note for a repeated mistake from an executable check.",
+      "guide_path": "workshop-engineering.html#lesson-orient"
+    },
+    {
+      "id": "N09",
+      "url": "https://github.com/ghostty-org/ghostty/blob/ca07f8c3f775fe437d46722db80a755c2b6e6399/src/inspector/AGENTS.md",
+      "title": "Ghostty inspector instructions",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Read the scoped instructions and locate the generated interface and test limits.",
+      "guide_path": "workshop-engineering.html#lesson-orient"
+    },
+    {
+      "id": "N10",
+      "url": "https://steipete.me/posts/2025/shipping-at-inference-speed",
+      "title": "Shipping at Inference-Speed",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Identify the command output that can confirm a claim after an agent edit.",
+      "guide_path": "fieldnotes.html#cli-oracle"
+    },
+    {
+      "id": "N11",
+      "url": "https://github.com/steipete/agent-scripts/blob/main/scripts/docs-list.ts",
+      "title": "Docs-list script",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Follow the directory scan through the frontmatter that makes a document discoverable.",
+      "guide_path": "fieldnotes.html#cli-oracle"
+    },
+    {
+      "id": "N12",
+      "url": "https://ghuntley.com/ralph/",
+      "title": "Ralph Wiggum as a software engineer",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Give a reread loop an explicit candidate count and a completion check.",
+      "guide_path": "fieldnotes.html#bounded-loop"
+    },
+    {
+      "id": "N13",
+      "url": "https://github.com/repomirrorhq/repomirror/blob/main/repomirror.md",
+      "title": "We Put a Coding Agent in a While Loop and It Shipped 6 Repos Overnight",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Compare task files and reported outcomes. Label the limits of the hackathon trials.",
+      "guide_path": "fieldnotes.html#bounded-loop"
+    },
+    {
+      "id": "N14",
+      "url": "https://www.youtube.com/watch?v=wc8FBhQtdsA",
+      "title": "An AI state of the union",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Draft a failing test for one prototype criterion. Use the supplied chapter markers as evidence pointers.",
+      "guide_path": "fieldnotes.html#choose-by-test"
+    },
+    {
+      "id": "N15",
+      "url": "https://simonwillison.net/2026/apr/2/lennys-podcast/",
+      "title": "Highlights from my conversation about agentic engineering on Lenny's Podcast",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Compare two prototypes against the same input and check.",
+      "guide_path": "fieldnotes.html#choose-by-test"
+    },
+    {
+      "id": "N16",
+      "url": "https://simonwillison.net/2026/Nov/17/datasette-lite/",
+      "title": "Running the full server-side Datasette Python app in the browser with service workers and Pyodide",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Draw browser tabs, worker routes and state ownership. Predict a cross-tab failure.",
+      "guide_path": "fieldnotes.html#isolate-browser-state"
+    },
+    {
+      "id": "N17",
+      "url": "https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/",
+      "title": "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Record the tasks and participant pool before interpreting the reported time difference.",
+      "guide_path": "fieldnotes.html#productivity-counterexample"
+    },
+    {
+      "id": "N18",
+      "url": "https://metr.org/blog/2026-02-24-uplift-update/",
+      "title": "We are Changing our Developer Productivity Experiment Design",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Identify the changed study design before comparing later measurements.",
+      "guide_path": "fieldnotes.html#productivity-counterexample"
+    },
+    {
+      "id": "O01",
+      "url": "https://podcasts.apple.com/us/podcast/grok-bot-make-a-1-person-company-with-agents/id1593424985?i=1000784916954",
+      "title": "Grok Bot: make a 1 person company with agents",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Use the episode's topic markers to trace the reported research, sales and newsletter steps.",
+      "guide_path": "business.html#business"
+    },
+    {
+      "id": "O02",
+      "url": "https://www.arlingtonbagel.com/authors/billy-howell",
+      "title": "Billy Howell's articles in The Arlington Bagel",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Check a public issue for completed output. Leave the identity of its producer and approval path open.",
+      "guide_path": "business.html#business"
+    },
+    {
+      "id": "O03",
+      "url": "https://readpodcast.ai/en/youtube/greg-isenberg-cUCPjNBjflYl0-HQtUvOx0Ibw/making-dollardollardollar-with-grok-bot-vqQluNEfSVHk",
+      "title": "Making $$$ with Grok Bot",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Compare the secondary routine description with the episode before assigning a tool or service name.",
+      "guide_path": "business.html#business"
+    },
+    {
+      "id": "O04",
+      "url": "https://x.com/poteto/status/2123159537016533493",
+      "title": "Automate Anything with Grok Bot",
+      "status": "Full author capture read",
+      "lesson_or_next_check": "DO04 supplies the complete article body. Verify the goal restatement, source precedence, stable identifiers and trigger setup in their named sections.",
+      "guide_path": "study-operator-workflows.html"
+    },
+    {
+      "id": "P01",
+      "url": "https://x.ai/news/introducing-grok-bot",
+      "title": "Introducing Grok Bot",
+      "status": "Reference only",
+      "lesson_or_next_check": "Record the original product surface, launch tier and cloud computer claim."
+    },
+    {
+      "id": "P02",
+      "url": "https://x.ai/news/grok-bot-1-0",
+      "title": "Introducing Grok Bot 1.0",
+      "status": "Reference only",
+      "lesson_or_next_check": "Record which collaboration features the launch names and check current workspace access separately."
+    },
+    {
+      "id": "P03",
+      "url": "https://openai.com/index/introducing-dots/",
+      "title": "Introducing dots",
+      "status": "Reference only",
+      "lesson_or_next_check": "Record personal access and persistent work as launch claims."
+    },
+    {
+      "id": "P04",
+      "url": "https://learn.chatgpt.com/docs/dots/getting-started",
+      "title": "Get started with your dot",
+      "status": "Reference only",
+      "lesson_or_next_check": "Use the onboarding record to identify supported surfaces."
+    },
+    {
+      "id": "P05",
+      "url": "https://help.openai.com/en/articles/20001530-getting-started-with-your-dot",
+      "title": "Getting started with your dot: Enterprise billing",
+      "status": "Reference only",
+      "lesson_or_next_check": "Separate the Enterprise dot fee timeline from usage on delegated Work or Codex threads."
+    },
+    {
+      "id": "P06",
+      "url": "https://learn.chatgpt.com/docs/codex/cli",
+      "title": "Codex CLI",
+      "status": "Reference only",
+      "lesson_or_next_check": "Record the CLI surface and compare it with the installed client version."
+    },
+    {
+      "id": "P07",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0",
+      "title": "Codex CLI release 0.171.0",
+      "status": "Reference only",
+      "lesson_or_next_check": "Use the stable CLI release tag as the code revision for the Codex study."
+    },
+    {
+      "id": "P08",
+      "url": "https://learn.chatgpt.com/docs/whats-new/gpt-62-astra-sol",
+      "title": "GPT-6.2 Astra and Sol",
+      "status": "Reference only",
+      "lesson_or_next_check": "Keep model identity, interface, plan and workspace permission in separate fields."
+    },
+    {
+      "id": "P09",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "title": "Introducing Muse",
+      "status": "Reference only",
+      "lesson_or_next_check": "Record announced rollout and connection controls for the personal agent."
+    },
+    {
+      "id": "P10",
+      "url": "https://muse.ai/",
+      "title": "Muse personal agent",
+      "status": "Reference only",
+      "lesson_or_next_check": "Match the Muse product name to the official distribution surfaces."
+    },
+    {
+      "id": "P11",
+      "url": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/",
+      "title": "Muse Wonder and Muse Wonder Full",
+      "status": "Reference only",
+      "lesson_or_next_check": "Record Wonder models separately from Muse app versions."
+    },
+    {
+      "id": "P12",
+      "url": "https://ai.meta.com/blog/introducing-muse-image-muse-video-msl/",
+      "title": "Introducing Muse Image and Muse Video",
+      "status": "Reference only",
+      "lesson_or_next_check": "Record the provider's image and video model announcement separately from API distributors."
+    },
+    {
+      "id": "P13",
+      "url": "https://openrouter.ai/meta/muse-image",
+      "title": "Meta Muse Image",
+      "status": "Reference only",
+      "lesson_or_next_check": "Record the OpenRouter route and retain the date beside listed pricing."
+    },
+    {
+      "id": "P14",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-4-argon-availability/",
+      "title": "Gemini 4 Argon in the Gemini app",
+      "status": "Reference only",
+      "lesson_or_next_check": "Record Gemini Argon app availability for the announced plan and surface."
+    },
+    {
+      "id": "P15",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/",
+      "title": "Introducing Gemini 4 Neon",
+      "status": "Reference only",
+      "lesson_or_next_check": "Record Neon rollout by consumer and developer surface."
+    },
+    {
+      "id": "P16",
+      "url": "https://antigravity.google/blog/introducing-google-antigravity-2-0",
+      "title": "Introducing Google Antigravity 2.0",
+      "status": "Reference only",
+      "lesson_or_next_check": "Separate the Antigravity agent app from the IDE."
+    },
+    {
+      "id": "P17",
+      "url": "https://antigravity.google/docs/changelog",
+      "title": "Google Antigravity changelog",
+      "status": "Reference only",
+      "lesson_or_next_check": "Compare the changelog entries for app, CLI, IDE and SDK as separate versions."
+    },
+    {
+      "id": "P18",
+      "url": "https://antigravity.google/blog/gemini-4-neon-in-google-antigravity/",
+      "title": "Gemini 4 Neon in Google Antigravity",
+      "status": "Reference only",
+      "lesson_or_next_check": "Record the model rollout and verify a chosen account's plan separately."
+    },
+    {
+      "id": "P19",
+      "url": "https://www.anthropic.com/claude-sonnet-5-5",
+      "title": "Claude Sonnet 5.5",
+      "status": "Reference only",
+      "lesson_or_next_check": "Record model identity independently from client version."
+    },
+    {
+      "id": "P20",
+      "url": "https://support.claude.com/en/articles/15425695-covered-models",
+      "title": "Covered Models",
+      "status": "Reference only",
+      "lesson_or_next_check": "Check covered model dates and partner scope. Retain individual access as a separate question."
+    },
+    {
+      "id": "P21",
+      "url": "https://support.claude.com/en/articles/14552382-your-first-day-in-claude-code",
+      "title": "Your first day in Claude Code",
+      "status": "Reference only",
+      "lesson_or_next_check": "Record the install surface before comparing local behavior."
+    },
+    {
+      "id": "P22",
+      "url": "https://github.com/anthropics/claude-code/releases",
+      "title": "Claude Code releases",
+      "status": "Reference only",
+      "lesson_or_next_check": "Compare the release tag with the installed Claude Code version."
+    },
+    {
+      "id": "P23",
+      "url": "https://claude.com/resources/articles/claude-duet",
+      "title": "Introducing Claude Duet",
+      "status": "Reference only",
+      "lesson_or_next_check": "Record launch tiers, waitlist and named Duet features."
+    },
+    {
+      "id": "P24",
+      "url": "https://support.claude.com/en/articles/17631495-get-started-with-claude-duet",
+      "title": "Get started with Claude Duet",
+      "status": "Reference only",
+      "lesson_or_next_check": "Record invitation state, access wave and user approval path separately."
+    },
+    {
+      "id": "P25",
+      "url": "https://github.com/agentskills/agentskills/blob/main/docs/specification.mdx",
+      "title": "Agent Skills specification",
+      "status": "Direct read in this study pass",
+      "lesson_or_next_check": "Locate the SKILL.md frontmatter, optional files and progressive-disclosure rules in the specification.",
+      "guide_path": "tools.html#skill-lab"
+    },
+    {
+      "id": "P26",
+      "url": "https://developers.openai.com/plugins/concepts/skills",
+      "title": "Skills in plugins",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Match the reusable procedure to its skill and the remote action to its connector.",
+      "guide_path": "resources.html#layers"
+    },
+    {
+      "id": "P27",
+      "url": "https://github.com/mattpocock/skills",
+      "title": "Skills For Real Engineers",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Choose one skill and identify what data it requests before it starts.",
+      "guide_path": "tools.html#matt-pocock"
+    },
+    {
+      "id": "P28",
+      "url": "https://github.com/mattpocock/skills/releases",
+      "title": "Matt Pocock skills releases",
+      "status": "Reference only",
+      "lesson_or_next_check": "Record the selected release or commit before testing a skill."
+    },
+    {
+      "id": "P29",
+      "url": "https://github.com/mattpocock/skills/blob/main/skills/engineering/README.md",
+      "title": "Matt Pocock engineering skills",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Trace a skill's tracker and domain prerequisites before you adopt the workflow.",
+      "guide_path": "tools.html#matt-pocock"
+    },
+    {
+      "id": "P30",
+      "url": "https://github.com/obra/superpowers",
+      "title": "Superpowers",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Open the three procedure files and follow a design requirement into review evidence.",
+      "guide_path": "study-superpowers-handoff.html"
+    },
+    {
+      "id": "P31",
+      "url": "https://github.com/obra/superpowers/releases",
+      "title": "Superpowers releases",
+      "status": "Reference only",
+      "lesson_or_next_check": "Identify the release that applies to the three procedures before comparing differences."
+    },
+    {
+      "id": "P32",
+      "url": "https://github.com/JuliusBrussee/caveman/blob/main/INSTALL.md",
+      "title": "Caveman installation",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Identify the host-specific install path and any optional companion component.",
+      "guide_path": "tools.html#caveman"
+    },
+    {
+      "id": "P33",
+      "url": "https://github.com/JuliusBrussee/caveman/releases",
+      "title": "Caveman releases",
+      "status": "Reference only",
+      "lesson_or_next_check": "Record the bundle, middleware and runtime versions as distinct revisions."
+    },
+    {
+      "id": "P34",
+      "url": "https://github.com/JuliusBrussee/caveman/blob/main/ANNOUNCEMENT.md",
+      "title": "Caveman announcement",
+      "status": "Reference only",
+      "lesson_or_next_check": "Check which license belongs to the skill and which component needs a separate check."
+    },
+    {
+      "id": "P35",
+      "url": "https://github.com/Nutlope/hallmark/blob/main/package.json",
+      "title": "Hallmark package manifest",
+      "status": "Reference only",
+      "lesson_or_next_check": "Read the manifest version and supported harness values as package metadata."
+    },
+    {
+      "id": "P36",
+      "url": "https://github.com/Nutlope/hallmark/releases",
+      "title": "Hallmark releases",
+      "status": "Reference only",
+      "lesson_or_next_check": "Record whether the repository lists releases. Check registries separately."
+    },
+    {
+      "id": "P37",
+      "url": "https://github.com/Nutlope/hallmark/blob/main/skills/hallmark/SKILL.md",
+      "title": "Hallmark skill",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Locate the local inspection step and list which optional tools it requires.",
+      "guide_path": "tools.html#hallmark"
+    },
+    {
+      "id": "P38",
+      "url": "https://github.com/Xpos587/agent-skills/blob/main/skills/hallmark/SKILL.md",
+      "title": "Another public Hallmark skill",
+      "status": "Reference only",
+      "lesson_or_next_check": "Compare the repository owner and skill path for the Hallmark namesake."
+    },
+    {
+      "id": "P39",
+      "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28/",
+      "title": "The 2026-07-28 Specification",
+      "status": "Reference only",
+      "lesson_or_next_check": "Record the dated MCP revision and check the negotiated revision separately."
+    },
+    {
+      "id": "P40",
+      "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/docs/specification/2026-07-28/server/index.mdx",
+      "title": "MCP server primitives",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Match an item to tool, prompt or resource before selecting the client operation.",
+      "guide_path": "resources.html#layers"
+    },
+    {
+      "id": "P41",
+      "url": "https://github.com/modelcontextprotocol/servers/blob/main/src/filesystem/README.md",
+      "title": "MCP reference Filesystem server",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "List the allowed fixture roots and check which tools the server exposes.",
+      "guide_path": "tools.html#mcp-lab"
+    },
+    {
+      "id": "P42",
+      "url": "https://github.com/modelcontextprotocol/servers/releases/tag/v2.5.0",
+      "title": "MCP reference servers release v2.5.0",
+      "status": "Reference only",
+      "lesson_or_next_check": "Record both the reference-server repository tag and the filesystem package version."
+    },
+    {
+      "id": "P43",
+      "url": "https://learn.chatgpt.com/docs/developer-commands",
+      "title": "Developer commands",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Match the configured transport to the local fixture and inspect the resulting tool list.",
+      "guide_path": "tools.html#mcp-lab"
+    },
+    {
+      "id": "P44",
+      "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/docs/docs/2026-07-28/tutorials/security/local-server-security.mdx",
+      "title": "Local MCP server security",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Draw the process boundary and the server's configured path scope as separate checks.",
+      "guide_path": "tools.html#mcp-lab"
+    },
+    {
+      "id": "P45",
+      "url": "https://github.com/microsoft/playwright-mcp",
+      "title": "Playwright MCP",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Use a local browser fixture and inspect the effect of the selected profile.",
+      "guide_path": "tools.html#browser-lab"
+    },
+    {
+      "id": "P46",
+      "url": "https://github.com/microsoft/playwright-mcp/releases",
+      "title": "Playwright MCP releases",
+      "status": "Reference only",
+      "lesson_or_next_check": "Check the published Playwright MCP tag and identify the installed version separately."
+    },
+    {
+      "id": "P47",
+      "url": "https://github.com/github/github-mcp-server",
+      "title": "GitHub MCP Server",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Verify the identity and URL returned for a public test issue.",
+      "guide_path": "resources.html#connector-catalog"
+    },
+    {
+      "id": "P48",
+      "url": "https://github.com/github/github-mcp-server/releases",
+      "title": "GitHub MCP Server releases",
+      "status": "Reference only",
+      "lesson_or_next_check": "Compare the published tag with the deployed GitHub MCP server version when known."
+    },
+    {
+      "id": "P49",
+      "url": "https://github.com/github/github-mcp-server/blob/main/docs/server-configuration.md",
+      "title": "GitHub MCP Server configuration",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Inspect read-only mode and authentication scope as separate constraints.",
+      "guide_path": "resources.html#connector-catalog"
+    },
+    {
+      "id": "P50",
+      "url": "https://developers.google.com/workspace/drive/api/guides/configure-mcp-server",
+      "title": "Configure the Google Drive MCP server",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Identify which OAuth scope a test document read needs.",
+      "guide_path": "resources.html#connector-catalog"
+    },
+    {
+      "id": "P51",
+      "url": "https://developers.openai.com/learn/developers-codex-plugin",
+      "title": "OpenAI Developers plugin",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Trace a parameter to the official documentation and distinguish the plugin's other components.",
+      "guide_path": "resources.html#connector-catalog"
+    },
+    {
+      "id": "P52",
+      "url": "https://learn.chatgpt.com/docs/build-skills",
+      "title": "Build skills",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Inspect where the host discovers a local skill and how the invocation becomes observable.",
+      "guide_path": "tools.html#skill-lab"
+    },
+    {
+      "id": "P53",
+      "url": "https://help.openai.com/en/articles/20001530-getting-started-with-your-dot",
+      "title": "Getting started with your dot",
+      "status": "Reference only",
+      "lesson_or_next_check": "Record plan, workspace, location and rollout wave as separate availability fields."
+    },
+    {
+      "id": "P54",
+      "url": "https://apps.apple.com/us/app/muse-from-meta/id6760173601",
+      "title": "Muse from Meta App Store listing",
+      "status": "Reference only",
+      "lesson_or_next_check": "Use the App Store build history only for the distributed iOS app."
+    },
+    {
+      "id": "P55",
+      "url": "https://ai.meta.com/muse/productivity",
+      "title": "Muse for Productivity",
+      "status": "Reference only",
+      "lesson_or_next_check": "Record the desktop productivity surface and its published connections."
+    },
+    {
+      "id": "P56",
+      "url": "https://claude.com/resources/articles/cowork-is-now-claude",
+      "title": "Claude Cowork and chat are now one Claude",
+      "status": "Reference only",
+      "lesson_or_next_check": "Record the stated product integration at the date of publication."
+    },
+    {
+      "id": "P57",
+      "url": "https://x.ai/news/x-subscription",
+      "title": "Introducing The X Subscription",
+      "status": "Reference only",
+      "lesson_or_next_check": "Record bundle components and verify standalone entitlements separately."
+    },
+    {
+      "id": "P58",
+      "url": "https://help.openai.com/en/articles/10128477-chatgpt-enterprise-and-edu-release-notes",
+      "title": "ChatGPT Enterprise and Edu release notes",
+      "status": "Reference only",
+      "lesson_or_next_check": "Record eligible workspaces and the stated admin and residency conditions."
+    },
+    {
+      "id": "P60",
+      "url": "https://github.com/openai/codex/releases",
+      "title": "Codex CLI release index",
+      "status": "Reference only",
+      "lesson_or_next_check": "Distinguish the stable Codex CLI tag from the alpha release in the same index."
+    },
+    {
+      "id": "R01",
+      "url": "https://github.com/karpathy/autoresearch/blob/master/program.md",
+      "title": "autoresearch experiment program",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Pin the evaluation and budget. Keep each candidate decision in the experiment record.",
+      "guide_path": "workshop-research.html#research-loop"
+    },
+    {
+      "id": "R02",
+      "url": "https://github.com/karpathy/autoresearch/discussions/340",
+      "title": "Predict-then-attribute loop, discussion 340",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Compare prediction and attribution prompts. Preserve unequal trial counts as a limitation.",
+      "guide_path": "workshop-research.html#research-practitioner"
+    },
+    {
+      "id": "R03",
+      "url": "https://developers.openai.com/api/reference/resources/responses/methods/create",
+      "title": "Create a model response: usage fields",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Record total input and output with their nested detail fields. Reconcile counts before applying rates.",
+      "guide_path": "study-cache-ledger.html"
+    },
+    {
+      "id": "U01",
+      "url": "https://openai.com/index/research-acceleration-jagged-frontier/",
+      "title": "Research acceleration: The jagged frontier",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Write the population, day unit, percentile and list-price basis beside the reported figure.",
+      "guide_path": "usage.html#token-usage"
+    },
+    {
+      "id": "U02",
+      "url": "https://openai.com/index/research-acceleration-view-inside-openai/",
+      "title": "Research acceleration: The view inside OpenAI",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Compare methods before drawing a trend from the earlier valuation.",
+      "guide_path": "usage.html#token-usage"
+    },
+    {
+      "id": "U03",
+      "url": "https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic",
+      "title": "How AI is transforming work at Anthropic",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Separate survey frequency from observed token volume.",
+      "guide_path": "usage.html#token-usage"
+    },
+    {
+      "id": "U04",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "title": "Measurements for understanding the pace of AI development inside frontier labs",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Record a concurrency count with its platform and period. Keep it separate from employee counts and spend.",
+      "guide_path": "usage.html#token-usage"
+    },
+    {
+      "id": "U05",
+      "url": "https://www.lennysnewsletter.com/p/head-of-claude-code-what-happens",
+      "title": "Head of Claude Code: What happens after coding is solved",
+      "status": "Direct evidence gap",
+      "lesson_or_next_check": "Use topic markers to identify the segment. Confirm any exact spending figure against the audio."
+    },
+    {
+      "id": "U06",
+      "url": "https://metacast.app/podcast/lenny-s-podcast-product-career-growth/Jd3KQZ6s/head-of-claude-code-what-happens-after-coding-is-solved-boris-cherny/UnRr4h9m",
+      "title": "Head of Claude Code transcript",
+      "status": "Direct evidence gap",
+      "lesson_or_next_check": "Compare the machine transcript with the audio before treating the reported spending phrase as exact."
+    },
+    {
+      "id": "U07",
+      "url": "https://openai.com/index/how-agents-are-transforming-work/",
+      "title": "How agents are transforming work",
+      "status": "Related guide exercise",
+      "lesson_or_next_check": "Separate a share of output tokens from an absolute count.",
+      "guide_path": "usage.html#token-usage"
+    },
+    {
+      "id": "U08",
+      "url": "https://platform.openai.com/docs/guides/prompt-caching",
+      "title": "Prompt caching",
+      "status": "Direct read in this study pass",
+      "lesson_or_next_check": "Compare API surfaces, compute ordinary input by subtraction and record the cache mode.",
+      "guide_path": "study-cache-ledger.html"
+    }
+  ]
+}

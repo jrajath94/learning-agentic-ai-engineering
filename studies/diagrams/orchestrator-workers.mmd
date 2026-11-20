@@ -1,0 +1,11 @@
+flowchart TD
+    G[Task contract] --> D{Independent outputs?}
+    D -->|Yes| A[Worker A evidence]
+    D -->|Yes| B[Worker B evidence]
+    D -->|No| S[Sequential task]
+    A --> V{Same revision and checks?}
+    B --> V
+    S --> V
+    V -->|Pass| O[Combine results]
+    V -->|Fail| R[Repair the failed boundary]
+    R --> V

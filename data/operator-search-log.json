@@ -1,0 +1,77 @@
+{
+  "retrieval_date": "2026-11-20",
+  "scope": "Targeted check of seven original-resource gaps. Eight targeted queries, followed by direct URL, capture, linked file and caption requests. No login, audio playback, template installation or live routine.",
+  "queries": [
+    "\"2116576229319233596\" poteto Grok Bot guide Lauren filtered routines X",
+    "\"Tibot\" \"poteto\" digest monitoring scheduled Twitter Lauren Tan Grok Bot",
+    "\"release manager\" \"poteto\" Lauren Tan Slack build bot Grok Bot",
+    "\"2123159537016533493\" Lauren poteto \"Automate Anything\" Grok Bot complete article",
+    "\"2120594796184227848\" Greg Isenberg Grok Bot \"1cWZ7Ekff6E\" full video transcript",
+    "\"Use Grok Bot Better Than 99% of People\" Greg Isenberg transcript captions chapter",
+    "Lauren Tan \"All Code Is Slop Except Mine\" O_zcc6Xl12g transcript slides official",
+    "site:x.com/poteto \"Grok Bot\" guide routine automate anything release manager Lauren"
+  ],
+  "attempts": [
+    {
+      "id": "C20",
+      "read": "Opened the catalogued capture dated October 31 at 17:01 UTC. Followed the author's more-tips reply, post 2116580481236115933, and read the event filtering guidance and qualitative cost warning.",
+      "remaining": "X original unavailable. A second request to the first mirror received HTTP 429. No numeric price or measured savings present in the relevant text.",
+      "records": ["DO01"]
+    },
+    {
+      "id": "C21",
+      "read": "Followed the exact post from the profile capture. Read post 2115205951649423585 dated October 27 at 22:16 UTC, including digest options and the author's statement on who writes her posts.",
+      "remaining": "X original unavailable. Actual filter configuration, recall, optional blocking permissions and cost were not verified.",
+      "records": ["DO02"]
+    },
+    {
+      "id": "C22",
+      "read": "Located the full dated author capture at post 2107527180263829827, October 6 at 17:43 UTC. Read the release and QA report. Opened its linked pstack skill on GitHub and read the launch, isolation and evidence rules.",
+      "remaining": "X original unavailable. The public skill does not establish the internal configuration or an actual release outcome. A build trace and release record are needed for an outcome claim.",
+      "records": ["DO03", "DO07"]
+    },
+    {
+      "id": "C24",
+      "read": "Opened the November 11 at 19:09 UTC host-post capture and preserved its parent post's course link. Read the project-bot and content-routine claims.",
+      "remaining": "X original unavailable. The host's account does not verify the guest's implementation or plan-to-API-equivalent figure. See C26.",
+      "records": ["DO06"]
+    },
+    {
+      "id": "C26",
+      "read": "YouTube watch URL throttled. The short URL and timedtext request were disabled. Mobile YouTube was inaccessible. A third-party listing returned HTTP 403. Read Podsum's public secondary summary, where item 14 links to 31:26.",
+      "remaining": "Primary audio and captions were not retrieved. The locator is unverified against playback. Exact reported expenditure, credit equivalence and any separate high-dollar audio claim remain unverified.",
+      "records": ["DO06", "DO08"]
+    },
+    {
+      "id": "C27",
+      "read": "The short video URL returned a limited summary. An aligned transcript capture linked the organizer's exact talk page and full Markdown transcript. Opened and read both. Checked the 1:06:17 and 1:11:00 livestream regions against organizer text.",
+      "remaining": "No audio was played. The official transcript is machine-generated. The speaker's internal results were not independently audited.",
+      "records": ["DO05"]
+    },
+    {
+      "id": "O04",
+      "read": "X did not open. The dated wrapper capture linked the full article body. Opened and read that body from goal definition through routine setup.",
+      "remaining": "The full capture is the author's account. No operational run, exact usage rate or product capability guarantee was independently tested.",
+      "records": ["DO04"]
+    }
+  ],
+  "sample_scope": "Only the seven named original-resource rows were changed. C03, C25, U05 and U06 received no new direct check in this pass.",
+  "duplicate_origins": [
+    "DO01 adds the full follow-up to C20's thread. Count the posts as one practitioner origin.",
+    "DO02 is a direct capture of the post previously linked through C21's profile listing.",
+    "DO03 is the exact post previously linked through C22's profile. DO07 shows the public skill, not an independent release run.",
+    "DO04 is the article body linked from O04's wrapper. Count one origin.",
+    "DO05 and C27 refer to the same talk. Ignore derivative transcript summaries for corroboration.",
+    "DO06 and C24 are the same host post. DO08 and C26 refer to the same video. The summary alone does not certify any precise spending claim."
+  ],
+  "fixture": {
+    "command_from_guide_root": "python3 studies/operator-fixture.py",
+    "environment": "Local Python, selected synthetic input rows, one serial writer and temporary directories. No model, scheduler, connector or network.",
+    "observed": [
+      "Five inputs. Two facts. Two conflicts. One discarded event.",
+      "No draft after interruption. One draft after retry.",
+      "Changed snapshot went to review. Missing calendar was reported."
+    ],
+    "limits": "The simulated failure occurs before the final file replacement. This does not test OS crashes, concurrent writers or live schedules."
+  }
+}

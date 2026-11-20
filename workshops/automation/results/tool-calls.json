@@ -1,0 +1,40 @@
+[
+  {
+    "data": {
+      "end": 118,
+      "next_start": 118,
+      "source_id": "SRC-103",
+      "start": 46,
+      "untrusted_text": "Four of 30 queries had no relevant source among the first three results."
+    },
+    "ok": true
+  },
+  {
+    "error": {
+      "code": "invalid_start",
+      "detail": "Start must be an integer from 0 to 1999."
+    },
+    "ok": false
+  },
+  {
+    "error": {
+      "code": "invalid_arguments",
+      "detail": "Use source_id, start and max_chars only."
+    },
+    "ok": false
+  },
+  {
+    "error": {
+      "code": "unknown_source",
+      "detail": "Choose a retained source ID from the active snapshot."
+    },
+    "ok": false
+  },
+  {
+    "error": {
+      "code": "unknown_tool",
+      "detail": "Use get_evidence_window. No other tools are available."
+    },
+    "ok": false
+  }
+]

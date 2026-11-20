@@ -1,0 +1,2 @@
+{"run_id":"legacy","case_id":"one","status":"pass","input_tokens":0,"output_tokens":0}
+{"run_id":"legacy","case_id":"two","status":"fail","input_tokens":7,"output_tokens":2}
