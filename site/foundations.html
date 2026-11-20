@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Engineering foundations: harness and inference design - Learning Agentic AI Engineering</title>
-<link rel="stylesheet" href="assets/style.css"></head>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></head>
 <body>
 <header class="top"><div class="wordmark"><a href="index.html">Learning Agentic AI Engineering</a></div>
 <nav class="main"><a href="index.html">Home</a><a href="start.html">Start Here</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="foundations.html" aria-current="page">Foundations</a><a href="cross-cutting.html">Cross-cutting</a><a href="business.html">Business</a><a href="research.html">Research</a><a href="profiles.html">Profiles</a><a href="prompts.html">Prompt Vault</a><a href="labs.html">Labs</a><a href="paths.html">Learning Paths</a><a href="principles.html">Principles</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="audit.html">Audit</a><a href="search.html">Search</a></nav></header>
@@ -9,6 +10,8 @@
 <p class="meta"><a href="index.html">Home</a> / Engineering foundations: harness and inference design</p>
 <h1>Engineering foundations: harness and inference design</h1>
 <p class="lede">An agent is a model plus a scaffold. This page names each scaffold part, its failure mode, and a test you can run.</p>
+<figure class="visual"><img src="assets/img/foundations.svg" alt="Flow diagram: Goal and pass rule, Context and tools, Evaluator check, Stop condition"><figcaption>Figure 1. Engineering foundations: harness and inference design as a flow. Each box names one stage on this page. Arrows show work order.</figcaption></figure>
+
 <h2>Harness parts</h2>
 <table><tr><th>Part</th><th>Purpose</th><th>Failure mode</th><th>Observable sign</th></tr>
 <tr><td>Goal</td><td>Names the outcome and the pass rule</td><td>Vague goal, agent picks own target</td><td>Work drifts, pass claims with no test</td></tr>
@@ -64,7 +67,38 @@ def run(task, agent, verify, max_rounds=5, needs_human=None):
 <h2>Retrieval question</h2>
 <p>Which harness part stops a loop with no gain? Answer in the Glossary under Stop condition.</p>
 
+
+<figure class="visual"><img src="assets/img/foundations-groups.svg" alt="Concept groups diagram: Harness parts, Trades, Repeat error rule"><figcaption>Figure 2. Concept groups on this page. The markmap below expands each group into leaf points.</figcaption></figure>
+<h2>Visual map of this page</h2>
+<p>Three views of one page: a Mermaid flow for work order, a markmap for concept groups, and a read guide for the flow.</p>
+<div class="mermaid">
+flowchart TD
+ A[Goal] --> B[State record]
+ B --> C[Context load]
+ C --> D[Model step]
+ D --> E[Tool acts]
+ E --> F{Evaluator}
+ F -->|pass| G[Stop: done]
+ F -->|fail, rounds left| D
+ F -->|cap hit| H[Stop: replan]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart TD
+ A[Goal] --&gt; B[State record]
+ B --&gt; C[Context load]
+ C --&gt; D[Model step]
+ D --&gt; E[Tool acts]
+ E --&gt; F{Evaluator}
+ F --&gt;|pass| G[Stop: done]
+ F --&gt;|fail, rounds left| D
+ F --&gt;|cap hit| H[Stop: replan]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the left box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Engineering foundations: harness and inference design</span><ul><li><span class="branch">Harness parts</span><ul><li><span class="leaf">Goal</span></li><li><span class="leaf">State</span></li><li><span class="leaf">Context</span></li><li><span class="leaf">Model</span></li><li><span class="leaf">Tools</span></li><li><span class="leaf">Policy</span></li><li><span class="leaf">Evaluator</span></li><li><span class="leaf">Stop rule</span></li></ul></li><li><span class="branch">Trades</span><ul><li><span class="leaf">Effort vs cost</span></li><li><span class="leaf">Context size vs noise</span></li><li><span class="leaf">Parallel vs merge load</span></li></ul></li><li><span class="branch">Repeat error rule</span><ul><li><span class="leaf">New sample keeps belief</span></li><li><span class="leaf">New evidence breaks loop</span></li></ul></li></ul></li></ul></div>
 </main>
-<footer class="site">AI Power-User Intelligence Hub, field guide build v2. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026, the earlier of execution day and 30 November 2026. Open site/index.html from disk. No server need. No track code sits in this site.</footer>
+<footer class="site">AI Power-User Intelligence Hub, field guide build v3. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026, the earlier of execution day and 30 November 2026. Open site/index.html from disk. No server need. No track code sits in this site.</footer>
 <script src="assets/site.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}});
+</script>
 </body></html>
