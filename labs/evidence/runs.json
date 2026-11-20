@@ -1,0 +1,142 @@
+{
+  "python": "3.14.7",
+  "implementation": "CPython",
+  "os": "Darwin",
+  "os_version": "27.2.1",
+  "architecture": "arm64",
+  "records": [
+    {
+      "trial": 1,
+      "label": "service-original",
+      "command": "LAB_BASELINE=1 python3 -B -m unittest discover -s labs/service",
+      "expected_exit": 1,
+      "exit_code": 1,
+      "elapsed_ms": 47.29,
+      "output": "EE..F.EEEF\n======================================================================\nERROR: test_discount_does_not_create_credit (test_service.InvoiceTests.test_discount_does_not_create_credit)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"labs/service/test_service.py\", line 24, in test_discount_does_not_create_credit\n    self.assertEqual(invoice_total([100], discount_cents=101), 0)\n                     ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: invoice_total() got an unexpected keyword argument 'discount_cents'\n\n======================================================================\nERROR: test_discount_reduces_taxable_amount (test_service.InvoiceTests.test_discount_reduces_taxable_amount)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"labs/service/test_service.py\", line 21, in test_discount_reduces_taxable_amount\n    self.assertEqual(invoice_total([200, 100], discount_cents=100), 217)\n                     ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: invoice_total() got an unexpected keyword argument 'discount_cents'\n\n======================================================================\nERROR: test_invalid_discounts (test_service.InvoiceTests.test_invalid_discounts) (discount=-1)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"labs/service/test_service.py\", line 37, in test_invalid_discounts\n    invoice_total([100], discount_cents=discount)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: invoice_total() got an unexpected keyword argument 'discount_cents'\n\n======================================================================\nERROR: test_invalid_discounts (test_service.InvoiceTests.test_invalid_discounts) (discount=True)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"labs/service/test_service.py\", line 37, in test_invalid_discounts\n    invoice_total([100], discount_cents=discount)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: invoice_total() got an unexpected keyword argument 'discount_cents'\n\n======================================================================\nERROR: test_invalid_discounts (test_service.InvoiceTests.test_invalid_discounts) (discount=1.5)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"labs/service/test_service.py\", line 37, in test_invalid_discounts\n    invoice_total([100], discount_cents=discount)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: invoice_total() got an unexpected keyword argument 'discount_cents'\n\n======================================================================\nFAIL: test_half_cent_rounds_up (test_service.InvoiceTests.test_half_cent_rounds_up)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"labs/service/test_service.py\", line 18, in test_half_cent_rounds_up\n    self.assertEqual(invoice_total([200]), 217)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 216 != 217\n\n======================================================================\nFAIL: test_large_invoice_uses_exact_arithmetic (test_service.InvoiceTests.test_large_invoice_uses_exact_arithmetic)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"labs/service/test_service.py\", line 27, in test_large_invoice_uses_exact_arithmetic\n    self.assertEqual(invoice_total([10**20 + 200]), 108_250_000_000_000_000_217)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 108250000000000000200 != 108250000000000000217\n\n----------------------------------------------------------------------\nRan 8 tests in 0.001s\n\nFAILED (failures=2, errors=5)\n"
+    },
+    {
+      "trial": 1,
+      "label": "service-updated",
+      "command": "python3 -B -m unittest discover -s labs/service",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "elapsed_ms": 49.41,
+      "output": "........\n----------------------------------------------------------------------\nRan 8 tests in 0.000s\n\nOK\n"
+    },
+    {
+      "trial": 1,
+      "label": "benchmark-test",
+      "command": "python3 -B -m unittest discover -s labs/benchmark",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "elapsed_ms": 71.4,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 0.010s\n\nOK\n"
+    },
+    {
+      "trial": 1,
+      "label": "benchmark-run",
+      "command": "python3 -B labs/benchmark/benchmark.py --out EVIDENCE/trial-1/benchmark",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "elapsed_ms": 53.16,
+      "output": "7 test  majority  44/100\n7 test  full      97/100\n7 test  sensor    86/100\n7 shift majority  49/100\n7 shift full      30/100\n7 shift sensor    84/100\n19 test  majority  52/100\n19 test  full      98/100\n19 test  sensor    85/100\n19 shift majority  48/100\n19 shift full      31/100\n19 shift sensor    83/100\n43 test  majority  51/100\n43 test  full      95/100\n43 test  sensor    80/100\n43 shift majority  47/100\n43 shift full      25/100\n43 shift sensor    82/100\n"
+    },
+    {
+      "trial": 1,
+      "label": "workflow-test",
+      "command": "python3 -B -m unittest discover -s labs/report",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "elapsed_ms": 77.8,
+      "output": "........\n----------------------------------------------------------------------\nRan 8 tests in 0.016s\n\nOK\n"
+    },
+    {
+      "trial": 1,
+      "label": "workflow-run",
+      "command": "python3 -B labs/report/workflow.py labs/report/requests.csv --out EVIDENCE/trial-1/report",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "elapsed_ms": 61.34,
+      "output": "Stage=review Calls=2 Retries=0\n"
+    },
+    {
+      "trial": 1,
+      "label": "workflow-restart",
+      "command": "python3 -B labs/report/workflow.py labs/report/requests.csv --out EVIDENCE/trial-1/report",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "elapsed_ms": 64.3,
+      "output": "Stage=review Calls=2 Retries=0\n"
+    },
+    {
+      "trial": 2,
+      "label": "service-original",
+      "command": "LAB_BASELINE=1 python3 -B -m unittest discover -s labs/service",
+      "expected_exit": 1,
+      "exit_code": 1,
+      "elapsed_ms": 48.88,
+      "output": "EE..F.EEEF\n======================================================================\nERROR: test_discount_does_not_create_credit (test_service.InvoiceTests.test_discount_does_not_create_credit)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"labs/service/test_service.py\", line 24, in test_discount_does_not_create_credit\n    self.assertEqual(invoice_total([100], discount_cents=101), 0)\n                     ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: invoice_total() got an unexpected keyword argument 'discount_cents'\n\n======================================================================\nERROR: test_discount_reduces_taxable_amount (test_service.InvoiceTests.test_discount_reduces_taxable_amount)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"labs/service/test_service.py\", line 21, in test_discount_reduces_taxable_amount\n    self.assertEqual(invoice_total([200, 100], discount_cents=100), 217)\n                     ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: invoice_total() got an unexpected keyword argument 'discount_cents'\n\n======================================================================\nERROR: test_invalid_discounts (test_service.InvoiceTests.test_invalid_discounts) (discount=-1)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"labs/service/test_service.py\", line 37, in test_invalid_discounts\n    invoice_total([100], discount_cents=discount)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: invoice_total() got an unexpected keyword argument 'discount_cents'\n\n======================================================================\nERROR: test_invalid_discounts (test_service.InvoiceTests.test_invalid_discounts) (discount=True)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"labs/service/test_service.py\", line 37, in test_invalid_discounts\n    invoice_total([100], discount_cents=discount)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: invoice_total() got an unexpected keyword argument 'discount_cents'\n\n======================================================================\nERROR: test_invalid_discounts (test_service.InvoiceTests.test_invalid_discounts) (discount=1.5)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"labs/service/test_service.py\", line 37, in test_invalid_discounts\n    invoice_total([100], discount_cents=discount)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: invoice_total() got an unexpected keyword argument 'discount_cents'\n\n======================================================================\nFAIL: test_half_cent_rounds_up (test_service.InvoiceTests.test_half_cent_rounds_up)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"labs/service/test_service.py\", line 18, in test_half_cent_rounds_up\n    self.assertEqual(invoice_total([200]), 217)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 216 != 217\n\n======================================================================\nFAIL: test_large_invoice_uses_exact_arithmetic (test_service.InvoiceTests.test_large_invoice_uses_exact_arithmetic)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"labs/service/test_service.py\", line 27, in test_large_invoice_uses_exact_arithmetic\n    self.assertEqual(invoice_total([10**20 + 200]), 108_250_000_000_000_000_217)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 108250000000000000200 != 108250000000000000217\n\n----------------------------------------------------------------------\nRan 8 tests in 0.001s\n\nFAILED (failures=2, errors=5)\n"
+    },
+    {
+      "trial": 2,
+      "label": "service-updated",
+      "command": "python3 -B -m unittest discover -s labs/service",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "elapsed_ms": 44.91,
+      "output": "........\n----------------------------------------------------------------------\nRan 8 tests in 0.000s\n\nOK\n"
+    },
+    {
+      "trial": 2,
+      "label": "benchmark-test",
+      "command": "python3 -B -m unittest discover -s labs/benchmark",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "elapsed_ms": 60.75,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 0.010s\n\nOK\n"
+    },
+    {
+      "trial": 2,
+      "label": "benchmark-run",
+      "command": "python3 -B labs/benchmark/benchmark.py --out EVIDENCE/trial-2/benchmark",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "elapsed_ms": 62.51,
+      "output": "7 test  majority  44/100\n7 test  full      97/100\n7 test  sensor    86/100\n7 shift majority  49/100\n7 shift full      30/100\n7 shift sensor    84/100\n19 test  majority  52/100\n19 test  full      98/100\n19 test  sensor    85/100\n19 shift majority  48/100\n19 shift full      31/100\n19 shift sensor    83/100\n43 test  majority  51/100\n43 test  full      95/100\n43 test  sensor    80/100\n43 shift majority  47/100\n43 shift full      25/100\n43 shift sensor    82/100\n"
+    },
+    {
+      "trial": 2,
+      "label": "workflow-test",
+      "command": "python3 -B -m unittest discover -s labs/report",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "elapsed_ms": 77.43,
+      "output": "........\n----------------------------------------------------------------------\nRan 8 tests in 0.017s\n\nOK\n"
+    },
+    {
+      "trial": 2,
+      "label": "workflow-run",
+      "command": "python3 -B labs/report/workflow.py labs/report/requests.csv --out EVIDENCE/trial-2/report",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "elapsed_ms": 58.38,
+      "output": "Stage=review Calls=2 Retries=0\n"
+    },
+    {
+      "trial": 2,
+      "label": "workflow-restart",
+      "command": "python3 -B labs/report/workflow.py labs/report/requests.csv --out EVIDENCE/trial-2/report",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "elapsed_ms": 53.1,
+      "output": "Stage=review Calls=2 Retries=0\n"
+    }
+  ],
+  "matching_artifact_sha256": {
+    "benchmark/data.csv": "bd7cba166406e1ace688d0e8e616e19ccea1e0d3d2ccb4f339a177fa8bbe2211",
+    "benchmark/errors.csv": "1f70863b38a393ce295dbb3d1f3ee8386a938fb6d21f4bb8cdd45818dd95d5b3",
+    "benchmark/metrics.json": "2c869221e3449c456ceb0a3d22d4d1cdabbb76223ba3f770adc63dd20d148054",
+    "report/draft.md": "3073e18c38defde183b03c974f55fc9f44fc18642228433e63a194ed8b82cbe6",
+    "report/state.json": "348f385a162d9aae4f9e8a1a2633cb7109e70932b199fddf64231fc7d92b826d"
+  }
+}

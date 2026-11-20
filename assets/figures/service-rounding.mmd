@@ -1,0 +1,4 @@
+%%{init: {"theme":"base","themeVariables":{"background":"#000000","primaryColor":"#000000","primaryTextColor":"#ffffff","primaryBorderColor":"#b9e6ae","lineColor":"#b9e6ae","secondaryColor":"#000000","tertiaryColor":"#000000","mainBkg":"#000000","nodeBorder":"#b9e6ae","clusterBkg":"#000000","clusterBorder":"#b9e6ae","titleColor":"#ffffff","edgeLabelBackground":"#000000","fontFamily":"Arial, sans-serif"}}}%%
+flowchart TB
+ A[Subtotal 300 cents] --> C[Discount 100 cents] --> B[Taxable 200 cents] --> D[Tax numerator 200 × 825]
+ D --> E[Add 5000 then divide by 10000] --> F[Tax 17 cents] --> G[Total 217 cents]

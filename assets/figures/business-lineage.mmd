@@ -1,0 +1,9 @@
+%%{init: {"theme":"base","themeVariables":{"background":"#000000","primaryColor":"#000000","primaryTextColor":"#ffffff","primaryBorderColor":"#b9e6ae","lineColor":"#b9e6ae","secondaryColor":"#000000","tertiaryColor":"#000000","mainBkg":"#000000","nodeBorder":"#b9e6ae","clusterBkg":"#000000","clusterBorder":"#b9e6ae","titleColor":"#ffffff","edgeLabelBackground":"#000000","fontFamily":"Arial, sans-serif"}}}%%
+flowchart TB
+ A[requests.csv] --> B[Validate fields] --> C{Status open?}
+ C -- yes --> D{Age at least 7?}
+ D -- yes --> E[Count and cite row ID]
+ D -- no --> F[Open count only]
+ C -- no --> G[Exclude closed row]
+ E --> H[Draft for human review]
+ F --> H

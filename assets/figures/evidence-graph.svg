@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 759.4085 391.3" width="759.4085" height="391.3" style="--bg:#000000;--fg:#ffffff;--line:#b9e6ae;--accent:#b9e6ae;--muted:#ffffff;--surface:#000000;--border:#b9e6ae;background:var(--bg)">
+<style>
+  text { font-family: Arial, sans-serif; }
+  svg {
+    /* Derived from --bg and --fg (overridable via --line, --accent, etc.) */
+    --_text:          var(--fg);
+    --_text-sec:      var(--muted, color-mix(in srgb, var(--fg) 60%, var(--bg)));
+    --_text-muted:    var(--muted, color-mix(in srgb, var(--fg) 40%, var(--bg)));
+    --_text-faint:    color-mix(in srgb, var(--fg) 25%, var(--bg));
+    --_line:          var(--line, color-mix(in srgb, var(--fg) 50%, var(--bg)));
+    --_arrow:         var(--accent, color-mix(in srgb, var(--fg) 85%, var(--bg)));
+    --_node-fill:     var(--surface, color-mix(in srgb, var(--fg) 3%, var(--bg)));
+    --_node-stroke:   var(--border, color-mix(in srgb, var(--fg) 20%, var(--bg)));
+    --_group-fill:    var(--bg);
+    --_group-hdr:     color-mix(in srgb, var(--fg) 5%, var(--bg));
+    --_inner-stroke:  color-mix(in srgb, var(--fg) 12%, var(--bg));
+    --_key-badge:     color-mix(in srgb, var(--fg) 10%, var(--bg));
+  }
+</style>
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="5" refX="7" refY="2.5" orient="auto">
+    <polygon points="0 0, 8 2.5, 0 5" fill="var(--_arrow)" stroke="var(--_arrow)" stroke-width="0.75" stroke-linejoin="round" />
+  </marker>
+  <marker id="arrowhead-start" markerWidth="8" markerHeight="5" refX="1" refY="2.5" orient="auto-start-reverse">
+    <polygon points="8 0, 0 2.5, 8 5" fill="var(--_arrow)" stroke="var(--_arrow)" stroke-width="0.75" stroke-linejoin="round" />
+  </marker>
+</defs>
+<polyline class="edge" data-from="E03" data-to="L" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="informs design" points="110.18299999999999,60.900000000000006 110.18299999999999,177.2" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="L" data-to="C" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="show split difference" points="110.18299999999999,214.10000000000002 110.18299999999999,330.40000000000003" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="E01" data-to="W" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="informs recovery" points="323.14599999999996,60.900000000000006 323.14599999999996,177.2" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="W" data-to="R" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="verify artifact" points="323.14599999999996,214.10000000000002 323.14599999999996,330.40000000000003" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="CSV" data-to="X" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="contradict" points="555.2003333333332,60.900000000000034 555.2003333333332,165.2 503.13449999999995,165.2 503.13449999999995,245.5" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="CSV" data-to="D" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="support filtered count" points="607.7156666666666,60.900000000000034 607.7156666666666,96.90000000000003 659.7814999999999,96.90000000000003 659.7814999999999,177.20000000000005" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<g class="edge-label" data-from="E03" data-to="L" data-label="informs design">
+  <rect x="67.18299999999999" y="103.9" width="85.96000000000001" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="110.163" y="119.05000000000001" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">informs design</text>
+</g>
+<g class="edge-label" data-from="L" data-to="C" data-label="show split difference">
+  <rect x="53.68299999999999" y="257.1" width="112.69000000000003" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="110.028" y="272.25" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">show split difference</text>
+</g>
+<g class="edge-label" data-from="E01" data-to="W" data-label="informs recovery">
+  <rect x="273.14599999999996" y="103.9" width="99.028" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="322.65999999999997" y="119.05000000000001" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">informs recovery</text>
+</g>
+<g class="edge-label" data-from="W" data-to="R" data-label="verify artifact">
+  <rect x="283.64599999999996" y="257.1" width="78.83200000000001" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="323.06199999999995" y="272.25" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">verify artifact</text>
+</g>
+<g class="edge-label" data-from="CSV" data-to="X" data-label="contradict">
+  <rect x="470.13449999999995" y="172.2" width="65.17" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="502.7194999999999" y="187.35" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">contradict</text>
+</g>
+<g class="edge-label" data-from="CSV" data-to="D" data-label="support filtered count">
+  <rect x="601.2815" y="103.90000000000003" width="116.25400000000002" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="659.4085" y="119.05000000000004" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">support filtered count</text>
+</g>
+<g class="node" data-id="E03" data-label="E03 evaluation method" data-shape="rectangle">
+  <rect x="24" y="24" width="172.36599999999999" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="110.18299999999999" y="42.45" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">E03 evaluation method</text>
+</g>
+<g class="node" data-id="L" data-label="Benchmark records" data-shape="rectangle">
+  <rect x="29.557499999999997" y="177.2" width="161.251" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="110.18299999999999" y="195.64999999999998" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Benchmark records</text>
+</g>
+<g class="node" data-id="C" data-label="Shift sensitivity claim" data-shape="rectangle">
+  <rect x="29.92799999999999" y="330.40000000000003" width="160.51000000000002" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="110.18299999999999" y="348.85" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Shift sensitivity claim</text>
+</g>
+<g class="node" data-id="E01" data-label="E01 harness source" data-shape="rectangle">
+  <rect x="243.63199999999995" y="24" width="159.028" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="323.14599999999996" y="42.45" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">E01 harness source</text>
+</g>
+<g class="node" data-id="W" data-label="Local workflow tests" data-shape="rectangle">
+  <rect x="242.89099999999996" y="177.2" width="160.51" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="323.14599999999996" y="195.64999999999998" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Local workflow tests</text>
+</g>
+<g class="node" data-id="R" data-label="Safe restart recommendation" data-shape="rectangle">
+  <rect x="218.438" y="330.40000000000003" width="209.41599999999997" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="323.14599999999996" y="348.85" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Safe restart recommendation</text>
+</g>
+<g class="node" data-id="CSV" data-label="Queue source rows" data-shape="rectangle">
+  <rect x="502.68499999999995" y="24.00000000000003" width="157.546" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="581.458" y="42.45000000000003" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Queue source rows</text>
+</g>
+<g class="node" data-id="X" data-label="Count all old rows" data-shape="rectangle">
+  <rect x="431.40099999999995" y="245.5" width="143.467" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="503.13449999999995" y="263.95" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Count all old rows</text>
+</g>
+<g class="node" data-id="D" data-label="Review draft" data-shape="rectangle">
+  <rect x="602.8679999999999" y="177.20000000000005" width="113.827" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="659.7814999999999" y="195.65000000000003" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Review draft</text>
+</g>
+</svg>

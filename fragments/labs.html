@@ -1,0 +1,138 @@
+<section id="lab-start">
+  <h2>Run the labs</h2>
+  <p>Run the command from the guide directory, next to <code>index.html</code>. Use Python 3.10 or later. The recorded tests used CPython 3.14.7 on arm64 macOS.</p>
+  <pre><code>python3 -B labs/replay.py lab-output</code></pre>
+  <p>Use a new output path for each full replay. Use a different output path if you also run a lab on its own. The labs use the Python standard library and synthetic data. They need no network or API key.</p>
+  <p>The replay runs seven commands in each of two fresh directories. It checks each exit code and compares SHA-256 hashes for five generated files. Inspect <a href="labs/evidence/runs.json">the recorded commands, output, and file hashes</a> and <a href="labs/replay.py">the replay script</a>.</p>
+  <table>
+    <caption>Observed wall time per command, in milliseconds</caption>
+    <thead><tr><th scope="col">Command</th><th scope="col">Trial 1</th><th scope="col">Trial 2</th><th scope="col">Exit</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Original service tests</th><td>47.29</td><td>48.88</td><td>1 as expected</td></tr>
+      <tr><th scope="row">Updated service tests</th><td>49.41</td><td>44.91</td><td>0</td></tr>
+      <tr><th scope="row">Benchmark test</th><td>71.40</td><td>60.75</td><td>0</td></tr>
+      <tr><th scope="row">Benchmark run</th><td>53.16</td><td>62.51</td><td>0</td></tr>
+      <tr><th scope="row">Workflow tests</th><td>77.80</td><td>77.43</td><td>0</td></tr>
+      <tr><th scope="row">Workflow run</th><td>61.34</td><td>58.38</td><td>0</td></tr>
+      <tr><th scope="row">Workflow restart</th><td>64.30</td><td>53.10</td><td>0</td></tr>
+    </tbody>
+  </table>
+  <p>Times include Python startup. The two runs show that this example reproduced on one computer. They give limited evidence about speed on other systems.</p>
+  <p>Each run used zero model calls and incurred zero API charges. The replay did not measure setup time, human review, energy use, or hardware cost.</p>
+  <p>For a local or hosted model trial, keep the source, acceptance checks, and permissions fixed. Record the exact model and runtime or provider version, prompt, settings, and output. Compare pass rates, elapsed time, review effort, and actual charges. The recorded runs use fixed code, so they provide no measured model comparison.</p>
+</section>
+
+<section id="service">
+  <h2>Lab 1. Change a Python invoice service</h2>
+  <p>Keep the original API call valid. Add an optional discount in cents. Deduct the discount before tax, cap the taxable amount at zero, and round tax up at half a cent.</p>
+  <p>Use the example tax rate of 8.25%. The test contract requires exact results for large values and rejects negative amounts, fractions, and Boolean values.</p>
+  <pre><code>LAB_BASELINE=1 python3 -B -m unittest discover -s labs/service
+python3 -B -m unittest discover -s labs/service</code></pre>
+  <p>Expect exit 1 for the original service. Expect exit 0 and eight passing tests for the updated service. The original service had two incorrect totals and five unsupported discount cases in each trial.</p>
+  <ol>
+    <li><strong>Worked example.</strong> Apply the discount to a 300-cent subtotal. A discount of 100 cents leaves 200 cents taxable. The rate gives 16.5 cents in tax. The service rounds the tax to 17 cents and returns 217 cents. The original function returns 216 cents for the equivalent 200-cent subtotal.</li>
+    <li><strong>Partial task.</strong> Copy the baseline into a scratch file. Add the optional argument and the discount calculation. Make the discount tests pass first. Then replace the tax expression with integer arithmetic.</li>
+    <li><strong>Independent task.</strong> Add a case for a discount equal to the subtotal. Predict its result, run the test, and explain why the API still accepts calls with one argument.</li>
+    <li><strong>Recall.</strong> Which test distinguishes exact arithmetic from a float conversion at large values?</li>
+    <li><strong>Transfer.</strong> Write the acceptance checks for an order API with a delivery charge. State whether the charge enters the taxable amount before you write code.</li>
+    <li><strong>Delayed check.</strong> Tomorrow, recreate the 200-cent regression test from the rule. Compare your result with the original and updated functions.</li>
+  </ol>
+  <details>
+    <summary>Check your answers</summary>
+    <p>Tax in cents equals (taxable cents × 825 + 5,000) divided by 10,000 with integer floor division. A discount equal to the subtotal gives zero. The large-value test supplies 10²⁰ + 200 cents and expects 108,250,000,000,000,000,217 cents.</p>
+  </details>
+  <p>Files <a href="labs/service/baseline.py">original service</a>, <a href="labs/service/service.py">updated service</a>, <a href="labs/service/test_service.py">tests</a>. See <a href="engineering.html">Engineering</a>.</p>
+</section>
+
+<section id="benchmark">
+  <h2>Lab 2. Test a classifier under a data shift</h2>
+  <p>Fit a one-threshold sensor rule on 200 training rows per seed. Evaluate it on 100 ordinary test rows and 100 shifted test rows. Use seeds 7, 19, and 43.</p>
+  <p>Use the training majority label as the baseline. The full rule uses the badge near the threshold and the sensor elsewhere. The ablation removes the badge and applies the same fitted sensor threshold everywhere.</p>
+  <p>The generator makes the badge match the label with probability 0.96 on the training and ordinary test splits. It uses probability 0.12 on the shifted split. The sensor generator stays the same.</p>
+  <p>The checks defined before the run require three results on each seed. The full rule must beat the ablation on the ordinary split. The ablation must beat both alternatives on the shifted split.</p>
+  <pre><code>python3 -B -m unittest discover -s labs/benchmark
+python3 -B labs/benchmark/benchmark.py --out individual-output/benchmark</code></pre>
+  <table>
+    <caption>Correct predictions out of 100 per test split</caption>
+    <thead><tr><th scope="col">Seed</th><th scope="col">Split</th><th scope="col">Majority</th><th scope="col">Full</th><th scope="col">Sensor only</th></tr></thead>
+    <tbody>
+      <tr><td>7</td><td>Ordinary</td><td>44</td><td>97</td><td>86</td></tr>
+      <tr><td>7</td><td>Shift</td><td>49</td><td>30</td><td>84</td></tr>
+      <tr><td>19</td><td>Ordinary</td><td>52</td><td>98</td><td>85</td></tr>
+      <tr><td>19</td><td>Shift</td><td>48</td><td>31</td><td>83</td></tr>
+      <tr><td>43</td><td>Ordinary</td><td>51</td><td>95</td><td>80</td></tr>
+      <tr><td>43</td><td>Shift</td><td>47</td><td>25</td><td>82</td></tr>
+    </tbody>
+  </table>
+  <p>Both trials met all checks. The full rule scored 290/300 on the ordinary split and 86/300 on the shifted split. The sensor rule scored 251/300 and 249/300.</p>
+  <p>The benchmark measures accuracy under one deliberate shift in synthetic data. The three seeds provide a check on repeatability. They do not establish confidence intervals or performance on real data.</p>
+  <ol>
+    <li><strong>Worked example.</strong> For seed 7, removal of the badge costs 11 correct predictions on ordinary data and gains 54 on shifted data.</li>
+    <li><strong>Partial task.</strong> Filter <code>errors.csv</code> for model <code>full</code> and split <code>shift</code>. Group the records by seed. Check that each count equals 100 minus its score.</li>
+    <li><strong>Independent task.</strong> Choose a new seed before you run it. Record your rule and success criterion before you inspect the result.</li>
+    <li><strong>Recall.</strong> Which rows fit the threshold? Which rows estimate the effect of the shift?</li>
+    <li><strong>Transfer.</strong> For a ticket classifier, name one temporary signal. Make a split where that signal changes but the label definition stays fixed.</li>
+    <li><strong>Delayed check.</strong> Next week, derive one accuracy from the error records without the results table. Verify it against <code>metrics.json</code>.</li>
+  </ol>
+  <details>
+    <summary>Check your answers</summary>
+    <p>The full rule made 70, 69, and 75 shifted errors. The training rows fit the threshold. The ordinary and shifted held-out rows show the effect of the shift at a fixed threshold.</p>
+  </details>
+  <p>Files <a href="labs/benchmark/benchmark.py">generator and benchmark</a>, <a href="labs/benchmark/test_benchmark.py">test</a>, <a href="labs/evidence/trial-1/benchmark/data.csv">data</a>, <a href="labs/evidence/trial-1/benchmark/metrics.json">metrics</a>, <a href="labs/evidence/trial-1/benchmark/errors.csv">error records</a>. See <a href="research.html">Research</a>.</p>
+</section>
+
+<section id="report">
+  <h2>Lab 3. Prepare a support queue report</h2>
+  <p>Use the supplied CSV as the source. Count open requests and flag each open request at least seven days old. Cite the source row IDs beside every count. Stop at a local draft for human review.</p>
+  <pre><code>python3 -B -m unittest discover -s labs/report
+python3 -B labs/report/workflow.py labs/report/requests.csv --out individual-output/report</code></pre>
+  <p>Inspect <code>draft.md</code> and <code>state.json</code> in the output directory. Reuse the command with the same output path to check for a no-change restart.</p>
+  <p>Both trials reported four open requests and three that met the age rule. The report cites R01, R03, R04, and R05 for the first count. It cites R04, R01, and R05 for the second.</p>
+  <p>The verification checks require correct counts, a source citation for each count, exclusion of a closed request, a review marker, and an unchanged draft on restart. The workflow tests cover these checks and the recovery cases below.</p>
+  <ol>
+    <li><strong>Worked example.</strong> R05 has status open and age seven. Include it in both counts. R06 has age nine and status closed. Exclude it from both counts.</li>
+    <li><strong>Partial task.</strong> Copy the source CSV. Add an open request at age six. Predict the counts and produce a draft in a new output directory.</li>
+    <li><strong>Independent task.</strong> Add a sorted category subtotal to the draft. Cite the row IDs behind it. Verify that the sum matches the open count.</li>
+    <li><strong>Recall.</strong> Which field tells the reviewer where to look for the source of each claim?</li>
+    <li><strong>Transfer.</strong> Draft a stock review from a local inventory file. Choose a threshold and cite a source row for each exception.</li>
+    <li><strong>Delayed check.</strong> Tomorrow, review the draft from a fresh run. Check each source row and one item the report excludes.</li>
+  </ol>
+  <details>
+    <summary>Check your answers</summary>
+    <p>The extra six-day request gives five open requests and three that meet the age rule. Each citation uses the CSV <code>id</code> field.</p>
+  </details>
+  <p>Files <a href="labs/report/requests.csv">synthetic source</a>, <a href="labs/evidence/trial-1/report/draft.md">review draft</a>, <a href="labs/evidence/trial-1/report/state.json">checkpoint</a>. See <a href="business.html">Business</a>.</p>
+</section>
+
+<section id="loop">
+  <h2>Reference workflow loop</h2>
+  <p>The report workflow is a typed state machine with no model calls. A Python dataclass holds the task state. Two typed tool interfaces accept a source reader and a draft writer. The stage determines the next operation. A model could propose an action, but the policy would still check its arguments, budget and permissions.</p>
+  <table>
+    <caption>Task stages and completion checks</caption>
+    <thead><tr><th scope="col">Stage</th><th scope="col">Action</th><th scope="col">Next stage</th></tr></thead>
+    <tbody>
+      <tr><th scope="row"><code>read</code></th><td>Validate and extract the local source rows.</td><td><code>draft</code> with validated rows in the checkpoint.</td></tr>
+      <tr><th scope="row"><code>draft</code></th><td>Render the report and verify its exact content on disk.</td><td><code>review</code> after successful verification.</td></tr>
+      <tr><th scope="row"><code>review</code></th><td>Stop for a human. Verify the draft on restart.</td><td><code>draft</code> if the draft needs repair and budget remains.</td></tr>
+      <tr><th scope="row"><code>failed</code></th><td>Stop and retain the diagnostic events.</td><td>Terminal for that checkpoint.</td></tr>
+    </tbody>
+  </table>
+  <p>The loop caps inputs at 16,384 bytes and 100 rows. It allows at most four tool calls and one retry per task. It saves the incremented call count before each tool call.</p>
+  <p>The task fingerprint binds the checkpoint to the input bytes and recipe version. The writer replaces the output file atomically. If a crash follows the write, the restart checks the existing file before it attempts another write.</p>
+  <p>A successful restart with an intact draft adds zero calls and makes no file change. The normal run uses two calls. A run with one injected transient read failure uses three calls and one retry.</p>
+  <p>Eight tests passed in each trial. They cover draft quality, a transient failure, a persistent failure, a crash after write, a missing draft or invalid UTF-8 bytes, a silent writer, invalid or changed input, and excess source size.</p>
+  <p>Run one process per output directory. The local checkpoint is trusted code input. The loop has no concurrent writer lock, hard timeout for a hung tool, or external delivery step.</p>
+  <ol>
+    <li><strong>Worked example.</strong> The crash test stops execution after the writer saves the draft. The next run reads the prior checkpoint, verifies the draft, and reaches review without another write.</li>
+    <li><strong>Partial task.</strong> Read the transient-failure test. Implement a writer stub that fails once, then succeeds. Check the final stage, retry count, and artifact content.</li>
+    <li><strong>Independent task.</strong> Define a test for a write that reports success but leaves truncated content. Run it and check that the workflow does not reach review.</li>
+    <li><strong>Recall.</strong> What must be true on disk before the loop reaches review?</li>
+    <li><strong>Transfer.</strong> Design a checkpoint and completion test for a dataset export. Identify the human decision before any delivery step.</li>
+    <li><strong>Delayed check.</strong> Next week, draw the four stages from memory. Predict the result of two consecutive transient failures.</li>
+  </ol>
+  <details>
+    <summary>Check your answers</summary>
+    <p>The draft must exist and match the exact rendered content. Two consecutive tool failures end the task at <code>failed</code>. The first consumes the only retry.</p>
+  </details>
+  <p>Files <a href="labs/report/workflow.py">typed workflow</a>, <a href="labs/report/test_workflow.py">fault tests</a>. See <a href="foundations.html">Foundations</a>.</p>
+</section>

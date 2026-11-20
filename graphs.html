@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Project graphs | AI engineering field guide</title><link rel="stylesheet" href="assets/guide.css">
+<script defer src="assets/search-index.js"></script><script defer src="assets/guide.js"></script><script defer src="assets/visuals.js"></script><script defer src="assets/study.js"></script></head>
+<body class="page-graphs"><a class="skip" href="#main">Skip to content</a>
+<header class="mast"><div class="mast-inner"><a class="wordmark" href="index.html">Engineering field guide</a>
+<nav class="mast-links" aria-label="Shortcuts"><a href="labs.html">Labs</a><a href="sources.html">Sources</a><a href="#find">Search ↓</a></nav></div></header>
+<div class="layout"><aside class="rail"><nav aria-label="Chapters"><div class="nav-group"><p>Study</p><a href="index.html">Start here</a><a href="paths.html">Learning paths</a><a href="foundations.html">Foundations</a><a href="cases.html">Practitioner cases</a><a href="fieldnotes.html">Practitioner field notes</a></div><div class="nav-group"><p>Evidence</p><a href="usage.html">How labs use tokens</a><a href="graphs.html" aria-current="page">Project graphs</a><a href="sources.html">Source library</a><a href="audit.html">Audit and open questions</a></div><div class="nav-group"><p>Practice</p><a href="engineering.html">Production engineering</a><a href="business.html">Business workflows</a><a href="research.html">Research workflows</a><a href="labs.html">Practical labs</a></div><div class="nav-group"><p>Reference</p><a href="products.html">Products and versions</a><a href="tools.html">Tool tutorials</a><a href="resources.html">Resource catalog</a><a href="prompts.html">Prompt library</a><a href="glossary.html">Glossary</a></div></nav></aside>
+<div class="reading"><details id="navigation"><summary>Browse chapters</summary><nav aria-label="Mobile chapters"><div class="nav-group"><p>Study</p><a href="index.html">Start here</a><a href="paths.html">Learning paths</a><a href="foundations.html">Foundations</a><a href="cases.html">Practitioner cases</a><a href="fieldnotes.html">Practitioner field notes</a></div><div class="nav-group"><p>Evidence</p><a href="usage.html">How labs use tokens</a><a href="graphs.html" aria-current="page">Project graphs</a><a href="sources.html">Source library</a><a href="audit.html">Audit and open questions</a></div><div class="nav-group"><p>Practice</p><a href="engineering.html">Production engineering</a><a href="business.html">Business workflows</a><a href="research.html">Research workflows</a><a href="labs.html">Practical labs</a></div><div class="nav-group"><p>Reference</p><a href="products.html">Products and versions</a><a href="tools.html">Tool tutorials</a><a href="resources.html">Resource catalog</a><a href="prompts.html">Prompt library</a><a href="glossary.html">Glossary</a></div></nav></details>
+<main id="main" tabindex="-1"><nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Guide</a><span>/</span>Evidence<span>/</span>Project graphs</nav>
+<div class="title"><h1>Trace the dependencies</h1><p class="deck">See how a requirement becomes a lesson, an experiment and a checkable claim.</p></div>
+<section id="graphs">
+<h2 id="topic-technical-graphs">Technical graphs</h2>
+<p>Each graph has a text table with the same nodes and links. The arrows show dependency, evidence support, or learning order.</p>
+<p><a href="paths.html#quick">Choose a five minute route</a> · <a href="paths.html#standard">Choose a standard route</a> · <a href="paths.html#deep">Choose a deep route</a></p>
+
+<section id="task-graph">
+<h3 id="topic-task-dependencies">Task dependencies</h3>
+<p>Confirm identity and scope first. Run experiments and the site work in parallel only when their inputs stay fixed. Integrate, audit, then retest the combined result.</p>
+<svg viewBox="0 0 760 330" role="img" aria-labelledby="task-title task-desc">
+<title id="task-title">Task dependency graph</title><desc id="task-desc">Identity leads to research. Research leads to two parallel branches, experiments and site. Both feed integration, then audit, then retest.</desc>
+<defs><marker id="task-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#b9e6ae"/></marker></defs>
+<rect x="0" y="0" width="100%" height="100%" fill="#000000"/><g fill="#000000" stroke="#b9e6ae" stroke-width="2" font-family="sans-serif" font-size="15" text-anchor="middle">
+<rect x="25" y="130" width="105" height="48"/><text x="77" y="159" fill="#ffffff" stroke="none">Identity</text>
+<rect x="180" y="130" width="105" height="48"/><text x="232" y="159" fill="#ffffff" stroke="none">Research</text>
+<rect x="340" y="55" width="130" height="48"/><text x="405" y="84" fill="#ffffff" stroke="none">Experiments</text>
+<rect x="340" y="205" width="130" height="48"/><text x="405" y="234" fill="#ffffff" stroke="none">Site</text>
+<rect x="530" y="130" width="105" height="48"/><text x="582" y="159" fill="#ffffff" stroke="none">Integration</text>
+<rect x="660" y="70" width="80" height="48"/><text x="700" y="99" fill="#ffffff" stroke="none">Audit</text>
+<rect x="660" y="210" width="80" height="48"/><text x="700" y="239" fill="#ffffff" stroke="none">Retest</text>
+</g>
+<g fill="none" stroke="#b9e6ae" stroke-width="2" marker-end="url(#task-arrow)"><path d="M130 154 H180"/><path d="M285 145 L340 84"/><path d="M285 162 L340 224"/><path d="M470 80 L530 142"/><path d="M470 228 L530 166"/><path d="M635 145 L660 108"/><path d="M700 118 V210"/></g>
+</svg>
+<div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table><caption>Task nodes and dependency edges</caption><thead><tr><th>From</th><th>Edge</th><th>To</th><th>Record or check</th></tr></thead><tbody>
+<tr><td>Identity</td><td>defines entity and scope for</td><td>Research</td><td><a href="cases.html">Identity cases</a> and their source rows.</td></tr>
+<tr><td>Research</td><td>sets evidence and acceptance inputs for</td><td>Experiments</td><td><a href="research.html">Research method</a> and <a href="labs.html#benchmark">benchmark protocol</a>.</td></tr>
+<tr><td>Research</td><td>sets page claims and citations for</td><td>Site</td><td><a href="resources.html">Catalog and source records</a>.</td></tr>
+<tr><td>Experiments</td><td>and Site provide separate outputs to</td><td>Integration</td><td><a href="labs/evidence/runs.json">Replay commands and hashes</a>.</td></tr>
+<tr><td>Integration</td><td>creates a combined revision for</td><td>Audit</td><td>Check linked fragments and run <a href="scripts/verify.py">guide verification</a>.</td></tr>
+<tr><td>Audit</td><td>lists findings that require</td><td>Retest</td><td>Rerun checks after any repair. Local evidence: <a href="labs/evidence/trial-1/benchmark/metrics.json">trial 1 metrics</a>, <a href="labs/evidence/trial-2/benchmark/metrics.json">trial 2 metrics</a>.</td></tr>
+</tbody></table></div>
+<details><summary>Open folding task map</summary><div data-markmap="task-dependencies"></div><p><a href="assets/markmaps/task-dependencies.md" download>Download the task map source</a></p></details>
+<p>Parallel work is safe only while experiment inputs and site source claims remain independent. Recheck all links after integration. A passing isolated branch does not prove the combined page or code works.</p>
+</section>
+
+<section id="evidence-graph">
+<h3 id="topic-evidence-and-claims">Evidence and claims</h3>
+<p>Read each edge as a specific relation. Source evidence supports method claims. Lab records support observed results. Contradictions narrow claims when evidence does not support a broader conclusion.</p><figure class="learning-figure"><img src="assets/figures/evidence-graph.svg" alt="Source records, lab observations, and contradictions support bounded recommendations." loading="lazy"><figcaption>Evidence graph <span class="figure-links"><a href="assets/figures/evidence-graph.mmd" download>Mermaid source</a> · <a href="assets/figures/evidence-graph.svg">Full-size figure</a></span></figcaption></figure>
+<svg viewBox="0 0 760 430" role="img" aria-labelledby="evidence-title evidence-desc">
+<title id="evidence-title">Evidence and claim graph</title><desc id="evidence-desc">Three source and lab chains lead to recommendations. A local mismatch limits an overbroad claim.</desc>
+<defs><marker id="evidence-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#b9e6ae"/></marker></defs>
+<rect x="0" y="0" width="100%" height="100%" fill="#000000"/><g fill="#000000" stroke="#b9e6ae" stroke-width="2" font-family="sans-serif" font-size="14" text-anchor="middle">
+<rect x="20" y="35" width="135" height="50"/><text x="87" y="65" fill="#ffffff" stroke="none">E03 eval method</text>
+<rect x="210" y="35" width="160" height="50"/><text x="290" y="56" fill="#ffffff" stroke="none">Benchmark rows</text><text x="290" y="74" fill="#ffffff" stroke="none">3 seeds × 2 splits</text>
+<rect x="430" y="35" width="145" height="50"/><text x="502" y="65" fill="#ffffff" stroke="none">Observed shift gap</text>
+<rect x="625" y="35" width="120" height="50"/><text x="685" y="56" fill="#ffffff" stroke="none">Test shift</text><text x="685" y="74" fill="#ffffff" stroke="none">before use</text>
+<rect x="20" y="155" width="135" height="50"/><text x="87" y="185" fill="#ffffff" stroke="none">E01 harness</text>
+<rect x="210" y="155" width="160" height="50"/><text x="290" y="176" fill="#ffffff" stroke="none">Workflow tests</text><text x="290" y="194" fill="#ffffff" stroke="none">fault cases</text>
+<rect x="430" y="155" width="145" height="50"/><text x="502" y="176" fill="#ffffff" stroke="none">Checkpoint and</text><text x="502" y="194" fill="#ffffff" stroke="none">verified draft</text>
+<rect x="625" y="155" width="120" height="50"/><text x="685" y="176" fill="#ffffff" stroke="none">Verify state</text><text x="685" y="194" fill="#ffffff" stroke="none">before retry</text>
+<rect x="20" y="275" width="135" height="50"/><text x="87" y="305" fill="#ffffff" stroke="none">E07 canary</text>
+<rect x="210" y="275" width="160" height="50"/><text x="290" y="296" fill="#ffffff" stroke="none">Service tests</text><text x="290" y="314" fill="#ffffff" stroke="none">exact cents</text>
+<rect x="430" y="275" width="145" height="50"/><text x="502" y="296" fill="#ffffff" stroke="none">216 vs 217</text><text x="502" y="314" fill="#ffffff" stroke="none">rounding mismatch</text>
+<rect x="625" y="275" width="120" height="50"/><text x="685" y="296" fill="#ffffff" stroke="none">Keep exact</text><text x="685" y="314" fill="#ffffff" stroke="none">integer rule</text>
+</g>
+<g fill="none" stroke="#b9e6ae" stroke-width="2" marker-end="url(#evidence-arrow)"><path d="M155 60 H210"/><path d="M370 60 H430"/><path d="M575 60 H625"/><path d="M155 180 H210"/><path d="M370 180 H430"/><path d="M575 180 H625"/><path d="M155 300 H210"/><path d="M370 300 H430"/><path d="M575 300 H625"/></g>
+<text x="382" y="400" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#ffffff">Source record → local observation → bounded recommendation</text>
+</svg>
+<div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table><caption>Evidence edges and linked records</caption><thead><tr><th>From</th><th>Relation</th><th>To</th><th>What the record supports</th></tr></thead><tbody>
+<tr><td><a href="sources.html#E03">E03</a></td><td>describes evaluation design and limits</td><td><a href="labs/evidence/runs.json">Benchmark replay record</a></td><td>Replay ran fixed seeds and preserved outputs. See <a href="labs/evidence/trial-1/benchmark/metrics.json">trial 1 metrics</a> and <a href="labs/evidence/trial-2/benchmark/metrics.json">trial 2 metrics</a>.</td></tr>
+<tr><td>Benchmark metrics</td><td>show full rule excels on ordinary rows but falls on shifted rows</td><td>Test for shift sensitivity</td><td>Full totals: 290/300 ordinary, 86/300 shifted. Sensor-only totals: 251/300 and 249/300. Source rows: <a href="labs/evidence/trial-1/benchmark/errors.csv">trial 1 errors</a>, <a href="labs/evidence/trial-2/benchmark/errors.csv">trial 2 errors</a>.</td></tr>
+<tr><td><a href="sources.html#E01">E01</a> and <a href="sources.html#E02">E02</a></td><td>describe harness and recovery practices</td><td><a href="labs/report/workflow.py">Local workflow</a></td><td>State and verified output support safe restart in this synthetic workflow. Check <a href="labs/evidence/trial-1/report/state.json">trial 1 state</a> and <a href="labs/evidence/trial-2/report/state.json">trial 2 state</a>.</td></tr>
+<tr><td><a href="labs/report/requests.csv">Queue source CSV</a></td><td>contradicts counting every old row as open</td><td><a href="labs/evidence/trial-1/report/draft.md">Queue draft</a></td><td>R06 is nine days old but closed. The draft excludes it. Verify against <a href="labs/evidence/trial-2/report/draft.md">trial 2 draft</a>.</td></tr>
+<tr><td><a href="sources.html#E07">E07</a></td><td>describes release comparison signals</td><td><a href="labs/service/test_service.py">Invoice service tests</a></td><td>Local tests check exact behavior. The source does not set a production release threshold.</td></tr>
+<tr><td><a href="labs/service/baseline.py">Baseline code</a></td><td>returns 216 cents where acceptance requires 217</td><td><a href="labs/service/service.py">Updated implementation and regression test</a></td><td>Local mismatch supports exact integer rounding in this service. It does not measure model quality.</td></tr>
+</tbody></table></div>
+<details><summary>Open folding evidence map</summary><div data-markmap="evidence-chain"></div><p><a href="assets/markmaps/evidence-chain.md" download>Download the evidence map source</a></p></details>
+<h4>Claim to source links</h4>
+<div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table><caption>Important recommendations and their source records</caption><thead><tr><th>Recommendation</th><th>Source</th><th>Local check</th><th>Limit</th></tr></thead><tbody>
+<tr><td>Map the repository before edits</td><td><a href="sources.html#E01">E01</a></td><td><a href="engineering.html#orientation">Engineering orientation</a></td><td>Practice described by source, not a measured gain for this guide.</td></tr>
+<tr><td>Keep progress state for long tasks</td><td><a href="sources.html#E02">E02</a></td><td><a href="labs.html#loop">Checkpoint loop</a></td><td>Local workflow has no concurrent writer lock or hung-tool timeout.</td></tr>
+<tr><td>Define evaluation before interpreting scores</td><td><a href="sources.html#E03">E03</a></td><td><a href="labs.html#benchmark">Synthetic benchmark</a></td><td>Three seeds do not establish real-world performance.</td></tr>
+<tr><td>Compare release signals before broad rollout</td><td><a href="sources.html#E07">E07</a></td><td><a href="engineering.html#release">Release section</a></td><td>Set thresholds from product risk and local data.</td></tr>
+<tr><td>Use parallel workers only for independent outputs</td><td><a href="sources.html#E09">E09</a></td><td><a href="#task-graph">Task dependency graph</a></td><td>Coordination can raise aggregate token use.</td></tr>
+<tr><td>Prefer a workflow when steps are known</td><td><a href="sources.html#E11">E11</a></td><td><a href="labs.html#loop">Typed report workflow</a></td><td>The deterministic lab does not measure live model behavior.</td></tr>
+</tbody></table></div>
+<p>Other engineering sources inform work design and cost. <a href="sources.html#E04">E04</a> and <a href="sources.html#E05">E05</a> concern developer productivity measurement. <a href="sources.html#E06">E06</a> documents Git worktrees. <a href="sources.html#E08">E08</a> covers prompt caching. <a href="sources.html#E10">E10</a> describes long-running application harness design. <a href="sources.html#E12">E12</a> reports a parallel compiler project. These sources do not establish the cost or speed of this guide's labs.</p>
+</section>
+
+<section id="learning-graph">
+<h3 id="topic-learning-prerequisites-and-outcomes">Learning prerequisites and outcomes</h3>
+<p>Read the rule, inspect a worked artifact, then retrieve it from memory and transfer it to a new case. Each route links back to the matching graph and lab.</p><figure class="learning-figure"><img src="assets/figures/learning-map.svg" alt="Prerequisites lead to topic practice, retrieval, transfer, and an inspectable outcome." loading="lazy"><figcaption>Learning path map <span class="figure-links"><a href="assets/figures/learning-map.mmd" download>Mermaid source</a> · <a href="assets/figures/learning-map.svg">Full-size figure</a></span></figcaption></figure>
+<svg viewBox="0 0 760 300" role="img" aria-labelledby="learn-title learn-desc">
+<title id="learn-title">Learning path graph</title><desc id="learn-desc">Foundations lead to one of three topic paths: engineering, research, or business. Each leads to practice, retrieval, and transfer outcomes.</desc>
+<defs><marker id="learn-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#b9e6ae"/></marker></defs>
+<rect x="0" y="0" width="100%" height="100%" fill="#000000"/><g fill="#000000" stroke="#b9e6ae" stroke-width="2" font-family="sans-serif" font-size="14" text-anchor="middle">
+<rect x="20" y="120" width="115" height="48"/><text x="77" y="149" fill="#ffffff" stroke="none">Foundations</text>
+<rect x="210" y="25" width="120" height="48"/><text x="270" y="54" fill="#ffffff" stroke="none">Engineering</text>
+<rect x="210" y="120" width="120" height="48"/><text x="270" y="149" fill="#ffffff" stroke="none">Research</text>
+<rect x="210" y="215" width="120" height="48"/><text x="270" y="244" fill="#ffffff" stroke="none">Business</text>
+<rect x="425" y="120" width="115" height="48"/><text x="482" y="149" fill="#ffffff" stroke="none">Practice</text>
+<rect x="610" y="50" width="125" height="48"/><text x="672" y="79" fill="#ffffff" stroke="none">Retrieval</text>
+<rect x="610" y="190" width="125" height="48"/><text x="672" y="219" fill="#ffffff" stroke="none">Transfer</text>
+</g>
+<g fill="none" stroke="#b9e6ae" stroke-width="2" marker-end="url(#learn-arrow)"><path d="M135 144 L210 49"/><path d="M135 144 H210"/><path d="M135 144 L210 239"/><path d="M330 49 L425 133"/><path d="M330 144 H425"/><path d="M330 239 L425 156"/><path d="M540 132 L610 86"/><path d="M540 156 L610 203"/></g>
+</svg>
+<div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table><caption>Prerequisites, practice, and outcomes</caption><thead><tr><th>Prerequisite</th><th>Next step</th><th>Practice artifact</th><th>Retrieval or transfer outcome</th></tr></thead><tbody>
+<tr><td><a href="foundations.html">Foundations: tools, state, checks</a></td><td><a href="engineering.html">Engineering path</a></td><td><a href="labs.html#service">Invoice regression</a></td><td>Retrieve the rounding rule; transfer it to a delivery-fee contract.</td></tr>
+<tr><td><a href="foundations.html#decision">Single worker or team</a></td><td><a href="research.html">Research path</a></td><td><a href="labs.html#benchmark">Badge shift comparison</a></td><td>Retrieve the split and baseline; transfer to a ticket classifier with a changed shortcut signal.</td></tr>
+<tr><td><a href="foundations.html#components">State and stop rules</a></td><td><a href="business.html">Business path</a></td><td><a href="labs.html#report">Support queue draft</a></td><td>Retrieve the open and aged filters; transfer to inventory exceptions with row citations.</td></tr>
+<tr><td>Complete one practice task</td><td>Test recall without notes</td><td><a href="prompts.html#test-design">Test design prompt</a> or <a href="prompts.html#handoff">Handoff prompt</a></td><td>Explain one rule, then apply it to new inputs.</td></tr>
+</tbody></table></div>
+<details><summary>Open folding learning map</summary><div data-markmap="learning-path"></div><p><a href="assets/markmaps/learning-path.md" download>Download the learning map source</a></p></details>
+<p><a href="paths.html#quick">Open the quick path</a> · <a href="paths.html#standard">Open the standard path</a> · <a href="paths.html#deep">Open the deep path</a></p>
+</section>
+</section>
+</main>
+<nav class="page-turn" aria-label="Adjacent chapters"><a href="glossary.html">← Glossary</a><a href="sources.html">Source library →</a></nav>
+<section id="find" class="find"><h2>Search the guide</h2><div class="search-fields"><label>Words or source ID<input id="guide-search" type="search" placeholder="Try checkpoint or Grok Bot" autocomplete="off"></label>
+<label>Section<select id="search-group"><option value="">All sections</option><option value="Study">Study</option><option value="Evidence">Evidence</option><option value="Practice">Practice</option><option value="Reference">Reference</option></select></label></div>
+<p id="search-status" role="status"></p><div id="search-results"></div><noscript>Use the chapter menu or your browser's Find command.</noscript></section>
+<footer><a href="audit.html">Methods and verification</a><a href="#main">Back to top ↑</a></footer></div></div></body></html>

@@ -1,0 +1,146 @@
+[
+  {
+    "seed": 7,
+    "split": "test",
+    "model": "majority",
+    "correct": 44,
+    "total": 100,
+    "threshold": null
+  },
+  {
+    "seed": 7,
+    "split": "test",
+    "model": "full",
+    "correct": 97,
+    "total": 100,
+    "threshold": null
+  },
+  {
+    "seed": 7,
+    "split": "test",
+    "model": "sensor",
+    "correct": 86,
+    "total": 100,
+    "threshold": 0.5
+  },
+  {
+    "seed": 7,
+    "split": "shift",
+    "model": "majority",
+    "correct": 49,
+    "total": 100,
+    "threshold": null
+  },
+  {
+    "seed": 7,
+    "split": "shift",
+    "model": "full",
+    "correct": 30,
+    "total": 100,
+    "threshold": null
+  },
+  {
+    "seed": 7,
+    "split": "shift",
+    "model": "sensor",
+    "correct": 84,
+    "total": 100,
+    "threshold": 0.5
+  },
+  {
+    "seed": 19,
+    "split": "test",
+    "model": "majority",
+    "correct": 52,
+    "total": 100,
+    "threshold": null
+  },
+  {
+    "seed": 19,
+    "split": "test",
+    "model": "full",
+    "correct": 98,
+    "total": 100,
+    "threshold": null
+  },
+  {
+    "seed": 19,
+    "split": "test",
+    "model": "sensor",
+    "correct": 85,
+    "total": 100,
+    "threshold": 0.4
+  },
+  {
+    "seed": 19,
+    "split": "shift",
+    "model": "majority",
+    "correct": 48,
+    "total": 100,
+    "threshold": null
+  },
+  {
+    "seed": 19,
+    "split": "shift",
+    "model": "full",
+    "correct": 31,
+    "total": 100,
+    "threshold": null
+  },
+  {
+    "seed": 19,
+    "split": "shift",
+    "model": "sensor",
+    "correct": 83,
+    "total": 100,
+    "threshold": 0.4
+  },
+  {
+    "seed": 43,
+    "split": "test",
+    "model": "majority",
+    "correct": 51,
+    "total": 100,
+    "threshold": null
+  },
+  {
+    "seed": 43,
+    "split": "test",
+    "model": "full",
+    "correct": 95,
+    "total": 100,
+    "threshold": null
+  },
+  {
+    "seed": 43,
+    "split": "test",
+    "model": "sensor",
+    "correct": 80,
+    "total": 100,
+    "threshold": 0.85
+  },
+  {
+    "seed": 43,
+    "split": "shift",
+    "model": "majority",
+    "correct": 47,
+    "total": 100,
+    "threshold": null
+  },
+  {
+    "seed": 43,
+    "split": "shift",
+    "model": "full",
+    "correct": 25,
+    "total": 100,
+    "threshold": null
+  },
+  {
+    "seed": 43,
+    "split": "shift",
+    "model": "sensor",
+    "correct": 82,
+    "total": 100,
+    "threshold": 0.85
+  }
+]

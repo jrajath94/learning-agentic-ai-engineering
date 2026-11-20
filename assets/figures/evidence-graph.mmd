@@ -1,0 +1,8 @@
+%%{init: {"theme":"base","themeVariables":{"background":"#000000","primaryColor":"#000000","primaryTextColor":"#ffffff","primaryBorderColor":"#b9e6ae","lineColor":"#b9e6ae","secondaryColor":"#000000","tertiaryColor":"#000000","mainBkg":"#000000","nodeBorder":"#b9e6ae","clusterBkg":"#000000","clusterBorder":"#b9e6ae","titleColor":"#ffffff","edgeLabelBackground":"#000000","fontFamily":"Arial, sans-serif"}}}%%
+flowchart TB
+ E03[E03 evaluation method] -->|informs design| L[Benchmark records]
+ L -->|show split difference| C[Shift sensitivity claim]
+ E01[E01 harness source] -->|informs recovery| W[Local workflow tests]
+ W -->|verify artifact| R[Safe restart recommendation]
+ CSV[Queue source rows] -->|contradict| X[Count all old rows]
+ CSV -->|support filtered count| D[Review draft]

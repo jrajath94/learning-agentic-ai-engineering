@@ -1,0 +1,46 @@
+[
+  {
+    "id": "O01",
+    "url": "https://podcasts.apple.com/us/podcast/grok-bot-make-a-1-person-company-with-agents/id1593424985?i=1000784916954",
+    "title": "Grok Bot: make a 1 person company with agents",
+    "author": "Billy Howell and Greg Isenberg, The Startup Ideas Podcast",
+    "type": "Firsthand operator interview and publisher chapter notes",
+    "date": "2026-08-21",
+    "version": "Grok Bot in August 2026, before 1.0",
+    "claims": "Howell describes research and sales agents, routines and a weekly local newsletter. The publisher lists chapter times.",
+    "limits": "The reported audience and operating results are the guest's account. Chapter markers indicate topics."
+  },
+  {
+    "id": "O02",
+    "url": "https://www.arlingtonbagel.com/authors/billy-howell",
+    "title": "Billy Howell's articles in The Arlington Bagel",
+    "author": "The Arlington Bagel",
+    "type": "Public output archive",
+    "date": "Not in source",
+    "version": "Archive includes August and September 2026 editions",
+    "claims": "The publication and named issues exist. Topics include local events and businesses.",
+    "limits": "A published issue cannot establish which tasks a bot completed or who approved publication."
+  },
+  {
+    "id": "O03",
+    "url": "https://readpodcast.ai/en/youtube/greg-isenberg-cUCPjNBjflYl0-HQtUvOx0Ibw/making-dollardollardollar-with-grok-bot-vqQluNEfSVHk",
+    "title": "Making $$$ with Grok Bot",
+    "author": "ReadPodcast, summarizing Greg Isenberg's interview with Billy Howell",
+    "type": "Third-party episode summary",
+    "date": "2026-08-21 (episode)",
+    "version": "Same interview as O01",
+    "claims": "The episode summary describes research entries in Notion, a formatting routine and a sales worklist.",
+    "limits": "Secondary summary. Treat service spellings and details as approximate. It shares O01's origin."
+  },
+  {
+    "id": "O04",
+    "url": "https://x.com/poteto/status/2123159537016533493",
+    "title": "Automate Anything with Grok Bot",
+    "author": "Lauren Tan (@poteto)",
+    "type": "Firsthand public post, excerpt inspected via mirror",
+    "date": "2026-11-18",
+    "version": "Grok Bot 1.0 period",
+    "claims": "Tan describes an approach that starts by eliciting the goal and the process.",
+    "limits": "Direct X access varies. The observed mirror preview does not verify the full article, author metrics or all outcomes."
+  }
+]

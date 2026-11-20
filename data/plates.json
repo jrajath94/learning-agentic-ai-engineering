@@ -1,0 +1,135 @@
+[
+  {
+    "page": "cases",
+    "anchor": "practitioners",
+    "src": "assets/plates/practitioner-handoff.svg",
+    "alt": "Four stages: observe an input and failure, reproduce with a failing test, repair with a small diff, and review the final revision.",
+    "caption": "A bounded handoff retains the original failure and tests the final revision. See C06 and C16."
+  },
+  {
+    "page": "products",
+    "anchor": null,
+    "src": "assets/plates/product-records.svg",
+    "alt": "Two separate records: Dots has a launch notice dated 29 September 2026. Codex CLI has living documentation and separately dated releases.",
+    "caption": "Dots and Codex CLI are distinct products with separate records. See P03 and P06."
+  },
+  {
+    "page": "resources",
+    "anchor": "layers",
+    "src": "assets/plates/resource-layers.svg",
+    "alt": "Four layers to inspect: instruction scope, skill or plugin files and version, MCP server tools and access, and source content as evidence.",
+    "caption": "Review each layer before use. Source content supplies evidence and does not grant permission."
+  },
+  {
+    "page": "business",
+    "anchor": null,
+    "src": "assets/plates/business-branches.svg",
+    "alt": "A newsletter workflow has two paths. Research supports editorial review and an issue draft. Sales research supports a sponsor worklist and a human decision.",
+    "caption": "Howell describes research and sales agents for a local newsletter. Human review is a proposed boundary. See O01."
+  },
+  {
+    "page": "tools",
+    "anchor": null,
+    "src": "assets/plates/tool-access.svg",
+    "alt": "A matrix distinguishes file inspection, local report drafts, and publication. Each task requires a different access boundary.",
+    "caption": "Start with the smallest access needed for the task. A read tool and a write tool have different effects."
+  },
+  {
+    "page": "sources",
+    "anchor": null,
+    "src": "assets/plates/source-gaps.svg",
+    "alt": "A missing source leaves a claim unverified. Two reports that repeat one interview count as one evidence origin.",
+    "caption": "A missing citation and repeated coverage are different problems. Check the original source."
+  },
+  {
+    "page": "engineering",
+    "anchor": "verification",
+    "src": "assets/plates/revision-check.svg",
+    "alt": "A test fails on the original revision, passes on the candidate, and runs again on the final revision.",
+    "caption": "The reviewed revision must match the tested revision. Record any skipped checks."
+  },
+  {
+    "page": "audit",
+    "anchor": null,
+    "src": "assets/plates/audit-branch.svg",
+    "alt": "A claim and source enter an audit. If the source supports the claim, keep the citation. Otherwise, repair or remove the claim.",
+    "caption": "Compare each claim with the cited source. Record checks that remain incomplete."
+  },
+  {
+    "page": "products",
+    "anchor": "grok-bot",
+    "src": "assets/plates/grok-fixture.svg",
+    "alt": "Three inputs feed a launch brief: launch date, a missing QA owner, and pending approval.",
+    "caption": "The brief must preserve missing ownership and pending approval. No send is authorized."
+  },
+  {
+    "page": "products",
+    "anchor": "dots",
+    "src": "assets/plates/dots-baseline.svg",
+    "alt": "Codex CLI and Antigravity app versions have separate source records. Preserve the baseline if a source is unavailable.",
+    "caption": "Check the app version against the app changelog. Keep alpha releases separate."
+  },
+  {
+    "page": "products",
+    "anchor": "codex",
+    "src": "assets/plates/codex-total.svg",
+    "alt": "Two report inputs have expected totals: an empty list returns zero and 100 plus 250 returns 350.",
+    "caption": "Use both cases to check the local repair. Record the initial failure and final test results."
+  },
+  {
+    "page": "products",
+    "anchor": "gemini",
+    "src": "assets/plates/gemini-excerpts.svg",
+    "alt": "Two excerpts support a table of announcement dates, surfaces, and access. Unstated access is marked Not in source.",
+    "caption": "Compare the source text for each row. An announced rollout does not establish access for a particular account."
+  },
+  {
+    "page": "products",
+    "anchor": "antigravity",
+    "src": "assets/plates/antigravity-form.svg",
+    "alt": "A form check links labels to fields and checks whether keyboard focus is visible at two viewport widths.",
+    "caption": "Use the local preview to inspect both widths. Record viewport checks as pending if browser access fails."
+  },
+  {
+    "page": "products",
+    "anchor": "claude-duet",
+    "src": "assets/plates/duet-inbox.svg",
+    "alt": "A vendor request leads to a draft reply, a newsletter is informational, and a mock call becomes a brief entry.",
+    "caption": "Use synthetic messages and a sandbox mailbox. Stop before any external action."
+  },
+  {
+    "page": "cases",
+    "anchor": "tibot",
+    "src": "assets/plates/tibot-boundary.svg",
+    "alt": "Tan reports that Tibot filters mentions and keywords into a scheduled digest. She says she writes her own posts.",
+    "caption": "This describes Tan’s public account. Accuracy, cost, and complete configuration remain unverified. See C21."
+  },
+  {
+    "page": "prompts",
+    "anchor": "debugging",
+    "src": "assets/plates/prompt-annotation.svg",
+    "alt": "An annotated debug prompt names the failing command and revision, limits changes, requires repeat checks, and defines a stop condition.",
+    "caption": "Supply actual failure evidence. A vague request such as “fix it” cannot identify the behavior to preserve."
+  },
+  {
+    "page": "glossary",
+    "anchor": "glossary",
+    "src": "assets/plates/glossary-comparison.svg",
+    "alt": "A baseline and a candidate feed the same evaluation metric. Comparable inputs make the comparison meaningful.",
+    "caption": "A baseline provides a comparator. An evaluation metric states how the outputs are scored."
+  },
+  {
+    "page": "paths",
+    "anchor": "route-map",
+    "src": "assets/plates/study-routes.svg",
+    "alt": "Three study routes offer a quick workflow, standard practice and checks, or a deeper comparison and audit.",
+    "caption": "Choose the route that fits the outcome. Return to a shorter route when a prerequisite needs practice."
+  },
+  {
+    "page": "fieldnotes",
+    "anchor": "branched-review",
+    "src": "assets/plates/review-context.svg",
+    "alt": "One fixed diff feeds a fresh reviewer. A concrete finding returns to the author for a repair and rerun. A clean review goes to a human decision.",
+    "caption": "In this local adaptation, both branches start with the same diff. Each review finding must point to a line or a test."
+  }
+]

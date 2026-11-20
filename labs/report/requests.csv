@@ -1,0 +1,7 @@
+id,category,open_days,status
+R01,billing,8,open
+R02,access,2,closed
+R03,billing,4,open
+R04,access,12,open
+R05,shipping,7,open
+R06,shipping,9,closed

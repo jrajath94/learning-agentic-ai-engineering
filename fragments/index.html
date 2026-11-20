@@ -1,0 +1,17 @@
+<div class="home-intro">
+<div><p class="intro-text">A support worker times out after it writes a draft. On its next run, should it write another? Build a workflow that can answer from the record it left behind.</p>
+<div class="actions"><a class="button" href="labs.html#report">Run the report lab <span aria-hidden="true">↗</span></a><a href="paths.html">Choose a study route</a></div></div>
+<figure class="trace"><img src="assets/plates/restart-history.svg" width="400" height="232" alt="A timeout before a write leaves zero drafts. A timeout after a write leaves one."><figcaption><a href="#timeout-demo">Predict the recovery action ↓</a></figcaption></figure>
+</div>
+<section id="first-run"><h2>Get one result on your machine</h2><p>Extract the complete archive. Open <code>index.html</code> directly. To run the labs, open a terminal in the same folder and use Python 3.10 or later. The recorded runs use Python 3.14.7.</p>
+<pre><code>python3 -B labs/replay.py lab-output</code></pre><p>Use a fresh output directory for each replay. Read the <a href="labs.html">lab records</a> beside your output. The report and queue let you inspect what the program produced. The replay also checks an intentionally failing baseline.</p></section>
+<section id="questions"><h2>What do you need to do?</h2><div class="route-list">
+<a href="engineering.html"><span>Ship a change</span><small>Trace a defect through the service, tests, review and release.</small><b aria-hidden="true">↗</b></a>
+<a href="research.html"><span>Test a research claim</span><small>Fix the split, compare against a baseline and inspect where it fails.</small><b aria-hidden="true">↗</b></a>
+<a href="business.html"><span>Automate a report</span><small>Trace a business claim to its input and hand a draft to a reviewer.</small><b aria-hidden="true">↗</b></a>
+<a href="usage.html"><span>Understand token usage</span><small>Check the employee claim and replay a budget one model call at a time.</small><b aria-hidden="true">↗</b></a>
+<a href="fieldnotes.html"><span>Borrow a practitioner workflow</span><small>Read a firsthand account, inspect its artifact and try the inexpensive version.</small><b aria-hidden="true">↗</b></a>
+<a href="products.html"><span>Understand a product</span><small>Look up its identity, release, access rules and documented capabilities.</small><b aria-hidden="true">↗</b></a></div></section>
+<section id="diagnostic"><h2>Check your starting point</h2><p>A model says it fixed an issue. It shows a green test report from yesterday. What evidence would let you accept the change today?</p>
+<details><summary>Compare your answer</summary><p>Ask for the original failing input, the same test on the changed revision, and a check for a neighboring case. Ask what the test can miss. If you already do this, start with the <a href="labs.html#benchmark">benchmark</a>. If the revision or the check feels unclear, start with <a href="foundations.html">foundations</a>.</p></details></section>
+

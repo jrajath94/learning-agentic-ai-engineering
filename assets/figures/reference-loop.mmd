@@ -1,0 +1,11 @@
+%%{init: {"theme":"base","themeVariables":{"background":"#000000","primaryColor":"#000000","primaryTextColor":"#ffffff","primaryBorderColor":"#b9e6ae","lineColor":"#b9e6ae","secondaryColor":"#000000","tertiaryColor":"#000000","mainBkg":"#000000","nodeBorder":"#b9e6ae","clusterBkg":"#000000","clusterBorder":"#b9e6ae","titleColor":"#ffffff","edgeLabelBackground":"#000000","fontFamily":"Arial, sans-serif"}}}%%
+stateDiagram-v2
+ [*] --> Read
+ Read --> Draft: input valid
+ Draft --> Verify: writer returns
+ Verify --> Review: exact draft matches
+ Verify --> Draft: repair allowed
+ Read --> Failed: invalid input
+ Draft --> Failed: retry budget spent
+ Review --> [*]
+ Failed --> [*]

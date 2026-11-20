@@ -1,0 +1,134 @@
+[
+  {
+    "id": "E01",
+    "url": "https://openai.com/index/harness-engineering/",
+    "title": "Harness engineering: leveraging Codex in an agent-first world",
+    "author": "Ryan Lopopolo, OpenAI",
+    "type": "Firsthand engineering report",
+    "date": "2026-02-11",
+    "version": "Codex project described in February 2026",
+    "claims": "Use a small repository map and executable constraints for changes.",
+    "limits": "One team's experience. No controlled time comparison."
+  },
+  {
+    "id": "E02",
+    "url": "https://www.anthropic.com/research/effective-harnesses-for-long-running-agents",
+    "title": "Effective harnesses for long-running agents",
+    "author": "Anthropic Engineering",
+    "type": "Firsthand engineering report",
+    "date": "2025-11-26",
+    "version": "Claude Agent SDK experiment",
+    "claims": "A feature ledger and progress artifacts allowed subsequent sessions to resume work.",
+    "limits": "Application-specific trials. The report describes premature completion and context loss."
+  },
+  {
+    "id": "E03",
+    "url": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
+    "title": "Demystifying evals for AI agents",
+    "author": "Anthropic Engineering",
+    "type": "Engineering guidance",
+    "date": "2026-01-09",
+    "version": "January 2026 article",
+    "claims": "Assess both final state and trajectory. Different graders answer different questions.",
+    "limits": "A grader can fail even when the task succeeds. Check against human judgment."
+  },
+  {
+    "id": "E04",
+    "url": "https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/",
+    "title": "Measuring the impact of early-2025 AI on experienced open-source developer productivity",
+    "author": "Joel Becker, Nate Rush, Beth Barnes and David Rein, METR",
+    "type": "Randomized field study",
+    "date": "2025-07-10",
+    "version": "Early 2025 tools",
+    "claims": "Sixteen developers took 19% longer on average with AI available on tasks in their own projects.",
+    "limits": "246 tasks in mature repositories. Limited population, tools and time period."
+  },
+  {
+    "id": "E05",
+    "url": "https://metr.org/blog/2026-02-24-uplift-update/",
+    "title": "We are changing our developer productivity experiment design",
+    "author": "METR",
+    "type": "Follow-up and methods critique",
+    "date": "2026-02-24",
+    "version": "August 2025 follow-up study",
+    "claims": "Selection bias and concurrent work obscured later productivity estimates.",
+    "limits": "No reliable speedup estimate for current users."
+  },
+  {
+    "id": "E06",
+    "url": "https://git-scm.com/docs/git-worktree",
+    "title": "git-worktree",
+    "author": "Git project",
+    "type": "Reference manual",
+    "date": "Not in source",
+    "version": "Local command verified with Git 2.56.0",
+    "claims": "A linked worktree can check out a separate branch from the same repository.",
+    "limits": "Separate files do not isolate shared services, fixtures or ports."
+  },
+  {
+    "id": "E07",
+    "url": "https://sre.google/workbook/canarying-releases/",
+    "title": "Canarying releases",
+    "author": "Google, The Site Reliability Workbook",
+    "type": "Engineering handbook",
+    "date": "Not in source",
+    "version": "Chapter 16",
+    "claims": "Evaluate a small release population against a control before rollout.",
+    "limits": "Choice of signals, comparison group and duration depends on traffic."
+  },
+  {
+    "id": "E08",
+    "url": "https://openai.com/index/api-prompt-caching/",
+    "title": "Prompt caching in the API",
+    "author": "OpenAI",
+    "type": "Release announcement",
+    "date": "2024-10-01",
+    "version": "Launch-era OpenAI API",
+    "claims": "Reusing eligible input prefixes can lower processing time and input cost.",
+    "limits": "Launch prices and model eligibility are historical. No consumer application timing claim."
+  },
+  {
+    "id": "E09",
+    "url": "https://www.anthropic.com/research/multi-agent-research-system",
+    "title": "How we built our multi-agent research system",
+    "author": "Anthropic Engineering",
+    "type": "Firsthand engineering report",
+    "date": "2025-06-13",
+    "version": "Claude Research system described in June 2025",
+    "claims": "Parallel search can explore independent sources. The team reported substantially higher token use.",
+    "limits": "Vendor's workloads, tools and comparison conditions limit transfer."
+  },
+  {
+    "id": "E10",
+    "url": "https://www.anthropic.com/research/harness-design-long-running-apps",
+    "title": "Harness design for long-running application development",
+    "author": "Anthropic Engineering",
+    "type": "Firsthand engineering report",
+    "date": "2026-03-24",
+    "version": "March 2026 experiment",
+    "claims": "Independent browser interaction exposed defects missed by self-evaluation.",
+    "limits": "Adding a reviewer also adds work. No speed guarantee."
+  },
+  {
+    "id": "E11",
+    "url": "https://www.anthropic.com/research/building-effective-agents",
+    "title": "Building effective agents",
+    "author": "Anthropic",
+    "type": "Engineering guidance",
+    "date": "2024-12-19",
+    "version": "December 2024 design patterns",
+    "claims": "Choose fixed workflows, routing or dynamic agent control according to task structure.",
+    "limits": "Patterns guide architecture. They provide no measured benefit for a particular project."
+  },
+  {
+    "id": "E12",
+    "url": "https://www.anthropic.com/research/building-c-compiler",
+    "title": "Building a C compiler with a team of parallel Claudes",
+    "author": "Nicholas Carlini, Anthropic",
+    "type": "Firsthand engineering report",
+    "date": "2026-02-05",
+    "version": "Claude Opus 4.6",
+    "claims": "The team used a compiler and external tests as oracles. The author reported API costs just under $20,000.",
+    "limits": "One unusually testable project. Historical project costs cannot price another task."
+  }
+]

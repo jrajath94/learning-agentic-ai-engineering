@@ -1,0 +1,10 @@
+%%{init: {"theme":"base","themeVariables":{"background":"#000000","primaryColor":"#000000","primaryTextColor":"#ffffff","primaryBorderColor":"#b9e6ae","lineColor":"#b9e6ae","secondaryColor":"#000000","tertiaryColor":"#000000","mainBkg":"#000000","nodeBorder":"#b9e6ae","clusterBkg":"#000000","clusterBorder":"#b9e6ae","titleColor":"#ffffff","edgeLabelBackground":"#000000","fontFamily":"Arial, sans-serif"}}}%%
+flowchart TB
+ F[Foundations] --> E[Engineering practice]
+ F --> R[Research practice]
+ F --> B[Business practice]
+ E --> P[Retrieve rule]
+ R --> P
+ B --> P
+ P --> T[Transfer to new case]
+ T --> O[Explain outcome and limits]

@@ -1,0 +1,41 @@
+<section id="contract"><h2>Turn a one-cent error into a contract</h2><p>A subtotal of 200 cents incurs 16.5 cents of tax in the example service. The contract says to round up at half a cent. The previous implementation returns 216 cents. An implementer who sees only “fix rounding” can change existing callers or apply the discount after tax.</p>
+<p>Write the observable behavior first. In this service, a 300-cent basket with a 100-cent discount must total 217 cents. A discount larger than the subtotal must yield zero. Negative or fractional discounts must fail validation. The original one-argument call must continue to work. <a href="labs.html#service">Inspect the tests and implementation.</a></p>
+<table><thead><tr><th>Stage</th><th>Artifact to request</th><th>What a person decides</th></tr></thead><tbody>
+<tr><td>Problem and specification</td><td>One failing example, one preserved behavior, a written rule</td><td>Whether the rounding rule and discount order match the intended product</td></tr>
+<tr><td>Architecture</td><td>Compare rounding in the caller with rounding in the service</td><td>Where every supported entry point can share the rule</td></tr>
+<tr><td>Implementation</td><td>A small diff, typed boundary checks and exact arithmetic</td><td>Whether any public caller changes</td></tr>
+<tr><td>Verification</td><td>Failing test before the fix, passing test after it, regressions on both</td><td>Whether the test distinguishes correct behavior from a convenient shortcut</td></tr>
+<tr><td>Release</td><td>Revision, rollout owner, signal and rollback trigger</td><td>Whether any external release should proceed</td></tr>
+<tr><td>Operation</td><td>Errors by revision, reconciliation differences and incident notes</td><td>Whether to pause, revert or repair the data</td></tr></tbody></table></section>
+<section id="orientation"><h2>Give the worker a path through the repository</h2><p>Start from the failing call. Trace the entry point, its caller, tests, config and output. Read the instructions that apply to those paths. Keep a compact map and retain the revision. OpenAI describes this repository-map approach in its own engineering work. <a href="sources.html#E01">[E01]</a></p>
+<pre><code>Read labs/service/test_service.py and the two service modules.
+Return the public function signature, rounding contract and smallest failing input.
+Preserve the single-argument call. Show where an optional discount belongs.
+Stop after you identify the test that distinguishes the two implementations.</code></pre>
+<p>A <strong>skill</strong> supplies a reusable procedure. A <strong>hook</strong> can run at a configured event. A <strong>plugin</strong> packages capabilities. An <strong>MCP server</strong> exposes operations or resources through a protocol. For the invoice repair, a local test already answers the question. Add a tool only if an acceptance check requires information you cannot otherwise inspect. See the <a href="resources.html">resource catalog</a> for product-specific support and limits.</p>
+</section><section id="worktrees"><h2>Split work only when artifacts can meet again</h2>
+<p>An implementer can own the service while a reviewer prepares boundary cases in a separate checkout. If both edit the tax rule, the main bottleneck becomes integration. Agree on the function contract and file ownership before delegation. Do not hand the implementer hidden evaluation labels.</p>
+<pre><code>git worktree add -b experiment/service ../service-tree HEAD
+git worktree list</code></pre>
+<p>These commands ran in a temporary repository with Git 2.56.0. They produced two working directories at the same starting commit. Run them from a Git repository with a fresh branch name and an unused sibling path. Inspect the branch and directory if creation fails. Keep separate temp directories, database names and test ports. Linked worktrees share repository history. <a href="sources.html#E06">[E06]</a></p>
+<p>Compare the worker's patch with its base. Reconcile overlapping files by intent. Run checks again on the combined revision. Two green branches can still fail together. Anthropic's compiler experiment illustrates a setting with unusually rich external tests. Its author also reports a project bill just under $20,000. That figure describes the experiment and provides no budget estimate for this service. <a href="sources.html#E12">[E12]</a></p></section>
+<section id="verification"><h2>Choose checks that can disprove the change</h2><ol>
+<li>Run the original input through the public API. Save the wrong total.</li>
+<li>Run the same input on the candidate. Save the returned total.</li>
+<li>Test a large integer and a half-cent boundary. Check an existing caller.</li>
+<li>Review dependencies and tool permissions. Keep credentials outside fixtures and prompts.</li>
+<li>Use the repository's configured type checker and static checks when available. Record each skipped check with its reason.</li>
+<li>For an interface, use the keyboard and inspect the saved application state after refresh. A screenshot alone cannot verify persistence.</li>
+<li>Have a reviewer inspect the diff, current revision, test output and missing cases.</li></ol>
+<p>Browser interaction can reveal a control that looks correct but calls the wrong handler. Anthropic reports that independent UI interaction caught failures after self-evaluation. Treat a reviewer model's textual verdict as a lead until its example reproduces. <a href="sources.html#E10">[E10]</a></p></section>
+<section id="release"><h2>Release the same revision you tested</h2><p>Suppose the service later handles real transactions. These are design steps for a future release. The lab runs only on synthetic amounts.</p><table><thead><tr><th>Boundary</th><th>Example procedure</th></tr></thead><tbody>
+<tr><td>Before CI</td><td>Pin the source revision and dependency set. Inspect changes to manifests and build scripts. Run unit and integration checks in a clean environment.</td></tr>
+<tr><td>Before rollout</td><td>Record the prior deployable version. Compare sampled invoice totals in shadow mode without a second charge. Use synthetic IDs in logs.</td></tr>
+<tr><td>During rollout</td><td>Compare a small new-version population with comparable control traffic. Monitor total mismatches, failures, volume and latency. The release owner defines thresholds and a minimum observation window.</td></tr>
+<tr><td>On an error</td><td>Pause traffic to the candidate. Retain inputs and revisions. Review previously issued invoices separately because a code rollback cannot reverse issued records.</td></tr>
+<tr><td>After recovery</td><td>Keep the smallest failing input as a regression. Assign an owner to each unresolved data correction.</td></tr>
+</tbody></table><p>Google's SRE workbook describes canary evaluation and the importance of comparison signals. Release thresholds in this example require local product judgment. <a href="sources.html#E07">[E07]</a></p></section>
+<section id="speed"><h2>Measure accepted work</h2><p>Pick two comparable groups of tasks. Define acceptance before assignment. Track time from issue start through review, escaped defects, review minutes, model charges and stalled tasks. Randomize assistance where practical. Keep both accepted and rejected attempts in the denominator.</p>
+<p>METR's early-2025 study measured a 19% increase in completion time for its participants with AI tools available. Its later study described selection effects and difficulty measuring concurrent work. Neither result tells you how much time your next invoice change will take. <a href="sources.html#E04">[E04]</a> <a href="sources.html#E05">[E05]</a></p>
+<p><strong>Practice.</strong> Complete the release note with the original and corrected totals. Then write an independent boundary test. From memory, explain why two green branches can fail after merge. Transfer your test design to coupon expiry. Tomorrow, reproduce the original defect before you reopen the solution.</p></section>
+

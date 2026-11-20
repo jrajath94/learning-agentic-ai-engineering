@@ -1,0 +1,45 @@
+{
+  "key": "5531c5f786886a6b9f2b2a801dcd18c1e67bbb3f4501d727af4b5687d5fc6daa",
+  "stage": "review",
+  "calls": 2,
+  "retries": 0,
+  "rows": [
+    {
+      "id": "R01",
+      "category": "billing",
+      "open_days": 8,
+      "status": "open"
+    },
+    {
+      "id": "R02",
+      "category": "access",
+      "open_days": 2,
+      "status": "closed"
+    },
+    {
+      "id": "R03",
+      "category": "billing",
+      "open_days": 4,
+      "status": "open"
+    },
+    {
+      "id": "R04",
+      "category": "access",
+      "open_days": 12,
+      "status": "open"
+    },
+    {
+      "id": "R05",
+      "category": "shipping",
+      "open_days": 7,
+      "status": "open"
+    },
+    {
+      "id": "R06",
+      "category": "shipping",
+      "open_days": 9,
+      "status": "closed"
+    }
+  ],
+  "events": []
+}

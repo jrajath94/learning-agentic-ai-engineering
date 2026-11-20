@@ -1,0 +1,82 @@
+[
+  {
+    "page": "engineering",
+    "anchor": "release",
+    "src": "assets/figures/case-release-handoff.svg",
+    "alt": "A patch moves from an accepted change through tests, release review, and an observable handoff.",
+    "caption": "Release handoff",
+    "source": "assets/figures/case-release-handoff.mmd"
+  },
+  {
+    "page": "foundations",
+    "anchor": "context",
+    "src": "assets/figures/prompt-contract.svg",
+    "alt": "A prompt binds goal, evidence, limits, output checks, and stop behavior.",
+    "caption": "Prompt contract",
+    "source": "assets/figures/prompt-contract.mmd"
+  },
+  {
+    "page": "foundations",
+    "anchor": "components",
+    "src": "assets/figures/screen-model-tool.svg",
+    "alt": "The screen collects a request, the model proposes an action, and a permissioned tool performs an allowed operation.",
+    "caption": "Screen, model, and tool",
+    "source": "assets/figures/screen-model-tool.mmd"
+  },
+  {
+    "page": "labs",
+    "anchor": "service",
+    "src": "assets/figures/service-rounding.svg",
+    "alt": "The discount lowers taxable cents. Integer arithmetic rounds half a cent up, then returns subtotal after discount plus tax.",
+    "caption": "Invoice rounding in cents",
+    "source": "assets/figures/service-rounding.mmd"
+  },
+  {
+    "page": "labs",
+    "anchor": "benchmark",
+    "src": "assets/figures/benchmark-per-seed.svg",
+    "alt": "Scores show a high ordinary score and a low shifted score for the full rule. Sensor-only scores remain similar across splits.",
+    "caption": "Benchmark results by seed",
+    "source": "assets/figures/benchmark-per-seed.mmd"
+  },
+  {
+    "page": "research",
+    "anchor": "research-engineering",
+    "src": "assets/figures/research-split.svg",
+    "alt": "Fit a threshold on training rows. Compare methods on the same held-out ordinary and shifted rows.",
+    "caption": "Research split and evaluation",
+    "source": "assets/figures/research-split.mmd"
+  },
+  {
+    "page": "business",
+    "anchor": "business",
+    "src": "assets/figures/business-lineage.svg",
+    "alt": "Source rows flow into filters, counts, cited draft claims, and human review. Closed rows fail the open-status filter.",
+    "caption": "Business source lineage",
+    "source": "assets/figures/business-lineage.mmd"
+  },
+  {
+    "page": "labs",
+    "anchor": "loop",
+    "src": "assets/figures/reference-loop.svg",
+    "alt": "The workflow reads, drafts, verifies, and stops for review. A failed tool call may retry within its fixed budget.",
+    "caption": "Reference workflow loop",
+    "source": "assets/figures/reference-loop.mmd"
+  },
+  {
+    "page": "graphs",
+    "anchor": "evidence-graph",
+    "src": "assets/figures/evidence-graph.svg",
+    "alt": "Source records, lab observations, and contradictions support bounded recommendations.",
+    "caption": "Evidence graph",
+    "source": "assets/figures/evidence-graph.mmd"
+  },
+  {
+    "page": "graphs",
+    "anchor": "learning-graph",
+    "src": "assets/figures/learning-map.svg",
+    "alt": "Prerequisites lead to topic practice, retrieval, transfer, and an inspectable outcome.",
+    "caption": "Learning path map",
+    "source": "assets/figures/learning-map.mmd"
+  }
+]

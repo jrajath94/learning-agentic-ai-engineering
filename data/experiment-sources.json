@@ -1,0 +1,35 @@
+[
+  {
+    "id": "R01",
+    "url": "https://github.com/karpathy/autoresearch/blob/master/program.md",
+    "title": "autoresearch experiment program",
+    "author": "Andrej Karpathy",
+    "type": "Original repository procedure",
+    "date": "March 2026 (project introduction)",
+    "version": "Public program and README at retrieval",
+    "claims": "Defines a constrained training experiment, a fixed budget, a validation metric and experiment records.",
+    "limits": "The training environment needs a compatible setup. This guide adapts the decision structure using its CPU benchmark."
+  },
+  {
+    "id": "R02",
+    "url": "https://github.com/karpathy/autoresearch/discussions/340",
+    "title": "Predict-then-attribute loop, discussion 340",
+    "author": "Hzz-Git",
+    "type": "Firsthand GitHub discussion and reported experiment",
+    "date": "2026-03-19",
+    "version": "Single M5 Pro experiment, four instruction variants",
+    "claims": "The author compared instruction variants, including explicit prediction and error attribution.",
+    "limits": "One run per arm and unequal trial counts. Results were reported by the author and not independently reproduced here."
+  },
+  {
+    "id": "R03",
+    "url": "https://developers.openai.com/api/reference/resources/responses/methods/create",
+    "title": "Create a model response: usage fields",
+    "author": "OpenAI",
+    "type": "API reference",
+    "date": "Not in source",
+    "version": "Responses API usage object at retrieval",
+    "claims": "The usage record separates input and output totals with nested details for cached and reasoning tokens.",
+    "limits": "A client may hide these fields. Actual charges also depend on model, rate and tool use."
+  }
+]

@@ -1,0 +1,200 @@
+[
+  {
+    "id": "N01",
+    "url": "https://simonwillison.net/2026/Oct/9/built-using-my-voice/",
+    "title": "A new feature for my blog, built using my voice",
+    "author": "Simon Willison",
+    "type": "Practitioner post",
+    "date": "2026-10-09",
+    "version": "Codex voice example",
+    "claims": "Voice-led draft, typed code review, API-based import repair.",
+    "limits": "Single blog workflow and author account."
+  },
+  {
+    "id": "N02",
+    "url": "https://github.com/simonw/simonwillisonblog/pull/719",
+    "title": "Add newsletters with archives, search, and Substack import buttons",
+    "author": "Simon Willison",
+    "type": "Merged pull request",
+    "date": "2026-10-09",
+    "version": "PR #719",
+    "claims": "Eight commits, archive feature and review trail.",
+    "limits": "Private input and production credentials are outside the public example."
+  },
+  {
+    "id": "N03",
+    "url": "https://simonwillison.net/2026/nov/9/details-summary/",
+    "title": "Hide your slop PR descriptions behind details and summary",
+    "author": "Simon Willison",
+    "type": "Practitioner post",
+    "date": "2026-11-09",
+    "version": "PR description practice",
+    "claims": "Short human-written context ahead of collapsible agent notes.",
+    "limits": "No measured effect on reviewer throughput."
+  },
+  {
+    "id": "N04",
+    "url": "https://github.com/simonw/datasette/pull/3052",
+    "title": "Redesign row page as a vertical list of fields",
+    "author": "Simon Willison",
+    "type": "Repository pull request",
+    "date": "2026-11",
+    "version": "PR #3052",
+    "claims": "Concrete wide-record issue, vertical field layout and screenshot.",
+    "limits": "Example illustrates this change."
+  },
+  {
+    "id": "N05",
+    "url": "https://lucumr.pocoo.org/2026/1/31/pi/",
+    "title": "Pi: The Minimal Agent Within OpenClaw",
+    "author": "Armin Ronacher",
+    "type": "Practitioner post",
+    "date": "2026-01-31",
+    "version": "Pi as described in January",
+    "claims": "Tree-based review context and dependency callouts.",
+    "limits": "Describes one practitioner's extension setup."
+  },
+  {
+    "id": "N06",
+    "url": "https://github.com/mitsuhiko/agent-stuff/blob/main/extensions/review.ts",
+    "title": "Pi review extension source",
+    "author": "Armin Ronacher",
+    "type": "Source file",
+    "date": "Not in source",
+    "version": "main",
+    "claims": "Public implementation of the review extension.",
+    "limits": "Branch content can change."
+  },
+  {
+    "id": "N07",
+    "url": "https://github.com/earendil-works/pi",
+    "title": "Pi agent toolkit and CLI",
+    "author": "Pi maintainers",
+    "type": "Source repository",
+    "date": "Not in source",
+    "version": "Current repository",
+    "claims": "Pi source and entry point for client documentation.",
+    "limits": "Original badlogic/pi-mono link redirects to this repository."
+  },
+  {
+    "id": "N08",
+    "url": "https://mitchellh.com/writing/my-ai-adoption-journey",
+    "title": "My AI Adoption Journey",
+    "author": "Mitchell Hashimoto",
+    "type": "Practitioner post",
+    "date": "2026-02-05",
+    "version": "Personal workflow",
+    "claims": "Repository rules and programmed checks to prevent repeat failures.",
+    "limits": "Author experience gives no controlled productivity estimate."
+  },
+  {
+    "id": "N09",
+    "url": "https://github.com/ghostty-org/ghostty/blob/ca07f8c3f775fe437d46722db80a755c2b6e6399/src/inspector/AGENTS.md",
+    "title": "Ghostty inspector instructions",
+    "author": "Ghostty maintainers",
+    "type": "Source file",
+    "date": "Not in source",
+    "version": "ca07f8c3f775fe437d46722db80a755c2b6e6399",
+    "claims": "Generated C API lookup, widget reference and no inspector unit tests at this revision.",
+    "limits": "Scope covers the inspector directory."
+  },
+  {
+    "id": "N10",
+    "url": "https://steipete.me/posts/2025/shipping-at-inference-speed",
+    "title": "Shipping at Inference-Speed",
+    "author": "Peter Steinberger",
+    "type": "Practitioner post",
+    "date": "2025-12-28",
+    "version": "Personal workflow",
+    "claims": "CLI-first verification and documentation discovery.",
+    "limits": "Historical models and personal branching workflow are context-specific."
+  },
+  {
+    "id": "N11",
+    "url": "https://github.com/steipete/agent-scripts/blob/main/scripts/docs-list.ts",
+    "title": "Docs-list script",
+    "author": "Peter Steinberger",
+    "type": "Source file",
+    "date": "Not in source",
+    "version": "main",
+    "claims": "Script for discovery of Markdown documents and frontmatter.",
+    "limits": "Main can change."
+  },
+  {
+    "id": "N12",
+    "url": "https://ghuntley.com/ralph/",
+    "title": "Ralph Wiggum as a software engineer",
+    "author": "Geoffrey Huntley",
+    "type": "Practitioner post",
+    "date": "2025-07-14",
+    "version": "Original Ralph writeup",
+    "claims": "Repository plan and specifications reread during an agent loop.",
+    "limits": "Open-ended original loop is a historical case."
+  },
+  {
+    "id": "N13",
+    "url": "https://github.com/repomirrorhq/repomirror/blob/main/repomirror.md",
+    "title": "We Put a Coding Agent in a While Loop and It Shipped 6 Repos Overnight",
+    "author": "RepoMirror authors",
+    "type": "Public repository report",
+    "date": "Not in source",
+    "version": "main",
+    "claims": "Hackathon trials with task files and uneven outcomes.",
+    "limits": "Self-reported prototypes with no independent production validation."
+  },
+  {
+    "id": "N14",
+    "url": "https://www.youtube.com/watch?v=wc8FBhQtdsA",
+    "title": "An AI state of the union",
+    "author": "Lenny Rachitsky and Simon Willison",
+    "type": "Podcast video",
+    "date": "2026-04-02",
+    "version": "21:27 and 1:08:21",
+    "claims": "Prototype comparison and red/green TDD chapter markers.",
+    "limits": "Single guest's account."
+  },
+  {
+    "id": "N15",
+    "url": "https://simonwillison.net/2026/apr/2/lennys-podcast/",
+    "title": "Highlights from my conversation about agentic engineering on Lenny's Podcast",
+    "author": "Simon Willison",
+    "type": "Practitioner post",
+    "date": "2026-04-02",
+    "version": "21:27",
+    "claims": "Guest notes with chapters and prototype-evaluation discussion.",
+    "limits": "Selected excerpts."
+  },
+  {
+    "id": "N16",
+    "url": "https://simonwillison.net/2026/Nov/17/datasette-lite/",
+    "title": "Running the full server-side Datasette Python app in the browser with service workers and Pyodide",
+    "author": "Simon Willison",
+    "type": "Engineering post",
+    "date": "2026-11-17",
+    "version": "Datasette Lite architecture",
+    "claims": "Previous HTML insertion failure and tab-specific worker routing repair.",
+    "limits": "Case study does not benchmark all browsers."
+  },
+  {
+    "id": "N17",
+    "url": "https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/",
+    "title": "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity",
+    "author": "METR",
+    "type": "Randomized study summary",
+    "date": "2025-07-10",
+    "version": "Early-2025 study",
+    "claims": "Reported 19 percent longer task time for the study sample with AI access.",
+    "limits": "Specific developers, tasks and tool period."
+  },
+  {
+    "id": "N18",
+    "url": "https://metr.org/blog/2026-02-24-uplift-update/",
+    "title": "We are Changing our Developer Productivity Experiment Design",
+    "author": "METR",
+    "type": "Research update",
+    "date": "2026-02-24",
+    "version": "Follow-up",
+    "claims": "Explains tentative later results and selection and measurement problems.",
+    "limits": "Weak evidence for magnitude of later speedup."
+  }
+]

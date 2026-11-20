@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 477.7105 864.156" width="477.7105" height="864.156" style="--bg:#000000;--fg:#ffffff;--line:#b9e6ae;--accent:#b9e6ae;--muted:#ffffff;--surface:#000000;--border:#b9e6ae;background:var(--bg)">
+<style>
+  text { font-family: Arial, sans-serif; }
+  svg {
+    /* Derived from --bg and --fg (overridable via --line, --accent, etc.) */
+    --_text:          var(--fg);
+    --_text-sec:      var(--muted, color-mix(in srgb, var(--fg) 60%, var(--bg)));
+    --_text-muted:    var(--muted, color-mix(in srgb, var(--fg) 40%, var(--bg)));
+    --_text-faint:    color-mix(in srgb, var(--fg) 25%, var(--bg));
+    --_line:          var(--line, color-mix(in srgb, var(--fg) 50%, var(--bg)));
+    --_arrow:         var(--accent, color-mix(in srgb, var(--fg) 85%, var(--bg)));
+    --_node-fill:     var(--surface, color-mix(in srgb, var(--fg) 3%, var(--bg)));
+    --_node-stroke:   var(--border, color-mix(in srgb, var(--fg) 20%, var(--bg)));
+    --_group-fill:    var(--bg);
+    --_group-hdr:     color-mix(in srgb, var(--fg) 5%, var(--bg));
+    --_inner-stroke:  color-mix(in srgb, var(--fg) 12%, var(--bg));
+    --_key-badge:     color-mix(in srgb, var(--fg) 10%, var(--bg));
+  }
+</style>
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="5" refX="7" refY="2.5" orient="auto">
+    <polygon points="0 0, 8 2.5, 0 5" fill="var(--_arrow)" stroke="var(--_arrow)" stroke-width="0.75" stroke-linejoin="round" />
+  </marker>
+  <marker id="arrowhead-start" markerWidth="8" markerHeight="5" refX="1" refY="2.5" orient="auto-start-reverse">
+    <polygon points="8 0, 0 2.5, 8 5" fill="var(--_arrow)" stroke="var(--_arrow)" stroke-width="0.75" stroke-linejoin="round" />
+  </marker>
+</defs>
+<polyline class="edge" data-from="A" data-to="B" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="284.13025000000005,60.900000000000006 284.13025000000005,108.9" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="B" data-to="C" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="284.13025000000005,145.8 284.13025000000005,193.8" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="C" data-to="D" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="yes" points="260.41808333333336,312.3608333333333 260.41808333333336,372.073 193.323,372.073 193.323,452.37300000000005" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="D" data-to="E" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="yes" points="168.37583333333333,577.1088333333333 168.37583333333333,638.056 104.99600000000001,638.056 104.99600000000001,718.356" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="D" data-to="F" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="no" points="218.27016666666668,577.1088333333333 218.27016666666668,638.056 281.65000000000003,638.056 281.65000000000003,718.356" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="C" data-to="G" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="no" points="307.8424166666667,312.36083333333335 307.8424166666667,484.856 374.93750000000006,484.856 374.93750000000006,565.1560000000001" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="E" data-to="H" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="104.99600000000001,755.256 104.99600000000001,779.256 193.32300000000004,779.256 193.32300000000004,803.256" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="F" data-to="H" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="281.65000000000003,755.256 281.65000000000003,779.256 193.32300000000004,779.256 193.32300000000004,803.256" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<g class="edge-label" data-from="C" data-to="D" data-label="yes">
+  <rect x="175.32299999999998" y="379.073" width="35.47" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="193.058" y="394.22299999999996" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">yes</text>
+</g>
+<g class="edge-label" data-from="D" data-to="E" data-label="yes">
+  <rect x="86.99600000000001" y="645.056" width="35.47" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="104.73100000000001" y="660.206" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">yes</text>
+</g>
+<g class="edge-label" data-from="D" data-to="F" data-label="no">
+  <rect x="266.65000000000003" y="645.056" width="29.53" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="281.415" y="660.206" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">no</text>
+</g>
+<g class="edge-label" data-from="C" data-to="G" data-label="no">
+  <rect x="359.93750000000006" y="491.856" width="29.53" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="374.70250000000004" y="507.006" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">no</text>
+</g>
+<g class="node" data-id="A" data-label="requests.csv" data-shape="rectangle">
+  <rect x="223.88225000000003" y="24" width="120.49600000000001" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="284.13025000000005" y="42.45" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">requests.csv</text>
+</g>
+<g class="node" data-id="B" data-label="Validate fields" data-shape="rectangle">
+  <rect x="222.77075000000002" y="108.9" width="122.71900000000001" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="284.13025000000005" y="127.35000000000001" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Validate fields</text>
+</g>
+<g class="node" data-id="C" data-label="Status open?" data-shape="diamond">
+  <polygon points="284.13025000000005,193.8 355.26675000000006,264.9365 284.13025000000005,336.07300000000004 212.99375000000003,264.9365" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="284.13025000000005" y="264.9365" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Status open?</text>
+</g>
+<g class="node" data-id="D" data-label="Age at least 7?" data-shape="diamond">
+  <polygon points="193.323,452.37300000000005 268.16450000000003,527.2145 193.323,602.056 118.4815,527.2145" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="193.323" y="527.2145" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Age at least 7?</text>
+</g>
+<g class="node" data-id="E" data-label="Count and cite row ID" data-shape="rectangle">
+  <rect x="24" y="718.356" width="161.99200000000002" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="104.99600000000001" y="736.806" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Count and cite row ID</text>
+</g>
+<g class="node" data-id="F" data-label="Open count only" data-shape="rectangle">
+  <rect x="213.99200000000002" y="718.356" width="135.316" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="281.65000000000003" y="736.806" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Open count only</text>
+</g>
+<g class="node" data-id="G" data-label="Exclude closed row" data-shape="rectangle">
+  <rect x="296.16450000000003" y="565.1560000000001" width="157.546" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="374.9375" y="583.6060000000001" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Exclude closed row</text>
+</g>
+<g class="node" data-id="H" data-label="Draft for human review" data-shape="rectangle">
+  <rect x="107.51050000000004" y="803.256" width="171.62499999999997" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="193.32300000000004" y="821.706" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Draft for human review</text>
+</g>
+</svg>

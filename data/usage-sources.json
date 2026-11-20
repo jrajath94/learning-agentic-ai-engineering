@@ -1,0 +1,90 @@
+[
+  {
+    "id": "U01",
+    "url": "https://openai.com/index/research-acceleration-jagged-frontier/",
+    "title": "Research acceleration: The jagged frontier",
+    "author": "OpenAI",
+    "type": "Primary company research report",
+    "date": "2026-11-18",
+    "version": "October 2026 usage",
+    "claims": "Reports median $2,400 and 90th percentile $23,000 per researcher per day at API list prices.",
+    "limits": "Research organization, not all employees. Prices are a valuation, not actual internal cost. Collapsed methods were not fully accessible in text retrieval."
+  },
+  {
+    "id": "U02",
+    "url": "https://openai.com/index/research-acceleration-view-inside-openai/",
+    "title": "Research acceleration: The view inside OpenAI",
+    "author": "OpenAI",
+    "type": "Primary company research report",
+    "date": "2026-09-06",
+    "version": "Mid-August 2026",
+    "claims": "Reports median more than $600 and 90th percentile more than $7,000 per day at API prices.",
+    "limits": "Research organization and earlier method. Do not splice into a uniform trend without method comparison."
+  },
+  {
+    "id": "U03",
+    "url": "https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic",
+    "title": "How AI is transforming work at Anthropic",
+    "author": "Anthropic",
+    "type": "Primary research report",
+    "date": "2025-12-02",
+    "version": "August 2025 survey and transcripts",
+    "claims": "132 engineers and researchers surveyed. 55% reported daily debugging use.",
+    "limits": "Self-report and selected staff. No employee daily token average in the cited passage."
+  },
+  {
+    "id": "U04",
+    "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+    "title": "Measurements for understanding the pace of AI development inside frontier labs",
+    "author": "Anthropic",
+    "type": "Primary research report",
+    "date": "Not in source",
+    "version": "August 2026",
+    "claims": "Approximately 30,000 concurrent research and engineering agents on the most-used internal platform.",
+    "limits": "Agent count is not employees or tokens. Platform-specific snapshot."
+  },
+  {
+    "id": "U05",
+    "url": "https://www.lennysnewsletter.com/p/head-of-claude-code-what-happens",
+    "title": "Head of Claude Code: What happens after coding is solved",
+    "author": "Lenny Rachitsky and Boris Cherny",
+    "type": "Firsthand interview",
+    "date": "2026-02-19",
+    "version": "Episode",
+    "claims": "Podcast includes discussion of token spending and engineering practice.",
+    "limits": "Recording page and public episode metadata inspected. Full transcript not accessible there. A secondary transcript was used to locate the statement."
+  },
+  {
+    "id": "U06",
+    "url": "https://metacast.app/podcast/lenny-s-podcast-product-career-growth/Jd3KQZ6s/head-of-claude-code-what-happens-after-coding-is-solved-boris-cherny/UnRr4h9m",
+    "title": "Head of Claude Code transcript",
+    "author": "Metacast",
+    "type": "Third-party transcript",
+    "date": "2026-02-19",
+    "version": "Episode transcript, about 27:40",
+    "claims": "Transcript attributes to Cherny a report of some engineers with hundreds of thousands in monthly token spending.",
+    "limits": "Machine transcript may contain errors. Original audio has not been independently checked. No median, count or accounting method is provided."
+  },
+  {
+    "id": "U07",
+    "url": "https://openai.com/index/how-agents-are-transforming-work/",
+    "title": "How agents are transforming work",
+    "author": "OpenAI",
+    "type": "Primary company research report",
+    "date": "Not in source",
+    "version": "June 2026 data",
+    "claims": "Reports that the average engineer generates 99% of output tokens with Codex rather than ChatGPT.",
+    "limits": "Share of output tokens is not absolute token volume. Scope and time differ from research-only spend."
+  },
+  {
+    "id": "U08",
+    "url": "https://platform.openai.com/docs/guides/prompt-caching",
+    "title": "Prompt caching",
+    "author": "OpenAI",
+    "type": "Official documentation",
+    "date": "Not in source",
+    "version": "Living documentation",
+    "claims": "Explains cached input usage and accounting.",
+    "limits": "Prices and behavior vary by model and date. Check the selected model and billing terms."
+  }
+]

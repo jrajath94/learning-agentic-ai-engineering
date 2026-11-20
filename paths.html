@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Learning paths | AI engineering field guide</title><link rel="stylesheet" href="assets/guide.css">
+<script defer src="assets/search-index.js"></script><script defer src="assets/guide.js"></script><script defer src="assets/visuals.js"></script><script defer src="assets/study.js"></script></head>
+<body class="page-paths"><a class="skip" href="#main">Skip to content</a>
+<header class="mast"><div class="mast-inner"><a class="wordmark" href="index.html">Engineering field guide</a>
+<nav class="mast-links" aria-label="Shortcuts"><a href="labs.html">Labs</a><a href="sources.html">Sources</a><a href="#find">Search ↓</a></nav></div></header>
+<div class="layout"><aside class="rail"><nav aria-label="Chapters"><div class="nav-group"><p>Study</p><a href="index.html">Start here</a><a href="paths.html" aria-current="page">Learning paths</a><a href="foundations.html">Foundations</a><a href="cases.html">Practitioner cases</a><a href="fieldnotes.html">Practitioner field notes</a></div><div class="nav-group"><p>Evidence</p><a href="usage.html">How labs use tokens</a><a href="graphs.html">Project graphs</a><a href="sources.html">Source library</a><a href="audit.html">Audit and open questions</a></div><div class="nav-group"><p>Practice</p><a href="engineering.html">Production engineering</a><a href="business.html">Business workflows</a><a href="research.html">Research workflows</a><a href="labs.html">Practical labs</a></div><div class="nav-group"><p>Reference</p><a href="products.html">Products and versions</a><a href="tools.html">Tool tutorials</a><a href="resources.html">Resource catalog</a><a href="prompts.html">Prompt library</a><a href="glossary.html">Glossary</a></div></nav></aside>
+<div class="reading"><details id="navigation"><summary>Browse chapters</summary><nav aria-label="Mobile chapters"><div class="nav-group"><p>Study</p><a href="index.html">Start here</a><a href="paths.html" aria-current="page">Learning paths</a><a href="foundations.html">Foundations</a><a href="cases.html">Practitioner cases</a><a href="fieldnotes.html">Practitioner field notes</a></div><div class="nav-group"><p>Evidence</p><a href="usage.html">How labs use tokens</a><a href="graphs.html">Project graphs</a><a href="sources.html">Source library</a><a href="audit.html">Audit and open questions</a></div><div class="nav-group"><p>Practice</p><a href="engineering.html">Production engineering</a><a href="business.html">Business workflows</a><a href="research.html">Research workflows</a><a href="labs.html">Practical labs</a></div><div class="nav-group"><p>Reference</p><a href="products.html">Products and versions</a><a href="tools.html">Tool tutorials</a><a href="resources.html">Resource catalog</a><a href="prompts.html">Prompt library</a><a href="glossary.html">Glossary</a></div></nav></details>
+<main id="main" tabindex="-1"><nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Guide</a><span>/</span>Study<span>/</span>Learning paths</nav>
+<div class="title"><h1>Choose your path</h1><p class="deck">Start from an outcome and leave each session with something you can inspect.</p></div>
+<section id="paths">
+<h2 id="topic-choose-a-learning-path">Choose a learning path</h2>
+<p>Use the path that fits your time and goal. The times are planning estimates, not measured completion times. Every route includes an artifact, a recall check, and a transfer task.</p>
+<p>Start with <a href="foundations.html">Foundations</a> if terms such as tool, state, or acceptance check are new. Use the <a href="graphs.html#learning-graph">learning graph</a> to see prerequisites and outcomes. See the <a href="graphs.html#task-graph">task dependency graph</a> and <a href="graphs.html#evidence-graph">evidence graph</a> for how work and claims connect.</p>
+<section id="quick">
+<h3 id="topic-quick-path-5-minutes">Quick path · 5 minutes</h3>
+<p><strong>Prerequisite:</strong> None. Open the lab page and use the existing worked result. The five minutes are an estimate for reading one case and writing a short answer.</p>
+<ol>
+<li>Read the invoice rule in <a href="labs.html#service">the service lab</a>. Record that 200 taxable cents at 8.25 percent gives 17 cents tax after half-cent rounding.</li>
+<li>Inspect <a href="labs/service/test_service.py">the service tests</a>. Find the regression case that checks the total.</li>
+<li>Close the page. Write the rule and the reason float truncation fails.</li>
+<li>Transfer the rule to an order with a delivery charge. State whether the charge enters the taxable amount.</li>
+</ol>
+<p><strong>Artifact:</strong> One acceptance check with input, expected total, and rounding rule. <strong>Recall:</strong> Recreate the 200-cent result without looking. <strong>Transfer:</strong> Define the tax base for a delivery charge. Check the result against the <a href="graphs.html#evidence-graph">evidence graph</a>.</p>
+</section>
+<section id="standard">
+<h3 id="topic-standard-path-20-minutes-or-40-minutes">Standard path · 20 minutes or 40 minutes</h3>
+<p>Choose the 20-minute reading route or the 40-minute hands-on route. These durations are planning estimates. They are not measured task times.</p>
+<h4>20-minute reading route</h4>
+<ol>
+<li>Read the <a href="foundations.html">foundations</a> sections on state, context, and stop conditions. Prerequisite: basic familiarity with files and tests.</li>
+<li>Read <a href="engineering.html#orientation">repository orientation</a> and <a href="engineering.html#verification">review practice</a>. Follow their source links to <a href="sources.html#E01">E01</a> and <a href="sources.html#E10">E10</a>.</li>
+<li>Inspect <a href="labs.html#loop">the support queue workflow</a>. Trace the restart after a write timeout.</li>
+<li>Read <a href="graphs.html#task-graph">task dependencies</a> and <a href="graphs.html#evidence-graph">evidence links</a>. Explain why integration happens before audit and retest.</li>
+</ol>
+<p><strong>Artifact:</strong> A short handoff with state, evidence, next action, and stop condition. <strong>Recall:</strong> Name the fields to inspect before a retry. <strong>Transfer:</strong> Apply the same recovery rule to a report that may have saved before a timeout.</p>
+<h4>40-minute hands-on route</h4>
+<ol>
+<li>Run <a href="labs.html#lab-start">the lab replay</a> into a new output directory. Prerequisite: Python 3.10 or later and a terminal.</li>
+<li>Compare the original and updated invoice service. Run the commands in <a href="labs.html#service">Lab 1</a>. Explain why the original fails.</li>
+<li>Inspect the recorded benchmark files in <a href="labs.html#benchmark">Lab 2</a>. Recompute one shifted error count from <a href="labs/evidence/trial-1/benchmark/errors.csv">errors.csv</a>.</li>
+<li>Inspect the support report and checkpoint in <a href="labs.html#report">Lab 3</a>. Run the same output path again and confirm the intact draft stays unchanged.</li>
+<li>Use the <a href="graphs.html#evidence-graph">evidence graph</a> to write one supported claim and one limit.</li>
+</ol>
+<p><strong>Artifact:</strong> A local run directory, one recomputed metric, and a recovery note. <strong>Recall:</strong> List the invoice acceptance checks and the benchmark split rule. <strong>Transfer:</strong> Propose a safe review draft for another local CSV, with row citations and a human stop point.</p>
+</section>
+<section id="deep">
+<h3 id="topic-deep-path-three-study-blocks">Deep path · three study blocks</h3>
+<p>Use three separate study blocks. Set their duration to fit your schedule. This route has no fixed completion time. Prerequisite: comfort with basic code, test output, and tables.</p>
+<h4>Block 1: Specify and implement</h4>
+<ol>
+<li>Read <a href="engineering.html">Engineering</a>, then inspect the invoice baseline, implementation, and tests.</li>
+<li>Use the <a href="prompts.html#spec">acceptance prompt</a> to write exact behavior for rounding, discount order, invalid types, and large values.</li>
+<li>Use the <a href="prompts.html#test-design">test design prompt</a> to cover each rule with independent expected values.</li>
+<li>Run the service tests. Save the command, result, and changed files as the block artifact.</li>
+</ol>
+<p><strong>Retrieval:</strong> Recreate the half-cent calculation from memory. <strong>Transfer:</strong> Write a contract for tax on shipping before editing code.</p>
+<h4>Block 2: Evaluate and explain</h4>
+<ol>
+<li>Read <a href="research.html">Research</a> and <a href="sources.html#E03">E03</a>. Note the difference between an evaluation split and a training split.</li>
+<li>Inspect all three benchmark seeds in <a href="labs.html#benchmark">the benchmark lab</a>. Compare full and sensor-only results on both splits.</li>
+<li>Use the <a href="prompts.html#experiment">experiment design prompt</a> to state the question, baseline, fixed inputs, metric, and stop rule.</li>
+<li>Use the <a href="prompts.html#eval">error analysis prompt</a> to explain the contradiction between ordinary and shifted performance.</li>
+</ol>
+<p><strong>Artifact:</strong> A compact result table with denominators, error counts, and limits. <strong>Retrieval:</strong> Explain why the shifted rows must not tune the rule. <strong>Transfer:</strong> Design a split for a ticket classifier whose shortcut signal changes over time.</p>
+<h4>Block 3: Build a reviewable workflow</h4>
+<ol>
+<li>Read <a href="business.html">Business</a> and inspect the queue source, draft, and state files.</li>
+<li>Use the <a href="prompts.html#business-research">business process prompt</a> to set a boundary at a local draft.</li>
+<li>Use the <a href="prompts.html#independent-audit">independent audit prompt</a> to recompute counts from the CSV.</li>
+<li>Use the <a href="prompts.html#handoff">handoff prompt</a> to describe recovery after a write-timeout.</li>
+</ol>
+<p><strong>Artifact:</strong> A source-linked draft, independent count check, and restart instruction. <strong>Retrieval:</strong> Explain why R06 is excluded. <strong>Transfer:</strong> Draft an inventory exception report with a threshold and row-level citations.</p>
+</section>
+<section id="route-map">
+<h3 id="topic-route-map">Route map</h3>
+<div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table><caption>Path prerequisites and outputs</caption><thead><tr><th>Path</th><th>Prerequisite</th><th>Artifact</th><th>Retrieval</th><th>Transfer</th><th>Graph</th></tr></thead><tbody>
+<tr><td><a href="#quick">Quick</a></td><td>None</td><td>Invoice acceptance check</td><td>Recreate 217-cent result</td><td>Set a delivery fee tax rule</td><td><a href="graphs.html#evidence-graph">Evidence</a></td></tr>
+<tr><td><a href="#standard">Standard</a></td><td>Basic files and tests</td><td>Run record and recovery note</td><td>Recall checkpoint fields</td><td>Recover a report after timeout</td><td><a href="graphs.html#task-graph">Tasks</a></td></tr>
+<tr><td><a href="#deep">Deep</a></td><td>Basic code and tables</td><td>Tests, result table, source-linked draft</td><td>Recall rules without notes</td><td>Apply rules to new inputs</td><td><a href="graphs.html#learning-graph">Learning</a></td></tr>
+</tbody></table></div>
+<p>Return to <a href="graphs.html#learning-graph">the learning graph</a> or open the <a href="graphs.html">graph index</a>.</p><figure class="learning-figure"><img src="assets/plates/study-routes.svg" alt="Three study routes offer a quick workflow, standard practice and checks, or a deeper comparison and audit." loading="lazy"><figcaption>Choose the route that fits the outcome. Return to a shorter route when a prerequisite needs practice. <span class="figure-links"><a href="assets/plates/study-routes.svg">Full-size figure</a></span></figcaption></figure>
+</section>
+</section>
+</main>
+<nav class="page-turn" aria-label="Adjacent chapters"><a href="index.html">← Start here</a><a href="foundations.html">Foundations →</a></nav>
+<section id="find" class="find"><h2>Search the guide</h2><div class="search-fields"><label>Words or source ID<input id="guide-search" type="search" placeholder="Try checkpoint or Grok Bot" autocomplete="off"></label>
+<label>Section<select id="search-group"><option value="">All sections</option><option value="Study">Study</option><option value="Evidence">Evidence</option><option value="Practice">Practice</option><option value="Reference">Reference</option></select></label></div>
+<p id="search-status" role="status"></p><div id="search-results"></div><noscript>Use the chapter menu or your browser's Find command.</noscript></section>
+<footer><a href="audit.html">Methods and verification</a><a href="#main">Back to top ↑</a></footer></div></div></body></html>

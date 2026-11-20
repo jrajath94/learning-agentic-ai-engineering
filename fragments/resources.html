@@ -1,0 +1,42 @@
+<section id="connector-catalog">
+<h2>Connector and reference catalog</h2>
+<p>Choose a connector for a specific read or action. Log its owner, source URL, version, authentication, accessible data and approval path. Confirm that the chosen client implements the features you need. <a href="tools.html#mcp-lab">Run the one-file MCP exercise first.</a></p>
+<div class="table-wrap"><table>
+<caption>Selected implementations and where they fit</caption>
+<thead><tr><th scope="col">Provider or project</th><th scope="col">Version and maintenance evidence</th><th scope="col">Setup and dependencies</th><th scope="col">Limit and first test</th></tr></thead>
+<tbody>
+<tr><th scope="row">MCP reference Filesystem</th><td>Model Context Protocol project. MIT repository. Repository v2.5.0, dated November 18 at <code>c799c85</code>, identifies package 2.4.0 as the fixed release. <a href="sources.html#P41">[P41]</a> <a href="sources.html#P42">[P42]</a></td><td>Use Node.js 24 or newer in this exercise. Run pinned package 2.4.0 via STDIO. Pass whole-server read-only and root confinement flags.</td><td>Use <code>list_allowed_directories</code> to confirm the exact fixture root. List tools. Confirm that write tools are absent. Filesystem scope also depends on process isolation. <a href="sources.html#P44">[P44]</a></td></tr>
+<tr><th scope="row">Playwright MCP</th><td>Microsoft. Apache-2.0. v0.0.86 dated November 18. <a href="sources.html#P45">[P45]</a> <a href="sources.html#P46">[P46]</a></td><td>Node.js 20 or newer, browser binaries and an MCP client. Pin a reviewed release and use an isolated profile.</td><td>Use a local fixture and capture its keyboard sequence. A browser can submit forms. Keep third-party sites and live accounts out of the exercise.</td></tr>
+<tr><th scope="row">GitHub MCP Server</th><td>GitHub. MIT repository. v2.2.0 dated November 16. <a href="sources.html#P47">[P47]</a> <a href="sources.html#P48">[P48]</a></td><td>Use the official remote server with supported authentication, or run a reviewed local build. Select narrow scopes and read-only mode. <a href="sources.html#P49">[P49]</a></td><td>Read one issue in a public demo repository. Verify its title, author and URL. A write-capable tool can change issues or pull requests. Leave write tools disabled.</td></tr>
+<tr><th scope="row">Google Drive MCP</th><td>Google. Hosted service. Public endpoint is v1. Client package license and server revision: Not in source. <a href="sources.html#P50">[P50]</a></td><td>Enable the service in a Google Cloud project. Configure OAuth and the required scopes for the intended client.</td><td>Read one synthetic document in an approved test account. Match scopes to the task. Record administrator restrictions and remove the connection after the test.</td></tr>
+<tr><th scope="row">OpenAI Docs MCP and developer plugin</th><td>OpenAI. Hosted documentation server and separate packaged plugin. Deployment revision: Not in source. <a href="sources.html#P51">[P51]</a></td><td>Follow official plugin or server instructions. Select the portable skills and docs bundle for supported other hosts.</td><td>Find one named API parameter in official docs. Reopen the cited page. The Platform connector in the Codex edition has a different scope from public documentation.</td></tr>
+</tbody></table></div>
+</section>
+<section id="layers">
+<h2>Separate instructions, capabilities and evidence</h2>
+<dl>
+<dt>Model</dt><dd>Interprets inputs and produces outputs. Record the identifier and source surface. A model and its app can have independent release dates.</dd>
+<dt>Agent client</dt><dd>Provides conversation, tools and permissions. Record where commands run and where the workspace lives.</dd>
+<dt>Repository instructions</dt><dd>Describe the project, tests and constraints. Use version control to preserve the exact instruction revision.</dd>
+<dt>Skill</dt><dd>Defines a repeatable procedure. Copy its needed support files and record its version or commit. <a href="sources.html#P25">[P25]</a></dd>
+<dt>MCP server</dt><dd>Exposes supported tools, prompts or resources. Configure client permissions in addition to server options. <a href="sources.html#P39">[P39]</a> <a href="sources.html#P40">[P40]</a></dd>
+<dt>Resource</dt><dd>Use the term “MCP resource” for a server item exposed through the protocol. A handbook, URL or file can also serve as ordinary reference material. <a href="sources.html#P40">[P40]</a></dd>
+<dt>Plugin</dt><dd>Packages components such as one or more skills and a server. Review the manifest and each bundled capability. <a href="sources.html#P26">[P26]</a></dd>
+<dt>Automation</dt><dd>Runs a defined task on a schedule or event. Record trigger, account, scope, retry rule and stop condition before activation.</dd>
+</dl>
+</section>
+<section id="evidence-method">
+<h2>Recheck a product or package</h2>
+<ol>
+<li>Search the exact supplied spelling and the publisher name.</li>
+<li>Compare the launch notice, current documentation and release index.</li>
+<li>Record product identity, version, surface and access as separate fields.</li>
+<li>Check the official repository owner, tag, license and dependency list.</li>
+<li>Keep the installed version and public release version as separate observations.</li>
+<li>Mark missing public evidence as <strong>Not in source</strong>.</li>
+<li>Test one synthetic input before you expand access.</li>
+</ol>
+<p>Search passes included exact names, publisher domains, qualified product and model names, release pages, install files and license metadata. The November 20 cutoff applies to public evidence. Current client UI, plan access, region rules and local device setup can vary.</p>
+<p>Verified name matches include Grok Bot, OpenAI dots and Anthropic Claude Duet. The Muse product page identifies the personal agent. The image route and model announcement support separate entries. “Cavemen” has a credible upstream match in Julius Brussee's Caveman, but plural naming remains unverified. Hallmark has several public namesakes. Pin the repository and commit before use. <a href="sources.html#P02">[P02]</a> <a href="sources.html#P03">[P03]</a> <a href="sources.html#P10">[P10]</a> <a href="sources.html#P23">[P23]</a> <a href="sources.html#P32">[P32]</a> <a href="sources.html#P38">[P38]</a></p>
+<p>The exercises document the intended behavior. They do not establish a live account entitlement, measured performance, installed runtime, or a vendor's complete privacy properties. Save the source URL, observed version and test result when you perform a run.</p>
+</section>
