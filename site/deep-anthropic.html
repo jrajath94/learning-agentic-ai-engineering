@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deep Dive: Anthropic Systems, Research Swarm, Best Practice, C Compiler | Learning Agentic AI Engineering</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></head>
+<body>
+<header class="top"><div class="wordmark"><a href="index.html">Learning Agentic AI Engineering</a></div>
+<nav class="main"><a href="index.html">Home</a><a href="start.html" aria-current="page">Start Here</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="foundations.html">Foundations</a><a href="cross-cutting.html">Cross-cutting</a><a href="business.html">Business</a><a href="research.html">Research</a><a href="profiles.html">Profiles</a><a href="prompts.html">Prompt Vault</a><a href="labs.html">Labs</a><a href="paths.html">Learning Paths</a><a href="principles.html">Principles</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="niche.html">Niche</a>
+<a href="deep.html">Deep Dives</a><a href="audit.html">Audit</a><a href="search.html">Search</a></nav></header>
+<main>
+<p class="meta">Home / Deep Dives / Deep Dive: Anthropic Systems, Research Swarm, Best Practice, C Compiler</p>
+<h1>Deep Dive: Anthropic Systems, Research Swarm, Best Practice, C Compiler</h1>
+<p class="lede">Four primary Anthropic sources read in full: the multi agent research system, the current Claude Code best practice doc, the C compiler build, and the self build report. Confidence: High, with self reported figures marked as lab claims.</p>
+<figure class="visual"><img src="assets/img/deep-anthropic.svg" alt="Flow diagram: Lead plans, Sub agents search, Judge scores, Lock file claims"><figcaption>Figure 1. Deep Dive: Anthropic Systems, Research Swarm, Best Practice, C Compiler as a flow. Each box names one stage on this page. Arrows show work order.</figcaption></figure>
+
+<h2>Multi agent research system: structure</h2>
+<p>One lead agent plans and spawns parallel sub agents. Each sub agent searches in iterations and returns a compressed result. The lead compiles the final answer. On their internal research eval, the swarm beat a single top model agent by 90.2 percent. Token facts from the post: agents use near 4 times chat tokens, and multi agent systems near 15 times. Token count alone explains 80 percent of score variance on their benchmark.</p>
+<h2>The 8 prompt principles</h2>
+<ol><li>Think like your agents: run simulations and watch where the agent mind goes wrong.</li><li>Teach the lead to delegate: each sub agent gets an objective, an output form, tool and source guidance, and clear borders.</li><li>Scale effort to task size: simple work gets 1 agent and 3 to 10 tool calls; comparisons get 2 to 4 sub agents at 10 to 15 calls each; hard work gets 10 plus sub agents with split duties.</li><li>Tool design is critical: inspect all tools first, match tool to intent, prefer a specialist tool over a general one.</li><li>Let agents improve their tools: one agent that rewrote weak MCP tool descriptions cut task time by 40 percent.</li><li>Start wide, then narrow: broad search first, deep read second.</li><li>Guide the thinking: extended thinking for the lead plan, interleaved thinking for sub agents.</li><li>Parallel calls: the lead starts 3 to 5 sub agents at once, sub agents run 3 plus tools at once. Research time fell by up to 90 percent.</li></ol>
+<h2>Eval method</h2>
+<p>Start at once with near 20 real queries. One judge call per answer, one prompt, a score from 0.0 to 1.0 plus pass or fail. Rubric: fact accuracy, citation accuracy, completeness, source quality, tool efficiency. Human review still matters: their humans caught a source bias toward SEO farms over academic PDFs that the judge missed.</p>
+<h2>Claude Code best practice, current doc</h2>
+<ol><li>Split instructions by force: prompts, CLAUDE.md, and skills guide the model; hooks, deny rules, and managed settings bind the harness. Put each rule in the layer that can hold it.</li><li>CLAUDE.md stays short: exact test, typecheck, and lint commands, the single test command, warnings on code that misleads, decisions that live outside the repo, and any point corrected twice. The memory guide caps the file under 200 lines. Scope rules live in .claude/rules/ with a paths filter. Side effect flows become skills with model invocation off.</li><li>The check ladder: a prompt instruction first, then a goal condition that a second model rechecks each turn, then a Stop hook that blocks the stop and feeds the error back, with a cap of 8 blocks, then a code review in a fresh sub agent. Demand evidence each time: command plus output, or a screenshot.</li><li>Hooks for hard rules: a formatter after each edit, a block on edits under migrations, deny rules on secret files. Sandbox mode for unattended runs.</li><li>Cost control: cheap models for sub agents by file setting, short summary demands, usage checks. Clear context between tasks. Compact with a focus note when a session must live.</li><li>Unattended runs need five answers first: the done definition, the self check, the allowed scope, stop limits in turns and dollars, and the destination plus approver. Script form uses the print mode with bare, system prompt append, MCP config, settings, allowed tools, and JSON output flags.</li><li>Parallel form: worktrees per task, one mechanical change split into 5 to 30 worktree units, each with its own PR.</li><li>Stop doing list from the doc: aggressive context care, all caps emphasis, sub agents for context cover alone, delegation for a better answer, think hard phrasing, and keep going exhortations.</li></ol>
+<h2>The C compiler build: harness over orchestration</h2>
+<p>Sixteen agents built a Rust C compiler in two weeks: near 2,000 sessions, just under 20,000 dollars, 100,000 lines, a bootable Linux 6.9 on three chip families, and 99 percent pass rates on most compiler test suites. No orchestrator agent and no agent to agent talk. The harness is files:</p>
+<ol><li>Each agent works in a fresh container, clones a bare repo, and pushes when done.</li><li>Task claim: write a text file into current_tasks/, such as current_tasks/parse_if_statement.txt. Git sync forces a second agent to pick a new task. Work, pull, merge, push, delete the lock file.</li><li>Agents pick the next most clear problem and keep running notes on failed paths.</li><li>Test quality carries the system: strong verifiers first, CI added when new features broke old ones.</li><li>Context hygiene: few lines of live output, detail in log files, the word ERROR plus a reason on one line for grep, pre computed aggregate stats.</li><li>Time blindness fix: rare progress prints, and a fast mode that runs a fixed random 1 or 10 percent sample per agent.</li><li>The kernel block: all agents hit one bug in one giant task. Fix: use GCC as an oracle. Compile most files with GCC and a subset with the new compiler, swap subsets to bisect, then delta debug the file pair.</li></ol>
+<h2>Self build report: the review bot</h2>
+<p>Anthropic states past 80 percent of merged code comes from Claude as of May 2026, with a typical engineer merging 8 times the 2024 code volume per day, a figure the post itself flags as soft. The transferable system: an automated reviewer reads each change for bugs and security before merge. A retro check found the bot would have caught near one third of the bugs behind past incidents. Their stated bottleneck: human review. The bot exists to move that bottleneck.</p>
+<h2>Apply this to your work</h2><div class="rule"><p>Your research lanes map to the swarm design with no stretch: one lead holds the question and the claim ledger, sub agents take source chunks, and the eval rubric from this page grades each brief on fact accuracy, citation accuracy, completeness, source quality, and tool efficiency. Your paper builds map to the compiler harness: a current_tasks folder with lock files gives your parallel paper lanes a claim system that survives session death, and the GCC oracle trick maps to a source oracle: one trusted text per claim set, subset swaps to bisect a wrong claim to its source.</p></div><h2>Replication checklist</h2><ol><li>Write your research rubric as one judge prompt with the five criteria and a 0.0 to 1.0 scale.</li><li>Add a current_tasks lock folder to your next multi lane build.</li><li>Set your sub agent models by file. Cheap for search, top for synthesis.</li><li>Write your five unattended answers into the task card template: done, check, scope, limits, approver.</li></ol>
+<p>Prompt file: <a href="../prompts/research-swarm.md">prompts/research-swarm.md</a>.</p>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart TD
+ A[Lead agent] --> B[Sub agent 1]
+ A --> C[Sub agent 2]
+ A --> D[Sub agent 3]
+ B --> E[Compressed returns]
+ C --> E
+ D --> E
+ E --> F[Lead synthesis]
+ F --> G[Judge: 5 criteria]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart TD
+ A[Lead agent] --&gt; B[Sub agent 1]
+ A --&gt; C[Sub agent 2]
+ A --&gt; D[Sub agent 3]
+ B --&gt; E[Compressed returns]
+ C --&gt; E
+ D --&gt; E
+ E --&gt; F[Lead synthesis]
+ F --&gt; G[Judge: 5 criteria]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Anthropic Systems, Research Swarm, Best Practice, C Compiler</span><ul><li><span class="branch">Swarm</span><ul><li><span class="leaf">8 principles</span></li><li><span class="leaf">90.2 percent eval gain</span></li><li><span class="leaf">Near 15x tokens</span></li></ul></li><li><span class="branch">Best practice</span><ul><li><span class="leaf">Short rule file</span></li><li><span class="leaf">Check ladder</span></li><li><span class="leaf">Five unattended answers</span></li></ul></li><li><span class="branch">Compiler</span><ul><li><span class="leaf">16 agents</span></li><li><span class="leaf">Lock files</span></li><li><span class="leaf">GCC oracle bisect</span></li></ul></li></ul></li></ul></div>
+</main>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart TD
+ A[Lead agent] --> B[Sub agent 1]
+ A --> C[Sub agent 2]
+ A --> D[Sub agent 3]
+ B --> E[Compressed returns]
+ C --> E
+ D --> E
+ E --> F[Lead synthesis]
+ F --> G[Judge: 5 criteria]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart TD
+ A[Lead agent] --&gt; B[Sub agent 1]
+ A --&gt; C[Sub agent 2]
+ A --&gt; D[Sub agent 3]
+ B --&gt; E[Compressed returns]
+ C --&gt; E
+ D --&gt; E
+ E --&gt; F[Lead synthesis]
+ F --&gt; G[Judge: 5 criteria]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Anthropic Systems, Research Swarm, Best Practice, C Compiler</span><ul><li><span class="branch">Swarm</span><ul><li><span class="leaf">8 principles</span></li><li><span class="leaf">90.2 percent eval gain</span></li><li><span class="leaf">Near 15x tokens</span></li></ul></li><li><span class="branch">Best practice</span><ul><li><span class="leaf">Short rule file</span></li><li><span class="leaf">Check ladder</span></li><li><span class="leaf">Five unattended answers</span></li></ul></li><li><span class="branch">Compiler</span><ul><li><span class="leaf">16 agents</span></li><li><span class="leaf">Lock files</span></li><li><span class="leaf">GCC oracle bisect</span></li></ul></li></ul></li></ul></div>
+</main>
+
+<h2>Visual map of this page</h2>
+<p>Three views of one page: a Mermaid flow for work order, a markmap for concept groups, and a read guide for the flow.</p>
+<div class="mermaid">
+flowchart TD
+ A[Claim: 5k to 10k tokens per day] --> B[Search both firms at origin]
+ B --> C[No such figure found]
+ C --> D[Real figures: dollars per day]
+ D --> E[Workflows that burn tokens]
+ E --> F[Fleets, schedules, swarms, review bots]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart TD
+ A[Claim: 5k to 10k tokens per day] --&gt; B[Search both firms at origin]
+ B --&gt; C[No such figure found]
+ C --&gt; D[Real figures: dollars per day]
+ D --&gt; E[Workflows that burn tokens]
+ E --&gt; F[Fleets, schedules, swarms, review bots]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the left box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Niche Sources and Token Heavy Workflows</span><ul><li><span class="branch">Claim check</span><ul><li><span class="leaf">No tokens per day average</span></li><li><span class="leaf">Dollars, multiples, percentiles</span></li><li><span class="leaf">Scale: one task past 55k tokens</span></li></ul></li><li><span class="branch">Heavy workflows</span><ul><li><span class="leaf">Cherny fleet</span></li><li><span class="leaf">Gas Town 20 to 30</span></li><li><span class="leaf">OpenAI research saturation</span></li><li><span class="leaf">Review bot per change</span></li></ul></li><li><span class="branch">Niche lanes</span><ul><li><span class="leaf">Blogs and dotfiles</span></li><li><span class="leaf">Podcast transcripts</span></li><li><span class="leaf">Newsletters</span></li><li><span class="leaf">Community threads</span></li></ul></li></ul></li></ul></div>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart TD
+ A[Lead agent] --> B[Sub agent 1]
+ A --> C[Sub agent 2]
+ A --> D[Sub agent 3]
+ B --> E[Compressed returns]
+ C --> E
+ D --> E
+ E --> F[Lead synthesis]
+ F --> G[Judge: 5 criteria]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart TD
+ A[Lead agent] --&gt; B[Sub agent 1]
+ A --&gt; C[Sub agent 2]
+ A --&gt; D[Sub agent 3]
+ B --&gt; E[Compressed returns]
+ C --&gt; E
+ D --&gt; E
+ E --&gt; F[Lead synthesis]
+ F --&gt; G[Judge: 5 criteria]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Anthropic Systems, Research Swarm, Best Practice, C Compiler</span><ul><li><span class="branch">Swarm</span><ul><li><span class="leaf">8 principles</span></li><li><span class="leaf">90.2 percent eval gain</span></li><li><span class="leaf">Near 15x tokens</span></li></ul></li><li><span class="branch">Best practice</span><ul><li><span class="leaf">Short rule file</span></li><li><span class="leaf">Check ladder</span></li><li><span class="leaf">Five unattended answers</span></li></ul></li><li><span class="branch">Compiler</span><ul><li><span class="leaf">16 agents</span></li><li><span class="leaf">Lock files</span></li><li><span class="leaf">GCC oracle bisect</span></li></ul></li></ul></li></ul></div>
+</main>
+<footer class="site">AI Power-User Intelligence Hub, field guide build v3. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026, the earlier of execution day and 30 November 2026. Open site/index.html from disk. No server need. No track code sits in this site.</footer>
+<script src="assets/site.js"></script>
+<script src="assets/js/mermaid.min.js"></script>
+<script>
+if (window.mermaid) { mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}}); }
+</script>
+<script src="assets/js/mermaid.min.js"></script>
+<script>
+if (window.mermaid) { mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}}); }
+</script>
+</body></html>
