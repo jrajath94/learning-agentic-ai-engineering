@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deep Dive: OpenAI Harness Engineering | Learning Agentic AI Engineering</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></head>
+<body>
+<header class="top"><div class="wordmark"><a href="index.html">Learning Agentic AI Engineering</a></div>
+<nav class="main"><a href="index.html">Home</a><a href="start.html" aria-current="page">Start Here</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="foundations.html">Foundations</a><a href="cross-cutting.html">Cross-cutting</a><a href="business.html">Business</a><a href="research.html">Research</a><a href="profiles.html">Profiles</a><a href="prompts.html">Prompt Vault</a><a href="labs.html">Labs</a><a href="paths.html">Learning Paths</a><a href="principles.html">Principles</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="niche.html">Niche</a>
+<a href="deep.html">Deep Dives</a><a href="audit.html">Audit</a><a href="search.html">Search</a></nav></header>
+<main>
+<p class="meta">Home / Deep Dives / Deep Dive: OpenAI Harness Engineering</p>
+<h1>Deep Dive: OpenAI Harness Engineering</h1>
+<p class="lede">The full system from the OpenAI post, read in full: a map style AGENTS.md, a docs system of record, layer law, a doc care agent, and the self review loop. Source: openai.com/index/harness-engineering. Confidence: High.</p>
+<figure class="visual"><img src="assets/img/deep-openai-harness.svg" alt="Flow diagram: Map rule file, Docs of record, Self review loop, Doc care agent"><figcaption>Figure 1. Deep Dive: OpenAI Harness Engineering as a flow. Each box names one stage on this page. Arrows show work order.</figcaption></figure>
+
+<h2>The experiment in numbers</h2>
+<p>An internal product built with zero hand written code: near 1 million lines in five months, near 1,500 PRs, a team that grew from 3 to 7 engineers, an average of 3.5 PRs per engineer per day, and a build time near one tenth of the manual path. The first commit and the first AGENTS.md came from the agent itself. Their line: humans steer, agents execute.</p>
+<h2>The self review loop, step by step</h2>
+<ol><li>The engineer writes a prompt. The agent opens a PR.</li><li>The agent reviews its own change on the local checkout.</li><li>The agent calls named agent reviews, local and cloud, one per concern.</li><li>The agent answers human and agent notes, and loops until all agent reviewers pass.</li><li>The post names the shape a Ralph Wiggum loop: the same agent works its own review queue until the queue is empty.</li><li>Single runs pass six hours with no human touch, often across sleep hours.</li></ol>
+<h2>Legibility and observability kit</h2>
+<ol><li>The app boots per worktree, one instance per change, so an agent can drive its own build.</li><li>Browser control sits in the agent runtime: DOM snapshots, screenshots, navigation.</li><li>Each worktree gets a throwaway observability stack: logs, metrics, traces, torn down at task end.</li><li>Agents query logs with LogQL and metrics with PromQL. Sample goals from the post: service start under 800ms, and no span in four key user journeys past two seconds.</li></ol>
+<h2>AGENTS.md as a map</h2>
+<p>One big instruction file failed four ways: context is scarce, long text stops guiding, the file rots, and no check can verify it. The fix: AGENTS.md at near 100 lines as a table of contents. The knowledge lives in a structured docs tree as the system of record: design docs with an index and a verification state per doc, an architecture doc with domains and layer order, a quality doc that grades each domain and layer, and plans as first class files with progress and decision logs in git. Freshness is a mechanical check: linters and CI verify doc structure, cross links, and currency.</p>
+<h2>The doc care agent</h2>
+<p>A recurring agent scans for docs that no longer match code behavior and opens fix PRs. Docs rot is treated as a bug class with an owner, and the owner is an agent.</p>
+<h2>Layer law</h2>
+<pre>Per business domain, dependencies flow one way only:
+Types -> Config -> Repo -> Service -> Runtime -> UI
+
+Cross cutting concerns (auth, connectors, telemetry,
+feature flags) enter through one interface: Providers.
+
+Enforcement: custom linters plus structural tests.
+Lint error text carries the fix instruction, so the error
+message itself teaches the agent in context.</pre>
+<h2>Entropy control</h2>
+<p>Hand clean up failed: the team spent each Friday, 20 percent of the week, on slop removal. The fix has two parts. Golden principles live in the repo: prefer shared utility packages over hand rolled helpers, and no YOLO data probing, with boundary checks or typed SDKs in place of guesses. Background agent tasks scan for drift from the principles, update quality grades, and open small refactor PRs that a human can review in under a minute and often auto merge.</p>
+<h2>End to end autonomy, from one prompt</h2>
+<p>Their list: validate state, reproduce the bug, record a video of the failure, build the fix, validate by driving the app, record a second video, open the PR, answer feedback, fix build breaks, escalate only on a judgment call, merge.</p>
+<h2>Apply this to your work</h2><div class="rule"><p>Your repos carry the same rot risk at larger scale: dozens of study and library repos, each with rules, indexes, and plans. Copy three parts at once. One: cut each repo rule file to a map near 100 lines, with the deep rules in a docs tree that holds a verification state per doc. Two: a doc care routine that scans for stale index and plan files and opens fix PRs. Three: lint errors that teach: your STE checker and watermark checker already return fix text, so wire that text into agent context as the remediation step, in place of a pass or fail line alone.</p></div><h2>Replication checklist</h2><ol><li>Measure your largest rule file. Cut it to a map. Move depth into a docs tree with states.</li><li>Write the layer order for one service you own. Add one structural test that fails on a wrong import.</li><li>Start one doc care routine on one repo. Gate: PRs only, no direct pushes.</li><li>Add fix text to one lint rule you own. Read the next agent run for the change in behavior.</li></ol>
+<p>Prompt file: <a href="../prompts/harness-loop.md">prompts/harness-loop.md</a>.</p>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart LR
+ A[Prompt] --> B[Agent opens PR]
+ B --> C[Self review]
+ C --> D[Named agent reviews]
+ D -->|notes| C
+ D -->|all pass| E[Merge]
+ F[Doc care scan] --> G[Fix PRs for stale docs]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[Prompt] --&gt; B[Agent opens PR]
+ B --&gt; C[Self review]
+ C --&gt; D[Named agent reviews]
+ D --&gt;|notes| C
+ D --&gt;|all pass| E[Merge]
+ F[Doc care scan] --&gt; G[Fix PRs for stale docs]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: OpenAI Harness Engineering</span><ul><li><span class="branch">Docs</span><ul><li><span class="leaf">Design index</span></li><li><span class="leaf">Architecture and layers</span></li><li><span class="leaf">Quality grades</span></li><li><span class="leaf">Plans as files</span></li></ul></li><li><span class="branch">Layer law</span><ul><li><span class="leaf">Types to UI, one way</span></li><li><span class="leaf">Providers for cross cuts</span></li></ul></li><li><span class="branch">Entropy</span><ul><li><span class="leaf">Golden principles</span></li><li><span class="leaf">Drift scan PRs</span></li></ul></li></ul></li></ul></div>
+</main>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart LR
+ A[Prompt] --> B[Agent opens PR]
+ B --> C[Self review]
+ C --> D[Named agent reviews]
+ D -->|notes| C
+ D -->|all pass| E[Merge]
+ F[Doc care scan] --> G[Fix PRs for stale docs]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[Prompt] --&gt; B[Agent opens PR]
+ B --&gt; C[Self review]
+ C --&gt; D[Named agent reviews]
+ D --&gt;|notes| C
+ D --&gt;|all pass| E[Merge]
+ F[Doc care scan] --&gt; G[Fix PRs for stale docs]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: OpenAI Harness Engineering</span><ul><li><span class="branch">Docs</span><ul><li><span class="leaf">Design index</span></li><li><span class="leaf">Architecture and layers</span></li><li><span class="leaf">Quality grades</span></li><li><span class="leaf">Plans as files</span></li></ul></li><li><span class="branch">Layer law</span><ul><li><span class="leaf">Types to UI, one way</span></li><li><span class="leaf">Providers for cross cuts</span></li></ul></li><li><span class="branch">Entropy</span><ul><li><span class="leaf">Golden principles</span></li><li><span class="leaf">Drift scan PRs</span></li></ul></li></ul></li></ul></div>
+</main>
+
+<h2>Visual map of this page</h2>
+<p>Three views of one page: a Mermaid flow for work order, a markmap for concept groups, and a read guide for the flow.</p>
+<div class="mermaid">
+flowchart TD
+ A[Claim: 5k to 10k tokens per day] --> B[Search both firms at origin]
+ B --> C[No such figure found]
+ C --> D[Real figures: dollars per day]
+ D --> E[Workflows that burn tokens]
+ E --> F[Fleets, schedules, swarms, review bots]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart TD
+ A[Claim: 5k to 10k tokens per day] --&gt; B[Search both firms at origin]
+ B --&gt; C[No such figure found]
+ C --&gt; D[Real figures: dollars per day]
+ D --&gt; E[Workflows that burn tokens]
+ E --&gt; F[Fleets, schedules, swarms, review bots]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the left box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Niche Sources and Token Heavy Workflows</span><ul><li><span class="branch">Claim check</span><ul><li><span class="leaf">No tokens per day average</span></li><li><span class="leaf">Dollars, multiples, percentiles</span></li><li><span class="leaf">Scale: one task past 55k tokens</span></li></ul></li><li><span class="branch">Heavy workflows</span><ul><li><span class="leaf">Cherny fleet</span></li><li><span class="leaf">Gas Town 20 to 30</span></li><li><span class="leaf">OpenAI research saturation</span></li><li><span class="leaf">Review bot per change</span></li></ul></li><li><span class="branch">Niche lanes</span><ul><li><span class="leaf">Blogs and dotfiles</span></li><li><span class="leaf">Podcast transcripts</span></li><li><span class="leaf">Newsletters</span></li><li><span class="leaf">Community threads</span></li></ul></li></ul></li></ul></div>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart LR
+ A[Prompt] --> B[Agent opens PR]
+ B --> C[Self review]
+ C --> D[Named agent reviews]
+ D -->|notes| C
+ D -->|all pass| E[Merge]
+ F[Doc care scan] --> G[Fix PRs for stale docs]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[Prompt] --&gt; B[Agent opens PR]
+ B --&gt; C[Self review]
+ C --&gt; D[Named agent reviews]
+ D --&gt;|notes| C
+ D --&gt;|all pass| E[Merge]
+ F[Doc care scan] --&gt; G[Fix PRs for stale docs]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: OpenAI Harness Engineering</span><ul><li><span class="branch">Docs</span><ul><li><span class="leaf">Design index</span></li><li><span class="leaf">Architecture and layers</span></li><li><span class="leaf">Quality grades</span></li><li><span class="leaf">Plans as files</span></li></ul></li><li><span class="branch">Layer law</span><ul><li><span class="leaf">Types to UI, one way</span></li><li><span class="leaf">Providers for cross cuts</span></li></ul></li><li><span class="branch">Entropy</span><ul><li><span class="leaf">Golden principles</span></li><li><span class="leaf">Drift scan PRs</span></li></ul></li></ul></li></ul></div>
+</main>
+<footer class="site">AI Power-User Intelligence Hub, field guide build v3. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026, the earlier of execution day and 30 November 2026. Open site/index.html from disk. No server need. No track code sits in this site.</footer>
+<script src="assets/site.js"></script>
+<script src="assets/js/mermaid.min.js"></script>
+<script>
+if (window.mermaid) { mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}}); }
+</script>
+<script src="assets/js/mermaid.min.js"></script>
+<script>
+if (window.mermaid) { mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}}); }
+</script>
+</body></html>
