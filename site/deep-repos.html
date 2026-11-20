@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deep Dive: Skill Repos, Pocock, Superpowers, Caveman | Learning Agentic AI Engineering</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></head>
+<body>
+<header class="top"><div class="wordmark"><a href="index.html">Learning Agentic AI Engineering</a></div>
+<nav class="main"><a href="index.html">Home</a><a href="start.html" aria-current="page">Start Here</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="foundations.html">Foundations</a><a href="cross-cutting.html">Cross-cutting</a><a href="business.html">Business</a><a href="research.html">Research</a><a href="profiles.html">Profiles</a><a href="prompts.html">Prompt Vault</a><a href="labs.html">Labs</a><a href="paths.html">Learning Paths</a><a href="principles.html">Principles</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="niche.html">Niche</a>
+<a href="deep.html">Deep Dives</a><a href="audit.html">Audit</a><a href="search.html">Search</a></nav></header>
+<main>
+<p class="meta">Home / Deep Dives / Deep Dive: Skill Repos, Pocock, Superpowers, Caveman</p>
+<h1>Deep Dive: Skill Repos, Pocock, Superpowers, Caveman</h1>
+<p class="lede">The actual file systems of three public repos, from READMEs read in full and file level analyses. Confidence: Medium High for Pocock skill internals, which rest on the README plus two file level secondary analyses, High for the rest.</p>
+<figure class="visual"><img src="assets/img/deep-repos.svg" alt="Flow diagram: Stub entry skill, Discipline skill, Two stage review, Measured claims"><figcaption>Figure 1. Deep Dive: Skill Repos, Pocock, Superpowers, Caveman as a flow. Each box names one stage on this page. Arrows show work order.</figcaption></figure>
+
+<h2>Pocock skills: the system shape</h2>
+<p>27 skills in version 1.3. Two classes. User invoked skills orchestrate: 16 of them, called by a human on purpose. Model invoked skills hold discipline: 11 of them, called by the agent or by a user invoked skill. Law of the system: a user invoked skill may call model invoked skills, and never a second user invoked skill. Folders: engineering with 20 skills and productivity with 7 ship in the plugin; misc, in progress, and deprecated stay out.</p>
+<h2>The grill pair: a stub and a procedure</h2>
+<pre>skills/productivity/grill-me/SKILL.md (7 lines, full shape):
+frontmatter: name grill-me, a one line description that calls
+it a relentless interview to sharpen a plan or design,
+and disable-model-invocation: true.
+Body, one line in effect: call the grilling skill.
+
+skills/productivity/grilling/SKILL.md (near 30 lines):
+Treat the plan as a decision tree. Ask in numbered rounds.
+Put a recommended answer under each question.
+Write nothing until the user confirms.</pre>
+<p>The design lesson is the split: the name a human types stays tiny, and the procedure lives in one discipline skill that many entry points can share. grill-with-docs adds one act per talk: shared terms land in a CONTEXT.md glossary, and decisions land as records in docs/adr/, so the talk compounds into repo state.</p>
+<h2>Named skills, one line each</h2>
+<ol><li>tdd: red, green, refactor, one vertical slice at a time.</li><li>diagnosing-bugs: build a feedback loop that goes red on the bug, minimise, hypothesise, instrument, fix, regression test. Each phase gates the next.</li><li>to-spec: turn the current talk into a spec on the issue tracker. No interview in this skill.</li><li>to-tickets and implement: implementation drives tdd at seams agreed in advance and closes with a code review before the commit.</li><li>code-review: two axes, Standards and Spec, run as parallel sub agents.</li><li>triage: move issues through a state machine of triage roles.</li><li>Setup: one setup skill per repo asks three facts: the issue tracker, the triage labels, and the docs location.</li><li>Install forms: the official plugin market, or the skills CLI with a version pin.</li></ol>
+<p>One correction to round 1 of this guide: no handoff skill exists in the repo. The word names a pattern inside the grill pair, stub to procedure, not a skill. The profiles page of this site stands corrected by this page.</p>
+<h2>Superpowers: the mandatory loop</h2>
+<ol><li>Brainstorming first, with design shown in chunks for sign off.</li><li>Worktree setup: an isolated workspace and a clean test baseline.</li><li>Writing plans: tasks of 2 to 5 minutes, exact file paths, complete code in the plan, and a verification step per task. The plan reads for a junior engineer with no project context, by design.</li><li>Execution in one of two forms: a fresh sub agent per task with review after each task, or inline execution in one context with one final review.</li><li>TDD inside execution: red, green, refactor. Code written before its test gets deleted.</li><li>Code review between tasks. Critical findings block the next task.</li><li>Branch finish: verify tests, then merge, PR, keep, or discard, and clean the worktree.</li><li>Sub agent development carries a two stage review: spec compliance first, code quality second.</li><li>Failure path: a diagnosis skill reads the session transcript and reports with line level evidence.</li></ol>
+<h2>Caveman: measured, with the vendor label on</h2>
+<p>The repo now holds a six part system: voice rules, input compression for logs and test output, an auto model and effort picker, a code mode that keeps and reruns agent scripts, waste fixes, and browse control. Voice rules: answer first in the form thing, action, reason, next step; one idea per sentence; meaning words stay exact (not, never, numbers, units); payload stays verbatim. Levels run from the base mode to two stronger forms. All savings figures in the README come from the vendor own runs and tests. Treat them as claims to test on your own work, never as facts. One figure worth a personal test: input compression cut input tokens by a third across six synthetic large output tasks, with all answers right.</p>
+<h2>Apply this to your work</h2><div class="rule"><p>Your skill use maps to the Pocock split at once. Your standing orders act as user invoked skills: a named entry, a short body, and calls into discipline procedures such as STE lint, watermark clean, and visual audit. The grill pair gives you the shape for your own plan gate: a grill command that asks numbered rounds with a recommended answer per question, and writes nothing until you confirm. That one skill, run before each multi day build, kills the mid build scope restate cycle you flagged on the exam builds.</p></div><h2>Replication checklist</h2><ol><li>Split one of your repeat procedures into a stub entry plus a discipline skill, Pocock form.</li><li>Write your grill command this week. Use it before the next multi day build.</li><li>Adopt the two stage review for agent built work: spec compliance, then quality.</li><li>Test caveman input compression on one log heavy task. Measure on your own bill.</li></ol>
+<p>Prompt file: <a href="../prompts/grill-session.md">prompts/grill-session.md</a>.</p>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart LR
+ A[User invokes stub] --> B[Discipline skill runs]
+ B --> C[Work at agreed seams]
+ C --> D[Review: spec fit]
+ D --> E[Review: quality]
+ E --> F[Commit]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[User invokes stub] --&gt; B[Discipline skill runs]
+ B --&gt; C[Work at agreed seams]
+ C --&gt; D[Review: spec fit]
+ D --&gt; E[Review: quality]
+ E --&gt; F[Commit]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Skill Repos, Pocock, Superpowers, Caveman</span><ul><li><span class="branch">Pocock</span><ul><li><span class="leaf">27 skills, two classes</span></li><li><span class="leaf">Grill pair</span></li><li><span class="leaf">Diagnosing loop</span></li></ul></li><li><span class="branch">Superpowers</span><ul><li><span class="leaf">Mandatory loop</span></li><li><span class="leaf">2 to 5 minute tasks</span></li><li><span class="leaf">TDD deletes early code</span></li></ul></li><li><span class="branch">Caveman</span><ul><li><span class="leaf">Voice rules</span></li><li><span class="leaf">Input compression</span></li><li><span class="leaf">Vendor figures, test self</span></li></ul></li></ul></li></ul></div>
+</main>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart LR
+ A[User invokes stub] --> B[Discipline skill runs]
+ B --> C[Work at agreed seams]
+ C --> D[Review: spec fit]
+ D --> E[Review: quality]
+ E --> F[Commit]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[User invokes stub] --&gt; B[Discipline skill runs]
+ B --&gt; C[Work at agreed seams]
+ C --&gt; D[Review: spec fit]
+ D --&gt; E[Review: quality]
+ E --&gt; F[Commit]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Skill Repos, Pocock, Superpowers, Caveman</span><ul><li><span class="branch">Pocock</span><ul><li><span class="leaf">27 skills, two classes</span></li><li><span class="leaf">Grill pair</span></li><li><span class="leaf">Diagnosing loop</span></li></ul></li><li><span class="branch">Superpowers</span><ul><li><span class="leaf">Mandatory loop</span></li><li><span class="leaf">2 to 5 minute tasks</span></li><li><span class="leaf">TDD deletes early code</span></li></ul></li><li><span class="branch">Caveman</span><ul><li><span class="leaf">Voice rules</span></li><li><span class="leaf">Input compression</span></li><li><span class="leaf">Vendor figures, test self</span></li></ul></li></ul></li></ul></div>
+</main>
+
+<h2>Visual map of this page</h2>
+<p>Three views of one page: a Mermaid flow for work order, a markmap for concept groups, and a read guide for the flow.</p>
+<div class="mermaid">
+flowchart TD
+ A[Claim: 5k to 10k tokens per day] --> B[Search both firms at origin]
+ B --> C[No such figure found]
+ C --> D[Real figures: dollars per day]
+ D --> E[Workflows that burn tokens]
+ E --> F[Fleets, schedules, swarms, review bots]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart TD
+ A[Claim: 5k to 10k tokens per day] --&gt; B[Search both firms at origin]
+ B --&gt; C[No such figure found]
+ C --&gt; D[Real figures: dollars per day]
+ D --&gt; E[Workflows that burn tokens]
+ E --&gt; F[Fleets, schedules, swarms, review bots]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the left box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Niche Sources and Token Heavy Workflows</span><ul><li><span class="branch">Claim check</span><ul><li><span class="leaf">No tokens per day average</span></li><li><span class="leaf">Dollars, multiples, percentiles</span></li><li><span class="leaf">Scale: one task past 55k tokens</span></li></ul></li><li><span class="branch">Heavy workflows</span><ul><li><span class="leaf">Cherny fleet</span></li><li><span class="leaf">Gas Town 20 to 30</span></li><li><span class="leaf">OpenAI research saturation</span></li><li><span class="leaf">Review bot per change</span></li></ul></li><li><span class="branch">Niche lanes</span><ul><li><span class="leaf">Blogs and dotfiles</span></li><li><span class="leaf">Podcast transcripts</span></li><li><span class="leaf">Newsletters</span></li><li><span class="leaf">Community threads</span></li></ul></li></ul></li></ul></div>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart LR
+ A[User invokes stub] --> B[Discipline skill runs]
+ B --> C[Work at agreed seams]
+ C --> D[Review: spec fit]
+ D --> E[Review: quality]
+ E --> F[Commit]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[User invokes stub] --&gt; B[Discipline skill runs]
+ B --&gt; C[Work at agreed seams]
+ C --&gt; D[Review: spec fit]
+ D --&gt; E[Review: quality]
+ E --&gt; F[Commit]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Skill Repos, Pocock, Superpowers, Caveman</span><ul><li><span class="branch">Pocock</span><ul><li><span class="leaf">27 skills, two classes</span></li><li><span class="leaf">Grill pair</span></li><li><span class="leaf">Diagnosing loop</span></li></ul></li><li><span class="branch">Superpowers</span><ul><li><span class="leaf">Mandatory loop</span></li><li><span class="leaf">2 to 5 minute tasks</span></li><li><span class="leaf">TDD deletes early code</span></li></ul></li><li><span class="branch">Caveman</span><ul><li><span class="leaf">Voice rules</span></li><li><span class="leaf">Input compression</span></li><li><span class="leaf">Vendor figures, test self</span></li></ul></li></ul></li></ul></div>
+</main>
+<footer class="site">AI Power-User Intelligence Hub, field guide build v3. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026, the earlier of execution day and 30 November 2026. Open site/index.html from disk. No server need. No track code sits in this site.</footer>
+<script src="assets/site.js"></script>
+<script src="assets/js/mermaid.min.js"></script>
+<script>
+if (window.mermaid) { mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}}); }
+</script>
+<script src="assets/js/mermaid.min.js"></script>
+<script>
+if (window.mermaid) { mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}}); }
+</script>
+</body></html>
