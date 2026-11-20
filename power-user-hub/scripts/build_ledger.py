@@ -480,16 +480,22 @@ CLAIMS = [
 
 
 def main() -> None:
+    rows = list(CLAIMS)
+    extra = ROOT / "data" / "pass2-claims.json"
+    if extra.exists():
+        more = json.loads(extra.read_text(encoding="utf-8"))
+        have = {row["id"] for row in rows}
+        rows.extend(row for row in more if row["id"] not in have)
     data = ROOT / "data"
     data.mkdir(exist_ok=True)
-    (data / "sources.json").write_text(json.dumps(CLAIMS, indent=2) + "\n", encoding="utf-8")
+    (data / "sources.json").write_text(json.dumps(rows, indent=2) + "\n", encoding="utf-8")
     with (data / "sources.csv").open("w", encoding="utf-8", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=list(CLAIMS[0].keys()))
+        writer = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
         writer.writeheader()
-        writer.writerows(CLAIMS)
-    js = "window.HUB_CLAIMS = " + json.dumps(CLAIMS) + ";\n"
+        writer.writerows(rows)
+    js = "window.HUB_CLAIMS = " + json.dumps(rows) + ";\n"
     (ROOT / "js" / "claims.js").write_text(js, encoding="utf-8")
-    print(f"wrote {len(CLAIMS)} claims")
+    print(f"wrote {len(rows)} claims")
 
 
 if __name__ == "__main__":

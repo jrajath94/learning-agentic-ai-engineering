@@ -1,0 +1,740 @@
+[
+  {
+    "title": "Claude Code: Anthropic's CLI Agent",
+    "url": "https://latentspace.podhood.com/953b54c2-6d60-4e9c-b1d7-f7c767a0a1b0",
+    "author": "Boris Cherny",
+    "date": "2025-05-07",
+    "cluster": "claude",
+    "kind": "talk",
+    "claims": 45
+  },
+  {
+    "title": "Claude Code's Next Era",
+    "url": "https://latent.space/p/thariq/",
+    "author": "Thariq Shihipar",
+    "date": "Sep 28",
+    "cluster": "people",
+    "kind": "talk",
+    "claims": 20
+  },
+  {
+    "title": "How AI is transforming work at Anthropic",
+    "url": "https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic",
+    "author": "Saffron Huang",
+    "date": "2025-12-02",
+    "cluster": "people",
+    "kind": "official",
+    "claims": 12
+  },
+  {
+    "title": "mattpocock/skills README",
+    "url": "https://github.com/mattpocock/skills",
+    "author": "Matt Pocock",
+    "date": "README on main, fetched 2026-11-20",
+    "cluster": "repos",
+    "kind": "repo",
+    "claims": 10
+  },
+  {
+    "title": "obra/superpowers README",
+    "url": "https://raw.githubusercontent.com/obra/superpowers/main/README.md",
+    "author": "Jesse Vincent / Prime Radiant",
+    "date": "2026-11-20",
+    "cluster": "repos",
+    "kind": "article",
+    "claims": 10
+  },
+  {
+    "title": "Boris Cherny",
+    "url": "https://latent.space/wiki/boris-cherny/",
+    "author": "Latent Space (wiki profile; human editorial review pending)",
+    "date": "2026-09-20",
+    "cluster": "claude",
+    "kind": "talk",
+    "claims": 9
+  },
+  {
+    "title": "anthropics/claude-code README",
+    "url": "https://github.com/anthropics/claude-code",
+    "author": "Anthropic",
+    "date": "2026-11-20",
+    "cluster": "repos",
+    "kind": "repo",
+    "claims": 9
+  },
+  {
+    "title": "openai/codex README",
+    "url": "https://github.com/openai/codex",
+    "author": "OpenAI",
+    "date": "2026-11-20",
+    "cluster": "repos",
+    "kind": "repo",
+    "claims": 7
+  },
+  {
+    "title": "Building a C compiler with a team of parallel Claudes",
+    "url": "https://www.anthropic.com/research/building-c-compiler",
+    "author": "not named on the fetched page",
+    "date": "2026-02-05",
+    "cluster": "claude",
+    "kind": "official",
+    "claims": 6
+  },
+  {
+    "title": "Cat Wu",
+    "url": "https://latent.space/wiki/cat-wu/",
+    "author": "Latent Space (wiki profile; human editorial review pending)",
+    "date": "2026-09-20",
+    "cluster": "claude",
+    "kind": "talk",
+    "claims": 6
+  },
+  {
+    "title": "Best practices for Claude Code",
+    "url": "https://code.claude.com/docs/en/best-practices",
+    "author": "Anthropic",
+    "date": "fetched 2026-11-20",
+    "cluster": "claude",
+    "kind": "article",
+    "claims": 5
+  },
+  {
+    "title": "Google Antigravity changelog",
+    "url": "https://antigravity.google/docs/changelog/",
+    "author": "Google Antigravity",
+    "date": "2026-11-18",
+    "cluster": "gemini",
+    "kind": "official",
+    "claims": 5
+  },
+  {
+    "title": "Grok Bot overview",
+    "url": "https://docs.x.ai/grok-bot/overview",
+    "author": "xAI",
+    "date": "undated page, fetched 2026-11-20",
+    "cluster": "grok",
+    "kind": "official",
+    "claims": 5
+  },
+  {
+    "title": "Introducing Claude Duet",
+    "url": "https://claude.com/resources/articles/claude-duet",
+    "author": "Anthropic",
+    "date": "2026-10-23",
+    "cluster": "claude",
+    "kind": "article",
+    "claims": 5
+  },
+  {
+    "title": "Developing a multiplayer extraction RTS using AI only, with Opus 5.5 orchestrating sub-agents. Three lessons and the original prompt",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xqscg6/developing_a_multiplayer_extraction_rts_using_ai/",
+    "author": "idlerunner00",
+    "date": "2026-11-08",
+    "cluster": "claude",
+    "kind": "reddit",
+    "claims": 4
+  },
+  {
+    "title": "I built a Mac app with Claude Code that coaches you to use Claude Code better",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xqjb21/i_built_a_mac_app_with_claude_code_that_coaches/",
+    "author": "iLrama",
+    "date": "2026-11-07",
+    "cluster": "claude",
+    "kind": "reddit",
+    "claims": 4
+  },
+  {
+    "title": "If your repo has both AGENTS.md and CLAUDE.md, Claude Code ignores AGENTS.md by default",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xnc7fs/if_your_repo_has_both_agentsmd_and_claudemd/",
+    "author": "vinishkapoor",
+    "date": "2026-11-04",
+    "cluster": "claude",
+    "kind": "reddit",
+    "claims": 4
+  },
+  {
+    "title": "Introducing dots",
+    "url": "https://openai.com/index/introducing-dots/",
+    "author": "OpenAI",
+    "date": "2026-09-29",
+    "cluster": "codex",
+    "kind": "official",
+    "claims": 4
+  },
+  {
+    "title": "My Claude Code config (CLAUDE.md, hooks, 10 subagents) is public. Which parts would you cut?",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xwkxtn/my_claude_code_config_claudemd_hooks_10_subagents/",
+    "author": "Aggressive_Pay_7649",
+    "date": "2026-11-15",
+    "cluster": "claude",
+    "kind": "reddit",
+    "claims": 4
+  },
+  {
+    "title": "Superpowers: How I'm using coding agents in October 2025",
+    "url": "https://blog.fsck.com/2025/10/09/superpowers/",
+    "author": "not named in the article body; a session-start path on the page is /Users/jesse/.claude/plugins/cache/Superpowers/...",
+    "date": "2025-10-09",
+    "cluster": "repos",
+    "kind": "article",
+    "claims": 4
+  },
+  {
+    "title": "diet103/claude-code-infrastructure-showcase README",
+    "url": "https://github.com/diet103/claude-code-infrastructure-showcase",
+    "author": "diet103",
+    "date": "2026-11-20",
+    "cluster": "claude",
+    "kind": "repo",
+    "claims": 4
+  },
+  {
+    "title": "hesreallyhim/awesome-claude-code README",
+    "url": "https://github.com/hesreallyhim/awesome-claude-code",
+    "author": "hesreallyhim",
+    "date": "2026-11-20",
+    "cluster": "repos",
+    "kind": "repo",
+    "claims": 4
+  },
+  {
+    "title": "punkpeye/awesome-mcp-servers README",
+    "url": "https://github.com/punkpeye/awesome-mcp-servers",
+    "author": "punkpeye",
+    "date": "2026-11-20",
+    "cluster": "mcp",
+    "kind": "repo",
+    "claims": 4
+  },
+  {
+    "title": "A quote from Andrej Karpathy",
+    "url": "https://simonwillison.net/2025/Feb/6/andrej-karpathy/",
+    "author": "Andrej Karpathy, quoted by Simon Willison",
+    "date": "2025-02-06",
+    "cluster": "practice",
+    "kind": "article",
+    "claims": 3
+  },
+  {
+    "title": "Agentic Coding Recommendations",
+    "url": "https://lucumr.pocoo.org/2025/6/12/agentic-coding/",
+    "author": "Armin Ronacher",
+    "date": "2025-06-12",
+    "cluster": "claude",
+    "kind": "article",
+    "claims": 3
+  },
+  {
+    "title": "Building AI Agents That Actually Work: A Beginner's Full Course",
+    "url": "https://greg-isenberg.com/building-practical-ai-agents",
+    "author": "Greg Isenberg",
+    "date": "2026-03-17",
+    "cluster": "repos",
+    "kind": "article",
+    "claims": 3
+  },
+  {
+    "title": "Claude Code deletes session transcripts after 30 days by default. 2,679 of my 5,271 sessions would be gone by now, so I built a dashboard that keeps them",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xrt75c/claude_code_deletes_session_transcripts_after_30/",
+    "author": "Nitjsefnie",
+    "date": "2026-11-09",
+    "cluster": "claude",
+    "kind": "reddit",
+    "claims": 3
+  },
+  {
+    "title": "Does delegating to cheaper models actually save money? Part 2: bigger codebases, coding tasks and Haiku alone",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xy1zw7/does_delegating_to_cheaper_models_actually_save/",
+    "author": "BeginningSir7334",
+    "date": "2026-11-16",
+    "cluster": "claude",
+    "kind": "reddit",
+    "claims": 3
+  },
+  {
+    "title": "Grok Bot changelog",
+    "url": "https://x.ai/changelog/bot",
+    "author": "xAI",
+    "date": "2026-11-18",
+    "cluster": "grok",
+    "kind": "official",
+    "claims": 3
+  },
+  {
+    "title": "Your AI Product Needs Evals",
+    "url": "https://hamel.dev/blog/posts/evals/index.html",
+    "author": "Hamel Husain",
+    "date": "2024-03-29",
+    "cluster": "practice",
+    "kind": "article",
+    "claims": 3
+  },
+  {
+    "title": "Augmented Coding: Beyond the Vibes",
+    "url": "https://newsletter.kentbeck.com/p/augmented-coding-beyond-the-vibes",
+    "author": "Kent Beck",
+    "date": "2025-06-25",
+    "cluster": "practice",
+    "kind": "article",
+    "claims": 2
+  },
+  {
+    "title": "Claude Code Head Boris Cherny: token maxing interview page text",
+    "url": "https://www.youtube.com/watch?v=Z6IT4gjrcPE",
+    "author": "Speaker on the Boris Cherny interview page (labels absent)",
+    "date": "fetched 2026-11-20",
+    "cluster": "tokens",
+    "kind": "talk",
+    "claims": 2
+  },
+  {
+    "title": "Claude logged into my various accounts with my permission, for 4 months. Today it refuses.",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1x9b2pl/claude_logged_into_my_various_accounts_with_my/",
+    "author": "cefromnova",
+    "date": "2026-10-18",
+    "cluster": "practice",
+    "kind": "reddit",
+    "claims": 2
+  },
+  {
+    "title": "I benchmarked Claude Code's Code Mode across 4 models and 192 runs: big savings on MCP-heavy work, little on file work",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xymddk/i_benchmarked_claude_codes_code_mode_across_4/",
+    "author": "bicameralai",
+    "date": "2026-11-17",
+    "cluster": "claude",
+    "kind": "reddit",
+    "claims": 2
+  },
+  {
+    "title": "I built Agent Desk with Claude Code: one screen for all your Claude Code agents (free, open source)",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xvvqzh/i_built_agent_desk_with_claude_code_one_screen/",
+    "author": "theguysperry",
+    "date": "2026-11-14",
+    "cluster": "claude",
+    "kind": "reddit",
+    "claims": 2
+  },
+  {
+    "title": "I built a small tool so Claude Code can read Reddit threads (free, open source)",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xzuurw/i_built_a_small_tool_so_claude_code_can_read/",
+    "author": "0-1k_1s",
+    "date": "2026-11-18",
+    "cluster": "practice",
+    "kind": "reddit",
+    "claims": 2
+  },
+  {
+    "title": "I built a tool that lets Claude rewrite your whole app in Rust, and proves nothing broke at every step (20x faster in one case)",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xyj19z/i_built_a_tool_that_lets_claude_rewrite_your/",
+    "author": "erkamyaman",
+    "date": "2026-11-17",
+    "cluster": "practice",
+    "kind": "reddit",
+    "claims": 2
+  },
+  {
+    "title": "I moved my personal life out of Claude's memory into plain Markdown files, and built a free app where Claude writes them with me",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xzs00k/i_moved_my_personal_life_out_of_claudes_memory/",
+    "author": "tkslucas",
+    "date": "2026-11-18",
+    "cluster": "claude",
+    "kind": "reddit",
+    "claims": 2
+  },
+  {
+    "title": "Introducing Muse Code and Muse Spark 1.2",
+    "url": "https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2",
+    "author": "Meta AI Research",
+    "date": "2026-08-05",
+    "cluster": "muse",
+    "kind": "official",
+    "claims": 2
+  },
+  {
+    "title": "LukeRenton/explore-claude-code README",
+    "url": "https://github.com/LukeRenton/explore-claude-code",
+    "author": "Luke Renton",
+    "date": "2026-11-20",
+    "cluster": "claude",
+    "kind": "repo",
+    "claims": 2
+  },
+  {
+    "title": "On the subject of /compact vs a new session in Claude Code. Letting your orchestrator end sessions at 30% context full, old session writes a handoff doc, starts a new session, auto name it and archive old session.",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xyoyw9/on_the_subject_of_compact_vs_a_new_session_in/",
+    "author": "toddthefrog",
+    "date": "2026-11-17",
+    "cluster": "claude",
+    "kind": "reddit",
+    "claims": 2
+  },
+  {
+    "title": "Postman desktop automatically installed a Claude Code plugin on my Mac. Logs, config and installer source evidence.",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xfauxa/postman_desktop_automatically_installed_a_claude/",
+    "author": "indicava",
+    "date": "2026-10-25",
+    "cluster": "practice",
+    "kind": "reddit",
+    "claims": 2
+  },
+  {
+    "title": "Skills in web, iOS, and Android",
+    "url": "https://x.ai/news/grok-skills",
+    "author": "xAI",
+    "date": "undated page, fetched 2026-11-20",
+    "cluster": "grok",
+    "kind": "official",
+    "claims": 2
+  },
+  {
+    "title": "We replaced everyone's MCP configs and tokens with one gateway",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xsr8h8/we_replaced_everyones_mcp_configs_and_tokens_with/",
+    "author": "eldadfux",
+    "date": "2026-11-10",
+    "cluster": "mcp",
+    "kind": "reddit",
+    "claims": 2
+  },
+  {
+    "title": "mcflow 0.1.0: A free workflow that makes Claude Code build, run, and visually test Minecraft plugins in-game before reporting back",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xy64bv/mcflow_010_a_free_workflow_that_makes_claude_code/",
+    "author": "Accomplished_Fee9159",
+    "date": "2026-11-17",
+    "cluster": "practice",
+    "kind": "reddit",
+    "claims": 2
+  },
+  {
+    "title": "pstack README",
+    "url": "https://github.com/cursor/plugins/blob/main/pstack/README.md",
+    "author": "Lauren Tan",
+    "date": "README on main, fetched 2026-11-20",
+    "cluster": "repos",
+    "kind": "repo",
+    "claims": 2
+  },
+  {
+    "title": "5.5% of my Claude Code tool calls on Opus 5.5 came back as errors. I split them up: half were commands doing their job, 43% were my own hooks",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xy4wn9/55_of_my_claude_code_tool_calls_on_opus_55_came/",
+    "author": "Nitjsefnie",
+    "date": "2026-11-16",
+    "cluster": "claude",
+    "kind": "reddit",
+    "claims": 1
+  },
+  {
+    "title": "A 10-minute 'manual dreaming' pass for your CLAUDE.md and memory files",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xuwooe/a_10minute_manual_dreaming_pass_for_your_claudemd/",
+    "author": "ibitneo",
+    "date": "2026-11-13",
+    "cluster": "claude",
+    "kind": "reddit",
+    "claims": 1
+  },
+  {
+    "title": "Claude Code's docs say CLAUDE.md is context, not enforced config. What have you moved into hooks because Claude kept skipping it?",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xlujwl/claude_codes_docs_say_claudemd_is_context_not/",
+    "author": "ombre-ai",
+    "date": "2026-11-02",
+    "cluster": "claude",
+    "kind": "reddit",
+    "claims": 1
+  },
+  {
+    "title": "Claude Duet app is Anthropic's bet on agents",
+    "url": "https://techcrunch.com/2026/10/22/claude-duet-app-is-anthropics-bet-on-agents/",
+    "author": "TechCrunch",
+    "date": "2026-10-22",
+    "cluster": "claude",
+    "kind": "article",
+    "claims": 1
+  },
+  {
+    "title": "Codex rust-v0.171.0",
+    "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0",
+    "author": "OpenAI",
+    "date": "2026-11-20",
+    "cluster": "codex",
+    "kind": "repo",
+    "claims": 1
+  },
+  {
+    "title": "Codie Sanchez's AI tools list",
+    "url": "https://usefollowed.com/creators/codie-sanchez/ai-tools",
+    "author": "Followed (aggregator quoting Codie Sanchez)",
+    "date": "not stated for the Claude Code quote; the ChatGPT warning is labeled Apr 2026",
+    "cluster": "practice",
+    "kind": "article",
+    "claims": 1
+  },
+  {
+    "title": "Codie Sanchez: I Went Through 500+ AI Tools. These Are the Ones That Help You Make Money",
+    "url": "https://www.moneylion.com/trending/money/codie-sanchez-went-through-500-ai-tools-ones-help-you-make-money",
+    "author": "Laura Beck (edited by Zuri Anderson), reporting on Codie Sanchez",
+    "date": "2026-09-03",
+    "cluster": "practice",
+    "kind": "article",
+    "claims": 1
+  },
+  {
+    "title": "Do you check MCP servers before connecting them to Claude?",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xjbyh1/do_you_check_mcp_servers_before_connecting_them/",
+    "author": "Dev_Altera",
+    "date": "2026-10-30",
+    "cluster": "practice",
+    "kind": "reddit",
+    "claims": 1
+  },
+  {
+    "title": "Does compaction destroy intent? Curious if anyone else has hit this",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xz8223/does_compaction_destroy_intent_curious_if_anyone/",
+    "author": "ash-player",
+    "date": "2026-11-18",
+    "cluster": "claude",
+    "kind": "reddit",
+    "claims": 1
+  },
+  {
+    "title": "Extend Claude with skills",
+    "url": "https://code.claude.com/docs/en/skills",
+    "author": "Anthropic",
+    "date": "fetched 2026-11-20",
+    "cluster": "claude",
+    "kind": "article",
+    "claims": 1
+  },
+  {
+    "title": "Fable 5.2 hard mogs GPT Astra in hardware design",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xxnddo/fable_52_hard_mogs_gpt_astra_in_hardware_design/",
+    "author": "ilovemydickuwu",
+    "date": "2026-11-16",
+    "cluster": "practice",
+    "kind": "reddit",
+    "claims": 1
+  },
+  {
+    "title": "For those managing a Claude Team plan",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1y0k0f1/for_those_managing_a_claude_team_plan/",
+    "author": "mshort3",
+    "date": "2026-11-19",
+    "cluster": "claude",
+    "kind": "reddit",
+    "claims": 1
+  },
+  {
+    "title": "Get started with Claude Duet",
+    "url": "https://support.claude.com/en/articles/17631495-get-started-with-claude-duet",
+    "author": "Anthropic Help Center",
+    "date": "fetched 2026-11-20",
+    "cluster": "claude",
+    "kind": "article",
+    "claims": 1
+  },
+  {
+    "title": "Here's a easy better method to make Claude make better Blender 3D models",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xz739l/heres_a_easy_better_method_to_make_claude_make/",
+    "author": "One_Following2659",
+    "date": "2026-11-18",
+    "cluster": "repos",
+    "kind": "reddit",
+    "claims": 1
+  },
+  {
+    "title": "I built a free local dashboard with Claude Code that shows what each prompt uses in tokens and API-equivalent dollars",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xmb00a/i_built_a_free_local_dashboard_with_claude_code/",
+    "author": "Mousse_External",
+    "date": "2026-11-02",
+    "cluster": "practice",
+    "kind": "reddit",
+    "claims": 1
+  },
+  {
+    "title": "I connected my Garmin watch to Claude with a tiny MCP server (official Garmin API, runs free on Cloudflare)",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xzkhto/i_connected_my_garmin_watch_to_claude_with_a_tiny/",
+    "author": "yershalom",
+    "date": "2026-11-18",
+    "cluster": "mcp",
+    "kind": "reddit",
+    "claims": 1
+  },
+  {
+    "title": "I kept missing permission prompts across 4 Claude Code sessions, so I built a free, open-source menu bar app that tells me who's waiting on me",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xtm9vp/i_kept_missing_permission_prompts_across_4_claude/",
+    "author": "Front-Sky-8272",
+    "date": "2026-11-11",
+    "cluster": "claude",
+    "kind": "reddit",
+    "claims": 1
+  },
+  {
+    "title": "Inside the Development Workflow of Claude Code's Creator",
+    "url": "https://www.infoq.com/news/2026/01/claude-code-creator-workflow/",
+    "author": "InfoQ",
+    "date": "2026-01",
+    "cluster": "claude",
+    "kind": "article",
+    "claims": 1
+  },
+  {
+    "title": "JuliusBrussee/caveman README",
+    "url": "https://github.com/JuliusBrussee/caveman",
+    "author": "Julius Brussee",
+    "date": "2026-11-20",
+    "cluster": "repos",
+    "kind": "repo",
+    "claims": 1
+  },
+  {
+    "title": "MCP authorization",
+    "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization",
+    "author": "MCP maintainers",
+    "date": "2026-07-28",
+    "cluster": "mcp",
+    "kind": "article",
+    "claims": 1
+  },
+  {
+    "title": "Meta launches new AI coding tool powered by Muse Spark 1.2",
+    "url": "https://www.reuters.com/technology/meta-launches-new-ai-coding-tool-powered-by-muse-spark-12-2026-08-05/",
+    "author": "Reuters",
+    "date": "2026-08-05",
+    "cluster": "muse",
+    "kind": "article",
+    "claims": 1
+  },
+  {
+    "title": "Muse Code docs",
+    "url": "https://dev.meta.ai/docs/muse-code",
+    "author": "Meta",
+    "date": "fetched 2026-11-20",
+    "cluster": "muse",
+    "kind": "official",
+    "claims": 1
+  },
+  {
+    "title": "Nutlope/hallmark README",
+    "url": "https://github.com/Nutlope/hallmark",
+    "author": "Hassan El Mghari",
+    "date": "README on main, fetched 2026-11-20",
+    "cluster": "repos",
+    "kind": "repo",
+    "claims": 1
+  },
+  {
+    "title": "PlainBoard: an open-source Kanban board where Claude agents plan and work through tickets",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xzhada/plainboard_an_opensource_kanban_board_where/",
+    "author": "de_hannes",
+    "date": "2026-11-18",
+    "cluster": "claude",
+    "kind": "reddit",
+    "claims": 1
+  },
+  {
+    "title": "Pricing and rate limits",
+    "url": "https://dev.meta.ai/docs/pricing-rate-limits",
+    "author": "Meta",
+    "date": "fetched 2026-11-20",
+    "cluster": "muse",
+    "kind": "official",
+    "claims": 1
+  },
+  {
+    "title": "Stop button didn't stop a Claude agent for 9 minutes",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xz2d3y/stop_button_didnt_stop_a_claude_agent_for_9/",
+    "author": "Still_Ad6188",
+    "date": "2026-11-18",
+    "cluster": "practice",
+    "kind": "reddit",
+    "claims": 1
+  },
+  {
+    "title": "Teaching Codex Your Project",
+    "url": "https://www.mertozen.com/en/blog/openai-codex-agents-md-config-toml-skills",
+    "author": "Mert \u00d6zen",
+    "date": "2026-11-15",
+    "cluster": "codex",
+    "kind": "article",
+    "claims": 1
+  },
+  {
+    "title": "The 2026-07-28 Specification",
+    "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28/",
+    "author": "David Soria Parra and Den Delimarsky",
+    "date": "2026-07-28",
+    "cluster": "mcp",
+    "kind": "article",
+    "claims": 1
+  },
+  {
+    "title": "The 20x ultra plan limits is utter insanity",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xl5wab/the_20x_ultra_plan_limits_is_utter_insanity/",
+    "author": "Beatsu",
+    "date": "2026-11-01",
+    "cluster": "claude",
+    "kind": "reddit",
+    "claims": 1
+  },
+  {
+    "title": "Thread mirror of @bcherny",
+    "url": "https://threadreaderapp.com/scrolly/2007179832300581177",
+    "author": "Boris Cherny",
+    "date": "2026-01-02",
+    "cluster": "claude",
+    "kind": "article",
+    "claims": 1
+  },
+  {
+    "title": "Web search results for Mayank Shah AI engineer",
+    "url": "https://linkedin.com/in/mayank-shah-gpt-ai-python",
+    "author": "multiple LinkedIn profiles; none fully verified in this pass",
+    "date": "search performed 2026-11-20",
+    "cluster": "people",
+    "kind": "article",
+    "claims": 1
+  },
+  {
+    "title": "Will the future of software development run on vibes?",
+    "url": "https://arstechnica.com/ai/2025/03/is-vibe-coding-with-ai-gnarly-or-reckless-maybe-some-of-both/",
+    "author": "Simon Willison, quoted by Ars Technica",
+    "date": "2025-03",
+    "cluster": "practice",
+    "kind": "article",
+    "claims": 1
+  },
+  {
+    "title": "docs: add AGENTS.md discovery guide",
+    "url": "https://github.com/openai/codex/pull/5353",
+    "author": "Thibault Sottiaux",
+    "date": "2025-10-19",
+    "cluster": "codex",
+    "kind": "repo",
+    "claims": 1
+  },
+  {
+    "title": "i gave claude access to my lecture recordings and now it finds every exam hint my prof drops",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1xyxhyj/i_gave_claude_access_to_my_lecture_recordings_and/",
+    "author": "erik1g",
+    "date": "2026-11-17",
+    "cluster": "mcp",
+    "kind": "reddit",
+    "claims": 1
+  },
+  {
+    "title": "obra/superpowers README",
+    "url": "https://github.com/obra/superpowers",
+    "author": "Jesse Vincent",
+    "date": "README on main, fetched 2026-11-20",
+    "cluster": "repos",
+    "kind": "repo",
+    "claims": 1
+  },
+  {
+    "title": "rust-anything 2.0 is out. Two days ago I posted this tool here. Since then Claude Code used it to port Prettier to Rust: 19x faster, 17,224/17,224 runs match byte for byte",
+    "url": "https://www.reddit.com/r/ClaudeAI/comments/1y06sk0/rustanything_20_is_out_two_days_ago_i_posted_this/",
+    "author": "erkamyaman",
+    "date": "2026-11-19",
+    "cluster": "practice",
+    "kind": "reddit",
+    "claims": 1
+  }
+]

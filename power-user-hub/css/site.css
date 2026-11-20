@@ -51,7 +51,7 @@ a:hover { color: #fff; }
 .mark svg { width: 28px; height: 28px; flex: none; }
 .asof { margin: 0 0 0 auto; color: var(--muted); font-family: var(--mono); font-size: .75rem; }
 .finder { margin: 0; }
-.finder input, #pagefilter, .filters input, .filters select {
+.finder input, #pagefilter, #dirfilter, .filters input, .filters select {
   font: inherit; font-size: .92rem;
   border: 1px solid var(--line); background: #000; color: var(--ink);
   border-radius: 999px; padding: .45rem .9rem; min-width: 14rem;

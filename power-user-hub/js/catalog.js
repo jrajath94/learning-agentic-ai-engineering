@@ -12,5 +12,11 @@ window.HUB_INDEX = [
   {href:"repos.html", cluster:"repos", title:"Repos and install tutorials", text:"mattpocock/skills, obra/superpowers, caveman, hallmark, pstack. Eight-part tutorial."},
   {href:"library.html", cluster:"library", title:"Source library", text:"Docs, posts, repos, and echoes organised by cluster."},
   {href:"sources.html", cluster:"ledger", title:"Source ledger", text:"Every material claim with URL, author, date, confidence, and independence."},
-  {href:"gaps.html", cluster:"gaps", title:"Gap report and adversarial review", text:"Unverified people, missing transcripts, single-source vendor stories, what a serious engineer would still demand."}
+  {href:"gaps.html", cluster:"gaps", title:"Gap report and adversarial review", text:"Unverified people, missing transcripts, single-source vendor stories, what a serious engineer would still demand."},
+  {href:"method.html", cluster:"method", title:"Research method", text:"Russian doll layers and where new sources stopped adding claims."},
+  {href:"tokens.html", cluster:"tokens", title:"Token use", text:"5 to 10 thousand tokens a day was not found. Six dollars a day, free internal use, parallel sessions."},
+  {href:"talks.html", cluster:"talks", title:"Talks", text:"Latent Space with Boris Cherny, Cat Wu, and Thariq Shihipar, with timestamps."},
+  {href:"directory.html", cluster:"library", title:"Source directory", text:"One card per URL, filterable by kind and cluster."},
+  {href:"reddit-field.html", cluster:"reddit", title:"Reddit field notes", text:"Arctic Shift slice of r/ClaudeAI. Other subs did not return."},
+  {href:"cat-wu.html", cluster:"people", title:"Cat Wu", text:"Product lead notes from the May 2025 transcript and a secondary wiki."},
 ];
