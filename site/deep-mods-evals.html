@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deep Dive: Claude Mods, the Supervisor, and Hamel Eval Method | Learning Agentic AI Engineering</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></head>
+<body>
+<header class="top"><div class="wordmark"><a href="index.html">Learning Agentic AI Engineering</a></div>
+<nav class="main"><a href="index.html">Home</a><a href="start.html" aria-current="page">Start Here</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="foundations.html">Foundations</a><a href="cross-cutting.html">Cross-cutting</a><a href="business.html">Business</a><a href="research.html">Research</a><a href="profiles.html">Profiles</a><a href="prompts.html">Prompt Vault</a><a href="labs.html">Labs</a><a href="paths.html">Learning Paths</a><a href="principles.html">Principles</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="niche.html">Niche</a>
+<a href="deep.html">Deep Dives</a><a href="audit.html">Audit</a><a href="search.html">Search</a></nav></header>
+<main>
+<p class="meta">Home / Deep Dives / Deep Dive: Claude Mods, the Supervisor, and Hamel Eval Method</p>
+<h1>Deep Dive: Claude Mods, the Supervisor, and Hamel Eval Method</h1>
+<p class="lede">Three systems that watch the work: mods as harness middleware, a supervisor mod with measured costs, and the error analysis first eval method. Sources: Latent Space Claude Mods post read in full, Hamel Husain evals FAQ structure and method summaries. Confidence: High for mods, Medium for the eval method detail.</p>
+<figure class="visual"><img src="assets/img/deep-mods-evals.svg" alt="Flow diagram: Watcher with trigger, Fork and verdict, Error read by hand, Judge after labels"><figcaption>Figure 1. Deep Dive: Claude Mods, the Supervisor, and Hamel Eval Method as a flow. Each box names one stage on this page. Arrows show work order.</figcaption></figure>
+
+<h2>What a mod is</h2>
+<p>A mod is a Claude Code plugin made of TypeScript or JavaScript functions that run inside the tool. Mods act as middleware for the harness: they see events such as a prompt, a tool call, or a render, and they can observe the event, change the render, or handle the event in place of the default act. The post frame: as models absorb the machine side of the harness, the human side stays: when the agent interrupts you, what it shows, and which calls it brings to you. A built in skill teaches the tool to build mods, so a user asks in plain words and the tool writes the mod.</p>
+<h2>The six built in mods</h2>
+<ol><li>agents-md: loads AGENTS.md as project instructions.</li><li>diff: takes over the diff view and draws its pane.</li><li>plugin-authoring: the skill the tool uses to write mods.</li><li>sec-default: guards org managed settings from user mods.</li><li>telemetry: sends the analytics records the tool and its mods log.</li><li>you-should-know: a side agent that posts a note over the prompt when it finds a fact you may have missed. The one mod off by default.</li></ol>
+<h2>You Should Know: the worked case</h2>
+<p>A user asked the agent to simplify UI text. The agent trimmed copy, installed the build, and took before and after screenshots. The side agent then flagged a buried fact: the edited file plus near 45 more files held uncommitted work, so a discard of the demo edits would have cut real unfinished work. Advice: commit or stash first. The pattern is a watcher with one job: surface the material fact the main thread buried.</p>
+<h2>The Next Steps Supervisor, with its own numbers</h2>
+<ol><li>Trigger: the mod runs only after a turn that edited files, ran commands, or made 8 plus tool calls.</li><li>Act: the mod forks the talk, reads the fork, and returns a verdict: concerns such as shortcuts taken, plus a next step as a button that sends the instruction as a message.</li><li>Noise cost, from the author own data: the mod fired on 99 of 111 turns.</li><li>Token cost: each check forks and re reads the talk, near 5 to 6k input tokens per check on a 50k token session, more on a stale cache.</li><li>Trust cost: a mod runs with your permissions. It can read and write files, see each prompt, and spend your usage. Mods are not sandboxed, in the author words. Built in mods run even in safe mode.</li><li>Control: a command turns the supervisor off. The deeper control is source access: the author can rewrite his trigger terms, and you can rewrite yours.</li><li>His worth test for any watcher: did it surface a fact you would have missed, make a call easier, or let you act with no distraction.</li></ol>
+<h2>Thariq mods: three from Anthropic staff</h2>
+<p>From the Latent Space episode notes, Medium confidence: a supervisor run as a forked sub agent, which keeps the check out of the main context and holds the prompt cache, so checks stay cheap; an assumption register that logs what the agent takes as given; and an internal model router. His stated views: prompt craft stays the core skill, a rule file may fade over time, and one file per model is a pain the vendor plans to end.</p>
+<h2>Hamel eval method: error analysis first</h2>
+<ol><li>Read outputs by hand first: near 30 minutes on 20 to 50 traces after each large change. One domain expert acts as the quality judge of record.</li><li>Open code the failures: name each failure mode as it shows, group the names, refine until the groups stop changing.</li><li>Judge in binary: pass or fail with a written critique. No 1 to 5 scales.</li><li>Fix the errors the read found. Only then build automation.</li><li>Build the judge prompt against the human labeled set. Validate on held out data with true positive and true negative rates. Iterate the judge like a product.</li><li>Keep three levels apart: fast unit checks on each change, human plus model review on samples, and A/B tests late only. Guardrails block in line. Evaluators measure off line. The two never swap jobs.</li><li>Budget claim from the source: 60 to 80 percent of build time goes to error analysis and evaluation.</li></ol>
+<h2>Willison sub agent rules, the short form</h2>
+<p>From the one guide chapter read in full in round 3: a sub agent is a fresh copy with a fresh context and prompt, called like a tool, and the parent waits for the return. Parallel sub agents buy speed and can run cheaper models. Specialist forms: a reviewer, a test runner that hides bulk output and reports failures only, and a debugger. His warning: do not over fragment. The value is context care and token heavy work off the main thread.</p>
+<h2>Apply this to your work</h2><div class="rule"><p>Your audit lanes are supervisor mods in spirit, with one gap: no trigger terms and no cost count. Copy the supervisor design with your numbers: a watcher that fires only on turns with file edits or 8 plus tool calls, returns concerns plus one next step, and logs its fire rate and token cost per week. A watcher that fires on 9 of 10 turns gets its trigger rewritten or cut, by the author own test. Pair it with the Hamel order in your eval work: hand read 20 to 50 outputs, name the failure modes, judge in binary, and only then let a judge prompt scale the read.</p></div><h2>Replication checklist</h2><ol><li>Write trigger terms for your audit watcher: edits, commands, or 8 plus calls.</li><li>Log fire rate and token cost for one week. Rewrite the trigger if the rate tops half of turns.</li><li>Run one Hamel pass on your next lane output: 20 traces, named failure modes, binary calls.</li><li>Keep one watcher job only: surface the buried material fact. No second job.</li></ol>
+<p>Prompt file: <a href="../prompts/quiz-gate.md">prompts/quiz-gate.md</a> holds the review gate form that pairs with this page.</p>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart TD
+ A[Turn edits files or 8 plus calls] --> B[Supervisor forks]
+ B --> C[Verdict: concerns plus next step]
+ C --> D{Human acts}
+ E[20 to 50 traces read] --> F[Failure modes named]
+ F --> G[Binary labels]
+ G --> H[Judge prompt validated]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart TD
+ A[Turn edits files or 8 plus calls] --&gt; B[Supervisor forks]
+ B --&gt; C[Verdict: concerns plus next step]
+ C --&gt; D{Human acts}
+ E[20 to 50 traces read] --&gt; F[Failure modes named]
+ F --&gt; G[Binary labels]
+ G --&gt; H[Judge prompt validated]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Claude Mods, the Supervisor, and Hamel Eval Method</span><ul><li><span class="branch">Mods</span><ul><li><span class="leaf">Middleware in the harness</span></li><li><span class="leaf">Six built in</span></li><li><span class="leaf">Not sandboxed</span></li></ul></li><li><span class="branch">Supervisor</span><ul><li><span class="leaf">99 of 111 turns fired</span></li><li><span class="leaf">5 to 6k tokens per check</span></li></ul></li><li><span class="branch">Hamel</span><ul><li><span class="leaf">Error analysis first</span></li><li><span class="leaf">Binary, no scales</span></li><li><span class="leaf">Guardrail vs evaluator</span></li></ul></li></ul></li></ul></div>
+</main>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart TD
+ A[Turn edits files or 8 plus calls] --> B[Supervisor forks]
+ B --> C[Verdict: concerns plus next step]
+ C --> D{Human acts}
+ E[20 to 50 traces read] --> F[Failure modes named]
+ F --> G[Binary labels]
+ G --> H[Judge prompt validated]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart TD
+ A[Turn edits files or 8 plus calls] --&gt; B[Supervisor forks]
+ B --&gt; C[Verdict: concerns plus next step]
+ C --&gt; D{Human acts}
+ E[20 to 50 traces read] --&gt; F[Failure modes named]
+ F --&gt; G[Binary labels]
+ G --&gt; H[Judge prompt validated]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Claude Mods, the Supervisor, and Hamel Eval Method</span><ul><li><span class="branch">Mods</span><ul><li><span class="leaf">Middleware in the harness</span></li><li><span class="leaf">Six built in</span></li><li><span class="leaf">Not sandboxed</span></li></ul></li><li><span class="branch">Supervisor</span><ul><li><span class="leaf">99 of 111 turns fired</span></li><li><span class="leaf">5 to 6k tokens per check</span></li></ul></li><li><span class="branch">Hamel</span><ul><li><span class="leaf">Error analysis first</span></li><li><span class="leaf">Binary, no scales</span></li><li><span class="leaf">Guardrail vs evaluator</span></li></ul></li></ul></li></ul></div>
+</main>
+
+<h2>Visual map of this page</h2>
+<p>Three views of one page: a Mermaid flow for work order, a markmap for concept groups, and a read guide for the flow.</p>
+<div class="mermaid">
+flowchart TD
+ A[Claim: 5k to 10k tokens per day] --> B[Search both firms at origin]
+ B --> C[No such figure found]
+ C --> D[Real figures: dollars per day]
+ D --> E[Workflows that burn tokens]
+ E --> F[Fleets, schedules, swarms, review bots]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart TD
+ A[Claim: 5k to 10k tokens per day] --&gt; B[Search both firms at origin]
+ B --&gt; C[No such figure found]
+ C --&gt; D[Real figures: dollars per day]
+ D --&gt; E[Workflows that burn tokens]
+ E --&gt; F[Fleets, schedules, swarms, review bots]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the left box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Niche Sources and Token Heavy Workflows</span><ul><li><span class="branch">Claim check</span><ul><li><span class="leaf">No tokens per day average</span></li><li><span class="leaf">Dollars, multiples, percentiles</span></li><li><span class="leaf">Scale: one task past 55k tokens</span></li></ul></li><li><span class="branch">Heavy workflows</span><ul><li><span class="leaf">Cherny fleet</span></li><li><span class="leaf">Gas Town 20 to 30</span></li><li><span class="leaf">OpenAI research saturation</span></li><li><span class="leaf">Review bot per change</span></li></ul></li><li><span class="branch">Niche lanes</span><ul><li><span class="leaf">Blogs and dotfiles</span></li><li><span class="leaf">Podcast transcripts</span></li><li><span class="leaf">Newsletters</span></li><li><span class="leaf">Community threads</span></li></ul></li></ul></li></ul></div>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart TD
+ A[Turn edits files or 8 plus calls] --> B[Supervisor forks]
+ B --> C[Verdict: concerns plus next step]
+ C --> D{Human acts}
+ E[20 to 50 traces read] --> F[Failure modes named]
+ F --> G[Binary labels]
+ G --> H[Judge prompt validated]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart TD
+ A[Turn edits files or 8 plus calls] --&gt; B[Supervisor forks]
+ B --&gt; C[Verdict: concerns plus next step]
+ C --&gt; D{Human acts}
+ E[20 to 50 traces read] --&gt; F[Failure modes named]
+ F --&gt; G[Binary labels]
+ G --&gt; H[Judge prompt validated]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Claude Mods, the Supervisor, and Hamel Eval Method</span><ul><li><span class="branch">Mods</span><ul><li><span class="leaf">Middleware in the harness</span></li><li><span class="leaf">Six built in</span></li><li><span class="leaf">Not sandboxed</span></li></ul></li><li><span class="branch">Supervisor</span><ul><li><span class="leaf">99 of 111 turns fired</span></li><li><span class="leaf">5 to 6k tokens per check</span></li></ul></li><li><span class="branch">Hamel</span><ul><li><span class="leaf">Error analysis first</span></li><li><span class="leaf">Binary, no scales</span></li><li><span class="leaf">Guardrail vs evaluator</span></li></ul></li></ul></li></ul></div>
+</main>
+<footer class="site">AI Power-User Intelligence Hub, field guide build v3. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026, the earlier of execution day and 30 November 2026. Open site/index.html from disk. No server need. No track code sits in this site.</footer>
+<script src="assets/site.js"></script>
+<script src="assets/js/mermaid.min.js"></script>
+<script>
+if (window.mermaid) { mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}}); }
+</script>
+<script src="assets/js/mermaid.min.js"></script>
+<script>
+if (window.mermaid) { mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}}); }
+</script>
+</body></html>
