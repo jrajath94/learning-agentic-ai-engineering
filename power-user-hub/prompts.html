@@ -19,86 +19,89 @@
   </nav>
 </header>
 <main id="main">
-  <p class="kicker">Vault</p>
-  <h1>Prompts someone published</h1>
-  <p class="lede">Fourteen texts. Each one was on a page fetched for this hub. Vendor examples are marked vendor. They are not a customer's private prompt, and they are not "secret." If a prompt you hoped to see is missing, it was not found, and it is not invented here.</p>
-  <input id="pagefilter" type="search" placeholder="Filter prompts" style="border:1px solid var(--line);background:var(--bg-2);border-radius:999px;padding:.4rem .8rem;">
+
+  <p class="kicker">Prompt vault</p>
+  <h1>Open the file. Fill the braces. Do not treat a vendor demo as your prompt.</h1>
+  <p class="lede">The files under <a href="kit/prompts/tdd-loop.md">kit/prompts/</a> are instructions for this hub. They are not transcripts. The TDD skill next to them is the exception: it is copied from mattpocock/skills at <code>abeeaf95660ba9e8b7c753eb38f441ca707a8823</code>.</p>
 
 <section class="section" id="page-map">
   <h2>See the shape first</h2>
   <div class="visual-grid">
     <figure class="diagram">
-      <figcaption>Every vault item has a publisher. Vendor examples are not private prompts.</figcaption>
-      <pre class="mermaid">flowchart LR
-  A[Page fetched] --> B{Verbatim prompt on it?}
-  B -->|yes| C[Vault with attribution]
-  B -->|no| D[Do not invent one]
-  C --> E[Label vendor, docs, or author]</pre>
+      <figcaption>A prompt file is a checklist with blanks.</figcaption>
+      <pre class="mermaid">flowchart TD
+  A[Pick one file] --> B[Fill TEST_COMMAND]
+  B --> C[Run the red command yourself]
+  C --> D[Paste the failure]
+  D --> E[Keep the reply that names a file]</pre>
     </figure>
     <figure class="diagram">
-      <figcaption>Where the 14 prompts came from.</figcaption>
-      <svg class="markmap-svg" aria-label="Where the 14 prompts came from."></svg>
-      <script type="text/markmap"># Prompt vault
-## xAI examples
-### P01 to P04
-## Anthropic docs
-### P05 to P07
-## Karpathy quote
-### P08 specimen, not a recommendation
-## Lauren Tan
-### P09 to P12
-## Hallmark
-### P13 redesign
-### P14 audit</script>
+      <figcaption>Files for this page.</figcaption>
+      <svg class="markmap-svg" aria-label="Files"></svg>
+      <script type="text/markmap"># kit/prompts
+## tdd-loop.md
+## review.md
+## plan.md
+## spec.md
+## overnight.md
+## pr-prep.md
+## research.md
+## fan-out.md
+## adversarial.md
+## grok-draft-only.md
+</script>
     </figure>
   </div>
-  
 </section>
 
-  <section class="section" id="grok">
-    <h2>xAI skill examples</h2>
-    <p>From the skills announcement. Vendor examples for document skills on Grok 4.3. <a class="cite" href="sources.html#C10">C10</a></p>
-    <article class="prompt"><header><span>P01 · vendor</span><span>xAI</span></header><p>Design a Leadership Strategic Thinking Workshop deck with exercises, frameworks, and takeaways.</p></article>
-    <article class="prompt"><header><span>P02 · vendor</span><span>xAI</span></header><p>Create a professional enterprise invoice for APEX-2026-0547 with line items, tax, and payment terms.</p></article>
-    <article class="prompt"><header><span>P03 · vendor</span><span>xAI</span></header><p>Create a monthly budget tracker with income, expenses, and savings projections.</p></article>
-    <article class="prompt"><header><span>P04 · vendor</span><span>xAI</span></header><p>Generate a PDF report on AI interpretability formatted for conference submission.</p></article>
-  </section>
+<section class="section" id="mechanism">
+  <h2>1. Mechanism</h2>
+  <p>A pasted prompt is one turn. A skill loads when its description matches. A CLAUDE.md line is every turn. Use the prompt file for the turn, the skill for the loop, and the markdown file for the command you are tired of retyping. xAI's Gmail story and OpenAI's dot story are product copy. They show a shape. They are not logs you can replay.</p>
+</section>
+<section class="section" id="artifact">
+  <h2>2. Artifact</h2>
+  <ul class="clean">
+    <li><a href="kit/prompts/tdd-loop.md">tdd-loop.md</a> stops before a production diff.</li>
+    <li><a href="kit/prompts/review.md">review.md</a> asks for a finding with a file, or an explicit none.</li>
+    <li><a href="kit/prompts/plan.md">plan.md</a> and <a href="kit/prompts/spec.md">spec.md</a> name files and a check.</li>
+    <li><a href="kit/prompts/overnight.md">overnight.md</a> has a stop command.</li>
+    <li><a href="kit/prompts/pr-prep.md">pr-prep.md</a> is the command list before you open a pull request.</li>
+    <li><a href="kit/prompts/research.md">research.md</a> demands a URL on every material sentence.</li>
+    <li><a href="kit/prompts/fan-out.md">fan-out.md</a> is for separate checkouts only.</li>
+    <li><a href="kit/prompts/adversarial.md">adversarial.md</a> looks for a missing test.</li>
+    <li><a href="kit/prompts/grok-draft-only.md">grok-draft-only.md</a> forbids send.</li>
+  </ul>
+</section>
+<section class="section" id="example">
+  <h2>3. Worked example</h2>
+  <p>Fill tdd-loop.md with the counter. The red output on 20 Nov 2026 was <code>AssertionError: inc(1) should be 2</code>. The green output was <code>ok</code> and a three-line function. If a model replies with a production diff before you have that red output, the prompt was not followed. Run <code>sh kit/scripts/tdd-demo.sh</code> if you want to see the two stages without a model.</p>
+</section>
+<section class="section" id="fail">
+  <h2>4. Failure modes</h2>
+  <ul class="clean">
+    <li>Pasting all ten files into one turn. Pick one.</li>
+    <li>Leaving <code>{{TEST_COMMAND}}</code> in the paste. The model will invent a command.</li>
+    <li>Saving a Grok skill from the draft prompt before you have a draft you would send.</li>
+  </ul>
+</section>
+<section class="section" id="exercise">
+  <h2>5. Exercise</h2>
+  <p>Run tdd-loop.md on a bug whose failing test you can paste. Self-check: the first reply has no production diff, and the command in the reply is the command you typed.</p>
+</section>
+<section class="section" id="stack">
+  <h2>6. Your stack</h2>
+  <p>The same markdown works on Claude Code, Codex, Gemini CLI, and Muse. Grok Bot gets only the draft file. Antigravity's Orchestrator can take plan.md. Do not give fan-out.md a shared working tree.</p>
+</section>
 
-  <section class="section" id="claude">
-    <h2>Anthropic's documented rewrites</h2>
-    <p>From the Claude Code best-practices page. The page pairs each with a vague version you should not ship. <a class="cite" href="sources.html#C19">C19</a></p>
-    <article class="prompt"><header><span>P05 · official docs</span><span>Anthropic</span></header><p>users report login fails after the session times out. look at token refresh in src/auth/, write a failing test that reproduces it, then fix it</p></article>
-    <article class="prompt"><header><span>P06 · official docs</span><span>Anthropic</span></header><p>follow the pattern in HotDogWidget.php and build a calendar widget that lets you pick a month and page between years. no new libraries</p></article>
-    <article class="prompt"><header><span>P07 · official docs</span><span>Anthropic</span></header><p>build the settings page from the mockup. be ambitious: empty and error states, the save flow wired up, keyboard navigation, not just the layout</p></article>
-  </section>
 
-  <section class="section" id="karpathy">
-    <h2>Karpathy, as a specimen of vibe coding</h2>
-    <p>Quoted by Simon Willison, 6 February 2025. This is the practice he was describing, including the part where he does not read the diff. It is in the vault so you can recognize it, not so you can aim a production repo at it. <a class="cite" href="sources.html#C41">C41</a></p>
-    <article class="prompt"><header><span>P08 · quoted post</span><span>Andrej Karpathy</span></header><p>decrease the padding on the sidebar by half</p></article>
-  </section>
-
-  <section class="section" id="pstack">
-    <h2>Lauren Tan's published invocations</h2>
-    <p>From the pstack README. She presents them as the way she starts the router. <a class="cite" href="sources.html#C48">C48</a></p>
-    <article class="prompt"><header><span>P09 · author example</span><span>Lauren Tan</span></header><p>/poteto-mode this pr has a subtle bug where the scroll drifts every 750ms even when idle. repro first, then fix and verify.</p></article>
-    <article class="prompt"><header><span>P10 · author example</span><span>Lauren Tan</span></header><p>/poteto-mode i'm going to bed. land the stack even if ci flakes. i want everything merged by morning.</p></article>
-    <article class="prompt"><header><span>P11 · author example</span><span>Lauren Tan</span></header><p>/how do we cancel runs? do we have an n+1 when we look up every run to cancel?</p></article>
-    <article class="prompt"><header><span>P12 · author example</span><span>Lauren Tan</span></header><p>/interrogate review this pr.</p></article>
-  </section>
-
-  <section class="section" id="hallmark">
-    <h2>Hallmark verbs</h2>
-    <p>From the Hallmark README. The path is the README's example path. <a class="cite" href="sources.html#C45">C45</a></p>
-    <article class="prompt"><header><span>P13 · author example</span><span>Hassan El Mghari</span></header><p>/hallmark redesign ./src/app</p></article>
-    <article class="prompt"><header><span>P14 · author example</span><span>Hassan El Mghari</span></header><p>/hallmark audit ./index.html</p></article>
-  </section>
-
-  <section class="section" id="not-prompts">
-    <h2>Often quoted, and not a pasteable prompt</h2>
-    <p>Boris Cherny's plan-mode paragraph is a description of a habit: use Plan mode, go back and forth until he likes the plan, then auto-accept. It is not a prompt with slots. It is written up on the <a href="claude.html#workflows">Claude page</a>. <a class="cite" href="sources.html#C22">C22</a></p>
-    <p>Muse's <code>/plan</code>, <code>/grill</code>, and <code>/goal</code> are commands, not prompt texts. The launch post does not include the words you should type after them. <a class="cite" href="sources.html#C35">C35</a></p>
-  </section>
+<section class="section" id="ledger-rows">
+  <h2>Ledger rows this page uses</h2>
+  <ul class="clean">
+    <li><a href="sources.html#C10">C10</a> The skills page publishes four example prompts for decks, invoices, budgets, and PDF reports. They are xAI's examples, not a customer's prompts.</li>
+    <li><a href="sources.html#C19">C19</a> Anthropic's documented prompt rewrites replace 'fix the login bug' with a symptom, a path, and a failing test, and replace 'add a calendar widget' with a pattern file and a no-new-libraries constraint. It also shows a 'be ambitious' scope line for a settings page.</li>
+    <li><a href="sources.html#C41">C41</a> Simon Willison's 6 Feb 2025 page quotes Andrej Karpathy naming 'vibe coding': accept all suggestions, do not read the diffs, paste errors back with no comment, and treat it as amusing for throwaway weekend projects. The quoted example prompt is 'decrease the padding on the sid...</li>
+  </ul>
+</section>
 </main>
 <footer class="foot"><div class="foot-in"><p>14 published texts. <a href="sources.html">Ledger</a> · <a href="gaps.html#g11">Prompts we refused to invent</a></p></div></footer>
 <script src="js/claims.js"></script>

@@ -20,90 +20,72 @@
   </nav>
 </header>
 <main id="main">
-  <p class="kicker">Frontier labs</p>
-  <h1>Nobody in the opened record says 5 to 10 thousand tokens a day.</h1>
-  <p class="lede">The figure is too small for the workflows these same people describe. What the transcripts and the August 2025 study do record is spend, parallel sessions, and a share of the workday.</p>
+
+  <p class="kicker">Tokens</p>
+  <h1>The 5 to 10 thousand tokens a day figure is not in the sources.</h1>
+  <p class="lede">What is on tape: Boris Cherny, May 2025 Latent Space mirror, said internal use was free and a few automated workloads cost thousands of dollars a day. Cat Wu, same episode, said external active users were around $6 a day. A YouTube page for a later talk, no captions, has an unlabeled line about five local agents and hundreds or thousands most nights. Treat that page as medium confidence.</p>
 
 <section class="section" id="page-map">
   <h2>See the shape first</h2>
   <div class="visual-grid">
     <figure class="diagram">
-      <figcaption>Documented quantities. The 5 to 10 thousand tokens a day figure is not among them.</figcaption>
+      <figcaption>What was measured, and what was not.</figcaption>
       <pre class="mermaid">flowchart TD
-  A[5 to 10 thousand tokens a day] --> B[Not in the opened sources]
-  C[May 2025 external] --> D["About 6 dollars a day per active user"]
-  E[May 2025 internal] --> F[Free at Anthropic]
-  G[May 2025 edge] --> H[Thousands of dollars a day for a few people]
-  I[Later interview page] --> J[Five local, hundreds at night]
-  K[Aug 2025 study] --> L[Share of work and PRs, not a token total]</pre>
+  A[Claim: 5 to 10k tokens a day] --> B[No primary source in this window]
+  C[Cat Wu about 6 dollars a day] --> D[May 2025 interview]
+  E[Thousands of dollars a day] --> D
+  F[Aug 2025 study] --> G[200k transcripts, 132 surveyed]</pre>
     </figure>
     <figure class="diagram">
-      <figcaption>Token evidence map.</figcaption>
-      <svg class="markmap-svg" aria-label="Token evidence map."></svg>
-      <script type="text/markmap"># Token evidence
-## Not found
-### 5 to 10 thousand tokens a day
-## May 2025 Latent Space
-### Free internally
-### About 6 dollars external
-### Thousands of dollars for a few
-### 1000 lints, 1000 Claudes
-## Later interview text
-### Five at a time
-### Hundreds most nights
-## Aug 2025 study
-### 59 percent of work
-### 50 percent productivity
-### 67 percent more merged PRs
+      <figcaption>Files for this page.</figcaption>
+      <svg class="markmap-svg" aria-label="Files"></svg>
+      <script type="text/markmap"># Numbers we can point at
+## dollars not tokens
+## study sample sizes
+## Muse prices
+## no daily token quota doc
 </script>
     </figure>
   </div>
 </section>
 
-<section class="section" id="finding">
-  <h2>The 5 to 10 thousand figure</h2>
-  <p>It is not in the sources this pass opened. A coding agent that reads a repo and runs tests spends that many tokens in a single tool result. Treating 5 to 10 thousand tokens as a frontier-lab day would be low by orders of magnitude next to the numbers that are written down.</p>
-  <p>What is written down, with the speaker and the time:</p>
+<section class="section" id="mechanism">
+  <h2>1. Mechanism</h2>
+  <p>A subscription hides the meter until you hit a cap. The cap is not a token budget you can quote. Anthropic's Aug 2025 study, 132 people surveyed, 53 interviews, 200,000 transcripts, said Claude was in 59 percent of work, self-reported productivity was about 50 percent higher, and merged pull requests per engineer per day were 67 percent higher. Most people fully delegated only 0 to 20 percent of tasks. That study does not publish a daily token allowance.</p>
+  <p>Muse publishes prices. Standard Spark is $1.25 per million input and $4.25 per million output. Contributor mode is $0.10 and $0.20 because training is allowed. The cheaper number is a data term, not a discount to chase on bank code.</p>
+</section>
+<section class="section" id="artifact">
+  <h2>2. Artifact</h2>
+  <p>There is no token config to copy. The artifact that limits spend is a short task: <a href="kit/prompts/tdd-loop.md">tdd-loop.md</a> asks for one test, not a tour of the repo. <a href="kit/prompts/overnight.md">overnight.md</a> names a stop condition so a long run has a command that can fail it.</p>
+</section>
+<section class="section" id="example">
+  <h2>3. Worked example</h2>
+  <p>The local demo makes one assertion, fails, then passes. It does not open a model. That is the cheapest loop you can rehearse. A model session should look like those two runs plus a diff, not like a restatement of the repository.</p>
+</section>
+<section class="section" id="fail">
+  <h2>4. Failure modes</h2>
   <ul class="clean">
-    <li>7 May 2025, about 13:50. Boris Cherny: Claude Code is free internally. Transcript mirror of Latent Space.</li>
-    <li>Same episode, about 14:48. Cat Wu: external active users were around $6 per day, a bit higher across a month than a $20 Cursor subscription. She also said the tool is aimed at being snappy and thorough, not at minimizing tokens.</li>
-    <li>Same episode, about 13:18. Boris: some people at Anthropic had been racking up thousands of dollars a day with automation. Most people were not. He had just described starting one Claude per lint violation, up to about 1,000.</li>
-    <li>Same episode, about 1:04. Cat Wu: there was no separate subscription yet. Pay as you go kept the upfront commitment at zero. So the $6 figure is from the API-priced period, not from a later bundled plan.</li>
-    <li>28 Sep 2026 Latent Space page, about 00:52. Thariq Shihipar: before Claude Code, people were not used to spending more than $20 a month. Opus 4 was expensive. Opus 4.5 was, in his words, both great and cheap. The host's line about 15 Claude Code accounts is the host's line.</li>
-    <li>YouTube page text for the Boris interview, no caption file: the speaker says about five at a time on a computer, and most nights hundreds, sometimes thousands, in parallel, at the edge of a max plan, with the API as overflow. Speaker labels are missing. Medium confidence. yt-dlp could not save captions.</li>
-    <li>August 2025 Anthropic study: 132 engineers and researchers surveyed, 53 interviewed, 200,000 Claude Code transcripts from February and August 2025. Self-report: Claude in 59 percent of work and a 50 percent productivity gain, up from 28 percent and 20 percent a year earlier. They also report a 67 percent increase in merged pull requests per engineer per day after adopting Claude Code. No token total per person is in that page.</li>
+    <li>Quoting 5 to 10 thousand tokens a day in a design doc. It is not sourced here.</li>
+    <li>Reading the YouTube "thousands most nights" line as Anthropic's published quota.</li>
+    <li>Turning Contributor mode on to hit the $0.10 price on a private repo.</li>
   </ul>
-  <p>The internal-free line and the thousands-of-dollars line sit a minute apart. The page does not say whether those dollars were an internal transfer price or a real invoice. Both sentences are quoted. The tension is left open.</p>
 </section>
-<section class="section" id="how">
-  <h2>How a large token bill actually gets spent</h2>
-  <p>These are the mechanisms named by the people above, not a guessed stack.</p>
-  <ol class="steps">
-    <li><strong>Parallel sessions, separate work.</strong> Five on one computer in the later interview text. The 2 Jan 2026 post already said five local checkouts plus five to ten on the web. The May 2025 episode adds the extreme form: one agent per lint, and some people running that wide enough to look like thousands of dollars a day.</li>
-    <li><strong>Overnight fan-out.</strong> The interview page text says most nights, not every night, hundreds in parallel. That is a scheduled burst, not a longer chat.</li>
-    <li><strong>Compaction instead of a bigger window.</strong> Boris, about 8:58 in the May episode: after truncation and rewriting old tool calls, compaction that worked was asking Claude to summarize the previous messages. Cat Wu, about 55:53: compacting several times weakens the original intent. Long runs spend tokens twice, once to work and once to forget carefully.</li>
-    <li><strong>Verification, which the August study says is still mostly human.</strong> More than half of respondents could fully delegate only 0 to 20 percent of their work. They debug and reread because they did not write the code. That reread is part of the cost, and it is also why a token total is not a productivity total.</li>
-    <li><strong>Effort routed by task.</strong> Thariq, about 00:25: high or max effort for code review and security, low or medium for UI. High effort is more tokens on purpose.</li>
-  </ol>
+<section class="section" id="exercise">
+  <h2>5. Exercise</h2>
+  <p>For one day, write down each model call as: tool, task, whether a test ran, whether you kept the diff. Do not invent a token count. Self-check: every kept diff has a command next to it.</p>
 </section>
-<section class="section" id="solo">
-  <h2>A cost sketch for one subscriber</h2>
-  <p>This sketch uses only published prices and the reader's own subscription list. It is not a bill from any lab.</p>
-  <table>
-    <thead><tr><th>Input</th><th>What it is</th></tr></thead>
-    <tbody>
-      <tr><td>Reader's seats</td><td>Codex on the order of $100 a month, Claude Code on the order of $20, plus Google AI Pro, Meta Muse Code, and Grok Bot. Those dollar figures are the reader's report of what they pay, not a price page fetched for this pass, except Muse token rates.</td></tr>
-      <tr><td>Muse Spark standard</td><td>$1.25 per million input tokens and $4.25 per million output tokens. Contributor mode is cheaper because it allows training on your content. Subscriptions default to Contributor mode.</td></tr>
-      <tr><td>5 to 10 thousand output tokens a day</td><td>About 0.15 to 0.30 million tokens a month. At $4.25 per million output, that is well under $2 a month. That is a light chat, not the workflows above.</td></tr>
-      <tr><td>May 2025 external average</td><td>About $6 a day, on the order of $180 across 30 days, while the product was pay as you go. A $20 subscription did not exist yet for Claude Code, by Cat Wu's account in that episode.</td></tr>
-    </tbody>
-  </table>
-  <div class="callout hyp">
-    <strong class="tag">Synthesis, not a measurement</strong>
-    <p>Stay inside one subscription until the product's own usage screen says you are at the cap. The reproducible loop is still: one bug, one failing test, one diff you read. Add a second checkout only when the first session is waiting on a long command. Add an overnight fan-out only for tasks that do not share files, the lint-sized shape Boris described, and only after you have watched one of them fail a test. If the cap arrives, the documented overflow is the API, which is how the May 2025 $6 average was produced. Do not buy a second account because a host joked about fifteen.</p>
-  </div>
+<section class="section" id="stack">
+  <h2>6. Your stack</h2>
+  <p>The about $100 Codex seat and the about $20 Claude seat are the two meters you can feel. When one caps, Karpathy's note is to switch, not to keep a session that can no longer call tools. Do not put a production corpus in the cheaper Muse tier.</p>
 </section>
 
+
+<section class="section" id="ledger-rows">
+  <h2>Ledger rows this page uses</h2>
+  <ul class="clean">
+    <li><a href="sources.html#C279">C279</a> No source opened in this pass states that Anthropic or OpenAI employees use 5,000 to 10,000 tokens per day. The documented quantities are a May 2025 external spend of about $6 per active user per day, free internal use at that date, thousands of dollars a day for a few automat...</li>
+  </ul>
+</section>
 </main>
 <footer class="foot"><div class="foot-in"><p><a href="method.html">Method</a> · <a href="sources.html">Ledger</a> · <a href="gaps.html">Gaps</a></p></div></footer>
 <script src="js/claims.js"></script>

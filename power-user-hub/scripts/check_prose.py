@@ -39,13 +39,23 @@ SLOP = [
     "robust solution",
     "leverage the",
     "landscape of",
+    "it's not just",
+    "it’s not just",
+    "whether you're",
+    "whether you’re",
+    "dive into",
 ]
 
 hits = []
 for path in ROOT.rglob("*"):
     if not path.is_file() or path.suffix.lower() in SKIP:
         continue
-    if "scripts/check_prose.py" in str(path):
+    rel = str(path.relative_to(ROOT))
+    if rel == "scripts/check_prose.py":
+        continue
+    # Vendored libraries and a copied upstream file. The excerpt keeps the
+    # publisher's wording, including words this checker rejects in our prose.
+    if rel.startswith("assets/vendor/") or rel.endswith(".upstream-excerpt"):
         continue
     text = path.read_text(encoding="utf-8", errors="replace")
     if "\u2014" in text:

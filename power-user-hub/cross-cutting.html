@@ -19,196 +19,80 @@
   </nav>
 </header>
 <main id="main">
+
   <p class="kicker">Cross-cutting</p>
-  <h1>A stack for one engineer, with the guesses marked</h1>
-  <p class="lede">No public source shows one person running Grok, Claude, Gemini, Codex, and Muse as a single production system. The configuration below is a <span class="chip rose">synthesis</span>: each row is a documented capability, and the combination is a proposal you can test. It is not an observed deployment.</p>
+  <h1>One test command, four instruction files, one person on the diff.</h1>
+  <p class="lede">The files that carry the command are <a href="kit/claude/CLAUDE.md">CLAUDE.md</a>, <a href="kit/codex/AGENTS.md">AGENTS.md</a>, and <a href="kit/gemini-antigravity/GEMINI.md">GEMINI.md</a>. Muse has no file, only the <code>/plan</code> line in <a href="kit/muse/README.md">kit/muse/README.md</a>.</p>
 
 <section class="section" id="page-map">
   <h2>See the shape first</h2>
   <div class="visual-grid">
     <figure class="diagram">
-      <figcaption>The loop used across the five products. The mapping is a synthesis. The cells are sourced on this page.</figcaption>
-      <pre class="mermaid">flowchart LR
-  T[Trigger] --> E[Execute]
-  E --> V[Verify]
-  V --> S[State]
-  S --> T
-  V --> X[Stop if the check fails]</pre>
+      <figcaption>Same command. Different loader.</figcaption>
+      <pre class="mermaid">flowchart TD
+  A[Test command you already run] --> B[CLAUDE.md]
+  A --> C[AGENTS.md under 32 KiB]
+  A --> D[GEMINI.md]
+  A --> E["Muse /plan"]
+  B --> F[You read git diff]
+  C --> F
+  D --> F
+  E --> F</pre>
     </figure>
     <figure class="diagram">
-      <figcaption>What to run in parallel, and what to sequence.</figcaption>
-      <svg class="markmap-svg" aria-label="What to run in parallel, and what to sequence."></svg>
-      <script type="text/markmap"># One person stack
-## One harness
-## One reviewer from another family
-## One proactive desk
-## Instruction files
-### CLAUDE.md
-### AGENTS.md
-### Skills
-## MCP 2026-07-28
-## Do not stack
-### Three planners at once
-### Three inboxes at once
-### Accept-all on a production repo</script>
+      <figcaption>Files for this page.</figcaption>
+      <svg class="markmap-svg" aria-label="Files"></svg>
+      <script type="text/markmap"># One command
+## Claude skill SHA abeeaf9
+## Codex sample keys
+## Gemini excerpt not copied
+## Muse no SHA
+## Grok draft only
+</script>
     </figure>
   </div>
-  
 </section>
 
-  <section class="section" id="stack">
-    <h2>Proposed seats, and the source for each seat</h2>
-    <table>
-      <thead><tr><th>Seat</th><th>Use the documented product for</th><th>Leave it out when</th></tr></thead>
-      <tbody>
-        <tr><td>Primary coding harness</td><td>One of Claude Code, Codex CLI 0.171, Muse Code, or Antigravity. Boris's parallel sessions were several copies of one harness, in separate checkouts. <a class="cite" href="sources.html#C22">C22</a></td><td>You have installed two "mandatory" skill systems. Superpowers says mandatory. Pocock says frameworks that own the process take control away. <a class="cite" href="sources.html#C44">C44</a> <a class="cite" href="sources.html#C43">C43</a></td></tr>
-        <tr><td>Second model as reviewer</td><td>pstack's default panel is Fable 5.2, Opus 5.5, and Gemini 4 Neon, and interrogate keeps a finding only when a run proves it. Antigravity Orchestrator splits plan and implement. <a class="cite" href="sources.html#C47">C47</a> <a class="cite" href="sources.html#C23">C23</a></td><td>The second model can edit the same tree while the first is still writing. Boris used separate checkouts to avoid that. <a class="cite" href="sources.html#C22">C22</a></td></tr>
-        <tr><td>Proactive desk</td><td>One of Duet, a dot, or a Grok Bot, with send/pay/sign/delete waiting on you. <a class="cite" href="sources.html#C12">C12</a> <a class="cite" href="sources.html#C29">C29</a> <a class="cite" href="sources.html#C06">C06</a></td><td>All three watch the same inbox. That collision is a hypothesis, not a measured incident. See below.</td></tr>
-        <tr><td>Instruction files</td><td>CLAUDE.md for facts the model cannot see. AGENTS.md chain for Codex, closer file wins, mind the 32 KiB cap Özen reports. Skills for procedures. <a class="cite" href="sources.html#C17">C17</a> <a class="cite" href="sources.html#C33">C33</a></td><td>The same rule is copied into four files and they drift.</td></tr>
-        <tr><td>MCP</td><td>Spec 2026-07-28: stateless HTTP, bearer tokens, client-metadata documents. STDIO servers take secrets from the environment. <a class="cite" href="sources.html#C39">C39</a> <a class="cite" href="sources.html#C40">C40</a></td><td>A server still requires a remembered session id. That handshake was retired. <a class="cite" href="sources.html#C39">C39</a></td></tr>
-        <tr><td>Token pressure</td><td>Caveman's author says the CLI compresses what the model reads and says, and that "be concise" already does most of the output cut. <a class="cite" href="sources.html#C46">C46</a></td><td>You need the full log in the context for a review. Compression is lossy on purpose.</td></tr>
-        <tr><td>New UI</td><td>Hallmark, invoked by name, with its floor of contrast, focus, reduced motion, and a ban on invented facts. <a class="cite" href="sources.html#C45">C45</a></td><td>You are editing an existing design system. The README says Hallmark does not start on an existing design unless you name redesign or audit.</td></tr>
-      </tbody>
-    </table>
-  </section>
+<section class="section" id="mechanism">
+  <h2>1. Mechanism</h2>
+  <p>Each product loads a different file. Claude Code 2.1.277 loads AGENTS.md only when CLAUDE.md is absent. Codex stops adding project docs at <code>project_doc_max_bytes</code>, 32768 in the sample. Gemini CLI loads GEMINI.md as resident context. The gemini-cli copy at <code>addc194f5bc414e7134c2bd6a414a40e1b4cbbed</code> tells that repo to run <code>npm install</code>, <code>npm run build</code>, and later <code>npm run preflight</code>. Those commands are wrong in a repo that is not that monorepo. Muse waits at <code>/plan</code> if you use the command. Grok Bot does not load any of these. Its constraint is the send-tool permission.</p>
+</section>
+<section class="section" id="artifact">
+  <h2>2. Artifact</h2>
+  <p>Run <code>sh kit/setup.sh</code> once. It copies the Claude and Codex files and stops if a destination exists. Then copy GEMINI.md yourself. Open <a href="kit/prompts/tdd-loop.md">tdd-loop.md</a> in whichever product you are in. The loop text does not name a vendor.</p>
+</section>
+<section class="section" id="example">
+  <h2>3. Worked example</h2>
+  <p><code>sh kit/scripts/verify.sh</code> checks that the kit files exist, then runs the counter demo. On 20 Nov 2026 it exited 0. The demo's first test failed with <code>AssertionError: inc(1) should be 2</code>. After the function returned <code>n + 1</code>, the same test printed <code>ok</code>. Use that pair of outputs as the bar for a model session: a failure, then a pass, then a small diff.</p>
+</section>
+<section class="section" id="fail">
+  <h2>4. Failure modes</h2>
+  <ul class="clean">
+    <li>Editing AGENTS.md while CLAUDE.md exists, then wondering why Claude ignored the edit.</li>
+    <li>Letting Superpowers and the TDD skill both own the sequence. Pick one. Superpowers is mandatory by its own README.</li>
+    <li>A second agent editing the same files the first agent is editing. Parallelism in the Boris thread is separate checkouts.</li>
+  </ul>
+</section>
+<section class="section" id="exercise">
+  <h2>5. Exercise</h2>
+  <p>Put the same test command in all three markdown files. Ask each tool, one at a time, to print the command and not to edit. Self-check: three replies, one string, <code>git status</code> clean.</p>
+</section>
+<section class="section" id="stack">
+  <h2>6. Your stack</h2>
+  <p>Claude about $20 for the skill file. Codex about $100 for the sandbox key. Google AI Pro for Antigravity's planner and implementer. Muse for an event log and a plan gate. Grok Bot for drafts that are not code. Production stays behind your diff, not behind a second model.</p>
+</section>
 
-  <section class="section" id="loop">
-    <h2>The loop: trigger, execute, verify, state</h2>
-    <p>The same four beats show up under different product names. This mapping is the synthesis. The cells are sourced.</p>
-    <table>
-      <thead><tr><th></th><th>Trigger</th><th>Execute</th><th>Verify</th><th>State</th></tr></thead>
-      <tbody>
-        <tr><td>Claude Code</td><td>You, or a routine if you are in Duet's world for non-repo work</td><td>Plan mode, then edits. Subagents for noisy slices. <a class="cite" href="sources.html#C22">C22</a> <a class="cite" href="sources.html#C18">C18</a></td><td>Failing test, Stop hook, CI, a person merging. <a class="cite" href="sources.html#C49">C49</a></td><td>CLAUDE.md line or a hook. Skill body stays unloaded. <a class="cite" href="sources.html#C17">C17</a></td></tr>
-        <tr><td>Codex / dots</td><td>You, or a dot delegating a task</td><td>CLI or cloud task. Sol is the 0.171 catalog default. <a class="cite" href="sources.html#C32">C32</a></td><td>You, plus the dot's auto-review for its own side effects. Usage is spent on the Codex task. <a class="cite" href="sources.html#C29">C29</a></td><td>AGENTS.md chain and skills index. <a class="cite" href="sources.html#C33">C33</a></td></tr>
-        <tr><td>Antigravity</td><td>You, /swarm, or a Dynamic Workflow</td><td>Orchestrator splits plan and implement. SSH host if the machine matters. <a class="cite" href="sources.html#C23">C23</a> <a class="cite" href="sources.html#C24">C24</a></td><td>/btw is the read-only question beside the run. <a class="cite" href="sources.html#C25">C25</a></td><td>The conversation and any workflow script you keep. A saved-skill format was not in the changelog rows used here.</td></tr>
-        <tr><td>Muse</td><td>You, or <code>muse exec</code> in CI</td><td>/plan, /grill, /goal. Background agents stay for the session. <a class="cite" href="sources.html#C35">C35</a></td><td>Approval on the plan. Browser check in the demo. Your read of the diff.</td><td>Local event log, replay after a crash. <a class="cite" href="sources.html#C35">C35</a></td></tr>
-        <tr><td>Grok Bot</td><td>A routine on a clock</td><td>Skills plus connectors, browser only if no connector. <a class="cite" href="sources.html#C08">C08</a></td><td>Needs approval on send. Skip the run if the sign-in died. <a class="cite" href="sources.html#C06">C06</a> <a class="cite" href="sources.html#C07">C07</a></td><td>Split memories and the saved skill. <a class="cite" href="sources.html#C03">C03</a></td></tr>
-      </tbody>
-    </table>
-  </section>
 
-  <section class="section" id="graph">
-    <h2>Parallel versus sequential</h2>
-    <div class="grid-2">
-      <div>
-        <h3>Sequential, on purpose</h3>
-        <ul class="clean">
-          <li>Superpowers: brainstorm, then worktree, then plan, then implementation, then review. The README forbids skipping ahead by calling the skills mandatory. <a class="cite" href="sources.html#C44">C44</a></li>
-          <li>Boris: plan until he likes it, then one implementation pass. <a class="cite" href="sources.html#C22">C22</a></li>
-          <li>Muse <code>/plan</code> then the rest. <a class="cite" href="sources.html#C35">C35</a></li>
-          <li>Orchestrator: plan model, then implement model, inside one trajectory. <a class="cite" href="sources.html#C23">C23</a></li>
-        </ul>
-        <h3>Parallel, on purpose</h3>
-        <ul class="clean">
-          <li>Several Claude sessions, separate checkouts. <a class="cite" href="sources.html#C22">C22</a></li>
-          <li>pstack <code>/arena</code> (N attempts, keep the best parts) and <code>/swarm</code> (N workers, one report). <a class="cite" href="sources.html#C48">C48</a></li>
-          <li>Antigravity <code>/swarm</code> on a message board, and Dynamic Workflows in Python. <a class="cite" href="sources.html#C27">C27</a> <a class="cite" href="sources.html#C25">C25</a></li>
-          <li>Dots dividing work among background agents. The launch post says this. It does not show the board. <a class="cite" href="sources.html#C29">C29</a></li>
-          <li>Muse background agents that stay up for the session. <a class="cite" href="sources.html#C35">C35</a></li>
-        </ul>
-      </div>
-      <aside class="callout">
-        <strong class="tag">Rule of thumb, labelled synthesis</strong>
-        <p>Parallelize slices that do not share files or a decision. Sequence anything where the second step's input is the first step's judgment. A swarm of agents editing one module is sequential work wearing a parallel costume.</p>
-      </aside>
-    </div>
-  </section>
-
-  <section class="section" id="vibe">
-    <h2>Vibe coding, in the words of the people who named it</h2>
-    <p>Karpathy, quoted by Simon Willison on 6 February 2025: accept all suggestions, do not read the diffs, paste errors back with no comment, and treat the result as fine for a throwaway weekend project. The padding prompt in that quote is in the <a href="prompts.html#karpathy">vault</a> as an example of the practice, not as a recommendation. <a class="cite" href="sources.html#C41">C41</a></p>
-    <p>Willison, quoted by Ars Technica in March 2025: if you reviewed, tested, and understood the lines, that is an LLM used as a typing assistant. Vibe coding your way to a production codebase is, in his words there, clearly risky. <a class="cite" href="sources.html#C42">C42</a></p>
-    <h3>Anti-patterns that fall out of those two quotes</h3>
-    <ul class="clean">
-      <li>Accept-all on a repo you must maintain.</li>
-      <li>Pasting an error with no hypothesis, then shipping the workaround when the model cannot find the cause. Karpathy described doing that for weekend projects.</li>
-      <li>Calling reviewed, tested code "vibe coding." Willison's distinction is the useful one in an interview: say which you did.</li>
-    </ul>
-    <h3>Guardrails that are productized, not slogans</h3>
-    <ul class="clean">
-      <li>Claude: hooks and deny rules, branch protection, a human merge. <a class="cite" href="sources.html#C49">C49</a></li>
-      <li>Superpowers: delete code that was written before the test. Verification before completion is a named skill. <a class="cite" href="sources.html#C44">C44</a></li>
-      <li>pstack: reproduce first, and keep interrogate findings only when a run proves them. <a class="cite" href="sources.html#C48">C48</a></li>
-      <li>Duet, dots, Grok: approval before outbound side effects. <a class="cite" href="sources.html#C12">C12</a> <a class="cite" href="sources.html#C29">C29</a> <a class="cite" href="sources.html#C06">C06</a></li>
-      <li>Muse: plan approval, sandbox on from the first run, Contributor mode as an explicit data decision. <a class="cite" href="sources.html#C37">C37</a> <a class="cite" href="sources.html#C38">C38</a></li>
-    </ul>
-  </section>
-
-  <section class="section" id="research">
-    <h2>A research pipeline: literature, synthesis, artifact</h2>
-    <p>This hub is the worked example. The pattern is the one the source rules forced, and it matches how the coding skills tell an agent to behave.</p>
-    <ol class="steps">
-      <li><strong>Literature.</strong> Fetch the origin page. A news article that repeats a launch is an echo, filed once. <a class="cite" href="sources.html#C50">C50</a> <a class="cite" href="sources.html#C52">C52</a> <a class="cite" href="sources.html#C51">C51</a></li>
-      <li><strong>Synthesis.</strong> Write the sentence you believe, with the claim id. If you combined two pages, say so. The Grok permission-plus-draft tutorial does that.</li>
-      <li><strong>Artifact.</strong> A page, a ledger row, a failing test, or a plan. Meta's kernel loop and Boris's Chrome check are the engineering versions: the artifact is not the model's paragraph. <a class="cite" href="sources.html#C36">C36</a> <a class="cite" href="sources.html#C22">C22</a></li>
-      <li><strong>Gap.</strong> What you could not open goes in the gap report instead of into a smooth paragraph.</li>
-    </ol>
-    <p>Pocock's <code>/grill-with-docs</code> is the coding-agent version of step 2: the grilling session also writes a glossary and ADRs so later sessions share the nouns. <a class="cite" href="sources.html#C43">C43</a></p>
-  </section>
-
-  <section class="section" id="mcp">
-    <h2>MCP, as of the 28 July 2026 spec</h2>
-    <p>David Soria Parra and Den Delimarsky describe a stateless core. The initialize handshake and <code>Mcp-Session-Id</code> are retired. Each request carries its protocol version and client info. Method and tool names travel in <code>Mcp-Method</code> and <code>Mcp-Name</code> headers so a gateway can route without parsing JSON. Server-initiated elicitation and sampling become Multi Round-Trip Requests: the server returns <code>input_required</code>, and the client retries with the answers. Dynamic Client Registration is deprecated in favor of Client ID Metadata Documents. Tasks move to an extension. Roots, Sampling, and Logging are deprecated with at least twelve months of runway. <a class="cite" href="sources.html#C39">C39</a></p>
-    <p>HTTP authorization, when you implement it, is OAuth 2.1 with RFC 9728 protected-resource metadata and a bearer token on every request. A local stdio server should read credentials from the environment instead. <a class="cite" href="sources.html#C40">C40</a></p>
-    <h3>Composition that is actually written down</h3>
-    <ul class="clean">
-      <li>Boris checked a Slack MCP config into <code>.mcp.json</code> and shared it with the team, and he used the BigQuery CLI and Sentry from the same session. January 2026. <a class="cite" href="sources.html#C22">C22</a></li>
-      <li>Grok Bot speaks MCP, prefers a connector to the browser, and as of 1.2.3 lets an admin allowlist tools. The GitHub connector follows that allowlist. <a class="cite" href="sources.html#C01">C01</a> <a class="cite" href="sources.html#C06">C06</a></li>
-      <li>Codex 0.171.0 adds authoring of an MCP status line when <code>tui_extensions_statusline</code> is enabled. <a class="cite" href="sources.html#C32">C32</a></li>
-      <li>Claude hooks can call an MCP tool, which is how a policy leaves the prompt and enters the loop. <a class="cite" href="sources.html#C21">C21</a></li>
-    </ul>
-    <p>A single JSON file that wires Grok, Claude, Codex, and Antigravity to the same servers was not published by any of those vendors in the pages read here. Copying Boris's Slack example into a private <code>.mcp.json</code> is the bounded version.</p>
-  </section>
-
-  <section class="section" id="speed">
-    <h2>Speed and correctness</h2>
-    <p>Lauren Tan's README states the trade in one line: if you want to go fast, go deep first, and the goal is less code rather than more. Parallelism is what she says you earn after one agent is verifiable. <a class="cite" href="sources.html#C47">C47</a></p>
-    <p>Boris's version of the same trade: a slower, stronger model (he named Opus 4.5) needed less steering and so finished sooner than a smaller model. That is a January 2026 judgment about a model generation that has since moved. The shape of the argument is still the one Antigravity uses for Orchestrator: spend the expensive model on the plan. <a class="cite" href="sources.html#C22">C22</a> <a class="cite" href="sources.html#C23">C23</a></p>
-    <p>Caveman's README is the cost side. The author reports that a "be concise" instruction already captures most of the output saving, and that ultracave goes further, on a small sample he labels as not yet re-run for a later rules version. Read those numbers as his measurements. <a class="cite" href="sources.html#C46">C46</a></p>
-  </section>
-
-  <section class="section" id="hyp">
-    <h2>Hypotheses <span class="chip rose">unproven</span></h2>
-    <div class="callout hyp">
-      <strong class="tag">H1 · three proactive agents, one inbox</strong>
-      <p>Duet, a dot, and a Grok Bot on the same mailbox will double-draft and occasionally double-send the moment any one of them is set looser than Needs approval. Each product documents an approval stop. None of them documents coexistence with the other two.</p>
-    </div>
-    <div class="callout hyp">
-      <strong class="tag">H2 · cross-family review</strong>
-      <p>A review panel drawn from three families, as in pstack's default, catches more merged bugs than a second pass by the author model. The README prescribes the panel. It does not include a public benchmark.</p>
-    </div>
-    <div class="callout hyp">
-      <strong class="tag">H3 · one planner</strong>
-      <p>Installing Superpowers and Pocock's skills and pstack together lowers the quality of plans, because three routers disagree. Each author describes a different relationship to "the process." The interaction is unmeasured.</p>
-    </div>
-  </section>
-
-  <section class="section" id="tutorial">
-    <h2>Tutorial · ship one verified change this week</h2>
-    <h3>1. Question</h3>
-    <p>What is the smallest stack, using only practices published by the toolmakers and the skill authors above, that takes a bug from report to a diff I am willing to merge?</p>
-    <h3>2. Facts</h3>
-    <p>Specific bug prompt and a failing test (Anthropic). Separate checkout if anything else runs (Boris). Closer instruction file wins, keep it short (Özen on Codex, or CLAUDE.md on Claude). Reviewer that did not write the code (Anthropic subagents, or pstack interrogate). Human merge (Anthropic). <a class="cite" href="sources.html#C19">C19</a> <a class="cite" href="sources.html#C22">C22</a> <a class="cite" href="sources.html#C49">C49</a></p>
-    <h3>3. Concepts</h3>
-    <p>See the <a href="principles.html">principles page</a> for the harness model. You need one trigger, one executor, one verifier that is not the executor, and one place the lesson is written down.</p>
-    <h3>4. Worked loop</h3>
-    <ol class="steps">
-      <li>Pick the harness you already know. Do not install a second one for this exercise.</li>
-      <li>Write the bug as symptom, path, and test, using Anthropic's shape even if the harness is not Claude.</li>
-      <li>If you use Codex, put the test command in the nearest AGENTS.md. If you use Claude, put a one-line project fact in CLAUDE.md only if the code does not already show it.</li>
-      <li>Let it implement. Open the diff yourself. Run the test yourself.</li>
-      <li>Ask a second session, which has not seen the first transcript, to try to break the fix. pstack calls this interrogate and tells it to keep only what a run proves. You can do a poor man's version with any second model: "here is the diff and the test command; try to falsify the fix."</li>
-      <li>Write one sentence into the instruction file about whatever the second session found, or about a mistake you do not want repeated.</li>
-    </ol>
-    <h3>5. Conflicts</h3>
-    <p>Superpowers would insert a design document and a worktree before step 2. That is right for a feature and heavy for a one-line bug. The README's own sequence is the full methodology. Use the full sequence when you do not yet know the design. Use the short loop when the design is the existing code and the bug is local.</p>
-    <h3>6. Hypothesis</h3>
-    <p>H2 above. Run the second session twice, once on the same model and once on a different family, and keep a tally for ten bugs. Until you have the tally, you do not have evidence.</p>
-    <h3>7. Decision support</h3>
-    <p>Feature with an unclear design: Pocock <code>/grill-me</code> or Superpowers brainstorming, then the loop. Bug you can reproduce: this short loop. Overnight unattended work: Boris's sandbox note and pstack's autonomous-run playbook exist; both still require a verifier. Do not start there. <a class="cite" href="sources.html#C22">C22</a> <a class="cite" href="sources.html#C47">C47</a></p>
-    <h3>8. Bounded next action</h3>
-    <p>One bug. One harness. One failing test you watch fail. One diff you read. One sentence written back into the instruction file. Stop.</p>
-  </section>
+<section class="section" id="ledger-rows">
+  <h2>Ledger rows this page uses</h2>
+  <ul class="clean">
+    <li><a href="sources.html#C22">C22</a> On 2 Jan 2026 Boris Cherny posted that he ran five Claudes in local terminal tabs and five to ten on claude.ai/code, started PR work in Plan mode, then switched to auto-accept edits, used Opus 4.5 with thinking, kept a shared CLAUDE.md he described as 2.5k tokens, used slash c...</li>
+    <li><a href="sources.html#C41">C41</a> Simon Willison's 6 Feb 2025 page quotes Andrej Karpathy naming 'vibe coding': accept all suggestions, do not read the diffs, paste errors back with no comment, and treat it as amusing for throwaway weekend projects. The quoted example prompt is 'decrease the padding on the sid...</li>
+    <li><a href="sources.html#C42">C42</a> Ars Technica quotes Simon Willison distinguishing vibe coding from using an LLM as a typing assistant: if you have reviewed, tested, and understood every line, he does not call it vibe coding. He calls vibe coding your way to a production codebase clearly risky.</li>
+    <li><a href="sources.html#C44">C44</a> Jesse Vincent's Superpowers README calls the skills mandatory workflows, not suggestions. The basic workflow is brainstorming, git worktrees, writing plans, subagent-driven development or executing plans, test-driven development, code review, and finishing the branch. Claude C...</li>
+    <li><a href="sources.html#C49">C49</a> Anthropic's best-practices table says the last word on a change is branch protection and a person who approves the merge, while Claude's summary of what it did is non-deterministic.</li>
+  </ul>
+</section>
 </main>
 <footer class="foot"><div class="foot-in"><p><a href="principles.html">Principles</a> · <a href="repos.html">Install the skills</a> · <a href="gaps.html">What this stack does not know</a></p></div></footer>
 <script src="js/claims.js"></script>

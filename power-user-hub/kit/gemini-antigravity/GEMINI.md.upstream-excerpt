@@ -2,7 +2,7 @@
 
 Source: GEMINI.md at the root of https://github.com/google-gemini/gemini-cli
 Commit addc194f5bc414e7134c2bd6a414a40e1b4cbbed
-Fetched 2026-11-20. First 40 lines only. The rest of that file is the CLI repo's own build notes.
+Fetched 2026-11-20. Lines 1 through 65. `npm run preflight` is in the testing section, not in the opening overview. The rest of that file is the CLI repo's own conventions.
 
 ```markdown
 # Gemini CLI Project Context
@@ -45,4 +45,29 @@ powerful tool for developers.
 - **Run in Debug Mode:** `npm run debug` (Enables Node.js inspector)
 - **Bundle Project:** `npm run bundle`
 - **Clean Artifacts:** `npm run clean`
+
+## Testing and Quality
+
+- **Test Commands:**
+  - **Unit (All):** `npm run test`
+  - **Integration (E2E):** `npm run test:e2e`
+  - > **NOTE**: Please run the memory and perf tests locally **only if** you are
+    > implementing changes related to those test areas. Otherwise skip these
+    > tests locally and rely on CI to run them on nightly builds.
+  - **Memory (Nightly):** `npm run test:memory` (Runs memory regression tests
+    against baselines. Excluded from `preflight`, run nightly.)
+  - **Performance (Nightly):** `npm run test:perf` (Runs CPU performance
+    regression tests against baselines. Excluded from `preflight`, run nightly.)
+  - **Workspace-Specific:** `npm test -w <pkg> -- <path>` (Note: `<path>` must
+    be relative to the workspace root, e.g.,
+    `-w @google/gemini-cli-core -- src/routing/modelRouterService.test.ts`)
+- **Full Validation:** `npm run preflight` (Heaviest check; runs clean, install,
+  build, lint, type check, and tests. Recommended before submitting PRs. Due to
+  its long runtime, only run this at the very end of a code implementation task.
+  If it fails, use faster, targeted commands (e.g., `npm run test`,
+  `npm run lint`, or workspace-specific tests) to iterate on fixes before
+  re-running `preflight`. For simple, non-code changes like documentation or
+  prompting updates, skip `preflight` at the end of the task and wait for PR
+  validation.)
+- **Individual Checks:** `npm run lint` / `npm run format` / `npm run typecheck`
 ```

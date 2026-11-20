@@ -19,144 +19,79 @@
   </nav>
 </header>
 <main id="main">
-  <p class="kicker">People</p>
-  <h1>Profiles limited to what a page actually says</h1>
-  <p class="lede">Identity is verified from a byline, a GitHub profile name, or an employer's article. A role you have heard in passing and a role printed on a page are different things. The second list on this page is the people this pass could not honestly profile.</p>
-  <input id="pagefilter" type="search" placeholder="Filter profiles" style="border:1px solid var(--line);background:var(--bg-2);border-radius:999px;padding:.4rem .8rem;">
+
+  <p class="kicker">Profiles</p>
+  <h1>A profile is a file you can copy, or it is a gap.</h1>
+  <p class="lede">Boris Cherny's published hook shape is in <a href="kit/claude/settings.json">settings.json</a>. Matt Pocock's TDD skill is at SHA <code>abeeaf95660ba9e8b7c753eb38f441ca707a8823</code>. Cat Wu's dollar figure is an interview line, not a config. People without a primary workflow file stay off this page.</p>
 
 <section class="section" id="page-map">
   <h2>See the shape first</h2>
   <div class="visual-grid">
     <figure class="diagram">
-      <figcaption>Who has a primary page in this hub, and who does not.</figcaption>
+      <figcaption>From a talk to a file, or to the gap list.</figcaption>
       <pre class="mermaid">flowchart TD
-  A[Name in the brief] --> B{Primary page read?}
-  B -->|yes| C[Profile card]
+  A[Primary source] --> B{Verbatim file or command?}
+  B -->|yes| C[kit path and SHA]
   B -->|no| D[Gap report]
-  C --> E[Only the claims on that page]</pre>
+  C --> E[Do not add a biography]</pre>
     </figure>
     <figure class="diagram">
-      <figcaption>People map.</figcaption>
-      <svg class="markmap-svg" aria-label="People map."></svg>
-      <script type="text/markmap"># People
-## Profiled from a page
-### Lauren Tan
-### Boris Cherny
-### Thibault Sottiaux
-### Matt Pocock
-### Jesse Vincent
-### Hassan El Mghari
-### Julius Brussee
-## Named once in a launch post
-### Duet preview users
-## Not profiled
-### Dario Amodei
-### Codie Sanchez
-### Greg Isenberg
-### Mayank Shah</script>
+      <figcaption>Files for this page.</figcaption>
+      <svg class="markmap-svg" aria-label="Files"></svg>
+      <script type="text/markmap"># What we could copy
+## Boris hook shape
+## Pocock skill SHA
+## Cat Wu interview line
+## Thariq add a line after a failure
+## Karpathy switch when the quota ends
+</script>
     </figure>
   </div>
-  
 </section>
 
-  <section class="section" id="poteto">
-    <article class="person">
-      <h2>Lauren Tan, poteto</h2>
-      <p class="ver">Cursor · React core team, by her README · pstack merged 23 May 2026</p>
-      <p>Her README in <code>cursor/plugins</code> says she has worked with millions of lines at Meta, Netflix, and Cursor, and that she helps maintain React Compiler on the React core team. The plugin pull request 73 is authored by GitHub user poteto and describes pstack as her working style. Those employment lines are self-reported in the README.</p>
-      <p>What she publishes as practice: <code>/poteto-mode</code> picks one of 22 playbooks. Go deep before you parallelize. Out of the box, code, prose, and judgment use Opus 5.5 at xhigh, and a review panel uses Fable 5.2, Opus 5.5, and Gemini 4 Neon. <code>/setup-pstack</code> changes the assignment. Interrogate keeps a finding only when a run proves it.</p>
-      <p><a class="cite" href="sources.html#C47">C47</a> <a class="cite" href="sources.html#C48">C48</a> · <a href="https://github.com/cursor/plugins/blob/main/pstack/README.md">README</a></p>
-    </article>
-  </section>
-
-  <section class="section" id="boris">
-    <article class="person">
-      <h2>Boris Cherny</h2>
-      <p class="ver">Leads Claude Code, according to Anthropic's Duet article · public setup post 2 Jan 2026</p>
-      <p>Two snapshots, and they are not the same snapshot. On 2 January 2026 he described five local Claudes in separate checkouts, five to ten on the web, Plan mode, Opus 4.5 with thinking, a 2.5k-token CLAUDE.md, slash commands, subagents, a format hook, shared permissions, Slack MCP, and Chrome-extension verification. On 23 October 2026 Anthropic said he talks through his to-do list with Claude Duet on walks. The article does not say the January coding setup was retired.</p>
-      <p><a class="cite" href="sources.html#C22">C22</a> <a class="cite" href="sources.html#C14">C14</a> · <a href="claude.html#workflows">Workflow write-up</a></p>
-    </article>
-  </section>
-
-  <section class="section" id="tibo">
-    <article class="person">
-      <h2>Thibault Sottiaux</h2>
-      <p class="ver">GitHub tibo-openai · profile name checked 20 Nov 2026 · no company field on that profile</p>
-      <p>He merged the AGENTS.md discovery guide into <code>openai/codex</code> on 19 October 2025. That is the public artifact this pass verified. A job title, a 2026 talk, and a personal Codex routine were not fetched. The user-facing name "Tibo" matches the login. It is not, by itself, a workflow.</p>
-      <p><a class="cite" href="sources.html#C34">C34</a> · <a href="https://github.com/openai/codex/pull/5353">PR 5353</a> · gap <a href="gaps.html#g06">G06</a></p>
-    </article>
-  </section>
-
-  <section class="section" id="matt">
-    <article class="person">
-      <h2>Matt Pocock</h2>
-      <p class="ver">Author of mattpocock/skills · newsletter he describes as about 60,000 readers</p>
-      <p>His README is an argument: GSD, BMAD, and Spec-Kit own the process and take control away; his skills stay small. The failure mode he names first is the agent building the wrong thing, fixed by a grilling session. The second is jargon, fixed by a glossary he now writes through <code>/grill-with-docs</code>. He tells you to run setup once per repo and to grill before a change. Install lines are on the <a href="repos.html#pocock">repos page</a>.</p>
-      <p><a class="cite" href="sources.html#C43">C43</a></p>
-    </article>
-  </section>
-
-  <section class="section" id="jesse">
-    <article class="person">
-      <h2>Jesse Vincent</h2>
-      <p class="ver">Superpowers · Prime Radiant, by the README</p>
-      <p>The README says Superpowers is built by Jesse Vincent and Prime Radiant. The methodology is mandatory: draw out the intent, isolate a worktree, write a plan a weak agent could follow, test first, review, then decide whether to merge. He points at a 9 October 2025 announcement post for the origin of the philosophy. The commercial-support address in the README is sales@primeradiant.com.</p>
-      <p><a class="cite" href="sources.html#C44">C44</a> · <a href="https://blog.fsck.com/2025/10/09/superpowers/">Announcement</a></p>
-    </article>
-  </section>
-
-  <section class="section" id="hassan">
-    <article class="person">
-      <h2>Hassan El Mghari</h2>
-      <p class="ver">GitHub Nutlope · Hallmark README credits Together AI · GitHub profile lists no employer</p>
-      <p>Hallmark is his design skill: fifty themes, a floor of accessibility and honesty, and an explicit refusal to restyle an existing design unless you ask. The install and the verbs are on the <a href="repos.html#hallmark">repos page</a>. A third-party review that still says twenty themes and a <code>.cursor/rules</code> paste is behind the README fetched on 20 November 2026.</p>
-      <p><a class="cite" href="sources.html#C45">C45</a></p>
-    </article>
-  </section>
-
-  <section class="section" id="julius">
-    <article class="person">
-      <h2>Julius Brussee</h2>
-      <p class="ver">GitHub JuliusBrussee · caveman · 121,737 stars on the API at fetch time</p>
-      <p>He publishes a skill and a local proxy whose README thesis is shorter answers and smaller tool output, with code kept exact. He also publishes the caveats: benchmark settings that are not the shipped app, an interim cost comparison whose quality gap he calls unresolved, and a note that "be concise" is the real baseline. Read him as an author who shows his own denominators.</p>
-      <p><a class="cite" href="sources.html#C46">C46</a></p>
-    </article>
-  </section>
-
-  <section class="section" id="duet-users">
-    <h2>Named in Anthropic's Duet launch, thinly</h2>
-    <p>These are not engineering diaries. They are one-sentence uses in a launch post. <a class="cite" href="sources.html#C14">C14</a> <a class="cite" href="sources.html#C15">C15</a></p>
-    <ul class="clean">
-      <li>Chelsea Larsson, model and product behavior design at Anthropic: hands Duet a list and reads an evening report.</li>
-      <li>Karan Ahuja, leads the Duet team: interviews, prototypes, shipping code. No steps.</li>
-      <li>Jess Provencher, Pro Homes: morning rundown caught a showing on the wrong day.</li>
-      <li>Amin Ebrahimi, Shahs of Kabob: accounting, support, marketing, invoices. About 110 employees, Anthropic's figure.</li>
-      <li>Mya Dalton, brand strategist: a pre-call brief and a proposed move of a meeting that sat before a flight.</li>
-    </ul>
-  </section>
-
-  <section class="section" id="mert">
-    <article class="person">
-      <h2>Mert Özen</h2>
-      <p class="ver">Secondary · blog post 15 Nov 2026</p>
-      <p>He wrote a walkthrough of AGENTS.md, config.toml, skills, and MCP for Codex CLI 0.169.0, and he says he checked it against OpenAI's docs that week. Useful, and not an OpenAI engineer. His sample configs are his. <a class="cite" href="sources.html#C33">C33</a></p>
-    </article>
-  </section>
-
-  <section class="section" id="cat">
-  <h2>Added in pass 2</h2>
-  <p><a href="cat-wu.html">Cat Wu</a> now has a page from the May 2025 transcript. <a href="talks.html">Talk notes</a> cover that episode and Thariq Shihipar. Mayank Shah, Codie Sanchez, and Greg Isenberg are still thin: see the gap report.</p>
+<section class="section" id="mechanism">
+  <h2>1. Mechanism</h2>
+  <p>A name in a changelog is not a workflow. The useful residue is a file, a flag, or a refusal. Boris, Jan 2026 thread and the March 2026 Pragmatic Engineer episode: separate checkouts, and he was moving overflow toward desktop worktrees he does not like to manage by hand. Thariq, 28 Sep 2026: start without CLAUDE.md. Karpathy: leave the loop only when a command scores the run, and switch products when the quota ends. Cat Wu: about $6 a day for external active users in the May 2025 interview, which is outside the Nov 2025 to Nov 2026 window and is labeled that way on the talks page.</p>
 </section>
-<section class="section" id="missing">
-    <h2>Requested names this pass will not profile</h2>
-    <ul class="clean">
-      <li><strong>Dario Amodei.</strong> No 2025-2026 page was fetched in which he describes a concrete engineering practice for how Anthropic staff use agents. A policy essay would not fill this card. <a href="gaps.html#g07">G07</a></li>
-      <li><strong>Codie Sanchez.</strong> A third-party "tools" page and a podcast transcript were not tied, in the pages opened, to a complete primary workflow. A partial quote on an aggregator is not a profile. <a href="gaps.html#g08">G08</a></li>
-      <li><strong>Greg Isenberg.</strong> A secondary blog summarized a coding workflow and did not give a primary post this pass could quote. <a href="gaps.html#g09">G09</a></li>
-      <li><strong>Mayank Shah.</strong> Search returns more than one person, including a freelance RAG engineer on LinkedIn. No page established which Mayank Shah was meant, so none is profiled. <a href="gaps.html#g10">G10</a></li>
-      <li><strong>Unnamed xAI, Google, and OpenAI ICs.</strong> Beyond Tibo's pull request and OpenAI's anonymous dots anecdotes, this pass did not land a 2026 IC interview with a reproducible loop. <a href="gaps.html#g02">G02</a></li>
-    </ul>
-  </section>
+<section class="section" id="artifact">
+  <h2>2. Artifact</h2>
+  <ul class="clean">
+    <li>Hook: <a href="kit/claude/settings.json">kit/claude/settings.json</a>. The command string is a placeholder because his formatter is not yours.</li>
+    <li>Skill: <a href="kit/claude/skills/tdd/SKILL.md">SKILL.md</a> plus <a href="kit/claude/skills/tdd/PROVENANCE.md">PROVENANCE.md</a>.</li>
+    <li>Episode prompts: <a href="kit/podcasts/pragmatic-boris-plan-round.md">pragmatic-boris-plan-round.md</a>, <a href="kit/podcasts/thariq-effort-and-notes.md">thariq-effort-and-notes.md</a>, <a href="kit/podcasts/karpathy-eval-loop.md">karpathy-eval-loop.md</a>.</li>
+  </ul>
+</section>
+<section class="section" id="example">
+  <h2>3. Worked example</h2>
+  <p>Take Thariq's rule and apply it to the counter. Do not write a CLAUDE.md first. Run <code>sh kit/scripts/tdd-demo.sh</code>. The first failure is <code>AssertionError: inc(1) should be 2</code>. The repeated failure, if you kept a stub, is the line you add: the test command. One line, after the failure, not before.</p>
+</section>
+<section class="section" id="fail">
+  <h2>4. Failure modes</h2>
+  <ul class="clean">
+    <li>Profiling someone because a recap site quoted them. If the primary file was not opened, they are a gap.</li>
+    <li>Copying Boris's five-checkout habit onto one working tree.</li>
+    <li>Treating the May 2025 dollar figure as a 2026 quota.</li>
+  </ul>
+</section>
+<section class="section" id="exercise">
+  <h2>5. Exercise</h2>
+  <p>Pick one episode page. Copy its kit prompt into a scratch repo. Run only the step that does not call a model, which is your test command. Self-check: you can name the timestamp the step came from.</p>
+</section>
+<section class="section" id="stack">
+  <h2>6. Your stack</h2>
+  <p>You are not these people. You have two coding seats, a Google seat, a Muse seat, and a Grok seat. Steal the file, not the headcount. A bank change still ends on your diff.</p>
+</section>
+
+
+<section class="section" id="ledger-rows">
+  <h2>Ledger rows this page uses</h2>
+  <ul class="clean">
+    <li><a href="sources.html#C22">C22</a> On 2 Jan 2026 Boris Cherny posted that he ran five Claudes in local terminal tabs and five to ten on claude.ai/code, started PR work in Plan mode, then switched to auto-accept edits, used Opus 4.5 with thinking, kept a shared CLAUDE.md he described as 2.5k tokens, used slash c...</li>
+    <li><a href="sources.html#C34">C34</a> GitHub user tibo-openai, whose profile name is Thibault Sottiaux, merged pull request 5353 in openai/codex on 19 Oct 2025, adding an AGENTS.md discovery guide.</li>
+    <li><a href="sources.html#C43">C43</a> Matt Pocock's README says his skills are small, adaptable, and composable, and that GSD, BMAD, and Spec-Kit take control away by owning the process. Claude Code install in that README is `claude plugin install mattpocock-skills@claude-plugins-official`. Other agents use `npx s...</li>
+    <li><a href="sources.html#C44">C44</a> Jesse Vincent's Superpowers README calls the skills mandatory workflows, not suggestions. The basic workflow is brainstorming, git worktrees, writing plans, subagent-driven development or executing plans, test-driven development, code review, and finishing the branch. Claude C...</li>
+  </ul>
+</section>
 </main>
 <footer class="foot"><div class="foot-in"><p><a href="prompts.html">Their prompts, where they published any</a> · <a href="gaps.html">Gaps</a></p></div></footer>
 <script src="js/claims.js"></script>

@@ -19,143 +19,86 @@
   </nav>
 </header>
 <main id="main">
-  <p class="kicker">Cluster · Google</p>
-  <h1>Gemini and Antigravity</h1>
-  <p class="lede">Antigravity is Google's agentic coding surface: an app, a CLI, an SDK, and IDE extensions, with a changelog that moved weekly through November 2026. The power-user features in that changelog are multi-model orchestration, a swarm, Python workflows, and remote machines. A named Google engineer's diary was not found in this pass.</p>
-  <input id="pagefilter" type="search" placeholder="Filter this page" style="border:1px solid var(--line);background:var(--bg-2);border-radius:999px;padding:.4rem .8rem;">
+
+  <p class="kicker">Gemini CLI and Antigravity</p>
+  <h1>Put the test command in GEMINI.md. Do not paste the CLI repo's build script.</h1>
+  <p class="lede">The upstream file is <code>GEMINI.md</code> in google-gemini/gemini-cli at <code>addc194f5bc414e7134c2bd6a414a40e1b4cbbed</code>. Lines 1-65 are in <a href="kit/gemini-antigravity/GEMINI.md.upstream-excerpt">the excerpt</a>, from commit <code>addc194f5bc414e7134c2bd6a414a40e1b4cbbed</code>. The opening says <code>npm install</code> and <code>npm run build</code>. The testing section says <code>npm run preflight</code>. Those commands belong to the CLI monorepo.</p>
 
 <section class="section" id="page-map">
   <h2>See the shape first</h2>
   <div class="visual-grid">
     <figure class="diagram">
-      <figcaption>November 2026 Antigravity: plan model, implement model, side question.</figcaption>
-      <pre class="mermaid">sequenceDiagram
-  participant You
-  participant N as Neon plans
-  participant H as Hydrogen edits
-  participant Q as btw side question
-  You->>N: Orchestrator prompt
-  N->>H: Plan
-  H-->>You: Diff
-  You->>Q: Read-only check
-  Q-->>You: Overlap or tests, no edits</pre>
+      <figcaption>One check command. Swarm only when files do not overlap.</figcaption>
+      <pre class="mermaid">flowchart TD
+  A[GEMINI.md with your test command] --> B[One task]
+  B --> C{Need a side question?}
+  C -->|yes| D["/btw read-only"]
+  C -->|no| E[Read the diff]
+  E --> F["/swarm only for separate slices"]</pre>
     </figure>
     <figure class="diagram">
-      <figcaption>Changelog primitives.</figcaption>
-      <svg class="markmap-svg" aria-label="Changelog primitives."></svg>
-      <script type="text/markmap"># Antigravity
-## Models
-### Neon default 18 Nov
-### Hydrogen
-### Carbon
-### Orchestrator
-## Coordination
+      <figcaption>Files for this page.</figcaption>
+      <svg class="markmap-svg" aria-label="Files"></svg>
+      <script type="text/markmap"># Gemini kit
+## GEMINI.md
+## upstream excerpt
+## Antigravity
+### Orchestrator Neon
+### slash btw
 ### slash swarm
-### Dynamic Workflows
-### btw read only
-## Place
-### SSH Linux host
-### GitHub pull request pills</script>
+</script>
     </figure>
   </div>
-  
 </section>
 
-  <section class="section" id="status">
-    <h2>Status as of 20 Nov 2026</h2>
-    <table>
-      <thead><tr><th>Date</th><th>What the changelog says</th></tr></thead>
-      <tbody>
-        <tr><td>18 Nov</td><td>Gemini 4 Neon is on Google AI Ultra, Google AI Pro, and Gemini Enterprise. It is the default if you have not chosen a model. Four thinking levels. Orchestrator (Neon) plans with Neon and implements with Hydrogen. <a class="cite" href="sources.html#C23">C23</a></td></tr>
-        <tr><td>17 Nov</td><td>App v2.33.0. SSH to a remote 64-bit Linux host. Live GitHub pull-request pills. /swarm and UI plugin panels open to business and enterprise accounts when an admin allows them. <a class="cite" href="sources.html#C24">C24</a></td></tr>
-        <tr><td>16 Nov</td><td>v2.32.2. Multi-turn <code>/btw</code> side questions with read-only tools, so a question does not interrupt the main thread. <a class="cite" href="sources.html#C25">C25</a></td></tr>
-        <tr><td>13 Nov</td><td>v2.32.0. Dynamic Workflows: orchestrate parallel subagents and multi-step tasks in Python using the bundled runtime. <a class="cite" href="sources.html#C25">C25</a></td></tr>
-        <tr><td>12 Nov</td><td>Gemini 4 Hydrogen, four effort levels, and Orchestrator with Gemini 4 Carbon. <a class="cite" href="sources.html#C26">C26</a></td></tr>
-        <tr><td>11 Nov</td><td>Carbon appears in the selector for Google Cloud application-default credentials. <a class="cite" href="sources.html#C26">C26</a></td></tr>
-        <tr><td>9 Nov</td><td>v2.31.0. <code>/swarm</code> coordinates multiple subagents over a message board for long-horizon tasks. The changelog calls Carbon the strongest model for long-horizon software engineering, knowledge work, scientific discovery, and cybersecurity. <a class="cite" href="sources.html#C27">C27</a></td></tr>
-      </tbody>
-    </table>
-    <p>Blog posts linked from the changelog advertise benchmark scores. Those posts were not fetched in full, so the scores are not claims in this hub. Plan eligibility for Carbon on a consumer Google AI Pro seat was not fully extracted. See <a href="gaps.html#g04">G04</a>.</p>
-  </section>
+<section class="section" id="mechanism">
+  <h2>1. Mechanism</h2>
+  <p>Gemini CLI loads <code>GEMINI.md</code> as project context, the same job as CLAUDE.md. The upstream file lists Node 20, <code>npm run build</code>, and nightly memory tests that it tells contributors to skip unless they are changing those tests. The mechanism is: the file is resident context, so a command in it will be run. A command for the wrong repo wastes the turn and can delete the wrong tree.</p>
+  <p>Antigravity, changelog 18 Nov 2026: Orchestrator (Neon) plans with Gemini 4 Neon and implements with Gemini 4 Hydrogen. <code>/btw</code> as of 16 Nov 2026 is a side question with read-only tools. <code>/swarm</code> coordinates subagents on a message board. None of those read GEMINI.md from the CLI repo. There is no Antigravity settings file with a commit SHA in this kit.</p>
+</section>
+<section class="section" id="artifact">
+  <h2>2. Artifact</h2>
+  <p><a href="kit/gemini-antigravity/GEMINI.md">kit/gemini-antigravity/GEMINI.md</a> is a short file with placeholders. Copy that one. Read the excerpt so you can see what not to copy: <code>npm install</code>, <code>npm run build</code>, <code>npm run preflight</code>, <code>npm run test:memory</code>, and the <code>@google/gemini-cli-core</code> workspace path.</p>
+</section>
+<section class="section" id="example">
+  <h2>3. Worked example</h2>
+  <pre><code>cp kit/gemini-antigravity/GEMINI.md GEMINI.md
+# set TEST_COMMAND to the command you already use
+# bad: npm run preflight
+# bad: npm run build
+# those two are in the gemini-cli GEMINI.md, not in yours
+# good: python3 -m unittest tests.test_auth</code></pre>
+  <p>This pass did not launch the Antigravity GUI. The sequence the changelog supports is: one prompt, Orchestrator if you want Neon to plan and Hydrogen to edit, then you read the diff. A read-only check goes to <code>/btw</code>, not a second editing agent.</p>
+</section>
+<section class="section" id="fail">
+  <h2>4. Failure modes</h2>
+  <ul class="clean">
+    <li>Pasting the upstream GEMINI.md into a Python repo. The agent runs <code>npm install</code>.</li>
+    <li><code>/swarm</code> on two tasks that edit the same module. The changelog does not serialize that for you.</li>
+    <li>Assuming Google AI Pro includes Carbon. The 18 Nov note lists Neon on Pro. Carbon's consumer row was not extracted. See the gap report.</li>
+  </ul>
+</section>
+<section class="section" id="exercise">
+  <h2>5. Exercise</h2>
+  <p>Write a three-line GEMINI.md whose only command is one you run by hand today. Ask the CLI to print that command and not to run it. Self-check: the reply matches the file, and the process list shows no <code>npm</code>.</p>
+</section>
+<section class="section" id="stack">
+  <h2>6. Your stack</h2>
+  <p>Google AI Pro is the seat for Antigravity and Gemini. Use it for the plan and implement split. Keep the test command identical to CLAUDE.md and AGENTS.md so a review on Claude or Codex checks the same thing. Do not put production customer paths in GEMINI.md.</p>
+</section>
 
-  <section class="section" id="miss">
-    <h2>What a regular Gemini chat misses</h2>
-    <ul class="clean">
-      <li><strong>Orchestrator.</strong> One prompt, two models. The 18 November note pairs Neon for planning with Hydrogen for implementation. Six days earlier the changelog described Orchestrator as pairing Hydrogen with Carbon. Read the date on the row you are copying. <a class="cite" href="sources.html#C23">C23</a> <a class="cite" href="sources.html#C26">C26</a></li>
-      <li><strong>/swarm.</strong> Multiple subagents over a message board. By 17 November, business and enterprise accounts can open it when an admin allows it. <a class="cite" href="sources.html#C27">C27</a> <a class="cite" href="sources.html#C24">C24</a></li>
-      <li><strong>Dynamic Workflows.</strong> The agent writes Python that fans work out, using a runtime shipped with the app, instead of you babysitting tabs. <a class="cite" href="sources.html#C25">C25</a></li>
-      <li><strong>/btw.</strong> A side question with read-only tools. The main agent keeps its context. This is the "ask without derailing" move. <a class="cite" href="sources.html#C25">C25</a></li>
-      <li><strong>SSH hosts.</strong> The app installs a remote server over OpenSSH using your <code>~/.ssh/config</code>. Projects, worktrees, agents, and terminals run on the Linux host and keep working after you close the window. <a class="cite" href="sources.html#C24">C24</a></li>
-      <li><strong>PR pills and plugin marketplaces.</strong> Pull-request links become live status. The 17 November notes add partner plugins including Cloudflare, Grafana Cloud, SonarQube, incident.io, Better Stack, Tavily, and Levels.fyi. <a class="cite" href="sources.html#C24">C24</a></li>
-    </ul>
-  </section>
 
-  <section class="section" id="workflows">
-    <h2>Three workflows grounded in the changelog</h2>
-    <article class="wf">
-      <h3>1. Plan on the strong model, edit on the fast one</h3>
-      <p>Select Orchestrator (Neon) after 18 November if you are on a plan that has Neon as default and you have not pinned a model. The changelog's description: Neon plans, Hydrogen implements. You still read the diff. The changelog does not say Orchestrator replaces review. <a class="cite" href="sources.html#C23">C23</a></p>
-    </article>
-    <article class="wf">
-      <h3>2. A long task as a message board</h3>
-      <p><code>/swarm</code> is the documented way to put several subagents on one long-horizon task, coordinating through a message board rather than a single context. Use it when the slices are independent enough to write down. The 17 November note is the gating line for business and enterprise admins. <a class="cite" href="sources.html#C27">C27</a> <a class="cite" href="sources.html#C24">C24</a></p>
-    </article>
-    <article class="wf">
-      <h3>3. The repo lives on a Linux box</h3>
-      <p>Connect an SSH host from the sidebar, the project menu, or the command palette. Antigravity installs its remote server. Agents and terminals stay on that machine. This is the closest documented analogue to "my laptop is not the build machine." <a class="cite" href="sources.html#C24">C24</a></p>
-    </article>
-  </section>
-
-  <section class="section" id="principles">
-    <h2>Engineering read of the November changelog</h2>
-    <p>Google spent the month splitting roles that a single chat collapses: plan versus implement, main thread versus side question, local window versus remote machine, one agent versus a board of agents. That is graph thinking in product form. Parallel subagents help when the work splits. They hurt when every slice edits the same files, which is why the SSH note bothers to mention Git worktrees on the host.</p>
-    <p>Superpowers can be installed into Antigravity with <code>agy plugin install https://github.com/obra/superpowers</code>. The README says the <code>using-superpowers</code> skill description prompts the model to load it at session start. That is a community methodology on Google's harness, not a Google feature. <a class="cite" href="sources.html#C44">C44</a></p>
-  </section>
-
-  <section class="section" id="against">
-    <h2>Strongest counterargument</h2>
-    <div class="callout against">
-      <strong class="tag">Adversarial</strong>
-      <p>A changelog is a feature list, not evidence that /swarm produces better code. No Google IC interview was fetched. Orchestrator's pairing changed within a week, so a blog post from 12 November and a default from 18 November disagree about which model plans. Quote the row you mean. Consumer access to Carbon is unfinished business in this ledger.</p>
-    </div>
-  </section>
-
-  <section class="section" id="tutorial">
-    <h2>Tutorial · one swarm, then a side question</h2>
-    <h3>1. Question</h3>
-    <p>How do I use Antigravity's November 2026 multi-agent tools on a task that has three independent slices, without losing the ability to ask a question mid-flight?</p>
-    <h3>2. Facts</h3>
-    <p><code>/swarm</code> uses a message board. <code>/btw</code> is read-only and multi-turn as of 16 November. Orchestrator (Neon) is the 18 November default pairing. Dynamic Workflows are Python inside the app as of 13 November. <a class="cite" href="sources.html#C23">C23</a> <a class="cite" href="sources.html#C25">C25</a> <a class="cite" href="sources.html#C27">C27</a></p>
-    <h3>3. Concepts</h3>
-    <p>A message board is shared state. A side question is a read-only branch of context. Orchestrator is a sequential handoff inside one trajectory. Dynamic Workflows are a program that can launch parallel calls. Those four are different shapes. Using all four at once on a first try is how you lose the plot.</p>
-    <h3>4. Loop</h3>
-    <ol class="steps">
-      <li><strong>Trigger.</strong> A task you can split into slices that do not edit the same files.</li>
-      <li><strong>Execute.</strong> State the slices in the /swarm prompt. Let the board carry status.</li>
-      <li><strong>Verify.</strong> Ask a /btw question against the diff: which tests ran, which files overlap. Read-only means this check should not edit.</li>
-      <li><strong>State.</strong> Keep the swarm prompt in the repo as a note if you will run it again. The changelog does not describe a saved swarm skill.</li>
-    </ol>
-    <h3>5. Conflicts</h3>
-    <p>Opening /swarm to business accounts on 17 November does not tell you whether a personal Pro account already had it on 9 November. The 9 November line announces the feature. The 17 November line is an admin gate for business and enterprise. If your seat is Google AI Pro, confirm in the product rather than assuming either sentence alone.</p>
-    <h3>6. Hypothesis <span class="chip rose">unproven</span></h3>
-    <div class="callout hyp">
-      <strong class="tag">Hypothesis</strong>
-      <p>Orchestrator (Neon) plus a human diff review beats Neon-only on chores and loses to Carbon-only on novel design. The changelog calls Carbon strongest for long-horizon work and Neon the default. It does not publish the crossover point. The Neon blog's benchmark numbers were deliberately left out of this hub.</p>
-    </div>
-    <h3>7. Decision support</h3>
-    <ul class="clean">
-      <li>Single-file fix: one model, no swarm.</li>
-      <li>Several independent packages: /swarm or a Dynamic Workflow.</li>
-      <li>You need the beefy planner and you have Carbon: the 12 November Orchestrator wording. You are on the 18 November default: Orchestrator (Neon).</li>
-      <li>The code must build on a Linux CI-like box: SSH host.</li>
-    </ul>
-    <h3>8. Bounded next action</h3>
-    <p>Pick a refactor with two packages that do not import each other. Run one /swarm that names both packages and forbids edits outside them. When it returns, ask one /btw: "which files changed in both slices?" Stop there. Do not add a Dynamic Workflow until that pair has worked once.</p>
-    <ul class="quiz">
-      <li><details><summary>Which model does the 18 November Orchestrator use to implement?</summary><p>Gemini 4 Hydrogen. Neon plans. <a class="cite" href="sources.html#C23">C23</a></p></details></li>
-      <li><details><summary>What can /btw not do, as of 16 November?</summary><p>The changelog gives it read-only tools: read files, search, read-only commands. It is not the editing agent. <a class="cite" href="sources.html#C25">C25</a></p></details></li>
-    </ul>
-  </section>
+<section class="section" id="ledger-rows">
+  <h2>Ledger rows this page uses</h2>
+  <ul class="clean">
+    <li><a href="sources.html#C23">C23</a> Google's Antigravity changelog for 18 Nov 2026 says Gemini 4 Neon is available on Google AI Ultra, Google AI Pro, and Gemini Enterprise, is the default if you have not chosen a model, has four thinking levels, and Orchestrator (Neon) plans with Gemini 4 Neon and implements wit...</li>
+    <li><a href="sources.html#C24">C24</a> Antigravity App v2.33.0 (17 Nov 2026) adds SSH connections to a remote 64-bit Linux machine, live GitHub pull-request status pills, and opens /swarm plus UI plugin panels to business and enterprise accounts when an admin allows them.</li>
+    <li><a href="sources.html#C25">C25</a> App v2.32.0 (13 Nov 2026) adds Dynamic Workflows: agents orchestrate parallel subagents and multi-step tasks in Python using the runtime bundled with the app. v2.32.2 (16 Nov 2026) adds multi-turn /btw side questions with read-only tools.</li>
+    <li><a href="sources.html#C26">C26</a> The 12 Nov 2026 changelog entry says Gemini 4 Hydrogen is for fast coding and agentic execution across four reasoning effort levels, alongside Orchestrator for dynamic multi-model planning and execution with Gemini 4 Carbon. The 11 Nov 2026 note adds Carbon to the model select...</li>
+    <li><a href="sources.html#C27">C27</a> App v2.31.0 (9 Nov 2026) says you can use /swarm to coordinate multiple subagents over a message board to complete long-horizon tasks. The changelog text around Carbon calls Carbon the strongest model for long-horizon software engineering, knowledge work, scientific discovery,...</li>
+    <li><a href="sources.html#C44">C44</a> Jesse Vincent's Superpowers README calls the skills mandatory workflows, not suggestions. The basic workflow is brainstorming, git worktrees, writing plans, subagent-driven development or executing plans, test-driven development, code review, and finishing the branch. Claude C...</li>
+  </ul>
+</section>
 </main>
 <footer class="foot"><div class="foot-in"><p><a href="codex.html">Codex and dots</a> · <a href="gaps.html#g04">Carbon plan gap</a></p></div></footer>
 <script src="js/claims.js"></script>
