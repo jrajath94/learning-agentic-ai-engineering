@@ -54,7 +54,7 @@
 <section class="section" id="mechanism">
   <h2>1. Mechanism</h2>
   <p><code>/plan</code> is an approval gate. The model can keep planning, but the launch post says the plan waits for you. <code>/grill</code> stress-tests that plan. <code>/goal</code> is the long run. Background agents stay for the session instead of being spawned per step. The event log appends every model call, tool, approval, and edit so a crash can resume. That log is the state. A chat scroll is not.</p>
-  <p>Contributor mode is a data switch, not a quality switch. Standard Spark is $1.25 per million input tokens and $4.25 per million output tokens. Contributor is $0.10 and $0.20 because Meta may train on prompts, code, files, context, and responses. The docs page still names default model <code>muse-spark-1.2</code> while the price list also has 1.3. Check <code>muse</code> on the day you run it.</p>
+  <p>Contributor mode is a data switch, not a quality switch. Standard Spark is $1.25 per million input tokens and $4.25 per million output tokens. Contributor is $0.10 and $0.20 because Meta may train on prompts, code, files, context, and responses. The docs page still names default model <code>muse-spark-1.2</code> while the price list also has 1.3. Check <code>muse</code> on the day you run it. <a href="https://news.ycombinator.com/item?id=49187575">Hacker News item 49187575</a>, 5 Aug 2026, 333 points when fetched, links Meta's launch post and adds no second measurement. <a href="sources.html#C289">C289</a>.</p>
 </section>
 <section class="section" id="artifact">
   <h2>2. Artifact</h2>
@@ -93,6 +93,7 @@ Do not edit until I approve the plan.</code></pre>
     <li><a href="sources.html#C35">C35</a> On 5 Aug 2026 Meta released Muse Code (beta), a terminal coding agent powered by Muse Spark 1.2. The install line in that post is curl -fsSL https://dev.meta.ai/install.sh | bash. Meta describes persistent async background agents, a local event log that is replay-exact after a...</li>
     <li><a href="sources.html#C36">C36</a> Meta says Muse Spark 1.2 was co-trained with Muse Code, including rejection-sampled harness trajectories and recipe work for goals, compaction, and subagents, and that a kernel-optimization case study ran more than 1,000 tool calls for up to 24 hours on NVIDIA Hopper KDA and M...</li>
     <li><a href="sources.html#C37">C37</a> Muse Code docs say the default model string is muse-spark-1.2, first run asks whether to trust the workspace, headless mode is muse exec, CI auth is META_API_KEY, workflows are not on every build, and session messaging is unavailable on Windows. muse serve exposes a session pr...</li>
+    <li><a href="sources.html#C289">C289</a> Hacker News item 49187575, 333 points, links the Meta launch post.</li>
     <li><a href="sources.html#C38">C38</a> Meta's pricing page lists muse-spark-1.3, 1.2, and 1.1. Standard mode is $0.15 cached input, $1.25 input, and $4.25 output per 1M tokens. Contributor mode is $0.002, $0.10, and $0.20. Contributor mode is permission for Meta to use prompts, code, files, context, and responses t...</li>
   </ul>
 </section>

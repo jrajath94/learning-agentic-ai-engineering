@@ -71,12 +71,12 @@
 
   <section class="section" id="g03">
     <h2>G03 · Claude Code CLI version</h2>
-    <p>Best practices, skills, subagents, and hooks were fetched on 20 November 2026. A changelog row with a semver was not. Duet's model is Opus 5.5. Boris's January post names Opus 4.5. Those are not a CLI version. Next action: the Claude Code changelog or <code>claude --version</code> from a machine that has it.</p>
+    <p>The changelog was fetched. <a href="sources.html#C280">2.1.277</a> (18 Sep 2026) and <a href="sources.html#C281">2.1.281</a> (23 Sep 2026) are the AGENTS.md rows. This machine did not run <code>claude --version</code>, so the installed build is still unknown. Duet's model is Opus 5.5. Boris's January post names Opus 4.5. Those are not a CLI version.</p>
   </section>
 
   <section class="section" id="g04">
     <h2>G04 · Antigravity plan matrix and benchmark scores</h2>
-    <p>Neon on Ultra, Pro, and Gemini Enterprise is in the 18 November changelog. Carbon's consumer-plan row was not extracted. The Neon blog's index scores were left unused because the post was not fetched in full. A third-party changelog mirror (gradually.ai) was not used as an origin. Next action: fetch the three November model blogs and the pricing page.</p>
+    <p>Neon on Ultra, Pro, and Gemini Enterprise is in the 18 November changelog. The Hydrogen blog of 12 November was fetched. Its Terminal-Bench and Artificial Analysis figures are in <a href="sources.html#C283">C283</a> and <a href="sources.html#C284">C284</a> as vendor numbers, not as an independent rerun. Carbon's consumer-plan row was not extracted. The Neon blog's index scores were not fetched. A third-party changelog mirror (gradually.ai) was not used as an origin.</p>
   </section>
 
   <section class="section" id="g05">
@@ -149,7 +149,7 @@
   <h2>G18. Pass 2 holes</h2>
   <ul class="clean">
     <li>yt-dlp could not download YouTube auto-captions: the site asked for a sign-in. One interview's page text was kept and marked medium confidence because it has no speaker labels.</li>
-    <li>reddit.com JSON returned 403. Only an Arctic Shift slice of r/ClaudeAI produced posts. r/ClaudeCode, r/cursor, r/LocalLLaMA, and the other named subs did not.</li>
+    <li>reddit.com JSON returned 403. Only an Arctic Shift slice of r/ClaudeAI produced posts. A second search on 20 Nov 2026 returned HTTP 422. r/ClaudeCode, r/cursor, r/LocalLLaMA, and the other named subs still did not.</li>
     <li>X threads were not pulled in bulk. The 2 Jan 2026 Boris mirror from pass 1 is still the X-adjacent item.</li>
     <li>Dwarkesh, Lenny, Lex, No Priors, Changelog, and Cognitive Revolution were not transcribed.</li>
     <li>Codie Sanchez still has no first-party essay in the opened set. Mayank Shah is still three possible people. Greg Isenberg's opened page is a 17 Mar 2026 beginner guide, not a lab workflow.</li>
@@ -160,6 +160,10 @@
   <h2>G19. Podcasts not opened</h2>
   <p>Deep pages exist for Pragmatic Engineer (Boris Cherny, 4 Mar 2026), No Priors (Karpathy, 20 Mar 2026), Practical AI 352 (9 Apr 2026), and Latent Space (Thariq, 28 Sep 2026). Changelog's 27 Feb 2026 Burke Holland episode, Lenny's February 2026 Boris episode, Dwarkesh, Lex Fridman, Cognitive Revolution, How I AI, Startup Ideas, Codie Sanchez, Software Engineering Daily, and the lab-run shows did not yield a transcript this pass. yt-dlp was blocked. faster-whisper was not run because those audio files were not downloaded. See <a href="podcasts.html#not-opened">the podcast index</a>.</p>
 </section>
+<section class="section" id="g20">
+  <h2>G20. Reddit outside r/ClaudeAI, and Substack depth</h2>
+  <p>On 20 Nov 2026 an Arctic Shift search returned HTTP 422, so no new subreddit slice was added. The r/ClaudeAI archive from the previous pass is still the Reddit field. Two newsletters were opened: Stephane Derosiaux on 5 Mar 2026, and Firas D on 23 Jul 2026. A Hacker News search for Substack posts about these tools also returned low-point roundups that were not opened. A coding-workflow Substack with a reproducible config, beyond those two, is still missing.</p>
+</section>
 <section class="section" id="review">
     <h2>Adversarial review</h2>
     <table>
@@ -167,7 +171,7 @@
       <tbody>
         <tr><td>Power users run several agents in parallel.</td><td>Boris did, in January, in separate checkouts, and he said 10-20% of web sessions were abandoned, according to the InfoQ echo. Parallelism without a verifier is just more unreviewed diffs. Tan's README says parallelism is what you earn after one agent is trustworthy.</td></tr>
         <tr><td>A proactive agent runs the business.</td><td>Duet, dots, and Grok Bot document drafts and approval stops. The business outcomes are testimonials and anonymous anecdotes. A serious engineer asks for the send-without-approval rate.</td></tr>
-        <tr><td>Orchestrator gets you frontier quality at a lower cost.</td><td>The changelog describes the split. The cost and quality numbers on the blog were not admitted into this ledger. The pairing also changed between 12 and 18 November.</td></tr>
+        <tr><td>Orchestrator gets you frontier quality at a lower cost.</td><td>The 12 November blog's quota and Terminal-Bench sentences are in the ledger as the vendor's own figures. They were not rerun. The pairing in the changelog also changed between 12 and 18 November.</td></tr>
         <tr><td>Skills make the model reliable.</td><td>Anthropic says a skill is still non-deterministic. Reliability of a must-never rule is a hook. Installing three skill routers at once is an untested interaction. See hypothesis H3 on the stack page.</td></tr>
         <tr><td>Caveman cuts the bill in half.</td><td>The README's own baseline is "be concise," and several of the dramatic ratios are interim or on a non-shipped configuration.</td></tr>
         <tr><td>Contributor-mode Muse is the cheap way to code.</td><td>It is cheap because the pricing page says Meta may train on your code. For a bank, that default is the feature.</td></tr>

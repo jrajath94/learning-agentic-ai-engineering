@@ -81,6 +81,7 @@ codex</code></pre>
     <li>AGENTS.md over 32 KiB. The sample's cap drops the rest. Split by directory.</li>
     <li>A global AGENTS.md that says npm and a repo that uses pnpm. The closer file wins only if it exists and fits.</li>
     <li>A dot that "improves the app" with no test command. The launch post's happy path is not a constraint. Put the test in the task.</li>
+    <li>Full access, no sandbox, no auto review. Firas D's 23 Jul 2026 newsletter quotes Thibault Sottiaux, dated there as 16 Jul 2026, on GPT-5.6 deletions that most commonly happened in that setup, including a HOME override that then deleted HOME. The quoted post was not opened. The sample's <code>sandbox_mode = "read-only"</code> is the control that setup did not have. <a href="sources.html#C295">C295</a>.</li>
   </ul>
 </section>
 <section class="section" id="exercise">
@@ -100,6 +101,9 @@ codex</code></pre>
     <li><a href="sources.html#C29">C29</a> OpenAI says a dot can delegate tasks to Codex or ChatGPT Work. Conversations with the dot do not count toward ChatGPT usage limits; those delegated tasks count as usual. Proactive research uses read-only tools. Custom Rules and auto-review decide what can proceed. Some actions...</li>
     <li><a href="sources.html#C32">C32</a> The ChatGPT and Codex changelog entry dated 2026-11-20, and the GitHub release rust-v0.171.0 published 2026-11-20, say Codex CLI 0.171.0 adds GPT-6.2 Sol and Astra to the model catalog with Sol as the default catalog selection, turns on the TUI workspace by default, adds codex...</li>
     <li><a href="sources.html#C33">C33</a> Mert Özen's 15 Nov 2026 post, which he says was checked against OpenAI's docs for Codex CLI 0.169.0, describes an AGENTS.md chain: global file, then one file per directory from the repo root to the working directory, closer file later, default project_doc_max_bytes of 32 KiB....</li>
+    <li><a href="sources.html#C292">C292</a> OpenAI's config sample sets model to gpt-6.1-sol, approval on request, sandbox read-only, and project_doc_max_bytes to 32768.</li>
+    <li><a href="sources.html#C293">C293</a> openai/codex commit 4e9ce8fa9e7649ec58601a3d61da7a086da75500 only links to that sample. The toml is not in the file.</li>
+    <li><a href="sources.html#C295">C295</a> Newsletter quote of a deletion report under full access with no sandbox. The original post was not opened.</li>
     <li><a href="sources.html#C34">C34</a> GitHub user tibo-openai, whose profile name is Thibault Sottiaux, merged pull request 5353 in openai/codex on 19 Oct 2025, adding an AGENTS.md discovery guide.</li>
   </ul>
 </section>

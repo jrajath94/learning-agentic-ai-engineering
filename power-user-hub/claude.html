@@ -52,7 +52,7 @@
 <section class="section" id="mechanism">
   <h2>1. Mechanism</h2>
   <p>A skill body is not in the window until the task matches its description. The TDD skill's description names red-green-refactor, so a bug fix can load it without putting the whole file in CLAUDE.md. CLAUDE.md is resident. Anthropic's best-practices page says a line you keep repeating belongs in a hook, because a prompt is advice and a hook runs. <code>kit/claude/settings.json</code> is a PostToolUse hook on Write or Edit. The command is <code>{{FORMAT_COMMAND}}</code> until you set it.</p>
-  <p>Claude Code 2.1.277, 18 Sep 2026, added this line to the changelog: in a project with no CLAUDE.md, Claude Code reads AGENTS.md instead, and you change that under Project instructions in <code>/config</code>. Source: <a href="https://code.claude.com/docs/en/changelog">code.claude.com/docs/en/changelog</a>. A later entry says that fallback also works when telemetry is disabled. If both files exist, do not assume both load. A r/ClaudeAI report said 2.1.312 loaded only CLAUDE.md. That report is archive-backed, not an Anthropic guarantee.</p>
+  <p>Claude Code 2.1.277, 18 Sep 2026, added this line to the changelog: in a project with no CLAUDE.md, Claude Code reads AGENTS.md instead, and you change that under Project instructions in <code>/config</code>. Source: <a href="https://code.claude.com/docs/en/changelog">code.claude.com/docs/en/changelog</a>. <a href="sources.html#C281">2.1.281</a>, 23 Sep 2026, says that fallback also works on Bedrock, Vertex, Foundry, gateways, and when telemetry is disabled. <a href="sources.html#C282">Hacker News item 49760187</a> on 18 Sep 2026, 741 points when fetched, links the changelog and does not add a second measurement. If both files exist, do not assume both load. A r/ClaudeAI report said 2.1.312 loaded only CLAUDE.md. That report is archive-backed, not an Anthropic guarantee.</p>
 </section>
 <section class="section" id="artifact">
   <h2>2. Artifact</h2>
@@ -82,6 +82,7 @@ def inc(n):
     <li>You write every test, then all the code. The skill says that tests imagined behavior. One test, then the code for that test.</li>
     <li>The hook's command is still the placeholder. It will fail on every write. Put a real formatter in, or delete the hook until you have one.</li>
     <li>Both CLAUDE.md and AGENTS.md exist and you only edited AGENTS.md. Check <code>/config</code> to see which file this build loaded.</li>
+    <li>Asking which tools are missing. Stephane Derosiaux, 5 Mar 2026, got six subagents and a wishlist, then wrote that the list is training patterns plus tools the product knows how to call. Treat it as a hypothesis, then check the binary yourself. <a href="sources.html#C294">C294</a>.</li>
   </ul>
 </section>
 <section class="section" id="exercise">
@@ -105,6 +106,11 @@ def inc(n):
     <li><a href="sources.html#C19">C19</a> Anthropic's documented prompt rewrites replace 'fix the login bug' with a symptom, a path, and a failing test, and replace 'add a calendar widget' with a pattern file and a no-new-libraries constraint. It also shows a 'be ambitious' scope line for a settings page.</li>
     <li><a href="sources.html#C22">C22</a> On 2 Jan 2026 Boris Cherny posted that he ran five Claudes in local terminal tabs and five to ten on claude.ai/code, started PR work in Plan mode, then switched to auto-accept edits, used Opus 4.5 with thinking, kept a shared CLAUDE.md he described as 2.5k tokens, used slash c...</li>
     <li><a href="sources.html#C49">C49</a> Anthropic's best-practices table says the last word on a change is branch protection and a person who approves the merge, while Claude's summary of what it did is non-deterministic.</li>
+    <li><a href="sources.html#C280">C280</a> Claude Code 2.1.277, dated 18 September 2026, added AGENTS.md support: in a project with no CLAUDE.md, Claude Code reads AGENTS.md instead, and you change it under Project instructions in /config.</li>
+    <li><a href="sources.html#C281">C281</a> Claude Code 2.1.281, dated 23 September 2026, changed AGENTS.md support so it also works on Amazon Bedrock, Google Vertex AI, Microsoft Foundry, LLM gateways, and sessions with telemetry disabled.</li>
+    <li><a href="sources.html#C282">C282</a> Hacker News item 49760187, 18 September 2026, 741 points when fetched, links the changelog.</li>
+    <li><a href="sources.html#C291">C291</a> mattpocock/skills commit abeeaf95660ba9e8b7c753eb38f441ca707a8823. The skill says tests verify behavior through public interfaces.</li>
+    <li><a href="sources.html#C294">C294</a> Stephane Derosiaux, 5 March 2026: a tool-gap question returned a wishlist he does not treat as a preference.</li>
     <li><a href="sources.html#C132">C132</a> Direct reads of AGENTS.md needed Claude Code v2.1.277 or later, and some sessions (Bedrock, or telemetry off) needed v2.1.281. An old SessionStart hook that prints AGENTS.md now loads that file twice.</li>
   </ul>
 </section>
