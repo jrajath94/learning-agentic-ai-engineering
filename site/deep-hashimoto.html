@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deep Dive: Hashimoto System and the Ghostty AGENTS.md | Learning Agentic AI Engineering</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></head>
+<body>
+<header class="top"><div class="wordmark"><a href="index.html">Learning Agentic AI Engineering</a></div>
+<nav class="main"><a href="index.html">Home</a><a href="start.html" aria-current="page">Start Here</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="foundations.html">Foundations</a><a href="cross-cutting.html">Cross-cutting</a><a href="business.html">Business</a><a href="research.html">Research</a><a href="profiles.html">Profiles</a><a href="prompts.html">Prompt Vault</a><a href="labs.html">Labs</a><a href="paths.html">Learning Paths</a><a href="principles.html">Principles</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="niche.html">Niche</a>
+<a href="deep.html">Deep Dives</a><a href="audit.html">Audit</a><a href="search.html">Search</a></nav></header>
+<main>
+<p class="meta">Home / Deep Dives / Deep Dive: Hashimoto System and the Ghostty AGENTS.md</p>
+<h1>Deep Dive: Hashimoto System and the Ghostty AGENTS.md</h1>
+<p class="lede">Six adoption steps, a daily agent routine with exact times, and the real production AGENTS.md from the Ghostty repo, read in full. Sources: Mitchell Hashimoto, My AI Adoption Journey, 5 February 2026, and github.com/ghostty-org/ghostty AGENTS.md. Confidence: High.</p>
+<figure class="visual"><img src="assets/img/deep-hashimoto.svg" alt="Flow diagram: Reproduce own work, End of day starts, Morning filter, Harness fix per error"><figcaption>Figure 1. Deep Dive: Hashimoto System and the Ghostty AGENTS.md as a flow. Each box names one stage on this page. Arrows show work order.</figcaption></figure>
+
+<h2>Step 1: drop the chatbot</h2>
+<p>Use an agent that can read files, run programs, and make HTTP requests. Chat alone caps the gain. His proof case: Gemini reproduced the Zed command palette in SwiftUI, and a light edit of that output ships in Ghostty for macOS.</p>
+<h2>Step 2: reproduce your own work</h2>
+<p>Do each manual commit twice: once by hand, once with the agent, with no sight of the manual version. Fight the agent to equal quality. Four lessons fall out: split work into clear tasks, split vague work into a plan session and an execution session, give the agent a way to verify its own work, and learn when an agent is the wrong tool.</p>
+<h2>Step 3: End of Day Agents, the daily routine</h2>
+<ol><li>Block the last 30 minutes of the work day. No code in this block. Only agent starts.</li><li>Start deep research surveys: one agent per library or option, each returns pros, cons, activity, license, and sentiment.</li><li>Start parallel probes on vague ideas. The goal is light, not a ship. Most probes die. The map of the space is the product.</li><li>Start issue and PR triage with the gh CLI, agents in parallel. Hard rule: agents never respond in public. Reports only.</li><li>Stop. Agents finish in under 30 minutes in his report. No all night loops.</li></ol>
+<h2>Step 4: the morning slam dunk filter</h2>
+<p>Start the day on the triage reports. Keep only near certain wins. Run them one at a time in the background during deep work. Turn agent desktop notifications off. Check the agent at natural breaks only. The filter is the skill: a warm start beats a cold start, and a wrong warm start costs more than none.</p>
+<h2>Step 5: harness engineering</h2>
+<p>His rule, in his words: anytime an agent makes a mistake, engineer a fix so the agent never makes that mistake again. Two forms. Form one: a line in AGENTS.md that names the wrong command or the right API. Form two: a programmed tool, such as a screenshot script or a filtered test runner, plus an AGENTS.md line that points the agent at the tool.</p>
+<h2>Step 6: always one agent running</h2>
+<p>His current state: one agent running for 10 to 20 percent of a work day, deep mode runs of 30 plus minutes. One agent, not a fleet. The counter case to Cherny and Yegge in this guide: depth over count, with a harness that compounds.</p>
+<h2>The Ghostty AGENTS.md, full structure</h2>
+<p>The file runs near 40 lines. Every line maps to a past agent error, per Hashimoto. Structure, complete:</p>
+<pre>Title: Agent Development Guide
+
+1. Commands
+   Build: zig build (macOS: add -Demit-macos-app=false to skip
+   the app bundle and speed compilation)
+   Test: zig build test
+   Rule: prefer targeted tests with -Dtest-filter, full suite is slow
+   Format Zig: zig fmt .
+   Format Swift: swiftlint lint --strict --fix
+   Format rest: prettier -w .
+
+2. libghostty-vt (a sub library with its own build)
+   Build: zig build -Demit-lib-vt
+   Build WASM: zig build -Demit-lib-vt -Dtarget=wasm32-freestanding
+     -Doptimize=ReleaseSmall
+   Test: zig build test-lib-vt -Dtest-filter=&lt;filter>
+   Rule: prefer this test when the change sits in a lib file
+   Portability rule: all C enums in include/ghostty/vt/ end with
+   a _MAX_VALUE = GHOSTTY_ENUM_MAX_VALUE sentinel
+
+3. Directory Structure
+   Shared Zig core: src/
+   macOS app: macos/
+   GTK app: src/apprt/gtk
+
+4. Issue and PR Guidelines
+   Never create an issue. Never create a PR.</pre>
+<p>Read the shape, not the content. Commands first, with the fast variant named. One scoped sub build. One portability rule from a real past break. A three line map. Two hard prohibitions. Nothing else earns a line. The repo also ships vetted agent prompts in .agents/commands, such as a GitHub issue diagnosis command that explains the problem and suggests a plan, with read only access.</p>
+<h2>Apply this to your work</h2><div class="rule"><p>Your AGENTS.md files for study repos can copy this shape at once: exact build and test commands with the fast targeted variant, one scoped rule per sub project, a three line map, and hard prohibitions that match your standing orders, such as no pushes without a pass and no edits to live masters before a pilot gate. Your end of day slot also maps to your life coach rhythm: a 30 minute agent start block before the night review, with triage reports on papers, roles, and study queues waiting at the morning battle plan.</p></div><h2>Replication checklist</h2><ol><li>Write your repo AGENTS.md in the Ghostty shape: commands, scoped rules, map, prohibitions. Cap at 50 lines.</li><li>Start the 30 minute end of day block for one week. Three starts per day, no more.</li><li>Morning rule: filter to slam dunks only. Run one at a time. Notifications off.</li><li>Each agent error this week becomes one AGENTS.md line or one checker tool. Log both forms.</li></ol>
+<p>Prompt file: <a href="../prompts/end-of-day-agents.md">prompts/end-of-day-agents.md</a>.</p>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart TD
+ A[Last 30 min of day] --> B[Surveys, probes, triage]
+ B --> C[Reports by morning]
+ C --> D{Slam dunk?}
+ D -->|yes| E[Background run, alerts off]
+ D -->|no| F[Drop]
+ E --> G[Error becomes rule or tool]
+ G --> A
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart TD
+ A[Last 30 min of day] --&gt; B[Surveys, probes, triage]
+ B --&gt; C[Reports by morning]
+ C --&gt; D{Slam dunk?}
+ D --&gt;|yes| E[Background run, alerts off]
+ D --&gt;|no| F[Drop]
+ E --&gt; G[Error becomes rule or tool]
+ G --&gt; A</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Hashimoto System and the Ghostty AGENTS.md</span><ul><li><span class="branch">Six steps</span><ul><li><span class="leaf">Agent not chat</span></li><li><span class="leaf">Reproduce work</span></li><li><span class="leaf">End of day</span></li><li><span class="leaf">Slam dunks</span></li><li><span class="leaf">Harness</span></li><li><span class="leaf">One agent running</span></li></ul></li><li><span class="branch">Ghostty file</span><ul><li><span class="leaf">Commands</span></li><li><span class="leaf">Scoped rules</span></li><li><span class="leaf">Map</span></li><li><span class="leaf">Prohibitions</span></li></ul></li><li><span class="branch">Time</span><ul><li><span class="leaf">30 min starts</span></li><li><span class="leaf">Morning filter</span></li></ul></li></ul></li></ul></div>
+</main>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart TD
+ A[Last 30 min of day] --> B[Surveys, probes, triage]
+ B --> C[Reports by morning]
+ C --> D{Slam dunk?}
+ D -->|yes| E[Background run, alerts off]
+ D -->|no| F[Drop]
+ E --> G[Error becomes rule or tool]
+ G --> A
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart TD
+ A[Last 30 min of day] --&gt; B[Surveys, probes, triage]
+ B --&gt; C[Reports by morning]
+ C --&gt; D{Slam dunk?}
+ D --&gt;|yes| E[Background run, alerts off]
+ D --&gt;|no| F[Drop]
+ E --&gt; G[Error becomes rule or tool]
+ G --&gt; A</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Hashimoto System and the Ghostty AGENTS.md</span><ul><li><span class="branch">Six steps</span><ul><li><span class="leaf">Agent not chat</span></li><li><span class="leaf">Reproduce work</span></li><li><span class="leaf">End of day</span></li><li><span class="leaf">Slam dunks</span></li><li><span class="leaf">Harness</span></li><li><span class="leaf">One agent running</span></li></ul></li><li><span class="branch">Ghostty file</span><ul><li><span class="leaf">Commands</span></li><li><span class="leaf">Scoped rules</span></li><li><span class="leaf">Map</span></li><li><span class="leaf">Prohibitions</span></li></ul></li><li><span class="branch">Time</span><ul><li><span class="leaf">30 min starts</span></li><li><span class="leaf">Morning filter</span></li></ul></li></ul></li></ul></div>
+</main>
+
+<h2>Visual map of this page</h2>
+<p>Three views of one page: a Mermaid flow for work order, a markmap for concept groups, and a read guide for the flow.</p>
+<div class="mermaid">
+flowchart TD
+ A[Claim: 5k to 10k tokens per day] --> B[Search both firms at origin]
+ B --> C[No such figure found]
+ C --> D[Real figures: dollars per day]
+ D --> E[Workflows that burn tokens]
+ E --> F[Fleets, schedules, swarms, review bots]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart TD
+ A[Claim: 5k to 10k tokens per day] --&gt; B[Search both firms at origin]
+ B --&gt; C[No such figure found]
+ C --&gt; D[Real figures: dollars per day]
+ D --&gt; E[Workflows that burn tokens]
+ E --&gt; F[Fleets, schedules, swarms, review bots]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the left box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Niche Sources and Token Heavy Workflows</span><ul><li><span class="branch">Claim check</span><ul><li><span class="leaf">No tokens per day average</span></li><li><span class="leaf">Dollars, multiples, percentiles</span></li><li><span class="leaf">Scale: one task past 55k tokens</span></li></ul></li><li><span class="branch">Heavy workflows</span><ul><li><span class="leaf">Cherny fleet</span></li><li><span class="leaf">Gas Town 20 to 30</span></li><li><span class="leaf">OpenAI research saturation</span></li><li><span class="leaf">Review bot per change</span></li></ul></li><li><span class="branch">Niche lanes</span><ul><li><span class="leaf">Blogs and dotfiles</span></li><li><span class="leaf">Podcast transcripts</span></li><li><span class="leaf">Newsletters</span></li><li><span class="leaf">Community threads</span></li></ul></li></ul></li></ul></div>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart TD
+ A[Last 30 min of day] --> B[Surveys, probes, triage]
+ B --> C[Reports by morning]
+ C --> D{Slam dunk?}
+ D -->|yes| E[Background run, alerts off]
+ D -->|no| F[Drop]
+ E --> G[Error becomes rule or tool]
+ G --> A
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart TD
+ A[Last 30 min of day] --&gt; B[Surveys, probes, triage]
+ B --&gt; C[Reports by morning]
+ C --&gt; D{Slam dunk?}
+ D --&gt;|yes| E[Background run, alerts off]
+ D --&gt;|no| F[Drop]
+ E --&gt; G[Error becomes rule or tool]
+ G --&gt; A</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Hashimoto System and the Ghostty AGENTS.md</span><ul><li><span class="branch">Six steps</span><ul><li><span class="leaf">Agent not chat</span></li><li><span class="leaf">Reproduce work</span></li><li><span class="leaf">End of day</span></li><li><span class="leaf">Slam dunks</span></li><li><span class="leaf">Harness</span></li><li><span class="leaf">One agent running</span></li></ul></li><li><span class="branch">Ghostty file</span><ul><li><span class="leaf">Commands</span></li><li><span class="leaf">Scoped rules</span></li><li><span class="leaf">Map</span></li><li><span class="leaf">Prohibitions</span></li></ul></li><li><span class="branch">Time</span><ul><li><span class="leaf">30 min starts</span></li><li><span class="leaf">Morning filter</span></li></ul></li></ul></li></ul></div>
+</main>
+<footer class="site">AI Power-User Intelligence Hub, field guide build v3. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026, the earlier of execution day and 30 November 2026. Open site/index.html from disk. No server need. No track code sits in this site.</footer>
+<script src="assets/site.js"></script>
+<script src="assets/js/mermaid.min.js"></script>
+<script>
+if (window.mermaid) { mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}}); }
+</script>
+<script src="assets/js/mermaid.min.js"></script>
+<script>
+if (window.mermaid) { mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}}); }
+</script>
+</body></html>
