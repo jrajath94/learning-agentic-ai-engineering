@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Muse, a Meta product - Learning Agentic AI Engineering</title>
-<link rel="stylesheet" href="assets/style.css"></head>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></head>
 <body>
 <header class="top"><div class="wordmark"><a href="index.html">Learning Agentic AI Engineering</a></div>
 <nav class="main"><a href="index.html">Home</a><a href="start.html">Start Here</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="foundations.html">Foundations</a><a href="cross-cutting.html">Cross-cutting</a><a href="business.html">Business</a><a href="research.html">Research</a><a href="profiles.html">Profiles</a><a href="prompts.html">Prompt Vault</a><a href="labs.html">Labs</a><a href="paths.html">Learning Paths</a><a href="principles.html">Principles</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="audit.html">Audit</a><a href="search.html">Search</a></nav></header>
 <main>
 <h1>Muse, a Meta product</h1>
 <p class="lede">Muse is a Meta product set: a personal agent, a model family, and a terminal coding agent named Muse Code. No Apple product named Muse appears in sources.</p>
+<figure class="visual"><img src="assets/img/muse.svg" alt="Flow diagram: Goal in app or WhatsApp, Muse Secure VM, Sentinel approval, Audit trail"><figcaption>Figure 1. Muse, a Meta product as a flow. Each box names one stage on this page. Arrows show work order.</figcaption></figure>
+
 <div class="callout"><p>Name fix. User prompt said Muse from Apple. Sources show Muse from Meta only. This page covers Meta Muse. <span class="badge">High</span></p></div>
 <h2>Agent facts, official Meta post, 8 September 2026</h2>
 <ul><li>A user states a goal in the Muse app or in WhatsApp. Muse plans and acts: browser work, forms, mail, travel and talks.</li><li>Work runs after the app closes. Muse returns on a change or on an approval need. Approval comes before mail send or a purchase.</li><li>Muse Secure VM: one cloud virtual machine per person holds the agent, data and credentials.</li><li>Sentinel: a separate agent on the same machine must approve each item Muse sends to the internet. Sentinel asks the user on need.</li><li>Muse never sees passwords or payment data. Credentials sit in secure storage and run with no view for the model.</li><li>An audit trail records acts. Rights sit per app and per act type, and a user can revoke rights at any time.</li><li>Checkout runs through Link by Stripe with a one time card. The real card stays hid.</li></ul>
@@ -33,7 +36,34 @@
 <h3>6. Hypotheses</h3><p>Skills may form the first true cross tool program format. Muse Code import acts support the claim. Long term parity stays open.</p>
 <h3>7. Decision support</h3><p>Keep one skill source repo. Import to each tool. Run one test task per tool after each skill change.</p>
 <h3>8. One bounded next action</h3><p>Pick three skills you own. Import each skill to Muse Code. Run one small task per skill and log pass or fail per tool.</p>
+
+<figure class="visual"><img src="assets/img/muse-groups.svg" alt="Concept groups diagram: Three Muse forms, Safety design, Code workflows"><figcaption>Figure 2. Concept groups on this page. The markmap below expands each group into leaf points.</figcaption></figure>
+<h2>Visual map of this page</h2>
+<p>Three views of one page: a Mermaid flow for work order, a markmap for concept groups, and a read guide for the flow.</p>
+<div class="mermaid">
+flowchart LR
+ A[User goal] --> B[Muse plans]
+ B --> C[Acts in Secure VM]
+ C --> D{Sentinel check}
+ D -->|clear| E[Send to internet]
+ D -->|risk| F[User approval]
+ F --> C
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[User goal] --&gt; B[Muse plans]
+ B --&gt; C[Acts in Secure VM]
+ C --&gt; D{Sentinel check}
+ D --&gt;|clear| E[Send to internet]
+ D --&gt;|risk| F[User approval]
+ F --&gt; C</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the left box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Muse, a Meta product</span><ul><li><span class="branch">Three Muse forms</span><ul><li><span class="leaf">Personal agent</span></li><li><span class="leaf">Model family</span></li><li><span class="leaf">Muse Code</span></li></ul></li><li><span class="branch">Safety design</span><ul><li><span class="leaf">Secure VM per person</span></li><li><span class="leaf">Sentinel approver</span></li><li><span class="leaf">One time card</span></li></ul></li><li><span class="branch">Code workflows</span><ul><li><span class="leaf">Subagents and worktrees</span></li><li><span class="leaf">Workflows to 1,000 tasks</span></li><li><span class="leaf">Skills import</span></li></ul></li></ul></li></ul></div>
 </main>
 <footer class="site">AI Power-User Intelligence Hub. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026. Every material claim links to a source on the Sources page. A claim with a Low badge rests on one self reported source. A gap marked INSUFFICIENT_EVIDENCE has no verified source in this build.</footer>
 <script src="assets/site.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}});
+</script>
 </body></html>
