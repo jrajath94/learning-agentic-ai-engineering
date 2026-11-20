@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deep Dive: Thorsten Ball and Amp Automations | Learning Agentic AI Engineering</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></head>
+<body>
+<header class="top"><div class="wordmark"><a href="index.html">Learning Agentic AI Engineering</a></div>
+<nav class="main"><a href="index.html">Home</a><a href="start.html" aria-current="page">Start Here</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="foundations.html">Foundations</a><a href="cross-cutting.html">Cross-cutting</a><a href="business.html">Business</a><a href="research.html">Research</a><a href="profiles.html">Profiles</a><a href="prompts.html">Prompt Vault</a><a href="labs.html">Labs</a><a href="paths.html">Learning Paths</a><a href="principles.html">Principles</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="niche.html">Niche</a>
+<a href="deep.html">Deep Dives</a><a href="audit.html">Audit</a><a href="search.html">Search</a></nav></header>
+<main>
+<p class="meta">Home / Deep Dives / Deep Dive: Thorsten Ball and Amp Automations</p>
+<h1>Deep Dive: Thorsten Ball and Amp Automations</h1>
+<p class="lede">A timestamped talk transcript, read in full: self waking agents, proof demands, 15 AGENTS.md files, Orbs and Runners, and a no PR process. Source: Amp Time Capsule 6, Thorsten Ball, October 2026. Confidence: High.</p>
+<figure class="visual"><img src="assets/img/deep-ball.svg" alt="Flow diagram: Ship, Scheduled wake, Proof artifact, Revert or keep"><figcaption>Figure 1. Deep Dive: Thorsten Ball and Amp Automations as a flow. Each box names one stage on this page. Arrows show work order.</figcaption></figure>
+
+<h2>Prompt the what, not the how</h2>
+<p>At 00:02:50 in the transcript: modern agents need the goal and the constraints, not the method. No mention tags, no manual context assembly. The agent plus the codebase plus the process forms the working triad.</p>
+<h2>Going horizontal: full SDLC access</h2>
+<p>At 00:04:55: the agent sees deploys, CI, production logs, monitoring and metrics, and feature flags. A coding only agent guesses at impact. An agent with the full loop sees the result of its own change and reacts. This one access decision explains most of the gap between demo agents and his daily use.</p>
+<h2>Automations: the agent wakes itself</h2>
+<ol><li>Ship a change.</li><li>Tell the agent: in two hours, check again. The agent schedules its own wake up.</li><li>At wake: the agent checks deploy state, error rates, and user visible behavior.</li><li>His worked case: the wake report said the commit is live, inference errors did not rise, and a user visible regression exists. Result: a revert, started by the agent report.</li><li>Daily maintenance checks run on the same pattern. Snooze rules keep the sidebar clean: a thread sleeps until the next message matters.</li></ol>
+<h2>The proof demand</h2>
+<p>At 00:14:01: he reviews load bearing code only. For the rest, one prompt rules, verbatim in the transcript at 00:15:00: Give me irrefutable proof that this works now. The agent, in a throwaway machine, installs what it needs and returns screenshots, videos, or a test matrix. Proof is an artifact, not a claim.</p>
+<h2>Codebase legibility kit</h2>
+<ol><li>Dev server start and stop as agent runnable commands, with seed data.</li><li>A REPL the agent can drive.</li><li>15 AGENTS.md files across the Amp repo, scoped per area.</li><li>Separate skills for the dev server, for cloud production access, for the data warehouse, and for the app framework.</li><li>Threads as searchable context: a later agent reads an earlier thread as a source.</li></ol>
+<h2>Orbs and Runners</h2>
+<p>An Orb is one throwaway remote machine per thread, scale to zero, no local dev state. A Runner is the opposite: a stateful shared machine, such as a macOS build runner. Orbs can spawn threads on a Runner. Agents pass files and messages both ways. The split maps to a simple rule: stateless work goes to Orbs, stateful work goes to Runners.</p>
+<h2>Process: no PRs, plugins for ops</h2>
+<p>His team pushes to main with no PR layer. Designers ship code. No Figma step. Bug reports from Slack start an agent with a diagnostic bundle attached. TypeScript plugins cover bug reports, user mail, system health, feature flags, and credits. Ops work is agent work with a plugin shape.</p>
+<h2>Eval your own instructions</h2>
+<p>At 00:29:04: after any AGENTS.md change, spawn 5 to 10 fresh Orbs and test if the new instruction holds in practice. An instruction that fresh agents ignore is not an instruction. This is the missing test step in most rule files.</p>
+<h2>Apply this to your work</h2><div class="rule"><p>Your builds already run long agent jobs. Add the wake pattern: each long job ends with a scheduled self check that reads its own output against the acceptance list and reports proof or a defect, in place of a status claim. Your study repos gain the legibility kit at once: one command to build, one to check, seed data for sample pages, and a per area rule file. And run his instruction eval on your own standing rules: spawn fresh sessions, give a task that tempts the old error, and count how often the rule holds.</p></div><h2>Replication checklist</h2><ol><li>Add one scheduled wake check to your longest running agent job.</li><li>Write the proof demand into your review prompts verbatim.</li><li>List your legibility gaps: no seed data, no REPL, no scoped rule file. Fix one per week.</li><li>After your next rule file change, test it with 5 fresh sessions before you trust it.</li></ol>
+<p>Prompt file: <a href="../prompts/proof-demand.md">prompts/proof-demand.md</a>.</p>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart LR
+ A[Ship change] --> B[Agent wakes on schedule]
+ B --> C[Check deploy, errors, behavior]
+ C --> D{Proof holds?}
+ D -->|yes| E[Keep]
+ D -->|no| F[Revert with report]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[Ship change] --&gt; B[Agent wakes on schedule]
+ B --&gt; C[Check deploy, errors, behavior]
+ C --&gt; D{Proof holds?}
+ D --&gt;|yes| E[Keep]
+ D --&gt;|no| F[Revert with report]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Thorsten Ball and Amp Automations</span><ul><li><span class="branch">Access</span><ul><li><span class="leaf">Deploys and CI</span></li><li><span class="leaf">Logs and metrics</span></li><li><span class="leaf">Feature flags</span></li></ul></li><li><span class="branch">Machines</span><ul><li><span class="leaf">Orbs, throwaway</span></li><li><span class="leaf">Runners, stateful</span></li></ul></li><li><span class="branch">Tests</span><ul><li><span class="leaf">Proof demand</span></li><li><span class="leaf">Instruction eval, 5 to 10 fresh</span></li></ul></li></ul></li></ul></div>
+</main>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart LR
+ A[Ship change] --> B[Agent wakes on schedule]
+ B --> C[Check deploy, errors, behavior]
+ C --> D{Proof holds?}
+ D -->|yes| E[Keep]
+ D -->|no| F[Revert with report]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[Ship change] --&gt; B[Agent wakes on schedule]
+ B --&gt; C[Check deploy, errors, behavior]
+ C --&gt; D{Proof holds?}
+ D --&gt;|yes| E[Keep]
+ D --&gt;|no| F[Revert with report]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Thorsten Ball and Amp Automations</span><ul><li><span class="branch">Access</span><ul><li><span class="leaf">Deploys and CI</span></li><li><span class="leaf">Logs and metrics</span></li><li><span class="leaf">Feature flags</span></li></ul></li><li><span class="branch">Machines</span><ul><li><span class="leaf">Orbs, throwaway</span></li><li><span class="leaf">Runners, stateful</span></li></ul></li><li><span class="branch">Tests</span><ul><li><span class="leaf">Proof demand</span></li><li><span class="leaf">Instruction eval, 5 to 10 fresh</span></li></ul></li></ul></li></ul></div>
+</main>
+
+<h2>Visual map of this page</h2>
+<p>Three views of one page: a Mermaid flow for work order, a markmap for concept groups, and a read guide for the flow.</p>
+<div class="mermaid">
+flowchart TD
+ A[Claim: 5k to 10k tokens per day] --> B[Search both firms at origin]
+ B --> C[No such figure found]
+ C --> D[Real figures: dollars per day]
+ D --> E[Workflows that burn tokens]
+ E --> F[Fleets, schedules, swarms, review bots]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart TD
+ A[Claim: 5k to 10k tokens per day] --&gt; B[Search both firms at origin]
+ B --&gt; C[No such figure found]
+ C --&gt; D[Real figures: dollars per day]
+ D --&gt; E[Workflows that burn tokens]
+ E --&gt; F[Fleets, schedules, swarms, review bots]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the left box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Niche Sources and Token Heavy Workflows</span><ul><li><span class="branch">Claim check</span><ul><li><span class="leaf">No tokens per day average</span></li><li><span class="leaf">Dollars, multiples, percentiles</span></li><li><span class="leaf">Scale: one task past 55k tokens</span></li></ul></li><li><span class="branch">Heavy workflows</span><ul><li><span class="leaf">Cherny fleet</span></li><li><span class="leaf">Gas Town 20 to 30</span></li><li><span class="leaf">OpenAI research saturation</span></li><li><span class="leaf">Review bot per change</span></li></ul></li><li><span class="branch">Niche lanes</span><ul><li><span class="leaf">Blogs and dotfiles</span></li><li><span class="leaf">Podcast transcripts</span></li><li><span class="leaf">Newsletters</span></li><li><span class="leaf">Community threads</span></li></ul></li></ul></li></ul></div>
+
+<h2>Visual map of this page</h2>
+<p>Two views of one page: a Mermaid flow for work order, rendered by the local Mermaid library in this folder, and a markmap for concept groups.</p>
+<div class="mermaid">
+flowchart LR
+ A[Ship change] --> B[Agent wakes on schedule]
+ B --> C[Check deploy, errors, behavior]
+ C --> D{Proof holds?}
+ D -->|yes| E[Keep]
+ D -->|no| F[Revert with report]
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[Ship change] --&gt; B[Agent wakes on schedule]
+ B --&gt; C[Check deploy, errors, behavior]
+ C --&gt; D{Proof holds?}
+ D --&gt;|yes| E[Keep]
+ D --&gt;|no| F[Revert with report]</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the first box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Deep Dive: Thorsten Ball and Amp Automations</span><ul><li><span class="branch">Access</span><ul><li><span class="leaf">Deploys and CI</span></li><li><span class="leaf">Logs and metrics</span></li><li><span class="leaf">Feature flags</span></li></ul></li><li><span class="branch">Machines</span><ul><li><span class="leaf">Orbs, throwaway</span></li><li><span class="leaf">Runners, stateful</span></li></ul></li><li><span class="branch">Tests</span><ul><li><span class="leaf">Proof demand</span></li><li><span class="leaf">Instruction eval, 5 to 10 fresh</span></li></ul></li></ul></li></ul></div>
+</main>
+<footer class="site">AI Power-User Intelligence Hub, field guide build v3. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026, the earlier of execution day and 30 November 2026. Open site/index.html from disk. No server need. No track code sits in this site.</footer>
+<script src="assets/site.js"></script>
+<script src="assets/js/mermaid.min.js"></script>
+<script>
+if (window.mermaid) { mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}}); }
+</script>
+<script src="assets/js/mermaid.min.js"></script>
+<script>
+if (window.mermaid) { mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}}); }
+</script>
+</body></html>
