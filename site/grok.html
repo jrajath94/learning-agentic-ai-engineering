@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Grok and Grok Bot - Learning Agentic AI Engineering</title>
-<link rel="stylesheet" href="assets/style.css"></head>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></head>
 <body>
 <header class="top"><div class="wordmark"><a href="index.html">Learning Agentic AI Engineering</a></div>
 <nav class="main"><a href="index.html">Home</a><a href="start.html">Start Here</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini-antigravity.html">Gemini and Antigravity</a><a href="codex.html">Codex and dots</a><a href="muse.html">Muse</a><a href="foundations.html">Foundations</a><a href="cross-cutting.html">Cross-cutting</a><a href="business.html">Business</a><a href="research.html">Research</a><a href="profiles.html">Profiles</a><a href="prompts.html">Prompt Vault</a><a href="labs.html">Labs</a><a href="paths.html">Learning Paths</a><a href="principles.html">Principles</a><a href="glossary.html">Glossary</a><a href="sources.html">Sources</a><a href="audit.html">Audit</a><a href="search.html">Search</a></nav></header>
 <main>
 <h1>Grok and Grok Bot</h1>
 <p class="lede">Grok power use starts with mode choice and bot design. One catch all bot fails. Named specialist bots with approval gates win.</p>
+<figure class="visual"><img src="assets/img/grok.svg" alt="Flow diagram: Brief one bot job, Bot runs on shared computer, Draft output, Human approval gate"><figcaption>Figure 1. Grok and Grok Bot as a flow. Each box names one stage on this page. Arrows show work order.</figcaption></figure>
+
 <h2>Version facts</h2>
 <p>Grok 4.7 shipped on 21 September 2026 with a 500k token context. Price in official release notes sits at 2 dollars input and 6 dollars output per 1M tokens under a 200k prompt. Source row 2 on the Sources page. <span class="badge">High</span></p>
 <p>Grok 4.1 shipped on 17 November 2025. Official xAI post gives a 64.78 percent win rate over the prior model in blind live tests. Source row 1. <span class="badge">High</span></p>
@@ -43,7 +46,34 @@
 <h3>6. Hypotheses</h3><p>A specialist bot fleet may beat one strong bot on mixed business work. Sources show the pattern in use. No independent test compares both forms head to head.</p>
 <h3>7. Decision support</h3><p>Use Grok Bot for research, outreach drafts and monitor work with clear gates. Use a coding agent with a repo and tests for code work. Do not give a bot send or pay rights on day one.</p>
 <h3>8. One bounded next action</h3><p>Build one finder bot this week. Give the bot one source, one sheet, one dedupe check and a draft only rule. Review 20 rows by hand. Fix the brief once. Then add a drafter bot.</p>
+
+<figure class="visual"><img src="assets/img/grok-groups.svg" alt="Concept groups diagram: Grok models, Grok Bot, Workflows"><figcaption>Figure 2. Concept groups on this page. The markmap below expands each group into leaf points.</figcaption></figure>
+<h2>Visual map of this page</h2>
+<p>Three views of one page: a Mermaid flow for work order, a markmap for concept groups, and a read guide for the flow.</p>
+<div class="mermaid">
+flowchart LR
+ A[Goal brief] --> B[Specialist bot]
+ B --> C[Tools: search, CRM, sheet]
+ C --> D[Draft only]
+ D --> E{Human gate}
+ E -->|approve| F[Send or act]
+ E -->|reject| B
+</div>
+<details class="mermaid-src"><summary>Mermaid source, for offline read</summary><pre>flowchart LR
+ A[Goal brief] --&gt; B[Specialist bot]
+ B --&gt; C[Tools: search, CRM, sheet]
+ C --&gt; D[Draft only]
+ D --&gt; E{Human gate}
+ E --&gt;|approve| F[Send or act]
+ E --&gt;|reject| B</pre></details>
+<div class="readguide"><p>How to read the flow diagram. Step 1: start at the left box. Step 2: follow each arrow to the next stage. Step 3: at a branch box, read both paths before a choice. Step 4: a loop arrow means work returns for one more pass vs a test.</p></div>
+<h3>Markmap: concepts on this page</h3>
+<div class="markmap"><ul><li><span class="root">Grok and Grok Bot</span><ul><li><span class="branch">Grok models</span><ul><li><span class="leaf">4.1 launch facts</span></li><li><span class="leaf">4.7 current in sources</span></li><li><span class="leaf">5: no release, gap</span></li></ul></li><li><span class="branch">Grok Bot</span><ul><li><span class="leaf">Named bots, one job each</span></li><li><span class="leaf">Shared computer risk</span></li><li><span class="leaf">Teach a task</span></li></ul></li><li><span class="branch">Workflows</span><ul><li><span class="leaf">G1 internal ship loop</span></li><li><span class="leaf">G2 Tan team loop</span></li><li><span class="leaf">G3 finder and drafter pair</span></li></ul></li></ul></li></ul></div>
 </main>
 <footer class="site">AI Power-User Intelligence Hub. Execution date: 20 November 2026. Evidence cutoff: 20 November 2026. Every material claim links to a source on the Sources page. A claim with a Low badge rests on one self reported source. A gap marked INSUFFICIENT_EVIDENCE has no verified source in this build.</footer>
 <script src="assets/site.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{background:'#101010', primaryColor:'#171713', primaryTextColor:'#f4f1ea', lineColor:'#e8a04c', secondaryColor:'#1d1a12', tertiaryColor:'#101010'}});
+</script>
 </body></html>
