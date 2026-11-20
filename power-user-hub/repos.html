@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Repos and install notes: Power User Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,450;6..72,560&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@450;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="mark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#e0b15b" stroke-width="1.4"/><circle cx="16" cy="16" r="3.2" fill="#e0b15b"/></svg> Power User Hub</a>
+    <p class="asof">Checked 20 Nov 2026</p>
+    <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+  </nav>
+</header>
+<main id="main">
+  <p class="kicker">Install from the README that was fetched</p>
+  <h1>Five skill repos, plus the harnesses they sit on</h1>
+  <p class="lede">Commands below are copied from the README on the default branch as fetched on 20 November 2026. If a README and a blog disagree, the README wins for install steps. Star counts are included only where the GitHub API was queried.</p>
+
+<section class="section" id="page-map">
+  <h2>See the shape first</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Install one router. Prove it loaded. Then stop.</figcaption>
+      <pre class="mermaid">flowchart TD
+  A[What is failing?] --> B{Requirements unclear?}
+  B -->|yes| C[Pocock grill-me]
+  B -->|no| D{Need a forced lifecycle?}
+  D -->|yes| E[Superpowers]
+  D -->|no| F{In Cursor and want a panel?}
+  F -->|yes| G[pstack]
+  F -->|no| H{Bill or a new page?}
+  H -->|bill| I[Caveman]
+  H -->|new page| J[Hallmark]</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>Five repos.</figcaption>
+      <svg class="markmap-svg" aria-label="Five repos."></svg>
+      <script type="text/markmap"># Repos
+## mattpocock/skills
+### Small and composable
+## obra/superpowers
+### Mandatory sequence
+## JuliusBrussee/caveman
+### Shorter output and tool text
+## Nutlope/hallmark
+### New pages only unless named
+## cursor/plugins pstack
+### poteto-mode router</script>
+    </figure>
+  </div>
+  
+</section>
+
+  <section class="section" id="pocock">
+    <h2>mattpocock/skills</h2>
+    <p>Small skills for real engineering. He names GSD, BMAD, and Spec-Kit as the approach he is not taking. <a class="cite" href="sources.html#C43">C43</a></p>
+    <pre><code># Claude Code, self-updating plugin
+claude plugin install mattpocock-skills@claude-plugins-official
+
+# Codex
+codex plugin marketplace add mattpocock/skills
+codex plugin add mattpocock-skills@mattpocock
+
+# Cursor and other agents. He says omit -a to choose.
+npx skills@latest add mattpocock/skills -a cursor
+
+# then, once per repo
+/setup-matt-pocock-skills</code></pre>
+    <p>He warns that a plugin and a skills.sh copy together duplicate every skill. Pick one channel per agent. Gemini CLI in the same README is <code>gemini skills install https://github.com/mattpocock/skills.git --path skills/engineering</code> and a second command for <code>skills/productivity</code>.</p>
+  </section>
+
+  <section class="section" id="superpowers">
+    <h2>obra/superpowers</h2>
+    <p>Jesse Vincent and Prime Radiant. Mandatory sequence: brainstorm, worktree, plan, subagents or inline execution, red-green-refactor, review, finish the branch. <a class="cite" href="sources.html#C44">C44</a></p>
+    <pre><code># Claude Code official marketplace
+/plugin install superpowers@claude-plugins-official
+
+# Antigravity
+agy plugin install https://github.com/obra/superpowers
+
+# Muse, from a clone
+muse plugins install ./superpowers
+muse plugins approve superpowers
+
+# Pi
+pi install git:github.com/obra/superpowers</code></pre>
+    <p>The README also has sections for Codex, Cursor, Gemini CLI, Copilot, a "Grok Build CLI", Kimi, OpenCode, Qwen, Hermes, Factory, and Devin. Those sections were in the file. Each harness's exact command was not re-copied here except the four above, which were read in full. Grok Build CLI's own product docs were not fetched, so this hub does not review that product. <a href="gaps.html#g12">G12</a></p>
+    <p>Philosophy lines in the README: test first, process over guessing, simplicity, evidence over claims. The 9 October 2025 announcement is the origin post he links.</p>
+  </section>
+
+  <section class="section" id="caveman">
+    <h2>JuliusBrussee/caveman</h2>
+    <p>Apache-2.0. GitHub API on 20 November 2026: 121,737 stars, last push <code>2026-11-20T07:32:16Z</code>. <a class="cite" href="sources.html#C46">C46</a></p>
+    <pre><code>npx @caveman-ai/cli@latest</code></pre>
+    <p>The README says this needs Node.js 22.13+, finds your agents, and that plain <code>claude</code> then stays affected, along with Codex, Gemini CLI, OpenCode, and 30+ others listed in the repo's INSTALL.md. Skill-only install in the same README:</p>
+    <pre><code>npx skills add JuliusBrussee/caveman -g</code></pre>
+    <p>Invoke <code>/caveman</code>, or <code>$caveman</code> in Codex. <code>caveman status</code> shows which of the six parts are on. <code>caveman off browse</code> disables one. He says only Auto needs an account, and that it is free.</p>
+    <p>Numbers he prints, which you should not detach from his caveats: Terminal-Bench 4 comparison used a measured build with benchmark-only settings turned off in the shipped app; say-less versus "answer concisely" is a small n; the 0.46× Opus cost figure is interim with an unresolved quality gap. The README links Adobe and Purdue arXiv papers. Those papers were not re-read for this hub.</p>
+  </section>
+
+  <section class="section" id="hallmark">
+    <h2>Nutlope/hallmark</h2>
+    <p>Hassan El Mghari. README credit: Together AI. Fifty themes. MIT, stated in the README. <a class="cite" href="sources.html#C45">C45</a></p>
+    <pre><code>npx skills add nutlope/hallmark -g
+
+# one harness only
+npx skills add nutlope/hallmark -g --agent claude-code
+# also: codex, opencode, cursor, github-copilot
+
+# as a Claude Code plugin
+/plugin marketplace add nutlope/hallmark
+/plugin install hallmark@hallmark</code></pre>
+    <p>Needs Node 18 or later. Browser lint (<code>sloplint --render</code>) also needs <code>puppeteer-core</code> and Chrome; the README says static checks still run without them. Claude Code path: <code>~/.claude/skills/hallmark</code>, invoke <code>/hallmark</code>. Codex: <code>~/.agents/skills/hallmark</code>, invoke <code>$hallmark</code>.</p>
+  </section>
+
+  <section class="section" id="pstack">
+    <h2>cursor/plugins pstack</h2>
+    <p>Lauren Tan. <a class="cite" href="sources.html#C47">C47</a></p>
+    <pre><code># Cursor
+/add-plugin pstack
+/setup-pstack
+/poteto-mode
+
+# Claude Code
+/plugin marketplace add cursor/plugins
+/plugin install pstack@cursor-plugins
+# commands are prefixed: /pstack:poteto-mode</code></pre>
+    <p>The README says Claude Code leaves auto-update off for third-party marketplaces, so you either enable it in <code>/plugin</code> or run <code>claude plugin update pstack@cursor-plugins</code>. Option+Enter (Mac) or Alt+Enter makes poteto-mode a custom mode that stays on. Plain Enter attaches it to one message.</p>
+  </section>
+
+  <section class="section" id="also">
+    <h2>Other high-signal repos touched because a primary page named them</h2>
+    <ul class="clean">
+      <li><a href="https://github.com/openai/codex">openai/codex</a>: the CLI whose 0.171.0 release notes were read. <a class="cite" href="sources.html#C32">C32</a></li>
+      <li><a href="https://github.com/openai/codex/pull/5353">PR 5353</a>: AGENTS.md discovery, Thibault Sottiaux, 19 Oct 2025. <a class="cite" href="sources.html#C34">C34</a></li>
+      <li>MCP specification and the 28 July 2026 blog, not a single "install" repo. <a class="cite" href="sources.html#C39">C39</a></li>
+      <li>Muse's own SDK: <code>npm install @muse-code/sdk</code>, from the Muse Code docs. <a class="cite" href="sources.html#C37">C37</a></li>
+    </ul>
+    <p>A longer list of agent-eval repos (promptfoo, Inspect, and others) was not README-fetched in this pass. They are not reviewed here. <a href="gaps.html#g13">G13</a></p>
+  </section>
+
+  <section class="section" id="tutorial">
+    <h2>Tutorial · install one skill system and prove it loaded</h2>
+    <h3>1. Question</h3>
+    <p>Which one repo should I install first, and how do I know the install worked without starting a two-hour autonomous run?</p>
+    <h3>2. Facts</h3>
+    <p>The five install blocks above. Pocock's duplicate-install warning. Superpowers' session-start bootstrap. Hallmark's "name it if it does not fire." pstack's two-step setup. Caveman's Node 22.13 requirement.</p>
+    <h3>3. Concepts</h3>
+    <p>A skill that does not load is an empty program. The description is the scheduler key. If you install three routers, you no longer know which program ran. The verification is a behavior you can see: a question asked before code, a plan that waits, a terse reply, a playbook name in the todo list.</p>
+    <h3>4. Pattern</h3>
+    <ol class="steps">
+      <li>Pick from the decision list in part 7. Install only that one, using the command for your harness.</li>
+      <li>Open a fresh session. Compaction and already-open sessions are how Superpowers and Muse plugins fail to show their hooks. The Superpowers Muse note says to restart so SessionStart runs.</li>
+      <li>Send the probe for that repo, from part 7.</li>
+      <li>If the probe does not happen, stop. Do not add a second system to "make it work."</li>
+    </ol>
+    <h3>5. Conflicts</h3>
+    <p>Hallmark's older reviews tell Cursor users to paste SKILL.md into <code>.cursor/rules</code>. The README fetched now says <code>npx skills add</code> and that Cursor finds the skill copies. Follow the README. Superpowers on Muse wants <code>muse plugins approve</code>. Skipping approve means the files are present and the hook is not.</p>
+    <h3>6. Hypothesis <span class="chip rose">unproven</span></h3>
+    <div class="callout hyp">
+      <strong class="tag">Hypothesis</strong>
+      <p>For a strong model in late 2026, Pocock's grill-first skill changes outcomes more than a mandatory full lifecycle, because the model already knows TDD and the human still does not know the requirements. His README argues the misalignment point. It does not include a head-to-head against Superpowers.</p>
+    </div>
+    <h3>7. Decision support</h3>
+    <ul class="clean">
+      <li><strong>You are about to be misunderstood.</strong> Pocock. Probe: <code>/grill-me</code> on a one-sentence feature. Success: it asks questions and does not edit.</li>
+      <li><strong>You want a forced lifecycle and you accept the loss of control.</strong> Superpowers. Probe, from the Muse section of the README: send "Let's make a react todo list" and expect brainstorming before code. He offers that sentence as the verify step.</li>
+      <li><strong>You are in Cursor and you want playbooks plus a multi-model review.</strong> pstack. Probe: <code>/poteto-mode</code> on a tiny bug with the words "repro first." Success: a playbook's steps show up as todos.</li>
+      <li><strong>The bill is the problem.</strong> Caveman. Probe: ask why a React component re-renders. Compare length to an uninstrumented session. His own example answer is the short useMemo line. Do not install Auto until you have read the contributor-style account note in his README.</li>
+      <li><strong>You are generating a new page and you hate the default look.</strong> Hallmark. Probe: <code>/hallmark audit ./index.html</code> on a page you already have. Success: a report, no silent restyle.</li>
+    </ul>
+    <h3>8. Bounded next action</h3>
+    <p>Install Pocock's skills in the harness you use most, run setup once, and run <code>/grill-me</code> on the next change you have not started. Do not let it write code in that session. Write down whether the questions changed the task. That note is your eval.</p>
+    <ul class="quiz">
+      <li><details><summary>What does Pocock say happens if you install the plugin and the skills.sh copy?</summary><p>Every skill appears twice. <a class="cite" href="sources.html#C43">C43</a></p></details></li>
+      <li><details><summary>Which Node version does the caveman CLI README require?</summary><p>22.13 or newer. <a class="cite" href="sources.html#C46">C46</a></p></details></li>
+    </ul>
+  </section>
+</main>
+<footer class="foot"><div class="foot-in"><p><a href="library.html">Library</a> · <a href="principles.html">Why skills are programs</a></p></div></footer>
+<script src="js/claims.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/site.js"></script>
+<script type="module" src="js/visuals.js"></script>
+</body>
+</html>

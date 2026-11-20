@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gap report: Power User Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,450;6..72,560&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@450;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="mark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#e0b15b" stroke-width="1.4"/><circle cx="16" cy="16" r="3.2" fill="#e0b15b"/></svg> Power User Hub</a>
+    <p class="asof">Checked 20 Nov 2026</p>
+    <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+  </nav>
+</header>
+<main id="main">
+  <p class="kicker">INSUFFICIENT_EVIDENCE and adversarial review</p>
+  <h1>What this hub does not know</h1>
+  <p class="lede">These are the holes. They are not hints that the missing fact is probably true. A later pass should close them with a primary page, or leave them closed as unknown.</p>
+
+<section class="section" id="page-map">
+  <h2>See the shape first</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Unknown stays on this page. It does not get promoted into a smooth paragraph.</figcaption>
+      <pre class="mermaid">flowchart TD
+  A[Search] --> B{Page opened?}
+  B -->|no| C[Gap id]
+  B -->|yes, thin| D[Profile or claim with low confidence]
+  B -->|yes, launch anecdote only| E[Single-source note]
+  C --> F[Next research action]</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>Open holes.</figcaption>
+      <svg class="markmap-svg" aria-label="Open holes."></svg>
+      <script type="text/markmap"># Gaps
+## Versions
+### Grok model ledger
+### Claude Code semver
+### Muse 1.2 versus 1.3
+### Carbon plan matrix
+## People
+### Dario
+### Codie
+### Greg
+### Mayank
+### Tibo daily routine
+## Method
+### Boris thread is a mirror
+### Vendor anecdotes
+### Eval repos not read</script>
+    </figure>
+  </div>
+  
+</section>
+
+  <section class="section" id="g01">
+    <h2>G01 · Grok model strings</h2>
+    <p>The skills page says skills are live on Grok 4.3 and does not date itself. The bot changelog's newest fetched entry is app version 1.2.3 on 18 November 2026 and does not name a model. A search snippet of the API release notes mentioned Grok 4.6 with prices. That page was not fully read, so 4.6 is not a claim. Next action: fetch <code>docs.x.ai</code> release notes and the model overview on the same day and write one row.</p>
+  </section>
+
+  <section class="section" id="g02">
+    <h2>G02 · No internal Grok diary, no whole business</h2>
+    <p>The mission asked what internal Grok Bot engineers do differently, and for people running whole businesses through Grok. The fetched pages are product docs, a changelog, and a skills announcement. No named xAI engineer describes their own Tuesday. No founder publishes a month of Grok-operated books. The campaign handoff and the prebuilt bots are vendor storyboards. Status: INSUFFICIENT_EVIDENCE.</p>
+  </section>
+
+  <section class="section" id="g03">
+    <h2>G03 · Claude Code CLI version</h2>
+    <p>Best practices, skills, subagents, and hooks were fetched on 20 November 2026. A changelog row with a semver was not. Duet's model is Opus 5.5. Boris's January post names Opus 4.5. Those are not a CLI version. Next action: the Claude Code changelog or <code>claude --version</code> from a machine that has it.</p>
+  </section>
+
+  <section class="section" id="g04">
+    <h2>G04 · Antigravity plan matrix and benchmark scores</h2>
+    <p>Neon on Ultra, Pro, and Gemini Enterprise is in the 18 November changelog. Carbon's consumer-plan row was not extracted. The Neon blog's index scores were left unused because the post was not fetched in full. A third-party changelog mirror (gradually.ai) was not used as an origin. Next action: fetch the three November model blogs and the pricing page.</p>
+  </section>
+
+  <section class="section" id="g05">
+    <h2>G05 · Muse Spark default: 1.2 in the docs, 1.3 on the price list</h2>
+    <p>Both pages were read. They disagree about what "current" means. No Muse Code changelog entry was fetched that says 1.3 became the default. Next action: <code>muse --version</code> and the model picker on a signed-in build, plus the changelog linked from the Muse docs nav.</p>
+  </section>
+
+  <section class="section" id="g06">
+    <h2>G06 · Thibault Sottiaux's daily Codex practice</h2>
+    <p>Verified: GitHub display name, and the 19 October 2025 docs PR. Not verified: a title, a 2026 talk, a personal config.toml, a prompt he uses. Do not backfill from memory of conference talks.</p>
+  </section>
+
+  <section class="section" id="g07">
+    <h2>G07 · Dario Amodei</h2>
+    <p>No fetched 2025-2026 source in which he describes a concrete agent workflow used by Anthropic engineers. Status: not profiled.</p>
+  </section>
+
+  <section class="section" id="g08">
+    <h2>G08 · Codie Sanchez</h2>
+    <p>Search returned an aggregator "AI tools" page with a truncated quote, and a podcast page whose transcript talks about Claude Code as an employee. The transcript extract did not carry her name in the portion read, and one page called the show Startup Grind. That is not enough to attribute the transcript to her. Status: not profiled. Next action: a Contrarian Thinking post or a video description that names her and the workflow in her voice.</p>
+  </section>
+
+  <section class="section" id="g09">
+    <h2>G09 · Greg Isenberg</h2>
+    <p>A secondary blog claimed a worktree-and-graph workflow. The primary post was not opened. Status: not profiled.</p>
+  </section>
+
+  <section class="section" id="g10">
+    <h2>G10 · Mayank Shah</h2>
+    <p>The name is ambiguous. A LinkedIn profile of a freelance RAG engineer is not evidence that this is the person intended, and it is not a public workflow essay. Status: not profiled. Next action: a canonical URL from the person who asked.</p>
+  </section>
+
+  <section class="section" id="g11">
+    <h2>G11 · Prompts that were not published</h2>
+    <p>There is no vault entry for Dario, Codie, Tibo, Amin, Jess, or an xAI engineer, because no full prompt of theirs was on a page this pass read. Boris's plan-mode text is a habit, not a template, and it stays on the Claude page. Inventing "power user prompts" in their voice would have been fabrication.</p>
+  </section>
+
+  <section class="section" id="g12">
+    <h2>G12 · Grok Build CLI</h2>
+    <p>The Superpowers README has an install heading for a harness it calls Grok Build CLI. That product's docs were not fetched. The hub does not describe its flags, model, or provenance.</p>
+  </section>
+
+  <section class="section" id="g13">
+    <h2>G13 · Eval tooling beyond what the skill authors ship</h2>
+    <p>promptfoo, UK AISI Inspect, and similar eval repos were not README-fetched. pstack has an eval playbook described in the README; that description was not a separate eval-harness review. Next action: one eval repo, read in full, with its install line quoted.</p>
+  </section>
+
+  <section class="section" id="g14">
+    <h2>G14 · Video and podcasts</h2>
+    <p>No YouTube transcript was retrieved through a captions API. Search snippets of episode pages are not treated as transcripts. Lenny's Newsletter and The Pragmatic Engineer appear as titles in search; their bodies were not used. If a later pass cannot get a transcript, the rule is to summarize only the description or chapters and label that limitation. This pass chose to omit them.</p>
+  </section>
+
+  <section class="section" id="g15">
+    <h2>G15 · The Boris thread is a mirror</h2>
+    <p>The text used is Thread Reader's copy of status <code>2007179832300581177</code>. The snowflake decodes to 2 January 2026. The X URL itself was not fetched. InfoQ's article is an echo. Confidence on his wording is medium for that reason. Next action: the primary X post or an Anthropic-hosted copy.</p>
+  </section>
+
+  <section class="section" id="g16">
+    <h2>G16 · Single-source vendor stories</h2>
+    <ul class="clean">
+      <li>Duet's small-business quotes exist only in Anthropic's launch post. <a class="cite" href="sources.html#C15">C15</a></li>
+      <li>The dots invoice and the internal Slack-bug story exist only in OpenAI's launch post, and the tester is unnamed. <a class="cite" href="sources.html#C31">C31</a></li>
+      <li>The Muse kernel study is Meta's. The linked report was not fetched. <a class="cite" href="sources.html#C36">C36</a></li>
+      <li>Caveman's Terminal-Bench numbers are the author's, on a build he says is not the shipped app. <a class="cite" href="sources.html#C46">C46</a></li>
+      <li>Özen's 32 KiB and 2% figures are his reading of OpenAI's docs for CLI 0.169.0. The official page was not re-fetched after 0.171.0. <a class="cite" href="sources.html#C33">C33</a></li>
+    </ul>
+  </section>
+
+  <section class="section" id="review">
+    <h2>Adversarial review</h2>
+    <table>
+      <thead><tr><th>Claim that sounds like a secret</th><th>Strongest counterargument</th></tr></thead>
+      <tbody>
+        <tr><td>Power users run several agents in parallel.</td><td>Boris did, in January, in separate checkouts, and he said 10-20% of web sessions were abandoned, according to the InfoQ echo. Parallelism without a verifier is just more unreviewed diffs. Tan's README says parallelism is what you earn after one agent is trustworthy.</td></tr>
+        <tr><td>A proactive agent runs the business.</td><td>Duet, dots, and Grok Bot document drafts and approval stops. The business outcomes are testimonials and anonymous anecdotes. A serious engineer asks for the send-without-approval rate.</td></tr>
+        <tr><td>Orchestrator gets you frontier quality at a lower cost.</td><td>The changelog describes the split. The cost and quality numbers on the blog were not admitted into this ledger. The pairing also changed between 12 and 18 November.</td></tr>
+        <tr><td>Skills make the model reliable.</td><td>Anthropic says a skill is still non-deterministic. Reliability of a must-never rule is a hook. Installing three skill routers at once is an untested interaction. See hypothesis H3 on the stack page.</td></tr>
+        <tr><td>Caveman cuts the bill in half.</td><td>The README's own baseline is "be concise," and several of the dramatic ratios are interim or on a non-shipped configuration.</td></tr>
+        <tr><td>Contributor-mode Muse is the cheap way to code.</td><td>It is cheap because the pricing page says Meta may train on your code. For a bank, that default is the feature.</td></tr>
+      </tbody>
+    </table>
+    <h3>What a serious engineer would still demand</h3>
+    <ul class="clean">
+      <li>A pinned version for each harness, checked the morning of use, not a page from this hub.</li>
+      <li>An independent rerun of any benchmark a vendor prints.</li>
+      <li>A permission export: which tools are allow, auto, ask, or deny.</li>
+      <li>A test that failed before the patch and passes after, run by a person or by CI, not described by the model.</li>
+      <li>One instruction file, generated from the last real mistake, small enough to re-read.</li>
+    </ul>
+  </section>
+
+  <section class="section" id="next">
+    <h2>Recommended next research actions</h2>
+    <ol class="steps">
+      <li>Fetch the xAI API model page and close G01 with a dated table.</li>
+      <li>Fetch Claude Code's changelog and record the semver beside Opus 5.5.</li>
+      <li>Fetch the three Antigravity model blogs and the plan matrix. Keep scores attached to their benchmark names and dates.</li>
+      <li>Re-read OpenAI's AGENTS.md doc against CLI 0.171.0 and either promote Özen's numbers to primary or correct them.</li>
+      <li>Find one primary post each for Codie Sanchez and Greg Isenberg, or leave the cards empty.</li>
+      <li>Ask which Mayank Shah is meant before any further search.</li>
+      <li>Open one IC interview from Anthropic, OpenAI, or Google from 2026 with a transcript or a full blog, and add a profile only from that text.</li>
+      <li>Read one eval repo README end to end and add it beside pstack's eval playbook.</li>
+    </ol>
+  </section>
+</main>
+<footer class="foot"><div class="foot-in"><p><a href="sources.html">Ledger</a> · <a href="index.html">Home</a></p></div></footer>
+<script src="js/claims.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/site.js"></script>
+<script type="module" src="js/visuals.js"></script>
+</body>
+</html>

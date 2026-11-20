@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grok and Grok Bot: Power User Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,450;6..72,560&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@450;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="mark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#e0b15b" stroke-width="1.4"/><circle cx="16" cy="16" r="3.2" fill="#e0b15b"/></svg> Power User Hub</a>
+    <p class="asof">Checked 20 Nov 2026</p>
+    <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+  </nav>
+</header>
+<main id="main">
+  <p class="kicker">Cluster · xAI</p>
+  <h1>Grok and Grok Bot</h1>
+  <p class="lede">The public record shows a proactive bot with a cloud computer, skills, routines, and per-tool permissions. It does not show a named engineer running a whole company through Grok, and it does not show an internal playbook.</p>
+  <label class="sr" for="pagefilter">Filter this page</label>
+  <input id="pagefilter" class="pagefilter" type="search" placeholder="Filter this page" style="border:1px solid var(--line);background:var(--bg-2);border-radius:999px;padding:.4rem .8rem;">
+
+<section class="section" id="page-map">
+  <h2>See the shape first</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>A Grok routine that may draft and may not send.</figcaption>
+      <pre class="mermaid">sequenceDiagram
+  participant You
+  participant Bot as Grok Bot
+  participant Mail as Mail connector
+  You->>Bot: Save the draft pass as a skill
+  Bot->>Mail: Read, if search is allowed
+  Mail-->>Bot: Threads
+  Bot-->>You: Drafts only
+  Note over Bot,You: Send stays on Needs approval</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>Grok surfaces verified in this pass.</figcaption>
+      <svg class="markmap-svg" aria-label="Grok surfaces verified in this pass."></svg>
+      <script type="text/markmap"># Grok
+## Bot 1.2.3
+### Always allow
+### Auto-review
+### Needs approval
+### Blocked
+## Skills page
+### Grok 4.3 named there
+### Deck and invoice examples
+## Not verified
+### Internal engineer diary
+### A named company running on Grok</script>
+    </figure>
+  </div>
+  
+</section>
+
+  <section class="section" id="status">
+    <h2>Status as of 20 Nov 2026</h2>
+    <div class="chips"><span class="chip">Bot 1.2.3 · 18 Nov 2026</span><span class="chip gold">Skills page: Grok 4.3</span><span class="chip rose">API model ledger incomplete</span></div>
+    <p>The changelog's newest entry in the copy fetched for this site is <strong>v1.2.3 on 18 November 2026</strong>, and that entry also covers 1.2.1 and 1.2.2. Connector pages gained four levels per tool: Always allow, Auto-review, Needs approval, Blocked. <a class="cite" href="sources.html#C06">C06</a></p>
+    <p>A separate undated skills announcement says skills are live on <strong>Grok 4.3</strong> on grok.com, iOS, and Android. That page is not a model changelog. A search snippet of the API release notes mentioned Grok 4.6; that page was not fully read, so 4.6 is in the <a href="gaps.html#g01">gap report</a> and is not used as a fact here. <a class="cite" href="sources.html#C09">C09</a></p>
+  </section>
+
+  <section class="section" id="miss">
+    <h2>What a regular chat user misses</h2>
+    <ul class="clean">
+      <li><strong>A computer that stays up.</strong> xAI describes Bots as sharing a persistent cloud computer with a browser, filesystem, and terminal. Chat on a laptop does not keep that machine working after you close the tab. <a class="cite" href="sources.html#C01">C01</a></li>
+      <li><strong>A team of bots, not a longer prompt.</strong> The overview's picture is several bots handing work along, then bringing you a draft. <a class="cite" href="sources.html#C02">C02</a></li>
+      <li><strong>Skills and routines.</strong> Walk through a task once, save a skill, schedule a routine. The 1.2.3 notes add that a routine can read the earlier conversation in its chat, and that a signed-out connector skips the run instead of failing quietly in a half-finished way. Reconnect cards can also arrive as a Slack or Teams direct message. <a class="cite" href="sources.html#C03">C03</a> <a class="cite" href="sources.html#C07">C07</a></li>
+      <li><strong>Permissions at tool grain.</strong> Connecting Gmail is no longer the whole decision. Send can be Needs approval while search is Always allow. <a class="cite" href="sources.html#C06">C06</a></li>
+      <li><strong>Connector before browser.</strong> If a site has a connector, the Bot is supposed to use it, or show the connect card, before it opens the browser. <a class="cite" href="sources.html#C08">C08</a></li>
+      <li><strong>Split memory.</strong> People and organizations, your profile, standing instructions, and projects are separate memories in the 1.2.3 notes. <a class="cite" href="sources.html#C08">C08</a></li>
+      <li><strong>MCP apps that do not auto-send.</strong> Clicking a message button inside an MCP App puts the text in the chat box for you to send. Each turn keeps its own MCP App card. <a class="cite" href="sources.html#C06">C06</a></li>
+    </ul>
+  </section>
+
+  <section class="section" id="underused">
+    <h2>Underused, with the evidence we actually have</h2>
+    <p><strong>Pages.</strong> The changelog says Ctrl+K search finds Bots and Pages whose names contain emoji or symbols. That is the only Pages behavior verified in this pass. A manual for a Pages product was not fetched. <a class="cite" href="sources.html#C08">C08</a></p>
+    <p><strong>Helpers.</strong> The changelog talks about "the Bot's helpers" and a reconnect card when a helper's connector is signed out. xAI does not, in the pages read here, publish a subagent spec comparable to Claude Code's. Calling them subagents would be a gloss. <a class="cite" href="sources.html#C07">C07</a></p>
+    <p><strong>Prebuilt bots.</strong> Overheard watches Reddit, Hacker News, news sites, and X and stays quiet on dead days. Tradbot drafts school and bill replies and does not send. Meeting Recap Deck refuses to invent a quote. Pitch Deck Coach reports what an investor would understand, believe, question, and remember. <a class="cite" href="sources.html#C05">C05</a></p>
+    <p><strong>pstack on Grok.</strong> Lauren Tan's pstack includes a skill, <code>/make-bot-ui</code>, whose README line says it builds a page whose buttons wake a Grok Bot over a webhook, including a sender key and Tailscale. That is a Cursor skill pointed at Grok, not an xAI skill library. <a class="cite" href="sources.html#C47">C47</a></p>
+  </section>
+
+  <section class="section" id="workflows">
+    <h2>Three workflows that are actually written down</h2>
+    <article class="wf">
+      <h3>1. Inbox drafts that wait for you</h3>
+      <p><strong>Who:</strong> xAI, as a product example. No customer name.</p>
+      <ol class="steps">
+        <li>Connect Gmail.</li>
+        <li>The Bot sorts overnight mail and drafts replies for threads that need you.</li>
+        <li>Every draft stays for you to send.</li>
+      </ol>
+      <p>The 1.2.3 permission model is the piece a careful user adds: search can be Always allow; send stays Needs approval. That pairing is this site's reading of two xAI pages together, labelled as synthesis in the tutorial below. <a class="cite" href="sources.html#C04">C04</a> <a class="cite" href="sources.html#C06">C06</a></p>
+    </article>
+    <article class="wf">
+      <h3>2. Meeting notes to a Slack post</h3>
+      <p><strong>Who:</strong> xAI's Granola example.</p>
+      <ol class="steps">
+        <li>Each evening the Bot reads that day's Granola notes.</li>
+        <li>It pulls action items with owners.</li>
+        <li>It drafts a Slack post that goes out once you approve.</li>
+      </ol>
+      <p><a class="cite" href="sources.html#C04">C04</a></p>
+    </article>
+    <article class="wf">
+      <h3>3. A small bot team on a campaign</h3>
+      <p><strong>Who:</strong> xAI's handoff example.</p>
+      <ol class="steps">
+        <li>One bot's routine pulls the week's numbers.</li>
+        <li>Another drafts a campaign from them.</li>
+        <li>A third reviews it.</li>
+        <li>They hand the result to you to approve, edit, or send back.</li>
+      </ol>
+      <p>This is the closest public text to "a business running through Grok." It is still a vendor storyboard. No P&amp;L, no founder, no prompt log. <a class="cite" href="sources.html#C02">C02</a></p>
+    </article>
+  </section>
+
+  <section class="section" id="principles">
+    <h2>How the product asks you to think</h2>
+    <ul class="clean">
+      <li>Show the work once, then schedule it. The skill is the program; the routine is the trigger. <a class="cite" href="sources.html#C03">C03</a></li>
+      <li>Approval is part of the design of the published examples, not an extra you bolt on after a mistake. Drafts wait. Overheard never posts. <a class="cite" href="sources.html#C04">C04</a> <a class="cite" href="sources.html#C05">C05</a></li>
+      <li>Prefer a connector to a browser session when both exist. <a class="cite" href="sources.html#C08">C08</a></li>
+      <li>Team admins can allowlist MCP tools, including the built-in GitHub connector, which the changelog says is off unless a rule allows it. The bot is supposed to say when an admin blocked a tool. <a class="cite" href="sources.html#C06">C06</a></li>
+    </ul>
+  </section>
+
+  <section class="section" id="against">
+    <h2>Strongest counterargument</h2>
+    <div class="callout against">
+      <strong class="tag">Adversarial</strong>
+      <p>Nothing in the fetched xAI pages shows an internal Grok engineer, a founder, or a finance lead running a company on Grok Bot. The "business" workflows are illustrations. A serious operator would ask for a named user, a month of logs, and a count of messages the bot sent without approval. Those numbers are not public here. Copying the campaign storyboard into a production inbox, with three bots and a shared computer, is an untested bet. See <a href="gaps.html#g02">G02</a>.</p>
+    </div>
+  </section>
+
+  <section class="section" id="tutorial">
+    <h2>Tutorial · a routine that drafts and cannot send</h2>
+    <p>Eight parts, as required. This is one bounded workflow, not a company operating system.</p>
+    <h3>1. Original question</h3>
+    <p>How do I get a Grok Bot to prepare replies and a Monday plan without it being able to send mail or post to Slack on its own?</p>
+    <h3>2. Source-grounded facts</h3>
+    <ul class="clean">
+      <li>Gmail example: sort mail, draft, leave drafts unsent. <a class="cite" href="sources.html#C04">C04</a></li>
+      <li>Calendar example: Sunday evening, flag clashes, send you a short Monday plan. <a class="cite" href="sources.html#C04">C04</a></li>
+      <li>Each tool can be Always allow, Auto-review, Needs approval, or Blocked. <a class="cite" href="sources.html#C06">C06</a></li>
+      <li>A routine with a dead sign-in skips until you reconnect. <a class="cite" href="sources.html#C07">C07</a></li>
+    </ul>
+    <h3>3. Core concepts</h3>
+    <p>A <em>skill</em> is the saved procedure. A <em>routine</em> is that procedure on a clock. A <em>tool permission</em> is the harness rule the model does not get to talk its way past. Memory is split, so a standing instruction ("never send") belongs in standing instructions, and the hard stop belongs on the tool.</p>
+    <h3>4. Pattern and feedback loop</h3>
+    <ol class="steps">
+      <li><strong>Trigger.</strong> Sunday 18:00 for the week plan. Weekday morning for the inbox draft pass. You set the schedule; xAI says a repeated task becomes a routine. <a class="cite" href="sources.html#C03">C03</a></li>
+      <li><strong>Execute.</strong> Read calendar and mail. Draft. Do not send.</li>
+      <li><strong>Verify.</strong> You read the drafts. The permission level Needs approval is the verifier for any send tool.</li>
+      <li><strong>State.</strong> If it drafted the wrong tone, correct it once and ask it to save the correction as a skill, which is the path the skills page describes. <a class="cite" href="sources.html#C09">C09</a></li>
+    </ol>
+    <h3>5. Conflicts and misconceptions</h3>
+    <p>The skills page's Grok 4.3 line and the changelog's 1.2.3 line are different objects: a model name and a bot app version. Treating either as "the current Grok" without the other is how version rumors start. Also, Auto-review is not the same thing as Needs approval. Auto-review lets xAI's checker decide whether you must see the action. Needs approval shows you a card every time. <a class="cite" href="sources.html#C06">C06</a></p>
+    <h3>6. Hypothesis <span class="chip rose">unproven</span></h3>
+    <div class="callout hyp">
+      <strong class="tag">Hypothesis</strong>
+      <p>Setting read tools to Always allow and send tools to Needs approval will cut surprise outbound messages without making the morning draft useless. The changelog defines the four levels. It does not publish a study of that split. Test it for five weekday mornings and count drafts you actually sent unchanged.</p>
+    </div>
+    <h3>7. When to use what</h3>
+    <ul class="clean">
+      <li>Use a Grok Bot routine when the work is outside the repo: mail, calendar, a deck, a recap.</li>
+      <li>Use a coding harness (Claude Code, Codex, Muse, Antigravity) when the artifact is a diff. Grok Bot's overview does not document a repo test loop.</li>
+      <li>Use Overheard when you want a quiet digest and an explicit never-post rule. <a class="cite" href="sources.html#C05">C05</a></li>
+    </ul>
+    <h3>8. One bounded next action</h3>
+    <p>Connect one mailbox. Set the send tool to Needs approval and the search tool to Always allow. Ask for one morning draft pass, not a standing routine, and send nothing the bot wrote until you have read it. If that single pass is useful, save it as a skill and only then attach a schedule.</p>
+    <h3>Check yourself</h3>
+    <ul class="quiz">
+      <li><details><summary>What happens to a routine when its connector is signed out?</summary><p>The 1.2.3 notes say it skips scheduled runs until you sign back in, and the reconnect card can also show up as a notification or a Slack or Teams DM. <a class="cite" href="sources.html#C07">C07</a></p></details></li>
+      <li><details><summary>Which sentence on this page is a vendor illustration rather than a measured business?</summary><p>The three-bot campaign handoff. It has no named operator. <a class="cite" href="sources.html#C02">C02</a></p></details></li>
+    </ul>
+  </section>
+</main>
+<footer class="foot"><div class="foot-in"><p><a href="claude.html">Claude</a> · <a href="gaps.html#g01">Gaps for this cluster</a> · <a href="prompts.html#grok">Grok prompts</a></p></div></footer>
+<script src="js/claims.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/site.js"></script>
+<script type="module" src="js/visuals.js"></script>
+</body>
+</html>

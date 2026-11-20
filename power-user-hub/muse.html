@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meta Muse Code: Power User Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,450;6..72,560&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@450;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="mark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#e0b15b" stroke-width="1.4"/><circle cx="16" cy="16" r="3.2" fill="#e0b15b"/></svg> Power User Hub</a>
+    <p class="asof">Checked 20 Nov 2026</p>
+    <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+  </nav>
+</header>
+<main id="main">
+  <p class="kicker">Cluster · Meta</p>
+  <h1>Muse Code is Meta's coding agent</h1>
+  <p class="lede">The subscription called Muse Code is not an Apple product and not the old game model. Meta shipped Muse Code in beta on 5 August 2026, powered by the Muse Spark family, with a terminal binary named <code>muse</code>. By 20 November 2026 the pricing page lists Spark 1.3 as well as 1.2 and 1.1. The docs page still says the default model string is <code>muse-spark-1.2</code>.</p>
+  <input id="pagefilter" type="search" placeholder="Filter this page" style="border:1px solid var(--line);background:var(--bg-2);border-radius:999px;padding:.4rem .8rem;">
+
+<section class="section" id="page-map">
+  <h2>See the shape first</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Muse's published inner loop, then a long run only if the plan holds.</figcaption>
+      <pre class="mermaid">flowchart LR
+  A["/plan waits for you"] --> B["/grill stress-tests the plan"]
+  B --> C["/goal runs toward the objective"]
+  C --> D[Event log]
+  D --> E[Resume after a crash]
+  F[Contributor mode] --> G[Training permission]
+  H[Standard mode] --> I[Higher token price]</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>Muse facts to keep apart.</figcaption>
+      <svg class="markmap-svg" aria-label="Muse facts to keep apart."></svg>
+      <script type="text/markmap"># Muse Code
+## Model ids
+### Docs default spark 1.2
+### Price list includes 1.3
+## Runtime
+### Background agents stay for the session
+### Replay exact event log
+### Sandbox on at first run
+## Money and data
+### Standard 1.25 and 4.25
+### Contributor is the subscription default
+### Contributor may train on your code</script>
+    </figure>
+  </div>
+  
+</section>
+
+  <section class="section" id="status">
+    <h2>Status</h2>
+    <table>
+      <thead><tr><th>Piece</th><th>As fetched</th></tr></thead>
+      <tbody>
+        <tr><td>Product</td><td>Muse Code, beta at launch, terminal and CI. Also a Model API for people building their own agent. <a class="cite" href="sources.html#C35">C35</a> <a class="cite" href="sources.html#C37">C37</a></td></tr>
+        <tr><td>Default model string in the docs</td><td><code>muse-spark-1.2</code> <a class="cite" href="sources.html#C37">C37</a></td></tr>
+        <tr><td>Models on the pricing page</td><td><code>muse-spark-1.3</code>, <code>1.2</code>, <code>1.1</code>, plus contributor variants of 1.3 and 1.2. Muse Wonder 1.0 is listed separately and is much more expensive. <a class="cite" href="sources.html#C38">C38</a></td></tr>
+        <tr><td>Install</td><td><code>curl -fsSL https://dev.meta.ai/install.sh | bash</code> on macOS or Linux. PowerShell: <code>irm https://dev.meta.ai/install.ps1 | iex</code>. Then <code>muse --version</code>. <a class="cite" href="sources.html#C35">C35</a> <a class="cite" href="sources.html#C37">C37</a></td></tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      <strong class="tag">Read this before you subscribe</strong>
+      <p>Contributor mode is the discount you pay for by letting Meta train on the prompts, code, files, context, and responses you send. The pricing page says Muse Code subscriptions default to Contributor mode, and that you can turn it off in settings. Standard Spark prices are $1.25 per million input tokens and $4.25 per million output tokens. Contributor prices are $0.10 and $0.20. For an engineer inside a bank, the default is the fact that matters. <a class="cite" href="sources.html#C38">C38</a></p>
+    </div>
+  </section>
+
+  <section class="section" id="miss">
+    <h2>What a chat window does not give you</h2>
+    <ul class="clean">
+      <li><strong>Persistent background agents.</strong> Meta's launch post says specialized background agents stay active for the whole session, instead of being spawned per task, and they choose when to talk to the main agent. <a class="cite" href="sources.html#C35">C35</a></li>
+      <li><strong>An event log that can resume.</strong> Every model call, tool run, approval, and edit is appended. After a crash the agent resumes where it stopped. Meta calls the runtime replay-exact and restart-safe. <a class="cite" href="sources.html#C35">C35</a></li>
+      <li><strong>Bundled skills with teeth.</strong> <code>/plan</code> is an approval-gated plan. <code>/grill</code> stress-tests the plan. <code>/goal</code> works toward a stated objective. <a class="cite" href="sources.html#C35">C35</a></li>
+      <li><strong>A sandbox and approvals from the first run.</strong> The docs say both are on immediately. First launch asks whether to trust the workspace, which is what loads skills, rules, and hooks. <a class="cite" href="sources.html#C37">C37</a></li>
+      <li><strong>Headless CI.</strong> <code>muse exec "..."</code> with <code>META_API_KEY</code>. Interactive <code>/login</code> is the other path. <a class="cite" href="sources.html#C37">C37</a></li>
+      <li><strong>Workflows and session messaging, with caveats.</strong> Workflows coordinate parallel and staged work only when that build includes the engine and the rollout is on. Session messaging, for handoffs between live sessions, is macOS and Linux, not Windows. Voice input is also absent on Windows. <a class="cite" href="sources.html#C37">C37</a></li>
+      <li><strong>A protocol, not only a TUI.</strong> <code>muse serve</code> speaks a versioned session protocol. <code>muse schema</code> prints JSON schema. <code>npm install @muse-code/sdk</code> wraps it. <a class="cite" href="sources.html#C37">C37</a></li>
+    </ul>
+  </section>
+
+  <section class="section" id="workflows">
+    <h2>Three workflows in Meta's own writing</h2>
+    <article class="wf">
+      <h3>1. Plan, grill, then a goal</h3>
+      <p>The bundled skills are the published inner loop. <code>/plan</code> stops for approval. <code>/grill</code> is the adversarial pass on that plan. <code>/goal</code> is the long run. Meta says Spark 1.2 was co-trained on this harness, including recipes for goals, compaction, and subagents. That is an argument for using the bundled skills rather than a novel prompt that fights the training. It is still Meta's argument. <a class="cite" href="sources.html#C35">C35</a> <a class="cite" href="sources.html#C36">C36</a></p>
+    </article>
+    <article class="wf">
+      <h3>2. A day-long kernel optimization</h3>
+      <p>Meta's case study: more than 1,000 tool calls, up to 24 hours, writing, compiling, and profiling GPU kernels against a baseline, on KDA and MLA kernels for NVIDIA Hopper. They say the agent kept improving on the baseline. The evaluation report linked from the post was not fetched, so the size of the speedup is not repeated here. The workflow shape is: a baseline, a profiler, a loop, a long event log. <a class="cite" href="sources.html#C36">C36</a></p>
+    </article>
+    <article class="wf">
+      <h3>3. Rebuild a page from a video, then check it in a browser</h3>
+      <p>The launch post describes a demo in which an mp4 fly-through of a house goes into the terminal and Muse Code produces a booking page, then validates the site in a browser. Treat it as a product demo. The transferable piece is the last step: validation in a browser, not the luxury-rental subject. <a class="cite" href="sources.html#C35">C35</a></p>
+    </article>
+  </section>
+
+  <section class="section" id="principles">
+    <h2>Principles you can take without adopting the brand</h2>
+    <ul class="clean">
+      <li>Co-train the model with the harness you will actually run, or at least use the harness the model was trained in. Meta states they did the first. <a class="cite" href="sources.html#C36">C36</a></li>
+      <li>A log you can replay is the state of the agent. Chat scrollback is a worse log because a crash throws it away. <a class="cite" href="sources.html#C35">C35</a></li>
+      <li>Background agents that live for the session avoid re-gathering the same facts. That is the same idea as Claude's complaint that a fresh subagent must re-gather context, solved by persistence instead of by keeping everything in the main window. <a class="cite" href="sources.html#C18">C18</a> <a class="cite" href="sources.html#C35">C35</a></li>
+      <li>Compaction is how a long horizon fits. Meta lists it next to planning and goal conditioning as the way Spark 1.2 holds a whole-repo task. <a class="cite" href="sources.html#C36">C36</a></li>
+    </ul>
+  </section>
+
+  <section class="section" id="against">
+    <h2>Strongest counterargument</h2>
+    <div class="callout against">
+      <strong class="tag">Adversarial</strong>
+      <p>The interesting engineering posts are Meta evaluating Meta. The kernel study has no public patch and no third-party rerun in this ledger. The docs/pricing mismatch (default 1.2 versus a listed 1.3) means "latest model" is not a single string. And the subscription default sends your code to training unless you change a setting. A frontier-lab interview loop cares about the second fact more than about the kernel demo.</p>
+    </div>
+  </section>
+
+  <section class="section" id="tutorial">
+    <h2>Tutorial · first session with training off and a plan gate</h2>
+    <h3>1. Question</h3>
+    <p>How do I run Muse Code on a real repo once, with Contributor mode off, and stop after a plan I can read?</p>
+    <h3>2. Facts</h3>
+    <p>Installer, trust prompt, default model id <code>muse-spark-1.2</code>, <code>/plan</code> approval gate, Contributor mode default, standard versus contributor prices. <a class="cite" href="sources.html#C37">C37</a> <a class="cite" href="sources.html#C38">C38</a> <a class="cite" href="sources.html#C35">C35</a></p>
+    <h3>3. Concepts</h3>
+    <p>Trusting the workspace loads skills, rules, and hooks. That is a capability grant, not a courtesy dialog. Contributor mode is a data grant. They are different switches and both default in the direction of more access for the tool.</p>
+    <h3>4. Loop</h3>
+    <ol class="steps">
+      <li><strong>Trigger.</strong> You, in a checkout you can throw away.</li>
+      <li><strong>Execute.</strong> <code>muse</code>, sign in, turn Contributor mode off before the task, then <code>/plan</code> on one bug.</li>
+      <li><strong>Verify.</strong> Read the plan. Do not say go until it names the test. The approval gate is the product's own pause. <a class="cite" href="sources.html#C35">C35</a></li>
+      <li><strong>State.</strong> If you continue later, the event log is what Meta says lets a crashed run resume. You still commit only what you have read. <a class="cite" href="sources.html#C35">C35</a></li>
+    </ol>
+    <h3>5. Conflicts</h3>
+    <p>Superpowers can also be installed as a Muse plugin (<code>muse plugins install</code>, then <code>muse plugins approve superpowers</code>). Superpowers says its workflows are mandatory. Muse's own skills are <code>/plan</code>, <code>/grill</code>, <code>/goal</code>. Running both means two planners. Pocock's README argues that frameworks which own the process take control away. Pick one planner for the week. <a class="cite" href="sources.html#C44">C44</a> <a class="cite" href="sources.html#C43">C43</a></p>
+    <h3>6. Hypothesis <span class="chip rose">unproven</span></h3>
+    <div class="callout hyp">
+      <strong class="tag">Hypothesis</strong>
+      <p>Spark 1.3 is the better coding default than the documented 1.2 string. The pricing page lists 1.3. The getting-started page still names 1.2. No changelog fetched here says 1.3 replaced 1.2 as the default. Check <code>muse</code> itself and the pricing page on the day you switch. <a href="gaps.html#g05">G05</a></p>
+    </div>
+    <h3>7. Decision support</h3>
+    <ul class="clean">
+      <li>You want Meta's harness and you can opt out of training: Muse Code, Contributor off, standard rates.</li>
+      <li>You are building your own agent and only need the model: the Model API, same price table, and you must pass <code>muse-spark-1.3-contributor</code> or <code>muse-spark-1.2-contributor</code> explicitly if you intend the cheap tier. <a class="cite" href="sources.html#C38">C38</a></li>
+      <li>You need session messaging between live Muse sessions: macOS or Linux, and a build where the feature exists. <a class="cite" href="sources.html#C37">C37</a></li>
+      <li>You want a design skill rather than a coding loop: Hallmark, which is a different author and works across harnesses. <a class="cite" href="sources.html#C45">C45</a></li>
+    </ul>
+    <h3>8. Bounded next action</h3>
+    <p>Install the binary. Before any task, open settings and turn Contributor mode off. Run <code>/plan</code> on a bug you already understand. Approve nothing. Compare the plan to the patch you would have written. That comparison is the evaluation.</p>
+    <ul class="quiz">
+      <li><details><summary>What does Contributor mode grant Meta?</summary><p>Permission to use prompts, code, files, context, and model responses to train future models. Subscriptions default to it. <a class="cite" href="sources.html#C38">C38</a></p></details></li>
+      <li><details><summary>Which skill is the approval gate?</summary><p><code>/plan</code>. <code>/grill</code> stress-tests the plan. <code>/goal</code> pursues the objective. <a class="cite" href="sources.html#C35">C35</a></p></details></li>
+    </ul>
+  </section>
+</main>
+<footer class="foot"><div class="foot-in"><p><a href="cross-cutting.html">Cross-cutting stack</a> · <a href="gaps.html#g05">Model-id gap</a></p></div></footer>
+<script src="js/claims.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/site.js"></script>
+<script type="module" src="js/visuals.js"></script>
+</body>
+</html>

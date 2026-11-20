@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prompt vault: Power User Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,450;6..72,560&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@450;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="mark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#e0b15b" stroke-width="1.4"/><circle cx="16" cy="16" r="3.2" fill="#e0b15b"/></svg> Power User Hub</a>
+    <p class="asof">Checked 20 Nov 2026</p>
+    <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+  </nav>
+</header>
+<main id="main">
+  <p class="kicker">Vault</p>
+  <h1>Prompts someone published</h1>
+  <p class="lede">Fourteen texts. Each one was on a page fetched for this hub. Vendor examples are marked vendor. They are not a customer's private prompt, and they are not "secret." If a prompt you hoped to see is missing, it was not found, and it is not invented here.</p>
+  <input id="pagefilter" type="search" placeholder="Filter prompts" style="border:1px solid var(--line);background:var(--bg-2);border-radius:999px;padding:.4rem .8rem;">
+
+<section class="section" id="page-map">
+  <h2>See the shape first</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Every vault item has a publisher. Vendor examples are not private prompts.</figcaption>
+      <pre class="mermaid">flowchart LR
+  A[Page fetched] --> B{Verbatim prompt on it?}
+  B -->|yes| C[Vault with attribution]
+  B -->|no| D[Do not invent one]
+  C --> E[Label vendor, docs, or author]</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>Where the 14 prompts came from.</figcaption>
+      <svg class="markmap-svg" aria-label="Where the 14 prompts came from."></svg>
+      <script type="text/markmap"># Prompt vault
+## xAI examples
+### P01 to P04
+## Anthropic docs
+### P05 to P07
+## Karpathy quote
+### P08 specimen, not a recommendation
+## Lauren Tan
+### P09 to P12
+## Hallmark
+### P13 redesign
+### P14 audit</script>
+    </figure>
+  </div>
+  
+</section>
+
+  <section class="section" id="grok">
+    <h2>xAI skill examples</h2>
+    <p>From the skills announcement. Vendor examples for document skills on Grok 4.3. <a class="cite" href="sources.html#C10">C10</a></p>
+    <article class="prompt"><header><span>P01 · vendor</span><span>xAI</span></header><p>Design a Leadership Strategic Thinking Workshop deck with exercises, frameworks, and takeaways.</p></article>
+    <article class="prompt"><header><span>P02 · vendor</span><span>xAI</span></header><p>Create a professional enterprise invoice for APEX-2026-0547 with line items, tax, and payment terms.</p></article>
+    <article class="prompt"><header><span>P03 · vendor</span><span>xAI</span></header><p>Create a monthly budget tracker with income, expenses, and savings projections.</p></article>
+    <article class="prompt"><header><span>P04 · vendor</span><span>xAI</span></header><p>Generate a PDF report on AI interpretability formatted for conference submission.</p></article>
+  </section>
+
+  <section class="section" id="claude">
+    <h2>Anthropic's documented rewrites</h2>
+    <p>From the Claude Code best-practices page. The page pairs each with a vague version you should not ship. <a class="cite" href="sources.html#C19">C19</a></p>
+    <article class="prompt"><header><span>P05 · official docs</span><span>Anthropic</span></header><p>users report login fails after the session times out. look at token refresh in src/auth/, write a failing test that reproduces it, then fix it</p></article>
+    <article class="prompt"><header><span>P06 · official docs</span><span>Anthropic</span></header><p>follow the pattern in HotDogWidget.php and build a calendar widget that lets you pick a month and page between years. no new libraries</p></article>
+    <article class="prompt"><header><span>P07 · official docs</span><span>Anthropic</span></header><p>build the settings page from the mockup. be ambitious: empty and error states, the save flow wired up, keyboard navigation, not just the layout</p></article>
+  </section>
+
+  <section class="section" id="karpathy">
+    <h2>Karpathy, as a specimen of vibe coding</h2>
+    <p>Quoted by Simon Willison, 6 February 2025. This is the practice he was describing, including the part where he does not read the diff. It is in the vault so you can recognize it, not so you can aim a production repo at it. <a class="cite" href="sources.html#C41">C41</a></p>
+    <article class="prompt"><header><span>P08 · quoted post</span><span>Andrej Karpathy</span></header><p>decrease the padding on the sidebar by half</p></article>
+  </section>
+
+  <section class="section" id="pstack">
+    <h2>Lauren Tan's published invocations</h2>
+    <p>From the pstack README. She presents them as the way she starts the router. <a class="cite" href="sources.html#C48">C48</a></p>
+    <article class="prompt"><header><span>P09 · author example</span><span>Lauren Tan</span></header><p>/poteto-mode this pr has a subtle bug where the scroll drifts every 750ms even when idle. repro first, then fix and verify.</p></article>
+    <article class="prompt"><header><span>P10 · author example</span><span>Lauren Tan</span></header><p>/poteto-mode i'm going to bed. land the stack even if ci flakes. i want everything merged by morning.</p></article>
+    <article class="prompt"><header><span>P11 · author example</span><span>Lauren Tan</span></header><p>/how do we cancel runs? do we have an n+1 when we look up every run to cancel?</p></article>
+    <article class="prompt"><header><span>P12 · author example</span><span>Lauren Tan</span></header><p>/interrogate review this pr.</p></article>
+  </section>
+
+  <section class="section" id="hallmark">
+    <h2>Hallmark verbs</h2>
+    <p>From the Hallmark README. The path is the README's example path. <a class="cite" href="sources.html#C45">C45</a></p>
+    <article class="prompt"><header><span>P13 · author example</span><span>Hassan El Mghari</span></header><p>/hallmark redesign ./src/app</p></article>
+    <article class="prompt"><header><span>P14 · author example</span><span>Hassan El Mghari</span></header><p>/hallmark audit ./index.html</p></article>
+  </section>
+
+  <section class="section" id="not-prompts">
+    <h2>Often quoted, and not a pasteable prompt</h2>
+    <p>Boris Cherny's plan-mode paragraph is a description of a habit: use Plan mode, go back and forth until he likes the plan, then auto-accept. It is not a prompt with slots. It is written up on the <a href="claude.html#workflows">Claude page</a>. <a class="cite" href="sources.html#C22">C22</a></p>
+    <p>Muse's <code>/plan</code>, <code>/grill</code>, and <code>/goal</code> are commands, not prompt texts. The launch post does not include the words you should type after them. <a class="cite" href="sources.html#C35">C35</a></p>
+  </section>
+</main>
+<footer class="foot"><div class="foot-in"><p>14 published texts. <a href="sources.html">Ledger</a> · <a href="gaps.html#g11">Prompts we refused to invent</a></p></div></footer>
+<script src="js/claims.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/site.js"></script>
+<script type="module" src="js/visuals.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Codex and dots: Power User Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,450;6..72,560&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@450;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="mark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#e0b15b" stroke-width="1.4"/><circle cx="16" cy="16" r="3.2" fill="#e0b15b"/></svg> Power User Hub</a>
+    <p class="asof">Checked 20 Nov 2026</p>
+    <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+  </nav>
+</header>
+<main id="main">
+  <p class="kicker">Cluster · OpenAI</p>
+  <h1>Codex and dots</h1>
+  <p class="lede">"Dots" is not a nickname for config files. OpenAI's dots are always-on ChatGPT agents with their own computer. Codex is the coding product they can delegate to. The CLI build fetched for this page is 0.171.0, released 20 November 2026, with GPT-6.2 Sol as the default catalog selection.</p>
+  <input id="pagefilter" type="search" placeholder="Filter this page" style="border:1px solid var(--line);background:var(--bg-2);border-radius:999px;padding:.4rem .8rem;">
+
+<section class="section" id="page-map">
+  <h2>See the shape first</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>A dot keeps the responsibility. Codex does the repo work.</figcaption>
+      <pre class="mermaid">flowchart LR
+  A[Chat] --> B[Answer in the thread]
+  C[ChatGPT Work] --> D[A file or a research task]
+  E[Codex CLI 0.171] --> F[Diff, tests, review]
+  G[Your dot] --> H[Ongoing responsibility]
+  H --> C
+  H --> E
+  I["~/.codex config"] --> E</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>Two meanings of dot.</figcaption>
+      <svg class="markmap-svg" aria-label="Two meanings of dot."></svg>
+      <script type="text/markmap"># Codex and dots
+## Product: dots
+### Cloud computer
+### Read-only proactive research
+### Delegates to Codex
+### GPT-6 Astra then Terra
+## CLI
+### 0.171.0
+### GPT-6.2 Sol default
+### AGENTS.md chain
+### Skills paged at about 2 percent
+## Person
+### Thibault Sottiaux
+### AGENTS.md guide merged Oct 2025</script>
+    </figure>
+  </div>
+  
+</section>
+
+  <section class="section" id="dots">
+    <h2>Verdict on dots</h2>
+    <p>The launch post is dated 29 September 2026. An update on the same page, 3 November 2026, adds GPT-6.1 Terra. The original post says dots are powered by GPT-6 Astra and can draw on different models for different parts of the work. They have a cloud computer and browser, plugins to more than 4,000 apps, and channels in ChatGPT, Slack, and Teams, with texting described as coming later. <a class="cite" href="sources.html#C28">C28</a></p>
+    <p>OpenAI's own comparison, echoed on the learn site: Chat is for an answer in conversation. ChatGPT Work is a delegated task such as research or a file. Codex is for building, debugging, testing, and reviewing software. A dot is for an ongoing responsibility that follows up between conversations and can delegate to Work or Codex. <a class="cite" href="sources.html#C29">C29</a></p>
+    <p>There is a second, older meaning of "dot" in the Codex CLI: the home directory <code>~/.codex</code> and <code>config.toml</code>. Mert Özen's November walkthrough uses that directory. It is configuration, not the product named dots. Both meanings are real. The product is the one OpenAI capitalized a launch around. <a class="cite" href="sources.html#C33">C33</a></p>
+  </section>
+
+  <section class="section" id="status">
+    <h2>Codex CLI 0.171.0</h2>
+    <p>GitHub release <code>rust-v0.171.0</code>, published 20 November 2026, matches the ChatGPT changelog entry of the same day. New in that release: GPT-6.2 Sol and Astra in the model catalog, Sol as the default catalog selection; the TUI workspace on by default, with document previews, image previews, and subagent transcripts beside the conversation; <code>codex exec --remote</code>; <code>/rc</code> and <code>/remote</code> for local remote control and device pairing codes; custom MCP status lines through <code>/statusline</code> when the flag is on. <a class="cite" href="sources.html#C32">C32</a></p>
+    <pre><code>npm install -g @openai/codex@0.171.0</code></pre>
+    <p>That install line is the changelog's. Pin the version if you need this exact build.</p>
+  </section>
+
+  <section class="section" id="miss">
+    <h2>What regular users miss</h2>
+    <ul class="clean">
+      <li><strong>The dot is not the coding agent.</strong> Asking a dot to "build the feature" is supposed to become a Codex task, which then counts against usage. Talking to the dot does not, according to the launch post. <a class="cite" href="sources.html#C29">C29</a></li>
+      <li><strong>Proactive research is read-only.</strong> When you are not actively working with it, the dot looks for ways to help using tools that cannot send, change app content, or control your browser or computer. Writes go through auto-review, Custom Rules, and, for some actions, you. Changing a password stays with you. <a class="cite" href="sources.html#C29">C29</a></li>
+      <li><strong>You can open the dot's computer.</strong> The launch post says you can inspect its work, and you can optionally connect your own laptop. The default is a separate machine. <a class="cite" href="sources.html#C28">C28</a></li>
+      <li><strong>AGENTS.md is a chain, not a single file.</strong> Özen, citing the docs for CLI 0.169.0 on 15 November, describes a global file, then one file per directory from the repo root down, closer file later, and a default 32 KiB cap after which further files are dropped. Nested instructions are the documented way to stay under the cap. <a class="cite" href="sources.html#C33">C33</a></li>
+      <li><strong>Skills are paged.</strong> A skill is a folder with <code>SKILL.md</code>. Codex ships <code>skill-creator</code> and <code>skill-installer</code>. Discovery paths he reports: <code>.agents/skills</code> walking up to the repo root, and <code>~/.agents/skills</code>. The model first sees name, description, and path, with a default budget of 2% of the context window. <a class="cite" href="sources.html#C33">C33</a></li>
+      <li><strong>Remote control from the TUI.</strong> <code>/remote</code> and <code>codex exec --remote</code> are in 0.171.0. That is the "my session is not stuck on this laptop" path for Codex itself, distinct from a dot. <a class="cite" href="sources.html#C32">C32</a></li>
+    </ul>
+  </section>
+
+  <section class="section" id="workflows">
+    <h2>Three workflows</h2>
+    <article class="wf">
+      <h3>1. A dot watches feedback and opens Codex PRs</h3>
+      <p>OpenAI's developer scenario: the dot watches customer feedback for recurring requests, scopes smaller fixes, builds and tests them, and brings complete pull requests with videos. You keep building the next feature. This is a launch-post scenario. No repository is named. <a class="cite" href="sources.html#C28">C28</a> <a class="cite" href="sources.html#C31">C31</a></p>
+    </article>
+    <article class="wf">
+      <h3>2. Invoice caught between conversations</h3>
+      <p>The same post says an early tester's dot noticed a missed invoice, prepared it, and sent it after approval. The tester is unnamed. Confidence on this as a business result is low. The permission shape is the part you can copy: prepare, then wait. <a class="cite" href="sources.html#C31">C31</a></p>
+    </article>
+    <article class="wf">
+      <h3>3. Teach the repo with a chain of AGENTS.md files</h3>
+      <p>Thibault Sottiaux (GitHub <code>tibo-openai</code>) merged the AGENTS.md discovery guide into openai/codex on 19 October 2025. Özen's later walkthrough says the closer file wins and the global file affects every repo, so a project rule does not belong only in the global file. Put the rule next to the code it governs, and keep the combined text under 32 KiB or raise the cap on purpose. <a class="cite" href="sources.html#C34">C34</a> <a class="cite" href="sources.html#C33">C33</a></p>
+    </article>
+  </section>
+
+  <section class="section" id="people">
+    <h2>Who we can name</h2>
+    <p>Tibo's verified public artifact in this pass is the documentation pull request, plus a GitHub profile whose name is Thibault Sottiaux. A 2026 talk transcript of his daily Codex routine was not fetched. See his <a href="profiles.html#tibo">profile card</a> and <a href="gaps.html#g06">G06</a>.</p>
+    <p>Matt Pocock's skills install into Codex with the commands in his README: <code>codex plugin marketplace add mattpocock/skills</code> and <code>codex plugin add mattpocock-skills@mattpocock</code>. Hallmark lands in <code>~/.agents/skills/hallmark</code> and is invoked as <code>$hallmark</code>. <a class="cite" href="sources.html#C43">C43</a> <a class="cite" href="sources.html#C45">C45</a></p>
+  </section>
+
+  <section class="section" id="against">
+    <h2>Strongest counterargument</h2>
+    <div class="callout against">
+      <strong class="tag">Adversarial</strong>
+      <p>Dots and Duet launched as the same shape: a proactive cloud computer that nags you. OpenAI's evidence that this produces shipped software is a paragraph of internal color and one anonymous invoice. The engineering substance that survives that skepticism is the CLI release, the AGENTS.md chain, and the usage split between chatter and delegated Codex tasks. If you only remember one control, remember that delegated coding still spends your Codex allowance.</p>
+    </div>
+  </section>
+
+  <section class="section" id="tutorial">
+    <h2>Tutorial · a repo Codex can enter without a novel</h2>
+    <h3>1. Question</h3>
+    <p>How do I set up one repository so Codex CLI 0.169 or newer follows local rules, finds a skill only when it is relevant, and can be reviewed by me before anything merges?</p>
+    <h3>2. Facts</h3>
+    <p>Instruction chain and 32 KiB cap, skill paging at about 2% of context, Sol as the 0.171.0 catalog default, and the rule that a dot's Codex tasks consume usage. Özen's post is secondary; the CLI release is primary. <a class="cite" href="sources.html#C32">C32</a> <a class="cite" href="sources.html#C33">C33</a> <a class="cite" href="sources.html#C29">C29</a></p>
+    <h3>3. Concepts</h3>
+    <p>AGENTS.md is the resident manual. A skill is a program you do not map into RAM until the description matches. The 2% budget is why a 40-skill "load everything" repo makes the model worse at the skill you wanted: the index itself is the cost. Config in <code>~/.codex</code> is yours; a dot is a different product that may call this CLI's cloud cousin.</p>
+    <h3>4. Loop</h3>
+    <ol class="steps">
+      <li><strong>Trigger.</strong> You, or a dot you have told to open a Codex task.</li>
+      <li><strong>Execute.</strong> Codex reads the chain from root to working directory, then the skill index.</li>
+      <li><strong>Verify.</strong> You read the diff. Auto-review on a dot is not a substitute for that read. Password changes and other sensitive actions stay human even in the dots design. <a class="cite" href="sources.html#C29">C29</a></li>
+      <li><strong>State.</strong> When a rule was ignored because it lived in a global file and a closer file contradicted it, move the rule down the chain. Özen's reading of the docs says the closer file wins. <a class="cite" href="sources.html#C33">C33</a></li>
+    </ol>
+    <h3>5. Conflicts</h3>
+    <p>People say "dotfiles" and mean <code>~/.codex</code>. OpenAI says "your dot" and means an agent. Using one word for both will make a runbook dangerous. Also, Özen checked 0.169.0 on 15 November. 0.171.0 shipped five days later. The release notes fetched here do not say the AGENTS.md chain changed. They also do not repeat the 32 KiB number. Treat the cap as secondary until you confirm it on your build.</p>
+    <h3>6. Hypothesis <span class="chip rose">unproven</span></h3>
+    <div class="callout hyp">
+      <strong class="tag">Hypothesis</strong>
+      <p>A dot that only opens Codex tasks for bugs with a failing test in the prompt will outperform a dot allowed to "improve the app." The launch post describes the happy path and does not test the constraint. The constraint matches Anthropic's documented bug prompt, which is a different vendor. <a class="cite" href="sources.html#C19">C19</a></p>
+    </div>
+    <h3>7. Decision support</h3>
+    <ul class="clean">
+      <li>You are editing code now: Codex CLI or the Codex app, not a chat with a dot.</li>
+      <li>You want something remembered across days and handed to Codex when it becomes code: a dot, on a plan and in a region that has it. First dot included for Pro and Business Premium in the launch post. <a class="cite" href="sources.html#C30">C30</a></li>
+      <li>You want a methodology inside the CLI: Pocock's skills or Superpowers, installed for Codex specifically. Pocock warns that installing both the plugin and a skills.sh copy duplicates every skill. <a class="cite" href="sources.html#C43">C43</a></li>
+    </ul>
+    <h3>8. Bounded next action</h3>
+    <p>In one repo, add a root <code>AGENTS.md</code> of under half a page: how to test, which directory not to edit, and what "done" means. Run a single Codex task that must cite that file's test command in its final note. If it cannot, the chain is not being read, and adding more skills will not fix it.</p>
+    <ul class="quiz">
+      <li><details><summary>Do conversations with a dot spend ChatGPT usage, according to the launch post?</summary><p>No. Codex or ChatGPT Work tasks that the dot starts do. <a class="cite" href="sources.html#C29">C29</a></p></details></li>
+      <li><details><summary>Who merged the AGENTS.md discovery guide, and when?</summary><p>Thibault Sottiaux, GitHub tibo-openai, on 19 October 2025. <a class="cite" href="sources.html#C34">C34</a></p></details></li>
+    </ul>
+  </section>
+</main>
+<footer class="foot"><div class="foot-in"><p><a href="muse.html">Muse</a> · <a href="profiles.html#tibo">Tibo</a> · <a href="repos.html">Skill installs</a></p></div></footer>
+<script src="js/claims.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/site.js"></script>
+<script type="module" src="js/visuals.js"></script>
+</body>
+</html>

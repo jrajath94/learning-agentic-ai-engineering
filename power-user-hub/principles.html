@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Engineering principles: Power User Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,450;6..72,560&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@450;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="mark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#e0b15b" stroke-width="1.4"/><circle cx="16" cy="16" r="3.2" fill="#e0b15b"/></svg> Power User Hub</a>
+    <p class="asof">Checked 20 Nov 2026</p>
+    <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+  </nav>
+</header>
+<main id="main">
+  <p class="kicker">Harness model</p>
+  <h1>Context is RAM. Tools are syscalls. Skills are programs. Evals are verifiers.</h1>
+  <p class="lede">This mapping is a teaching frame. Each box is tied to a sentence a vendor or an author actually published. Where the frame goes past those sentences, it says so.</p>
+
+<section class="section" id="page-map">
+  <h2>See the shape first</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Harness model. Context is addressable memory. A tool call leaves it.</figcaption>
+      <pre class="mermaid">flowchart TB
+  subgraph ram [Context as RAM]
+    M[CLAUDE.md or AGENTS.md resident]
+    K[Skill body paged in]
+  end
+  subgraph sys [Tools as syscalls]
+    H[Hook or deny rule]
+    P[Permission level]
+  end
+  ram --> sys
+  sys --> V[Verifier that did not write the patch]
+  V --> R[Git, glossary, or event log]</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>The four nouns.</figcaption>
+      <svg class="markmap-svg" aria-label="The four nouns."></svg>
+      <script type="text/markmap"># Harness
+## Context is RAM
+### Resident instructions
+### Paged skills
+### Subagent summary
+## Tools are syscalls
+### Hooks
+### Grok tool levels
+### MCP bearer token
+## Skills are programs
+### Pocock small tools
+### Superpowers mandatory sequence
+### pstack router
+## Evals are verifiers
+### Failing test
+### Fresh context
+### Human merge</script>
+    </figure>
+  </div>
+  
+</section>
+
+  <section class="section" id="ram">
+    <h2>Context is RAM</h2>
+    <p>What sits in the window is what the model can address this turn. Anthropic's skills docs say the body of a skill stays out until the task needs it, while CLAUDE.md is resident. Codex, in Özen's reading of the docs, shows the model only a skill's name, description, and path, inside a default 2% budget, and drops AGENTS.md content past 32 KiB. MCP's July 2026 spec adds cache hints and a stable list order so a tool catalog does not bust the prompt cache on every reconnect. pstack tells you to keep descriptions short enough that the router fits. <a class="cite" href="sources.html#C18">C18</a> <a class="cite" href="sources.html#C33">C33</a> <a class="cite" href="sources.html#C39">C39</a></p>
+    <p>Subagents are a second address space. They return a summary so the search log does not stay resident. The cost is that they re-fetch what the parent already knew, which is why Muse's persistent background agents are an alternative design: keep the worker's RAM warm for the session. <a class="cite" href="sources.html#C18">C18</a> <a class="cite" href="sources.html#C35">C35</a></p>
+    <p>Caveman is a compressor in front of that RAM. The author is explicit that a one-line "be concise" instruction already does much of the output cut. Compression of tool output is the larger claim, and it is his measurement. <a class="cite" href="sources.html#C46">C46</a></p>
+  </section>
+
+  <section class="section" id="syscalls">
+    <h2>Tools are syscalls</h2>
+    <p>A tool call is the model leaving its address space. The harness decides whether the call is legal. Anthropic draws that line in a table: the model may choose; the hook, the deny rule, and the sandbox must run. Grok Bot 1.2.3 makes the same idea visible as four levels on every connector tool. Duet and dots put a human ack on send, pay, sign, and delete, and they name a few calls that are illegal even with an ack. MCP tools are the portable syscall table, authorized with a bearer token on every HTTP request when you use the HTTP spec, or with environment credentials for stdio. <a class="cite" href="sources.html#C17">C17</a> <a class="cite" href="sources.html#C06">C06</a> <a class="cite" href="sources.html#C12">C12</a> <a class="cite" href="sources.html#C40">C40</a></p>
+    <p>A prompt that says "never send" is a comment above the syscall. The permission level is the syscall filter. Use both, and do not pretend the comment is the filter.</p>
+  </section>
+
+  <section class="section" id="programs">
+    <h2>Skills are programs</h2>
+    <p>A skill is a folder with a name, a description the scheduler matches, and a body that is the program. Claude Code, Codex, Cursor, Muse, and the <code>npx skills</code> installer all speak variants of that shape. <a class="cite" href="sources.html#C20">C20</a> <a class="cite" href="sources.html#C33">C33</a> <a class="cite" href="sources.html#C43">C43</a></p>
+    <p>Programs differ in how hard they seize the scheduler:</p>
+    <ul class="clean">
+      <li>Pocock: small programs you invoke, especially <code>/grill-me</code> before you let anything else run. He argues against a framework that owns the process. <a class="cite" href="sources.html#C43">C43</a></li>
+      <li>Superpowers: a program that runs at session start and insists on its sequence. <a class="cite" href="sources.html#C44">C44</a></li>
+      <li>pstack: one router, <code>/poteto-mode</code>, which selects a playbook and calls the other programs. <a class="cite" href="sources.html#C47">C47</a></li>
+      <li>Muse: three builtins, <code>/plan</code>, <code>/grill</code>, <code>/goal</code>, co-trained with the model. <a class="cite" href="sources.html#C35">C35</a></li>
+      <li>Grok: save a demonstrated task as a skill and schedule it. <a class="cite" href="sources.html#C03">C03</a></li>
+      <li>Hallmark: a program that refuses to run on an existing design unless you name it, because the author does not want it restyling a system you already have. <a class="cite" href="sources.html#C45">C45</a></li>
+    </ul>
+  </section>
+
+  <section class="section" id="verifiers">
+    <h2>Evals are verifiers, and the author is not one</h2>
+    <p>Anthropic's table puts "Claude's summary of what it did" in the column the model controls, and "a person who approves the merge" in the column the harness and the org control. Superpowers names verification-before-completion and deletes implementation that preceded a failing test. pstack's interrogate drops findings that a run does not prove. Boris's January practice had a browser extension iterate until the UI matched. Meta's kernel study used a profiler against a baseline, which is a verifier even though the study is Meta grading Meta. Karpathy's vibe-coding description is the negative example: no read of the diff, so no verifier. <a class="cite" href="sources.html#C49">C49</a> <a class="cite" href="sources.html#C44">C44</a> <a class="cite" href="sources.html#C48">C48</a> <a class="cite" href="sources.html#C22">C22</a> <a class="cite" href="sources.html#C36">C36</a> <a class="cite" href="sources.html#C41">C41</a></p>
+    <p>A second model is a verifier only if it can falsify the claim. A second model that rewrites the patch is another author. /btw in Antigravity is documented as read-only, which is the right shape for a question that must not become a second author mid-flight. <a class="cite" href="sources.html#C25">C25</a></p>
+  </section>
+
+  <section class="section" id="loop">
+    <h2>Trigger, execute, verify, state</h2>
+    <p>The loop is the operating discipline that falls out of the four boxes. The <a href="cross-cutting.html#loop">stack page</a> maps it onto each product. In one line: something starts the run, the model spends a bounded context calling tools, a check that the model does not grade itself decides whether the run counts, and a durable store (git, CLAUDE.md, AGENTS.md, an event log, a skill) changes so the next run is not amnesiac.</p>
+    <p>Skipping state is how teams re-teach the same mistake. Boris's team wrote the mistake into CLAUDE.md during review. Pocock's grill-with-docs writes the noun into a glossary. Muse writes the trace into an event log so a crash is not a forgotten lesson. Those are three stores. Pick the one your harness actually reloads. <a class="cite" href="sources.html#C22">C22</a> <a class="cite" href="sources.html#C43">C43</a> <a class="cite" href="sources.html#C35">C35</a></p>
+  </section>
+
+  <section class="section" id="graph">
+    <h2>Graph thinking</h2>
+    <p>A task is a graph of decisions and file writes. Sequential edges are data dependencies: the test's shape depends on the plan, the patch depends on the failing test. Parallel edges are slices with no shared write. The products that grew up in 2026 all grew a primitive for the parallel edges: subagents, swarms, background agents, separate checkouts, message boards. They also grew a primitive for the sequential edges: plan mode, /plan, Orchestrator, brainstorming-before-code.</p>
+    <p>The failure mode is scheduling a parallel primitive on a sequential edge. Five agents in one checkout, which Boris avoided. A swarm editing one module. Three proactive agents drafting the same email. The fix is to draw the edge before you pick the primitive. That drawing is the plan.</p>
+  </section>
+
+  <section class="section" id="selftest">
+    <h2>Self-test</h2>
+    <ul class="quiz">
+      <li><details><summary>Name the resident set and the paged set in Claude Code.</summary><p>CLAUDE.md is resident. Skill bodies are paged. Subagent transcripts stay in the child; the parent keeps the summary. <a class="cite" href="sources.html#C18">C18</a></p></details></li>
+      <li><details><summary>Which of these is a syscall filter: a CLAUDE.md sentence, a Grok tool set to Blocked, a skill description?</summary><p>The Blocked tool. The other two are instructions and scheduler hints. <a class="cite" href="sources.html#C06">C06</a></p></details></li>
+      <li><details><summary>Why is the model's "done" not an eval?</summary><p>Anthropic puts that summary in the non-deterministic column. An eval is a test, a hook, a prover run, or a person with merge rights. <a class="cite" href="sources.html#C49">C49</a></p></details></li>
+    </ul>
+  </section>
+</main>
+<footer class="foot"><div class="foot-in"><p><a href="cross-cutting.html">Apply this to a stack</a> · <a href="repos.html">The programs you can install</a></p></div></footer>
+<script src="js/claims.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/site.js"></script>
+<script type="module" src="js/visuals.js"></script>
+</body>
+</html>

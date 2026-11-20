@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude, Claude Code, and Claude Duet: Power User Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,450;6..72,560&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@450;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <a class="mark" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#e0b15b" stroke-width="1.4"/><circle cx="16" cy="16" r="3.2" fill="#e0b15b"/></svg> Power User Hub</a>
+    <p class="asof">Checked 20 Nov 2026</p>
+    <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+  </nav>
+</header>
+<main id="main">
+  <p class="kicker">Cluster · Anthropic</p>
+  <h1>Claude, Claude Code, and Claude Duet</h1>
+  <p class="lede">Claude Duet is real. It is a research-preview app, opened 23 October 2026, in which Claude comes to you. Claude Code is the coding harness: skills, hooks, subagents, and a documented split between advice the model may ignore and rules the harness enforces.</p>
+  <input id="pagefilter" type="search" placeholder="Filter this page" style="border:1px solid var(--line);background:var(--bg-2);border-radius:999px;padding:.4rem .8rem;">
+
+<section class="section" id="page-map">
+  <h2>See the shape first</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Plan, test, then a person merges. The model summary is not the gate.</figcaption>
+      <pre class="mermaid">flowchart TD
+  A[Name the symptom and the test] --> B[Plan until the files are explicit]
+  B --> C[Edit in one checkout]
+  C --> D[Watch the test fail, then pass]
+  D --> E[Second context reviews the diff]
+  E --> F[Person merges]
+  F --> G[Write the lesson into CLAUDE.md or a hook]</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>Two Claude surfaces.</figcaption>
+      <svg class="markmap-svg" aria-label="Two Claude surfaces."></svg>
+      <script type="text/markmap"># Claude
+## Claude Code
+### Skills paged in
+### Hooks enforced
+### Subagents
+### CLAUDE.md
+## Claude Duet
+### Opus 5.5
+### Morning brief
+### Approval before send
+### Research preview
+## Boris Cherny
+### 2 Jan 2026 coding setup
+### 23 Oct 2026 walk notes</script>
+    </figure>
+  </div>
+  
+</section>
+
+  <section class="section" id="duet">
+    <h2>What Duet is</h2>
+    <p>Anthropic's 23 October 2026 article opens a waitlist for US Pro, Max, and Ultra subscribers. Duet is a standalone app on iOS, Android, and claude.ai, separate from the main Claude app during the preview. It uses the plan's usage limits. It is built around Claude Opus 5.5. <a class="cite" href="sources.html#C11">C11</a> <a class="cite" href="sources.html#C12">C12</a></p>
+    <p>The help center adds limits a launch headline leaves out: you cannot pick a model; Team and Enterprise are not in the preview; it cannot see all of your projects or the files on your computer; it cannot show you its browser; Personal Finance is unavailable. Finished files show up in a Make tab. <a class="cite" href="sources.html#C16">C16</a> <a class="cite" href="sources.html#C13">C13</a></p>
+    <p>It checks connected accounts every few hours, because continuous checking would burn the plan faster. Before send, pay, sign, or delete, it is supposed to show you the action and wait. Trading securities and moving money stay off-limits even if you approve. <a class="cite" href="sources.html#C12">C12</a></p>
+  </section>
+
+  <section class="section" id="status">
+    <h2>Claude Code status</h2>
+    <p>This pass did not capture a Claude Code CLI semver from a changelog. What was fetched, on 20 November 2026, is the current best-practices, skills, subagents, and hooks documentation. Those pages describe the harness a power user is supposed to configure. The exact build number is <a href="gaps.html#g03">G03</a>.</p>
+    <p>Boris Cherny's widely copied setup is dated <strong>2 January 2026</strong> by the id of the post. In it he says he used <strong>Opus 4.5 with thinking</strong>. Duet, ten months later, is specified as Opus 5.5. Copying the January model name into a November session is a stale instruction. <a class="cite" href="sources.html#C22">C22</a> <a class="cite" href="sources.html#C12">C12</a></p>
+  </section>
+
+  <section class="section" id="miss">
+    <h2>What regular users miss</h2>
+    <ul class="clean">
+      <li><strong>Deterministic versus non-deterministic.</strong> A prompt, CLAUDE.md, and a skill are advice. A hook, a deny rule, or a managed setting is the harness. If you keep adding emphasis and the model still misses the line, Anthropic says that line belongs in a hook. <a class="cite" href="sources.html#C17">C17</a></li>
+      <li><strong>Skills instead of a bloated CLAUDE.md.</strong> The name and description sit in context; the body loads when the task needs it. A release procedure in CLAUDE.md taxes every unrelated bugfix. <a class="cite" href="sources.html#C18">C18</a></li>
+      <li><strong>Subagents as context management.</strong> Use them for parallel slices, for noisy test logs, and for a reviewer who did not watch the code get written. They spend the same usage budget, and a fresh subagent re-gathers context, so they can be slower. <a class="cite" href="sources.html#C18">C18</a> <a class="cite" href="sources.html#C20">C20</a></li>
+      <li><strong>A check that defines done.</strong> Tests, typecheck, a Stop hook, CI. The model's own summary is the non-deterministic column. Branch protection and a person approving the merge are the last word. <a class="cite" href="sources.html#C21">C21</a> <a class="cite" href="sources.html#C49">C49</a></li>
+      <li><strong>Specific prompts.</strong> Name the symptom, the file, and what fixed looks like. "Be ambitious" is documented as a scope hint, because the model otherwise builds the smallest thing that satisfies the ask. "Think step by step" does not raise the effort level. <a class="cite" href="sources.html#C19">C19</a></li>
+      <li><strong>Duet for work that is not a repo.</strong> Morning brief, a cloud VM, marketplace connectors Anthropic counts above 6,000. Coding stays in Claude Code unless you are handing Duet a stated task such as a prototype. <a class="cite" href="sources.html#C13">C13</a></li>
+    </ul>
+  </section>
+
+  <section class="section" id="workflows">
+    <h2>Three source-grounded workflows</h2>
+    <article class="wf">
+      <h3>1. Boris Cherny, 2 January 2026, coding</h3>
+      <p>From his own post, mirrored on Thread Reader and echoed by InfoQ. He described the setup as surprisingly vanilla.</p>
+      <ol class="steps">
+        <li>Five local terminal sessions, each its own git checkout, plus five to ten on claude.ai/code. Hand off with <code>&amp;</code>, move with <code>--teleport</code>, start some from the phone.</li>
+        <li>Plan mode until the plan is one he likes. Then auto-accept edits. He wrote that a good plan lets Claude one-shot the PR.</li>
+        <li>A shared CLAUDE.md in git, about 2.5k tokens, updated when Claude does something wrong. He tagged <code>@.claude</code> on coworkers' PRs.</li>
+        <li>Slash commands for the inner loop, including <code>/commit-push-pr</code>, with inline bash so the command does not spend a turn rediscovering git status. Subagents for simplify and for end-to-end verify.</li>
+        <li>A PostToolUse hook running the formatter. Permissions pre-allow safe commands. <code>--dangerously-skip-permissions</code> only inside a sandbox for long tasks.</li>
+        <li>Verification: Claude drives the Chrome extension against claude.ai/code and iterates until the UI works. He called the feedback loop the difference of a factor of two or three, in the InfoQ echo of the thread.</li>
+      </ol>
+      <p><a class="cite" href="sources.html#C22">C22</a> <a class="cite" href="sources.html#C50">C50</a></p>
+    </article>
+    <article class="wf">
+      <h3>2. Boris Cherny, 23 October 2026, not at the desk</h3>
+      <p>Anthropic's Duet article says he talks through his mental to-do list with Duet on walks, instead of saving the work for his desk. That is one sentence. It does not say he replaced the five-tab coding setup. <a class="cite" href="sources.html#C14">C14</a></p>
+    </article>
+    <article class="wf">
+      <h3>3. Named small-business preview users</h3>
+      <ul class="clean">
+        <li>Jess Provencher, broker and owner of Pro Homes: a morning rundown flagged a showing on the wrong day. Her quoted line is that this is the kind of thing she wants caught without having to ask.</li>
+        <li>Amin Ebrahimi, owner of Shahs of Kabob, about 110 employees: accounting, customer support, marketing, invoices store by store. Quoted: it brings it all together; he does not need a hundred tabs.</li>
+        <li>Mya Dalton, brand strategist: Duet saw a client call, prepared a brief, noticed the call sat before a flight, and offered to move it.</li>
+      </ul>
+      <p>Chelsea Larsson hands Duet her list before she leaves for her kids and reads an evening report. Karan Ahuja, who leads the Duet team, is described as using it to schedule interviews, prototype, and ship code. All of this is Anthropic's launch copy. <a class="cite" href="sources.html#C14">C14</a> <a class="cite" href="sources.html#C15">C15</a></p>
+    </article>
+  </section>
+
+  <section class="section" id="against">
+    <h2>Strongest counterargument</h2>
+    <div class="callout against">
+      <strong class="tag">Adversarial</strong>
+      <p>The January post is the best public coding diary in this cluster, and it is ten months old relative to Duet and Opus 5.5. The October business stories are selected quotes with no artifacts. A bank engineer should not treat "ship code with Duet" or "110 employees on Duet" as a procedure. The durable, still-current document is the best-practices page: put facts Claude cannot see into CLAUDE.md, put procedures into skills, put non-negotiables into hooks, and do not let the model certify its own PR.</p>
+    </div>
+  </section>
+
+  <section class="section" id="tutorial">
+    <h2>Tutorial · plan, implement, and refuse self-certification</h2>
+    <h3>1. Original question</h3>
+    <p>How do I get Claude Code through a real bugfix without trusting the sentence "done"?</p>
+    <h3>2. Facts</h3>
+    <ul class="clean">
+      <li>Anthropic's rewrite of a vague bug prompt names the symptom, the directory, a failing test, and then the fix. <a class="cite" href="sources.html#C19">C19</a></li>
+      <li>Plan-then-auto-accept is Boris's January practice, not a 20 Nov 2026 guarantee. <a class="cite" href="sources.html#C22">C22</a></li>
+      <li>A Stop hook or CI is deterministic. The model's summary is not. <a class="cite" href="sources.html#C49">C49</a></li>
+      <li>A reviewer subagent has not watched the code being written. <a class="cite" href="sources.html#C18">C18</a></li>
+    </ul>
+    <h3>3. Concepts</h3>
+    <p>Context is the RAM of the session. Stuffing the whole release runbook into CLAUDE.md is a resident program you never page out. A skill is a program loaded on demand. A hook is a syscall the model does not get to skip. The verifier is a test or a second context, not the author of the patch.</p>
+    <h3>4. Loop</h3>
+    <ol class="steps">
+      <li><strong>Trigger.</strong> A failing test or a user report you can point at.</li>
+      <li><strong>Execute.</strong> Plan mode until the plan names files and the test. Then let it edit.</li>
+      <li><strong>Verify.</strong> The new test fails before the fix and passes after. A subagent reviews the diff without the implementation transcript. You read the diff.</li>
+      <li><strong>State.</strong> If the model repeated a project-specific mistake, add one line to CLAUDE.md or, if it must always happen, a hook. Boris's team did the CLAUDE.md half in git. <a class="cite" href="sources.html#C22">C22</a></li>
+    </ol>
+    <h3>5. Conflicts</h3>
+    <p>Best practices say current models often do the right thing with a plain first prompt, and also say a specific prompt saves a round of corrections. Both can be true: the plain prompt is enough when the repo contains the constraint; the specific prompt is for the constraint that is only in your head. Parallel sessions need separate checkouts, which is what Boris wrote, because one working tree shared by five agents is a race.</p>
+    <h3>6. Hypothesis <span class="chip rose">unproven</span></h3>
+    <div class="callout hyp">
+      <strong class="tag">Hypothesis</strong>
+      <p>A reviewer subagent on a different model family catches more "works on my run" bugs than a second pass by the author model. Anthropic documents the fresh-context benefit. They do not publish a cross-family ablation in the page fetched here. pstack's default panel is one public recipe for the cross-family version. <a class="cite" href="sources.html#C47">C47</a></p>
+    </div>
+    <h3>7. Decision support</h3>
+    <ul class="clean">
+      <li>Claude Code when the artifact is a diff in a repo you can test.</li>
+      <li>Duet when the artifact is a brief, a draft, a deck, or a calendar catch, and you can tolerate a research preview that will not show its browser.</li>
+      <li>Skip Duet for Team or Enterprise accounts until the help center says otherwise. <a class="cite" href="sources.html#C16">C16</a></li>
+    </ul>
+    <h3>8. Bounded next action</h3>
+    <p>Take one known bug. Prompt with the symptom, the directory, and "write a failing test that reproduces it, then fix it." Do not accept the patch until you have seen the test fail for the old reason. That is the whole exercise.</p>
+    <h3>Worked example</h3>
+    <pre><code>users report login fails after the session times out.
+look at token refresh in src/auth/,
+write a failing test that reproduces it, then fix it</code></pre>
+    <p>That text is Anthropic's documented example, not a prompt from a private log. <a class="cite" href="sources.html#C19">C19</a></p>
+    <h3>Check yourself</h3>
+    <ul class="quiz">
+      <li><details><summary>Why is Boris's Opus 4.5 line a bad default in November 2026?</summary><p>He named it on 2 January 2026. Duet's October spec is Opus 5.5. The habit (plan, then verify) travels better than the model string. <a class="cite" href="sources.html#C22">C22</a></p></details></li>
+      <li><details><summary>What should move from CLAUDE.md into a hook?</summary><p>A rule that must always or never happen, after emphasis has already failed. Preferences stay as instructions the model may weigh. <a class="cite" href="sources.html#C17">C17</a></p></details></li>
+    </ul>
+    <p class="muted">Spaced review: tomorrow, explain the deterministic column without looking. In three days, point at one line in a real repo that is advice and one that should be a hook.</p>
+  </section>
+</main>
+<footer class="foot"><div class="foot-in"><p><a href="gemini.html">Gemini</a> · <a href="profiles.html#boris">Boris profile</a> · <a href="prompts.html#claude">Claude prompts</a></p></div></footer>
+<script src="js/claims.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/site.js"></script>
+<script type="module" src="js/visuals.js"></script>
+</body>
+</html>
