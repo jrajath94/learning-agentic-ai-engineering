@@ -15,7 +15,7 @@
     <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
   </div>
   <nav class="nav" aria-label="Sections">
-    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="social.html">Social</a><a href="shots.html">Shots</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
   </nav>
 </header>
 <main id="main">
@@ -48,6 +48,32 @@
     </figure>
   </div>
 </section>
+
+<section class="section" id="seq-state">
+  <h2>Sequence and state</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Who talks to whom. This is a map of the page, not a vendor diagram.</figcaption>
+      <pre class="mermaid">sequenceDiagram
+  participant You
+  participant Test
+  participant Skill
+  You->>Test: run the red command
+  Test-->>You: assertion failure
+  You->>Skill: paste the failure
+  Skill-->>You: no production diff yet</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>States worth naming before you run a tool.</figcaption>
+      <pre class="mermaid">stateDiagram-v2
+  [*] --> Red
+  Red --> Green: smallest change
+  Green --> Review: person reads diff
+  Review --> [*]</pre>
+    </figure>
+  </div>
+</section>
+
 
 <section class="section" id="mechanism">
   <h2>1. Mechanism</h2>
@@ -95,6 +121,23 @@ def inc(n):
 </section>
 
 
+<section class="section" id="on-screen"><h2>On screen, 20 Nov 2026</h2><figure class="shot">
+  <img src="assets/shots/claude-plan.png" width="1280" height="900" alt="Claude Code docs open on Common workflows, with the heading Plan before editing and the command claude --permission-mode plan." decoding="async" loading="lazy">
+  <figcaption>Viewport of <a href="https://code.claude.com/docs/en/common-workflows">code.claude.com/docs/en/common-workflows</a>, captured 20 Nov 2026. The heading on screen is Plan before editing. This is the docs site. <code>claude</code> is not installed on the machine that took the shot.</figcaption>
+</figure>
+<figure class="shot">
+  <img src="assets/shots/claude-hooks.png" width="1280" height="900" alt="Claude Code docs open on the Hooks reference page." decoding="async" loading="lazy">
+  <figcaption>Viewport of <a href="https://code.claude.com/docs/en/hooks">code.claude.com/docs/en/hooks</a>, captured 20 Nov 2026. Title in the browser was Hooks reference. The kit hook file is still a placeholder command, not this page.</figcaption>
+</figure>
+<figure class="shot">
+  <img src="assets/shots/local-tdd-demo.png" width="1280" height="900" alt="Terminal transcript of the local red then green counter test." decoding="async" loading="lazy">
+  <figcaption>Output of <code>sh kit/scripts/tdd-demo.sh</code> on this machine, 20 Nov 2026, stderr merged into stdout so the failure is above the pass. Not a model transcript.</figcaption>
+</figure>
+<figure class="shot">
+  <img src="assets/shots/local-counter-diff.png" width="1280" height="900" alt="Unified diff that changes inc to return n plus 1." decoding="async" loading="lazy">
+  <figcaption>Output of <code>diff -u</code> between the red function <code>return n</code> and the green function <code>return n + 1</code>, 20 Nov 2026.</figcaption>
+</figure>
+</section>
 <section class="section" id="ledger-rows">
   <h2>Ledger rows this page uses</h2>
   <ul class="clean">
@@ -115,7 +158,7 @@ def inc(n):
   </ul>
 </section>
 </main>
-<footer class="foot"><div class="foot-in"><p><a href="gemini.html">Gemini</a> · <a href="profiles.html#boris">Boris profile</a> · <a href="prompts.html#claude">Claude prompts</a></p></div></footer>
+<footer class="foot"><div class="foot-in"><p><a href="gemini.html">Gemini</a> · <a href="profiles.html">Profiles</a> · <a href="prompts.html">Prompts</a></p></div></footer>
 <script src="js/claims.js"></script>
 <script src="js/catalog.js"></script>
 <script src="js/site.js"></script>

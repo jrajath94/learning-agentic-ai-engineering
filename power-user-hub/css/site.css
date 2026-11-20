@@ -176,6 +176,9 @@ td p { margin: 0; }
 .markmap-svg { --markmap-text-color: #f4f1ea; --markmap-code-bg: #141414; --markmap-code-color: #f4f1ea; --markmap-circle-open-bg: #000; }
 .arch { width: 100%; height: auto; display: block; }
 .diagram .note { font-size: .82rem; color: var(--muted); margin: .55rem 0 0; text-align: left; max-width: none; }
+.shot { margin: 1rem 0 1.4rem; }
+.shot img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; background: #000; }
+.shot figcaption { font-family: var(--sans); font-size: .82rem; color: var(--muted); margin: .45rem 0 0; text-align: left; max-width: none; }
 
 @media (max-width: 900px) {
   .dash, .grid-2, .visual-grid { grid-template-columns: 1fr; }

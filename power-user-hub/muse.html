@@ -15,7 +15,7 @@
     <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
   </div>
   <nav class="nav" aria-label="Sections">
-    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="social.html">Social</a><a href="shots.html">Shots</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
   </nav>
 </header>
 <main id="main">
@@ -51,6 +51,32 @@
   </div>
 </section>
 
+<section class="section" id="seq-state">
+  <h2>Sequence and state</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Who talks to whom. This is a map of the page, not a vendor diagram.</figcaption>
+      <pre class="mermaid">sequenceDiagram
+  participant You
+  participant Muse
+  You->>Muse: contributor mode off
+  You->>Muse: slash plan
+  Muse-->>You: plan quotes the test
+  You->>Muse: approve or stop</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>States worth naming before you run a tool.</figcaption>
+      <pre class="mermaid">stateDiagram-v2
+  [*] --> TrainingOff
+  TrainingOff --> PlanGate
+  PlanGate --> Grill: plan is soft
+  PlanGate --> Goal: plan names the test
+  Goal --> [*]</pre>
+    </figure>
+  </div>
+</section>
+
+
 <section class="section" id="mechanism">
   <h2>1. Mechanism</h2>
   <p><code>/plan</code> is an approval gate. The model can keep planning, but the launch post says the plan waits for you. <code>/grill</code> stress-tests that plan. <code>/goal</code> is the long run. Background agents stay for the session instead of being spawned per step. The event log appends every model call, tool, approval, and edit so a crash can resume. That log is the state. A chat scroll is not.</p>
@@ -58,7 +84,7 @@
 </section>
 <section class="section" id="artifact">
   <h2>2. Artifact</h2>
-  <p>There is no copied <code>settings.json</code>. The artifact is the README plus this prompt, which you type after <code>/plan</code>:</p>
+  <p>There is no copied <code>settings.json</code>. The same words are in <a href="kit/prompts/muse-plan.md">kit/prompts/muse-plan.md</a>. Type them after <code>/plan</code>:</p>
   <pre><code>/plan
 Bug: {{SYMPTOM}}
 Test: {{TEST_COMMAND}}
@@ -87,6 +113,11 @@ Do not edit until I approve the plan.</code></pre>
 </section>
 
 
+<section class="section" id="on-screen"><h2>On screen, 20 Nov 2026</h2><figure class="shot">
+  <img src="assets/shots/muse-docs.png" width="1280" height="900" alt="Muse Code documentation page." decoding="async" loading="lazy">
+  <figcaption>Viewport of <a href="https://dev.meta.ai/docs/muse-code">dev.meta.ai/docs/muse-code</a>, captured 20 Nov 2026. <code>muse</code> is not installed here, so this is the docs, not a session.</figcaption>
+</figure>
+</section>
 <section class="section" id="ledger-rows">
   <h2>Ledger rows this page uses</h2>
   <ul class="clean">

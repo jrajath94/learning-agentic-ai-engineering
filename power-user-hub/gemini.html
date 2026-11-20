@@ -15,7 +15,7 @@
     <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
   </div>
   <nav class="nav" aria-label="Sections">
-    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="social.html">Social</a><a href="shots.html">Shots</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
   </nav>
 </header>
 <main id="main">
@@ -51,6 +51,33 @@
   </div>
 </section>
 
+<section class="section" id="seq-state">
+  <h2>Sequence and state</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Who talks to whom. This is a map of the page, not a vendor diagram.</figcaption>
+      <pre class="mermaid">sequenceDiagram
+  participant You
+  participant Neon
+  participant Hydrogen
+  You->>Neon: one task
+  Neon->>Hydrogen: implement the plan
+  You->>Hydrogen: slash btw is read only
+  Hydrogen-->>You: diff to read</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>States worth naming before you run a tool.</figcaption>
+      <pre class="mermaid">stateDiagram-v2
+  [*] --> OneCommand
+  OneCommand --> Swarm: slices do not share files
+  OneCommand --> SideQuestion: read only
+  Swarm --> Diff
+  SideQuestion --> Diff</pre>
+    </figure>
+  </div>
+</section>
+
+
 <section class="section" id="mechanism">
   <h2>1. Mechanism</h2>
   <p>Gemini CLI loads <code>GEMINI.md</code> as project context, the same job as CLAUDE.md. The upstream file lists Node 20, <code>npm run build</code>, and nightly memory tests that it tells contributors to skip unless they are changing those tests. The mechanism is: the file is resident context, so a command in it will be run. A command for the wrong repo wastes the turn and can delete the wrong tree.</p>
@@ -59,7 +86,7 @@
 </section>
 <section class="section" id="artifact">
   <h2>2. Artifact</h2>
-  <p><a href="kit/gemini-antigravity/GEMINI.md">kit/gemini-antigravity/GEMINI.md</a> is a short file with placeholders. Copy that one. Read the excerpt so you can see what not to copy: <code>npm install</code>, <code>npm run build</code>, <code>npm run preflight</code>, <code>npm run test:memory</code>, and the <code>@google/gemini-cli-core</code> workspace path.</p>
+  <p><a href="kit/gemini-antigravity/GEMINI.md">kit/gemini-antigravity/GEMINI.md</a> is a short file with placeholders. The turn that only prints the test command is <a href="kit/prompts/gemini-one-command.md">kit/prompts/gemini-one-command.md</a>. Copy the markdown file. Read the excerpt so you can see what not to copy: <code>npm install</code>, <code>npm run build</code>, <code>npm run preflight</code>, <code>npm run test:memory</code>, and the <code>@google/gemini-cli-core</code> workspace path.</p>
 </section>
 <section class="section" id="example">
   <h2>3. Worked example</h2>
@@ -89,6 +116,15 @@
 </section>
 
 
+<section class="section" id="on-screen"><h2>On screen, 20 Nov 2026</h2><figure class="shot">
+  <img src="assets/shots/antigravity-orchestrator.png" width="1280" height="900" alt="Antigravity blog post Gemini 4 Hydrogen and Orchestrator." decoding="async" loading="lazy">
+  <figcaption>Viewport of <a href="https://antigravity.google/blog/gemini-4-hydrogen-in-google-antigravity/">the 12 Nov 2026 Antigravity post</a>, captured 20 Nov 2026. The Antigravity app was not launched.</figcaption>
+</figure>
+<figure class="shot">
+  <img src="assets/shots/github-gemini-md.png" width="1280" height="900" alt="GitHub file view of gemini-cli GEMINI.md at commit addc194." decoding="async" loading="lazy">
+  <figcaption>Viewport of <a href="https://github.com/google-gemini/gemini-cli/blob/addc194f5bc414e7134c2bd6a414a40e1b4cbbed/GEMINI.md">GEMINI.md at addc194f5bc414e7134c2bd6a414a40e1b4cbbed</a>, captured 20 Nov 2026.</figcaption>
+</figure>
+</section>
 <section class="section" id="ledger-rows">
   <h2>Ledger rows this page uses</h2>
   <ul class="clean">

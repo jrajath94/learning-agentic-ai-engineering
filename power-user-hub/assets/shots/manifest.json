@@ -1,0 +1,118 @@
+[
+  {
+    "file": "assets/shots/claude-hooks.png",
+    "url": "https://code.claude.com/docs/en/hooks",
+    "requested_url": "https://code.claude.com/docs/en/hooks",
+    "title": "Hooks reference - Claude Code Docs",
+    "captured": "2026-11-20",
+    "kind": "public page viewport",
+    "note": "Could not scroll to 'Hooks': TimeoutError. Shot is the viewport that did load."
+  },
+  {
+    "file": "assets/shots/claude-practices.png",
+    "url": "https://code.claude.com/docs/en/best-practices",
+    "requested_url": "https://code.claude.com/docs/en/best-practices",
+    "title": "Best practices for Claude Code - Claude Code Docs",
+    "captured": "2026-11-20",
+    "kind": "public page viewport",
+    "note": "Could not scroll to 'Best practices': TimeoutError. Shot is the viewport that did load."
+  },
+  {
+    "file": "assets/shots/claude-plan.png",
+    "url": "https://code.claude.com/docs/en/common-workflows",
+    "requested_url": "https://code.claude.com/docs/en/common-workflows",
+    "title": "Common workflows - Claude Code Docs",
+    "captured": "2026-11-20",
+    "kind": "public page viewport",
+    "note": ""
+  },
+  {
+    "file": "assets/shots/codex-config.png",
+    "url": "https://learn.chatgpt.com/docs/config-file/config-sample",
+    "requested_url": "https://developers.openai.com/codex/config-sample",
+    "title": "Sample Configuration | ChatGPT Learn",
+    "captured": "2026-11-20",
+    "kind": "public page viewport",
+    "note": ""
+  },
+  {
+    "file": "assets/shots/antigravity-orchestrator.png",
+    "url": "https://antigravity.google/blog/gemini-4-hydrogen-in-google-antigravity/",
+    "requested_url": "https://antigravity.google/blog/gemini-4-hydrogen-in-google-antigravity/",
+    "title": "Gemini 4 Hydrogen and Orchestrator | Google Antigravity Blog",
+    "captured": "2026-11-20",
+    "kind": "public page viewport",
+    "note": ""
+  },
+  {
+    "file": "assets/shots/muse-docs.png",
+    "url": "https://dev.meta.ai/docs/muse-code",
+    "requested_url": "https://dev.meta.ai/docs/muse-code",
+    "title": "Muse Code - Meta Model API",
+    "captured": "2026-11-20",
+    "kind": "public page viewport",
+    "note": ""
+  },
+  {
+    "file": "assets/shots/grok-overview.png",
+    "url": "https://docs.x.ai/grok-bot/overview",
+    "requested_url": "https://docs.x.ai/grok-bot/overview",
+    "title": "Grok Bot | SpaceXSI Docs",
+    "captured": "2026-11-20",
+    "kind": "public page viewport",
+    "note": ""
+  },
+  {
+    "file": "assets/shots/grok-skills.png",
+    "url": "https://x.ai/news/grok-skills",
+    "requested_url": "https://x.ai/news/grok-skills",
+    "title": "Skills in web, iOS, and Android | SpaceXSI",
+    "captured": "2026-11-20",
+    "kind": "public page viewport",
+    "note": ""
+  },
+  {
+    "file": "assets/shots/github-tdd-skill.png",
+    "url": "https://github.com/mattpocock/skills/blob/abeeaf95660ba9e8b7c753eb38f441ca707a8823/skills/engineering/tdd/SKILL.md",
+    "requested_url": "https://github.com/mattpocock/skills/blob/abeeaf95660ba9e8b7c753eb38f441ca707a8823/skills/engineering/tdd/SKILL.md",
+    "title": "skills/skills/engineering/tdd/SKILL.md at abeeaf95660ba9e8b7c753eb38f441ca707a8823 \u00b7 mattpocock/skills \u00b7 GitHub",
+    "captured": "2026-11-20",
+    "kind": "public page viewport",
+    "note": ""
+  },
+  {
+    "file": "assets/shots/github-gemini-md.png",
+    "url": "https://github.com/google-gemini/gemini-cli/blob/addc194f5bc414e7134c2bd6a414a40e1b4cbbed/GEMINI.md",
+    "requested_url": "https://github.com/google-gemini/gemini-cli/blob/addc194f5bc414e7134c2bd6a414a40e1b4cbbed/GEMINI.md",
+    "title": "gemini-cli/GEMINI.md at addc194f5bc414e7134c2bd6a414a40e1b4cbbed \u00b7 google-gemini/gemini-cli \u00b7 GitHub",
+    "captured": "2026-11-20",
+    "kind": "public page viewport",
+    "note": ""
+  },
+  {
+    "file": "assets/shots/local-tdd-demo.png",
+    "url": "local command",
+    "requested_url": "shot-terminal.html",
+    "title": "local-tdd-demo",
+    "captured": "2026-11-20",
+    "kind": "local command output",
+    "note": "Rendered from the command's own stdout. Not a Claude or Codex window."
+  },
+  {
+    "file": "assets/shots/local-counter-diff.png",
+    "url": "local command",
+    "requested_url": "shot-diff.html",
+    "title": "local-counter-diff",
+    "captured": "2026-11-20",
+    "kind": "local command output",
+    "note": "Rendered from the command's own stdout. Not a Claude or Codex window."
+  },
+  {
+    "binaries": {
+      "claude": null,
+      "codex": null,
+      "muse": null,
+      "agy": null
+    }
+  }
+]

@@ -17,6 +17,8 @@ window.HUB_INDEX = [
   {href:"tokens.html", cluster:"tokens", title:"Token use", text:"5 to 10 thousand tokens a day was not found. Six dollars a day, free internal use, parallel sessions."},
   {href:"talks.html", cluster:"talks", title:"Talks", text:"Latent Space with Boris Cherny, Cat Wu, and Thariq Shihipar, with timestamps."},
   {href:"podcasts.html", cluster:"podcasts", title:"Podcasts", text:"Four in-window episodes with kit prompts. Other shows listed as not opened."},
+  {href:"social.html", cluster:"social", title:"Short-form social", text:"Three TikTok captions that name a step. Instagram and Threads consent walls are in the gap report. Video frames were not read."},
+  {href:"shots.html", cluster:"shots", title:"Screenshots", text:"Doc viewports and local command output from 20 Nov 2026. No Claude, Codex, Muse, or Antigravity binary was on PATH."},
   {href:"podcast-pragmatic-boris.html", cluster:"podcasts", title:"Pragmatic Engineer Boris", text:"Five tabs, plan mode, worktrees, CI review, 4 Mar 2026."},
   {href:"podcast-thariq.html", cluster:"podcasts", title:"Thariq effort split", text:"High effort for review, implementation notes, CLAUDE.md after a repeat."},
   {href:"podcast-karpathy.html", cluster:"podcasts", title:"Karpathy No Priors", text:"Overnight loop only with a metric command. 20 Mar 2026."},

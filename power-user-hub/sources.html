@@ -15,13 +15,13 @@
     <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
   </div>
   <nav class="nav" aria-label="Sections">
-    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="social.html">Social</a><a href="shots.html">Shots</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
   </nav>
 </header>
 <main id="main">
   <p class="kicker">Ledger</p>
   <h1>Every material claim</h1>
-  <p class="lede">295 rows. The same data is in <a href="data/sources.json">sources.json</a> and <a href="data/sources.csv">sources.csv</a>. Independence is <span class="chip">primary</span> for the origin, <span class="chip gold">secondary</span> for a careful retelling, and <span class="chip copper">echo</span> for a news piece that repeats an origin. Echoes are kept so the one-origin rule is visible. They are not extra confirmation.</p>
+  <p class="lede">298 rows. The same data is in <a href="data/sources.json">sources.json</a> and <a href="data/sources.csv">sources.csv</a>. Independence is <span class="chip">primary</span> for the origin, <span class="chip gold">secondary</span> for a careful retelling, and <span class="chip copper">echo</span> for a news piece that repeats an origin. Echoes are kept so the one-origin rule is visible. They are not extra confirmation.</p>
   <p>Filter with the box. Claim ids are anchors, so a link like <a href="#C12">C12</a> lands on the row.</p>
   <input id="pagefilter" type="search" placeholder="Filter claims" style="border:1px solid var(--line);background:var(--bg-2);border-radius:999px;padding:.4rem .8rem;">
   <div data-ledger></div>
@@ -55,6 +55,31 @@
   </div>
   
 </section>
+
+<section class="section" id="seq-state">
+  <h2>Sequence and state</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Who talks to whom. This is a map of the page, not a vendor diagram.</figcaption>
+      <pre class="mermaid">sequenceDiagram
+  participant Row
+  participant URL
+  participant Reader
+  Row->>URL: origin link
+  Reader->>URL: open it
+  URL-->>Reader: primary or secondary or echo</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>States worth naming before you run a tool.</figcaption>
+      <pre class="mermaid">stateDiagram-v2
+  [*] --> Primary
+  Primary --> Secondary: retelling
+  Primary --> Echo: news repeat
+  Secondary --> [*]</pre>
+    </figure>
+  </div>
+</section>
+
 
 </main>
 <footer class="foot"><div class="foot-in"><p>Regenerate with <code>python3 scripts/build_ledger.py</code> after editing the claim list. Opening the site does not require that script.</p></div></footer>

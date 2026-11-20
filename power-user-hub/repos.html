@@ -15,7 +15,7 @@
     <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
   </div>
   <nav class="nav" aria-label="Sections">
-    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="social.html">Social</a><a href="shots.html">Shots</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
   </nav>
 </header>
 <main id="main">
@@ -57,6 +57,31 @@
   </div>
   
 </section>
+
+<section class="section" id="seq-state">
+  <h2>Sequence and state</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Who talks to whom. This is a map of the page, not a vendor diagram.</figcaption>
+      <pre class="mermaid">sequenceDiagram
+  participant README
+  participant You
+  participant Tree
+  README->>You: install line and SHA
+  You->>Tree: copy one skill
+  Tree-->>You: do not install three routers</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>States worth naming before you run a tool.</figcaption>
+      <pre class="mermaid">stateDiagram-v2
+  [*] --> Readme
+  Readme --> Installed: one system
+  Readme --> Skipped: mandatory clash
+  Installed --> [*]</pre>
+    </figure>
+  </div>
+</section>
+
 
   <section class="section" id="pocock">
     <h2>mattpocock/skills</h2>
@@ -183,6 +208,11 @@ npx skills add nutlope/hallmark -g --agent claude-code
       <li><details><summary>Which Node version does the caveman CLI README require?</summary><p>22.13 or newer. <a class="cite" href="sources.html#C46">C46</a></p></details></li>
     </ul>
   </section>
+<section class="section" id="on-screen"><h2>On screen, 20 Nov 2026</h2><figure class="shot">
+  <img src="assets/shots/github-tdd-skill.png" width="1280" height="900" alt="GitHub file view of mattpocock skills TDD SKILL.md at commit abeeaf9." decoding="async" loading="lazy">
+  <figcaption>Viewport of <a href="https://github.com/mattpocock/skills/blob/abeeaf95660ba9e8b7c753eb38f441ca707a8823/skills/engineering/tdd/SKILL.md">SKILL.md at abeeaf95660ba9e8b7c753eb38f441ca707a8823</a>, captured 20 Nov 2026. The same file is copied into the kit.</figcaption>
+</figure>
+</section>
 </main>
 <footer class="foot"><div class="foot-in"><p><a href="library.html">Library</a> · <a href="principles.html">Why skills are programs</a></p></div></footer>
 <script src="js/claims.js"></script>

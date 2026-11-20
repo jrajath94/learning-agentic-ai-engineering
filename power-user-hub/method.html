@@ -16,7 +16,7 @@
     <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
   </div>
   <nav class="nav" aria-label="Sections">
-    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="social.html">Social</a><a href="shots.html">Shots</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
   </nav>
 </header>
 <main id="main">
@@ -59,6 +59,32 @@
   </div>
 </section>
 
+<section class="section" id="seq-state">
+  <h2>Sequence and state</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Who talks to whom. This is a map of the page, not a vendor diagram.</figcaption>
+      <pre class="mermaid">sequenceDiagram
+  participant Search
+  participant Page
+  participant Ledger
+  Search->>Page: open the origin
+  Page->>Ledger: one row
+  Page-->>Search: not opened
+  Search->>Ledger: gap id</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>States worth naming before you run a tool.</figcaption>
+      <pre class="mermaid">stateDiagram-v2
+  [*] --> Searching
+  Searching --> Row: page read
+  Searching --> Gap: blocked
+  Row --> [*]</pre>
+    </figure>
+  </div>
+</section>
+
+
 <section class="section" id="layers">
   <h2>The doll, in the open</h2>
   <ol class="steps">
@@ -67,7 +93,7 @@
     <li><strong>Layer 2.</strong> For each: features, workflows, configs, prompts, failures, and cost.</li>
     <li><strong>Layer 3.</strong> The artifact: a repo file, a config line, a quote, or a timestamp. Echoes of one announcement stay one origin.</li>
   </ol>
-  <p>Pass 1 stopped at official product pages: 52 claims. Pass 2 opened interview transcripts, one Anthropic study, GitHub files, an Arctic Shift slice of r/ClaudeAI, and a handful of practitioner posts. The ledger is now 295 claims. Pass 3 added the Claude Code changelog lines for AGENTS.md, Hacker News items that point at those pages, the 12 November Antigravity Hydrogen post, the Grok Bot launch page as it signed itself on 20 November, two GitHub file reads, OpenAI's config sample, and two newsletters. Saturation inside r/ClaudeAI was real: later posts repeated CLAUDE.md, hooks, small MCP lists, and 'do not trust the model's own report.' A second Arctic Shift search returned HTTP 422, so no new subreddit slice was added. YouTube captions did not download. That is recorded on the <a href="gaps.html">gap report</a>, not papered over.</p>
+  <p>Pass 1 stopped at official product pages: 52 claims. Pass 2 opened interview transcripts, one Anthropic study, GitHub files, an Arctic Shift slice of r/ClaudeAI, and a handful of practitioner posts. The ledger is now 298 claims. Three TikTok captions with a named step were added. Instagram and Threads pages that returned only a consent shell were not turned into claims. Pass 3 added the Claude Code changelog lines for AGENTS.md, Hacker News items that point at those pages, the 12 November Antigravity Hydrogen post, the Grok Bot launch page as it signed itself on 20 November, two GitHub file reads, OpenAI's config sample, and two newsletters. Saturation inside r/ClaudeAI was real: later posts repeated CLAUDE.md, hooks, small MCP lists, and 'do not trust the model's own report.' A second Arctic Shift search returned HTTP 422, so no new subreddit slice was added. YouTube captions did not download. That is recorded on the <a href="gaps.html">gap report</a>, not papered over.</p>
 </section>
 <section class="section" id="what-opened">
   <h2>What was opened</h2>

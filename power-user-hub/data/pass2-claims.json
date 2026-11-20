@@ -2914,5 +2914,41 @@
     "confidence": "medium",
     "independence": "secondary",
     "notes": "The quoted post itself was not opened. A screenshot described in the newsletter shows a cleanup command that expanded HOME and deleted that user's home directory. Do not treat the newsletter as OpenAI's incident report."
+  },
+  {
+    "id": "C296",
+    "cluster": "claude",
+    "claim": "TikTok user agentic.james, video 7636794687700995341, createTime 6 May 2026, caption: Quickest way to set up your second brain with Claude code in 60 seconds. Using GWS CLI, graphite for memory, playwright for browser, automation, and skills for structured work close.",
+    "url": "https://www.tiktok.com/@agentic.james/video/7636794687700995341",
+    "source_title": "TikTok @agentic.james",
+    "author": "agentic.james",
+    "date": "2026-05-06",
+    "confidence": "medium",
+    "independence": "primary",
+    "notes": "Caption is the desc field in the video page HTML fetched 20 Nov 2026. On-screen text inside the video was not read. The words work close are the caption's."
+  },
+  {
+    "id": "C297",
+    "cluster": "practice",
+    "claim": "TikTok user sirakinb, video 7635289919392353549, createTime 2 May 2026, caption says there are two ways to create and execute Meta ad campaigns from Claude or ChatGPT: the MCP connector, or the CLI.",
+    "url": "https://www.tiktok.com/@sirakinb/video/7635289919392353549",
+    "source_title": "TikTok @sirakinb",
+    "author": "sirakinb",
+    "date": "2026-05-02",
+    "confidence": "medium",
+    "independence": "primary",
+    "notes": "Caption only. The video frames were not opened. The caption does not name Muse Code. Hashtags include claudecode and codex."
+  },
+  {
+    "id": "C298",
+    "cluster": "codex",
+    "claim": "TikTok user bridgemindai, video 7662012423443893517, createTime 13 July 2026, caption says to turn fast mode off and test a tier it calls Ultra, and it names Luna, GPT 5.6 Terra, GPT 5.6 Sol, and Groq in the same caption.",
+    "url": "https://www.tiktok.com/@bridgemindai/video/7662012423443893517",
+    "source_title": "TikTok @bridgemindai",
+    "author": "bridgemindai",
+    "date": "2026-07-13",
+    "confidence": "medium",
+    "independence": "primary",
+    "notes": "The model names are the caption's and were not checked against an OpenAI catalog. Video frames were not read."
   }
 ]

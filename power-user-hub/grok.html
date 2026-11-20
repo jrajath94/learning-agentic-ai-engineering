@@ -15,7 +15,7 @@
     <form class="finder" role="search" action="search.html"><label class="sr" for="q">Search</label><input id="q" name="q" type="search" placeholder="Search the hub  (/)"></form>
   </div>
   <nav class="nav" aria-label="Sections">
-    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
+    <a href="index.html">Home</a><a href="grok.html">Grok</a><a href="claude.html">Claude</a><a href="gemini.html">Gemini</a><a href="codex.html">Codex</a><a href="muse.html">Muse</a><a href="cross-cutting.html">Stack</a><a href="profiles.html">Profiles</a><a href="principles.html">Principles</a><a href="prompts.html">Prompts</a><a href="repos.html">Repos</a><a href="library.html">Library</a><a href="method.html">Method</a><a href="tokens.html">Tokens</a><a href="talks.html">Talks</a><a href="podcasts.html">Podcasts</a><a href="social.html">Social</a><a href="shots.html">Shots</a><a href="directory.html">Directory</a><a href="sources.html">Ledger</a><a href="gaps.html">Gaps</a>
   </nav>
 </header>
 <main id="main">
@@ -50,6 +50,33 @@
   </div>
 </section>
 
+<section class="section" id="seq-state">
+  <h2>Sequence and state</h2>
+  <div class="visual-grid">
+    <figure class="diagram">
+      <figcaption>Who talks to whom. This is a map of the page, not a vendor diagram.</figcaption>
+      <pre class="mermaid">sequenceDiagram
+  participant You
+  participant Bot
+  participant Mail
+  You->>Bot: read may run
+  You->>Bot: send needs approval
+  Bot->>Mail: draft only
+  Mail-->>You: you send or you do not</pre>
+    </figure>
+    <figure class="diagram">
+      <figcaption>States worth naming before you run a tool.</figcaption>
+      <pre class="mermaid">stateDiagram-v2
+  [*] --> Connected
+  Connected --> Draft
+  Draft --> Waiting: send is needs approval
+  Waiting --> Skipped: sign in died
+  Waiting --> [*]</pre>
+    </figure>
+  </div>
+</section>
+
+
 <section class="section" id="mechanism">
   <h2>1. Mechanism</h2>
   <p>A Bot has a cloud computer, but the changelog prefers a connector to the browser when a connector exists. Permissions are per tool, not per connector. Search can be Always allow while send is Needs approval. Auto-review means xAI's checker decides whether you see the action. Needs approval means you see it every time. A routine that loses its sign-in skips until you reconnect. It does not keep sending.</p>
@@ -80,6 +107,15 @@
 </section>
 
 
+<section class="section" id="on-screen"><h2>On screen, 20 Nov 2026</h2><figure class="shot">
+  <img src="assets/shots/grok-overview.png" width="1280" height="900" alt="Grok Bot overview in the SpaceXSI docs, with Skills and routines in the sidebar." decoding="async" loading="lazy">
+  <figcaption>Viewport of <a href="https://docs.x.ai/grok-bot/overview">docs.x.ai/grok-bot/overview</a>, captured 20 Nov 2026. The browser title was Grok Bot | SpaceXSI Docs. No Bot session was run.</figcaption>
+</figure>
+<figure class="shot">
+  <img src="assets/shots/grok-skills.png" width="1280" height="900" alt="Grok skills announcement page titled Skills in web, iOS, and Android." decoding="async" loading="lazy">
+  <figcaption>Viewport of <a href="https://x.ai/news/grok-skills">x.ai/news/grok-skills</a>, captured 20 Nov 2026. Title: Skills in web, iOS, and Android | SpaceXSI.</figcaption>
+</figure>
+</section>
 <section class="section" id="ledger-rows">
   <h2>Ledger rows this page uses</h2>
   <ul class="clean">
@@ -94,7 +130,7 @@
   </ul>
 </section>
 </main>
-<footer class="foot"><div class="foot-in"><p><a href="claude.html">Claude</a> · <a href="gaps.html#g01">Gaps for this cluster</a> · <a href="prompts.html#grok">Grok prompts</a></p></div></footer>
+<footer class="foot"><div class="foot-in"><p><a href="claude.html">Claude</a> · <a href="gaps.html#g01">Gaps for this cluster</a> · <a href="kit/prompts/grok-draft-only.md">Draft prompt</a></p></div></footer>
 <script src="js/claims.js"></script>
 <script src="js/catalog.js"></script>
 <script src="js/site.js"></script>
